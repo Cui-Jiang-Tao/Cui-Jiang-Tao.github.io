@@ -7,6 +7,14 @@
             <webMaster>cjt953899262@gmail.com (cjt)</webMaster><lastBuildDate>Wed, 14 Sep 2022 00:00:00 &#43;0000</lastBuildDate>
             <atom:link href="https://cui-jiang-tao.github.io/index.xml" rel="self" type="application/rss+xml" />
         <item>
+    <title>GCC编译器</title>
+    <link>https://cui-jiang-tao.github.io/posts/gcc%E7%BC%96%E8%AF%91%E5%99%A8/</link>
+    <pubDate>Wed, 14 Sep 2022 00:00:00 &#43;0000</pubDate>
+    <author>cjt</author>
+    <guid>https://cui-jiang-tao.github.io/posts/gcc%E7%BC%96%E8%AF%91%E5%99%A8/</guid>
+    <description><![CDATA[GCC编译器 使用gcc指令编译c代码 使用g++指令编译c++代码 1.编译过程 test.cpp #include &lt;iostream&gt; int main() { #ifdef DEBUG std::cout &lt;&lt; &#34;DEBUG ...&#34; &lt;&lt; std::endl; #else std::cout &lt;&lt; &#34;hello world!!!&#34; &lt;&lt; std::endl; #endif return 0; } 预处理(Pre]]></description>
+</item>
+<item>
     <title>Markdown基础语法</title>
     <link>https://cui-jiang-tao.github.io/posts/markdown/</link>
     <pubDate>Wed, 14 Sep 2022 00:00:00 &#43;0000</pubDate>
