@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>CMake - vstk的网站</title><meta name="Description" content="This is my cool site"><meta property="og:title" content="CMake" />
+<meta property="og:description" content="前言 CMake是一个跨平台的安装编译工具，可以用简单的语句来描述所有平台的安装(编译过程)。 CMake可以说已经成为大部分C&#43;&#43;开源项目标配" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://cui-jiang-tao.github.io/posts/cmake/" />
+<meta property="article:published_time" content="2022-09-15T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-09-15T00:00:00+00:00" /><meta property="og:site_name" content="My cool site" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="CMake"/>
+<meta name="twitter:description" content="前言 CMake是一个跨平台的安装编译工具，可以用简单的语句来描述所有平台的安装(编译过程)。 CMake可以说已经成为大部分C&#43;&#43;开源项目标配"/>
+<meta name="application-name" content="My cool site">
+<meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://cui-jiang-tao.github.io/posts/cmake/" /><link rel="prev" href="https://cui-jiang-tao.github.io/posts/gcc%E7%BC%96%E8%AF%91%E5%99%A8/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "CMake",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/cui-jiang-tao.github.io\/posts\/cmake\/"
+        },"genre": "posts","wordcount":  2425 ,
+        "url": "https:\/\/cui-jiang-tao.github.io\/posts\/cmake\/","datePublished": "2022-09-15T00:00:00+00:00","dateModified": "2022-09-15T00:00:00+00:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "cjt"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="vstk的网站"><span class="header-title-pre"><i class='far fa-kiss-wink-heart fa-fw' aria-hidden='true'></i></span><span id="id-1" class="typeit"></span></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="vstk的网站"><span class="header-title-pre"><i class='far fa-kiss-wink-heart fa-fw' aria-hidden='true'></i></span><span id="id-2" class="typeit"></span></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/posts/" title="">文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">CMake</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>cjt</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-09-15">2022-09-15</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;2425 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;5 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#1-语法特性介绍">1. 语法特性介绍</a></li>
+    <li><a href="#2-重要指令和cmake常用变量">2. 重要指令和CMake常用变量</a></li>
+    <li><a href="#3-cmake常用变量">3. CMake常用变量</a></li>
+    <li><a href="#4-cmake编译工程">4. CMake编译工程</a>
+      <ul>
+        <li><a href="#41-编译流程">4.1 编译流程</a></li>
+        <li><a href="#42-两种构建方式">4.2 两种构建方式</a></li>
+      </ul>
+    </li>
+    <li><a href="#5-cmake代码实践">5. CMake代码实践</a>
+      <ul>
+        <li><a href="#51-简单cmake工程">5.1 简单CMake工程</a></li>
+        <li><a href="#52-多级目录工程---直接编译">5.2 多级目录工程 - 直接编译</a></li>
+        <li><a href="#53-多级目录工程---生成库编译">5.3 多级目录工程 - 生成库编译</a></li>
+      </ul>
+    </li>
+    <li><a href="#6-搭配-vs-code">6. 搭配 vs code</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><p>前言</p>
+<ul>
+<li>CMake是一个跨平台的安装编译工具，可以用简单的语句来描述所有平台的安装(编译过程)。</li>
+<li>CMake可以说已经成为大部分C++开源项目标配</li>
+</ul>
+<h2 id="1-语法特性介绍">1. 语法特性介绍</h2>
+<ul>
+<li>基本语法格式：指令(参数 1 参数 2&hellip;)
+<ul>
+<li>参数使用括弧括起</li>
+<li>参数之间使用空格或分号分开</li>
+</ul>
+</li>
+<li>指令是大小写无关的，参数和变量是大小写相关的</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-cmake" data-lang="cmake"><span class="nb">set</span><span class="p">(</span><span class="s">HELLO</span> <span class="s">hello.cpp</span><span class="p">)</span><span class="err">
+</span><span class="err"></span><span class="nb">add_executable</span><span class="p">(</span><span class="s">hello</span> <span class="s">main.cpp</span> <span class="s">hello.cpp</span><span class="p">)</span><span class="err">
+</span><span class="err"></span><span class="nb">ADD_EXECUTABLE</span><span class="p">(</span><span class="s">hello</span> <span class="s">main.cpp</span> <span class="o">${</span><span class="nv">HELLO</span><span class="o">}</span><span class="p">)</span><span class="err">
+</span></code></pre></div><ul>
+<li>变量使用${}方式取值，但是在 IF 控制语句中是直接使用变量名</li>
+</ul>
+<h2 id="2-重要指令和cmake常用变量">2. 重要指令和CMake常用变量</h2>
+<ul>
+<li>
+<p>cmake_minimum_required - 指定CMake的最小版本要求</p>
+<ul>
+<li>语法： <code>cmake_minimum_required(VERSION versionNumber [FATAL_ERROR])</code></li>
+</ul>
+<pre><code class="language-camke" data-lang="camke"># CMake最小版本要求为2.8.3
+cmake_minimum_required(VERSION 2.8.3)
+</code></pre></li>
+<li>
+<p>project - 定义工程名称，并可指定工程支持的语言</p>
+<ul>
+<li>语法： <code>project(projectname [CXX] [C] [Java])</code></li>
+</ul>
+<pre><code class="language-g++" data-lang="g++"># 指定工程名为HELLOWORLD
+project(HELLOWORLD)
+</code></pre></li>
+<li>
+<p>set - 显式的定义变量</p>
+<ul>
+<li>语法：<code>set(VAR [VALUE] [CACHE TYPE DOCSTRING [FORCE]])</code></li>
+</ul>
+<pre><code class="language-g++" data-lang="g++"># 定义SRC变量，其值为sayHello.cpp hello.cpp
+set(SRC sayHello.cpp hello.cpp)
+</code></pre></li>
+<li>
+<p>include_directories - 向工程添加多个特定的头文件搜索路径 &mdash;&gt;相当于指定g++编译器的-I参数</p>
+<ul>
+<li>语法： <code>include_directories([AFTER|BEFORE] [SYSTEM] dir1 dir2 ...)</code></li>
+</ul>
+<pre><code class="language-g++" data-lang="g++"># 将/usr/include/myincludefolder 和 ./include 添加到头文件搜索路径
+include_directories(/usr/include/myincludefolder ./include)
+</code></pre></li>
+<li>
+<p>link_directories - 向工程添加多个特定的库文件搜索路径 &mdash;&gt;相当于指定g++编译器的-L参数</p>
+<ul>
+<li>语法： <code>link_directories(dir1 dir2 ...)</code></li>
+</ul>
+<pre><code class="language-g++" data-lang="g++"># 将/usr/lib/mylibfolder 和 ./lib 添加到库文件搜索路径
+link_directories(/usr/lib/mylibfolder ./lib)
+</code></pre></li>
+<li>
+<p>add_library - 生成库文件</p>
+<ul>
+<li>语法： <code>add_library(libname [SHARED|STATIC|MODULE] [EXCLUDE_FROM_ALL] source1 source2 ... sourceN)</code></li>
+</ul>
+<pre><code class="language-g++" data-lang="g++"># 通过变量 SRC 生成 libhello.so 共享库
+add_library(hello SHARED ${SRC})
+</code></pre></li>
+<li>
+<p>add_compile_options - 添加编译参数</p>
+<ul>
+<li>语法：<code>add_compile_options()</code></li>
+</ul>
+<pre><code class="language-g++" data-lang="g++"># 添加编译参数 -Wall -std=c++11 -O2
+add_compile_options(-Wall -std=c++11 -O2)
+</code></pre></li>
+<li>
+<p>add_executable - 生成可执行文件</p>
+<ul>
+<li>语法：<code>add_executable(exename source1 source2 ... sourceN)</code></li>
+</ul>
+<pre><code class="language-g++" data-lang="g++"># 编译main.cpp生成可执行文件main
+add_executable(main main.cpp)
+</code></pre></li>
+<li>
+<p>target_link_libraries - 为 target 添加需要链接的共享库 &mdash;&gt;相同于指定g++编译器-l参数</p>
+<ul>
+<li>语法： <code>target_link_libraries(target library1&lt;debug | optimized&gt; library2...)</code></li>
+</ul>
+<pre><code class="language-g++" data-lang="g++"># 将hello动态库文件链接到可执行文件main
+target_link_libraries(main hello)
+</code></pre></li>
+<li>
+<p>add_subdirectory - 向当前工程添加存放源文件的子目录，并可以指定中间二进制和目标二进制
+存放的位置</p>
+<ul>
+<li>语法： <code>add_subdirectory(source_dir [binary_dir] [EXCLUDE_FROM_ALL])</code></li>
+</ul>
+<pre><code class="language-g++" data-lang="g++"># 添加src子目录，src中需有一个CMakeLists.txt
+add_subdirectory(src)
+</code></pre></li>
+<li>
+<p>aux_source_directory - 发现一个目录下所有的源代码文件并将列表存储在一个变量中，这个指令临时被用来自动构建源文件列表</p>
+<ul>
+<li>语法： <code>aux_source_directory(dir VARIABLE)</code></li>
+</ul>
+<pre><code class="language-g++" data-lang="g++"># 定义SRC变量，其值为当前目录下所有的源代码文件
+aux_source_directory(. SRC)
+# 编译SRC变量所代表的源代码文件，生成main可执行文件
+add_executable(main ${SRC})
+</code></pre></li>
+</ul>
+<h2 id="3-cmake常用变量">3. CMake常用变量</h2>
+<ul>
+<li>
+<p>CMAKE_C_FLAGS gcc编译选项</p>
+</li>
+<li>
+<p>CMAKE_CXX_FLAGS g++编译选项</p>
+<pre><code class="language-g++" data-lang="g++"># 在CMAKE_CXX_FLAGS编译选项后追加-std=c++11
+set( CMAKE_CXX_FLAGS &quot;${CMAKE_CXX_FLAGS} -std=c++11&quot;)
+</code></pre></li>
+<li>
+<p>CMAKE_BUILD_TYPE 编译类型(Debug, Release)</p>
+<pre><code class="language-g++" data-lang="g++"># 设定编译类型为debug，调试时需要选择debug
+set(CMAKE_BUILD_TYPE Debug)
+# 设定编译类型为release，发布时需要选择release
+set(CMAKE_BUILD_TYPE Release)
+</code></pre></li>
+<li>
+<p>CMAKE_BINARY_DIR</p>
+</li>
+<li>
+<p>PROJECT_BINARY_DIR</p>
+</li>
+<li>
+<p>_BINARY_DIR</p>
+<pre><code class="language-g++" data-lang="g++">1. 这三个变量指代的内容是一致的。
+2. 如果是 in source build，指的就是工程顶层目录。
+3. 如果是 out-of-source 编译,指的是工程编译发生的目录。
+4. PROJECT_BINARY_DIR 跟其他指令稍有区别，不过现在，你可以理解为他们是一致的。
+</code></pre></li>
+<li>
+<p>CMAKE_SOURCE_DIR</p>
+</li>
+<li>
+<p>PROJECT_SOURCE_DIR</p>
+</li>
+<li>
+<p>_SOURCE_DIR</p>
+<pre><code class="language-g+=" data-lang="g+=">1. 这三个变量指代的内容是一致的,不论采用何种编译方式,都是工程顶层目录。
+2. 也就是在 in source build时,他跟 CMAKE_BINARY_DIR 等变量一致。
+3. PROJECT_SOURCE_DIR 跟其他指令稍有区别,现在,你可以理解为他们是一致的。
+</code></pre></li>
+<li>
+<p>CMAKE_C_COMPILER：指定C编译器</p>
+</li>
+<li>
+<p>CMAKE_CXX_COMPILER：指定C++编译器</p>
+</li>
+<li>
+<p>EXECUTABLE_OUTPUT_PATH：可执行文件输出的存放路径</p>
+</li>
+<li>
+<p>LIBRARY_OUTPUT_PATH：库文件输出的存放路径</p>
+</li>
+</ul>
+<h2 id="4-cmake编译工程">4. CMake编译工程</h2>
+<p>CMake目录结构：项目主目录存在一个CMakeLists.txt文件</p>
+<p><strong>两种方式设置编译规则：</strong></p>
+<ol>
+<li>包含源文件的子文件夹<strong>包含</strong>CMakeLists.txt文件，主目录的CMakeLists.txt通过add_subdirectory
+添加子目录即可；</li>
+<li>包含源文件的子文件夹<strong>未包含</strong>CMakeLists.txt文件，子目录编译规则体现在主目录的CMakeLists.txt中；</li>
+</ol>
+<h3 id="41-编译流程">4.1 编译流程</h3>
+<p>在 linux 平台下使用 CMake 构建C/C++工程的流程如下:</p>
+<ul>
+<li>手动编写 CMakeLists.txt。</li>
+<li>执行命令 cmake PATH 生成 Makefile ( PATH 是顶层CMakeLists.txt 所在的目录 )。</li>
+<li>执行命令 make 进行编译。</li>
+</ul>
+<pre><code class="language-g++" data-lang="g++"># important tips
+. # 表示当前目录
+./ # 表示当前目录
+.. # 表示上级目录
+../ # 表示上级目录
+</code></pre><h3 id="42-两种构建方式">4.2 两种构建方式</h3>
+<ul>
+<li><strong>内部构建(in-source build)</strong>：不推荐使用</li>
+</ul>
+<p>内部构建会在同级目录下产生一大堆中间文件，这些中间文件并不是我们最终所需要的，和工程源文件放在一起会显得杂乱无章。</p>
+<pre><code class="language-g++" data-lang="g++">## 内部构建
+# 在当前目录下，编译本目录的CMakeLists.txt，生成Makefile和其他文件
+cmake .
+# 执行make命令，生成target
+make
+</code></pre><ul>
+<li><strong>外部构建(out-of-source build)</strong>：推荐使用</li>
+</ul>
+<p>将编译输出文件与源文件放到不同目录中</p>
+<pre><code class="language-g++" data-lang="g++">## 外部构建
+# 1. 在当前目录下，创建build文件夹
+mkdir build
+# 2. 进入到build文件夹
+cd build
+# 3. 编译上级目录的CMakeLists.txt，生成Makefile和其他文件
+cmake ..
+# 4. 执行make命令，生成target
+make
+</code></pre><h2 id="5-cmake代码实践">5. CMake代码实践</h2>
+<h3 id="51-简单cmake工程">5.1 简单CMake工程</h3>
+<p>test.cpp</p>
+<div class="highlight"><pre class="chroma"><code class="language-c++" data-lang="c++"><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp">
+</span><span class="cp"></span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+
+    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;hello world!!!&#34;</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div><p>CMakeLists.txt</p>
+<pre><code class="language-g++" data-lang="g++"># Set the minimum version of CMake that can be used
+cmake_minimum_required(VERSION 3.0)
+
+# Set the project name
+project (TEST)
+
+# Add an executable
+add_executable(test_cmake test.cpp)
+</code></pre><h3 id="52-多级目录工程---直接编译">5.2 多级目录工程 - 直接编译</h3>
+<pre><code class="language-tree" data-lang="tree">
+</code></pre><p>say.h</p>
+<div class="highlight"><pre class="chroma"><code class="language-c++" data-lang="c++"><span class="cp">#pragma once    </span><span class="c1">//防止重复编译
+</span><span class="c1"></span><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp">
+</span><span class="cp">#include</span> <span class="cpf">&lt;string&gt;</span><span class="cp">
+</span><span class="cp"></span>
+<span class="k">class</span> <span class="nc">Say</span>
+<span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+    <span class="n">Say</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">name</span><span class="p">)</span> <span class="o">:</span> <span class="n">name</span><span class="p">(</span><span class="n">name</span><span class="p">)</span> <span class="p">{</span>
+
+    <span class="p">}</span>
+
+    <span class="kt">void</span> <span class="nf">sayHello</span><span class="p">();</span>
+
+<span class="k">private</span><span class="o">:</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">name</span><span class="p">;</span> 
+<span class="p">};</span>
+</code></pre></div><p>say.cpp</p>
+<div class="highlight"><pre class="chroma"><code class="language-c++" data-lang="c++"><span class="cp">#include</span> <span class="cpf">&#34;say.h&#34;</span><span class="cp">
+</span><span class="cp"></span>
+<span class="kt">void</span> <span class="n">Say</span><span class="o">::</span><span class="n">sayHello</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">name</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;: say hello!!!&#34;</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div><p>main.cpp</p>
+<div class="highlight"><pre class="chroma"><code class="language-c++" data-lang="c++"><span class="cp">#include</span> <span class="cpf">&#34;say.h&#34;</span><span class="cp">
+</span><span class="cp"></span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="kt">char</span> <span class="o">**</span><span class="n">argv</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="kt">bool</span> <span class="n">wall</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>  <span class="c1">//未使用的变量
+</span><span class="c1"></span>
+    <span class="n">Say</span> <span class="n">say</span><span class="p">(</span><span class="s">&#34;cjt&#34;</span><span class="p">);</span>
+
+    <span class="n">say</span><span class="p">.</span><span class="n">sayHello</span><span class="p">();</span>
+
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div><p>CMakeLists.txt</p>
+<pre><code class="language-g++" data-lang="g++"># Set the minimum version of CMake that can be used
+cmake_minimum_required(VERSION 3.0)
+
+#project name
+project(SAYHELLO)
+
+#head file pat
+include_directories(include)
+
+#生成可执行文件
+add_executable(sayHello main.cpp src/say.cpp)
+</code></pre><h3 id="53-多级目录工程---生成库编译">5.3 多级目录工程 - 生成库编译</h3>
+<pre><code class="language-g++" data-lang="g++"># Set the minimum version of CMake that can be used
+cmake_minimum_required(VERSION 3.0)
+
+#project name
+project(SAYHELLO_LIBRARY)
+
+#add compile options - 添加编译参数
+add_compile_options(-std=c++11 -Wall)
+
+#set CMAKE_BUILD_TYPE 编译类型(Debug)
+set(CMAKE_BUILD_TYPE Debug)
+
+# set output binary path
+set(EXECUTABLE_OUTPUT_PATH ${PROJECT_BINARY_DIR}/bin)
+
+############################################################
+
+# Create a library
+############################################################
+#Generate the static library from the library sources
+add_library(say_lib STATIC src/say.cpp)
+target_include_directories(say_lib PUBLIC ${PROJECT_SOURCE_DIR}/include)
+
+############################################################
+
+# Create an executable
+############################################################
+# Add an executable with the above sources
+add_executable(sayHello main.cpp)
+
+# link the new sayHello target with the say_lib target
+target_link_libraries(sayHello say_lib)
+</code></pre><h2 id="6-搭配-vs-code">6. 搭配 vs code</h2>
+<pre><code class="language-tree" data-lang="tree">.
+├── CMakeLists.txt
+├── build
+├── include
+│   └── say.h
+├── main.cpp
+└── src
+    └── say.cpp
+
+3 directories, 4 files
+</code></pre><p>launch.json</p>
+<div class="highlight"><pre class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
+    <span class="err">//</span> <span class="err">Use</span> <span class="err">IntelliSense</span> <span class="err">to</span> <span class="err">learn</span> <span class="err">about</span> <span class="err">possible</span> <span class="err">attributes.</span>
+    <span class="err">//</span> <span class="err">Hover</span> <span class="err">to</span> <span class="err">view</span> <span class="err">descriptions</span> <span class="err">of</span> <span class="err">existing</span> <span class="err">attributes.</span>
+    <span class="err">//</span> <span class="err">For</span> <span class="err">more</span> <span class="err">information,</span> <span class="err">visit:</span> <span class="err">https://go.microsoft.com/fwlink/?linkid=830387</span>
+    <span class="nt">&#34;version&#34;</span><span class="p">:</span> <span class="s2">&#34;0.2.0&#34;</span><span class="p">,</span>
+    <span class="nt">&#34;configurations&#34;</span><span class="p">:</span> <span class="p">[</span>
+
+        
+        <span class="p">{</span>
+            <span class="nt">&#34;name&#34;</span><span class="p">:</span> <span class="s2">&#34;(gdb) Attach&#34;</span><span class="p">,</span>
+            <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;cppdbg&#34;</span><span class="p">,</span>
+            <span class="nt">&#34;request&#34;</span><span class="p">:</span> <span class="s2">&#34;launch&#34;</span><span class="p">,</span>
+            <span class="nt">&#34;program&#34;</span><span class="p">:</span> <span class="s2">&#34;${workspaceFolder}/c++/build/bin/sayHello&#34;</span><span class="p">,</span>
+            <span class="nt">&#34;args&#34;</span><span class="p">:</span> <span class="p">[],</span>
+            <span class="nt">&#34;stopAtEntry&#34;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+            <span class="nt">&#34;cwd&#34;</span><span class="p">:</span> <span class="s2">&#34;${workspaceFolder}&#34;</span><span class="p">,</span>
+            <span class="nt">&#34;environment&#34;</span><span class="p">:</span> <span class="p">[],</span>
+            <span class="nt">&#34;externalConsole&#34;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+            <span class="nt">&#34;MIMode&#34;</span><span class="p">:</span> <span class="s2">&#34;gdb&#34;</span><span class="p">,</span>
+            <span class="nt">&#34;setupCommands&#34;</span><span class="p">:</span> <span class="p">[</span>
+                <span class="p">{</span>
+                    <span class="nt">&#34;description&#34;</span><span class="p">:</span> <span class="s2">&#34;Enable pretty-printing for gdb&#34;</span><span class="p">,</span>
+                    <span class="nt">&#34;text&#34;</span><span class="p">:</span> <span class="s2">&#34;-enable-pretty-printing&#34;</span><span class="p">,</span>
+                    <span class="nt">&#34;ignoreFailures&#34;</span><span class="p">:</span> <span class="kc">true</span>
+                <span class="p">}</span>
+            <span class="p">],</span>
+            <span class="nt">&#34;preLaunchTask&#34;</span><span class="p">:</span> <span class="s2">&#34;Build&#34;</span><span class="p">,</span>
+            <span class="nt">&#34;miDebuggerPath&#34;</span><span class="p">:</span> <span class="s2">&#34;/usr/bin/gdb&#34;</span>
+        <span class="p">}</span>
+
+    <span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div><p>tasks.json</p>
+<div class="highlight"><pre class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
+    <span class="nt">&#34;version&#34;</span><span class="p">:</span> <span class="s2">&#34;2.0.0&#34;</span><span class="p">,</span>
+    <span class="nt">&#34;options&#34;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&#34;cwd&#34;</span><span class="p">:</span> <span class="s2">&#34;${workspaceFolder}/c++/build&#34;</span>
+    <span class="p">},</span>
+    <span class="nt">&#34;tasks&#34;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;shell&#34;</span><span class="p">,</span>
+            <span class="nt">&#34;label&#34;</span><span class="p">:</span> <span class="s2">&#34;cmake&#34;</span><span class="p">,</span>
+            <span class="nt">&#34;command&#34;</span><span class="p">:</span> <span class="s2">&#34;cmake&#34;</span><span class="p">,</span>
+            <span class="nt">&#34;args&#34;</span><span class="p">:[</span>
+                <span class="s2">&#34;..&#34;</span>
+            <span class="p">]</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="nt">&#34;label&#34;</span><span class="p">:</span> <span class="s2">&#34;make&#34;</span><span class="p">,</span>
+            <span class="nt">&#34;group&#34;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nt">&#34;kind&#34;</span><span class="p">:</span> <span class="s2">&#34;build&#34;</span><span class="p">,</span>
+                <span class="nt">&#34;isDefault&#34;</span><span class="p">:</span> <span class="kc">true</span>
+            <span class="p">},</span>
+            <span class="nt">&#34;command&#34;</span><span class="p">:</span> <span class="s2">&#34;make&#34;</span><span class="p">,</span>
+            <span class="nt">&#34;args&#34;</span><span class="p">:</span> <span class="p">[</span>
+
+            <span class="p">]</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="nt">&#34;label&#34;</span><span class="p">:</span> <span class="s2">&#34;Build&#34;</span><span class="p">,</span>
+            <span class="nt">&#34;dependsOrder&#34;</span><span class="p">:</span> <span class="s2">&#34;sequence&#34;</span><span class="p">,</span>
+            <span class="nt">&#34;dependsOn&#34;</span><span class="p">:</span> <span class="p">[</span>
+                <span class="s2">&#34;cmake&#34;</span><span class="p">,</span>
+                <span class="s2">&#34;make&#34;</span>
+            <span class="p">]</span>
+        <span class="p">}</span>
+    <span class="p">],</span>
+<span class="p">}</span>
+</code></pre></div></div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2022-09-15</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://cui-jiang-tao.github.io/posts/cmake/" data-title="CMake"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://cui-jiang-tao.github.io/posts/cmake/"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="https://cui-jiang-tao.github.io/posts/cmake/" data-title="CMake"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="https://cui-jiang-tao.github.io/posts/cmake/" data-title="CMake"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@7.3.0/icons/line.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="https://cui-jiang-tao.github.io/posts/cmake/" data-title="CMake"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/posts/gcc%E7%BC%96%E8%AF%91%E5%99%A8/" class="prev" rel="prev" title="GCC编译器"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>GCC编译器</a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022</span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.5.1/sharer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/typeit@8.6.0/dist/index.umd.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{},"data":{"id-1":"Home","id-2":"Home"},"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"id-1":["id-1"],"id-2":["id-2"]},"duration":-1,"speed":100}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>
