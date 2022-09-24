@@ -4,5 +4,29 @@
         <link>https://cui-jiang-tao.github.io/categories/</link>
         <description>Categories - Category - vstk的网站</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>cjt953899262@gmail.com (cjt)</managingEditor>
-            <webMaster>cjt953899262@gmail.com (cjt)</webMaster><atom:link href="https://cui-jiang-tao.github.io/categories/" rel="self" type="application/rss+xml" /></channel>
+            <webMaster>cjt953899262@gmail.com (cjt)</webMaster><lastBuildDate>Sat, 24 Sep 2022 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://cui-jiang-tao.github.io/categories/" rel="self" type="application/rss+xml" /><item>
+    <title>c&#43;&#43;</title>
+    <link>https://cui-jiang-tao.github.io/categories/c&#43;&#43;/</link>
+    <pubDate>Sat, 24 Sep 2022 00:00:00 &#43;0000</pubDate>
+    <author>cjt</author>
+    <guid>https://cui-jiang-tao.github.io/categories/c&#43;&#43;/</guid>
+    <description><![CDATA[]]></description>
+</item>
+<item>
+    <title>反汇编</title>
+    <link>https://cui-jiang-tao.github.io/categories/%E5%8F%8D%E6%B1%87%E7%BC%96/</link>
+    <pubDate>Sat, 24 Sep 2022 00:00:00 &#43;0000</pubDate>
+    <author>cjt</author>
+    <guid>https://cui-jiang-tao.github.io/categories/%E5%8F%8D%E6%B1%87%E7%BC%96/</guid>
+    <description><![CDATA[]]></description>
+</item>
+<item>
+    <title>Markdown</title>
+    <link>https://cui-jiang-tao.github.io/categories/markdown/</link>
+    <pubDate>Wed, 14 Sep 2022 00:00:00 &#43;0000</pubDate>
+    <author>cjt</author>
+    <guid>https://cui-jiang-tao.github.io/categories/markdown/</guid>
+    <description><![CDATA[]]></description>
+</item>
+</channel>
 </rss>

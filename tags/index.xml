@@ -4,5 +4,45 @@
         <link>https://cui-jiang-tao.github.io/tags/</link>
         <description>Tags - Tag - vstk的网站</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>cjt953899262@gmail.com (cjt)</managingEditor>
-            <webMaster>cjt953899262@gmail.com (cjt)</webMaster><atom:link href="https://cui-jiang-tao.github.io/tags/" rel="self" type="application/rss+xml" /></channel>
+            <webMaster>cjt953899262@gmail.com (cjt)</webMaster><lastBuildDate>Sat, 24 Sep 2022 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://cui-jiang-tao.github.io/tags/" rel="self" type="application/rss+xml" /><item>
+    <title>反汇编</title>
+    <link>https://cui-jiang-tao.github.io/tags/%E5%8F%8D%E6%B1%87%E7%BC%96/</link>
+    <pubDate>Sat, 24 Sep 2022 00:00:00 &#43;0000</pubDate>
+    <author>cjt</author>
+    <guid>https://cui-jiang-tao.github.io/tags/%E5%8F%8D%E6%B1%87%E7%BC%96/</guid>
+    <description><![CDATA[]]></description>
+</item>
+<item>
+    <title>CMake</title>
+    <link>https://cui-jiang-tao.github.io/tags/cmake/</link>
+    <pubDate>Thu, 15 Sep 2022 00:00:00 &#43;0000</pubDate>
+    <author>cjt</author>
+    <guid>https://cui-jiang-tao.github.io/tags/cmake/</guid>
+    <description><![CDATA[]]></description>
+</item>
+<item>
+    <title>GCC</title>
+    <link>https://cui-jiang-tao.github.io/tags/gcc/</link>
+    <pubDate>Wed, 14 Sep 2022 00:00:00 &#43;0000</pubDate>
+    <author>cjt</author>
+    <guid>https://cui-jiang-tao.github.io/tags/gcc/</guid>
+    <description><![CDATA[]]></description>
+</item>
+<item>
+    <title>GDB</title>
+    <link>https://cui-jiang-tao.github.io/tags/gdb/</link>
+    <pubDate>Wed, 14 Sep 2022 00:00:00 &#43;0000</pubDate>
+    <author>cjt</author>
+    <guid>https://cui-jiang-tao.github.io/tags/gdb/</guid>
+    <description><![CDATA[]]></description>
+</item>
+<item>
+    <title>Markdown</title>
+    <link>https://cui-jiang-tao.github.io/tags/markdown/</link>
+    <pubDate>Wed, 14 Sep 2022 00:00:00 &#43;0000</pubDate>
+    <author>cjt</author>
+    <guid>https://cui-jiang-tao.github.io/tags/markdown/</guid>
+    <description><![CDATA[]]></description>
+</item>
+</channel>
 </rss>

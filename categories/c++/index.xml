@@ -1,12 +1,10 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
-        <title>vstk的网站</title>
-        <link>https://cui-jiang-tao.github.io/</link>
-        <description>This is my cool site</description>
+        <title>c&#43;&#43; - Category - vstk的网站</title>
+        <link>https://cui-jiang-tao.github.io/categories/c&#43;&#43;/</link>
+        <description>c&#43;&#43; - Category - vstk的网站</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>cjt953899262@gmail.com (cjt)</managingEditor>
-            <webMaster>cjt953899262@gmail.com (cjt)</webMaster><lastBuildDate>Sat, 24 Sep 2022 00:00:00 &#43;0000</lastBuildDate>
-            <atom:link href="https://cui-jiang-tao.github.io/index.xml" rel="self" type="application/rss+xml" />
-        <item>
+            <webMaster>cjt953899262@gmail.com (cjt)</webMaster><lastBuildDate>Sat, 24 Sep 2022 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://cui-jiang-tao.github.io/categories/c&#43;&#43;/" rel="self" type="application/rss+xml" /><item>
     <title>c&#43;&#43;反汇编(x86)</title>
     <link>https://cui-jiang-tao.github.io/posts/c&#43;&#43;%E5%8F%8D%E6%B1%87%E7%BC%96/</link>
     <pubDate>Sat, 24 Sep 2022 00:00:00 &#43;0000</pubDate>
@@ -37,30 +35,6 @@
     <author>cjt</author>
     <guid>https://cui-jiang-tao.github.io/posts/gdb%E8%B0%83%E8%AF%95%E5%99%A8/</guid>
     <description><![CDATA[前言: GDB(GNU Debugger)是一个用来调试C/C++程序的功能强大的调试器，是Linux系统开发 C/C++最常用的调试器 程序员可以使用GDB来]]></description>
-</item>
-<item>
-    <title>Markdown基础语法</title>
-    <link>https://cui-jiang-tao.github.io/posts/markdown/</link>
-    <pubDate>Wed, 14 Sep 2022 00:00:00 &#43;0000</pubDate>
-    <author>cjt</author>
-    <guid>https://cui-jiang-tao.github.io/posts/markdown/</guid>
-    <description><![CDATA[1.标题 # h1 标题 ## h2 标题 ### h3 标题 #### h4 标题 ##### h5 标题 ###### h6 标题 2.注释 &lt;!-- 这是一段注释 --&gt; 3.水平线 ___:三个连续的下划线 下面两个警告：MD035/]]></description>
-</item>
-<item>
-    <title>First_post</title>
-    <link>https://cui-jiang-tao.github.io/posts/first_post/</link>
-    <pubDate>Mon, 12 Sep 2022 16:31:50 &#43;0800</pubDate>
-    <author>cjt</author>
-    <guid>https://cui-jiang-tao.github.io/posts/first_post/</guid>
-    <description><![CDATA[hello ]]></description>
-</item>
-<item>
-    <title></title>
-    <link>https://cui-jiang-tao.github.io/posts/muduo%E5%BA%93%E7%9A%84%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%AE%9E%E7%8E%B0v1.0/</link>
-    <pubDate>Mon, 01 Jan 0001 00:00:00 &#43;0000</pubDate>
-    <author>cjt</author>
-    <guid>https://cui-jiang-tao.github.io/posts/muduo%E5%BA%93%E7%9A%84%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%AE%9E%E7%8E%B0v1.0/</guid>
-    <description><![CDATA[1. Reactor模式 Reactor 最核心的事件就是事件分发机制，即将IO multiplexing 拿到的IO事件分发给各个文件描述符(fd)的事件处理函数(handle); 1.1 EventLoop]]></description>
 </item>
 </channel>
 </rss>

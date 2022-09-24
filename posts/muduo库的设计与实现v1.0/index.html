@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title> - vstk的网站</title><meta name="Description" content="This is my cool site"><meta property="og:title" content="" />
+<meta property="og:description" content="1. Reactor模式 Reactor 最核心的事件就是事件分发机制，即将IO multiplexing 拿到的IO事件分发给各个文件描述符(fd)的事件处理函数(handle); 1.1 EventLoop" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://cui-jiang-tao.github.io/posts/muduo%E5%BA%93%E7%9A%84%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%AE%9E%E7%8E%B0v1.0/" />
+<meta property="og:site_name" content="My cool site" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=""/>
+<meta name="twitter:description" content="1. Reactor模式 Reactor 最核心的事件就是事件分发机制，即将IO multiplexing 拿到的IO事件分发给各个文件描述符(fd)的事件处理函数(handle); 1.1 EventLoop"/>
+<meta name="application-name" content="My cool site">
+<meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://cui-jiang-tao.github.io/posts/muduo%E5%BA%93%E7%9A%84%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%AE%9E%E7%8E%B0v1.0/" /><link rel="next" href="https://cui-jiang-tao.github.io/posts/first_post/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/cui-jiang-tao.github.io\/posts\/muduo%E5%BA%93%E7%9A%84%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%AE%9E%E7%8E%B0v1.0\/"
+        },"genre": "posts","wordcount":  1041 ,
+        "url": "https:\/\/cui-jiang-tao.github.io\/posts\/muduo%E5%BA%93%E7%9A%84%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%AE%9E%E7%8E%B0v1.0\/","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "cjt"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="vstk的网站"><span class="header-title-pre"><i class='far fa-kiss-wink-heart fa-fw' aria-hidden='true'></i></span><span id="id-1" class="typeit"></span></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="vstk的网站"><span class="header-title-pre"><i class='far fa-kiss-wink-heart fa-fw' aria-hidden='true'></i></span><span id="id-2" class="typeit"></span></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/posts/" title="">文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX"></h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>cjt</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="0001-01-01">0001-01-01</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;1041 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;3 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#1-reactor模式">1. Reactor模式</a>
+      <ul>
+        <li><a href="#11-eventloop-class">1.1 EventLoop class</a></li>
+        <li><a href="#12-channel-class">1.2 Channel class</a></li>
+        <li><a href="#13-poller-class">1.3 Poller class</a></li>
+        <li><a href="#2-timerqueue-定时器">2 TimerQueue 定时器</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h2 id="1-reactor模式">1. Reactor模式</h2>
+<p>Reactor 最核心的事件就是事件分发机制，即将IO multiplexing 拿到的IO事件分发给各个文件描述符(fd)的事件处理函数(handle);</p>
+<h3 id="11-eventloop-class">1.1 EventLoop class</h3>
+<ol>
+<li>首先定义EventLoop为不可拷贝的，继承boost::noncopyale即可；</li>
+<li>one loop per thread 顾名思义每个线程只能有一个EventLoop对象，创建了EventLoop的对象是IO线程，其主要功能就是运行事件循环EventLoop:loop();</li>
+</ol>
+<h3 id="12-channel-class">1.2 Channel class</h3>
+<ol>
+<li>Channel也是不可拷贝的；</li>
+<li>每个Channel对象自始至终都属于一个EventLoop对象，因此每个Channel对象都只属于某一个IO线程；</li>
+<li>每个Channel对象自始至终只负责一个文件描述符(fd)的IO事件分发，但它并不拥有这个fd，也不会在析构的时候关闭这个fd；</li>
+<li>Channel对象通过fd，会把不同IO事件分为不同的回调，例如：可读、可写、出错等；</li>
+</ol>
+<h3 id="13-poller-class">1.3 Poller class</h3>
+<ol>
+<li>Poller也是不可拷贝的；</li>
+<li>Poller对象是 IO multiplexing 的封装。</li>
+<li>Poller是EventLoop的间接成员，只供其owner EventLoop在IO线程调用，因此无需加锁；Pooller并不拥有Channel，Channel对象在析构之前必须自己unregister(EventLoop::removeChannel)；</li>
+<li>Pooler::poll()是Pooler的核心功能，其负责将活动的IO事件通过EventLoop对象调用Channel::handle()处理；</li>
+</ol>
+<blockquote>
+<p>说明：c++标准保证std::vector的元素排列和数组一样；</p>
+</blockquote>
+<p>以上几个class，就构成了Reactor模式的核心内容
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="../imgs/muduo/8.1.png"
+        data-srcset="../imgs/muduo/8.1.png, ../imgs/muduo/8.1.png 1.5x, ../imgs/muduo/8.1.png 2x"
+        data-sizes="auto"
+        alt="../imgs/muduo/8.1.png"
+        title="Reactor简单时序图" /></p>
+<h3 id="2-timerqueue-定时器">2 TimerQueue 定时器</h3>
+<p>muduo定时器功能由三个class实现,TimerId、Timer、TimerQueue:</p>
+<ol>
+<li>TimnerId: 用于取消计时器，暂未使用；</li>
+<li>Timer: 保存事件触发的时间和重新设置事件触发的时间(实现间隙触发)，以及事件发生时绑定的回调函数；</li>
+<li>TimerQueue: 由命名就能知道，该对象核心功能就是对Timer对象的集合进行管理；TimerQueue对象间接引用一个<code>::timerfd_create(CLOCK_MONOTONIC,TFD_NONBLOCK | TFD_CLOEXEC);</code>timerfd，通过timerfd与TimerQueue来实现一个定时器。TimerQueue对象由一个Chanel的间接成员，它负责一个timerfd的事件分发，通过Channel::update()将timerfd的IO事件注册到Poller对象中；</li>
+</ol>
+<p>如下，TimerQueue回调用户代码的时序图：
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="../imgs/muduo/8.2.png"
+        data-srcset="../imgs/muduo/8.2.png, ../imgs/muduo/8.2.png 1.5x, ../imgs/muduo/8.2.png 2x"
+        data-sizes="auto"
+        alt="../imgs/muduo/8.2.png"
+        title="TimerQueue回调时序图" /></p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 0001-01-01</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://cui-jiang-tao.github.io/posts/muduo%E5%BA%93%E7%9A%84%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%AE%9E%E7%8E%B0v1.0/" data-title=""><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://cui-jiang-tao.github.io/posts/muduo%E5%BA%93%E7%9A%84%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%AE%9E%E7%8E%B0v1.0/"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="https://cui-jiang-tao.github.io/posts/muduo%E5%BA%93%E7%9A%84%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%AE%9E%E7%8E%B0v1.0/" data-title=""><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="https://cui-jiang-tao.github.io/posts/muduo%E5%BA%93%E7%9A%84%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%AE%9E%E7%8E%B0v1.0/" data-title=""><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@7.3.0/icons/line.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="https://cui-jiang-tao.github.io/posts/muduo%E5%BA%93%E7%9A%84%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%AE%9E%E7%8E%B0v1.0/" data-title=""><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+            <a href="/posts/first_post/" class="next" rel="next" title="First_post">First_post<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022</span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.5.1/sharer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/typeit@8.6.0/dist/index.umd.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{},"data":{"id-1":"Home","id-2":"Home"},"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"id-1":["id-1"],"id-2":["id-2"]},"duration":-1,"speed":100}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

@@ -1,0 +1,1179 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>c&#43;&#43;反汇编(x86) - vstk的网站</title><meta name="Description" content="This is my cool site"><meta property="og:title" content="c&#43;&#43;反汇编(x86)" />
+<meta property="og:description" content="1.类型大小 1. 基本数据类型 printf(&#34;%d\n&#34;, sizeof(char)); //1 printf(&#34;%d\n&#34;, sizeof(short int)); //2 printf(&#34;%d\n&#34;, sizeof(int)); //4 printf(&#34;%d\n&#34;, sizeof(long int)); //4 printf(&#34;%d\n&#34;, sizeof(__int64)); //8 printf(&#34;%d\n&#34;, sizeof(float)); //4 printf(&#34;%d\n&#34;, sizeof(double)); //8 2. 数组类型 char arr1[10] = { 0 }; short arr2[10] = { 0 }; int arr3[10] = { 0 }; printf(&#34;%d\n&#34;, sizeof(arr1)); //10 printf(&#34;%d\n&#34;, sizeof(arr2)); //20 printf(&#34;%d\n&#34;, sizeof(arr3)); //40 printf(&#34;%d\n&#34;, sizeof(arr1[10]));" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://cui-jiang-tao.github.io/posts/c&#43;&#43;%E5%8F%8D%E6%B1%87%E7%BC%96/" />
+<meta property="article:published_time" content="2022-09-24T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-09-24T00:00:00+00:00" /><meta property="og:site_name" content="My cool site" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="c&#43;&#43;反汇编(x86)"/>
+<meta name="twitter:description" content="1.类型大小 1. 基本数据类型 printf(&#34;%d\n&#34;, sizeof(char)); //1 printf(&#34;%d\n&#34;, sizeof(short int)); //2 printf(&#34;%d\n&#34;, sizeof(int)); //4 printf(&#34;%d\n&#34;, sizeof(long int)); //4 printf(&#34;%d\n&#34;, sizeof(__int64)); //8 printf(&#34;%d\n&#34;, sizeof(float)); //4 printf(&#34;%d\n&#34;, sizeof(double)); //8 2. 数组类型 char arr1[10] = { 0 }; short arr2[10] = { 0 }; int arr3[10] = { 0 }; printf(&#34;%d\n&#34;, sizeof(arr1)); //10 printf(&#34;%d\n&#34;, sizeof(arr2)); //20 printf(&#34;%d\n&#34;, sizeof(arr3)); //40 printf(&#34;%d\n&#34;, sizeof(arr1[10]));"/>
+<meta name="application-name" content="My cool site">
+<meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://cui-jiang-tao.github.io/posts/c&#43;&#43;%E5%8F%8D%E6%B1%87%E7%BC%96/" /><link rel="prev" href="https://cui-jiang-tao.github.io/posts/cmake/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "c++反汇编(x86)",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/cui-jiang-tao.github.io\/posts\/c\x2b\x2b%E5%8F%8D%E6%B1%87%E7%BC%96\/"
+        },"genre": "posts","keywords": "反汇编","wordcount":  4824 ,
+        "url": "https:\/\/cui-jiang-tao.github.io\/posts\/c\x2b\x2b%E5%8F%8D%E6%B1%87%E7%BC%96\/","datePublished": "2022-09-24T00:00:00+00:00","dateModified": "2022-09-24T00:00:00+00:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "cjt"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="vstk的网站"><span class="header-title-pre"><i class='far fa-kiss-wink-heart fa-fw' aria-hidden='true'></i></span><span id="id-1" class="typeit"></span></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="vstk的网站"><span class="header-title-pre"><i class='far fa-kiss-wink-heart fa-fw' aria-hidden='true'></i></span><span id="id-2" class="typeit"></span></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/posts/" title="">文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">c++反汇编(x86)</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>cjt</a></span>&nbsp;<span class="post-category">included in <a href="/categories/c++/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>c++</a>&nbsp;<a href="/categories/%E5%8F%8D%E6%B1%87%E7%BC%96/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>反汇编</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-09-24">2022-09-24</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;4824 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;10 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#1类型大小">1.类型大小</a>
+      <ul>
+        <li><a href="#1-基本数据类型">1. 基本数据类型</a></li>
+        <li><a href="#2-数组类型">2. 数组类型</a></li>
+        <li><a href="#3-数据对齐">3. 数据对齐</a></li>
+      </ul>
+    </li>
+    <li><a href="#2-面向对象">2. 面向对象</a>
+      <ul>
+        <li><a href="#21-对象">2.1 对象</a></li>
+      </ul>
+    </li>
+    <li><a href="#22-虚表">2.2 虚表</a>
+      <ul>
+        <li><a href="#221-非继承虚函数表">2.2.1 非继承虚函数表</a></li>
+        <li><a href="#222-继承非覆盖虚函数表">2.2.2 继承非覆盖虚函数表</a></li>
+        <li><a href="#223-继承覆盖虚函数表">2.2.3 继承覆盖虚函数表</a></li>
+        <li><a href="#224-多继承非覆盖虚函数表">2.2.4 多继承非覆盖虚函数表</a></li>
+        <li><a href="#225-多继承覆盖虚函数表">2.2.5 多继承覆盖虚函数表</a></li>
+        <li><a href="#226-单一连续继承无函数覆盖">2.2.6 单一连续继承，无函数覆盖</a></li>
+        <li><a href="#227-单一连续继承有函数覆盖">2.2.7 单一连续继承，有函数覆盖</a></li>
+        <li><a href="#228-例子">2.2.8 例子</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h2 id="1类型大小">1.类型大小</h2>
+<h3 id="1-基本数据类型">1. 基本数据类型</h3>
+<div class="highlight"><pre class="chroma"><code class="language-c++" data-lang="c++"><span class="n">printf</span><span class="p">(</span><span class="s">&#34;%d</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="kt">char</span><span class="p">));</span>		<span class="c1">//1
+</span><span class="c1"></span><span class="n">printf</span><span class="p">(</span><span class="s">&#34;%d</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="kt">short</span> <span class="kt">int</span><span class="p">));</span>	<span class="c1">//2
+</span><span class="c1"></span><span class="n">printf</span><span class="p">(</span><span class="s">&#34;%d</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="kt">int</span><span class="p">));</span>		<span class="c1">//4
+</span><span class="c1"></span><span class="n">printf</span><span class="p">(</span><span class="s">&#34;%d</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="kt">long</span> <span class="kt">int</span><span class="p">));</span>	<span class="c1">//4
+</span><span class="c1"></span><span class="n">printf</span><span class="p">(</span><span class="s">&#34;%d</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="kr">__int64</span><span class="p">));</span>	<span class="c1">//8
+</span><span class="c1"></span><span class="n">printf</span><span class="p">(</span><span class="s">&#34;%d</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="kt">float</span><span class="p">));</span>		<span class="c1">//4
+</span><span class="c1"></span><span class="n">printf</span><span class="p">(</span><span class="s">&#34;%d</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="kt">double</span><span class="p">));</span>		<span class="c1">//8
+</span></code></pre></div><h3 id="2-数组类型">2. 数组类型</h3>
+<div class="highlight"><pre class="chroma"><code class="language-c++" data-lang="c++"><span class="kt">char</span> <span class="n">arr1</span><span class="p">[</span><span class="mi">10</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span> <span class="mi">0</span> <span class="p">};</span>
+<span class="kt">short</span> <span class="n">arr2</span><span class="p">[</span><span class="mi">10</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span> <span class="mi">0</span> <span class="p">};</span>
+<span class="kt">int</span> <span class="n">arr3</span><span class="p">[</span><span class="mi">10</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span> <span class="mi">0</span> <span class="p">};</span>
+
+<span class="n">printf</span><span class="p">(</span><span class="s">&#34;%d</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">arr1</span><span class="p">));</span>	<span class="c1">//10
+</span><span class="c1"></span><span class="n">printf</span><span class="p">(</span><span class="s">&#34;%d</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">arr2</span><span class="p">));</span>	<span class="c1">//20
+</span><span class="c1"></span><span class="n">printf</span><span class="p">(</span><span class="s">&#34;%d</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">arr3</span><span class="p">));</span>	<span class="c1">//40
+</span><span class="c1"></span>
+<span class="n">printf</span><span class="p">(</span><span class="s">&#34;%d</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">arr1</span><span class="p">[</span><span class="mi">10</span><span class="p">]));</span>  <span class="c1">//sizeof(char)	1
+</span><span class="c1"></span><span class="n">printf</span><span class="p">(</span><span class="s">&#34;%d</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">arr2</span><span class="p">[</span><span class="mi">10</span><span class="p">]));</span>  <span class="c1">//sizeof(short)	2
+</span><span class="c1"></span><span class="n">printf</span><span class="p">(</span><span class="s">&#34;%d</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">arr3</span><span class="p">[</span><span class="mi">10</span><span class="p">]));</span>  <span class="c1">//sizeof(int)	4
+</span></code></pre></div><h3 id="3-数据对齐">3. 数据对齐</h3>
+<ol>
+<li>为什么要有数据对齐？</li>
+</ol>
+<p>本质：效率还是空间，二选一的结果；</p>
+<p><code>#pragma pack</code>的基本用法为：</p>
+<div class="highlight"><pre class="chroma"><code class="language-md" data-lang="md"><span class="gh">#pragma pack( n )
+</span><span class="gh"></span>结构体...
+<span class="gh">#pragma pack(  )
+</span></code></pre></div><p>对齐参数：n为字节对齐数，其取值为1、2、4、8，默认是8。如果这个值比结构体成员的sizeof值小，那么该成员的偏移量应该以此值为准，
+即是说，结构体成员的偏移量应该取二者的最小值.</p>
+<ol start="2">
+<li>结构对齐大小</li>
+</ol>
+<p>如果这个值比结构体成员的sizeof值小，那么该成员的偏移量应该以此值为准，即是说，结构体成员的偏移量应该取二者的最小值；</p>
+<p>对齐原则：</p>
+<ul>
+<li>
+<p>原则一：数据成员对齐规则：结构的数据成员，第一个数据成员放在offset为0的地方，以后每个数据成员存储的起始位置要从该成员大小的整数倍开始(比如int在32位机为４字节，则要从4的整数倍地址开始存储).</p>
+</li>
+<li>
+<p>原则二：结构体的总大小，也就是sizeof的结果，必须是其内部最大成员的整数倍，不足的要补齐。</p>
+</li>
+<li>
+<p>原则三：如果一个结构里有某些结构体成员，则结构体成员要从其内部最大元素大小的整数倍地址开始存储。</p>
+<blockquote>
+<p>(struct a里存有struct b，b里有char，int，double等元素，那b应该从8的整数倍开始存储.)</p>
+</blockquote>
+</li>
+</ul>
+<p>原则四：对齐参数如果比结构体成员的sizeof值小，该成员的偏移量应该以此值为准.也就是说，结构体成员的偏移量应该取二者的最小值</p>
+<ol start="3">
+<li>建议：</li>
+</ol>
+<p>按照数据类型由小到大的顺序进行书写</p>
+<ol start="4">
+<li>实例</li>
+</ol>
+<div class="highlight"><pre class="chroma"><code class="language-c++" data-lang="c++"><span class="c1">//16
+</span><span class="c1"></span><span class="k">struct</span> <span class="nc">S1</span>
+<span class="p">{</span>
+	<span class="kt">char</span> <span class="n">c</span><span class="p">;</span>   <span class="c1">//8
+</span><span class="c1"></span>	<span class="kt">double</span> <span class="n">i</span><span class="p">;</span> <span class="c1">//8
+</span><span class="c1"></span><span class="p">};</span>
+
+<span class="c1">//40
+</span><span class="c1"></span><span class="k">struct</span> <span class="nc">S2</span>
+<span class="p">{</span>
+	<span class="kt">char</span> <span class="n">c1</span><span class="p">;</span>  <span class="c1">//8
+</span><span class="c1"></span>	<span class="n">S1</span> <span class="n">s</span><span class="p">;</span>     <span class="c1">//16 =&gt; char c; double i;
+</span><span class="c1"></span>	<span class="kt">char</span> <span class="n">c2</span><span class="p">;</span>  <span class="c1">//8
+</span><span class="c1"></span>	<span class="kt">double</span> <span class="n">c3</span><span class="p">;</span>  <span class="c1">//8
+</span><span class="c1"></span><span class="p">};</span>
+
+<span class="c1">//32
+</span><span class="c1"></span><span class="k">struct</span> <span class="nc">S3</span>
+<span class="p">{</span>
+	<span class="kt">char</span> <span class="n">c1</span><span class="p">;</span>  <span class="c1">//8
+</span><span class="c1"></span>	<span class="n">S1</span> <span class="n">s</span><span class="p">;</span>     <span class="c1">//16 =&gt; char c; double i;
+</span><span class="c1"></span>	<span class="kt">char</span> <span class="n">c2</span><span class="p">;</span>  <span class="c1">// =&gt; sizeof(c2) + sizeof(c3) = 2 + 6 = 8
+</span><span class="c1"></span>	<span class="kt">char</span> <span class="n">c3</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="c1">//12
+</span><span class="c1"></span><span class="k">struct</span> <span class="nc">S4</span>
+<span class="p">{</span>
+	<span class="kt">int</span> <span class="n">c1</span><span class="p">;</span>     <span class="c1">//sizeof(int) + sizeof(char) * 5 =》 4 + 4 + 1 + 3(填充) = 12
+</span><span class="c1"></span>	<span class="kt">char</span> <span class="n">c2</span><span class="p">[</span><span class="mi">5</span><span class="p">];</span>
+<span class="p">};</span>
+
+<span class="c1">//16
+</span><span class="c1"></span><span class="k">struct</span> <span class="nc">S5</span>
+<span class="p">{</span>
+	<span class="kt">int</span> <span class="n">c1</span><span class="p">;</span>     <span class="c1">//sizeof(int) + sizeof(char) * 10 =》 4 + (4 * 2 + 2 + 2(填充)) = 16
+</span><span class="c1"></span>	<span class="kt">char</span> <span class="n">c2</span><span class="p">[</span><span class="mi">10</span><span class="p">];</span>
+<span class="p">};</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+	<span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">S1</span><span class="p">);</span>
+	<span class="kt">int</span> <span class="n">b</span> <span class="o">=</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">S2</span><span class="p">);</span>
+	<span class="kt">int</span> <span class="n">c</span> <span class="o">=</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">S3</span><span class="p">);</span>
+	<span class="kt">int</span> <span class="n">d</span> <span class="o">=</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">S4</span><span class="p">);</span>
+	<span class="kt">int</span> <span class="n">e</span> <span class="o">=</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">S5</span><span class="p">);</span>
+
+	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div><h2 id="2-面向对象">2. 面向对象</h2>
+<h3 id="21-对象">2.1 对象</h3>
+<ol>
+<li>绕过编译器，修改对象的私有成员：</li>
+</ol>
+<div class="highlight"><pre class="chroma"><code class="language-c++" data-lang="c++"><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp">
+</span><span class="cp"></span>
+<span class="k">class</span> <span class="nc">Test</span> <span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+	<span class="n">Test</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">,</span> <span class="kt">int</span> <span class="n">y</span><span class="p">)</span> <span class="p">{</span>
+		<span class="k">this</span><span class="o">-&gt;</span><span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="p">;</span>
+		<span class="k">this</span><span class="o">-&gt;</span><span class="n">y</span> <span class="o">=</span> <span class="n">y</span><span class="p">;</span>
+	<span class="p">}</span>
+
+	<span class="kt">void</span> <span class="nf">pri</span><span class="p">()</span> <span class="p">{</span>
+		<span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;x : &#34;</span> <span class="o">&lt;&lt;</span> <span class="n">x</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;</span><span class="se">\n</span><span class="s">y : &#34;</span> <span class="o">&lt;&lt;</span> <span class="n">y</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;;</span>
+	<span class="p">}</span>
+
+<span class="k">private</span><span class="o">:</span>
+	<span class="kt">int</span> <span class="n">x</span><span class="p">;</span>
+	<span class="kt">int</span> <span class="n">y</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+
+	<span class="n">Test</span> <span class="n">t</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
+
+	<span class="kt">int</span><span class="o">*</span> <span class="n">p</span> <span class="o">=</span> <span class="p">(</span><span class="kt">int</span><span class="o">*</span><span class="p">)</span><span class="o">&amp;</span><span class="n">t</span><span class="p">;</span>
+
+	<span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="o">*</span><span class="n">p</span><span class="p">;</span>
+	<span class="kt">int</span> <span class="n">m</span> <span class="o">=</span> <span class="o">*</span><span class="p">(</span><span class="n">p</span> <span class="o">+</span> <span class="mi">1</span><span class="p">);</span>
+
+	<span class="o">*</span><span class="n">p</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
+	<span class="o">*</span><span class="p">(</span><span class="n">p</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span>
+
+	<span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;n : &#34;</span> <span class="o">&lt;&lt;</span> <span class="n">n</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;</span><span class="se">\n</span><span class="s">m : &#34;</span> <span class="o">&lt;&lt;</span> <span class="n">m</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;;</span>
+
+	<span class="n">t</span><span class="p">.</span><span class="n">pri</span><span class="p">();</span>
+
+	<span class="n">system</span><span class="p">(</span><span class="s">&#34;pause&#34;</span><span class="p">);</span>
+
+	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div><ol start="2">
+<li>绕过编译器，调用对象的私有成员函数：</li>
+</ol>
+<div class="highlight"><pre class="chroma"><code class="language-c++" data-lang="c++"><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp">
+</span><span class="cp"></span>
+<span class="k">struct</span> <span class="nc">Base</span>
+<span class="p">{</span>
+<span class="k">private</span><span class="o">:</span>
+	<span class="k">virtual</span> <span class="kt">void</span> <span class="n">Function_1</span><span class="p">()</span>
+	<span class="p">{</span>
+		<span class="n">printf</span><span class="p">(</span><span class="s">&#34;Base:Function_1...</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">);</span>
+	<span class="p">}</span>
+	<span class="k">virtual</span> <span class="kt">void</span> <span class="nf">Function_2</span><span class="p">()</span>
+	<span class="p">{</span>
+		<span class="n">printf</span><span class="p">(</span><span class="s">&#34;Base:Function_2...</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">);</span>
+	<span class="p">}</span>
+	<span class="k">virtual</span> <span class="kt">void</span> <span class="nf">Function_3</span><span class="p">()</span>
+	<span class="p">{</span>
+		<span class="n">printf</span><span class="p">(</span><span class="s">&#34;Base:Function_3...</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">);</span>
+	<span class="p">}</span>
+<span class="p">};</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+
+	<span class="n">Base</span> <span class="n">b</span><span class="p">;</span>
+	<span class="n">Base</span><span class="o">*</span> <span class="n">ptr</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">b</span><span class="p">;</span>
+
+	<span class="kt">void</span><span class="p">(</span><span class="o">*</span><span class="n">f1</span><span class="p">)(</span><span class="kt">void</span><span class="p">)</span> <span class="o">=</span> <span class="p">(</span><span class="kt">void</span><span class="p">(</span><span class="o">*</span><span class="p">)(</span><span class="kt">void</span><span class="p">))(</span><span class="o">*</span><span class="p">((</span><span class="kt">int</span><span class="o">*</span><span class="p">)(</span><span class="o">*</span><span class="p">(</span><span class="kt">int</span><span class="o">*</span><span class="p">)</span><span class="o">&amp;</span><span class="n">b</span> <span class="o">+</span> <span class="mi">0</span><span class="p">)));</span>
+	<span class="kt">void</span><span class="p">(</span><span class="o">*</span><span class="n">f2</span><span class="p">)(</span><span class="kt">void</span><span class="p">)</span> <span class="o">=</span> <span class="p">(</span><span class="kt">void</span><span class="p">(</span><span class="o">*</span><span class="p">)(</span><span class="kt">void</span><span class="p">))(</span><span class="o">*</span><span class="p">((</span><span class="kt">int</span><span class="o">*</span><span class="p">)(</span><span class="o">*</span><span class="p">(</span><span class="kt">int</span><span class="o">*</span><span class="p">)</span><span class="o">&amp;</span><span class="n">b</span> <span class="o">+</span> <span class="mi">4</span><span class="p">)));</span>
+	<span class="kt">void</span><span class="p">(</span><span class="o">*</span><span class="n">f3</span><span class="p">)(</span><span class="kt">void</span><span class="p">)</span> <span class="o">=</span> <span class="p">(</span><span class="kt">void</span><span class="p">(</span><span class="o">*</span><span class="p">)(</span><span class="kt">void</span><span class="p">))(</span><span class="o">*</span><span class="p">((</span><span class="kt">int</span><span class="o">*</span><span class="p">)(</span><span class="o">*</span><span class="p">(</span><span class="kt">int</span><span class="o">*</span><span class="p">)</span><span class="o">&amp;</span><span class="n">b</span> <span class="o">+</span> <span class="mi">8</span><span class="p">)));</span>
+
+	<span class="cm">/*
+</span><span class="cm">	0. 函数指针：(void(*)(void))
+</span><span class="cm">	1. 指向虚表的地址：(*(int *)&amp;b)
+</span><span class="cm">	2. 虚函数的地址(或第一个虚函数的地址)：(*((int*)(*(int *)&amp;b + 0)))
+</span><span class="cm">	*/</span>
+
+	<span class="n">f1</span><span class="p">();</span>
+	<span class="n">f2</span><span class="p">();</span>
+	<span class="n">f3</span><span class="p">();</span>
+
+	<span class="n">system</span><span class="p">(</span><span class="s">&#34;pause&#34;</span><span class="p">);</span>
+
+	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div><p>总结：</p>
+<ul>
+<li>private修饰的成员与普通的成员没有区别 只是编译器会检测。</li>
+<li>private修饰的成员只有自己的其他成员才能访问；</li>
+</ul>
+<ol start="3">
+<li>struct 与 class</li>
+</ol>
+<ul>
+<li>编译器默认class中的成员为private，而struct中的成员为public</li>
+<li>class 默认private继承，struct 默认public继承</li>
+</ul>
+<ol start="4">
+<li>指针与引用</li>
+</ol>
+<div class="highlight"><pre class="chroma"><code class="language-c++" data-lang="c++"><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp">
+</span><span class="cp"></span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+	<span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">12</span><span class="p">;</span>
+
+	<span class="kt">int</span><span class="o">*</span> <span class="n">ptr</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">a</span><span class="p">;</span>
+	<span class="kt">int</span><span class="o">&amp;</span> <span class="n">ref</span> <span class="o">=</span> <span class="n">a</span><span class="p">;</span>
+
+	<span class="n">system</span><span class="p">(</span><span class="s">&#34;pause&#34;</span><span class="p">);</span>
+
+	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div><div class="highlight"><pre class="chroma"><code class="language-c++" data-lang="c++">	<span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">12</span><span class="p">;</span>
+<span class="mf">008F</span><span class="mi">1728</span>  <span class="n">mov</span>         <span class="n">dword</span> <span class="n">ptr</span> <span class="p">[</span><span class="n">ebp</span><span class="o">-</span><span class="mi">0</span><span class="n">Ch</span><span class="p">],</span><span class="mi">0</span><span class="n">Ch</span>  
+
+	<span class="kt">int</span><span class="o">*</span> <span class="n">ptr</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">a</span><span class="p">;</span>
+<span class="mf">008F172F</span>  <span class="n">lea</span>         <span class="n">eax</span><span class="p">,[</span><span class="n">ebp</span><span class="o">-</span><span class="mi">0</span><span class="n">Ch</span><span class="p">]</span>  
+<span class="mf">008F</span><span class="mi">1732</span>  <span class="n">mov</span>         <span class="n">dword</span> <span class="n">ptr</span> <span class="p">[</span><span class="n">ebp</span><span class="o">-</span><span class="mi">18</span><span class="n">h</span><span class="p">],</span><span class="n">eax</span>  
+	<span class="kt">int</span><span class="o">&amp;</span> <span class="n">ref</span> <span class="o">=</span> <span class="n">a</span><span class="p">;</span>
+<span class="mf">008F</span><span class="mi">1735</span>  <span class="n">lea</span>         <span class="n">eax</span><span class="p">,[</span><span class="n">ebp</span><span class="o">-</span><span class="mi">0</span><span class="n">Ch</span><span class="p">]</span>  
+<span class="mf">008F</span><span class="mi">1738</span>  <span class="n">mov</span>         <span class="n">dword</span> <span class="n">ptr</span> <span class="p">[</span><span class="n">ebp</span><span class="o">-</span><span class="mi">24</span><span class="n">h</span><span class="p">],</span><span class="n">eax</span>  
+</code></pre></div><p>总结：指针与引用在汇编层次，没有任何区别；</p>
+<h2 id="22-虚表">2.2 虚表</h2>
+<p>继承</p>
+<ul>
+<li>父类中的私有成员是会被继承的</li>
+<li>只是编译器不允许直接进行访问</li>
+</ul>
+<ol>
+<li>当类中有虚函数时，会多一个属性，4个字节(单一继承)</li>
+<li>多出的属性是一个地址，指向一张表，里面存储了所有虚函数的地址</li>
+</ol>
+<blockquote>
+<p>在x86中，指针类型大小都为4个字节</p>
+</blockquote>
+<h3 id="221-非继承虚函数表">2.2.1 非继承虚函数表</h3>
+<div class="highlight"><pre class="chroma"><code class="language-c++" data-lang="c++"><span class="c1">//普通继承，非覆盖
+</span><span class="c1"></span><span class="k">struct</span> <span class="nc">Base</span>
+<span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+	<span class="k">virtual</span> <span class="kt">void</span> <span class="n">Function_1</span><span class="p">()</span>
+	<span class="p">{</span>
+		<span class="n">printf</span><span class="p">(</span><span class="s">&#34;Base:Function_1...</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">);</span>
+	<span class="p">}</span>
+	<span class="k">virtual</span> <span class="kt">void</span> <span class="nf">Function_2</span><span class="p">()</span>
+	<span class="p">{</span>
+		<span class="n">printf</span><span class="p">(</span><span class="s">&#34;Base:Function_2...</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">);</span>
+	<span class="p">}</span>
+	<span class="k">virtual</span> <span class="kt">void</span> <span class="nf">Function_3</span><span class="p">()</span>
+	<span class="p">{</span>
+		<span class="n">printf</span><span class="p">(</span><span class="s">&#34;Base:Function_3...</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">);</span>
+	<span class="p">}</span>
+<span class="p">};</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+	<span class="n">Base</span> <span class="n">base</span><span class="p">;</span>
+	<span class="n">Base</span><span class="o">*</span> <span class="n">ptr</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">base</span><span class="p">;</span>
+	
+	<span class="c1">//断点到此处
+</span><span class="c1"></span>	<span class="n">ptr</span><span class="o">-&gt;</span><span class="n">Function_1</span><span class="p">();</span>
+	<span class="n">ptr</span><span class="o">-&gt;</span><span class="n">Function_2</span><span class="p">();</span>
+	<span class="n">ptr</span><span class="o">-&gt;</span><span class="n">Function_3</span><span class="p">();</span>
+
+	<span class="n">system</span><span class="p">(</span><span class="s">&#34;pause&#34;</span><span class="p">);</span>
+
+	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div><p>汇编如下:</p>
+<div class="highlight"><pre class="chroma"><code class="language-c++" data-lang="c++">	<span class="n">Base</span> <span class="n">base</span><span class="p">;</span>
+<span class="mo">00</span><span class="mi">9</span><span class="n">D51D8</span>  <span class="n">lea</span>         <span class="n">ecx</span><span class="p">,[</span><span class="n">ebp</span><span class="o">-</span><span class="mi">0</span><span class="n">Ch</span><span class="p">]</span>  
+<span class="mo">00</span><span class="mi">9</span><span class="n">D51DB</span>  <span class="n">call</span>        <span class="mo">00</span><span class="mi">9</span><span class="n">D103C</span>  
+	<span class="n">Base</span><span class="o">*</span> <span class="n">ptr</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">base</span><span class="p">;</span>
+<span class="mo">00</span><span class="mi">9</span><span class="n">D51E0</span>  <span class="n">lea</span>         <span class="n">eax</span><span class="p">,[</span><span class="n">ebp</span><span class="o">-</span><span class="mi">0</span><span class="n">Ch</span><span class="p">]</span> <span class="p">;</span><span class="err">获得</span><span class="n">base的地址</span> 
+<span class="mo">00</span><span class="mi">9</span><span class="n">D51E3</span>  <span class="n">mov</span>         <span class="n">dword</span> <span class="n">ptr</span> <span class="p">[</span><span class="n">ebp</span><span class="o">-</span><span class="mi">18</span><span class="n">h</span><span class="p">],</span><span class="n">eax</span> 
+	
+	<span class="c1">//断点到此处
+</span><span class="c1"></span>	<span class="n">ptr</span><span class="o">-&gt;</span><span class="n">Function_1</span><span class="p">();</span>
+<span class="mo">00</span><span class="mi">9</span><span class="n">D51E6</span>  <span class="n">mov</span>         <span class="n">eax</span><span class="p">,</span><span class="n">dword</span> <span class="n">ptr</span> <span class="p">[</span><span class="n">ebp</span><span class="o">-</span><span class="mi">18</span><span class="n">h</span><span class="p">]</span>  <span class="p">;</span><span class="o">&amp;</span><span class="n">base</span>
+<span class="mo">00</span><span class="mi">9</span><span class="n">D51E9</span>  <span class="n">mov</span>         <span class="n">edx</span><span class="p">,</span><span class="n">dword</span> <span class="n">ptr</span> <span class="p">[</span><span class="n">eax</span><span class="p">]</span>  <span class="p">;</span><span class="n">base的虚表地址</span>
+<span class="mo">00</span><span class="mi">9</span><span class="n">D51EB</span>  <span class="n">mov</span>         <span class="n">esi</span><span class="p">,</span><span class="n">esp</span>  
+<span class="mo">00</span><span class="mi">9</span><span class="n">D51ED</span>  <span class="n">mov</span>         <span class="n">ecx</span><span class="p">,</span><span class="n">dword</span> <span class="n">ptr</span> <span class="p">[</span><span class="n">ebp</span><span class="o">-</span><span class="mi">18</span><span class="n">h</span><span class="p">]</span>  
+<span class="mo">00</span><span class="mi">9</span><span class="n">D51F0</span>  <span class="n">mov</span>         <span class="n">eax</span><span class="p">,</span><span class="n">dword</span> <span class="n">ptr</span> <span class="p">[</span><span class="n">edx</span><span class="p">]</span>  <span class="p">;</span><span class="err">第一个函数的地址</span>
+<span class="mo">00</span><span class="mi">9</span><span class="n">D51F2</span>  <span class="n">call</span>        <span class="n">eax</span>  
+<span class="mo">00</span><span class="mi">9</span><span class="n">D51F4</span>  <span class="n">cmp</span>         <span class="n">esi</span><span class="p">,</span><span class="n">esp</span>  
+<span class="mo">00</span><span class="mi">9</span><span class="n">D51F6</span>  <span class="n">call</span>        <span class="mo">00</span><span class="mi">9</span><span class="n">D1140</span>  
+	<span class="n">ptr</span><span class="o">-&gt;</span><span class="n">Function_2</span><span class="p">();</span>
+<span class="mo">00</span><span class="mi">9</span><span class="n">D51FB</span>  <span class="n">mov</span>         <span class="n">eax</span><span class="p">,</span><span class="n">dword</span> <span class="n">ptr</span> <span class="p">[</span><span class="n">ebp</span><span class="o">-</span><span class="mi">18</span><span class="n">h</span><span class="p">]</span>  
+<span class="mo">00</span><span class="mi">9</span><span class="n">D51FE</span>  <span class="n">mov</span>         <span class="n">edx</span><span class="p">,</span><span class="n">dword</span> <span class="n">ptr</span> <span class="p">[</span><span class="n">eax</span><span class="p">]</span>  
+<span class="mo">00</span><span class="mi">9</span><span class="n">D5200</span>  <span class="n">mov</span>         <span class="n">esi</span><span class="p">,</span><span class="n">esp</span>  
+<span class="mo">00</span><span class="mi">9</span><span class="n">D5202</span>  <span class="n">mov</span>         <span class="n">ecx</span><span class="p">,</span><span class="n">dword</span> <span class="n">ptr</span> <span class="p">[</span><span class="n">ebp</span><span class="o">-</span><span class="mi">18</span><span class="n">h</span><span class="p">]</span>  
+<span class="mo">00</span><span class="mi">9</span><span class="n">D5205</span>  <span class="n">mov</span>         <span class="n">eax</span><span class="p">,</span><span class="n">dword</span> <span class="n">ptr</span> <span class="p">[</span><span class="n">edx</span><span class="o">+</span><span class="mi">4</span><span class="p">]</span>  <span class="p">;</span><span class="err">第二个函数的地址，偏移</span><span class="mi">4</span><span class="err">个字节</span>
+<span class="mo">00</span><span class="mi">9</span><span class="n">D5208</span>  <span class="n">call</span>        <span class="n">eax</span>  
+<span class="mo">00</span><span class="mi">9</span><span class="n">D520A</span>  <span class="n">cmp</span>         <span class="n">esi</span><span class="p">,</span><span class="n">esp</span>  
+<span class="mo">00</span><span class="mi">9</span><span class="n">D520C</span>  <span class="n">call</span>        <span class="mo">00</span><span class="mi">9</span><span class="n">D1140</span>  
+	<span class="n">ptr</span><span class="o">-&gt;</span><span class="n">Function_3</span><span class="p">();</span>
+<span class="mo">00</span><span class="mi">9</span><span class="n">D5211</span>  <span class="n">mov</span>         <span class="n">eax</span><span class="p">,</span><span class="n">dword</span> <span class="n">ptr</span> <span class="p">[</span><span class="n">ebp</span><span class="o">-</span><span class="mi">18</span><span class="n">h</span><span class="p">]</span>  
+<span class="mo">00</span><span class="mi">9</span><span class="n">D5214</span>  <span class="n">mov</span>         <span class="n">edx</span><span class="p">,</span><span class="n">dword</span> <span class="n">ptr</span> <span class="p">[</span><span class="n">eax</span><span class="p">]</span>  
+<span class="mo">00</span><span class="mi">9</span><span class="n">D5216</span>  <span class="n">mov</span>         <span class="n">esi</span><span class="p">,</span><span class="n">esp</span>  
+<span class="mo">00</span><span class="mi">9</span><span class="n">D5218</span>  <span class="n">mov</span>         <span class="n">ecx</span><span class="p">,</span><span class="n">dword</span> <span class="n">ptr</span> <span class="p">[</span><span class="n">ebp</span><span class="o">-</span><span class="mi">18</span><span class="n">h</span><span class="p">]</span>  
+<span class="mo">00</span><span class="mi">9</span><span class="n">D521B</span>  <span class="n">mov</span>         <span class="n">eax</span><span class="p">,</span><span class="n">dword</span> <span class="n">ptr</span> <span class="p">[</span><span class="n">edx</span><span class="o">+</span><span class="mi">8</span><span class="p">]</span>  <span class="p">;</span><span class="err">第三个函数的地址，偏移</span><span class="mi">8</span><span class="err">个字节</span>
+<span class="mo">00</span><span class="mi">9</span><span class="n">D521E</span>  <span class="n">call</span>        <span class="n">eax</span>  
+<span class="mo">00</span><span class="mi">9</span><span class="n">D5220</span>  <span class="n">cmp</span>         <span class="n">esi</span><span class="p">,</span><span class="n">esp</span>  
+<span class="mo">00</span><span class="mi">9</span><span class="n">D5222</span>  <span class="n">call</span>        <span class="mo">00</span><span class="mi">9</span><span class="n">D1140</span>  
+</code></pre></div><p>验证：</p>
+<div class="highlight"><pre class="chroma"><code class="language-c++" data-lang="c++"><span class="kt">void</span> <span class="nf">TestMethod</span><span class="p">()</span>
+<span class="p">{</span>
+	<span class="c1">//查看 Sub 的虚函数表          
+</span><span class="c1"></span>	<span class="n">Base</span> <span class="n">base</span><span class="p">;</span>
+	<span class="n">Base</span><span class="o">*</span> <span class="n">ptr</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">base</span><span class="p">;</span>  <span class="c1">//包含一个虚表指针
+</span><span class="c1"></span>
+	<span class="n">printf</span><span class="p">(</span><span class="s">&#34;base 的地址为：%x</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">base</span><span class="p">);</span>
+	<span class="c1">//对象的前四个字节就是虚函数表         
+</span><span class="c1"></span>	<span class="n">printf</span><span class="p">(</span><span class="s">&#34;base 的虚函数表地址为：%x</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="o">*</span><span class="p">(</span><span class="kt">int</span><span class="o">*</span><span class="p">)</span><span class="o">&amp;</span><span class="n">base</span><span class="p">);</span>
+	<span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+		<span class="n">printf</span><span class="p">(</span><span class="s">&#34;虚函数%d的地址：%x</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="o">*</span><span class="p">((</span><span class="kt">int</span><span class="o">*</span><span class="p">)(</span><span class="o">*</span><span class="p">(</span><span class="kt">int</span><span class="o">*</span><span class="p">)</span><span class="o">&amp;</span><span class="n">base</span><span class="p">)</span> <span class="o">+</span> <span class="n">i</span><span class="p">));</span>
+	<span class="p">}</span>
+
+	<span class="c1">//通过函数指针调用函数，验证正确性        
+</span><span class="c1"></span>	<span class="k">typedef</span> <span class="kt">void</span><span class="p">(</span><span class="o">*</span><span class="n">pFunction</span><span class="p">)(</span><span class="kt">void</span><span class="p">);</span>
+	<span class="n">pFunction</span> <span class="n">pFn</span><span class="p">;</span>
+
+	<span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+	<span class="p">{</span>
+		<span class="kt">int</span> <span class="n">temp</span> <span class="o">=</span> <span class="o">*</span><span class="p">((</span><span class="kt">int</span><span class="o">*</span><span class="p">)(</span><span class="o">*</span><span class="p">(</span><span class="kt">int</span><span class="o">*</span><span class="p">)</span><span class="o">&amp;</span><span class="n">base</span><span class="p">)</span> <span class="o">+</span> <span class="n">i</span><span class="p">);</span>
+		<span class="n">pFn</span> <span class="o">=</span> <span class="p">(</span><span class="n">pFunction</span><span class="p">)</span><span class="n">temp</span><span class="p">;</span>
+		<span class="n">pFn</span><span class="p">();</span>
+	<span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div><h3 id="222-继承非覆盖虚函数表">2.2.2 继承非覆盖虚函数表</h3>
+<p>父类的虚函数表和子类不相同，<strong>每个类都独有自己的一份虚函数表；</strong></p>
+<p>通过调试不难发现，Sub子类的的虚表就是：Function_1、Function_2、Function_3、Function_4、Function_5、Function_6 这个6个函数的地址；Base基类的虚表就是：Function_1、Function_2、Function_3 这个3个函数地址；</p>
+<div class="highlight"><pre class="chroma"><code class="language-c++" data-lang="c++"><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp">
+</span><span class="cp"></span>
+<span class="c1">//普通继承，非覆盖
+</span><span class="c1"></span><span class="k">struct</span> <span class="nc">Base</span>
+<span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+	<span class="k">virtual</span> <span class="kt">void</span> <span class="n">Function_1</span><span class="p">()</span>
+	<span class="p">{</span>
+		<span class="n">printf</span><span class="p">(</span><span class="s">&#34;Base:Function_1...</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">);</span>
+	<span class="p">}</span>
+	<span class="k">virtual</span> <span class="kt">void</span> <span class="nf">Function_2</span><span class="p">()</span>
+	<span class="p">{</span>
+		<span class="n">printf</span><span class="p">(</span><span class="s">&#34;Base:Function_2...</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">);</span>
+	<span class="p">}</span>
+	<span class="k">virtual</span> <span class="kt">void</span> <span class="nf">Function_3</span><span class="p">()</span>
+	<span class="p">{</span>
+		<span class="n">printf</span><span class="p">(</span><span class="s">&#34;Base:Function_3...</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">);</span>
+	<span class="p">}</span>
+<span class="p">};</span>
+<span class="k">struct</span> <span class="nc">Sub</span> <span class="o">:</span><span class="n">Base</span>
+<span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+	<span class="k">virtual</span> <span class="kt">void</span> <span class="n">Function_4</span><span class="p">()</span>
+	<span class="p">{</span>
+		<span class="n">printf</span><span class="p">(</span><span class="s">&#34;Sub:Function_4...</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">);</span>
+	<span class="p">}</span>
+	<span class="k">virtual</span> <span class="kt">void</span> <span class="nf">Function_5</span><span class="p">()</span>
+	<span class="p">{</span>
+		<span class="n">printf</span><span class="p">(</span><span class="s">&#34;Sub:Function_5...</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">);</span>
+	<span class="p">}</span>
+	<span class="k">virtual</span> <span class="kt">void</span> <span class="nf">Function_6</span><span class="p">()</span>
+	<span class="p">{</span>
+		<span class="n">printf</span><span class="p">(</span><span class="s">&#34;Sub:Function_6...</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">);</span>
+	<span class="p">}</span>
+<span class="p">};</span>
+
+<span class="kt">void</span> <span class="nf">TestMethod</span><span class="p">()</span> <span class="p">{</span>
+	<span class="c1">//查看 Sub， Base 的虚函数表        
+</span><span class="c1"></span>	<span class="n">Sub</span> <span class="n">sub</span><span class="p">;</span>
+	<span class="n">Base</span> <span class="n">base</span><span class="p">;</span>
+
+	<span class="n">Base</span><span class="o">*</span> <span class="n">ptr1</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">sub</span><span class="p">;</span>  <span class="c1">//包含一个虚表指针
+</span><span class="c1"></span>	<span class="n">Base</span><span class="o">*</span> <span class="n">ptr2</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">base</span><span class="p">;</span>
+
+	<span class="n">printf</span><span class="p">(</span><span class="s">&#34;base 的地址为：%x</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">base</span><span class="p">);</span>
+	<span class="c1">//对象的前四个字节就是虚函数表         
+</span><span class="c1"></span>	<span class="n">printf</span><span class="p">(</span><span class="s">&#34;base 的虚函数表地址为：%x</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="o">*</span><span class="p">(</span><span class="kt">int</span><span class="o">*</span><span class="p">)</span><span class="o">&amp;</span><span class="n">base</span><span class="p">);</span>
+	<span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+		<span class="n">printf</span><span class="p">(</span><span class="s">&#34;Base虚函数%d的地址：%x</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="o">*</span><span class="p">((</span><span class="kt">int</span><span class="o">*</span><span class="p">)(</span><span class="o">*</span><span class="p">(</span><span class="kt">int</span><span class="o">*</span><span class="p">)</span><span class="o">&amp;</span><span class="n">base</span><span class="p">)</span> <span class="o">+</span> <span class="n">i</span><span class="p">));</span>
+	<span class="p">}</span>
+	<span class="c1">//通过函数指针调用函数，验证正确性        
+</span><span class="c1"></span>	<span class="k">typedef</span> <span class="kt">void</span><span class="p">(</span><span class="o">*</span><span class="n">pFunction</span><span class="p">)(</span><span class="kt">void</span><span class="p">);</span>
+	<span class="n">pFunction</span> <span class="n">p1Fn</span><span class="p">;</span>
+
+	<span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+	<span class="p">{</span>
+		<span class="kt">int</span> <span class="n">temp</span> <span class="o">=</span> <span class="o">*</span><span class="p">((</span><span class="kt">int</span><span class="o">*</span><span class="p">)(</span><span class="o">*</span><span class="p">(</span><span class="kt">int</span><span class="o">*</span><span class="p">)</span><span class="o">&amp;</span><span class="n">base</span><span class="p">)</span> <span class="o">+</span> <span class="n">i</span><span class="p">);</span>
+		<span class="n">p1Fn</span> <span class="o">=</span> <span class="p">(</span><span class="n">pFunction</span><span class="p">)</span><span class="n">temp</span><span class="p">;</span>
+		<span class="n">p1Fn</span><span class="p">();</span>
+	<span class="p">}</span>
+
+	<span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+
+	<span class="n">printf</span><span class="p">(</span><span class="s">&#34;Sub 的地址为：%x</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">sub</span><span class="p">);</span>
+	<span class="c1">//对象的前四个字节就是虚函数表         
+</span><span class="c1"></span>	<span class="n">printf</span><span class="p">(</span><span class="s">&#34;Sub 的虚函数表地址为：%x</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="o">*</span><span class="p">(</span><span class="kt">int</span><span class="o">*</span><span class="p">)</span><span class="o">&amp;</span><span class="n">sub</span><span class="p">);</span>
+	<span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">6</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+		<span class="n">printf</span><span class="p">(</span><span class="s">&#34;Sub虚函数%d的地址：%x</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="o">*</span><span class="p">((</span><span class="kt">int</span><span class="o">*</span><span class="p">)(</span><span class="o">*</span><span class="p">(</span><span class="kt">int</span><span class="o">*</span><span class="p">)</span><span class="o">&amp;</span><span class="n">sub</span><span class="p">)</span> <span class="o">+</span> <span class="n">i</span><span class="p">));</span>
+	<span class="p">}</span>
+	<span class="c1">//通过函数指针调用函数，验证正确性        
+</span><span class="c1"></span>	<span class="n">pFunction</span> <span class="n">p2Fn</span><span class="p">;</span>
+	<span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">6</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+	<span class="p">{</span>
+		<span class="kt">int</span> <span class="n">temp</span> <span class="o">=</span> <span class="o">*</span><span class="p">((</span><span class="kt">int</span><span class="o">*</span><span class="p">)(</span><span class="o">*</span><span class="p">(</span><span class="kt">int</span><span class="o">*</span><span class="p">)</span><span class="o">&amp;</span><span class="n">sub</span><span class="p">)</span> <span class="o">+</span> <span class="n">i</span><span class="p">);</span>
+		<span class="n">p2Fn</span> <span class="o">=</span> <span class="p">(</span><span class="n">pFunction</span><span class="p">)</span><span class="n">temp</span><span class="p">;</span>
+		<span class="n">p2Fn</span><span class="p">();</span>
+	<span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+
+	<span class="n">TestMethod</span><span class="p">();</span>
+
+	<span class="n">system</span><span class="p">(</span><span class="s">&#34;pause&#34;</span><span class="p">);</span>
+
+	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div><h3 id="223-继承覆盖虚函数表">2.2.3 继承覆盖虚函数表</h3>
+<p>子类优先按照基类声明的顺序添加虚函数；</p>
+<div class="highlight"><pre class="chroma"><code class="language-c++" data-lang="c++"><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp">
+</span><span class="cp"></span>
+<span class="c1">//普通继承，覆盖
+</span><span class="c1"></span><span class="k">struct</span> <span class="nc">Base</span>
+<span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+	<span class="k">virtual</span> <span class="kt">void</span> <span class="n">Function_1</span><span class="p">()</span>
+	<span class="p">{</span>
+		<span class="n">printf</span><span class="p">(</span><span class="s">&#34;Base:Function_1...</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">);</span>
+	<span class="p">}</span>
+	<span class="k">virtual</span> <span class="kt">void</span> <span class="nf">Function_2</span><span class="p">()</span>
+	<span class="p">{</span>
+		<span class="n">printf</span><span class="p">(</span><span class="s">&#34;Base:Function_2...</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">);</span>
+	<span class="p">}</span>
+	<span class="k">virtual</span> <span class="kt">void</span> <span class="nf">Function_3</span><span class="p">()</span>
+	<span class="p">{</span>
+		<span class="n">printf</span><span class="p">(</span><span class="s">&#34;Base:Function_3...</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">);</span>
+	<span class="p">}</span>
+<span class="p">};</span>
+<span class="k">struct</span> <span class="nc">Sub</span> <span class="o">:</span><span class="n">Base</span>
+<span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+	<span class="k">virtual</span> <span class="kt">void</span> <span class="n">Function_1</span><span class="p">()</span>
+	<span class="p">{</span>
+		<span class="n">printf</span><span class="p">(</span><span class="s">&#34;Sub:Function_1...</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">);</span>
+	<span class="p">}</span>
+	<span class="k">virtual</span> <span class="kt">void</span> <span class="nf">Function_5</span><span class="p">()</span>
+	<span class="p">{</span>
+		<span class="n">printf</span><span class="p">(</span><span class="s">&#34;Sub:Function_5...</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">);</span>
+	<span class="p">}</span>
+	<span class="k">virtual</span> <span class="kt">void</span> <span class="nf">Function_3</span><span class="p">()</span>
+	<span class="p">{</span>
+		<span class="n">printf</span><span class="p">(</span><span class="s">&#34;Sub:Function_3...</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">);</span>
+	<span class="p">}</span>
+<span class="p">};</span>
+
+
+<span class="c1">//查看 Sub， Base 的虚函数表
+</span><span class="c1"></span><span class="kt">void</span> <span class="nf">TestMethod</span><span class="p">()</span>
+<span class="p">{</span>
+	<span class="c1">//查看 Sub， Base 的虚函数表        
+</span><span class="c1"></span>	<span class="n">Sub</span> <span class="n">sub</span><span class="p">;</span>
+	<span class="n">Base</span> <span class="n">base</span><span class="p">;</span>
+
+	<span class="n">Base</span><span class="o">*</span> <span class="n">ptr1</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">sub</span><span class="p">;</span>  <span class="c1">//包含一个虚表指针
+</span><span class="c1"></span>	<span class="n">Base</span><span class="o">*</span> <span class="n">ptr2</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">base</span><span class="p">;</span>
+
+	<span class="n">printf</span><span class="p">(</span><span class="s">&#34;base 的地址为：%x</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">base</span><span class="p">);</span>
+	<span class="c1">//对象的前四个字节就是虚函数表         
+</span><span class="c1"></span>	<span class="n">printf</span><span class="p">(</span><span class="s">&#34;base 的虚函数表地址为：%x</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="o">*</span><span class="p">(</span><span class="kt">int</span><span class="o">*</span><span class="p">)</span><span class="o">&amp;</span><span class="n">base</span><span class="p">);</span>
+	<span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+		<span class="n">printf</span><span class="p">(</span><span class="s">&#34;Base虚函数%d的地址：%x</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="o">*</span><span class="p">((</span><span class="kt">int</span><span class="o">*</span><span class="p">)(</span><span class="o">*</span><span class="p">(</span><span class="kt">int</span><span class="o">*</span><span class="p">)</span><span class="o">&amp;</span><span class="n">base</span><span class="p">)</span> <span class="o">+</span> <span class="n">i</span><span class="p">));</span>
+	<span class="p">}</span>
+	<span class="c1">//通过函数指针调用函数，验证正确性        
+</span><span class="c1"></span>	<span class="k">typedef</span> <span class="kt">void</span><span class="p">(</span><span class="o">*</span><span class="n">pFunction</span><span class="p">)(</span><span class="kt">void</span><span class="p">);</span>
+	<span class="n">pFunction</span> <span class="n">p1Fn</span><span class="p">;</span>
+
+	<span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+	<span class="p">{</span>
+		<span class="kt">int</span> <span class="n">temp</span> <span class="o">=</span> <span class="o">*</span><span class="p">((</span><span class="kt">int</span><span class="o">*</span><span class="p">)(</span><span class="o">*</span><span class="p">(</span><span class="kt">int</span><span class="o">*</span><span class="p">)</span><span class="o">&amp;</span><span class="n">base</span><span class="p">)</span> <span class="o">+</span> <span class="n">i</span><span class="p">);</span>
+		<span class="n">p1Fn</span> <span class="o">=</span> <span class="p">(</span><span class="n">pFunction</span><span class="p">)</span><span class="n">temp</span><span class="p">;</span>
+		<span class="n">p1Fn</span><span class="p">();</span>
+	<span class="p">}</span>
+
+	<span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+
+	<span class="n">printf</span><span class="p">(</span><span class="s">&#34;Sub 的地址为：%x</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">sub</span><span class="p">);</span>
+	<span class="c1">//对象的前四个字节就是虚函数表         
+</span><span class="c1"></span>	<span class="n">printf</span><span class="p">(</span><span class="s">&#34;Sub 的虚函数表地址为：%x</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="o">*</span><span class="p">(</span><span class="kt">int</span><span class="o">*</span><span class="p">)</span><span class="o">&amp;</span><span class="n">sub</span><span class="p">);</span>
+	<span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">4</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+		<span class="n">printf</span><span class="p">(</span><span class="s">&#34;Sub虚函数%d的地址：%x</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="o">*</span><span class="p">((</span><span class="kt">int</span><span class="o">*</span><span class="p">)(</span><span class="o">*</span><span class="p">(</span><span class="kt">int</span><span class="o">*</span><span class="p">)</span><span class="o">&amp;</span><span class="n">sub</span><span class="p">)</span> <span class="o">+</span> <span class="n">i</span><span class="p">));</span>
+	<span class="p">}</span>
+
+	<span class="c1">//通过函数指针调用函数，验证正确性        
+</span><span class="c1"></span>	<span class="n">pFunction</span> <span class="n">p2Fn</span><span class="p">;</span>
+	<span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">4</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+	<span class="p">{</span>
+		<span class="kt">int</span> <span class="n">temp</span> <span class="o">=</span> <span class="o">*</span><span class="p">((</span><span class="kt">int</span><span class="o">*</span><span class="p">)(</span><span class="o">*</span><span class="p">(</span><span class="kt">int</span><span class="o">*</span><span class="p">)</span><span class="o">&amp;</span><span class="n">sub</span><span class="p">)</span> <span class="o">+</span> <span class="n">i</span><span class="p">);</span>
+		<span class="n">p2Fn</span> <span class="o">=</span> <span class="p">(</span><span class="n">pFunction</span><span class="p">)</span><span class="n">temp</span><span class="p">;</span>
+		<span class="n">p2Fn</span><span class="p">();</span>
+	<span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+
+	<span class="n">TestMethod</span><span class="p">();</span>
+
+	<span class="n">system</span><span class="p">(</span><span class="s">&#34;pause&#34;</span><span class="p">);</span>
+
+	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div><h3 id="224-多继承非覆盖虚函数表">2.2.4 多继承非覆盖虚函数表</h3>
+<div class="highlight"><pre class="chroma"><code class="language-c++" data-lang="c++"><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp">
+</span><span class="cp"></span>
+<span class="k">struct</span> <span class="nc">Base1</span>
+<span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+	<span class="k">virtual</span> <span class="kt">void</span> <span class="n">Fn_1</span><span class="p">()</span>
+	<span class="p">{</span>
+		<span class="n">printf</span><span class="p">(</span><span class="s">&#34;Base1:Fn_1...</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">);</span>
+	<span class="p">}</span>
+	<span class="k">virtual</span> <span class="kt">void</span> <span class="nf">Fn_2</span><span class="p">()</span>
+	<span class="p">{</span>
+		<span class="n">printf</span><span class="p">(</span><span class="s">&#34;Base1:Fn_2...</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">);</span>
+	<span class="p">}</span>
+<span class="p">};</span>
+<span class="k">struct</span> <span class="nc">Base2</span>
+<span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+	<span class="k">virtual</span> <span class="kt">void</span> <span class="n">Fn_3</span><span class="p">()</span>
+	<span class="p">{</span>
+		<span class="n">printf</span><span class="p">(</span><span class="s">&#34;Base2:Fn_3...</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">);</span>
+	<span class="p">}</span>
+	<span class="k">virtual</span> <span class="kt">void</span> <span class="nf">Fn_4</span><span class="p">()</span>
+	<span class="p">{</span>
+		<span class="n">printf</span><span class="p">(</span><span class="s">&#34;Base2:Fn_4...</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">);</span>
+	<span class="p">}</span>
+<span class="p">};</span>
+<span class="k">struct</span> <span class="nc">Sub</span> <span class="o">:</span><span class="n">Base1</span><span class="p">,</span> <span class="n">Base2</span>
+<span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+	<span class="k">virtual</span> <span class="kt">void</span> <span class="n">Fn_5</span><span class="p">()</span>
+	<span class="p">{</span>
+		<span class="n">printf</span><span class="p">(</span><span class="s">&#34;Sub:Fn_5...</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">);</span>
+	<span class="p">}</span>
+	<span class="k">virtual</span> <span class="kt">void</span> <span class="nf">Fn_6</span><span class="p">()</span>
+	<span class="p">{</span>
+		<span class="n">printf</span><span class="p">(</span><span class="s">&#34;Sub:Fn_6...</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">);</span>
+	<span class="p">}</span>
+<span class="p">};</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+	<span class="c1">//查看 Sub 的虚函数表                 
+</span><span class="c1"></span>	<span class="n">Sub</span> <span class="n">sub</span><span class="p">;</span>
+
+	<span class="c1">//通过函数指针调用函数，验证正确性               
+</span><span class="c1"></span>	<span class="k">typedef</span> <span class="kt">void</span><span class="p">(</span><span class="o">*</span><span class="n">pFunction</span><span class="p">)(</span><span class="kt">void</span><span class="p">);</span>
+
+	<span class="c1">//对象的前四个字节是第一个虚表: 经过编译器优化：Base1 + Sub 的虚函数组成的表                 
+</span><span class="c1"></span>	<span class="n">printf</span><span class="p">(</span><span class="s">&#34;Sub的第一个虚表的虚函数表地址为：%x</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="o">*</span><span class="p">(</span><span class="kt">int</span><span class="o">*</span><span class="p">)</span><span class="o">&amp;</span><span class="n">sub</span><span class="p">);</span>
+	<span class="n">pFunction</span> <span class="n">pFn</span><span class="p">;</span>
+	<span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">4</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+	<span class="p">{</span>
+		<span class="kt">int</span> <span class="n">temp</span> <span class="o">=</span> <span class="o">*</span><span class="p">((</span><span class="kt">int</span><span class="o">*</span><span class="p">)(</span><span class="o">*</span><span class="p">(</span><span class="kt">int</span><span class="o">*</span><span class="p">)</span><span class="o">&amp;</span><span class="n">sub</span><span class="p">)</span> <span class="o">+</span> <span class="n">i</span><span class="p">);</span>
+		<span class="k">if</span> <span class="p">(</span><span class="n">temp</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
+		<span class="p">{</span>
+			<span class="k">break</span><span class="p">;</span>
+		<span class="p">}</span>
+		<span class="n">pFn</span> <span class="o">=</span> <span class="p">(</span><span class="n">pFunction</span><span class="p">)</span><span class="n">temp</span><span class="p">;</span>
+		<span class="n">pFn</span><span class="p">();</span>
+	<span class="p">}</span>
+
+	<span class="c1">//对象的第二个四字节是第二个虚表, 根据编译器的优化 =》 Base2的虚表               
+</span><span class="c1"></span>	<span class="n">printf</span><span class="p">(</span><span class="s">&#34;Sub的第二个虚表的虚函数表地址为：%x</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="o">*</span><span class="p">(</span><span class="kt">int</span><span class="o">*</span><span class="p">)((</span><span class="kt">int</span><span class="o">*</span><span class="p">)</span><span class="o">&amp;</span><span class="n">sub</span> <span class="o">+</span> <span class="mi">4</span><span class="p">));</span>
+	<span class="n">pFunction</span> <span class="n">pFn1</span><span class="p">;</span>
+	<span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">k</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">k</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">;</span> <span class="n">k</span><span class="o">++</span><span class="p">)</span>
+	<span class="p">{</span>
+		<span class="kt">int</span> <span class="n">temp</span> <span class="o">=</span> <span class="o">*</span><span class="p">((</span><span class="kt">int</span><span class="o">*</span><span class="p">)(</span><span class="o">*</span><span class="p">(</span><span class="kt">int</span><span class="o">*</span><span class="p">)((</span><span class="kt">int</span><span class="p">)</span><span class="o">&amp;</span><span class="n">sub</span> <span class="o">+</span> <span class="mi">4</span><span class="p">))</span> <span class="o">+</span> <span class="n">k</span><span class="p">);</span>
+		<span class="n">pFn1</span> <span class="o">=</span> <span class="p">(</span><span class="n">pFunction</span><span class="p">)</span><span class="n">temp</span><span class="p">;</span>
+		<span class="n">pFn1</span><span class="p">();</span>
+	<span class="p">}</span>
+
+	<span class="n">system</span><span class="p">(</span><span class="s">&#34;pause&#34;</span><span class="p">);</span>
+
+	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div><p>结论：Sub的虚表由两个虚表组成：</p>
+<ol>
+<li>Base1 + Sub 的虚函数组成的虚表;</li>
+<li>Base2组成的虚表</li>
+</ol>
+<blockquote>
+<p>猜测：之后的继承的每个类有单独的虚表，如Base2一样；</p>
+</blockquote>
+<h3 id="225-多继承覆盖虚函数表">2.2.5 多继承覆盖虚函数表</h3>
+<div class="highlight"><pre class="chroma"><code class="language-c++" data-lang="c++"><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp">
+</span><span class="cp"></span>
+<span class="k">struct</span> <span class="nc">Base1</span>
+<span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+	<span class="k">virtual</span> <span class="kt">void</span> <span class="n">Fn_1</span><span class="p">()</span>
+	<span class="p">{</span>
+		<span class="n">printf</span><span class="p">(</span><span class="s">&#34;Base1:Fn_1...</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">);</span>
+	<span class="p">}</span>
+	<span class="k">virtual</span> <span class="kt">void</span> <span class="nf">Fn_2</span><span class="p">()</span>
+	<span class="p">{</span>
+		<span class="n">printf</span><span class="p">(</span><span class="s">&#34;Base1:Fn_2...</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">);</span>
+	<span class="p">}</span>
+<span class="p">};</span>
+<span class="k">struct</span> <span class="nc">Base2</span>
+<span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+	<span class="k">virtual</span> <span class="kt">void</span> <span class="n">Fn_3</span><span class="p">()</span>
+	<span class="p">{</span>
+		<span class="n">printf</span><span class="p">(</span><span class="s">&#34;Base2:Fn_3...</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">);</span>
+	<span class="p">}</span>
+	<span class="k">virtual</span> <span class="kt">void</span> <span class="nf">Fn_4</span><span class="p">()</span>
+	<span class="p">{</span>
+		<span class="n">printf</span><span class="p">(</span><span class="s">&#34;Base2:Fn_4...</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">);</span>
+	<span class="p">}</span>
+<span class="p">};</span>
+
+<span class="k">struct</span> <span class="nc">Base3</span>
+<span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+	<span class="k">virtual</span> <span class="kt">void</span> <span class="n">Fn_6</span><span class="p">()</span>
+	<span class="p">{</span>
+		<span class="n">printf</span><span class="p">(</span><span class="s">&#34;Base3:Fn_6...</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">);</span>
+	<span class="p">}</span>
+	<span class="k">virtual</span> <span class="kt">void</span> <span class="nf">Fn_7</span><span class="p">()</span>
+	<span class="p">{</span>
+		<span class="n">printf</span><span class="p">(</span><span class="s">&#34;Base3:Fn_7...</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">);</span>
+	<span class="p">}</span>
+<span class="p">};</span>
+
+<span class="k">struct</span> <span class="nc">Sub</span> <span class="o">:</span><span class="n">Base1</span><span class="p">,</span> <span class="n">Base2</span><span class="p">,</span> <span class="n">Base3</span>
+<span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+	<span class="k">virtual</span> <span class="kt">void</span> <span class="n">Fn_1</span><span class="p">()</span>
+	<span class="p">{</span>
+		<span class="n">printf</span><span class="p">(</span><span class="s">&#34;Sub:Fn_1...</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">);</span>
+	<span class="p">}</span>
+	<span class="k">virtual</span> <span class="kt">void</span> <span class="nf">Fn_3</span><span class="p">()</span>
+	<span class="p">{</span>
+		<span class="n">printf</span><span class="p">(</span><span class="s">&#34;Sub:Fn_3...</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">);</span>
+	<span class="p">}</span>
+	<span class="k">virtual</span> <span class="kt">void</span> <span class="nf">Fn_5</span><span class="p">()</span>
+	<span class="p">{</span>
+		<span class="n">printf</span><span class="p">(</span><span class="s">&#34;Sub:Fn_5...</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">);</span>
+	<span class="p">}</span>
+
+	<span class="k">virtual</span> <span class="kt">void</span> <span class="nf">Fn_6</span><span class="p">()</span>
+	<span class="p">{</span>
+		<span class="n">printf</span><span class="p">(</span><span class="s">&#34;Sub:Fn_6...</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">);</span>
+	<span class="p">}</span>
+
+	<span class="k">virtual</span> <span class="kt">void</span> <span class="nf">Fn_8</span><span class="p">()</span>
+	<span class="p">{</span>
+		<span class="n">printf</span><span class="p">(</span><span class="s">&#34;Sub:Fn_8...</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">);</span>
+	<span class="p">}</span>
+<span class="p">};</span>
+
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+	<span class="c1">//查看 Sub 的虚函数表                 
+</span><span class="c1"></span>	<span class="n">Sub</span> <span class="n">sub</span><span class="p">;</span>
+
+	<span class="c1">//通过函数指针调用函数，验证正确性               
+</span><span class="c1"></span>	<span class="k">typedef</span> <span class="kt">void</span><span class="p">(</span><span class="o">*</span><span class="n">pFunction</span><span class="p">)(</span><span class="kt">void</span><span class="p">);</span>
+
+	<span class="c1">//对象的前四个字节是第一个虚表: 经过编译器优化：Base1 + Sub 的虚函数组成的表                
+</span><span class="c1"></span>	<span class="n">printf</span><span class="p">(</span><span class="s">&#34;第一个虚表 的虚函数表地址为：%x</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="o">*</span><span class="p">(</span><span class="kt">int</span><span class="o">*</span><span class="p">)</span><span class="o">&amp;</span><span class="n">sub</span><span class="p">);</span>
+	<span class="n">pFunction</span> <span class="n">pFn</span><span class="p">;</span>
+	<span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">4</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+	<span class="p">{</span>
+		<span class="kt">int</span> <span class="n">temp</span> <span class="o">=</span> <span class="o">*</span><span class="p">((</span><span class="kt">int</span><span class="o">*</span><span class="p">)(</span><span class="o">*</span><span class="p">(</span><span class="kt">int</span><span class="o">*</span><span class="p">)</span><span class="o">&amp;</span><span class="n">sub</span><span class="p">)</span> <span class="o">+</span> <span class="n">i</span><span class="p">);</span>
+		<span class="k">if</span> <span class="p">(</span><span class="n">temp</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
+		<span class="p">{</span>
+			<span class="k">break</span><span class="p">;</span>
+		<span class="p">}</span>
+		<span class="n">pFn</span> <span class="o">=</span> <span class="p">(</span><span class="n">pFunction</span><span class="p">)</span><span class="n">temp</span><span class="p">;</span>
+		<span class="n">pFn</span><span class="p">();</span>
+	<span class="p">}</span>
+
+	<span class="c1">//对象的第二个四字节是第二个虚表, 根据编译器的优化 =》 Base2的虚表             
+</span><span class="c1"></span>	<span class="n">printf</span><span class="p">(</span><span class="s">&#34;第二个虚表 的虚函数表地址为：%x</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="o">*</span><span class="p">(</span><span class="kt">int</span><span class="o">*</span><span class="p">)((</span><span class="kt">int</span><span class="p">)</span><span class="o">&amp;</span><span class="n">sub</span> <span class="o">+</span> <span class="mi">4</span><span class="p">));</span>
+	<span class="n">pFunction</span> <span class="n">pFn1</span><span class="p">;</span>
+	<span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">k</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">k</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">;</span> <span class="n">k</span><span class="o">++</span><span class="p">)</span>
+	<span class="p">{</span>
+		<span class="kt">int</span> <span class="n">temp</span> <span class="o">=</span> <span class="o">*</span><span class="p">((</span><span class="kt">int</span><span class="o">*</span><span class="p">)(</span><span class="o">*</span><span class="p">(</span><span class="kt">int</span><span class="o">*</span><span class="p">)((</span><span class="kt">int</span><span class="p">)</span><span class="o">&amp;</span><span class="n">sub</span> <span class="o">+</span> <span class="mi">4</span><span class="p">))</span> <span class="o">+</span> <span class="n">k</span><span class="p">);</span>
+		<span class="n">pFn1</span> <span class="o">=</span> <span class="p">(</span><span class="n">pFunction</span><span class="p">)</span><span class="n">temp</span><span class="p">;</span>
+		<span class="n">pFn1</span><span class="p">();</span>
+	<span class="p">}</span>
+
+	<span class="c1">//对象的第三个四字节是第三个虚表, 根据编译器的优化 =》 Base3的虚表             
+</span><span class="c1"></span>	<span class="n">printf</span><span class="p">(</span><span class="s">&#34;第三个虚表 的虚函数表地址为：%x</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="o">*</span><span class="p">(</span><span class="kt">int</span><span class="o">*</span><span class="p">)((</span><span class="kt">int</span><span class="p">)</span><span class="o">&amp;</span><span class="n">sub</span> <span class="o">+</span> <span class="mi">8</span><span class="p">));</span>
+	<span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">k</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">k</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">;</span> <span class="n">k</span><span class="o">++</span><span class="p">)</span>
+	<span class="p">{</span>
+		<span class="kt">int</span> <span class="n">temp</span> <span class="o">=</span> <span class="o">*</span><span class="p">((</span><span class="kt">int</span><span class="o">*</span><span class="p">)(</span><span class="o">*</span><span class="p">(</span><span class="kt">int</span><span class="o">*</span><span class="p">)((</span><span class="kt">int</span><span class="p">)</span><span class="o">&amp;</span><span class="n">sub</span> <span class="o">+</span> <span class="mi">8</span><span class="p">))</span> <span class="o">+</span> <span class="n">k</span><span class="p">);</span>
+		<span class="n">pFn1</span> <span class="o">=</span> <span class="p">(</span><span class="n">pFunction</span><span class="p">)</span><span class="n">temp</span><span class="p">;</span>
+		<span class="n">pFn1</span><span class="p">();</span>
+	<span class="p">}</span>
+
+	<span class="n">system</span><span class="p">(</span><span class="s">&#34;pause&#34;</span><span class="p">);</span>
+
+	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div><p>结论：Sub的虚表由三个虚表组成，按照继承顺序组合：</p>
+<ol>
+<li>Base1 + Sub 的虚函数组成的虚表：Sub::Fn_1(), Base1::Fn_2(), Sub::Fn_5(), Sub::Fn_8();</li>
+<li>Base2 + Sub 的虚函数组成的虚表：Sub::Fn_3(), Base2::Fn_4();</li>
+<li>Base3 + Sub 的虚函数组成的虚表：Sub::Fn_6(), Base3::Fn_7();</li>
+</ol>
+<h3 id="226-单一连续继承无函数覆盖">2.2.6 单一连续继承，无函数覆盖</h3>
+<div class="highlight"><pre class="chroma"><code class="language-c++" data-lang="c++"><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp">
+</span><span class="cp"></span>
+<span class="k">struct</span> <span class="nc">Base1</span>
+<span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+	<span class="k">virtual</span> <span class="kt">void</span> <span class="n">Fn_1</span><span class="p">()</span>
+	<span class="p">{</span>
+		<span class="n">printf</span><span class="p">(</span><span class="s">&#34;Base1:Fn_1...</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">);</span>
+	<span class="p">}</span>
+	<span class="k">virtual</span> <span class="kt">void</span> <span class="nf">Fn_2</span><span class="p">()</span>
+	<span class="p">{</span>
+		<span class="n">printf</span><span class="p">(</span><span class="s">&#34;Base1:Fn_2...</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">);</span>
+	<span class="p">}</span>
+<span class="p">};</span>
+<span class="k">struct</span> <span class="nc">Base2</span> <span class="o">:</span><span class="n">Base1</span>
+<span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+	<span class="k">virtual</span> <span class="kt">void</span> <span class="n">Fn_3</span><span class="p">()</span>
+	<span class="p">{</span>
+		<span class="n">printf</span><span class="p">(</span><span class="s">&#34;Base2:Fn_3...</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">);</span>
+	<span class="p">}</span>
+	<span class="k">virtual</span> <span class="kt">void</span> <span class="nf">Fn_4</span><span class="p">()</span>
+	<span class="p">{</span>
+		<span class="n">printf</span><span class="p">(</span><span class="s">&#34;Base2:Fn_4...</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">);</span>
+	<span class="p">}</span>
+<span class="p">};</span>
+<span class="k">struct</span> <span class="nc">Sub</span> <span class="o">:</span><span class="n">Base2</span>
+<span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+	<span class="k">virtual</span> <span class="kt">void</span> <span class="n">Fn_5</span><span class="p">()</span>
+	<span class="p">{</span>
+		<span class="n">printf</span><span class="p">(</span><span class="s">&#34;Sub:Fn_5...</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">);</span>
+	<span class="p">}</span>
+	<span class="k">virtual</span> <span class="kt">void</span> <span class="nf">Fn_6</span><span class="p">()</span>
+	<span class="p">{</span>
+		<span class="n">printf</span><span class="p">(</span><span class="s">&#34;Sub:Fn_6...</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">);</span>
+	<span class="p">}</span>
+<span class="p">};</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="kt">char</span><span class="o">*</span> <span class="n">argv</span><span class="p">[])</span>
+<span class="p">{</span>
+	<span class="c1">//查看 Sub 的虚函数表            
+</span><span class="c1"></span>	<span class="n">Sub</span> <span class="n">sub</span><span class="p">;</span>
+
+	<span class="c1">//观察大小：虚函数表只有一个           
+</span><span class="c1"></span>	<span class="n">printf</span><span class="p">(</span><span class="s">&#34;%x</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">sub</span><span class="p">));</span>
+
+	<span class="c1">//通过函数指针调用函数，验证正确性          
+</span><span class="c1"></span>	<span class="k">typedef</span> <span class="kt">void</span><span class="p">(</span><span class="o">*</span><span class="n">pFunction</span><span class="p">)(</span><span class="kt">void</span><span class="p">);</span>
+
+
+	<span class="c1">//对象的前四个字节是就是虚函数表            
+</span><span class="c1"></span>	<span class="n">printf</span><span class="p">(</span><span class="s">&#34;Sub 的虚函数表地址为：%x</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="o">*</span><span class="p">(</span><span class="kt">int</span><span class="o">*</span><span class="p">)</span><span class="o">&amp;</span><span class="n">sub</span><span class="p">);</span>
+
+	<span class="n">pFunction</span> <span class="n">pFn</span><span class="p">;</span>
+
+	<span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">6</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+	<span class="p">{</span>
+		<span class="kt">int</span> <span class="n">temp</span> <span class="o">=</span> <span class="o">*</span><span class="p">((</span><span class="kt">int</span><span class="o">*</span><span class="p">)(</span><span class="o">*</span><span class="p">(</span><span class="kt">int</span><span class="o">*</span><span class="p">)</span><span class="o">&amp;</span><span class="n">sub</span><span class="p">)</span> <span class="o">+</span> <span class="n">i</span><span class="p">);</span>
+		<span class="k">if</span> <span class="p">(</span><span class="n">temp</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
+		<span class="p">{</span>
+			<span class="k">break</span><span class="p">;</span>
+		<span class="p">}</span>
+		<span class="n">pFn</span> <span class="o">=</span> <span class="p">(</span><span class="n">pFunction</span><span class="p">)</span><span class="n">temp</span><span class="p">;</span>
+		<span class="n">pFn</span><span class="p">();</span>
+	<span class="p">}</span>
+
+	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div><p>结论：单一继承，虚表只有一个；</p>
+<h3 id="227-单一连续继承有函数覆盖">2.2.7 单一连续继承，有函数覆盖</h3>
+<div class="highlight"><pre class="chroma"><code class="language-c++" data-lang="c++"><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp">
+</span><span class="cp"></span>
+<span class="k">struct</span> <span class="nc">Base1</span>
+<span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+	<span class="k">virtual</span> <span class="kt">void</span> <span class="n">Fn_1</span><span class="p">()</span>
+	<span class="p">{</span>
+		<span class="n">printf</span><span class="p">(</span><span class="s">&#34;Base1:Fn_1...</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">);</span>
+	<span class="p">}</span>
+	<span class="k">virtual</span> <span class="kt">void</span> <span class="nf">Fn_2</span><span class="p">()</span>
+	<span class="p">{</span>
+		<span class="n">printf</span><span class="p">(</span><span class="s">&#34;Base1:Fn_2...</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">);</span>
+	<span class="p">}</span>
+<span class="p">};</span>
+<span class="k">struct</span> <span class="nc">Base2</span> <span class="o">:</span><span class="n">Base1</span>
+<span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+	<span class="k">virtual</span> <span class="kt">void</span> <span class="n">Fn_1</span><span class="p">()</span>
+	<span class="p">{</span>
+		<span class="n">printf</span><span class="p">(</span><span class="s">&#34;Base2:Fn_1...</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">);</span>
+	<span class="p">}</span>
+	<span class="k">virtual</span> <span class="kt">void</span> <span class="nf">Fn_3</span><span class="p">()</span>
+	<span class="p">{</span>
+		<span class="n">printf</span><span class="p">(</span><span class="s">&#34;Base2:Fn_3...</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">);</span>
+	<span class="p">}</span>
+<span class="p">};</span>
+<span class="k">struct</span> <span class="nc">Sub</span> <span class="o">:</span><span class="n">Base2</span>
+<span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+	<span class="k">virtual</span> <span class="kt">void</span> <span class="n">Fn_1</span><span class="p">()</span>
+	<span class="p">{</span>
+		<span class="n">printf</span><span class="p">(</span><span class="s">&#34;Sub:Fn_1...</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">);</span>
+	<span class="p">}</span>
+
+	<span class="k">virtual</span> <span class="kt">void</span> <span class="nf">Fn_5</span><span class="p">()</span>
+	<span class="p">{</span>
+		<span class="n">printf</span><span class="p">(</span><span class="s">&#34;Sub:Fn_5...</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">);</span>
+	<span class="p">}</span>
+<span class="p">};</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="kt">char</span><span class="o">*</span> <span class="n">argv</span><span class="p">[])</span>
+<span class="p">{</span>
+	<span class="c1">//查看 Sub 的虚函数表            
+</span><span class="c1"></span>	<span class="n">Sub</span> <span class="n">sub</span><span class="p">;</span>
+
+	<span class="c1">//观察大小：虚函数表只有一个           
+</span><span class="c1"></span>	<span class="n">printf</span><span class="p">(</span><span class="s">&#34;%x</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">sub</span><span class="p">));</span>
+
+	<span class="c1">//通过函数指针调用函数，验证正确性          
+</span><span class="c1"></span>	<span class="k">typedef</span> <span class="kt">void</span><span class="p">(</span><span class="o">*</span><span class="n">pFunction</span><span class="p">)(</span><span class="kt">void</span><span class="p">);</span>
+
+
+	<span class="c1">//对象的前四个字节是就是虚函数表            
+</span><span class="c1"></span>	<span class="n">printf</span><span class="p">(</span><span class="s">&#34;Sub 的虚函数表地址为：%x</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="o">*</span><span class="p">(</span><span class="kt">int</span><span class="o">*</span><span class="p">)</span><span class="o">&amp;</span><span class="n">sub</span><span class="p">);</span>
+
+	<span class="n">pFunction</span> <span class="n">pFn</span><span class="p">;</span>
+
+	<span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">6</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+	<span class="p">{</span>
+		<span class="kt">int</span> <span class="n">temp</span> <span class="o">=</span> <span class="o">*</span><span class="p">((</span><span class="kt">int</span><span class="o">*</span><span class="p">)(</span><span class="o">*</span><span class="p">(</span><span class="kt">int</span><span class="o">*</span><span class="p">)</span><span class="o">&amp;</span><span class="n">sub</span><span class="p">)</span> <span class="o">+</span> <span class="n">i</span><span class="p">);</span>
+		<span class="k">if</span> <span class="p">(</span><span class="n">temp</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
+		<span class="p">{</span>
+			<span class="k">break</span><span class="p">;</span>
+		<span class="p">}</span>
+		<span class="n">pFn</span> <span class="o">=</span> <span class="p">(</span><span class="n">pFunction</span><span class="p">)</span><span class="n">temp</span><span class="p">;</span>
+		<span class="n">pFn</span><span class="p">();</span>
+	<span class="p">}</span>
+
+	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div><p>结论：单一继承，虚表只有一个；</p>
+<h3 id="228-例子">2.2.8 例子</h3>
+<ol>
+<li>定义一个父类：Base 有两个成员X,Y 有一个函数Print(非virtul)<br>
+能够打印X,Y的值。</li>
+</ol>
+<div class="highlight"><pre class="chroma"><code class="language-c++" data-lang="c++"><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp">
+</span><span class="cp"></span>
+<span class="k">class</span> <span class="nc">Base</span> <span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+	<span class="n">Base</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">,</span> <span class="kt">int</span> <span class="n">y</span><span class="p">)</span> <span class="o">:</span> <span class="n">x</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">y</span><span class="p">(</span><span class="n">y</span><span class="p">)</span> <span class="p">{</span>
+	<span class="p">};</span>
+
+<span class="k">private</span><span class="o">:</span>
+	<span class="kt">int</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">;</span>
+
+<span class="p">};</span>
+
+<span class="kt">void</span> <span class="nf">prt</span><span class="p">(</span><span class="kt">void</span><span class="o">*</span> <span class="n">ptr</span><span class="p">)</span> <span class="p">{</span>
+	<span class="n">printf</span><span class="p">(</span><span class="s">&#34;X: %d Y: %d</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="o">*</span><span class="p">((</span><span class="kt">int</span><span class="o">*</span><span class="p">)</span><span class="n">ptr</span><span class="p">),</span> <span class="o">*</span><span class="p">((</span><span class="kt">int</span><span class="o">*</span><span class="p">)</span><span class="n">ptr</span> <span class="o">+</span> <span class="mi">1</span><span class="p">));</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+
+	<span class="n">Base</span> <span class="n">base</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
+
+	<span class="n">prt</span><span class="p">(</span><span class="o">&amp;</span><span class="n">base</span><span class="p">);</span>
+
+	<span class="n">system</span><span class="p">(</span><span class="s">&#34;pause&#34;</span><span class="p">);</span>
+
+	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div><ol start="2">
+<li>定义3个子类：Sub1有一个成员A, Sub2有一个成员B, Sub3  有一个成员C; 每个子类有一个函数Print(非virtul)，打印所有成员。</li>
+</ol>
+<ul>
+<li>Sub1:打印X Y A</li>
+<li>Sub2:打印X Y B</li>
+<li>Sub3:打印X Y C</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-c++" data-lang="c++"><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp">
+</span><span class="cp"></span>
+<span class="k">class</span> <span class="nc">Base</span> <span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+	<span class="n">Base</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">,</span> <span class="kt">int</span> <span class="n">y</span><span class="p">)</span> <span class="o">:</span> <span class="n">x</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">y</span><span class="p">(</span><span class="n">y</span><span class="p">)</span> <span class="p">{</span>
+	<span class="p">};</span>
+
+<span class="k">private</span><span class="o">:</span>
+	<span class="kt">int</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="k">class</span>  <span class="nc">Sub1</span> <span class="o">:</span> <span class="k">public</span> <span class="n">Base</span> <span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+	<span class="n">Sub1</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">,</span> <span class="kt">int</span> <span class="n">y</span><span class="p">,</span> <span class="kt">int</span> <span class="n">n</span><span class="p">)</span> <span class="o">:</span> <span class="n">Base</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">),</span> <span class="n">a</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="p">{</span>
+	<span class="p">}</span>
+
+	<span class="kt">void</span> <span class="nf">prt</span><span class="p">(</span><span class="kt">void</span><span class="o">*</span> <span class="n">ptr</span><span class="p">)</span> <span class="p">{</span>
+		<span class="n">printf</span><span class="p">(</span><span class="s">&#34;X: %d Y: %d #: %d</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="o">*</span><span class="p">((</span><span class="kt">int</span><span class="o">*</span><span class="p">)</span><span class="n">ptr</span><span class="p">),</span> <span class="o">*</span><span class="p">((</span><span class="kt">int</span><span class="o">*</span><span class="p">)</span><span class="n">ptr</span> <span class="o">+</span> <span class="mi">1</span><span class="p">),</span> <span class="o">*</span><span class="p">((</span><span class="kt">int</span><span class="o">*</span><span class="p">)</span><span class="n">ptr</span> <span class="o">+</span> <span class="mi">2</span><span class="p">));</span>
+	<span class="p">}</span>
+
+<span class="k">private</span><span class="o">:</span>
+	<span class="kt">int</span> <span class="n">a</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="k">class</span>  <span class="nc">Sub2</span> <span class="o">:</span> <span class="k">public</span> <span class="n">Base</span> <span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+	<span class="n">Sub2</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">,</span> <span class="kt">int</span> <span class="n">y</span><span class="p">,</span> <span class="kt">int</span> <span class="n">n</span><span class="p">)</span> <span class="o">:</span> <span class="n">Base</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">),</span> <span class="n">b</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="p">{</span>
+	<span class="p">}</span>
+
+	<span class="kt">void</span> <span class="nf">prt</span><span class="p">(</span><span class="kt">void</span><span class="o">*</span> <span class="n">ptr</span><span class="p">)</span> <span class="p">{</span>
+		<span class="n">printf</span><span class="p">(</span><span class="s">&#34;X: %d Y: %d #: %d</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="o">*</span><span class="p">((</span><span class="kt">int</span><span class="o">*</span><span class="p">)</span><span class="n">ptr</span><span class="p">),</span> <span class="o">*</span><span class="p">((</span><span class="kt">int</span><span class="o">*</span><span class="p">)</span><span class="n">ptr</span> <span class="o">+</span> <span class="mi">1</span><span class="p">),</span> <span class="o">*</span><span class="p">((</span><span class="kt">int</span><span class="o">*</span><span class="p">)</span><span class="n">ptr</span> <span class="o">+</span> <span class="mi">2</span><span class="p">));</span>
+	<span class="p">}</span>
+
+<span class="k">private</span><span class="o">:</span>
+	<span class="kt">int</span> <span class="n">b</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="k">class</span>  <span class="nc">Sub3</span> <span class="o">:</span> <span class="k">public</span> <span class="n">Base</span> <span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+	<span class="n">Sub3</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">,</span> <span class="kt">int</span> <span class="n">y</span><span class="p">,</span> <span class="kt">int</span> <span class="n">n</span><span class="p">)</span> <span class="o">:</span> <span class="n">Base</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">),</span> <span class="n">c</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="p">{</span>
+	<span class="p">}</span>
+
+	<span class="kt">void</span> <span class="nf">prt</span><span class="p">(</span><span class="kt">void</span><span class="o">*</span> <span class="n">ptr</span><span class="p">)</span> <span class="p">{</span>
+		<span class="n">printf</span><span class="p">(</span><span class="s">&#34;X: %d Y: %d #: %d</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="o">*</span><span class="p">((</span><span class="kt">int</span><span class="o">*</span><span class="p">)</span><span class="n">ptr</span><span class="p">),</span> <span class="o">*</span><span class="p">((</span><span class="kt">int</span><span class="o">*</span><span class="p">)</span><span class="n">ptr</span> <span class="o">+</span> <span class="mi">1</span><span class="p">),</span> <span class="o">*</span><span class="p">((</span><span class="kt">int</span><span class="o">*</span><span class="p">)</span><span class="n">ptr</span> <span class="o">+</span> <span class="mi">2</span><span class="p">));</span>
+	<span class="p">}</span>
+
+<span class="k">private</span><span class="o">:</span>
+	<span class="kt">int</span> <span class="n">c</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+
+	<span class="n">Sub1</span> <span class="n">sub1</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">);</span>
+	<span class="n">Sub1</span> <span class="n">sub2</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">);</span>
+	<span class="n">Sub1</span> <span class="n">sub3</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">);</span>
+
+	<span class="n">sub1</span><span class="p">.</span><span class="n">prt</span><span class="p">(</span><span class="o">&amp;</span><span class="n">sub1</span><span class="p">);</span>
+	<span class="n">sub2</span><span class="p">.</span><span class="n">prt</span><span class="p">(</span><span class="o">&amp;</span><span class="n">sub2</span><span class="p">);</span>
+	<span class="n">sub3</span><span class="p">.</span><span class="n">prt</span><span class="p">(</span><span class="o">&amp;</span><span class="n">sub3</span><span class="p">);</span>
+
+	<span class="n">system</span><span class="p">(</span><span class="s">&#34;pause&#34;</span><span class="p">);</span>
+
+	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div><p>总结：子类的成员 = 基类的成员 + 子类的成员</p>
+<ol start="3">
+<li>将上面所有的Print函数改成virtul 继续观察效果.</li>
+</ol>
+<div class="highlight"><pre class="chroma"><code class="language-c++" data-lang="c++"><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp">
+</span><span class="cp"></span>
+<span class="k">class</span> <span class="nc">Base</span> <span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+	<span class="n">Base</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">,</span> <span class="kt">int</span> <span class="n">y</span><span class="p">)</span> <span class="o">:</span> <span class="n">x</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">y</span><span class="p">(</span><span class="n">y</span><span class="p">)</span> <span class="p">{</span>
+	<span class="p">};</span>
+
+<span class="k">private</span><span class="o">:</span>
+	<span class="kt">int</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">;</span>
+
+<span class="p">};</span>
+
+<span class="k">class</span>  <span class="nc">Sub1</span> <span class="o">:</span> <span class="k">public</span> <span class="n">Base</span> <span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+	<span class="n">Sub1</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">,</span> <span class="kt">int</span> <span class="n">y</span><span class="p">,</span> <span class="kt">int</span> <span class="n">n</span><span class="p">)</span> <span class="o">:</span> <span class="n">Base</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">),</span> <span class="n">a</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="p">{</span>
+	<span class="p">}</span>
+
+	<span class="k">virtual</span> <span class="kt">void</span> <span class="nf">prt</span><span class="p">(</span><span class="kt">void</span><span class="o">*</span> <span class="n">ptr</span><span class="p">)</span> <span class="p">{</span>
+		<span class="n">printf</span><span class="p">(</span><span class="s">&#34;X: %d Y: %d #: %d</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="o">*</span><span class="p">((</span><span class="kt">int</span><span class="o">*</span><span class="p">)</span><span class="n">ptr</span> <span class="o">+</span> <span class="mi">1</span><span class="p">),</span> <span class="o">*</span><span class="p">((</span><span class="kt">int</span><span class="o">*</span><span class="p">)</span><span class="n">ptr</span> <span class="o">+</span> <span class="mi">2</span><span class="p">),</span> <span class="o">*</span><span class="p">((</span><span class="kt">int</span><span class="o">*</span><span class="p">)</span><span class="n">ptr</span> <span class="o">+</span> <span class="mi">3</span><span class="p">));</span>
+	<span class="p">}</span>
+
+<span class="k">private</span><span class="o">:</span>
+	<span class="kt">int</span> <span class="n">a</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="k">class</span>  <span class="nc">Sub2</span> <span class="o">:</span> <span class="k">public</span> <span class="n">Base</span> <span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+	<span class="n">Sub2</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">,</span> <span class="kt">int</span> <span class="n">y</span><span class="p">,</span> <span class="kt">int</span> <span class="n">n</span><span class="p">)</span> <span class="o">:</span> <span class="n">Base</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">),</span> <span class="n">b</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="p">{</span>
+	<span class="p">}</span>
+
+	<span class="k">virtual</span> <span class="kt">void</span> <span class="nf">prt</span><span class="p">(</span><span class="kt">void</span><span class="o">*</span> <span class="n">ptr</span><span class="p">)</span> <span class="p">{</span>
+		<span class="n">printf</span><span class="p">(</span><span class="s">&#34;X: %d Y: %d #: %d</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="o">*</span><span class="p">((</span><span class="kt">int</span><span class="o">*</span><span class="p">)</span><span class="n">ptr</span> <span class="o">+</span> <span class="mi">1</span><span class="p">),</span> <span class="o">*</span><span class="p">((</span><span class="kt">int</span><span class="o">*</span><span class="p">)</span><span class="n">ptr</span> <span class="o">+</span> <span class="mi">2</span><span class="p">),</span> <span class="o">*</span><span class="p">((</span><span class="kt">int</span><span class="o">*</span><span class="p">)</span><span class="n">ptr</span> <span class="o">+</span> <span class="mi">3</span><span class="p">));</span>
+	<span class="p">}</span>
+
+<span class="k">private</span><span class="o">:</span>
+	<span class="kt">int</span> <span class="n">b</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="k">class</span>  <span class="nc">Sub3</span> <span class="o">:</span> <span class="k">public</span> <span class="n">Base</span> <span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+	<span class="n">Sub3</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">,</span> <span class="kt">int</span> <span class="n">y</span><span class="p">,</span> <span class="kt">int</span> <span class="n">n</span><span class="p">)</span> <span class="o">:</span> <span class="n">Base</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">),</span> <span class="n">c</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="p">{</span>
+	<span class="p">}</span>
+
+	<span class="k">virtual</span> <span class="kt">void</span> <span class="nf">prt</span><span class="p">(</span><span class="kt">void</span><span class="o">*</span> <span class="n">ptr</span><span class="p">)</span> <span class="p">{</span>
+		<span class="n">printf</span><span class="p">(</span><span class="s">&#34;X: %d Y: %d #: %d</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="o">*</span><span class="p">((</span><span class="kt">int</span><span class="o">*</span><span class="p">)</span><span class="n">ptr</span> <span class="o">+</span> <span class="mi">1</span><span class="p">),</span> <span class="o">*</span><span class="p">((</span><span class="kt">int</span><span class="o">*</span><span class="p">)</span><span class="n">ptr</span> <span class="o">+</span> <span class="mi">2</span><span class="p">),</span> <span class="o">*</span><span class="p">((</span><span class="kt">int</span><span class="o">*</span><span class="p">)</span><span class="n">ptr</span> <span class="o">+</span> <span class="mi">3</span><span class="p">));</span>
+	<span class="p">}</span>
+
+<span class="k">private</span><span class="o">:</span>
+	<span class="kt">int</span> <span class="n">c</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+
+	<span class="n">Sub1</span> <span class="n">sub1</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">);</span>
+	<span class="n">Sub1</span> <span class="n">sub2</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">);</span>
+	<span class="n">Sub1</span> <span class="n">sub3</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">);</span>
+
+	<span class="n">sub1</span><span class="p">.</span><span class="n">prt</span><span class="p">(</span><span class="o">&amp;</span><span class="n">sub1</span><span class="p">);</span>
+	<span class="n">sub2</span><span class="p">.</span><span class="n">prt</span><span class="p">(</span><span class="o">&amp;</span><span class="n">sub2</span><span class="p">);</span>
+	<span class="n">sub3</span><span class="p">.</span><span class="n">prt</span><span class="p">(</span><span class="o">&amp;</span><span class="n">sub3</span><span class="p">);</span>
+
+	<span class="n">system</span><span class="p">(</span><span class="s">&#34;pause&#34;</span><span class="p">);</span>
+
+	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div><p>总结：子类成员在对象的前4字节(虚表地址)之后，子类的成员 = 基类的成员 + 子类的成员</p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2022-09-24</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://cui-jiang-tao.github.io/posts/c&#43;&#43;%E5%8F%8D%E6%B1%87%E7%BC%96/" data-title="c&#43;&#43;反汇编(x86)" data-hashtags="反汇编"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://cui-jiang-tao.github.io/posts/c&#43;&#43;%E5%8F%8D%E6%B1%87%E7%BC%96/" data-hashtag="反汇编"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="https://cui-jiang-tao.github.io/posts/c&#43;&#43;%E5%8F%8D%E6%B1%87%E7%BC%96/" data-title="c&#43;&#43;反汇编(x86)"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="https://cui-jiang-tao.github.io/posts/c&#43;&#43;%E5%8F%8D%E6%B1%87%E7%BC%96/" data-title="c&#43;&#43;反汇编(x86)"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@7.3.0/icons/line.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="https://cui-jiang-tao.github.io/posts/c&#43;&#43;%E5%8F%8D%E6%B1%87%E7%BC%96/" data-title="c&#43;&#43;反汇编(x86)"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/%E5%8F%8D%E6%B1%87%E7%BC%96/">反汇编</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/posts/cmake/" class="prev" rel="prev" title="CMake"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>CMake</a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022</span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.5.1/sharer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/typeit@8.6.0/dist/index.umd.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{},"data":{"id-1":"Home","id-2":"Home"},"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"id-1":["id-1"],"id-2":["id-2"]},"duration":-1,"speed":100}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>
