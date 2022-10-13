@@ -1,0 +1,16 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>muduo - Tag - vstk的网站</title>
+        <link>https://cui-jiang-tao.github.io/tags/muduo/</link>
+        <description>muduo - Tag - vstk的网站</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>cjt953899262@gmail.com (cjt)</managingEditor>
+            <webMaster>cjt953899262@gmail.com (cjt)</webMaster><lastBuildDate>Thu, 22 Sep 2022 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://cui-jiang-tao.github.io/tags/muduo/" rel="self" type="application/rss+xml" /><item>
+    <title>muduo库的设计与实现</title>
+    <link>https://cui-jiang-tao.github.io/posts/muduo%E5%BA%93%E7%9A%84%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%AE%9E%E7%8E%B0v1.0/</link>
+    <pubDate>Thu, 22 Sep 2022 00:00:00 &#43;0000</pubDate>
+    <author>cjt</author>
+    <guid>https://cui-jiang-tao.github.io/posts/muduo%E5%BA%93%E7%9A%84%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%AE%9E%E7%8E%B0v1.0/</guid>
+    <description><![CDATA[1. Reactor模式 Reactor 最核心的事件就是事件分发机制，即将IO multiplexing 拿到的IO事件分发给各个文件描述符(fd)的事件处理函数(handle); 1.1 EventLoop]]></description>
+</item>
+</channel>
+</rss>

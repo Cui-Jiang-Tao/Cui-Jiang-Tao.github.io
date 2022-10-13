@@ -13,6 +13,14 @@
     <description><![CDATA[1.类型大小 1. 基本数据类型 printf(&#34;%d\n&#34;, sizeof(char)); //1 printf(&#34;%d\n&#34;, sizeof(short int)); //2 printf(&#34;%d\n&#34;, sizeof(int)); //4 printf(&#34;%d\n&#34;, sizeof(long int)); //4 printf(&#34;%d\n&#34;, sizeof(__int64)); //8 printf(&#34;%d\n&#34;, sizeof(float)); //4 printf(&#34;%d\n&#34;, sizeof(double)); //8 2. 数组类型 char arr1[10] = { 0 }; short arr2[10] = { 0 }; int arr3[10] = { 0 }; printf(&#34;%d\n&#34;, sizeof(arr1)); //10 printf(&#34;%d\n&#34;, sizeof(arr2)); //20 printf(&#34;%d\n&#34;, sizeof(arr3)); //40 printf(&#34;%d\n&#34;, sizeof(arr1[10]));]]></description>
 </item>
 <item>
+    <title>muduo库的设计与实现</title>
+    <link>https://cui-jiang-tao.github.io/posts/muduo%E5%BA%93%E7%9A%84%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%AE%9E%E7%8E%B0v1.0/</link>
+    <pubDate>Thu, 22 Sep 2022 00:00:00 &#43;0000</pubDate>
+    <author>cjt</author>
+    <guid>https://cui-jiang-tao.github.io/posts/muduo%E5%BA%93%E7%9A%84%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%AE%9E%E7%8E%B0v1.0/</guid>
+    <description><![CDATA[1. Reactor模式 Reactor 最核心的事件就是事件分发机制，即将IO multiplexing 拿到的IO事件分发给各个文件描述符(fd)的事件处理函数(handle); 1.1 EventLoop]]></description>
+</item>
+<item>
     <title>CMake</title>
     <link>https://cui-jiang-tao.github.io/posts/cmake/</link>
     <pubDate>Thu, 15 Sep 2022 00:00:00 &#43;0000</pubDate>

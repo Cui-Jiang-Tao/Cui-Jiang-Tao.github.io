@@ -4,30 +4,31 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
-        <title> - vstk的网站</title><meta name="Description" content="This is my cool site"><meta property="og:title" content="" />
+        <title>muduo库的设计与实现 - vstk的网站</title><meta name="Description" content="This is my cool site"><meta property="og:title" content="muduo库的设计与实现" />
 <meta property="og:description" content="1. Reactor模式 Reactor 最核心的事件就是事件分发机制，即将IO multiplexing 拿到的IO事件分发给各个文件描述符(fd)的事件处理函数(handle); 1.1 EventLoop" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://cui-jiang-tao.github.io/posts/muduo%E5%BA%93%E7%9A%84%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%AE%9E%E7%8E%B0v1.0/" />
-<meta property="og:site_name" content="My cool site" />
+<meta property="article:published_time" content="2022-09-22T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-09-22T00:00:00+00:00" /><meta property="og:site_name" content="My cool site" />
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content=""/>
+<meta name="twitter:title" content="muduo库的设计与实现"/>
 <meta name="twitter:description" content="1. Reactor模式 Reactor 最核心的事件就是事件分发机制，即将IO multiplexing 拿到的IO事件分发给各个文件描述符(fd)的事件处理函数(handle); 1.1 EventLoop"/>
 <meta name="application-name" content="My cool site">
 <meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://cui-jiang-tao.github.io/posts/muduo%E5%BA%93%E7%9A%84%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%AE%9E%E7%8E%B0v1.0/" /><link rel="next" href="https://cui-jiang-tao.github.io/posts/first_post/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://cui-jiang-tao.github.io/posts/muduo%E5%BA%93%E7%9A%84%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%AE%9E%E7%8E%B0v1.0/" /><link rel="prev" href="https://cui-jiang-tao.github.io/posts/cmake/" /><link rel="next" href="https://cui-jiang-tao.github.io/posts/c&#43;&#43;%E5%8F%8D%E6%B1%87%E7%BC%96/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
-        "headline": "",
+        "headline": "muduo库的设计与实现",
         "inLanguage": "zh-CN",
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/cui-jiang-tao.github.io\/posts\/muduo%E5%BA%93%E7%9A%84%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%AE%9E%E7%8E%B0v1.0\/"
-        },"genre": "posts","wordcount":  1041 ,
-        "url": "https:\/\/cui-jiang-tao.github.io\/posts\/muduo%E5%BA%93%E7%9A%84%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%AE%9E%E7%8E%B0v1.0\/","publisher": {
+        },"genre": "posts","keywords": "muduo","wordcount":  1090 ,
+        "url": "https:\/\/cui-jiang-tao.github.io\/posts\/muduo%E5%BA%93%E7%9A%84%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%AE%9E%E7%8E%B0v1.0\/","datePublished": "2022-09-22T00:00:00+00:00","dateModified": "2022-09-22T00:00:00+00:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
                 "@type": "Person",
@@ -66,9 +67,9 @@
                 <div class="container"><div class="toc" id="toc-auto">
             <h2 class="toc-title">Contents</h2>
             <div class="toc-content" id="toc-content-auto"></div>
-        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX"></h1><div class="post-meta">
-            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>cjt</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="0001-01-01">0001-01-01</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;1041 words&nbsp;
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">muduo库的设计与实现</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>cjt</a></span>&nbsp;<span class="post-category">included in <a href="/categories/c++/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>c++</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-09-22">2022-09-22</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;1090 words&nbsp;
                 <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;3 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
                 <div class="details-summary toc-title">
@@ -100,6 +101,7 @@
 <li>每个Channel对象自始至终都属于一个EventLoop对象，因此每个Channel对象都只属于某一个IO线程；</li>
 <li>每个Channel对象自始至终只负责一个文件描述符(fd)的IO事件分发，但它并不拥有这个fd，也不会在析构的时候关闭这个fd；</li>
 <li>Channel对象通过fd，会把不同IO事件分为不同的回调，例如：可读、可写、出错等；</li>
+<li>Channel的生命周期由其owner class负责管理，它一般是其他class的直接或间接成员；</li>
 </ol>
 <h3 id="13-poller-class">1.3 Poller class</h3>
 <ol>
@@ -111,14 +113,14 @@
 <blockquote>
 <p>说明：c++标准保证std::vector的元素排列和数组一样；</p>
 </blockquote>
-<p>以上几个class，就构成了Reactor模式的核心内容
-<img
+<p>以上几个class，就构成了Reactor模式的核心内容</p>
+<p><img
         class="lazyload"
         src="/svg/loading.min.svg"
-        data-src="../imgs/muduo/8.1.png"
-        data-srcset="../imgs/muduo/8.1.png, ../imgs/muduo/8.1.png 1.5x, ../imgs/muduo/8.1.png 2x"
+        data-src="../../imgs/muduo/8.1.png"
+        data-srcset="../../imgs/muduo/8.1.png, ../../imgs/muduo/8.1.png 1.5x, ../../imgs/muduo/8.1.png 2x"
         data-sizes="auto"
-        alt="../imgs/muduo/8.1.png"
+        alt="../../imgs/muduo/8.1.png"
         title="Reactor简单时序图" /></p>
 <h3 id="2-timerqueue-定时器">2 TimerQueue 定时器</h3>
 <p>muduo定时器功能由三个class实现,TimerId、Timer、TimerQueue:</p>
@@ -127,38 +129,38 @@
 <li>Timer: 保存事件触发的时间和重新设置事件触发的时间(实现间隙触发)，以及事件发生时绑定的回调函数；</li>
 <li>TimerQueue: 由命名就能知道，该对象核心功能就是对Timer对象的集合进行管理；TimerQueue对象间接引用一个<code>::timerfd_create(CLOCK_MONOTONIC,TFD_NONBLOCK | TFD_CLOEXEC);</code>timerfd，通过timerfd与TimerQueue来实现一个定时器。TimerQueue对象由一个Chanel的间接成员，它负责一个timerfd的事件分发，通过Channel::update()将timerfd的IO事件注册到Poller对象中；</li>
 </ol>
-<p>如下，TimerQueue回调用户代码的时序图：
-<img
+<p>如下，TimerQueue回调用户代码的时序图：</p>
+<p><img
         class="lazyload"
         src="/svg/loading.min.svg"
-        data-src="../imgs/muduo/8.2.png"
-        data-srcset="../imgs/muduo/8.2.png, ../imgs/muduo/8.2.png 1.5x, ../imgs/muduo/8.2.png 2x"
+        data-src="../../imgs/muduo/8.2.png"
+        data-srcset="../../imgs/muduo/8.2.png, ../../imgs/muduo/8.2.png 1.5x, ../../imgs/muduo/8.2.png 2x"
         data-sizes="auto"
-        alt="../imgs/muduo/8.2.png"
+        alt="../../imgs/muduo/8.2.png"
         title="TimerQueue回调时序图" /></p>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>Updated on 0001-01-01</span>
+                <span>Updated on 2022-09-22</span>
             </div></div>
         <div class="post-info-line">
             <div class="post-info-md"></div>
             <div class="post-info-share">
-                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://cui-jiang-tao.github.io/posts/muduo%E5%BA%93%E7%9A%84%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%AE%9E%E7%8E%B0v1.0/" data-title=""><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://cui-jiang-tao.github.io/posts/muduo%E5%BA%93%E7%9A%84%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%AE%9E%E7%8E%B0v1.0/"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="https://cui-jiang-tao.github.io/posts/muduo%E5%BA%93%E7%9A%84%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%AE%9E%E7%8E%B0v1.0/" data-title=""><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="https://cui-jiang-tao.github.io/posts/muduo%E5%BA%93%E7%9A%84%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%AE%9E%E7%8E%B0v1.0/" data-title=""><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@7.3.0/icons/line.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="https://cui-jiang-tao.github.io/posts/muduo%E5%BA%93%E7%9A%84%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%AE%9E%E7%8E%B0v1.0/" data-title=""><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://cui-jiang-tao.github.io/posts/muduo%E5%BA%93%E7%9A%84%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%AE%9E%E7%8E%B0v1.0/" data-title="muduo库的设计与实现" data-hashtags="muduo"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://cui-jiang-tao.github.io/posts/muduo%E5%BA%93%E7%9A%84%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%AE%9E%E7%8E%B0v1.0/" data-hashtag="muduo"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="https://cui-jiang-tao.github.io/posts/muduo%E5%BA%93%E7%9A%84%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%AE%9E%E7%8E%B0v1.0/" data-title="muduo库的设计与实现"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="https://cui-jiang-tao.github.io/posts/muduo%E5%BA%93%E7%9A%84%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%AE%9E%E7%8E%B0v1.0/" data-title="muduo库的设计与实现"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@7.3.0/icons/line.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="https://cui-jiang-tao.github.io/posts/muduo%E5%BA%93%E7%9A%84%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%AE%9E%E7%8E%B0v1.0/" data-title="muduo库的设计与实现"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
             </div>
         </div>
     </div>
 
     <div class="post-info-more">
-        <section class="post-tags"></section>
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/muduo/">muduo</a></section>
         <section>
             <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
         </section>
     </div>
 
-    <div class="post-nav">
-            <a href="/posts/first_post/" class="next" rel="next" title="First_post">First_post<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+    <div class="post-nav"><a href="/posts/cmake/" class="prev" rel="prev" title="CMake"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>CMake</a>
+            <a href="/posts/c&#43;&#43;%E5%8F%8D%E6%B1%87%E7%BC%96/" class="next" rel="next" title="c&#43;&#43;反汇编(x86)">c++反汇编(x86)<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
 </div>
 </article></div>
             </main><footer class="footer">

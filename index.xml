@@ -4,15 +4,39 @@
         <link>https://cui-jiang-tao.github.io/</link>
         <description>This is my cool site</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>cjt953899262@gmail.com (cjt)</managingEditor>
-            <webMaster>cjt953899262@gmail.com (cjt)</webMaster><lastBuildDate>Sat, 24 Sep 2022 00:00:00 &#43;0000</lastBuildDate>
+            <webMaster>cjt953899262@gmail.com (cjt)</webMaster><lastBuildDate>Sun, 09 Oct 2022 00:00:00 &#43;0000</lastBuildDate>
             <atom:link href="https://cui-jiang-tao.github.io/index.xml" rel="self" type="application/rss+xml" />
         <item>
+    <title>TCP/IP网络编程</title>
+    <link>https://cui-jiang-tao.github.io/posts/tcpip%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/</link>
+    <pubDate>Sun, 09 Oct 2022 00:00:00 &#43;0000</pubDate>
+    <author>cjt</author>
+    <guid>https://cui-jiang-tao.github.io/posts/tcpip%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/</guid>
+    <description><![CDATA[1. 理解网络编程和套接字 1.1 套接字概念 在TCP/IP协议中，“IP地址+TCP或UDP端口号”唯一标识网络通讯中的一个进程。“IP地址+端口号”]]></description>
+</item>
+<item>
+    <title>Git</title>
+    <link>https://cui-jiang-tao.github.io/posts/git/</link>
+    <pubDate>Thu, 29 Sep 2022 00:00:00 &#43;0000</pubDate>
+    <author>cjt</author>
+    <guid>https://cui-jiang-tao.github.io/posts/git/</guid>
+    <description><![CDATA[1. 配置 git config --global user.name &quot;Your Name&quot; git config --global user.email &quot;email@example.com&quot; #设置远程仓库 git remote add origin git@github.com:vstk771/gitTest.git 注意： git config命令的&ndash;global参数，用了这个参数，表示你这台机器上]]></description>
+</item>
+<item>
     <title>c&#43;&#43;反汇编(x86)</title>
     <link>https://cui-jiang-tao.github.io/posts/c&#43;&#43;%E5%8F%8D%E6%B1%87%E7%BC%96/</link>
     <pubDate>Sat, 24 Sep 2022 00:00:00 &#43;0000</pubDate>
     <author>cjt</author>
     <guid>https://cui-jiang-tao.github.io/posts/c&#43;&#43;%E5%8F%8D%E6%B1%87%E7%BC%96/</guid>
     <description><![CDATA[1.类型大小 1. 基本数据类型 printf(&#34;%d\n&#34;, sizeof(char)); //1 printf(&#34;%d\n&#34;, sizeof(short int)); //2 printf(&#34;%d\n&#34;, sizeof(int)); //4 printf(&#34;%d\n&#34;, sizeof(long int)); //4 printf(&#34;%d\n&#34;, sizeof(__int64)); //8 printf(&#34;%d\n&#34;, sizeof(float)); //4 printf(&#34;%d\n&#34;, sizeof(double)); //8 2. 数组类型 char arr1[10] = { 0 }; short arr2[10] = { 0 }; int arr3[10] = { 0 }; printf(&#34;%d\n&#34;, sizeof(arr1)); //10 printf(&#34;%d\n&#34;, sizeof(arr2)); //20 printf(&#34;%d\n&#34;, sizeof(arr3)); //40 printf(&#34;%d\n&#34;, sizeof(arr1[10]));]]></description>
+</item>
+<item>
+    <title>muduo库的设计与实现</title>
+    <link>https://cui-jiang-tao.github.io/posts/muduo%E5%BA%93%E7%9A%84%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%AE%9E%E7%8E%B0v1.0/</link>
+    <pubDate>Thu, 22 Sep 2022 00:00:00 &#43;0000</pubDate>
+    <author>cjt</author>
+    <guid>https://cui-jiang-tao.github.io/posts/muduo%E5%BA%93%E7%9A%84%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%AE%9E%E7%8E%B0v1.0/</guid>
+    <description><![CDATA[1. Reactor模式 Reactor 最核心的事件就是事件分发机制，即将IO multiplexing 拿到的IO事件分发给各个文件描述符(fd)的事件处理函数(handle); 1.1 EventLoop]]></description>
 </item>
 <item>
     <title>CMake</title>
@@ -53,14 +77,6 @@
     <author>cjt</author>
     <guid>https://cui-jiang-tao.github.io/posts/first_post/</guid>
     <description><![CDATA[hello ]]></description>
-</item>
-<item>
-    <title></title>
-    <link>https://cui-jiang-tao.github.io/posts/muduo%E5%BA%93%E7%9A%84%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%AE%9E%E7%8E%B0v1.0/</link>
-    <pubDate>Mon, 01 Jan 0001 00:00:00 &#43;0000</pubDate>
-    <author>cjt</author>
-    <guid>https://cui-jiang-tao.github.io/posts/muduo%E5%BA%93%E7%9A%84%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%AE%9E%E7%8E%B0v1.0/</guid>
-    <description><![CDATA[1. Reactor模式 Reactor 最核心的事件就是事件分发机制，即将IO multiplexing 拿到的IO事件分发给各个文件描述符(fd)的事件处理函数(handle); 1.1 EventLoop]]></description>
 </item>
 </channel>
 </rss>
