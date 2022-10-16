@@ -4,7 +4,15 @@
         <link>https://cui-jiang-tao.github.io/posts/</link>
         <description>All Posts | vstk的网站</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>cjt953899262@gmail.com (cjt)</managingEditor>
-            <webMaster>cjt953899262@gmail.com (cjt)</webMaster><lastBuildDate>Sun, 09 Oct 2022 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://cui-jiang-tao.github.io/posts/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>cjt953899262@gmail.com (cjt)</webMaster><lastBuildDate>Sun, 16 Oct 2022 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://cui-jiang-tao.github.io/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>C标准库</title>
+    <link>https://cui-jiang-tao.github.io/posts/c%E6%A0%87%E5%87%86%E5%BA%93/</link>
+    <pubDate>Sun, 16 Oct 2022 00:00:00 &#43;0000</pubDate>
+    <author>cjt</author>
+    <guid>https://cui-jiang-tao.github.io/posts/c%E6%A0%87%E5%87%86%E5%BA%93/</guid>
+    <description><![CDATA[1. 头文件stdio.h 1.1 fopen函数 C 库函数 FILE *fopen(const char *filename, const char *mode) 使用给定的模式 mode 打开 filename 所指向的文件。 #include &lt;stdio.h&gt; FILE *fopen(const char *filename, const char *mode) 调用fopen函数，成功返]]></description>
+</item>
+<item>
     <title>TCP/IP网络编程</title>
     <link>https://cui-jiang-tao.github.io/posts/tcpip%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/</link>
     <pubDate>Sun, 09 Oct 2022 00:00:00 &#43;0000</pubDate>
