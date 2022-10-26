@@ -4,7 +4,15 @@
         <link>https://cui-jiang-tao.github.io/posts/</link>
         <description>All Posts | vstk的网站</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>cjt953899262@gmail.com (cjt)</managingEditor>
-            <webMaster>cjt953899262@gmail.com (cjt)</webMaster><lastBuildDate>Sun, 16 Oct 2022 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://cui-jiang-tao.github.io/posts/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>cjt953899262@gmail.com (cjt)</webMaster><lastBuildDate>Mon, 24 Oct 2022 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://cui-jiang-tao.github.io/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>wireshark抓包</title>
+    <link>https://cui-jiang-tao.github.io/posts/wireshark/</link>
+    <pubDate>Mon, 24 Oct 2022 00:00:00 &#43;0000</pubDate>
+    <author>cjt</author>
+    <guid>https://cui-jiang-tao.github.io/posts/wireshark/</guid>
+    <description><![CDATA[1. 开始前的准备 首先在cmd窗口执行ifconfig命令，查看主机ip地址： C:\Users\Administrator&gt;ipconfig Windows IP 配置 以太网适配器 以太网: 连接特定的 DNS 后缀 . . . . . . . : 本地]]></description>
+</item>
+<item>
     <title>C标准库</title>
     <link>https://cui-jiang-tao.github.io/posts/c%E6%A0%87%E5%87%86%E5%BA%93/</link>
     <pubDate>Sun, 16 Oct 2022 00:00:00 &#43;0000</pubDate>
@@ -75,14 +83,6 @@
     <author>cjt</author>
     <guid>https://cui-jiang-tao.github.io/posts/markdown/</guid>
     <description><![CDATA[1.标题 # h1 标题 ## h2 标题 ### h3 标题 #### h4 标题 ##### h5 标题 ###### h6 标题 2.注释 &lt;!-- 这是一段注释 --&gt; 3.水平线 ___:三个连续的下划线 下面两个警告：MD035/]]></description>
-</item>
-<item>
-    <title>First_post</title>
-    <link>https://cui-jiang-tao.github.io/posts/first_post/</link>
-    <pubDate>Mon, 12 Sep 2022 16:31:50 &#43;0800</pubDate>
-    <author>cjt</author>
-    <guid>https://cui-jiang-tao.github.io/posts/first_post/</guid>
-    <description><![CDATA[hello ]]></description>
 </item>
 </channel>
 </rss>

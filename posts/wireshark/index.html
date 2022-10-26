@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>wireshark抓包 - vstk的网站</title><meta name="Description" content="This is my cool site"><meta property="og:title" content="wireshark抓包" />
+<meta property="og:description" content="1. 开始前的准备 首先在cmd窗口执行ifconfig命令，查看主机ip地址： C:\Users\Administrator&gt;ipconfig Windows IP 配置 以太网适配器 以太网: 连接特定的 DNS 后缀 . . . . . . . : 本地" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://cui-jiang-tao.github.io/posts/wireshark/" />
+<meta property="article:published_time" content="2022-10-24T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-10-24T00:00:00+00:00" /><meta property="og:site_name" content="My cool site" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="wireshark抓包"/>
+<meta name="twitter:description" content="1. 开始前的准备 首先在cmd窗口执行ifconfig命令，查看主机ip地址： C:\Users\Administrator&gt;ipconfig Windows IP 配置 以太网适配器 以太网: 连接特定的 DNS 后缀 . . . . . . . : 本地"/>
+<meta name="application-name" content="My cool site">
+<meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://cui-jiang-tao.github.io/posts/wireshark/" /><link rel="prev" href="https://cui-jiang-tao.github.io/posts/c%E6%A0%87%E5%87%86%E5%BA%93/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "wireshark抓包",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/cui-jiang-tao.github.io\/posts\/wireshark\/"
+        },"genre": "posts","keywords": "wireshark","wordcount":  3954 ,
+        "url": "https:\/\/cui-jiang-tao.github.io\/posts\/wireshark\/","datePublished": "2022-10-24T00:00:00+00:00","dateModified": "2022-10-24T00:00:00+00:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "cjt"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="vstk的网站"><span class="header-title-pre"><i class='far fa-kiss-wink-heart fa-fw' aria-hidden='true'></i></span><span id="id-1" class="typeit"></span></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="vstk的网站"><span class="header-title-pre"><i class='far fa-kiss-wink-heart fa-fw' aria-hidden='true'></i></span><span id="id-2" class="typeit"></span></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/posts/" title="">文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">wireshark抓包</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>cjt</a></span>&nbsp;<span class="post-category">included in <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>计算机网络</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-10-24">2022-10-24</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;3954 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;8 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#1-开始前的准备">1. 开始前的准备</a></li>
+    <li><a href="#2-wireshark界面">2. wireshark界面</a></li>
+    <li><a href="#3-wireshark过滤器表达式的规则">3. wireshark过滤器表达式的规则</a>
+      <ul>
+        <li><a href="#31-抓包过滤器语法和实例">3.1 抓包过滤器语法和实例</a></li>
+        <li><a href="#32-显示过滤器语法和实例">3.2 显示过滤器语法和实例</a></li>
+      </ul>
+    </li>
+    <li><a href="#4-传输层">4. 传输层</a>
+      <ul>
+        <li><a href="#41-tcp协议">4.1 TCP协议</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h2 id="1-开始前的准备">1. 开始前的准备</h2>
+<ol>
+<li>首先在cmd窗口执行<code>ifconfig</code>命令，查看主机ip地址：</li>
+</ol>
+<div class="highlight"><pre class="chroma"><code class="language-cmd" data-lang="cmd">C<span class="p">:</span><span class="nl">\Users\Administrator</span><span class="c1">&gt;ipconfig</span>
+
+Windows IP 配置
+
+以太网适配器 以太网:
+
+   连接特定的 DNS 后缀 . . . . . . . :
+   本地链接 IPv6 地址. . . . . . . . : fe80::5c0e:5588:3612:7a99<span class="nv">%1</span>4
+   IPv4 地址 . . . . . . . . . . . . : 192.168.3.28
+   子网掩码  . . . . . . . . . . . . : 255.255.254.0
+   默认网关. . . . . . . . . . . . . : 192.168.2.1
+</code></pre></div><p>  得到主机地址：192.168.3.28</p>
+<ol start="2">
+<li>
+<p>然后启动wireshark工具开始在网卡(因特网)开始抓包。</p>
+</li>
+<li>
+<p>继续在cmd窗口执行<code>ping</code>命令：</p>
+</li>
+</ol>
+<div class="highlight"><pre class="chroma"><code class="language-cmd" data-lang="cmd">C<span class="p">:</span><span class="nl">\Users\Administrator</span><span class="c1">&gt;ping www.baidu.com</span>
+
+正在 Ping www.a.shifen.com [14.215.177.39] 具有 32 字节的数据:
+来自 14.215.177.39 的回复: 字节=32 时间=7ms TTL=56
+来自 14.215.177.39 的回复: 字节=32 时间=6ms TTL=56
+来自 14.215.177.39 的回复: 字节=32 时间=6ms TTL=56
+来自 14.215.177.39 的回复: 字节=32 时间=7ms TTL=56
+
+14.215.177.39 的 Ping 统计信息:
+    数据包: 已发送 = 4，已接收 = 4，丢失 = 0 (0% 丢失)，
+往返行程的估计时间(以毫秒为单位):
+    最短 = 6ms，最长 = 7ms，平均 = 6ms
+</code></pre></div><p>  可以清楚的知道目标主机ip地址：14.215.177.39</p>
+<ol start="4">
+<li>操作完成后相关数据包就抓取到了，可以通过在过滤栏设置过滤条件进行数据包列表过滤：</li>
+</ol>
+<div class="highlight"><pre class="chroma"><code class="language-cmd" data-lang="cmd">//说明：只显示ICPM协议且源主机IP或者目的主机IP为192.168.3.28的数据包，协议名称icmp要小写。
+ip.addr == 192.168.3.28 and icmp
+</code></pre></div><h2 id="2-wireshark界面">2. wireshark界面</h2>
+<p>WireShark 主要分为这几个界面：</p>
+<ol>
+<li>
+<p>Display Filter(显示过滤器)，  用于设置过滤条件进行数据包列表过滤。</p>
+</li>
+<li>
+<p>Packet List Pane(数据包列表)， 显示捕获到的数据包，每个数据包包含编号，时间戳，源地址，目标地址，协议，长度，以及数据包信息。 不同协议的数据包使用了不同的颜色区分显示。</p>
+</li>
+<li>
+<p>Packet Details Pane(数据包详细信息), 在数据包列表中选择指定数据包，在数据包详细信息中会显示数据包的所有详细信息内容。数据包详细信息面板是最重要的，用来查看协议中的每一个字段。各行信息分别为：</p>
+<ul>
+<li>Frame：物理层的数据帧概况</li>
+<li>Ethernet II：数据链路层以太网帧头部信息</li>
+<li>Internet Protocol Version 4：互联网层IP包头部信息</li>
+<li>Transmission Control Protocol：传输层T的数据段头部信息，此处是TCP</li>
+<li>Hypertext Transfer Protocol：应用层的信息，此处是HTTP协议</li>
+</ul>
+</li>
+</ol>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="../../imgs/wireshark/1.1.png"
+        data-srcset="../../imgs/wireshark/1.1.png, ../../imgs/wireshark/1.1.png 1.5x, ../../imgs/wireshark/1.1.png 2x"
+        data-sizes="auto"
+        alt="../../imgs/wireshark/1.1.png"
+        title="&amp;ldquo;数据包详细信息&amp;rdquo;" /></p>
+<h2 id="3-wireshark过滤器表达式的规则">3. wireshark过滤器表达式的规则</h2>
+<h3 id="31-抓包过滤器语法和实例">3.1 抓包过滤器语法和实例</h3>
+<p>  抓包过滤器类型Type（host、net、port）、方向Dir（src、dst）、协议Proto（ether、ip、tcp、udp、http、icmp、ftp等）、逻辑运算符（&amp;&amp; 与、|| 或、！非）</p>
+<p><strong>1. 协议过滤</strong></p>
+<p>比较简单，直接在抓包过滤框中直接输入协议名即可:</p>
+<ul>
+<li>TCP，只显示TCP协议的数据包列表</li>
+<li>HTTP，只查看HTTP协议的数据包列表</li>
+<li>ICMP，只显示ICMP协议的数据包列表</li>
+</ul>
+<p><strong>2. IP过滤</strong></p>
+<ul>
+<li><code>host 192.168.1.104</code>：主机IP为192.168.1.104的地址</li>
+<li><code>src host 192.168.1.104</code>：源主机IP为192.168.1.104的地址</li>
+<li><code>dst host 192.168.1.104</code>：目标主机IP为192.168.1.104的地址</li>
+</ul>
+<p><strong>3. 端口过滤</strong></p>
+<ul>
+<li><code>port 80</code>：端口为80</li>
+<li><code>src port 80</code>：源端口为80</li>
+<li><code>dst port 80</code>：目标端口为80</li>
+</ul>
+<p><strong>4. 逻辑运算符&amp;&amp; 与、|| 或、！非</strong></p>
+<ul>
+<li><code>src host 192.168.1.104 &amp;&amp; dst port 80</code>：抓取主机地址为192.168.1.80、目的端口为80的数据包</li>
+<li><code>host 192.168.1.104 || host 192.168.1.102</code>：抓取主机为192.168.1.104或者192.168.1.102的数据包</li>
+<li><code>！broadcast</code>：不抓取广播数据包</li>
+</ul>
+<h3 id="32-显示过滤器语法和实例">3.2 显示过滤器语法和实例</h3>
+<p><strong>1. 比较操作符</strong></p>
+<p>比较操作符有== 等于、！= 不等于、&gt; 大于、&lt; 小于、&gt;= 大于等于、&lt;=小于等于。</p>
+<p><strong>2. 协议过滤</strong></p>
+<p>比较简单，直接在Filter框中直接输入协议名即可。<strong>注意：协议名称需要输入小写。</strong></p>
+<ul>
+<li>tcp：只显示TCP协议的数据包列表</li>
+<li>http：只查看HTTP协议的数据包列表</li>
+<li>icmp：只显示ICMP协议的数据包列表</li>
+</ul>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="../../imgs/wireshark/3.2.png"
+        data-srcset="../../imgs/wireshark/3.2.png, ../../imgs/wireshark/3.2.png 1.5x, ../../imgs/wireshark/3.2.png 2x"
+        data-sizes="auto"
+        alt="../../imgs/wireshark/3.2.png"
+        title="&amp;ldquo;协议过滤&amp;rdquo;" /></p>
+<p><strong>3. ip过滤</strong></p>
+<ul>
+<li><code>ip.src == 192.168.1.104</code>：显示源地址为192.168.1.104的数据包列表</li>
+<li><code>ip.dst == 192.168.1.104</code>：显示目标地址为192.168.1.104的数据包列表</li>
+<li><code>ip.addr == 192.168.1.104</code>：显示源IP地址或目标IP地址为192.168.1.104的数据包列表</li>
+</ul>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="../../imgs/wireshark/3.3.png"
+        data-srcset="../../imgs/wireshark/3.3.png, ../../imgs/wireshark/3.3.png 1.5x, ../../imgs/wireshark/3.3.png 2x"
+        data-sizes="auto"
+        alt="../../imgs/wireshark/3.3.png"
+        title="&amp;ldquo;ip过滤&amp;rdquo;" /></p>
+<p><strong>4. 端口过滤</strong></p>
+<ul>
+<li><code>tcp.port == 80</code>：显示源主机或者目的主机端口为80的数据包列表。</li>
+<li><code>tcp.srcport == 80</code>：只显示TCP协议的源主机端口为80的数据包列表。</li>
+<li><code>tcp.dstport == 80</code>：只显示TCP协议的目的主机端口为80的数据包列表。</li>
+</ul>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="../../imgs/wireshark/3.4.png"
+        data-srcset="../../imgs/wireshark/3.4.png, ../../imgs/wireshark/3.4.png 1.5x, ../../imgs/wireshark/3.4.png 2x"
+        data-sizes="auto"
+        alt="../../imgs/wireshark/3.4.png"
+        title="&amp;ldquo;端口过滤&amp;rdquo;" /></p>
+<p><strong>5. Http模式过滤</strong></p>
+<ul>
+<li><code>http.request.method == &quot;GET&quot;</code>：只显示HTTP GET方法的。</li>
+</ul>
+<p><strong>6. 逻辑运算符为 and/or/not</strong></p>
+<p>  过滤多个条件组合时，使用and/or。比如获取IP地址为192.168.1.104的ICMP数据包表达式为：<code>ip.addr == 192.168.1.104 and icmp</code></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="../../imgs/wireshark/3.6.png"
+        data-srcset="../../imgs/wireshark/3.6.png, ../../imgs/wireshark/3.6.png 1.5x, ../../imgs/wireshark/3.6.png 2x"
+        data-sizes="auto"
+        alt="../../imgs/wireshark/3.6.png"
+        title="&amp;ldquo;逻辑运算符&amp;rdquo;" /></p>
+<p><strong>7. 按照数据包内容过滤</strong></p>
+<p>  假设我要以IMCP层中的内容进行过滤，可以单击选中界面中的码流，在下方进行选中数据。如下：</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="../../imgs/wireshark/3.7.1.png"
+        data-srcset="../../imgs/wireshark/3.7.1.png, ../../imgs/wireshark/3.7.1.png 1.5x, ../../imgs/wireshark/3.7.1.png 2x"
+        data-sizes="auto"
+        alt="../../imgs/wireshark/3.7.1.png"
+        title="&amp;quot;&amp;quot;" /></p>
+<p>右键单击选中后出现如下界面：</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="../../imgs/wireshark/3.7.2.png"
+        data-srcset="../../imgs/wireshark/3.7.2.png, ../../imgs/wireshark/3.7.2.png 1.5x, ../../imgs/wireshark/3.7.2.png 2x"
+        data-sizes="auto"
+        alt="../../imgs/wireshark/3.7.2.png"
+        title="&amp;quot;&amp;quot;" /></p>
+<p>选中Select后在过滤器中显示如下：</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="../../imgs/wireshark/3.7.3.png"
+        data-srcset="../../imgs/wireshark/3.7.3.png, ../../imgs/wireshark/3.7.3.png 1.5x, ../../imgs/wireshark/3.7.3.png 2x"
+        data-sizes="auto"
+        alt="../../imgs/wireshark/3.7.3.png"
+        title="&amp;quot;&amp;quot;" /></p>
+<p>后面条件表达式就需要自己填写。如下我想过滤出data数据包中包含&quot;abcd&quot;内容的数据流。包含的关键词是contains 后面跟上内容：</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="../../imgs/wireshark/3.7.4.png"
+        data-srcset="../../imgs/wireshark/3.7.4.png, ../../imgs/wireshark/3.7.4.png 1.5x, ../../imgs/wireshark/3.7.4.png 2x"
+        data-sizes="auto"
+        alt="../../imgs/wireshark/3.7.4.png"
+        title="&amp;quot;&amp;quot;" /></p>
+<h2 id="4-传输层">4. 传输层</h2>
+<h3 id="41-tcp协议">4.1 TCP协议</h3>
+<p>  TCP连接必须要经历三次握手，而释放一个TCP连接需要四次握手，这是由TCP的半关闭特性造成的。因为TCP连接时全双工的，因此，需要TCP两端要单独执行关闭。值得注意的是，主动关闭的一端在发送FIN之后，依然还能正常接收对方的数据，只是通知对方它已经没有数据需要发送了，同理，被动关闭的一端在收到FIN之后，仍然可以发送数据，直到它自身同样发出FIN之后，才停止发送数据。</p>
+<p><strong>TCP报文格式：</strong></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="../../imgs/wireshark/4.1.png"
+        data-srcset="../../imgs/wireshark/4.1.png, ../../imgs/wireshark/4.1.png 1.5x, ../../imgs/wireshark/4.1.png 2x"
+        data-sizes="auto"
+        alt="../../imgs/wireshark/4.1.png"
+        title="&amp;ldquo;TCP报文格式&amp;rdquo;" /></p>
+<ul>
+<li>Source Port和Destination Port：分别占用16位，表示源端口号和目的端口号；用于区别主机中的不同进程，而IP地址是用来区分不同的主机的，源端口号和目的端口号配合上IP首部中的源IP地址和目的IP地址就能唯一的确定一个TCP连接；</li>
+<li>Sequence Number：用来标识从TCP发端向TCP收端发送的数据字节流，它表示在这个报文段中的的第一个数据字节在数据流中的序号；主要用来解决网络报乱序的问题；</li>
+<li>Acknowledgment Number：32位确认序列号包含发送确认的一端所期望收到的下一个序号，因此，确认序号应当是上次已成功收到数据字节序号加1。不过，只有当标志位中的ACK标志（下面介绍）为1时该确认序列号的字段才有效。主要用来解决不丢包的问题；</li>
+<li>Offset：给出首部中32 bit字的数目，需要这个值是因为任选字段的长度是可变的。这个字段占4bit（最多能表示15个32bit的的字，即4*15=60个字节的首部长度），因此TCP最多有60字节的首部。然而，没有任选字段，正常的长度是20字节；</li>
+<li>TCP Flags：TCP首部中有6个标志比特，它们中的多个可同时被设置为1，主要是用于操控TCP的状态机的，依次为<code>URG</code>，<code>ACK</code>，<code>PSH</code>，<code>RST</code>，<code>SYN</code>，<code>FIN</code>。每个标志位的意思如下：
+<ul>
+<li>URG：此标志表示TCP包的紧急指针域（后面马上就要说到）有效，用来保证TCP连接不被中断，并且督促中间层设备要尽快处理这些数据；</li>
+<li>ACK：此标志表示应答域有效，就是说前面所说的TCP应答号将会包含在TCP数据包中；有两个取值：0和1，为1的时候表示应答域有效，反之为0； TCP协议规定，只有ACK=1时有效，也规定连接建立后所有发送的报文的ACK必须为1</li>
+<li>PSH：这个标志位表示Push操作。所谓Push操作就是指在数据包到达接收端以后，立即传送给应用程序，而不是在缓冲区中排队；</li>
+<li>RST：这个标志表示连接复位请求。用来复位那些产生错误的连接，也被用来拒绝错误和非法的数据包；</li>
+<li>SYN：表示同步序号，用来建立连接。SYN标志位和ACK标志位搭配使用，当连接请求的时候，<code>SYN=1</code>，<code>ACK=0</code>；连接被响应的时候，<code>SYN=1</code>，<code>ACK=1</code>；这个标志的数据包经常被用来进行端口扫描。扫描者发送一个只有SYN的数据包，如果对方主机响应了一个数据包回来 ，就表明这台主机存在这个端口；但是由于这种扫描方式只是进行TCP三次握手的第一次握手，因此这种扫描的成功表示被扫描的机器不很安全，一台安全的主机将会强制要求一个连接严格的进行TCP的三次握手；</li>
+<li>FIN： 表示发送端已经达到数据末尾，也就是说双方的数据传送完成，没有数据可以传送了，发送FIN标志位的TCP数据包后，连接将被断开。这个标志的数据包也经常被用于进行端口扫描。</li>
+</ul>
+</li>
+<li>Window：窗口大小</li>
+</ul>
+<p>编写如下代码进行测试：</p>
+<p>sayHello_server.c</p>
+<div class="highlight"><pre class="chroma"><code class="language-c" data-lang="c"><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
+</span><span class="cp">#include</span> <span class="cpf">&lt;stdlib.h&gt;</span><span class="cp">
+</span><span class="cp">#include</span> <span class="cpf">&lt;string.h&gt;</span><span class="cp">
+</span><span class="cp">#include</span> <span class="cpf">&lt;unistd.h&gt;</span><span class="cp">
+</span><span class="cp">#include</span> <span class="cpf">&lt;arpa/inet.h&gt;</span><span class="cp">
+</span><span class="cp">#include</span> <span class="cpf">&lt;sys/socket.h&gt;</span><span class="cp">
+</span><span class="cp"></span>
+<span class="kt">void</span> <span class="nf">error_handling</span><span class="p">(</span><span class="kt">char</span> <span class="o">*</span><span class="n">message</span><span class="p">);</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="kt">char</span> <span class="o">*</span><span class="n">argv</span><span class="p">[])</span>
+<span class="p">{</span>
+	<span class="kt">int</span> <span class="n">serv_sock</span><span class="p">;</span>
+	<span class="kt">int</span> <span class="n">clnt_sock</span><span class="p">;</span>
+
+	<span class="k">struct</span> <span class="n">sockaddr_in</span> <span class="n">serv_addr</span><span class="p">;</span>
+	<span class="k">struct</span> <span class="n">sockaddr_in</span> <span class="n">clnt_addr</span><span class="p">;</span>
+	<span class="n">socklen_t</span> <span class="n">clnt_addr_size</span><span class="p">;</span>
+
+	<span class="kt">char</span> <span class="n">message</span><span class="p">[]</span><span class="o">=</span><span class="s">&#34;Hello World!&#34;</span><span class="p">;</span>
+	
+	<span class="k">if</span><span class="p">(</span><span class="n">argc</span><span class="o">!=</span><span class="mi">2</span><span class="p">){</span>
+		<span class="n">printf</span><span class="p">(</span><span class="s">&#34;Usage : %s &lt;port&gt;</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">argv</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>
+		<span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+	<span class="p">}</span>
+	
+	<span class="c1">//创建服务端socket，通过serv_sock创建与客户端连接的socket
+</span><span class="c1"></span>	<span class="n">serv_sock</span><span class="o">=</span><span class="n">socket</span><span class="p">(</span><span class="n">PF_INET</span><span class="p">,</span> <span class="n">SOCK_STREAM</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+	<span class="k">if</span><span class="p">(</span><span class="n">serv_sock</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+		<span class="n">error_handling</span><span class="p">(</span><span class="s">&#34;socket() error&#34;</span><span class="p">);</span>
+	
+	<span class="c1">//设置描述的地址和端口号
+</span><span class="c1"></span>	<span class="n">memset</span><span class="p">(</span><span class="o">&amp;</span><span class="n">serv_addr</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">serv_addr</span><span class="p">));</span>
+	<span class="n">serv_addr</span><span class="p">.</span><span class="n">sin_family</span><span class="o">=</span><span class="n">AF_INET</span><span class="p">;</span>
+	<span class="n">serv_addr</span><span class="p">.</span><span class="n">sin_addr</span><span class="p">.</span><span class="n">s_addr</span><span class="o">=</span><span class="n">htonl</span><span class="p">(</span><span class="n">INADDR_ANY</span><span class="p">);</span>
+	<span class="n">serv_addr</span><span class="p">.</span><span class="n">sin_port</span><span class="o">=</span><span class="n">htons</span><span class="p">(</span><span class="n">atoi</span><span class="p">(</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">]));</span>
+	
+	<span class="c1">//将socket_fd 和serv_addr进行绑定
+</span><span class="c1"></span>	<span class="k">if</span><span class="p">(</span><span class="n">bind</span><span class="p">(</span><span class="n">serv_sock</span><span class="p">,</span> <span class="p">(</span><span class="k">struct</span> <span class="n">sockaddr</span><span class="o">*</span><span class="p">)</span> <span class="o">&amp;</span><span class="n">serv_addr</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">serv_addr</span><span class="p">))</span><span class="o">==-</span><span class="mi">1</span> <span class="p">)</span>
+		<span class="n">error_handling</span><span class="p">(</span><span class="s">&#34;bind() error&#34;</span><span class="p">);</span> 
+	
+	<span class="c1">//设置排队建立3次握手队列和刚刚建立3次握手队列的连接上限和
+</span><span class="c1"></span>	<span class="k">if</span><span class="p">(</span><span class="n">listen</span><span class="p">(</span><span class="n">serv_sock</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span><span class="o">==-</span><span class="mi">1</span><span class="p">)</span>
+		<span class="n">error_handling</span><span class="p">(</span><span class="s">&#34;listen() error&#34;</span><span class="p">);</span>
+	
+	<span class="k">while</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+		<span class="c1">//阻塞，与客户端建立连接，三次握手 =》 client_fd
+</span><span class="c1"></span>		<span class="n">clnt_addr_size</span><span class="o">=</span><span class="k">sizeof</span><span class="p">(</span><span class="n">clnt_addr</span><span class="p">);</span>  
+		<span class="n">clnt_sock</span><span class="o">=</span><span class="n">accept</span><span class="p">(</span><span class="n">serv_sock</span><span class="p">,</span> <span class="p">(</span><span class="k">struct</span> <span class="n">sockaddr</span><span class="o">*</span><span class="p">)</span><span class="o">&amp;</span><span class="n">clnt_addr</span><span class="p">,</span><span class="o">&amp;</span><span class="n">clnt_addr_size</span><span class="p">);</span>
+		<span class="k">if</span><span class="p">(</span><span class="n">clnt_sock</span><span class="o">==-</span><span class="mi">1</span><span class="p">)</span>
+			<span class="n">error_handling</span><span class="p">(</span><span class="s">&#34;accept() error&#34;</span><span class="p">);</span>  
+		
+		<span class="c1">//给clnt_sock客户连接发送数据: Hello World!
+</span><span class="c1"></span>		<span class="n">write</span><span class="p">(</span><span class="n">clnt_sock</span><span class="p">,</span> <span class="n">message</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">message</span><span class="p">));</span>
+
+		<span class="c1">//关闭连接，close fd
+</span><span class="c1"></span>		<span class="n">close</span><span class="p">(</span><span class="n">clnt_sock</span><span class="p">);</span>	
+	<span class="p">}</span>
+	
+	<span class="n">close</span><span class="p">(</span><span class="n">serv_sock</span><span class="p">);</span>
+	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">error_handling</span><span class="p">(</span><span class="kt">char</span> <span class="o">*</span><span class="n">message</span><span class="p">)</span>
+<span class="p">{</span>
+	<span class="c1">//将错误信息写入到标准错误流
+</span><span class="c1"></span>	<span class="n">fputs</span><span class="p">(</span><span class="n">message</span><span class="p">,</span> <span class="n">stderr</span><span class="p">);</span>
+	<span class="n">fputc</span><span class="p">(</span><span class="sc">&#39;\n&#39;</span><span class="p">,</span> <span class="n">stderr</span><span class="p">);</span>
+	<span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div><p>功能说明：该服务程序，每次有客户端建立了连接，将发送&quot;Hello World!&ldquo;数据给客户端，然后主动关闭连接。</p>
+<p>查看主机ip为：192.168.88.129</p>
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">cjt@cjt-virtual-machine:~/Desktop$ ifconfig
+ens33: <span class="nv">flags</span><span class="o">=</span>4163&lt;UP,BROADCAST,RUNNING,MULTICAST&gt;  mtu 1500
+        inet 192.168.88.129  netmask 255.255.255.0  broadcast 192.168.88.255
+        inet6 fe80::8c62:ec9c:c28d:2b05  prefixlen <span class="m">64</span>  scopeid 0x20&lt;link&gt;
+        ether 00:0c:29:94:b9:cb  txqueuelen <span class="m">1000</span>  <span class="o">(</span>Ethernet<span class="o">)</span>
+        RX packets <span class="m">31660</span>  bytes <span class="m">41281586</span> <span class="o">(</span>41.2 MB<span class="o">)</span>
+        RX errors <span class="m">0</span>  dropped <span class="m">0</span>  overruns <span class="m">0</span>  frame 0
+        TX packets <span class="m">3930</span>  bytes <span class="m">289516</span> <span class="o">(</span>289.5 KB<span class="o">)</span>
+        TX errors <span class="m">0</span>  dropped <span class="m">0</span> overruns <span class="m">0</span>  carrier <span class="m">0</span>  collisions 0
+
+lo: <span class="nv">flags</span><span class="o">=</span>73&lt;UP,LOOPBACK,RUNNING&gt;  mtu 65536
+        inet 127.0.0.1  netmask 255.0.0.0
+        inet6 ::1  prefixlen <span class="m">128</span>  scopeid 0x10&lt;host&gt;
+        loop  txqueuelen <span class="m">1000</span>  <span class="o">(</span>Local Loopback<span class="o">)</span>
+        RX packets <span class="m">6178</span>  bytes <span class="m">505457</span> <span class="o">(</span>505.4 KB<span class="o">)</span>
+        RX errors <span class="m">0</span>  dropped <span class="m">0</span>  overruns <span class="m">0</span>  frame 0
+        TX packets <span class="m">6178</span>  bytes <span class="m">505457</span> <span class="o">(</span>505.4 KB<span class="o">)</span>
+        TX errors <span class="m">0</span>  dropped <span class="m">0</span> overruns <span class="m">0</span>  carrier <span class="m">0</span>  collisions 0
+</code></pre></div><p>启动服务：</p>
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">gcc sayHello_server.c -o sayHello_server
+./sayHello_server <span class="p">&amp;</span>
+</code></pre></div><p>开始监听网卡，然后客户端连接：</p>
+<div class="highlight"><pre class="chroma"><code class="language-cmd" data-lang="cmd">cjt@cjt-virtual-machine:~/Desktop$ telnet 192.168.88.129 8888
+Trying 192.168.88.129...
+Connected to 192.168.88.129.
+Escape character is &#39;<span class="se">^]</span>&#39;.
+Hello World!Connection closed by foreign host.
+</code></pre></div><p>抓包数据：<a href="https://github.com/Cui-Jiang-Tao/resource/blob/master/wireshark/sayHello_tcp.pcapng" target="_blank" rel="noopener noreffer ">sayHello_tcp.pcapng</a></p>
+<blockquote>
+<p>如果无法远程连接23端口，关闭防火墙：<code>sudo ufw disable</code></p>
+</blockquote>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2022-10-24</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://cui-jiang-tao.github.io/posts/wireshark/" data-title="wireshark抓包" data-hashtags="wireshark"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://cui-jiang-tao.github.io/posts/wireshark/" data-hashtag="wireshark"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="https://cui-jiang-tao.github.io/posts/wireshark/" data-title="wireshark抓包"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="https://cui-jiang-tao.github.io/posts/wireshark/" data-title="wireshark抓包"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@7.3.0/icons/line.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="https://cui-jiang-tao.github.io/posts/wireshark/" data-title="wireshark抓包"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/wireshark/">wireshark</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/posts/c%E6%A0%87%E5%87%86%E5%BA%93/" class="prev" rel="prev" title="C标准库"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>C标准库</a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022</span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.5.1/sharer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/typeit@8.6.0/dist/index.umd.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{},"data":{"id-1":"Home","id-2":"Home"},"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"id-1":["id-1"],"id-2":["id-2"]},"duration":-1,"speed":100}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

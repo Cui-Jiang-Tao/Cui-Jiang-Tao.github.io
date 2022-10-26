@@ -1,0 +1,16 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>计算机网络 - Category - vstk的网站</title>
+        <link>https://cui-jiang-tao.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/</link>
+        <description>计算机网络 - Category - vstk的网站</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>cjt953899262@gmail.com (cjt)</managingEditor>
+            <webMaster>cjt953899262@gmail.com (cjt)</webMaster><lastBuildDate>Mon, 24 Oct 2022 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://cui-jiang-tao.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" rel="self" type="application/rss+xml" /><item>
+    <title>wireshark抓包</title>
+    <link>https://cui-jiang-tao.github.io/posts/wireshark/</link>
+    <pubDate>Mon, 24 Oct 2022 00:00:00 &#43;0000</pubDate>
+    <author>cjt</author>
+    <guid>https://cui-jiang-tao.github.io/posts/wireshark/</guid>
+    <description><![CDATA[1. 开始前的准备 首先在cmd窗口执行ifconfig命令，查看主机ip地址： C:\Users\Administrator&gt;ipconfig Windows IP 配置 以太网适配器 以太网: 连接特定的 DNS 后缀 . . . . . . . : 本地]]></description>
+</item>
+</channel>
+</rss>
