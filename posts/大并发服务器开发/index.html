@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>大并发服务器开发 - vstk的网站</title><meta name="Description" content="This is my cool site"><meta property="og:title" content="大并发服务器开发" />
+<meta property="og:description" content="0. 服务器设计的目的 高性能 高可用 故障转移(failover) 伸缩性 library和framework： 库中类相对比较独立，我们编写应用的时候需" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://cui-jiang-tao.github.io/posts/%E5%A4%A7%E5%B9%B6%E5%8F%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%BC%80%E5%8F%91/" />
+<meta property="article:published_time" content="2022-10-31T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-11-08T00:00:00+00:00" /><meta property="og:site_name" content="My cool site" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="大并发服务器开发"/>
+<meta name="twitter:description" content="0. 服务器设计的目的 高性能 高可用 故障转移(failover) 伸缩性 library和framework： 库中类相对比较独立，我们编写应用的时候需"/>
+<meta name="application-name" content="My cool site">
+<meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://cui-jiang-tao.github.io/posts/%E5%A4%A7%E5%B9%B6%E5%8F%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%BC%80%E5%8F%91/" /><link rel="prev" href="https://cui-jiang-tao.github.io/posts/wireshark/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "大并发服务器开发",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/cui-jiang-tao.github.io\/posts\/%E5%A4%A7%E5%B9%B6%E5%8F%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%BC%80%E5%8F%91\/"
+        },"genre": "posts","keywords": "muduo","wordcount":  6655 ,
+        "url": "https:\/\/cui-jiang-tao.github.io\/posts\/%E5%A4%A7%E5%B9%B6%E5%8F%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%BC%80%E5%8F%91\/","datePublished": "2022-10-31T00:00:00+00:00","dateModified": "2022-11-08T00:00:00+00:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "cjt"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="vstk的网站"><span class="header-title-pre"><i class='far fa-kiss-wink-heart fa-fw' aria-hidden='true'></i></span><span id="id-1" class="typeit"></span></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="vstk的网站"><span class="header-title-pre"><i class='far fa-kiss-wink-heart fa-fw' aria-hidden='true'></i></span><span id="id-2" class="typeit"></span></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/posts/" title="">文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">大并发服务器开发</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>cjt</a></span>&nbsp;<span class="post-category">included in <a href="/categories/c/c++/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>c/c++</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-10-31">2022-10-31</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;6655 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;14 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#0-服务器设计的目的">0. 服务器设计的目的</a></li>
+    <li><a href="#1-编程风格">1. 编程风格</a>
+      <ul>
+        <li><a href="#11-面向对象的thread类">1.1 面向对象的Thread类</a></li>
+        <li><a href="#12-基于对象的thread类">1.2 基于对象的Thread类</a></li>
+      </ul>
+    </li>
+    <li><a href="#2-timestamp类">2. Timestamp类</a></li>
+    <li><a href="#3-原子操作">3. 原子操作</a>
+      <ul>
+        <li><a href="#31-提供加减和逻辑运算的原子操作">3.1 提供加减和逻辑运算的原子操作</a></li>
+        <li><a href="#32-原子比较和交换设置操作">3.2 原子比较和交换（设置）操作</a></li>
+        <li><a href="#33-原子赋值操作">3.3 原子赋值操作</a></li>
+        <li><a href="#34-无锁队列的实现">3.4 无锁队列的实现</a></li>
+      </ul>
+    </li>
+    <li><a href="#4-原子类">4. 原子类</a>
+      <ul>
+        <li><a href="#41-atomicintegert类">4.1 AtomicIntegerT类</a></li>
+        <li><a href="#42-volatile关键字">4.2 volatile关键字</a></li>
+      </ul>
+    </li>
+    <li><a href="#5-编译选项">5. 编译选项</a></li>
+    <li><a href="#6-向上转型">6. 向上转型</a></li>
+    <li><a href="#7-exception类">7. Exception类</a></li>
+    <li><a href="#8-线程类">8. 线程类</a>
+      <ul>
+        <li><a href="#81-线程标识线程id">8.1 线程标识(线程ID)</a></li>
+        <li><a href="#82-__thread关键字">8.2 __thread关键字</a></li>
+        <li><a href="#83-stdis_same和stddecay">8.3 std::is_same和std::decay</a></li>
+        <li><a href="#84-pthread_atfork函数">8.4 pthread_atfork()函数</a></li>
+        <li><a href="#85-fork造成死锁的例子">8.5 fork造成死锁的例子</a></li>
+        <li><a href="#86-thread类">8.6 Thread类</a></li>
+      </ul>
+    </li>
+    <li><a href="#9-linux同步机制">9. linux同步机制</a>
+      <ul>
+        <li><a href="#mutexlock类">MutexLock类</a></li>
+        <li><a href="#mutexlockguard类">MutexLockGuard类</a></li>
+        <li><a href="#condition类">Condition类</a></li>
+        <li><a href="#countdownlatch类">CountDownLatch类</a></li>
+      </ul>
+    </li>
+    <li><a href="#10-队列类的实现">10. 队列类的实现</a>
+      <ul>
+        <li><a href="#blockinngqueue类">BlockinngQueue类</a></li>
+        <li><a href="#boundedblockingqueue类">BoundedBlockingQueue类</a></li>
+      </ul>
+    </li>
+    <li><a href="#11-线程池threadpool的实现">11. 线程池ThreadPool的实现</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h2 id="0-服务器设计的目的">0. 服务器设计的目的</h2>
+<ol>
+<li>
+<p>高性能</p>
+</li>
+<li>
+<p>高可用</p>
+<ul>
+<li>故障转移(failover)</li>
+</ul>
+</li>
+<li>
+<p>伸缩性</p>
+</li>
+</ol>
+<p><strong>library和framework：</strong></p>
+<ul>
+<li>库中类相对比较独立，我们编写应用的时候需要编写一些&quot;胶水代码&quot;来粘合。</li>
+<li>框架是能够应用于特定应用领域的，不需要编写过多的&quot;胶水代码&quot;来粘合。</li>
+<li>框架提供用户注册一些回调函数，使得框架能够调用我们所编写的回调函数，这就使得控制反转了。</li>
+</ul>
+<h2 id="1-编程风格">1. 编程风格</h2>
+<ol>
+<li>C编程风格：注册三个全局函数到网络库，网络库通过函数指针来回调。</li>
+<li>面向对象风格：用一个EchoServer继承TcpServer(抽象类)，实现三个接口OnConnection、OnMessage和OnClose。</li>
+<li>基于对象风格：用一个EchoServer包含一个TcpServer(具体类)对象，在构造函数中用boost::bind来注册三个成员函数OnConnection、OnMessage和OnClose。</li>
+</ol>
+<p>简单的Thread类的编程风格，Thread类的结构树如下：</p>
+<pre><code class="language-tree" data-lang="tree">├── CMakeLists.txt
+├── include
+│   ├── MyThread.h
+│   └── Thread.h
+│── src
+│   ├── MyThread.cpp
+│   └── Thread.cpp
+├── main
+</code></pre><h3 id="11-面向对象的thread类">1.1 面向对象的Thread类</h3>
+<p>代码：<a href="https://github.com/Cui-Jiang-Tao/large_concurrency/tree/master/Thread_oo">https://github.com/Cui-Jiang-Tao/large_concurrency/tree/master/Thread_oo</a></p>
+<h3 id="12-基于对象的thread类">1.2 基于对象的Thread类</h3>
+<p>代码：<a href="https://github.com/Cui-Jiang-Tao/large_concurrency/tree/master/Thread_ob">https://github.com/Cui-Jiang-Tao/large_concurrency/tree/master/Thread_ob</a></p>
+<h2 id="2-timestamp类">2. Timestamp类</h2>
+<p>代码：<a href="https://github.com/Cui-Jiang-Tao/large_concurrency/tree/master/Timestamp">https://github.com/Cui-Jiang-Tao/large_concurrency/tree/master/Timestamp</a></p>
+<ul>
+<li>
+<p>值语义：可以拷贝的，拷贝之后，与原对象脱离关系。</p>
+</li>
+<li>
+<p>对象语义：要么是不能拷贝的，要么可以拷贝，拷贝之后与原对象仍然存在一定的关系，比如共享底层资源(要实现自己的拷贝构造函数)。</p>
+</li>
+<li>
+<p>宏<code>BOOST_STATIC_ASSERT</code>：编译时断言。</p>
+</li>
+<li>
+<p><code>assert</code>：是在运行时断言的。</p>
+</li>
+<li>
+<p><code>muduo::copyable</code>：空基类，标识类，值类型。</p>
+</li>
+<li>
+<p><code>boost::equality_comparable</code>：</p>
+</li>
+<li>
+<p><code>less_than_comparable</code>：要求实现&lt;，可自动实现&gt;,&lt;=,&gt;=</p>
+</li>
+</ul>
+<p>使用<code>PRId64</code>，int64_t用来表示64位整数，在32位系统中是long long int，在64位系统中是long int,所以打印int64_t的格式化方法是：</p>
+<div class="highlight"><pre class="chroma"><code class="language-c++" data-lang="c++"><span class="n">printf</span><span class="p">(</span><span class="err">“</span><span class="o">%</span><span class="n">ld</span><span class="err">”</span><span class="p">,</span> <span class="n">value</span><span class="p">);</span>  <span class="c1">// 64bit OS
+</span><span class="c1"></span><span class="n">printf</span><span class="p">(</span><span class="s">&#34;%lld&#34;</span><span class="p">,</span> <span class="n">value</span><span class="p">);</span> <span class="c1">// 32bit OS
+</span></code></pre></div><p>跨平台的做法：</p>
+<div class="highlight"><pre class="chroma"><code class="language-c++" data-lang="c++"><span class="cp">#define __STDC_FORMAT_MACROS
+</span><span class="cp">#include</span> <span class="cpf">&lt;inttypes.h&gt;</span><span class="cp">
+</span><span class="cp">#undef __STDC_FORMAT_MACROS
+</span><span class="cp"></span>
+<span class="n">printf</span><span class="p">(</span><span class="s">&#34;%&#34;</span> <span class="n">PRId64</span> <span class="s">&#34;</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">value</span><span class="p">);</span>  
+</code></pre></div><h2 id="3-原子操作">3. 原子操作</h2>
+<h3 id="31-提供加减和逻辑运算的原子操作">3.1 提供加减和逻辑运算的原子操作</h3>
+<p>gcc从4.1.2提供了__sync_*系列的built-in函数，用于提供加减和逻辑运算的原子操作。gcc原子性操作其声明如下：</p>
+<div class="highlight"><pre class="chroma"><code class="language-c" data-lang="c"><span class="cm">/*返回更新前的值*/</span>
+<span class="n">type</span> <span class="nf">__sync_fetch_and_add</span> <span class="p">(</span><span class="n">type</span> <span class="o">*</span><span class="n">ptr</span><span class="p">,</span> <span class="n">type</span> <span class="n">value</span><span class="p">,</span> <span class="p">...);</span> <span class="c1">// 将value加到*ptr上，结果更新到*ptr，并返回操作之前*ptr的值
+</span><span class="c1"></span><span class="n">type</span> <span class="nf">__sync_fetch_and_sub</span> <span class="p">(</span><span class="n">type</span> <span class="o">*</span><span class="n">ptr</span><span class="p">,</span> <span class="n">type</span> <span class="n">value</span><span class="p">,</span> <span class="p">...);</span> <span class="c1">// 从*ptr减去value，结果更新到*ptr，并返回操作之前*ptr的值
+</span><span class="c1"></span><span class="n">type</span> <span class="nf">__sync_fetch_and_or</span> <span class="p">(</span><span class="n">type</span> <span class="o">*</span><span class="n">ptr</span><span class="p">,</span> <span class="n">type</span> <span class="n">value</span><span class="p">,</span> <span class="p">...);</span>  <span class="c1">// 将*ptr与value相或，结果更新到*ptr， 并返回操作之前*ptr的值
+</span><span class="c1"></span><span class="n">type</span> <span class="nf">__sync_fetch_and_and</span> <span class="p">(</span><span class="n">type</span> <span class="o">*</span><span class="n">ptr</span><span class="p">,</span> <span class="n">type</span> <span class="n">value</span><span class="p">,</span> <span class="p">...);</span> <span class="c1">// 将*ptr与value相与，结果更新到*ptr，并返回操作之前*ptr的值
+</span><span class="c1"></span><span class="n">type</span> <span class="nf">__sync_fetch_and_xor</span> <span class="p">(</span><span class="n">type</span> <span class="o">*</span><span class="n">ptr</span><span class="p">,</span> <span class="n">type</span> <span class="n">value</span><span class="p">,</span> <span class="p">...);</span> <span class="c1">// 将*ptr与value异或，结果更新到*ptr，并返回操作之前*ptr的值
+</span><span class="c1"></span><span class="n">type</span> <span class="nf">__sync_fetch_and_nand</span> <span class="p">(</span><span class="n">type</span> <span class="o">*</span><span class="n">ptr</span><span class="p">,</span> <span class="n">type</span> <span class="n">value</span><span class="p">,</span> <span class="p">...);</span>  <span class="c1">// 将*ptr取反后，与value相与，结果更新到*ptr，并返回操作之前*ptr的值
+</span><span class="c1"></span>
+<span class="cm">/*返回更新后的值*/</span>
+<span class="n">type</span> <span class="nf">__sync_add_and_fetch</span> <span class="p">(</span><span class="n">type</span> <span class="o">*</span><span class="n">ptr</span><span class="p">,</span> <span class="n">type</span> <span class="n">value</span><span class="p">,</span> <span class="p">...);</span> <span class="c1">// 将value加到*ptr上，结果更新到*ptr，并返回操作之后新*ptr的值
+</span><span class="c1"></span><span class="n">type</span> <span class="nf">__sync_sub_and_fetch</span> <span class="p">(</span><span class="n">type</span> <span class="o">*</span><span class="n">ptr</span><span class="p">,</span> <span class="n">type</span> <span class="n">value</span><span class="p">,</span> <span class="p">...);</span> <span class="c1">// 从*ptr减去value，结果更新到*ptr，并返回操作之后新*ptr的值
+</span><span class="c1"></span><span class="n">type</span> <span class="nf">__sync_or_and_fetch</span> <span class="p">(</span><span class="n">type</span> <span class="o">*</span><span class="n">ptr</span><span class="p">,</span> <span class="n">type</span> <span class="n">value</span><span class="p">,</span> <span class="p">...);</span>  <span class="c1">// 将*ptr与value相或， 结果更新到*ptr，并返回操作之后新*ptr的值
+</span><span class="c1"></span><span class="n">type</span> <span class="nf">__sync_and_and_fetch</span> <span class="p">(</span><span class="n">type</span> <span class="o">*</span><span class="n">ptr</span><span class="p">,</span> <span class="n">type</span> <span class="n">value</span><span class="p">,</span> <span class="p">...);</span> <span class="c1">// 将*ptr与value相与，结果更新到*ptr，并返回操作之后新*ptr的值
+</span><span class="c1"></span><span class="n">type</span> <span class="nf">__sync_xor_and_fetch</span> <span class="p">(</span><span class="n">type</span> <span class="o">*</span><span class="n">ptr</span><span class="p">,</span> <span class="n">type</span> <span class="n">value</span><span class="p">,</span> <span class="p">...);</span> <span class="c1">// 将*ptr与value异或，结果更新到*ptr，并返回操作之后新*ptr的值
+</span><span class="c1"></span><span class="n">type</span> <span class="nf">__sync_nand_and_fetch</span> <span class="p">(</span><span class="n">type</span> <span class="o">*</span><span class="n">ptr</span><span class="p">,</span> <span class="n">type</span> <span class="n">value</span><span class="p">,</span> <span class="p">...);</span>  <span class="c1">// 将*ptr取反后，与value相与，结果更新到*ptr，并返回操作之后新*ptr的值
+</span></code></pre></div><p>type可以是1,2,4或8字节长度的int类型，即：</p>
+<div class="highlight"><pre class="chroma"><code class="language-c" data-lang="c"><span class="n">int8_t</span> <span class="o">/</span> <span class="n">uint8_t</span>
+<span class="n">int16_t</span> <span class="o">/</span> <span class="n">uint16_t</span>
+<span class="n">int32_t</span> <span class="o">/</span> <span class="n">uint32_t</span>
+<span class="n">int64_t</span> <span class="o">/</span> <span class="n">uint64_t</span>
+</code></pre></div><p>后面的可扩展参数(&hellip;)用来指出哪些变量需要memory barrier(全屏障),因为目前gcc实现的是full barrier(类似于linux kernel 中的mb(),<strong>表示这个操作之前的所有内存操作不会被重排序到这个操作之后</strong>),所以可以略掉这个参数。</p>
+<p><code>__sync_synchronize (...)</code>：发出一个full barrier(完整内存栅栏)。</p>
+<p>关于memory barrier,cpu会对我们的指令进行排序，一般说来会提高程序的效率，但有时候可能造成我们不希望得到的结果，举一个例子，比如我们有一个硬件设备，它有4个寄存器，当你发出一个操作指令的时候，一个寄存器存的是你的操作指令（比如READ），两个寄存器存的是参数（比如是地址和size），最后一个寄存器是控制寄存器，在所有的参数都设置好之后向其发出指令，设备开始读取参数，执行命令，程序可能如下：</p>
+<div class="highlight"><pre class="chroma"><code class="language-c" data-lang="c"><span class="n">write1</span><span class="p">(</span><span class="n">dev</span><span class="p">.</span><span class="n">register_size</span><span class="p">,</span><span class="n">size</span><span class="p">);</span>
+<span class="n">write1</span><span class="p">(</span><span class="n">dev</span><span class="p">.</span><span class="n">register_addr</span><span class="p">,</span><span class="n">addr</span><span class="p">);</span>
+<span class="n">write1</span><span class="p">(</span><span class="n">dev</span><span class="p">.</span><span class="n">register_cmd</span><span class="p">,</span><span class="n">READ</span><span class="p">);</span>
+<span class="n">write1</span><span class="p">(</span><span class="n">dev</span><span class="p">.</span><span class="n">register_control</span><span class="p">,</span><span class="n">GO</span><span class="p">);</span>
+</code></pre></div><p>如果最后一条write1被换到了前几条语句之前，那么肯定不是我们所期望的，这时候我们可以在最后一条语句之前加入一个memory barrier,强制cpu执行完前面的写入以后再执行最后一条：</p>
+<div class="highlight"><pre class="chroma"><code class="language-c" data-lang="c"><span class="n">write1</span><span class="p">(</span><span class="n">dev</span><span class="p">.</span><span class="n">register_size</span><span class="p">,</span><span class="n">size</span><span class="p">);</span>
+<span class="n">write1</span><span class="p">(</span><span class="n">dev</span><span class="p">.</span><span class="n">register_addr</span><span class="p">,</span><span class="n">addr</span><span class="p">);</span>
+<span class="n">write1</span><span class="p">(</span><span class="n">dev</span><span class="p">.</span><span class="n">register_cmd</span><span class="p">,</span><span class="n">READ</span><span class="p">);</span>
+<span class="n">__sync_synchronize</span><span class="p">();</span>
+<span class="n">write1</span><span class="p">(</span><span class="n">dev</span><span class="p">.</span><span class="n">register_control</span><span class="p">,</span><span class="n">GO</span><span class="p">);</span>
+</code></pre></div><p>memory barrier有几种类型：</p>
+<ul>
+<li>acquire barrier : 不允许将barrier之后的内存读取指令移到barrier之前（linux kernel中的wmb()）。</li>
+<li>release barrier : 不允许将barrier之前的内存读取指令移到barrier之后 (linux kernel中的rmb())。</li>
+<li>full barrier    : 以上两种barrier的合集(linux kernel中的mb())。</li>
+</ul>
+<p>示例如下：</p>
+<div class="highlight"><pre class="chroma"><code class="language-c" data-lang="c"><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
+</span><span class="cp">#include</span> <span class="cpf">&lt;pthread.h&gt;</span><span class="cp">
+</span><span class="cp">#include</span> <span class="cpf">&lt;stdlib.h&gt;</span><span class="cp">
+</span><span class="cp"></span>
+<span class="k">static</span> <span class="kt">int</span> <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+
+<span class="kt">void</span> <span class="o">*</span><span class="nf">test_func</span><span class="p">(</span><span class="kt">void</span> <span class="o">*</span><span class="n">arg</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
+  <span class="k">for</span><span class="p">(</span><span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;</span><span class="mi">20000</span><span class="p">;</span><span class="o">++</span><span class="n">i</span><span class="p">){</span>
+          <span class="n">__sync_fetch_and_add</span><span class="p">(</span><span class="o">&amp;</span><span class="n">count</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span>
+  <span class="p">}</span>
+  <span class="k">return</span> <span class="nb">NULL</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">argv</span><span class="p">[])</span>
+<span class="p">{</span>
+  <span class="n">pthread_t</span> <span class="n">id</span><span class="p">[</span><span class="mi">20</span><span class="p">];</span>
+  <span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+  <span class="c1">//开启20个线程
+</span><span class="c1"></span>  <span class="k">for</span><span class="p">(</span><span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;</span><span class="mi">20</span><span class="p">;</span><span class="o">++</span><span class="n">i</span><span class="p">){</span>
+          <span class="n">pthread_create</span><span class="p">(</span><span class="o">&amp;</span><span class="n">id</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="nb">NULL</span><span class="p">,</span><span class="n">test_func</span><span class="p">,</span><span class="nb">NULL</span><span class="p">);</span>
+  <span class="p">}</span>
+
+  <span class="c1">//等待
+</span><span class="c1"></span>  <span class="k">for</span><span class="p">(</span><span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;</span><span class="mi">20</span><span class="p">;</span><span class="o">++</span><span class="n">i</span><span class="p">){</span>
+          <span class="n">pthread_join</span><span class="p">(</span><span class="n">id</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="nb">NULL</span><span class="p">);</span>
+  <span class="p">}</span>
+
+  <span class="n">printf</span><span class="p">(</span><span class="s">&#34;%d</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span><span class="n">count</span><span class="p">);</span>
+  <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div><h3 id="32-原子比较和交换设置操作">3.2 原子比较和交换（设置）操作</h3>
+<p>  CAS是compare and swap,   简单来说就是，在写入新值之前，读出旧值，当且仅当旧值与存储中的当前值(*ptr)一致时，才把新值写入存储。</p>
+<div class="highlight"><pre class="chroma"><code class="language-c" data-lang="c"><span class="kt">bool</span> <span class="nf">__sync_bool_compare_and_swap</span> <span class="p">(</span><span class="n">type</span> <span class="o">*</span><span class="n">ptr</span><span class="p">,</span> <span class="n">type</span> <span class="n">oldval</span> <span class="n">type</span> <span class="n">newval</span><span class="p">,</span> <span class="p">...);</span>  <span class="c1">// 比较*ptr与oldval的值，如果两者相等，则将newval更新到*ptr并返回true
+</span><span class="c1"></span><span class="n">type</span> <span class="nf">__sync_val_compare_and_swap</span> <span class="p">(</span><span class="n">type</span> <span class="o">*</span><span class="n">ptr</span><span class="p">,</span> <span class="n">type</span> <span class="n">oldval</span> <span class="n">type</span> <span class="n">newval</span><span class="p">,</span> <span class="p">...);</span> <span class="c1">// 比较*ptr与oldval的值，如果两者相等，则将newval更新到*ptr并返回操作之前*ptr的值
+</span></code></pre></div><p>这两个函数提供原子的比较和交换，如果<code>*ptr == oldval</code>,就将<code>newval</code>写入<code>*ptr</code>：</p>
+<ul>
+<li>第一个函数在相等并写入的情况下返回true.</li>
+<li>第二个函数在返回操作之前的值。</li>
+</ul>
+<h3 id="33-原子赋值操作">3.3 原子赋值操作</h3>
+<div class="highlight"><pre class="chroma"><code class="language-c" data-lang="c"><span class="n">type</span> <span class="nf">__sync_lock_test_and_set</span> <span class="p">(</span><span class="n">type</span> <span class="o">*</span><span class="n">ptr</span><span class="p">,</span> <span class="n">type</span> <span class="n">value</span><span class="p">,</span> <span class="p">...);</span> <span class="c1">// 将value写入*ptr，对*ptr加锁，并返回操作之前*ptr的值。即，try spinlock语义
+</span><span class="c1"></span><span class="kt">void</span> <span class="nf">__sync_lock_release</span> <span class="p">(</span><span class="n">type</span> <span class="o">*</span><span class="n">ptr</span><span class="p">,</span> <span class="p">...);</span>  <span class="c1">// 将0写入到*ptr，并对*ptr解锁。即，unlock spinlock语义
+</span></code></pre></div><h3 id="34-无锁队列的实现">3.4 无锁队列的实现</h3>
+<p>参考：<a href="https://coolshell.cn/articles/8239.html">https://coolshell.cn/articles/8239.html</a></p>
+<h2 id="4-原子类">4. 原子类</h2>
+<h3 id="41-atomicintegert类">4.1 AtomicIntegerT类</h3>
+<p>代码：<a href="https://github.com/Cui-Jiang-Tao/large_concurrency/tree/master/Atomic">https://github.com/Cui-Jiang-Tao/large_concurrency/tree/master/Atomic</a></p>
+<h3 id="42-volatile关键字">4.2 volatile关键字</h3>
+<ul>
+<li>volatile的作用：作为指令关键字，确保本条指令不会因编译器的优化而省略，且要求每次直接读值。简单地说就是防止编译器对代码进行优化。</li>
+<li><strong>当要求使用volatile 声明的变量的值的时候，系统总是重新从它所在的内存读取数据，而不是使用保存在寄存器中的备份</strong>。即使它前面的指令刚刚从该处读取过数据。而且读取的数据立刻被保存。</li>
+</ul>
+<h2 id="5-编译选项">5. 编译选项</h2>
+<div class="highlight"><pre class="chroma"><code class="language-cmake" data-lang="cmake"><span class="err">-Wall</span>			<span class="err">//</span> <span class="err">大部分警告</span> <span class="err">
+</span><span class="err">-Wextra</span>			<span class="err">//</span> <span class="err">一些额外的警告
+</span><span class="err">-Werror</span>			<span class="err">//</span> <span class="err">当出现警告时转为错误，停止编译
+</span><span class="err">-Wconversion</span>		<span class="err">//</span> <span class="err">一些可能改变值的隐式转换，给出警告。
+</span><span class="err">-Wno-unused-parameter</span>	<span class="err">//</span> <span class="err">函数中出现未使用的参数，不给出警告。
+</span><span class="err">-Wold-style-cast</span>		<span class="err">//</span> <span class="err">C风格的转换，给出警告
+</span><span class="err">-Woverloaded-virtual</span>	<span class="err">//</span> <span class="err">如果函数的声明隐藏住了基类的虚函数，就给出警告。
+</span><span class="err">-Wpointer-arith</span>		<span class="err">//</span> <span class="err">对函数指针或者void</span> <span class="err">*类型的指针进行算术操作时给出警告
+</span><span class="err">-Wshadow</span>		<span class="err">//</span> <span class="err">当一个局部变量遮盖住了另一个局部变量，或者全局变量时，给出警告。
+</span><span class="err">-Wwrite-strings</span>		<span class="err">//</span> <span class="err">规定字符串常量的类型是const</span> <span class="err">char[length]，因此，把这样的地址复制给</span> <span class="err">non-const</span> <span class="err">char</span> <span class="err">*指针将产生警告.这些警告能够帮助你在编译期间发现企图写入字符串常量</span> <span class="err">的代码
+</span><span class="err">-march=native</span>		<span class="err">//</span> <span class="err">指定cpu体系结构为本地平台
+</span></code></pre></div><h2 id="6-向上转型">6. 向上转型</h2>
+<div class="highlight"><pre class="chroma"><code class="language-c++" data-lang="c++"><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
+</span><span class="cp"></span>
+<span class="kt">void</span> <span class="nf">foo</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="p">}</span>
+
+<span class="k">class</span> <span class="nc">B</span>
+<span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+	<span class="k">virtual</span> <span class="kt">void</span> <span class="n">foo</span><span class="p">()</span>
+	<span class="p">{</span>
+	<span class="p">}</span>
+<span class="p">};</span>
+
+<span class="k">class</span> <span class="nc">D</span> <span class="o">:</span> <span class="k">public</span> <span class="n">B</span>
+<span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+	<span class="kt">void</span> <span class="n">foo</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">)</span>
+	<span class="p">{</span>
+	<span class="p">}</span>
+<span class="p">};</span>
+
+<span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">To</span><span class="p">,</span> <span class="k">typename</span> <span class="n">From</span><span class="o">&gt;</span>
+<span class="kr">inline</span> <span class="n">To</span> <span class="n">implicit_cast</span><span class="p">(</span><span class="n">From</span> <span class="k">const</span> <span class="o">&amp;</span><span class="n">f</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="n">f</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+	<span class="kt">int</span> <span class="n">n</span><span class="p">;</span>
+	<span class="kt">double</span> <span class="n">d</span> <span class="o">=</span> <span class="mf">1.23</span><span class="p">;</span>
+	<span class="n">n</span> <span class="o">=</span> <span class="n">d</span><span class="p">;</span>
+
+	<span class="n">B</span><span class="o">*</span> <span class="n">pb</span><span class="p">;</span>
+	<span class="n">D</span><span class="o">*</span> <span class="n">pd</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>
+
+	<span class="n">pb</span> <span class="o">=</span> <span class="n">pd</span><span class="p">;</span>
+	<span class="n">pb</span> <span class="o">=</span> <span class="n">implicit_cast</span><span class="o">&lt;</span><span class="n">B</span><span class="o">*</span><span class="p">,</span> <span class="n">D</span><span class="o">*&gt;</span><span class="p">(</span><span class="n">pd</span><span class="p">);</span>
+	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div><h2 id="7-exception类">7. Exception类</h2>
+<p>代码：<a href="https://github.com/Cui-Jiang-Tao/large_concurrency/tree/master/Exception">https://github.com/Cui-Jiang-Tao/large_concurrency/tree/master/Exception</a></p>
+<ul>
+<li>backtrace函数：栈回溯，保存各个栈帧的地址。</li>
+<li>backtrace_symbols函数：根据地址，转成相应的函数符号。</li>
+<li>abi::__cxa_demangle函数：将编译器翻译的函数名称转换为自己编写的实际函数名，方便查看。</li>
+</ul>
+<h2 id="8-线程类">8. 线程类</h2>
+<h3 id="81-线程标识线程id">8.1 线程标识(线程ID)</h3>
+<p><strong>一、线程标识</strong></p>
+<ul>
+<li>和进程的pid一样，每个线程也有对应的id即tid。</li>
+<li>在线程中，线程ID的类型是pthread_t类型，由于在Linux下线程采用POSIX标准，所以，在不同的系统下，pthread_t的类型是不同的，比如在ubuntn下，是unsigned long类型，而在solaris系统中，是unsigned int类型。而在FreeBSD上才用的是结构体指针。 所以不能直接使用==判读，而应该使用pthread_equal来判断。</li>
+</ul>
+<p><strong>二、获取线程ID的方法</strong></p>
+<ul>
+<li>gettid或者类似gettid的方法（使用系统调用）</li>
+<li>直接调用pthread_self()函数</li>
+</ul>
+<p><strong>获取线程ID的方法说明：</strong></p>
+<p>1、使用gettid方法</p>
+<p>  gettid并没有直接在glibc中实现，因此无法在程序中直接使用这个函数，与之类似的方法是执行系统调用。</p>
+<ul>
+<li>a.首先查询该系统调用的调用号（在文件arch/arm64/Include/Asm/Unistd32.h中）</li>
+<li>b.使用系统调用来获取内核线程ID</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-c" data-lang="c"><span class="cp">#include</span> <span class="cpf">&lt;sys/syscall.h&gt;  </span><span class="cp">
+</span><span class="cp"></span><span class="n">printf</span><span class="p">(</span><span class="s">&#34;The ID of this thread is: %ld</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="p">(</span><span class="kt">long</span> <span class="kt">int</span><span class="p">)</span><span class="n">syscall</span><span class="p">(</span><span class="mi">224</span><span class="p">));</span>
+</code></pre></div><p>2、直接调用pthread_self()函数获取id</p>
+<div class="highlight"><pre class="chroma"><code class="language-c" data-lang="c"><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
+</span><span class="cp">#include</span> <span class="cpf">&lt;pthread.h&gt;</span><span class="cp">
+</span><span class="cp"></span><span class="n">printf</span><span class="p">(</span><span class="s">&#34;pthread_self: %ld</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">pthread_self</span><span class="p">());</span>
+</code></pre></div><p><strong>三、知识点补充</strong></p>
+<ul>
+<li>线程的标识有两个【内核中的线程ID】【posix描述的线程ID（也就是用户层glibc库中的线程ID）】</li>
+<li>gettid 获取的是内核中真实线程ID, 对于多线程进程来说，每个tid实际是不一样的。而pthread_self获取的是相对于进程的线程控制块的首地址， 只是用来描述同一进程中的不同线程。</li>
+<li>gettid及使用系统调用方法获取到的id是内核中的线程id，pthread_self()获取到的是posix描述的ID</li>
+<li>对于单线程的进程，内核中的tid==pid。对于多线程的进程，他们拥有相同的pid和不同的tid。</li>
+<li>pthread_self()返回的id和内核中线程的id是不一样的，当一个线程退出后，新创建的线程可以复用原来的id</li>
+</ul>
+<p><strong>四、分为两个线程id的原因</strong></p>
+<p>  因为线程库实际上由两部分组成：内核的线程支持+用户态的库支持(glibc)，linux上的线程实现就是在内核支持的基础上以POSIX thread的方式对外封装了接口，所以才会有两个ID的问题。</p>
+<p><strong>五、总结</strong></p>
+<ul>
+<li>Linux中，每个进程有一个pid，类型pid_t，由getpid()取得。Linux下的POSIX线程也有一个id，类型 pthread_t，由pthread_self()取得，该id由线程库维护，其id空间是各个进程独立的（即不同进程中的线程可能有相同的id）。Linux中的POSIX线程库实现的线程其实也是一个进程（LWP），只是该进程与主进程（启动线程的进程）共享一些资源而已，比如代码段，数据段等。</li>
+<li>有时候我们可能需要知道线程的真实pid。比如进程P1要向另外一个进程P2中的某个线程发送信号时，既不能使用P2的pid，更不能使用线程的pthread id，而只能使用该线程的真实pid，称为tid。</li>
+<li>有一个函数gettid()可以得到tid，但glibc并没有实现该函数，只能通过Linux的系统调用syscall来获取。
+<ul>
+<li><code>return syscall(SYS_gettid)</code></li>
+</ul>
+</li>
+</ul>
+<h3 id="82-__thread关键字">8.2 __thread关键字</h3>
+<p>  __thread是GCC内置的线程局部存储设施，存取效率可以和全局变量相比。<strong>__thread变量每一个线程有一份独立实体，各个线程的值互不干扰</strong>。可以用来修饰那些带有全局性且值可能变，但是又不值得用全局变量保护的变量。</p>
+<p>  __thread使用规则：只能修饰POD类型(类似整型指针的标量，不带自定义的构造、拷贝、赋值、析构的类型，二进制内容可以任意复制memset,memcpy,且内容可以复原)，不能修饰class类型，因为无法自动调用构造函数和析构函数，可以用于修饰全局变量，函数内的静态变量，不能修饰函数的局部变量或者class的普通成员变量，且__thread变量值只能初始化为编译器常量(值在编译器就可以确定const int i=5,运行期常量是运行初始化后不再改变const int i=rand()).</p>
+<div class="highlight"><pre class="chroma"><code class="language-c++" data-lang="c++"><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp">
+</span><span class="cp">#include</span> <span class="cpf">&lt;pthread.h&gt;</span><span class="cp">
+</span><span class="cp">#include</span> <span class="cpf">&lt;unistd.h&gt;</span><span class="cp">
+</span><span class="cp"></span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+
+<span class="k">const</span> <span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>
+<span class="n">__thread</span> <span class="kt">int</span> <span class="n">var</span> <span class="o">=</span> <span class="n">i</span><span class="p">;</span> <span class="c1">//两种方式效果一样
+</span><span class="c1">//__thread int var=5;//
+</span><span class="c1"></span>
+<span class="kt">void</span> <span class="o">*</span><span class="nf">worker1</span><span class="p">(</span><span class="kt">void</span> <span class="o">*</span><span class="n">arg</span><span class="p">);</span>
+<span class="kt">void</span> <span class="o">*</span><span class="nf">worker2</span><span class="p">(</span><span class="kt">void</span> <span class="o">*</span><span class="n">arg</span><span class="p">);</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">pthread_t</span> <span class="n">pid1</span><span class="p">,</span> <span class="n">pid2</span><span class="p">;</span>
+  <span class="c1">//__thread int temp=5;
+</span><span class="c1"></span>  <span class="k">static</span> <span class="n">__thread</span> <span class="kt">int</span> <span class="n">temp</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span> <span class="c1">//修饰函数内的static变量
+</span><span class="c1"></span>
+  <span class="n">pthread_create</span><span class="p">(</span><span class="o">&amp;</span><span class="n">pid1</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">,</span> <span class="n">worker1</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">);</span>
+  <span class="n">pthread_create</span><span class="p">(</span><span class="o">&amp;</span><span class="n">pid2</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">,</span> <span class="n">worker2</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">);</span>
+  <span class="n">pthread_join</span><span class="p">(</span><span class="n">pid1</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">);</span>
+  <span class="n">pthread_join</span><span class="p">(</span><span class="n">pid2</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">);</span>
+
+  <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">temp</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span> <span class="c1">//输出10
+</span><span class="c1"></span>
+  <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="o">*</span><span class="nf">worker1</span><span class="p">(</span><span class="kt">void</span> <span class="o">*</span><span class="n">arg</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="o">++</span><span class="n">var</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span> <span class="c1">//输出 6
+</span><span class="c1"></span><span class="p">}</span>
+
+<span class="kt">void</span> <span class="o">*</span><span class="nf">worker2</span><span class="p">(</span><span class="kt">void</span> <span class="o">*</span><span class="n">arg</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>              <span class="c1">//等待线程1改变var值，验证是否影响线程2
+</span><span class="c1"></span>  <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="o">++</span><span class="n">var</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span> <span class="c1">//输出6
+</span><span class="c1"></span><span class="p">}</span>
+</code></pre></div><h3 id="83-stdis_same和stddecay">8.3 std::is_same和std::decay</h3>
+<p>可参考：<a href="https://blog.csdn.net/czyt1988/article/details/52812797">https://blog.csdn.net/czyt1988/article/details/52812797</a></p>
+<p>C++11的模板类型判断——std::is_same和std::decay</p>
+<h3 id="84-pthread_atfork函数">8.4 pthread_atfork()函数</h3>
+<p>可参考：<a href="https://blog.csdn.net/chdhust/article/details/38436153">https://blog.csdn.net/chdhust/article/details/38436153</a></p>
+<div class="highlight"><pre class="chroma"><code class="language-c++" data-lang="c++"><span class="cp">#include</span> <span class="cpf">&lt;pthread.h&gt;</span><span class="cp">
+</span><span class="cp"></span><span class="kt">int</span> <span class="nf">pthread_atfork</span><span class="p">(</span><span class="kt">void</span> <span class="p">(</span><span class="o">*</span><span class="n">prepare</span><span class="p">)(</span><span class="kt">void</span><span class="p">),</span> <span class="kt">void</span> <span class="p">(</span><span class="o">*</span><span class="n">parent</span><span class="p">)(</span><span class="kt">void</span><span class="p">),</span> <span class="kt">void</span> <span class="p">(</span><span class="o">*</span><span class="n">child</span><span class="p">)(</span><span class="kt">void</span><span class="p">));</span>
+</code></pre></div><p>  调用fork时，内部创建子进程前在父进程中会调用prepare，内部创建子进程成功后，父进程会调用parent ，子进程会调用child。也就是说：最先调用prepare函数，只存在下面两种进程调度组合：</p>
+<ul>
+<li>prepare() -&gt; parent() -&gt; child()</li>
+<li>prepare() -&gt; child() -&gt; parent()</li>
+</ul>
+<p>例子：</p>
+<div class="highlight"><pre class="chroma"><code class="language-c++" data-lang="c++"><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
+</span><span class="cp">#include</span> <span class="cpf">&lt;time.h&gt;</span><span class="cp">
+</span><span class="cp">#include</span> <span class="cpf">&lt;pthread.h&gt;</span><span class="cp">
+</span><span class="cp">#include</span> <span class="cpf">&lt;unistd.h&gt;</span><span class="cp">
+</span><span class="cp"></span>
+<span class="kt">void</span> <span class="nf">prepare</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+	<span class="n">printf</span><span class="p">(</span><span class="s">&#34;pid = %d prepare ...</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">(</span><span class="n">getpid</span><span class="p">()));</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">parent</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+	<span class="n">printf</span><span class="p">(</span><span class="s">&#34;pid = %d parent ...</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">(</span><span class="n">getpid</span><span class="p">()));</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">child</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+	<span class="n">printf</span><span class="p">(</span><span class="s">&#34;pid = %d child ...</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">(</span><span class="n">getpid</span><span class="p">()));</span>
+<span class="p">}</span>
+
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+	<span class="n">printf</span><span class="p">(</span><span class="s">&#34;pid = %d Entering main ...</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">(</span><span class="n">getpid</span><span class="p">()));</span>
+
+	<span class="n">pthread_atfork</span><span class="p">(</span><span class="n">prepare</span><span class="p">,</span> <span class="n">parent</span><span class="p">,</span> <span class="n">child</span><span class="p">);</span>
+
+	<span class="n">fork</span><span class="p">();</span>
+
+	<span class="n">printf</span><span class="p">(</span><span class="s">&#34;pid = %d Exiting main ...</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span><span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">(</span><span class="n">getpid</span><span class="p">()));</span>
+
+	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div><h3 id="85-fork造成死锁的例子">8.5 fork造成死锁的例子</h3>
+<p>deadLock_test.cpp</p>
+<div class="highlight"><pre class="chroma"><code class="language-c++" data-lang="c++"><span class="c1">// 一个在多线程程序里fork造成死锁的例子
+</span><span class="c1">// 一个输出示例：
+</span><span class="c1"></span><span class="cm">/*
+</span><span class="cm">
+</span><span class="cm">pid = 19445 Entering main ...
+</span><span class="cm">pid = 19445 begin doit ...
+</span><span class="cm">pid = 19447 begin doit ...
+</span><span class="cm">pid = 19445 end doit ...
+</span><span class="cm">pid = 19445 Exiting main ...
+</span><span class="cm">
+</span><span class="cm">父进程在创建了一个线程，并对mutex加锁，
+</span><span class="cm">父进程创建一个子进程，在子进程中调用doit，由于子进程会复制父进程的内存，这时候mutex处于锁的状态，
+</span><span class="cm">父进程在复制子进程的时候，只会复制当前线程的执行状态，其它线程不会复制。因此子进程会处于死锁的状态。
+</span><span class="cm">*/</span>
+<span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
+</span><span class="cp">#include</span> <span class="cpf">&lt;time.h&gt;</span><span class="cp">
+</span><span class="cp">#include</span> <span class="cpf">&lt;pthread.h&gt;</span><span class="cp">
+</span><span class="cp">#include</span> <span class="cpf">&lt;unistd.h&gt;</span><span class="cp">
+</span><span class="cp"></span>
+
+<span class="n">pthread_mutex_t</span> <span class="n">mutex</span> <span class="o">=</span> <span class="n">PTHREAD_MUTEX_INITIALIZER</span><span class="p">;</span>
+
+<span class="kt">void</span><span class="o">*</span> <span class="nf">doit</span><span class="p">(</span><span class="kt">void</span><span class="o">*</span> <span class="n">arg</span><span class="p">)</span>
+<span class="p">{</span>
+	<span class="n">printf</span><span class="p">(</span><span class="s">&#34;pid = %d begin doit ...</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span><span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">(</span><span class="n">getpid</span><span class="p">()));</span>
+	<span class="n">pthread_mutex_lock</span><span class="p">(</span><span class="o">&amp;</span><span class="n">mutex</span><span class="p">);</span>
+	<span class="k">struct</span> <span class="nc">timespec</span> <span class="n">ts</span> <span class="o">=</span> <span class="p">{</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">};</span>
+	<span class="n">nanosleep</span><span class="p">(</span><span class="o">&amp;</span><span class="n">ts</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">);</span>
+	<span class="n">pthread_mutex_unlock</span><span class="p">(</span><span class="o">&amp;</span><span class="n">mutex</span><span class="p">);</span>
+	<span class="n">printf</span><span class="p">(</span><span class="s">&#34;pid = %d end doit ...</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span><span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">(</span><span class="n">getpid</span><span class="p">()));</span>
+
+	<span class="k">return</span> <span class="nb">NULL</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+	<span class="n">printf</span><span class="p">(</span><span class="s">&#34;pid = %d Entering main ...</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">(</span><span class="n">getpid</span><span class="p">()));</span>
+	<span class="n">pthread_t</span> <span class="n">tid</span><span class="p">;</span>
+	<span class="n">pthread_create</span><span class="p">(</span><span class="o">&amp;</span><span class="n">tid</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">,</span> <span class="n">doit</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">);</span>
+	<span class="k">struct</span> <span class="nc">timespec</span> <span class="n">ts</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">};</span>
+	<span class="n">nanosleep</span><span class="p">(</span><span class="o">&amp;</span><span class="n">ts</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">);</span>
+	<span class="k">if</span> <span class="p">(</span><span class="n">fork</span><span class="p">()</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
+	<span class="p">{</span>
+		<span class="n">doit</span><span class="p">(</span><span class="nb">NULL</span><span class="p">);</span>
+	<span class="p">}</span>
+	<span class="n">pthread_join</span><span class="p">(</span><span class="n">tid</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">);</span>
+	<span class="n">printf</span><span class="p">(</span><span class="s">&#34;pid = %d Exiting main ...</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span><span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">(</span><span class="n">getpid</span><span class="p">()));</span>
+
+	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div><p>deadLock_test2.cpp</p>
+<div class="highlight"><pre class="chroma"><code class="language-c++" data-lang="c++"><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
+</span><span class="cp">#include</span> <span class="cpf">&lt;time.h&gt;</span><span class="cp">
+</span><span class="cp">#include</span> <span class="cpf">&lt;pthread.h&gt;</span><span class="cp">
+</span><span class="cp">#include</span> <span class="cpf">&lt;unistd.h&gt;</span><span class="cp">
+</span><span class="cp"></span>
+
+<span class="n">pthread_mutex_t</span> <span class="n">mutex</span> <span class="o">=</span> <span class="n">PTHREAD_MUTEX_INITIALIZER</span><span class="p">;</span>
+
+<span class="kt">void</span><span class="o">*</span> <span class="nf">doit</span><span class="p">(</span><span class="kt">void</span><span class="o">*</span> <span class="n">arg</span><span class="p">)</span>
+<span class="p">{</span>
+	<span class="n">printf</span><span class="p">(</span><span class="s">&#34;pid = %d begin doit ...</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span><span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">(</span><span class="n">getpid</span><span class="p">()));</span>
+	<span class="n">pthread_mutex_lock</span><span class="p">(</span><span class="o">&amp;</span><span class="n">mutex</span><span class="p">);</span>
+	<span class="k">struct</span> <span class="nc">timespec</span> <span class="n">ts</span> <span class="o">=</span> <span class="p">{</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">};</span>
+	<span class="n">nanosleep</span><span class="p">(</span><span class="o">&amp;</span><span class="n">ts</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">);</span>
+	<span class="n">pthread_mutex_unlock</span><span class="p">(</span><span class="o">&amp;</span><span class="n">mutex</span><span class="p">);</span>
+	<span class="n">printf</span><span class="p">(</span><span class="s">&#34;pid = %d end doit ...</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span><span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">(</span><span class="n">getpid</span><span class="p">()));</span>
+
+	<span class="k">return</span> <span class="nb">NULL</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">prepare</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+	<span class="n">pthread_mutex_unlock</span><span class="p">(</span><span class="o">&amp;</span><span class="n">mutex</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">parent</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+	<span class="n">pthread_mutex_lock</span><span class="p">(</span><span class="o">&amp;</span><span class="n">mutex</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+	<span class="n">pthread_atfork</span><span class="p">(</span><span class="n">prepare</span><span class="p">,</span> <span class="n">parent</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">);</span>
+	<span class="n">printf</span><span class="p">(</span><span class="s">&#34;pid = %d Entering main ...</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">(</span><span class="n">getpid</span><span class="p">()));</span>
+	<span class="n">pthread_t</span> <span class="n">tid</span><span class="p">;</span>
+	<span class="n">pthread_create</span><span class="p">(</span><span class="o">&amp;</span><span class="n">tid</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">,</span> <span class="n">doit</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">);</span>
+	<span class="k">struct</span> <span class="nc">timespec</span> <span class="n">ts</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">};</span>
+	<span class="n">nanosleep</span><span class="p">(</span><span class="o">&amp;</span><span class="n">ts</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">);</span>
+	<span class="k">if</span> <span class="p">(</span><span class="n">fork</span><span class="p">()</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
+	<span class="p">{</span>
+		<span class="n">doit</span><span class="p">(</span><span class="nb">NULL</span><span class="p">);</span>
+	<span class="p">}</span>
+	<span class="n">pthread_join</span><span class="p">(</span><span class="n">tid</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">);</span>
+	<span class="n">printf</span><span class="p">(</span><span class="s">&#34;pid = %d Exiting main ...</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span><span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">(</span><span class="n">getpid</span><span class="p">()));</span>
+
+	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div><h3 id="86-thread类">8.6 Thread类</h3>
+<p>代码：<a href="https://github.com/Cui-Jiang-Tao/large_concurrency/tree/master/Thread">https://github.com/Cui-Jiang-Tao/large_concurrency/tree/master/Thread</a></p>
+<h2 id="9-linux同步机制">9. linux同步机制</h2>
+<h3 id="mutexlock类">MutexLock类</h3>
+<h3 id="mutexlockguard类">MutexLockGuard类</h3>
+<p>MutexLockGuard不管理MutexLock对象的生命周期，它们之间只是关联关系。</p>
+<p>聚合：存在与整体与局部的关系。
+组合：不仅存在与整体与局部的关系，还负责对象的声明周期。</p>
+<h3 id="condition类">Condition类</h3>
+<h3 id="countdownlatch类">CountDownLatch类</h3>
+<ul>
+<li>即可以用于所有子线程等待主线程发起&quot;起跑&rdquo;。</li>
+<li>也可以用于主线程等待子线程初始化完毕才开始工作。</li>
+</ul>
+<h2 id="10-队列类的实现">10. 队列类的实现</h2>
+<h3 id="blockinngqueue类">BlockinngQueue类</h3>
+<p><code>BlockinngQueue&lt;T&gt;</code>：无界缓冲区。</p>
+<h3 id="boundedblockingqueue类">BoundedBlockingQueue类</h3>
+<p><code>BoundedBlockingQueue&lt;T&gt;</code>：有界缓冲区，使用的是环形缓冲区(循环利用，读写覆盖)。</p>
+<h2 id="11-线程池threadpool的实现">11. 线程池ThreadPool的实现</h2>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2022-11-08</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://cui-jiang-tao.github.io/posts/%E5%A4%A7%E5%B9%B6%E5%8F%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%BC%80%E5%8F%91/" data-title="大并发服务器开发" data-hashtags="muduo"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://cui-jiang-tao.github.io/posts/%E5%A4%A7%E5%B9%B6%E5%8F%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%BC%80%E5%8F%91/" data-hashtag="muduo"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="https://cui-jiang-tao.github.io/posts/%E5%A4%A7%E5%B9%B6%E5%8F%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%BC%80%E5%8F%91/" data-title="大并发服务器开发"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="https://cui-jiang-tao.github.io/posts/%E5%A4%A7%E5%B9%B6%E5%8F%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%BC%80%E5%8F%91/" data-title="大并发服务器开发"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@7.3.0/icons/line.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="https://cui-jiang-tao.github.io/posts/%E5%A4%A7%E5%B9%B6%E5%8F%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%BC%80%E5%8F%91/" data-title="大并发服务器开发"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/muduo/">muduo</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/posts/wireshark/" class="prev" rel="prev" title="wireshark抓包"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>wireshark抓包</a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022</span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.5.1/sharer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/typeit@8.6.0/dist/index.umd.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{},"data":{"id-1":"Home","id-2":"Home"},"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"id-1":["id-1"],"id-2":["id-2"]},"duration":-1,"speed":100}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

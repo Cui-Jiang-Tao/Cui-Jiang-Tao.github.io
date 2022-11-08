@@ -4,9 +4,17 @@
         <link>https://cui-jiang-tao.github.io/</link>
         <description>This is my cool site</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>cjt953899262@gmail.com (cjt)</managingEditor>
-            <webMaster>cjt953899262@gmail.com (cjt)</webMaster><lastBuildDate>Mon, 24 Oct 2022 00:00:00 &#43;0000</lastBuildDate>
+            <webMaster>cjt953899262@gmail.com (cjt)</webMaster><lastBuildDate>Mon, 31 Oct 2022 00:00:00 &#43;0000</lastBuildDate>
             <atom:link href="https://cui-jiang-tao.github.io/index.xml" rel="self" type="application/rss+xml" />
         <item>
+    <title>大并发服务器开发</title>
+    <link>https://cui-jiang-tao.github.io/posts/%E5%A4%A7%E5%B9%B6%E5%8F%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%BC%80%E5%8F%91/</link>
+    <pubDate>Mon, 31 Oct 2022 00:00:00 &#43;0000</pubDate>
+    <author>cjt</author>
+    <guid>https://cui-jiang-tao.github.io/posts/%E5%A4%A7%E5%B9%B6%E5%8F%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%BC%80%E5%8F%91/</guid>
+    <description><![CDATA[0. 服务器设计的目的 高性能 高可用 故障转移(failover) 伸缩性 library和framework： 库中类相对比较独立，我们编写应用的时候需]]></description>
+</item>
+<item>
     <title>wireshark抓包</title>
     <link>https://cui-jiang-tao.github.io/posts/wireshark/</link>
     <pubDate>Mon, 24 Oct 2022 00:00:00 &#43;0000</pubDate>
@@ -77,14 +85,6 @@
     <author>cjt</author>
     <guid>https://cui-jiang-tao.github.io/posts/gdb%E8%B0%83%E8%AF%95%E5%99%A8/</guid>
     <description><![CDATA[前言: GDB(GNU Debugger)是一个用来调试C/C++程序的功能强大的调试器，是Linux系统开发 C/C++最常用的调试器 程序员可以使用GDB来]]></description>
-</item>
-<item>
-    <title>Markdown基础语法</title>
-    <link>https://cui-jiang-tao.github.io/posts/markdown/</link>
-    <pubDate>Wed, 14 Sep 2022 00:00:00 &#43;0000</pubDate>
-    <author>cjt</author>
-    <guid>https://cui-jiang-tao.github.io/posts/markdown/</guid>
-    <description><![CDATA[1.标题 # h1 标题 ## h2 标题 ### h3 标题 #### h4 标题 ##### h5 标题 ###### h6 标题 2.注释 &lt;!-- 这是一段注释 --&gt; 3.水平线 ___:三个连续的下划线 下面两个警告：MD035/]]></description>
 </item>
 </channel>
 </rss>

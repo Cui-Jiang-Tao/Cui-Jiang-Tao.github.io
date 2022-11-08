@@ -27,7 +27,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/cui-jiang-tao.github.io\/posts\/muduo%E5%BA%93%E7%9A%84%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%AE%9E%E7%8E%B0v1.0\/"
-        },"genre": "posts","keywords": "muduo","wordcount":  1090 ,
+        },"genre": "posts","keywords": "muduo","wordcount":  1129 ,
         "url": "https:\/\/cui-jiang-tao.github.io\/posts\/muduo%E5%BA%93%E7%9A%84%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%AE%9E%E7%8E%B0v1.0\/","datePublished": "2022-09-22T00:00:00+00:00","dateModified": "2022-09-22T00:00:00+00:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
@@ -69,7 +69,7 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">muduo库的设计与实现</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>cjt</a></span>&nbsp;<span class="post-category">included in <a href="/categories/c++/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>c++</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-09-22">2022-09-22</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;1090 words&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-09-22">2022-09-22</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;1129 words&nbsp;
                 <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;3 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
                 <div class="details-summary toc-title">
@@ -94,6 +94,7 @@
 <ol>
 <li>首先定义EventLoop为不可拷贝的，继承boost::noncopyale即可；</li>
 <li>one loop per thread 顾名思义每个线程只能有一个EventLoop对象，创建了EventLoop的对象是IO线程，其主要功能就是运行事件循环EventLoop:loop();</li>
+<li>EventLoop对象的生命周期通常和所属的现场一样长，它不必是heap对象。</li>
 </ol>
 <h3 id="12-channel-class">1.2 Channel class</h3>
 <ol>

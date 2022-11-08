@@ -5,6 +5,14 @@
         <description>c/c&#43;&#43; - Category - vstk的网站</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>cjt953899262@gmail.com (cjt)</managingEditor>
             <webMaster>cjt953899262@gmail.com (cjt)</webMaster><atom:link href="https://cui-jiang-tao.github.io/categories/c/c&#43;&#43;/" rel="self" type="application/rss+xml" /><item>
+    <title>大并发服务器开发</title>
+    <link>https://cui-jiang-tao.github.io/posts/%E5%A4%A7%E5%B9%B6%E5%8F%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%BC%80%E5%8F%91/</link>
+    <pubDate>Mon, 31 Oct 2022 00:00:00 &#43;0000</pubDate>
+    <author>cjt</author>
+    <guid>https://cui-jiang-tao.github.io/posts/%E5%A4%A7%E5%B9%B6%E5%8F%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%BC%80%E5%8F%91/</guid>
+    <description><![CDATA[0. 服务器设计的目的 高性能 高可用 故障转移(failover) 伸缩性 library和framework： 库中类相对比较独立，我们编写应用的时候需]]></description>
+</item>
+<item>
     <title>C标准库</title>
     <link>https://cui-jiang-tao.github.io/posts/c%E6%A0%87%E5%87%86%E5%BA%93/</link>
     <pubDate>Sun, 16 Oct 2022 00:00:00 &#43;0000</pubDate>
