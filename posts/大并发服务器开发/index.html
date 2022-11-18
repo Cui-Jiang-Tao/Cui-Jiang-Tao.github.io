@@ -5,14 +5,14 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
         <title>大并发服务器开发 - vstk的网站</title><meta name="Description" content="This is my cool site"><meta property="og:title" content="大并发服务器开发" />
-<meta property="og:description" content="0. 服务器设计的目的 高性能 高可用 故障转移(failover) 伸缩性 library和framework： 库中类相对比较独立，我们编写应用的时候需" />
+<meta property="og:description" content="前言 服务器设计的目的 高性能 高可用 故障转移(failover) 伸缩性 library和framework： 库中类相对比较独立，我们编写应用的时候" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://cui-jiang-tao.github.io/posts/%E5%A4%A7%E5%B9%B6%E5%8F%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%BC%80%E5%8F%91/" />
 <meta property="article:published_time" content="2022-10-31T00:00:00+00:00" />
 <meta property="article:modified_time" content="2022-11-08T00:00:00+00:00" /><meta property="og:site_name" content="My cool site" />
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="大并发服务器开发"/>
-<meta name="twitter:description" content="0. 服务器设计的目的 高性能 高可用 故障转移(failover) 伸缩性 library和framework： 库中类相对比较独立，我们编写应用的时候需"/>
+<meta name="twitter:description" content="前言 服务器设计的目的 高性能 高可用 故障转移(failover) 伸缩性 library和framework： 库中类相对比较独立，我们编写应用的时候"/>
 <meta name="application-name" content="My cool site">
 <meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -27,7 +27,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/cui-jiang-tao.github.io\/posts\/%E5%A4%A7%E5%B9%B6%E5%8F%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%BC%80%E5%8F%91\/"
-        },"genre": "posts","keywords": "muduo","wordcount":  6655 ,
+        },"genre": "posts","keywords": "muduo","wordcount":  13461 ,
         "url": "https:\/\/cui-jiang-tao.github.io\/posts\/%E5%A4%A7%E5%B9%B6%E5%8F%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%BC%80%E5%8F%91\/","datePublished": "2022-10-31T00:00:00+00:00","dateModified": "2022-11-08T00:00:00+00:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
@@ -69,8 +69,8 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">大并发服务器开发</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>cjt</a></span>&nbsp;<span class="post-category">included in <a href="/categories/c/c++/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>c/c++</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-10-31">2022-10-31</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;6655 words&nbsp;
-                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;14 minutes&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-10-31">2022-10-31</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;13461 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;27 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
                 <div class="details-summary toc-title">
                     <span>Contents</span>
@@ -78,7 +78,10 @@
                 </div>
                 <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
   <ul>
-    <li><a href="#0-服务器设计的目的">0. 服务器设计的目的</a></li>
+    <li><a href="#前言">前言</a></li>
+  </ul>
+
+  <ul>
     <li><a href="#1-编程风格">1. 编程风格</a>
       <ul>
         <li><a href="#11-面向对象的thread类">1.1 面向对象的Thread类</a></li>
@@ -115,10 +118,9 @@
     </li>
     <li><a href="#9-linux同步机制">9. linux同步机制</a>
       <ul>
-        <li><a href="#mutexlock类">MutexLock类</a></li>
-        <li><a href="#mutexlockguard类">MutexLockGuard类</a></li>
-        <li><a href="#condition类">Condition类</a></li>
-        <li><a href="#countdownlatch类">CountDownLatch类</a></li>
+        <li><a href="#91-mutexlockmutexlockguard类">9.1 MutexLock/MutexLockGuard类</a></li>
+        <li><a href="#92-condition类">9.2 Condition类</a></li>
+        <li><a href="#93-countdownlatch类">9.3 CountDownLatch类</a></li>
       </ul>
     </li>
     <li><a href="#10-队列类的实现">10. 队列类的实现</a>
@@ -128,9 +130,25 @@
       </ul>
     </li>
     <li><a href="#11-线程池threadpool的实现">11. 线程池ThreadPool的实现</a></li>
+    <li><a href="#12-线程安全singleton类">12. 线程安全Singleton类</a>
+      <ul>
+        <li><a href="#121-pthread_once函数详解">12.1 <code>pthread_once()</code>函数详解</a></li>
+        <li><a href="#122-atexit函数详解">12.2 <code>atexit()</code>函数详解</a></li>
+        <li><a href="#123-不完全类型检测">12.3 不完全类型检测</a></li>
+      </ul>
+    </li>
+    <li><a href="#13-线程本地存储threadlock类">13. 线程本地存储ThreadLock类</a></li>
+    <li><a href="#14-threadlocalsingleton类">14. ThreadLocalSingleton类</a></li>
+    <li><a href="#15-日志">15. 日志</a></li>
+    <li><a href="#16-日志滚动">16. 日志滚动</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#17-多线程与并发服务器设计">17. 多线程与并发服务器设计</a></li>
   </ul>
 </nav></div>
-            </div><div class="content" id="content"><h2 id="0-服务器设计的目的">0. 服务器设计的目的</h2>
+            </div><div class="content" id="content"><h2 id="前言">前言</h2>
+<p>服务器设计的目的</p>
 <ol>
 <li>
 <p>高性能</p>
@@ -151,6 +169,7 @@
 <li>框架是能够应用于特定应用领域的，不需要编写过多的&quot;胶水代码&quot;来粘合。</li>
 <li>框架提供用户注册一些回调函数，使得框架能够调用我们所编写的回调函数，这就使得控制反转了。</li>
 </ul>
+<h1 id="第一部分muduo基础库">第一部分：Muduo基础库</h1>
 <h2 id="1-编程风格">1. 编程风格</h2>
 <ol>
 <li>C编程风格：注册三个全局函数到网络库，网络库通过函数指针来回调。</li>
@@ -167,11 +186,11 @@
 │   └── Thread.cpp
 ├── main
 </code></pre><h3 id="11-面向对象的thread类">1.1 面向对象的Thread类</h3>
-<p>代码：<a href="https://github.com/Cui-Jiang-Tao/large_concurrency/tree/master/Thread_oo">https://github.com/Cui-Jiang-Tao/large_concurrency/tree/master/Thread_oo</a></p>
+<p>面向对象的Thread类：<a href="https://github.com/Cui-Jiang-Tao/large_concurrency/tree/master/Thread_oo">https://github.com/Cui-Jiang-Tao/large_concurrency/tree/master/Thread_oo</a></p>
 <h3 id="12-基于对象的thread类">1.2 基于对象的Thread类</h3>
-<p>代码：<a href="https://github.com/Cui-Jiang-Tao/large_concurrency/tree/master/Thread_ob">https://github.com/Cui-Jiang-Tao/large_concurrency/tree/master/Thread_ob</a></p>
+<p>基于对象的Thread类：<a href="https://github.com/Cui-Jiang-Tao/large_concurrency/tree/master/Thread_ob">https://github.com/Cui-Jiang-Tao/large_concurrency/tree/master/Thread_ob</a></p>
 <h2 id="2-timestamp类">2. Timestamp类</h2>
-<p>代码：<a href="https://github.com/Cui-Jiang-Tao/large_concurrency/tree/master/Timestamp">https://github.com/Cui-Jiang-Tao/large_concurrency/tree/master/Timestamp</a></p>
+<p>Timestamp类：<a href="https://github.com/Cui-Jiang-Tao/large_concurrency/tree/master/Timestamp">https://github.com/Cui-Jiang-Tao/large_concurrency/tree/master/Timestamp</a></p>
 <ul>
 <li>
 <p>值语义：可以拷贝的，拷贝之后，与原对象脱离关系。</p>
@@ -297,7 +316,7 @@
 <p>参考：<a href="https://coolshell.cn/articles/8239.html">https://coolshell.cn/articles/8239.html</a></p>
 <h2 id="4-原子类">4. 原子类</h2>
 <h3 id="41-atomicintegert类">4.1 AtomicIntegerT类</h3>
-<p>代码：<a href="https://github.com/Cui-Jiang-Tao/large_concurrency/tree/master/Atomic">https://github.com/Cui-Jiang-Tao/large_concurrency/tree/master/Atomic</a></p>
+<p>AtomicIntegerT类：<a href="https://github.com/Cui-Jiang-Tao/large_concurrency/tree/master/Atomic">https://github.com/Cui-Jiang-Tao/large_concurrency/tree/master/Atomic</a></p>
 <h3 id="42-volatile关键字">4.2 volatile关键字</h3>
 <ul>
 <li>volatile的作用：作为指令关键字，确保本条指令不会因编译器的优化而省略，且要求每次直接读值。简单地说就是防止编译器对代码进行优化。</li>
@@ -357,7 +376,7 @@
 	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div><h2 id="7-exception类">7. Exception类</h2>
-<p>代码：<a href="https://github.com/Cui-Jiang-Tao/large_concurrency/tree/master/Exception">https://github.com/Cui-Jiang-Tao/large_concurrency/tree/master/Exception</a></p>
+<p>Exception类：<a href="https://github.com/Cui-Jiang-Tao/large_concurrency/tree/master/Exception">https://github.com/Cui-Jiang-Tao/large_concurrency/tree/master/Exception</a></p>
 <ul>
 <li>backtrace函数：栈回溯，保存各个栈帧的地址。</li>
 <li>backtrace_symbols函数：根据地址，转成相应的函数符号。</li>
@@ -593,25 +612,345 @@
 	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div><h3 id="86-thread类">8.6 Thread类</h3>
-<p>代码：<a href="https://github.com/Cui-Jiang-Tao/large_concurrency/tree/master/Thread">https://github.com/Cui-Jiang-Tao/large_concurrency/tree/master/Thread</a></p>
+<p>Thread类：<a href="https://github.com/Cui-Jiang-Tao/large_concurrency/tree/master/Thread">https://github.com/Cui-Jiang-Tao/large_concurrency/tree/master/Thread</a></p>
 <h2 id="9-linux同步机制">9. linux同步机制</h2>
-<h3 id="mutexlock类">MutexLock类</h3>
-<h3 id="mutexlockguard类">MutexLockGuard类</h3>
-<p>MutexLockGuard不管理MutexLock对象的生命周期，它们之间只是关联关系。</p>
-<p>聚合：存在与整体与局部的关系。
-组合：不仅存在与整体与局部的关系，还负责对象的声明周期。</p>
-<h3 id="condition类">Condition类</h3>
-<h3 id="countdownlatch类">CountDownLatch类</h3>
+<h3 id="91-mutexlockmutexlockguard类">9.1 MutexLock/MutexLockGuard类</h3>
+<blockquote>
+<p>RAII技法参考：<a href="https://blog.csdn.net/u013700510/article/details/49253381" target="_blank" rel="noopener noreffer ">借刀杀对象&ndash;Raii技法</a></p>
+</blockquote>
+<p>RAII技法：<a href="https://github.com/Cui-Jiang-Tao/large_concurrency/tree/master/RAII">https://github.com/Cui-Jiang-Tao/large_concurrency/tree/master/RAII</a></p>
+<p>  MutexLockGuard(使用RAII技法封装)不管理MutexLock对象的生命周期，它们之间只是关联关系。</p>
+<ul>
+<li>聚合：存在与整体与局部的关系。</li>
+<li>组合：不仅存在与整体与局部的关系，还负责对象的声明周期。</li>
+</ul>
+<p>MutexLock/MutexLockGuard类：<a href="https://github.com/Cui-Jiang-Tao/large_concurrency/tree/master/Mutex">https://github.com/Cui-Jiang-Tao/large_concurrency/tree/master/Mutex</a></p>
+<h3 id="92-condition类">9.2 Condition类</h3>
+<p>Condition类：<a href="https://github.com/Cui-Jiang-Tao/large_concurrency/tree/master/Condition">https://github.com/Cui-Jiang-Tao/large_concurrency/tree/master/Condition</a></p>
+<blockquote>
+<p>unix条件变量参考：<a href="https://blog.csdn.net/yixianfeng41/article/details/50458041" target="_blank" rel="noopener noreffer ">unix同步——条件变量</a>，
+<a href="https://blog.csdn.net/qq_18998145/article/details/99646973" target="_blank" rel="noopener noreffer ">linux条件变量</a></p>
+</blockquote>
+<h3 id="93-countdownlatch类">9.3 CountDownLatch类</h3>
+<p>CountDownLatch类：<a href="https://github.com/Cui-Jiang-Tao/large_concurrency/tree/master/CountDownLatch">https://github.com/Cui-Jiang-Tao/large_concurrency/tree/master/CountDownLatch</a></p>
+<p>  CountDownLatch中count down是倒数的意思，latch则是门闩的含义。整体含义可以理解为倒数的门栓，似乎有一点“三二一，芝麻开门”的感觉。CountDownLatch的作用也是如此，在构造CountDownLatch的时候需要传入一个整数n，在这个整数“倒数”到0之前，主线程需要等待在门口，而这个“倒数”过程则是由各个执行线程驱动的，每个线程执行完一个任务“倒数”一次。总结来说，CountDownLatch的作用就是等待其他的线程都执行完任务，必要时可以对各个任务的执行结果进行汇总，然后主线程才继续往下执行。</p>
 <ul>
 <li>即可以用于所有子线程等待主线程发起&quot;起跑&rdquo;。</li>
 <li>也可以用于主线程等待子线程初始化完毕才开始工作。</li>
 </ul>
 <h2 id="10-队列类的实现">10. 队列类的实现</h2>
 <h3 id="blockinngqueue类">BlockinngQueue类</h3>
+<p>BlockinngQueue类：<a href="https://github.com/Cui-Jiang-Tao/large_concurrency/tree/master/BlockingQueue">https://github.com/Cui-Jiang-Tao/large_concurrency/tree/master/BlockingQueue</a></p>
 <p><code>BlockinngQueue&lt;T&gt;</code>：无界缓冲区。</p>
 <h3 id="boundedblockingqueue类">BoundedBlockingQueue类</h3>
+<p>BoundedBlockingQueue类：<a href="https://github.com/Cui-Jiang-Tao/large_concurrency/tree/master/BoundedBlockingQueue">https://github.com/Cui-Jiang-Tao/large_concurrency/tree/master/BoundedBlockingQueue</a></p>
 <p><code>BoundedBlockingQueue&lt;T&gt;</code>：有界缓冲区，使用的是环形缓冲区(循环利用，读写覆盖)。</p>
 <h2 id="11-线程池threadpool的实现">11. 线程池ThreadPool的实现</h2>
+<p>ThreadPool类：<a href="https://github.com/Cui-Jiang-Tao/large_concurrency/tree/master/ThreadPool">https://github.com/Cui-Jiang-Tao/large_concurrency/tree/master/ThreadPool</a></p>
+<p>线程池问题本质上也是生产者和消费者的问题。ThreadPool存在两个队列：</p>
+<ol>
+<li>线程队列：一旦任务队列有任务就唤醒线程队列中的线程(可以理解为消费者线程)来执行这些任务。</li>
+<li>任务队列：外部线程(可以认为是生产者线程)可以向任务队列添加任务。</li>
+</ol>
+<h2 id="12-线程安全singleton类">12. 线程安全Singleton类</h2>
+<p>Singleton类：<a href="https://github.com/Cui-Jiang-Tao/large_concurrency/tree/master/Singleton">https://github.com/Cui-Jiang-Tao/large_concurrency/tree/master/Singleton</a></p>
+<ul>
+<li><code>pthread_once</code>：某个函数只能被执行一次，这样就能保存对象只能是一个，并且是线程安全的。</li>
+<li><code>atexit</code>：注册一个销毁的函数，让程序结束的时候自动调用该函数来销毁对象。在<code>stdlib.h</code>头文件中。</li>
+<li><code>typedef char T_must_be_complete_type[sizeof(T) == 0 ? -1 : 1];</code>：能保证我们取地址的时候，如果是一个不完全类型的指针在编译期就会报错，而不是警告。</li>
+</ul>
+<h3 id="121-pthread_once函数详解">12.1 <code>pthread_once()</code>函数详解</h3>
+<p> 在多线程环境中，有些事仅需要执行一次。通常当初始化应用程序时，可以比较容易地将其放在main函数中。但当你写一个库时，就不能在main里面初始化了，你可以用静态初始化，但使用一次初始化（pthread_once）会比较容易些。</p>
+<p><code>int pthread_once(pthread_once_t *once_control, void (*init_routine) (void))</code></p>
+<ul>
+<li>
+<p>功能：本函数使用初值为PTHREAD_ONCE_INIT的once_control变量保证init_routine()函数在本进程执行序列中仅执行一次。</p>
+</li>
+<li>
+<p>在多线程编程环境下，尽管pthread_once()调用会出现在多个线程中，init_routine()函数仅执行一次，究竟在哪个线程中执行是不定的，是由内核调度来决定。</p>
+</li>
+<li>
+<p>Linux Threads使用互斥锁和条件变量保证由pthread_once()指定的函数执行且仅执行一次，而once_control表示是否执行过。</p>
+</li>
+<li>
+<p>如果once_control的初值不是PTHREAD_ONCE_INIT（Linux Threads定义为0），pthread_once() 的行为就会不正常。</p>
+</li>
+<li>
+<p>在LinuxThreads中，实际&quot;一次性函数&quot;的执行状态有三种：NEVER（0）、IN_PROGRESS（1）、DONE （2），如果once初值设为1，则由于所有pthread_once()都必须等待其中一个激发&quot;已执行一次&quot;信号，因此所有pthread_once ()都会陷入永久的等待中；如果设为2，则表示该函数已执行过一次，从而所有pthread_once()都会立即返回0。</p>
+</li>
+</ul>
+<h3 id="122-atexit函数详解">12.2 <code>atexit()</code>函数详解</h3>
+<p>  对C语言有所了解的人都知道main函数是整个程序的入口，但是其实不然，在内核中可以使用链接器来设置程序的开始地方。当内核使⽤⼀个exec函数执⾏C程序时，在调⽤main函数之前先调⽤⼀个特殊的启动例程，可执⾏程序将此例程指定为程序的起始地址。启动例程从内核获取命令⾏参数和环境变量，然后为调⽤main函数做好准备。</p>
+<p>  前面我们关注的是程序开始进入时的调用函数，而atexit函数是一个特殊的函数，它是在正常程序退出时调用的函数，我们把他叫为<strong>登记函数</strong>。</p>
+<p><code>int atexit (void (*)(void))</code></p>
+<p>  ⼀个进程可以登记若⼲个（具体⾃⼰验证⼀下）个函数，这些函数由exit⾃动调⽤，这些函数被称为终⽌处理函数，atexit函数可以登记这些函数。 <strong>exit调⽤终⽌处理函数的顺序和atexit登记的顺序相反</strong>（网上很多说造成顺序相反的原因是参数压栈造成的，参数的压栈是先进后出，和函数的栈帧相同），如果⼀个函数被多次登记，也会被多次调⽤。</p>
+<p>atexit函数调用时机：</p>
+<p>进程终⽌的⽅式有8种，前5种为正常终⽌，后三种为异常终⽌：</p>
+<ol>
+<li>从main函数返回；</li>
+<li>调⽤exit函数；</li>
+<li>调⽤_exit或_Exit；</li>
+<li>最后⼀个线程从启动例程返回；</li>
+<li>最后⼀个线程调⽤pthread_exit；</li>
+<li>调⽤abort函数；</li>
+<li>接到⼀个信号并终⽌；</li>
+<li>最后⼀个线程对取消请求做出响应。</li>
+</ol>
+<p>exit()和_exit()以及_Exit()函数的本质区别是是否立即进入内核，_exit()以及_Exit()函数都是在调用后立即进入内核，而不会执行一些清理处理，但是exit()则会执行一些清理处理，这也是为什么会存在atexit()函数的原因，因为exit()函数需要执行清理处理，需要执行一系列的操作，这些终止处理函数实际上就是完成各种所谓的清除操作的实际执行体。</p>
+<p>下面我们来验证atexit的调用顺序和退出顺序：</p>
+<div class="highlight"><pre class="chroma"><code class="language-c++" data-lang="c++"><span class="cp">#include</span><span class="cpf">&lt;stdio.h&gt; </span><span class="cp">
+</span><span class="cp">#include</span><span class="cpf">&lt;stdlib.h&gt;  //atexit函数所属头文件</span><span class="cp">
+</span><span class="cp"></span>   
+<span class="kt">void</span> <span class="nf">func1</span><span class="p">()</span> 
+<span class="p">{</span> 
+    <span class="n">printf</span><span class="p">(</span><span class="s">&#34;The process is done...</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">);</span> 
+<span class="p">}</span> 
+<span class="kt">void</span> <span class="nf">func2</span><span class="p">()</span> 
+<span class="p">{</span> 
+    <span class="n">printf</span><span class="p">(</span><span class="s">&#34;Clean up the processing</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">);</span> 
+<span class="p">}</span> 
+<span class="kt">void</span> <span class="nf">func3</span><span class="p">()</span> 
+<span class="p">{</span> 
+    <span class="n">printf</span><span class="p">(</span><span class="s">&#34;Exit sucessful..</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">);</span> 
+<span class="p">}</span> 
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> 
+<span class="p">{</span> 
+　　<span class="c1">//其作用是注册某一个函数，当进程执行结束时，会自动调用注册的函数
+</span><span class="c1"></span>　　<span class="c1">//注册几次，就执行几次
+</span><span class="c1"></span>    <span class="n">atexit</span><span class="p">(</span><span class="n">func1</span><span class="p">);</span> 
+    <span class="n">atexit</span><span class="p">(</span><span class="n">func2</span><span class="p">);</span> 
+    <span class="n">atexit</span><span class="p">(</span><span class="n">func3</span><span class="p">);</span> 
+    <span class="n">exit</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span> 
+<span class="p">}</span> 
+</code></pre></div><p>我们可以看到atexit函数的调用顺序是和登记顺序相反的。</p>
+<p>atexit函数的用途也是比较广泛的：可以按照你予设的顺序摧毁全局变量（类），例如有个log类，你在其它的全局类里也有可能调用到Log类写日志。所以log 类必须最后被析构 。假如没有规定析构顺序，那么程序在退出时将有可能首先析构log类，那么其它的全局类在此时将无法正确写日志。 把数据写回文件, 删除临时文件, 这才是真正有用的.</p>
+<h3 id="123-不完全类型检测">12.3 不完全类型检测</h3>
+<p>typedef关键字参考：<a href="https://thinkerou.com/post/typedef-keyword/" target="_blank" rel="noopener noreffer ">关键字Typedef深入了解</a></p>
+<p>sizeof(T)疑问参考：<a href="https://github.com/chenshuo/muduo/issues/301" target="_blank" rel="noopener noreffer ">关于ThreadLocalSingleton.h中判断complete type的疑问</a></p>
+<blockquote>
+<ul>
+<li>关键字 typedef 是在编译阶段有效，因此 typedef 有类型检查的功能。</li>
+<li>sizeof(T)虽然在编译器完成了计算，但是不一定会报错，不一定~~</li>
+</ul>
+</blockquote>
+<p>Boost库，在头文件checked_delete.hpp中的用于释放空间的类模板函<code>checked_array_delete(T * x)</code>：</p>
+<div class="highlight"><pre class="chroma"><code class="language-c++" data-lang="c++"><span class="k">template</span><span class="o">&lt;</span><span class="k">class</span> <span class="nc">T</span><span class="o">&gt;</span> <span class="kr">inline</span> <span class="kt">void</span> <span class="n">checked_array_delete</span><span class="p">(</span><span class="n">T</span> <span class="o">*</span> <span class="n">x</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">typedef</span> <span class="kt">char</span> <span class="n">type_must_be_complete</span><span class="p">[</span><span class="k">sizeof</span><span class="p">(</span><span class="n">T</span><span class="p">)</span> <span class="o">?</span> <span class="mi">1</span><span class="o">:</span> <span class="o">-</span><span class="mi">1</span><span class="p">];</span>  
+    <span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">type_must_be_complete</span><span class="p">);</span>  
+    <span class="k">delete</span> <span class="p">[]</span> <span class="n">x</span><span class="p">;</span>  
+<span class="p">}</span>
+</code></pre></div><p>这是一种不完全类型检测：T如果不是不完全类型那么<code>sizeof(T)</code>就应该是<code>type_must_be_complete[-1]</code>，数组是不能为负数的，所以就会报错；</p>
+<p>什么又是不完全类型呢？简单理解就是类型的定义不完整，比如只对类进行了声明，却未定义；</p>
+<p>我们应该尽量让错误在编译时出现，而不是在执行时，所用可以用到不完全类型检测的方法，在编译的时候就会对这种情况报错；</p>
+<p>可以通过<code>size_t temp = sizeof(T)</code>来判断，但是这个只能在运行期发现错误。</p>
+<h2 id="13-线程本地存储threadlock类">13. 线程本地存储ThreadLock类</h2>
+<p>线程特定数据：</p>
+<ul>
+<li>在单线程程序中，我们经常要用到&quot;全局变量&quot;以实现多个函数间共享数据。</li>
+<li>在多线程环境下，由于数据空间是共享的，因此全局变量也为所有线程所共有。</li>
+<li>但有时应用程序设计中有必要提供线程私有的全局变量，仅在某个线程中有效，但却可以跨多个函数访问。</li>
+<li>POSIX线程库通过维护一定的数据结构来解决这个问题，这个些数据称为(Thread-specific Data，或 TSD)。</li>
+<li>线程特定数据也称为线程本地存储TLS(Thread-local storage)。</li>
+<li>对于POD类型的线程本地存储，可以用<code>__thread</code>关键字。</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-c++" data-lang="c++"><span class="cp">#include</span> <span class="cpf">&lt;pthread.h&gt;</span><span class="cp">
+</span><span class="cp"></span>
+<span class="kt">int</span> <span class="nf">pthread_key_create</span> <span class="p">(</span><span class="n">pthread_key_t</span> <span class="o">*</span><span class="n">__key</span><span class="p">,</span> <span class="kt">void</span> <span class="p">(</span><span class="o">*</span><span class="n">__destr_function</span><span class="p">)</span> <span class="p">(</span><span class="kt">void</span> <span class="o">*</span><span class="p">));</span>
+<span class="kt">int</span> <span class="nf">pthread_key_delete</span> <span class="p">(</span><span class="n">pthread_key_t</span> <span class="n">__key</span><span class="p">);</span>
+
+<span class="kt">void</span> <span class="o">*</span><span class="nf">pthread_getspecific</span> <span class="p">(</span><span class="n">pthread_key_t</span> <span class="n">__key</span><span class="p">);</span>
+<span class="kt">int</span> <span class="nf">pthread_setspecific</span> <span class="p">(</span><span class="n">pthread_key_t</span> <span class="n">__key</span><span class="p">,</span> <span class="k">const</span> <span class="kt">void</span> <span class="o">*</span><span class="n">__pointer</span><span class="p">);</span>
+</code></pre></div><p>说明：</p>
+<ul>
+<li>函数 <code>pthread_key_create()</code>用来创建线程私有数据。该函数从 TSD 池中分配一项，将其地址值赋给 key 供以后访问使用。第 2 个参数是一个销毁函数，它是可选的，可以为 NULL，为 NULL 时，则系统调用默认的销毁函数进行相关的数据注销。如果不为空，则在线程退出时(调用<code>pthread_exit()</code>函数)时将以 key 锁关联的数据作为参数调用它，以释放分配的缓冲区，或是关闭文件流等。</li>
+<li>不论哪个线程调用了<code>pthread_key_create()</code>，所创建的 key 都是所有线程可以访问的，但各个线程可以根据自己的需要往 key 中填入不同的值，相当于提供了一个同名而不同值的全局变量(这个全局变量相对于拥有这个变量的线程来说)。</li>
+<li>注销一个 TSD 使用<code>pthread_key_delete()</code> 函数。该函数并不检查当前是否有线程正在使用该 TSD，也不会调用清理函数(destructor function)，而只是将 TSD 释放以供下一次调用<code>pthread_key_create()</code>使用。在 LinuxThread 中，它还会将与之相关的线程数据项设置为 NULL。</li>
+</ul>
+<blockquote>
+<p>pthread_key_delete()：销毁线程特定数据键。由于键已无效，因此将释放与该键关联的所有内存。<strong>在调用该函数之前必须释放所有线程的特定资源，该函数不会调用任何析构函数</strong>。反复调用pthread_key_create与pthread_key_delete可能会产生问题。对于每个所需的键，应当只调用pthread_key_create一次。</p>
+</blockquote>
+<p>  在多线程程序中，经常要用全局变量来实现多个函数间的数据共享。由于数据空间是共享的，因此全局变量也为所有进程共有。但有时应用程序设计中必要提供线程私有的全局变量，这个变量仅在线程中有效，但却可以跨过多个函数访问。</p>
+<p>  比如在程序里可能需要每个线程维护一个链表，而会使用相同的函数来操作这个链表，最简单的方法就是使用同名而不同变量地址的线程相关数据结构。这样的数据结构可以由 Posix 线程库维护，成为线程私有数据 (Thread-specific Data，或称为 TSD)。</p>
+<p>示例一，线程私有数据：</p>
+<div class="highlight"><pre class="chroma"><code class="language-c++" data-lang="c++"><span class="cp">#include</span> <span class="cpf">&lt;pthread.h&gt;</span><span class="cp">
+</span><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
+</span><span class="cp">#include</span> <span class="cpf">&lt;stdlib.h&gt;</span><span class="cp">
+</span><span class="cp">#include</span> <span class="cpf">&lt;unistd.h&gt;</span><span class="cp">
+</span><span class="cp"></span>
+<span class="n">pthread_key_t</span> <span class="n">key</span><span class="p">;</span>
+
+<span class="k">struct</span> <span class="nc">test_struct</span> <span class="p">{</span>
+  <span class="kt">int</span> <span class="n">i</span><span class="p">;</span>
+  <span class="kt">float</span> <span class="n">k</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="kt">void</span> <span class="o">*</span><span class="nf">child1</span><span class="p">(</span><span class="kt">void</span> <span class="o">*</span><span class="n">arg</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">struct</span> <span class="nc">test_struct</span> <span class="n">struct_data</span><span class="p">;</span>
+  <span class="n">struct_data</span><span class="p">.</span><span class="n">i</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+  <span class="n">struct_data</span><span class="p">.</span><span class="n">k</span> <span class="o">=</span> <span class="mf">3.1415</span><span class="p">;</span>
+
+  <span class="n">pthread_setspecific</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">struct_data</span><span class="p">);</span>
+  <span class="n">printf</span><span class="p">(</span><span class="s">&#34;结构体struct_data的地址为 0x%p</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="o">&amp;</span><span class="p">(</span><span class="n">struct_data</span><span class="p">));</span>
+  <span class="n">printf</span><span class="p">(</span><span class="s">&#34;child1 中 pthread_getspecific(key)返回的指针为:0x%p</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span>
+         <span class="p">(</span><span class="k">struct</span> <span class="nc">test_struct</span> <span class="o">*</span><span class="p">)</span><span class="n">pthread_getspecific</span><span class="p">(</span><span class="n">key</span><span class="p">));</span>
+  <span class="n">printf</span><span class="p">(</span>
+      <span class="s">&#34;利用 pthread_getspecific(key)打印 child1 &#34;</span>
+      <span class="s">&#34;线程中与key关联的结构体中成员值:</span><span class="se">\n</span><span class="s">struct_data.i:%d</span><span class="se">\n</span><span class="s">struct_data.k: %f</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span>
+      <span class="p">((</span><span class="k">struct</span> <span class="nc">test_struct</span> <span class="o">*</span><span class="p">)</span><span class="n">pthread_getspecific</span><span class="p">(</span><span class="n">key</span><span class="p">))</span><span class="o">-&gt;</span><span class="n">i</span><span class="p">,</span>
+      <span class="p">((</span><span class="k">struct</span> <span class="nc">test_struct</span> <span class="o">*</span><span class="p">)</span><span class="n">pthread_getspecific</span><span class="p">(</span><span class="n">key</span><span class="p">))</span><span class="o">-&gt;</span><span class="n">k</span><span class="p">);</span>
+  <span class="n">printf</span><span class="p">(</span><span class="s">&#34;------------------------------------------------------</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="o">*</span><span class="nf">child2</span><span class="p">(</span><span class="kt">void</span> <span class="o">*</span><span class="n">arg</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kt">int</span> <span class="n">temp</span> <span class="o">=</span> <span class="mi">20</span><span class="p">;</span>
+  <span class="n">sleep</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+  <span class="n">printf</span><span class="p">(</span><span class="s">&#34;child2 中变量 temp 的地址为 0x%p</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">temp</span><span class="p">);</span>
+  <span class="n">pthread_setspecific</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">temp</span><span class="p">);</span>
+  <span class="n">printf</span><span class="p">(</span><span class="s">&#34;child2 中 pthread_getspecific(key)返回的指针为:0x%p</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span>
+         <span class="p">(</span><span class="kt">int</span> <span class="o">*</span><span class="p">)</span><span class="n">pthread_getspecific</span><span class="p">(</span><span class="n">key</span><span class="p">));</span>
+  <span class="n">printf</span><span class="p">(</span><span class="s">&#34;利用 pthread_getspecific(key)打印 child2 &#34;</span>
+         <span class="s">&#34;线程中与key关联的整型变量temp 值:%d</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span>
+         <span class="o">*</span><span class="p">((</span><span class="kt">int</span> <span class="o">*</span><span class="p">)</span><span class="n">pthread_getspecific</span><span class="p">(</span><span class="n">key</span><span class="p">)));</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">pthread_t</span> <span class="n">tid1</span><span class="p">,</span> <span class="n">tid2</span><span class="p">;</span>
+
+  <span class="c1">//创建线程私有数据
+</span><span class="c1"></span>  <span class="n">pthread_key_create</span><span class="p">(</span><span class="o">&amp;</span><span class="n">key</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">);</span>
+
+  <span class="n">pthread_create</span><span class="p">(</span><span class="o">&amp;</span><span class="n">tid1</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">,</span> <span class="n">child1</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">);</span>
+  <span class="n">pthread_create</span><span class="p">(</span><span class="o">&amp;</span><span class="n">tid2</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">,</span> <span class="n">child2</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">);</span>
+
+  <span class="n">pthread_join</span><span class="p">(</span><span class="n">tid1</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">);</span>
+  <span class="n">pthread_join</span><span class="p">(</span><span class="n">tid2</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">);</span>
+
+  <span class="c1">//将TSD释放以供下一次调用
+</span><span class="c1"></span>  <span class="n">pthread_key_delete</span><span class="p">(</span><span class="n">key</span><span class="p">);</span>
+
+  <span class="k">return</span> <span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div><p>output：</p>
+<div class="highlight"><pre class="chroma"><code class="language-txt" data-lang="txt">结构体struct_data的地址为 0x0x7ffff7a57ea0
+child1 中 pthread_getspecific(key)返回的指针为:0x0x7ffff7a57ea0
+利用 pthread_getspecific(key)打印 child1 线程中与key关联的结构体中成员值:
+struct_data.i:10
+struct_data.k: 3.141500
+------------------------------------------------------
+child2 中变量 temp 的地址为 0x0x7ffff7256ea4
+child2 中 pthread_getspecific(key)返回的指针为:0x0x7ffff7256ea4
+利用 pthread_getspecific(key)打印 child2 线程中与key关联的整型变量temp 值:20
+</code></pre></div><p>  由输出可见，pthread_getspecific() 返回的是与key 相关联数据的指针。需要注意的是，在利用这个返回的指针时，它首先是 void 类型的，它虽然指向关联的数据地址处，但并不知道指向的数据类型，所以在具体使用时，要对其进行强制类型转换。</p>
+<p>  其次，两个线程对自己的私有数据操作是互相不影响的。也就是说哦，虽然 key 是同名且全局，但访问的内存空间并不是相同的一个。key 就像是一个数据管理员，线程的私有数据只是到他那去注册，让它知道你这个数据的存在。</p>
+<p>示例二，线程与私有数据：</p>
+<div class="highlight"><pre class="chroma"><code class="language-c++" data-lang="c++"><span class="cp">#include</span> <span class="cpf">&lt;pthread.h&gt;</span><span class="cp">
+</span><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp">
+</span><span class="cp"></span>
+<span class="n">pthread_key_t</span> <span class="n">thread_log_key</span><span class="p">;</span>
+
+<span class="cm">/*通用函数里可以利用 pthread_getspecific() 处理线程各自的私有数据*/</span>
+<span class="kt">void</span> <span class="nf">write_to_thread_log</span><span class="p">(</span><span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">message</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">FILE</span> <span class="o">*</span><span class="n">thread_log</span> <span class="o">=</span> <span class="p">(</span><span class="n">FILE</span> <span class="o">*</span><span class="p">)</span><span class="n">pthread_getspecific</span><span class="p">(</span><span class="n">thread_log_key</span><span class="p">);</span>
+  <span class="n">fprintf</span><span class="p">(</span><span class="n">thread_log</span><span class="p">,</span> <span class="s">&#34;%s </span><span class="se">\n</span><span class="s"> &#34;</span><span class="p">,</span> <span class="n">message</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">close_thread_log</span><span class="p">(</span><span class="kt">void</span> <span class="o">*</span><span class="n">thread_log</span><span class="p">)</span> <span class="p">{</span> <span class="n">fclose</span><span class="p">((</span><span class="n">FILE</span> <span class="o">*</span><span class="p">)</span><span class="n">thread_log</span><span class="p">);</span> <span class="p">}</span>
+
+<span class="kt">void</span> <span class="o">*</span><span class="nf">thread_function</span><span class="p">(</span><span class="kt">void</span> <span class="o">*</span><span class="n">args</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kt">char</span> <span class="n">thread_log_filename</span><span class="p">[</span><span class="mi">128</span><span class="p">];</span>
+  <span class="kt">char</span> <span class="n">thread_start_message</span><span class="p">[</span><span class="mi">128</span><span class="p">];</span>
+  <span class="n">FILE</span> <span class="o">*</span><span class="n">thread_log</span><span class="p">;</span>
+
+  <span class="n">sprintf</span><span class="p">(</span><span class="n">thread_log_filename</span><span class="p">,</span> <span class="s">&#34;thread_%u.log&#34;</span><span class="p">,</span> <span class="n">pthread_self</span><span class="p">());</span>
+  <span class="n">thread_log</span> <span class="o">=</span> <span class="n">fopen</span><span class="p">(</span><span class="n">thread_log_filename</span><span class="p">,</span> <span class="s">&#34;w&#34;</span><span class="p">);</span>
+  <span class="n">pthread_setspecific</span><span class="p">(</span><span class="n">thread_log_key</span><span class="p">,</span>
+                      <span class="n">thread_log</span><span class="p">);</span> <span class="c1">//每个线程都设置自己的私有数据
+</span><span class="c1"></span>
+  <span class="n">sprintf</span><span class="p">(</span><span class="n">thread_start_message</span><span class="p">,</span> <span class="s">&#34;thread %u starting&#34;</span><span class="p">,</span> <span class="n">pthread_self</span><span class="p">());</span>
+  <span class="n">write_to_thread_log</span><span class="p">(</span><span class="n">thread_start_message</span><span class="p">);</span>
+  <span class="n">pthread_exit</span><span class="p">(</span><span class="nb">NULL</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">pthread_t</span> <span class="n">threads</span><span class="p">[</span><span class="mi">5</span><span class="p">];</span>
+
+  <span class="cm">/*创建私有数据键,close_thread_log 在线程退出时对 key 关联数据进行清理*/</span>
+  <span class="n">pthread_key_create</span><span class="p">(</span><span class="o">&amp;</span><span class="n">thread_log_key</span><span class="p">,</span> <span class="n">close_thread_log</span><span class="p">);</span>
+
+  <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">5</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+    <span class="n">pthread_create</span><span class="p">(</span><span class="o">&amp;</span><span class="n">threads</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="nb">NULL</span><span class="p">,</span> <span class="n">thread_function</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">);</span> <span class="c1">//创建多线程
+</span><span class="c1"></span>
+  <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">5</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+    <span class="n">pthread_join</span><span class="p">(</span><span class="n">threads</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="nb">NULL</span><span class="p">);</span> <span class="c1">//等待各个线程结束
+</span><span class="c1"></span>
+  <span class="k">return</span> <span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div><p>C++全局对象的初始化和销毁：<a href="https://blog.csdn.net/veghlreywg/article/details/103293482" target="_blank" rel="noopener noreffer ">C++全局对象的初始化顺序问题思考</a></p>
+<p>ThreadLocal类：<a href="https://github.com/Cui-Jiang-Tao/large_concurrency/tree/master/ThreadLocal">https://github.com/Cui-Jiang-Tao/large_concurrency/tree/master/ThreadLocal</a></p>
+<p>Singleton 和 ThreadLocal的配合使用：<a href="https://github.com/Cui-Jiang-Tao/large_concurrency/tree/master/Singleton_And_ThreadLocal">https://github.com/Cui-Jiang-Tao/large_concurrency/tree/master/Singleton_And_ThreadLocal</a></p>
+<p>值得注意的是：<code>#define STL muduo::Singleton&lt;muduo::ThreadLocal&lt;Test&gt;&gt;::instance().value()</code></p>
+<blockquote>
+<p>STL宏简要分析：muduo::ThreadLocal对象只被构造了一次，而Test对象，有几个线程使用STL就存在几个构造；因为ThreadLocal对象保证了Test对象每个线程独有一份。</p>
+</blockquote>
+<h2 id="14-threadlocalsingleton类">14. ThreadLocalSingleton类</h2>
+<p>ThreadLocalSingleton类：<a href="https://github.com/Cui-Jiang-Tao/large_concurrency/tree/master/ThreadLocalSingleton">https://github.com/Cui-Jiang-Tao/large_concurrency/tree/master/ThreadLocalSingleton</a></p>
+<h2 id="15-日志">15. 日志</h2>
+<p><strong>日志作用：</strong></p>
+<p>开发过程中：</p>
+<ul>
+<li>调试错误</li>
+<li>更好的理解程序</li>
+</ul>
+<p>运行过程中：</p>
+<ul>
+<li>诊断系统故障并处理</li>
+<li>记录系统运行状态</li>
+</ul>
+<blockquote>
+<p>建议在实际开发更多使用日志进行调试，而不是GDB。</p>
+</blockquote>
+<p><strong>日志级别：</strong></p>
+<ul>
+<li>TRACE：指出比DEBUG粒度更细的一些信息事件（开发过程中使用）</li>
+<li>DEBUG：指出细粒度信息事件对调试应用程序是非常有帮助的。（开发过程中使用）</li>
+<li>INFO：表明消息在粗粒度级别上突出强调应用程序的运行过程。</li>
+<li>WARN：系统能正常运行，但可能会出现潜在错误的情形。</li>
+<li>ERROR：指出虽然发生错误事件，但仍然不影响系统的继续运行。</li>
+<li>FATAL：指出每个严重的错误事件将会导致应用程序的退出。</li>
+</ul>
+<p><strong>Logger使用时序图：</strong></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="../../imgs/large_concurrency/Logger.png"
+        data-srcset="../../imgs/large_concurrency/Logger.png, ../../imgs/large_concurrency/Logger.png 1.5x, ../../imgs/large_concurrency/Logger.png 2x"
+        data-sizes="auto"
+        alt="../../imgs/large_concurrency/Logger.png"
+        title="Logger使用时序图：" /></p>
+<blockquote>
+<p>Logger =&gt; Impl =&gt; LogStream =&gt; operator&laquo; FixedBuffer =&gt; g_output =&gt; g_flush</p>
+</blockquote>
+<p>安装boost测试框架：<code>sudo apt-get install libboost-test-dev</code></p>
+<p>比较运算符：</p>
+<div class="highlight"><pre class="chroma"><code class="language-txt" data-lang="txt">&lt;,&lt;
+abcd abcdefg
+
+&lt;,&lt;
+abcdx abcdefg
+</code></pre></div><p><code>__type_traits</code>：类型特性类</p>
+<h2 id="16-日志滚动">16. 日志滚动</h2>
+<p>I/O总线，能不能并行</p>
+<p>多个线程对于同一个文件进行写入，效率可能不如单个线程对同一个文件写入的效率高。</p>
+<p>异步日志：多个线程写入的数据发送给另一个线程，进行排队写入，如此就是线程安全的。</p>
+<h1 id="第二部分muduo网络库">第二部分：Muduo网络库</h1>
+<h2 id="17-多线程与并发服务器设计">17. 多线程与并发服务器设计</h2>
+<p>iterative服务器：</p>
+<ul>
+<li>短链接，单线程，可以处理多个客户端。每次处理完就断开连接。</li>
+<li>长连接，单线程，每次只能处理一个客户端。一直read 和 write。</li>
+</ul>
+<p>multiple reactors：</p>
+<p>round robin(轮叫)，均匀调用。</p>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">

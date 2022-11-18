@@ -12,7 +12,7 @@
     <pubDate>Mon, 31 Oct 2022 00:00:00 &#43;0000</pubDate>
     <author>cjt</author>
     <guid>https://cui-jiang-tao.github.io/posts/%E5%A4%A7%E5%B9%B6%E5%8F%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%BC%80%E5%8F%91/</guid>
-    <description><![CDATA[0. 服务器设计的目的 高性能 高可用 故障转移(failover) 伸缩性 library和framework： 库中类相对比较独立，我们编写应用的时候需]]></description>
+    <description><![CDATA[前言 服务器设计的目的 高性能 高可用 故障转移(failover) 伸缩性 library和framework： 库中类相对比较独立，我们编写应用的时候]]></description>
 </item>
 <item>
     <title>wireshark抓包</title>
