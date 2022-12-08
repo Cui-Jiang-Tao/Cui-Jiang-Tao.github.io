@@ -34,7 +34,7 @@
   <pubDate>Sun, 16 Oct 2022 00:00:00 &#43;0000</pubDate>
   <author>cjt</author>
   <guid>https://cui-jiang-tao.github.io/posts/c%E6%A0%87%E5%87%86%E5%BA%93/</guid>
-  <description><![CDATA[1. 头文件stdio.h 1.1 fopen函数 C 库函数 FILE *fopen(const char *filename, const char *mode) 使用给定的模式 mode 打开 filename 所指向的文件。 #include &lt;stdio.h&gt; FILE *fopen(const char *filename, const char *mode) 调用fopen函数，成功返]]></description>
+  <description><![CDATA[1. 头文件stdio.h 1.1 fopen函数 C 库函数 FILE *fopen(const char *filename, const char *mode) 使用给定的模式 mode 打开 filename 所指向的文件。 1 2 3 #include &lt;stdio.h&gt; FILE *fopen(const char *filename, const char *mode) 调用fopen函数，]]></description>
 </item>
 </channel>
 </rss>

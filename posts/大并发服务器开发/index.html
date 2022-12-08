@@ -10,7 +10,7 @@
 <meta name="description" content="前言 服务器设计的目的 高性能 高可用 故障转移(failover) 伸缩性 library和framework： 库中类相对比较独立，我们编写应用的时候" /><meta name="keywords" content='muduo' /><meta itemprop="name" content="大并发服务器开发">
 <meta itemprop="description" content="前言 服务器设计的目的 高性能 高可用 故障转移(failover) 伸缩性 library和framework： 库中类相对比较独立，我们编写应用的时候"><meta itemprop="datePublished" content="2022-10-31T00:00:00+00:00" />
 <meta itemprop="dateModified" content="2022-11-08T00:00:00+00:00" />
-<meta itemprop="wordCount" content="26182">
+<meta itemprop="wordCount" content="26958">
 <meta itemprop="keywords" content="muduo," /><meta property="og:title" content="大并发服务器开发" />
 <meta property="og:description" content="前言 服务器设计的目的 高性能 高可用 故障转移(failover) 伸缩性 library和framework： 库中类相对比较独立，我们编写应用的时候" />
 <meta property="og:type" content="article" />
@@ -32,7 +32,7 @@
     "mainEntityOfPage": {
       "@type": "WebPage",
       "@id": "https:\/\/cui-jiang-tao.github.io\/posts\/%E5%A4%A7%E5%B9%B6%E5%8F%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%BC%80%E5%8F%91\/"
-    },"genre": "posts","keywords": "muduo","wordcount":  26182 ,
+    },"genre": "posts","keywords": "muduo","wordcount":  26958 ,
     "url": "https:\/\/cui-jiang-tao.github.io\/posts\/%E5%A4%A7%E5%B9%B6%E5%8F%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%BC%80%E5%8F%91\/","datePublished": "2022-10-31T00:00:00+00:00","dateModified": "2022-11-08T00:00:00+00:00","publisher": {
       "@type": "Organization",
       "name": ""},"author": {
@@ -157,7 +157,7 @@
     alt="cjt"
     title="cjt"/>&nbsp;cjt</span></span>
           <span class="post-category">included in <a href="/categories/c/c++/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> c/c++</a></span></div>
-      <div class="post-meta-line"><span title=2022-10-31&#32;00:00:00><i class="fa-regular fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-10-31">2022-10-31</time></span>&nbsp;<span><i class="fa-solid fa-pencil-alt fa-fw" aria-hidden="true"></i> 26182 words</span>&nbsp;<span><i class="fa-regular fa-clock fa-fw" aria-hidden="true"></i> 53 minutes</span>&nbsp;</div>
+      <div class="post-meta-line"><span title=2022-10-31&#32;00:00:00><i class="fa-regular fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-10-31">2022-10-31</time></span>&nbsp;<span><i class="fa-solid fa-pencil-alt fa-fw" aria-hidden="true"></i> 26958 words</span>&nbsp;<span><i class="fa-regular fa-clock fa-fw" aria-hidden="true"></i> 54 minutes</span>&nbsp;</div>
     </div><div class="details toc" id="toc-static" data-kept="false">
         <div class="details-summary toc-title">
           <span>Contents</span>
@@ -293,15 +293,29 @@
 <li>基于对象风格：用一个EchoServer包含一个TcpServer(具体类)对象，在构造函数中用boost::bind来注册三个成员函数OnConnection、OnMessage和OnClose。</li>
 </ol>
 <p>简单的Thread类的编程风格，Thread类的结构树如下：</p>
-<pre tabindex="0"><code class="language-tree" data-lang="tree">├── CMakeLists.txt
-├── include
-│   ├── MyThread.h
-│   └── Thread.h
-│── src
-│   ├── MyThread.cpp
-│   └── Thread.cpp
-├── main
-</code></pre><h3 id="11-面向对象的thread类">1.1 面向对象的Thread类</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">├── CMakeLists.txt
+</span></span><span class="line"><span class="cl">├── include
+</span></span><span class="line"><span class="cl">│   ├── MyThread.h
+</span></span><span class="line"><span class="cl">│   └── Thread.h
+</span></span><span class="line"><span class="cl">│── src
+</span></span><span class="line"><span class="cl">│   ├── MyThread.cpp
+</span></span><span class="line"><span class="cl">│   └── Thread.cpp
+</span></span><span class="line"><span class="cl">├── main
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="11-面向对象的thread类">1.1 面向对象的Thread类</h3>
 <p>面向对象的Thread类：<a href="https://github.com/Cui-Jiang-Tao/large_concurrency/tree/master/Thread_oo"target="_blank" rel="external nofollow noopener noreferrer">https://github.com/Cui-Jiang-Tao/large_concurrency/tree/master/Thread_oo</a></p>
 <h3 id="12-基于对象的thread类">1.2 基于对象的Thread类</h3>
 <p>基于对象的Thread类：<a href="https://github.com/Cui-Jiang-Tao/large_concurrency/tree/master/Thread_ob"target="_blank" rel="external nofollow noopener noreferrer">https://github.com/Cui-Jiang-Tao/large_concurrency/tree/master/Thread_ob</a></p>
@@ -331,18 +345,56 @@
 </li>
 </ul>
 <p>使用<code>PRId64</code>，int64_t用来表示64位整数，在32位系统中是long long int，在64位系统中是long int,所以打印int64_t的格式化方法是：</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="n">printf</span><span class="p">(</span><span class="err">“</span><span class="o">%</span><span class="n">ld</span><span class="err">”</span><span class="p">,</span> <span class="n">value</span><span class="p">);</span>  <span class="c1">// 64bit OS
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="n">printf</span><span class="p">(</span><span class="err">“</span><span class="o">%</span><span class="n">ld</span><span class="err">”</span><span class="p">,</span> <span class="n">value</span><span class="p">);</span>  <span class="c1">// 64bit OS
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">printf</span><span class="p">(</span><span class="s">&#34;%lld&#34;</span><span class="p">,</span> <span class="n">value</span><span class="p">);</span> <span class="c1">// 32bit OS
-</span></span></span></code></pre></div><p>跨平台的做法：</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="cp">#define __STDC_FORMAT_MACROS
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>跨平台的做法：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="cp">#define __STDC_FORMAT_MACROS
 </span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;inttypes.h&gt;</span><span class="cp">
 </span></span></span><span class="line"><span class="cl"><span class="cp">#undef __STDC_FORMAT_MACROS
 </span></span></span><span class="line"><span class="cl"><span class="cp"></span>
 </span></span><span class="line"><span class="cl"><span class="n">printf</span><span class="p">(</span><span class="s">&#34;%&#34;</span> <span class="n">PRId64</span> <span class="s">&#34;</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">value</span><span class="p">);</span>  
-</span></span></code></pre></div><h2 id="3-原子操作">3. 原子操作</h2>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="3-原子操作">3. 原子操作</h2>
 <h3 id="31-提供加减和逻辑运算的原子操作">3.1 提供加减和逻辑运算的原子操作</h3>
 <p>gcc从4.1.2提供了__sync_*系列的built-in函数，用于提供加减和逻辑运算的原子操作。gcc原子性操作其声明如下：</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="cm">/*返回更新前的值*/</span>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="cm">/*返回更新前的值*/</span>
 </span></span><span class="line"><span class="cl"><span class="n">type</span> <span class="nf">__sync_fetch_and_add</span> <span class="p">(</span><span class="n">type</span> <span class="o">*</span><span class="n">ptr</span><span class="p">,</span> <span class="n">type</span> <span class="n">value</span><span class="p">,</span> <span class="p">...);</span> <span class="c1">// 将value加到*ptr上，结果更新到*ptr，并返回操作之前*ptr的值
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">type</span> <span class="nf">__sync_fetch_and_sub</span> <span class="p">(</span><span class="n">type</span> <span class="o">*</span><span class="n">ptr</span><span class="p">,</span> <span class="n">type</span> <span class="n">value</span><span class="p">,</span> <span class="p">...);</span> <span class="c1">// 从*ptr减去value，结果更新到*ptr，并返回操作之前*ptr的值
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">type</span> <span class="nf">__sync_fetch_and_or</span> <span class="p">(</span><span class="n">type</span> <span class="o">*</span><span class="n">ptr</span><span class="p">,</span> <span class="n">type</span> <span class="n">value</span><span class="p">,</span> <span class="p">...);</span>  <span class="c1">// 将*ptr与value相或，结果更新到*ptr， 并返回操作之前*ptr的值
@@ -357,32 +409,103 @@
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">type</span> <span class="nf">__sync_and_and_fetch</span> <span class="p">(</span><span class="n">type</span> <span class="o">*</span><span class="n">ptr</span><span class="p">,</span> <span class="n">type</span> <span class="n">value</span><span class="p">,</span> <span class="p">...);</span> <span class="c1">// 将*ptr与value相与，结果更新到*ptr，并返回操作之后新*ptr的值
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">type</span> <span class="nf">__sync_xor_and_fetch</span> <span class="p">(</span><span class="n">type</span> <span class="o">*</span><span class="n">ptr</span><span class="p">,</span> <span class="n">type</span> <span class="n">value</span><span class="p">,</span> <span class="p">...);</span> <span class="c1">// 将*ptr与value异或，结果更新到*ptr，并返回操作之后新*ptr的值
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">type</span> <span class="nf">__sync_nand_and_fetch</span> <span class="p">(</span><span class="n">type</span> <span class="o">*</span><span class="n">ptr</span><span class="p">,</span> <span class="n">type</span> <span class="n">value</span><span class="p">,</span> <span class="p">...);</span>  <span class="c1">// 将*ptr取反后，与value相与，结果更新到*ptr，并返回操作之后新*ptr的值
-</span></span></span></code></pre></div><p>type可以是1,2,4或8字节长度的int类型，即：</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="kt">int8_t</span> <span class="o">/</span> <span class="kt">uint8_t</span>
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>type可以是1,2,4或8字节长度的int类型，即：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="kt">int8_t</span> <span class="o">/</span> <span class="kt">uint8_t</span>
 </span></span><span class="line"><span class="cl"><span class="kt">int16_t</span> <span class="o">/</span> <span class="kt">uint16_t</span>
 </span></span><span class="line"><span class="cl"><span class="kt">int32_t</span> <span class="o">/</span> <span class="kt">uint32_t</span>
 </span></span><span class="line"><span class="cl"><span class="kt">int64_t</span> <span class="o">/</span> <span class="kt">uint64_t</span>
-</span></span></code></pre></div><p>后面的可扩展参数(&hellip;)用来指出哪些变量需要memory barrier(全屏障),因为目前gcc实现的是full barrier(类似于linux kernel 中的mb(),<strong>表示这个操作之前的所有内存操作不会被重排序到这个操作之后</strong>),所以可以略掉这个参数。</p>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>后面的可扩展参数(&hellip;)用来指出哪些变量需要memory barrier(全屏障),因为目前gcc实现的是full barrier(类似于linux kernel 中的mb(),<strong>表示这个操作之前的所有内存操作不会被重排序到这个操作之后</strong>),所以可以略掉这个参数。</p>
 <p><code>__sync_synchronize (...)</code>：发出一个full barrier(完整内存栅栏)。</p>
 <p>关于memory barrier,cpu会对我们的指令进行排序，一般说来会提高程序的效率，但有时候可能造成我们不希望得到的结果，举一个例子，比如我们有一个硬件设备，它有4个寄存器，当你发出一个操作指令的时候，一个寄存器存的是你的操作指令(比如READ)，两个寄存器存的是参数(比如是地址和size)，最后一个寄存器是控制寄存器，在所有的参数都设置好之后向其发出指令，设备开始读取参数，执行命令，程序可能如下：</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="nf">write1</span><span class="p">(</span><span class="n">dev</span><span class="p">.</span><span class="n">register_size</span><span class="p">,</span><span class="n">size</span><span class="p">);</span>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="nf">write1</span><span class="p">(</span><span class="n">dev</span><span class="p">.</span><span class="n">register_size</span><span class="p">,</span><span class="n">size</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl"><span class="nf">write1</span><span class="p">(</span><span class="n">dev</span><span class="p">.</span><span class="n">register_addr</span><span class="p">,</span><span class="n">addr</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl"><span class="nf">write1</span><span class="p">(</span><span class="n">dev</span><span class="p">.</span><span class="n">register_cmd</span><span class="p">,</span><span class="n">READ</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl"><span class="nf">write1</span><span class="p">(</span><span class="n">dev</span><span class="p">.</span><span class="n">register_control</span><span class="p">,</span><span class="n">GO</span><span class="p">);</span>
-</span></span></code></pre></div><p>如果最后一条write1被换到了前几条语句之前，那么肯定不是我们所期望的，这时候我们可以在最后一条语句之前加入一个memory barrier,强制cpu执行完前面的写入以后再执行最后一条：</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="nf">write1</span><span class="p">(</span><span class="n">dev</span><span class="p">.</span><span class="n">register_size</span><span class="p">,</span><span class="n">size</span><span class="p">);</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>如果最后一条write1被换到了前几条语句之前，那么肯定不是我们所期望的，这时候我们可以在最后一条语句之前加入一个memory barrier,强制cpu执行完前面的写入以后再执行最后一条：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="nf">write1</span><span class="p">(</span><span class="n">dev</span><span class="p">.</span><span class="n">register_size</span><span class="p">,</span><span class="n">size</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl"><span class="nf">write1</span><span class="p">(</span><span class="n">dev</span><span class="p">.</span><span class="n">register_addr</span><span class="p">,</span><span class="n">addr</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl"><span class="nf">write1</span><span class="p">(</span><span class="n">dev</span><span class="p">.</span><span class="n">register_cmd</span><span class="p">,</span><span class="n">READ</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl"><span class="nf">__sync_synchronize</span><span class="p">();</span>
 </span></span><span class="line"><span class="cl"><span class="nf">write1</span><span class="p">(</span><span class="n">dev</span><span class="p">.</span><span class="n">register_control</span><span class="p">,</span><span class="n">GO</span><span class="p">);</span>
-</span></span></code></pre></div><p>memory barrier有几种类型：</p>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>memory barrier有几种类型：</p>
 <ul>
 <li>acquire barrier : 不允许将barrier之后的内存读取指令移到barrier之前(linux kernel中的wmb())。</li>
 <li>release barrier : 不允许将barrier之前的内存读取指令移到barrier之后 (linux kernel中的rmb())。</li>
 <li>full barrier    : 以上两种barrier的合集(linux kernel中的mb())。</li>
 </ul>
 <p>示例如下：</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
 </span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;pthread.h&gt;</span><span class="cp">
 </span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;stdlib.h&gt;</span><span class="cp">
 </span></span></span><span class="line"><span class="cl"><span class="cp"></span>
@@ -416,19 +539,37 @@
 </span></span><span class="line"><span class="cl">  <span class="nf">printf</span><span class="p">(</span><span class="s">&#34;%d</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span><span class="n">count</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">  <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span></code></pre></div><h3 id="32-原子比较和交换设置操作">3.2 原子比较和交换(设置)操作</h3>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="32-原子比较和交换设置操作">3.2 原子比较和交换(设置)操作</h3>
 <p>  CAS是compare and swap,   简单来说就是，在写入新值之前，读出旧值，当且仅当旧值与存储中的当前值(*ptr)一致时，才把新值写入存储。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="kt">bool</span> <span class="nf">__sync_bool_compare_and_swap</span> <span class="p">(</span><span class="n">type</span> <span class="o">*</span><span class="n">ptr</span><span class="p">,</span> <span class="n">type</span> <span class="n">oldval</span> <span class="n">type</span> <span class="n">newval</span><span class="p">,</span> <span class="p">...);</span>  <span class="c1">// 比较*ptr与oldval的值，如果两者相等，则将newval更新到*ptr并返回true
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="kt">bool</span> <span class="nf">__sync_bool_compare_and_swap</span> <span class="p">(</span><span class="n">type</span> <span class="o">*</span><span class="n">ptr</span><span class="p">,</span> <span class="n">type</span> <span class="n">oldval</span> <span class="n">type</span> <span class="n">newval</span><span class="p">,</span> <span class="p">...);</span>  <span class="c1">// 比较*ptr与oldval的值，如果两者相等，则将newval更新到*ptr并返回true
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">type</span> <span class="nf">__sync_val_compare_and_swap</span> <span class="p">(</span><span class="n">type</span> <span class="o">*</span><span class="n">ptr</span><span class="p">,</span> <span class="n">type</span> <span class="n">oldval</span> <span class="n">type</span> <span class="n">newval</span><span class="p">,</span> <span class="p">...);</span> <span class="c1">// 比较*ptr与oldval的值，如果两者相等，则将newval更新到*ptr并返回操作之前*ptr的值
-</span></span></span></code></pre></div><p>这两个函数提供原子的比较和交换，如果<code>*ptr == oldval</code>,就将<code>newval</code>写入<code>*ptr</code>：</p>
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>这两个函数提供原子的比较和交换，如果<code>*ptr == oldval</code>,就将<code>newval</code>写入<code>*ptr</code>：</p>
 <ul>
 <li>第一个函数在相等并写入的情况下返回true.</li>
 <li>第二个函数在返回操作之前的值。</li>
 </ul>
 <h3 id="33-原子赋值操作">3.3 原子赋值操作</h3>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="n">type</span> <span class="nf">__sync_lock_test_and_set</span> <span class="p">(</span><span class="n">type</span> <span class="o">*</span><span class="n">ptr</span><span class="p">,</span> <span class="n">type</span> <span class="n">value</span><span class="p">,</span> <span class="p">...);</span> <span class="c1">// 将value写入*ptr，对*ptr加锁，并返回操作之前*ptr的值。即，try spinlock语义
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="n">type</span> <span class="nf">__sync_lock_test_and_set</span> <span class="p">(</span><span class="n">type</span> <span class="o">*</span><span class="n">ptr</span><span class="p">,</span> <span class="n">type</span> <span class="n">value</span><span class="p">,</span> <span class="p">...);</span> <span class="c1">// 将value写入*ptr，对*ptr加锁，并返回操作之前*ptr的值。即，try spinlock语义
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kt">void</span> <span class="nf">__sync_lock_release</span> <span class="p">(</span><span class="n">type</span> <span class="o">*</span><span class="n">ptr</span><span class="p">,</span> <span class="p">...);</span>  <span class="c1">// 将0写入到*ptr，并对*ptr解锁。即，unlock spinlock语义
-</span></span></span></code></pre></div><h3 id="34-无锁队列的实现">3.4 无锁队列的实现</h3>
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="34-无锁队列的实现">3.4 无锁队列的实现</h3>
 <p>参考：<a href="https://coolshell.cn/articles/8239.html"target="_blank" rel="external nofollow noopener noreferrer">https://coolshell.cn/articles/8239.html</a></p>
 <h2 id="4-原子类">4. 原子类</h2>
 <h3 id="41-atomicintegert类">4.1 AtomicIntegerT类</h3>
@@ -439,7 +580,22 @@
 <li><strong>当要求使用volatile 声明的变量的值的时候，系统总是重新从它所在的内存读取数据，而不是使用保存在寄存器中的备份</strong>。即使它前面的指令刚刚从该处读取过数据。而且读取的数据立刻被保存。</li>
 </ul>
 <h2 id="5-编译选项">5. 编译选项</h2>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cmake" data-lang="cmake"><span class="line"><span class="cl"><span class="err">-Wall</span>			<span class="err">//</span> <span class="err">大部分警告</span> <span class="err">
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cmake" data-lang="cmake"><span class="line"><span class="cl"><span class="err">-Wall</span>			<span class="err">//</span> <span class="err">大部分警告</span> <span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err">-Wextra</span>			<span class="err">//</span> <span class="err">一些额外的警告
 </span></span></span><span class="line"><span class="cl"><span class="err">-Werror</span>			<span class="err">//</span> <span class="err">当出现警告时转为错误，停止编译
 </span></span></span><span class="line"><span class="cl"><span class="err">-Wconversion</span>		<span class="err">//</span> <span class="err">一些可能改变值的隐式转换，给出警告。
@@ -450,8 +606,44 @@
 </span></span></span><span class="line"><span class="cl"><span class="err">-Wshadow</span>		<span class="err">//</span> <span class="err">当一个局部变量遮盖住了另一个局部变量，或者全局变量时，给出警告。
 </span></span></span><span class="line"><span class="cl"><span class="err">-Wwrite-strings</span>		<span class="err">//</span> <span class="err">规定字符串常量的类型是const</span> <span class="err">char[length]，因此，把这样的地址复制给</span> <span class="err">non-const</span> <span class="err">char</span> <span class="err">*指针将产生警告.这些警告能够帮助你在编译期间发现企图写入字符串常量</span> <span class="err">的代码
 </span></span></span><span class="line"><span class="cl"><span class="err">-march=native</span>		<span class="err">//</span> <span class="err">指定cpu体系结构为本地平台
-</span></span></span></code></pre></div><h2 id="6-向上转型">6. 向上转型</h2>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="6-向上转型">6. 向上转型</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
 </span></span></span><span class="line"><span class="cl"><span class="cp"></span>
 </span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">foo</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">)</span> <span class="p">{}</span>
 </span></span><span class="line"><span class="cl">
@@ -481,7 +673,9 @@
 </span></span><span class="line"><span class="cl">  <span class="n">pb</span> <span class="o">=</span> <span class="n">implicit_cast</span><span class="o">&lt;</span><span class="n">B</span> <span class="o">*</span><span class="p">,</span> <span class="n">D</span> <span class="o">*&gt;</span><span class="p">(</span><span class="n">pd</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">  <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span></code></pre></div><h2 id="7-exception类">7. Exception类</h2>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="7-exception类">7. Exception类</h2>
 <p>Exception类：<a href="https://github.com/Cui-Jiang-Tao/large_concurrency/tree/master/Exception"target="_blank" rel="external nofollow noopener noreferrer">https://github.com/Cui-Jiang-Tao/large_concurrency/tree/master/Exception</a></p>
 <ul>
 <li>backtrace函数：栈回溯，保存各个栈帧的地址。</li>
@@ -507,13 +701,30 @@
 <li>a.首先查询该系统调用的调用号(在文件arch/arm64/Include/Asm/Unistd32.h中)</li>
 <li>b.使用系统调用来获取内核线程ID</li>
 </ul>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;sys/syscall.h&gt;  </span><span class="cp">
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;sys/syscall.h&gt;  </span><span class="cp">
 </span></span></span><span class="line"><span class="cl"><span class="cp"></span><span class="nf">printf</span><span class="p">(</span><span class="s">&#34;The ID of this thread is: %ld</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="p">(</span><span class="kt">long</span> <span class="kt">int</span><span class="p">)</span><span class="nf">syscall</span><span class="p">(</span><span class="mi">224</span><span class="p">));</span>
-</span></span></code></pre></div><p>2、直接调用pthread_self()函数获取id</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>2、直接调用pthread_self()函数获取id</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
 </span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;pthread.h&gt;</span><span class="cp">
 </span></span></span><span class="line"><span class="cl"><span class="cp"></span><span class="nf">printf</span><span class="p">(</span><span class="s">&#34;pthread_self: %ld</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="nf">pthread_self</span><span class="p">());</span>
-</span></span></code></pre></div><p><strong>三、知识点补充</strong></p>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><strong>三、知识点补充</strong></p>
 <ul>
 <li>线程的标识有两个【内核中的线程ID】【posix描述的线程ID(也就是用户层glibc库中的线程ID)】</li>
 <li>gettid 获取的是内核中真实线程ID, 对于多线程进程来说，每个tid实际是不一样的。而pthread_self获取的是相对于进程的线程控制块的首地址， 只是用来描述同一进程中的不同线程。</li>
@@ -536,7 +747,46 @@
 <h3 id="82-__thread关键字">8.2 __thread关键字</h3>
 <p>  __thread是GCC内置的线程局部存储设施，存取效率可以和全局变量相比。<strong>__thread变量每一个线程有一份独立实体，各个线程的值互不干扰</strong>。可以用来修饰那些带有全局性且值可能变，但是又不值得用全局变量保护的变量。</p>
 <p>  __thread使用规则：只能修饰POD类型(类似整型指针的标量，不带自定义的构造、拷贝、赋值、析构的类型，二进制内容可以任意复制memset,memcpy,且内容可以复原)，不能修饰class类型，因为无法自动调用构造函数和析构函数，可以用于修饰全局变量，函数内的静态变量，不能修饰函数的局部变量或者class的普通成员变量，<strong>且__thread变量值只能初始化为编译器常量</strong>(值在编译器就可以确定const int i=5,运行期常量是运行初始化后不再改变const int i=rand()).</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp">
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp">
 </span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;pthread.h&gt;</span><span class="cp">
 </span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;unistd.h&gt;</span><span class="cp">
 </span></span></span><span class="line"><span class="cl"><span class="cp"></span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
@@ -571,22 +821,69 @@
 </span></span><span class="line"><span class="cl">  <span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>              <span class="c1">//等待线程1改变var值，验证是否影响线程2
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="o">++</span><span class="n">var</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span> <span class="c1">//输出6
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">}</span>
-</span></span></code></pre></div><h3 id="83-stdis_same和stddecay">8.3 std::is_same和std::decay</h3>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="83-stdis_same和stddecay">8.3 std::is_same和std::decay</h3>
 <p>可参考：<a href="https://blog.csdn.net/czyt1988/article/details/52812797"target="_blank" rel="external nofollow noopener noreferrer">https://blog.csdn.net/czyt1988/article/details/52812797</a></p>
 <blockquote>
 <p>C++11的模板类型判断：std::is_same和std::decay</p>
 </blockquote>
 <h3 id="84-pthread_atfork函数">8.4 pthread_atfork()函数</h3>
 <p>可参考：<a href="https://blog.csdn.net/chdhust/article/details/38436153"target="_blank" rel="external nofollow noopener noreferrer">https://blog.csdn.net/chdhust/article/details/38436153</a></p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;pthread.h&gt;</span><span class="cp">
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;pthread.h&gt;</span><span class="cp">
 </span></span></span><span class="line"><span class="cl"><span class="cp"></span><span class="kt">int</span> <span class="nf">pthread_atfork</span><span class="p">(</span><span class="kt">void</span> <span class="p">(</span><span class="o">*</span><span class="n">prepare</span><span class="p">)(</span><span class="kt">void</span><span class="p">),</span> <span class="kt">void</span> <span class="p">(</span><span class="o">*</span><span class="n">parent</span><span class="p">)(</span><span class="kt">void</span><span class="p">),</span> <span class="kt">void</span> <span class="p">(</span><span class="o">*</span><span class="n">child</span><span class="p">)(</span><span class="kt">void</span><span class="p">));</span>
-</span></span></code></pre></div><p>  调用fork时，内部创建子进程前在父进程中会调用prepare，内部创建子进程成功后，父进程会调用parent ，子进程会调用child。也就是说：最先调用prepare函数，只存在下面两种进程调度组合：</p>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>  调用fork时，内部创建子进程前在父进程中会调用prepare，内部创建子进程成功后，父进程会调用parent ，子进程会调用child。也就是说：最先调用prepare函数，只存在下面两种进程调度组合：</p>
 <ul>
 <li>prepare() -&gt; parent() -&gt; child()</li>
 <li>prepare() -&gt; child() -&gt; parent()</li>
 </ul>
 <p>例子：</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
 </span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;time.h&gt;</span><span class="cp">
 </span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;pthread.h&gt;</span><span class="cp">
 </span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;unistd.h&gt;</span><span class="cp">
@@ -619,9 +916,65 @@
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span></code></pre></div><h3 id="85-fork造成死锁的例子">8.5 fork造成死锁的例子</h3>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="85-fork造成死锁的例子">8.5 fork造成死锁的例子</h3>
 <p>deadLock_test.cpp</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="c1">// 一个在多线程程序里fork造成死锁的例子
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="c1">// 一个在多线程程序里fork造成死锁的例子
 </span></span></span><span class="line"><span class="cl"><span class="c1">// 一个输出示例：
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="cm">/*
 </span></span></span><span class="line"><span class="cl"><span class="cm">
@@ -671,8 +1024,61 @@
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span></code></pre></div><p>deadLock_test2.cpp</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>deadLock_test2.cpp</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
 </span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;time.h&gt;</span><span class="cp">
 </span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;pthread.h&gt;</span><span class="cp">
 </span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;unistd.h&gt;</span><span class="cp">
@@ -719,7 +1125,9 @@
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span></code></pre></div><h3 id="86-thread类">8.6 Thread类</h3>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="86-thread类">8.6 Thread类</h3>
 <p>Thread类：<a href="https://github.com/Cui-Jiang-Tao/large_concurrency/tree/master/Thread"target="_blank" rel="external nofollow noopener noreferrer">https://github.com/Cui-Jiang-Tao/large_concurrency/tree/master/Thread</a></p>
 <h2 id="9-linux同步机制">9. linux同步机制</h2>
 <h3 id="91-mutexlockmutexlockguard类">9.1 MutexLock/MutexLockGuard类</h3>
@@ -806,7 +1214,35 @@
 </ol>
 <p>exit()和_exit()以及_Exit()函数的本质区别是是否立即进入内核，_exit()以及_Exit()函数都是在调用后立即进入内核，而不会执行一些清理处理，但是exit()则会执行一些清理处理，这也是为什么会存在atexit()函数的原因，因为exit()函数需要执行清理处理，需要执行一系列的操作，这些终止处理函数实际上就是完成各种所谓的清除操作的实际执行体。</p>
 <p>下面我们来验证atexit的调用顺序和退出顺序：</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="cp">#include</span><span class="cpf">&lt;stdio.h&gt; </span><span class="cp">
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="cp">#include</span><span class="cpf">&lt;stdio.h&gt; </span><span class="cp">
 </span></span></span><span class="line"><span class="cl"><span class="cp">#include</span><span class="cpf">&lt;stdlib.h&gt;  //atexit函数所属头文件</span><span class="cp">
 </span></span></span><span class="line"><span class="cl"><span class="cp"></span>   
 </span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">func1</span><span class="p">()</span> 
@@ -830,16 +1266,29 @@
 </span></span><span class="line"><span class="cl">    <span class="n">atexit</span><span class="p">(</span><span class="n">func3</span><span class="p">);</span> 
 </span></span><span class="line"><span class="cl">    <span class="n">exit</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span> 
 </span></span><span class="line"><span class="cl"><span class="p">}</span> 
-</span></span></code></pre></div><p>  <strong>我们可以看到atexit函数的调用顺序是和登记顺序相反的。</strong></p>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>  <strong>我们可以看到atexit函数的调用顺序是和登记顺序相反的。</strong></p>
 <p>  atexit函数的用途也是比较广泛的：可以按照你予设的顺序摧毁全局变量(类)，例如有个log类，你在其它的全局类里也有可能调用到Log类写日志。所以log 类必须最后被析构 。假如没有规定析构顺序，那么程序在退出时将有可能首先析构log类，那么其它的全局类在此时将无法正确写日志。 把数据写回文件, 删除临时文件, 这才是真正有用的.</p>
 <h3 id="123-不完全类型检测">12.3 不完全类型检测</h3>
 <p>Boost库，在头文件checked_delete.hpp中的用于释放空间的类模板函<code>checked_array_delete(T * x)</code>：</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="k">template</span><span class="o">&lt;</span><span class="k">class</span> <span class="nc">T</span><span class="o">&gt;</span> <span class="kr">inline</span> <span class="kt">void</span> <span class="n">checked_array_delete</span><span class="p">(</span><span class="n">T</span> <span class="o">*</span> <span class="n">x</span><span class="p">)</span> <span class="p">{</span>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="k">template</span><span class="o">&lt;</span><span class="k">class</span> <span class="nc">T</span><span class="o">&gt;</span> <span class="kr">inline</span> <span class="kt">void</span> <span class="n">checked_array_delete</span><span class="p">(</span><span class="n">T</span> <span class="o">*</span> <span class="n">x</span><span class="p">)</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="k">typedef</span> <span class="kt">char</span> <span class="n">type_must_be_complete</span><span class="p">[</span><span class="k">sizeof</span><span class="p">(</span><span class="n">T</span><span class="p">)</span> <span class="o">?</span> <span class="mi">1</span><span class="o">:</span> <span class="o">-</span><span class="mi">1</span><span class="p">];</span>  
 </span></span><span class="line"><span class="cl">    <span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">type_must_be_complete</span><span class="p">);</span>  
 </span></span><span class="line"><span class="cl">    <span class="k">delete</span> <span class="p">[]</span> <span class="n">x</span><span class="p">;</span>  
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span></code></pre></div><p>这是一种不完全类型检测：T如果不是不完全类型那么<code>sizeof(T)</code>就应该是<code>type_must_be_complete[-1]</code>，数组是不能为负数的，所以就会报错；</p>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>这是一种不完全类型检测：T如果不是不完全类型那么<code>sizeof(T)</code>就应该是<code>type_must_be_complete[-1]</code>，数组是不能为负数的，所以就会报错；</p>
 <p>什么又是不完全类型呢？简单理解就是类型的定义不完整，比如只对类进行了声明，却未定义；</p>
 <p>我们应该尽量让错误在编译时出现，而不是在执行时，所用可以用到不完全类型检测的方法，在编译的时候就会对这种情况报错；</p>
 <p>可以通过<code>size_t temp = sizeof(T)</code>来判断，但是这个只能在运行期发现错误。</p>
@@ -865,14 +1314,27 @@
 <li>线程特定数据也称为线程本地存储TLS(Thread-local storage)。</li>
 <li>对于POD类型的线程本地存储，可以用<code>__thread</code>关键字。</li>
 </ul>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;pthread.h&gt;</span><span class="cp">
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;pthread.h&gt;</span><span class="cp">
 </span></span></span><span class="line"><span class="cl"><span class="cp"></span>
 </span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">pthread_key_create</span> <span class="p">(</span><span class="n">pthread_key_t</span> <span class="o">*</span><span class="n">__key</span><span class="p">,</span> <span class="kt">void</span> <span class="p">(</span><span class="o">*</span><span class="n">__destr_function</span><span class="p">)</span> <span class="p">(</span><span class="kt">void</span> <span class="o">*</span><span class="p">));</span>
 </span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">pthread_key_delete</span> <span class="p">(</span><span class="n">pthread_key_t</span> <span class="n">__key</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="o">*</span><span class="nf">pthread_getspecific</span> <span class="p">(</span><span class="n">pthread_key_t</span> <span class="n">__key</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">pthread_setspecific</span> <span class="p">(</span><span class="n">pthread_key_t</span> <span class="n">__key</span><span class="p">,</span> <span class="k">const</span> <span class="kt">void</span> <span class="o">*</span><span class="n">__pointer</span><span class="p">);</span>
-</span></span></code></pre></div><p>说明：</p>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>说明：</p>
 <ul>
 <li>函数 <code>pthread_key_create()</code>用来创建线程私有数据。该函数从 TSD 池中分配一项，将其地址值赋给 key 供以后访问使用。第 2 个参数是一个销毁函数，它是可选的，可以为 NULL，为 NULL 时，则系统调用默认的销毁函数进行相关的数据注销。如果不为空，则在线程退出时(调用<code>pthread_exit()</code>函数)时将以 key 锁关联的数据作为参数调用它，以释放分配的缓冲区，或是关闭文件流等。</li>
 <li>不论哪个线程调用了<code>pthread_key_create()</code>，所创建的 key 都是所有线程可以访问的，但各个线程可以根据自己的需要往 key 中填入不同的值，相当于提供了一个同名而不同值的全局变量(这个全局变量相对于拥有这个变量的线程来说)。</li>
@@ -884,7 +1346,69 @@
 <p>  在多线程程序中，经常要用全局变量来实现多个函数间的数据共享。由于数据空间是共享的，因此全局变量也为所有进程共有。但有时应用程序设计中必要提供线程私有的全局变量，这个变量仅在线程中有效，但却可以跨过多个函数访问。</p>
 <p>  比如在程序里可能需要每个线程维护一个链表，而会使用相同的函数来操作这个链表，最简单的方法就是使用同名而不同变量地址的线程相关数据结构。这样的数据结构可以由 Posix 线程库维护，成为线程私有数据 (Thread-specific Data，或称为 TSD)。</p>
 <p><strong>示例一，线程私有数据：</strong></p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;pthread.h&gt;</span><span class="cp">
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;pthread.h&gt;</span><span class="cp">
 </span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
 </span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;stdlib.h&gt;</span><span class="cp">
 </span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;unistd.h&gt;</span><span class="cp">
@@ -942,8 +1466,23 @@
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">  <span class="k">return</span> <span class="p">(</span><span class="mi">0</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span></code></pre></div><p>output：</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-txt" data-lang="txt"><span class="line"><span class="cl">结构体struct_data的地址为 0x0x7ffff7a57ea0
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>output：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-txt" data-lang="txt"><span class="line"><span class="cl">结构体struct_data的地址为 0x0x7ffff7a57ea0
 </span></span><span class="line"><span class="cl">child1 中 pthread_getspecific(key)返回的指针为:0x0x7ffff7a57ea0
 </span></span><span class="line"><span class="cl">利用 pthread_getspecific(key)打印 child1 线程中与key关联的结构体中成员值:
 </span></span><span class="line"><span class="cl">struct_data.i:10
@@ -952,10 +1491,58 @@
 </span></span><span class="line"><span class="cl">child2 中变量 temp 的地址为 0x0x7ffff7256ea4
 </span></span><span class="line"><span class="cl">child2 中 pthread_getspecific(key)返回的指针为:0x0x7ffff7256ea4
 </span></span><span class="line"><span class="cl">利用 pthread_getspecific(key)打印 child2 线程中与key关联的整型变量temp 值:20
-</span></span></code></pre></div><p>  由输出可见，pthread_getspecific() 返回的是与key 相关联数据的指针。需要注意的是，在利用这个返回的指针时，它首先是 void 类型的，它虽然指向关联的数据地址处，但并不知道指向的数据类型，所以在具体使用时，要对其进行强制类型转换。</p>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>  由输出可见，pthread_getspecific() 返回的是与key 相关联数据的指针。需要注意的是，在利用这个返回的指针时，它首先是 void 类型的，它虽然指向关联的数据地址处，但并不知道指向的数据类型，所以在具体使用时，要对其进行强制类型转换。</p>
 <p>  其次，两个线程对自己的私有数据操作是互相不影响的。也就是说哦，虽然 key 是同名且全局，但访问的内存空间并不是相同的一个。key 就像是一个数据管理员，线程的私有数据只是到他那去注册，让它知道你这个数据的存在。</p>
 <p><strong>示例二，线程与私有数据：</strong></p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;pthread.h&gt;</span><span class="cp">
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;pthread.h&gt;</span><span class="cp">
 </span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp">
 </span></span></span><span class="line"><span class="cl"><span class="cp"></span>
 </span></span><span class="line"><span class="cl"><span class="n">pthread_key_t</span> <span class="n">thread_log_key</span><span class="p">;</span>
@@ -997,7 +1584,9 @@
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span>
 </span></span><span class="line"><span class="cl">  <span class="k">return</span> <span class="p">(</span><span class="mi">0</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span></code></pre></div><p>C++全局对象的初始化和销毁：<a href="https://blog.csdn.net/veghlreywg/article/details/103293482"target="_blank" rel="external nofollow noopener noreferrer">C++全局对象的初始化顺序问题思考</a></p>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>C++全局对象的初始化和销毁：<a href="https://blog.csdn.net/veghlreywg/article/details/103293482"target="_blank" rel="external nofollow noopener noreferrer">C++全局对象的初始化顺序问题思考</a></p>
 <p>ThreadLocal类：<a href="https://github.com/Cui-Jiang-Tao/large_concurrency/tree/master/ThreadLocal"target="_blank" rel="external nofollow noopener noreferrer">https://github.com/Cui-Jiang-Tao/large_concurrency/tree/master/ThreadLocal</a></p>
 <p>Singleton 和 ThreadLocal的配合使用：<a href="https://github.com/Cui-Jiang-Tao/large_concurrency/tree/master/Singleton_And_ThreadLocal"target="_blank" rel="external nofollow noopener noreferrer">https://github.com/Cui-Jiang-Tao/large_concurrency/tree/master/Singleton_And_ThreadLocal</a></p>
 <p>值得注意的是：<code>#define STL muduo::Singleton&lt;muduo::ThreadLocal&lt;Test&gt;&gt;::instance().value()</code></p>
@@ -1049,12 +1638,23 @@
 <p>安装boost测试框架：<code>sudo apt-get install libboost-test-dev</code></p>
 <p>test库必须依赖两个动态库，分别是<code>boost_unit_test_framework</code>和<code>boost_test_exec_monitor</code></p>
 <p>比较运算符：</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-txt" data-lang="txt"><span class="line"><span class="cl">&lt;,&lt;
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-txt" data-lang="txt"><span class="line"><span class="cl">&lt;,&lt;
 </span></span><span class="line"><span class="cl">abcd abcdefg
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">&lt;,&lt;
 </span></span><span class="line"><span class="cl">abcdx abcdefg
-</span></span></code></pre></div><p><code>__type_traits</code>：类型特性类</p>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><code>__type_traits</code>：类型特性类</p>
 <h3 id="152-日志滚动">15.2 日志滚动</h3>
 <p>I/O总线，能不能并行？</p>
 <ul>
@@ -1133,7 +1733,21 @@ Channel对象不拥有fd(文件描述符)，也就是说当Channel对象销毁�
 <p>  EventLoop就是负责实现&quot;循环”，负责驱动“循环”的重要模块！！Channel和Poller提供接口供EventLoop的使用，EventLoop整合封装了二者并向上提供了更方便的接口来使用。</p>
 <p>  EventLoop起到一个驱动循环的功能，Poller负责从事件监听器上获取监听结果。而Channel类则在其中起到了将fd及其相关属性封装的作用，将fd及其感兴趣事件和发生的事件以及不同事件对应的回调函数封装在一起，这样在各个模块中传递更加方便。</p>
 <p><strong>EventLoop类重要的成员变量：</strong></p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="c1">//说明：在linux中对bool类型的操作都是原子性的
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="c1">//说明：在linux中对bool类型的操作都是原子性的
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kt">bool</span> <span class="n">looping_</span><span class="p">;</span>         <span class="c1">//判断EventLoop是否在事件循环中
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kt">bool</span> <span class="n">quit_</span><span class="p">;</span>             <span class="c1">//判断是否停止事件循环(不是立刻停止)
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kt">bool</span> <span class="n">eventHandling_</span><span class="p">;</span>   <span class="c1">//判断是否处于处理事件中
@@ -1143,10 +1757,28 @@ Channel对象不拥有fd(文件描述符)，也就是说当Channel对象销毁�
 </span></span><span class="line"><span class="cl"><span class="n">boost</span><span class="o">::</span><span class="n">scoped_ptr</span><span class="o">&lt;</span><span class="n">TimerQueue</span><span class="o">&gt;</span> <span class="n">timerQueue_</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl"><span class="n">ChannelList</span> <span class="n">activeChannels_</span><span class="p">;</span>    <span class="c1">// Poller返回的活动通道
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">Channel</span> <span class="o">*</span><span class="n">currentActiveChannel_</span><span class="p">;</span> <span class="c1">// 当前正在处理的活动通道
-</span></span></span></code></pre></div><p><strong>One Loop Per Thread 含义介绍：</strong></p>
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p><strong>One Loop Per Thread 含义介绍：</strong></p>
 <p>  每一个EventLoop都绑定了一个线程(一对一绑定)，这种运行模式是Muduo库的特色！！充份利用了多核cpu的能力，每一个核的线程负责循环监听一组文件描述符的集合。</p>
 <p><strong>EventLoop类最重要的两个方法：</strong></p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="kt">void</span> <span class="n">EventLoop</span><span class="o">::</span><span class="n">loop</span><span class="p">()</span> <span class="p">{</span> 
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="kt">void</span> <span class="n">EventLoop</span><span class="o">::</span><span class="n">loop</span><span class="p">()</span> <span class="p">{</span> 
 </span></span><span class="line"><span class="cl">    <span class="c1">//..............
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="c1">//EventLoop 所属线程执行
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="k">while</span><span class="p">(</span><span class="o">!</span><span class="n">quit_</span><span class="p">)</span> <span class="p">{</span>
@@ -1158,11 +1790,35 @@ Channel对象不拥有fd(文件描述符)，也就是说当Channel对象销毁�
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="p">}</span>
 </span></span><span class="line"><span class="cl">    <span class="c1">//..............
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">}</span>
-</span></span></code></pre></div><p>  每个EventLoop对象都唯一绑定了一个线程，这个线程其实就在一直执行这个函数里面的while循环，这个while循环的大致逻辑比较简单。就是调用Poller::poll方法获取事件监听器上的监听结果。接下来在loop里面就会调用监听结果中每一个Channel的处理函数HandlerEvent()。每一个Channel的处理函数会根据Channel类中封装的实际发生的事件，执行Channel类中封装的各事件处理函数。(比如一个Channel发生了可读事件，可写事件，则这个Channel的HandlerEvent()就会在调用提前注册好这个Channel的可读、可写事件处理函数，又比如另一个Channel只发生了可读事件，那么HandlerEvent()就只会调用提前注册在这个Channel中的可读事件处理函数)。</p>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>  每个EventLoop对象都唯一绑定了一个线程，这个线程其实就在一直执行这个函数里面的while循环，这个while循环的大致逻辑比较简单。就是调用Poller::poll方法获取事件监听器上的监听结果。接下来在loop里面就会调用监听结果中每一个Channel的处理函数HandlerEvent()。每一个Channel的处理函数会根据Channel类中封装的实际发生的事件，执行Channel类中封装的各事件处理函数。(比如一个Channel发生了可读事件，可写事件，则这个Channel的HandlerEvent()就会在调用提前注册好这个Channel的可读、可写事件处理函数，又比如另一个Channel只发生了可读事件，那么HandlerEvent()就只会调用提前注册在这个Channel中的可读事件处理函数)。</p>
 <blockquote>
 <p>EventLoop的主要功能就是持续循环的获取监听结果并且根据结果调用处理函数。</p>
 </blockquote>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="kt">void</span> <span class="n">EventLoop</span><span class="o">::</span><span class="n">runInLoop</span><span class="p">(</span><span class="k">const</span> <span class="n">Functor</span> <span class="o">&amp;</span><span class="n">cb</span><span class="p">)</span> <span class="p">{</span>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="kt">void</span> <span class="n">EventLoop</span><span class="o">::</span><span class="n">runInLoop</span><span class="p">(</span><span class="k">const</span> <span class="n">Functor</span> <span class="o">&amp;</span><span class="n">cb</span><span class="p">)</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">  <span class="k">if</span> <span class="p">(</span><span class="n">isInLoopThread</span><span class="p">())</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="n">cb</span><span class="p">();</span>
 </span></span><span class="line"><span class="cl">  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
@@ -1180,7 +1836,9 @@ Channel对象不拥有fd(文件描述符)，也就是说当Channel对象销毁�
 </span></span><span class="line"><span class="cl">    <span class="n">wakeup</span><span class="p">();</span>
 </span></span><span class="line"><span class="cl">  <span class="p">}</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span></code></pre></div><p>此函数的作用是为外部线程提供接口，将函数注入到EventLoop所属的线程中执行。</p>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>此函数的作用是为外部线程提供接口，将函数注入到EventLoop所属的线程中执行。</p>
 <h3 id="183-channel类">18.3 Channel类</h3>
 <p><strong>Channel类概述：</strong></p>
 <p>Channel类其实相当于一个文件描述符的保姆！一个Channel对象关联一个文件描述符，但不拥有它(不负责这个文件描述符的生命周期)。Channel类则封装了一个fd和这个fd感兴趣事件，以及事件监听器监听到该fd实际发生的事件。</p>
@@ -1191,7 +1849,25 @@ Channel对象不拥有fd(文件描述符)，也就是说当Channel对象销毁�
 <li>Channel是Acceptor、Connector、EventLoop、TimerQueue、TcpConnection的成员，生命期由后者控制。</li>
 </ul>
 <p><strong>Channel类重要的成员变量：</strong></p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="n">EventLoop</span> <span class="o">*</span><span class="n">loop_</span><span class="p">;</span> <span class="c1">// 所属EventLoop
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="n">EventLoop</span> <span class="o">*</span><span class="n">loop_</span><span class="p">;</span> <span class="c1">// 所属EventLoop
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">const</span> <span class="kt">int</span> <span class="n">fd_</span><span class="p">;</span> <span class="c1">// Channel对象绑定的文件描述符，但不负责关闭该文件描述符
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kt">int</span> <span class="n">events_</span><span class="p">;</span> <span class="c1">// 关注的事件
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kt">int</span> <span class="n">revents_</span><span class="p">;</span> <span class="c1">// poll/epoll返回的事件，即实际监听到发生的事件类型
@@ -1205,7 +1881,9 @@ Channel对象不拥有fd(文件描述符)，也就是说当Channel对象销毁�
 </span></span><span class="line"><span class="cl"><span class="n">EventCallback</span> <span class="n">writeCallback_</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl"><span class="n">EventCallback</span> <span class="n">closeCallback_</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl"><span class="n">EventCallback</span> <span class="n">errorCallback_</span><span class="p">;</span>
-</span></span></code></pre></div><ul>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
 <li>loop：就是这个Channel所属的EventLoop对象</li>
 <li>fd_：Channel对象所关联的文件描述符</li>
 <li>events_：fd_所关注的事件</li>
@@ -1215,41 +1893,93 @@ Channel对象不拥有fd(文件描述符)，也就是说当Channel对象销毁�
 </ul>
 <p><strong>Channel类重要的成员方法：</strong></p>
 <p>向Channel对象注册各类事件的处理函数：</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">setReadCallback</span><span class="p">(</span><span class="k">const</span> <span class="n">ReadEventCallback</span> <span class="o">&amp;</span><span class="n">cb</span><span class="p">)</span> <span class="p">{</span> <span class="n">readCallback_</span> <span class="o">=</span> <span class="n">cb</span><span class="p">;</span> <span class="p">}</span>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">setReadCallback</span><span class="p">(</span><span class="k">const</span> <span class="n">ReadEventCallback</span> <span class="o">&amp;</span><span class="n">cb</span><span class="p">)</span> <span class="p">{</span> <span class="n">readCallback_</span> <span class="o">=</span> <span class="n">cb</span><span class="p">;</span> <span class="p">}</span>
 </span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">setWriteCallback</span><span class="p">(</span><span class="k">const</span> <span class="n">EventCallback</span> <span class="o">&amp;</span><span class="n">cb</span><span class="p">)</span> <span class="p">{</span> <span class="n">writeCallback_</span> <span class="o">=</span> <span class="n">cb</span><span class="p">;</span> <span class="p">}</span>
 </span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">setCloseCallback</span><span class="p">(</span><span class="k">const</span> <span class="n">EventCallback</span> <span class="o">&amp;</span><span class="n">cb</span><span class="p">)</span> <span class="p">{</span> <span class="n">closeCallback_</span> <span class="o">=</span> <span class="n">cb</span><span class="p">;</span> <span class="p">}</span>
 </span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">setErrorCallback</span><span class="p">(</span><span class="k">const</span> <span class="n">EventCallback</span> <span class="o">&amp;</span><span class="n">cb</span><span class="p">)</span> <span class="p">{</span> <span class="n">errorCallback_</span> <span class="o">=</span> <span class="n">cb</span><span class="p">;</span> <span class="p">}</span>
-</span></span></code></pre></div><p>  一个文件描述符会发生可读、可写、关闭、错误事件。当发生这些事件后，就需要调用相应的处理函数来处理。外部通过调用上面这四个函数可以将事件处理函数放进Channel类中，当需要调用的时候就可以直接拿出来调用了。</p>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>  一个文件描述符会发生可读、可写、关闭、错误事件。当发生这些事件后，就需要调用相应的处理函数来处理。外部通过调用上面这四个函数可以将事件处理函数放进Channel类中，当需要调用的时候就可以直接拿出来调用了。</p>
 <p>将Channel中的文件描述符及其感兴趣事件注册事件监听器上或从事件监听器上移除：</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">enableReading</span><span class="p">()</span> <span class="p">{</span><span class="n">events_</span> <span class="o">|=</span> <span class="n">kReadEvent</span><span class="p">;</span> <span class="n">upadte</span><span class="p">();}</span>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">enableReading</span><span class="p">()</span> <span class="p">{</span><span class="n">events_</span> <span class="o">|=</span> <span class="n">kReadEvent</span><span class="p">;</span> <span class="n">upadte</span><span class="p">();}</span>
 </span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">disableReading</span><span class="p">()</span> <span class="p">{</span><span class="n">events_</span> <span class="o">&amp;=</span> <span class="o">~</span><span class="n">kReadEvent</span><span class="p">;</span> <span class="n">update</span><span class="p">();}</span>
 </span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">enableWriting</span><span class="p">()</span> <span class="p">{</span><span class="n">events_</span> <span class="o">|=</span> <span class="n">kWriteEvent</span><span class="p">;</span> <span class="n">update</span><span class="p">();}</span>
 </span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">disableWriting</span><span class="p">()</span> <span class="p">{</span><span class="n">events_</span> <span class="o">&amp;=</span> <span class="o">~</span><span class="n">kWriteEvent</span><span class="p">;</span> <span class="n">update</span><span class="p">();}</span>
 </span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">disableAll</span><span class="p">()</span> <span class="p">{</span><span class="n">events_</span> <span class="o">|=</span> <span class="n">kNonEvent</span><span class="p">;</span> <span class="n">update</span><span class="p">();}</span>
-</span></span></code></pre></div><p>  外部通过这几个函数来告知Channel你所监管的文件描述符都对哪些事件类型感兴趣，并把这个文件描述符及其感兴趣事件注册到事件监听器(IO多路复用模块)上。这些函数里面都有一个update()私有成员方法，这个update其实本质上就是调用了epoll_ctl()。</p>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>  外部通过这几个函数来告知Channel你所监管的文件描述符都对哪些事件类型感兴趣，并把这个文件描述符及其感兴趣事件注册到事件监听器(IO多路复用模块)上。这些函数里面都有一个update()私有成员方法，这个update其实本质上就是调用了epoll_ctl()。</p>
 <p>  当事件监听器监听到某个文件描述符发生了什么事件，通过如下函数可以将这个文件描述符实际发生的事件封装进这个Channel中。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">set_revents</span><span class="p">(</span><span class="kt">int</span> <span class="n">revt</span><span class="p">)</span> <span class="p">{</span><span class="n">revents_</span> <span class="o">=</span> <span class="n">revt</span><span class="p">;}</span>
-</span></span></code></pre></div><p>当调用epoll_wait()后，可以得知事件监听器上哪些Channel(文件描述符)发生了哪些事件，事件发生后就可以调用这些Channel对应的处理函数。<code>Channel::HandleEvent</code>，让每个发生了事件的Channel调用自己保管的事件处理函数。每个Channel会根据自己文件描述符实际发生的事件(通过Channel中的revents_变量得知)和感兴趣的事件(通过Channel中的events_变量得知)来选择调用read_callback_和/或write_callback_和/或close_callback_和/或error_callback_。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">HandlerEvent</span><span class="p">(</span><span class="n">TimeStamp</span> <span class="n">receive_time</span><span class="p">);</span>
-</span></span></code></pre></div><h3 id="184-poller类">18.4 Poller类</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">set_revents</span><span class="p">(</span><span class="kt">int</span> <span class="n">revt</span><span class="p">)</span> <span class="p">{</span><span class="n">revents_</span> <span class="o">=</span> <span class="n">revt</span><span class="p">;}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>当调用epoll_wait()后，可以得知事件监听器上哪些Channel(文件描述符)发生了哪些事件，事件发生后就可以调用这些Channel对应的处理函数。<code>Channel::HandleEvent</code>，让每个发生了事件的Channel调用自己保管的事件处理函数。每个Channel会根据自己文件描述符实际发生的事件(通过Channel中的revents_变量得知)和感兴趣的事件(通过Channel中的events_变量得知)来选择调用read_callback_和/或write_callback_和/或close_callback_和/或error_callback_。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">HandlerEvent</span><span class="p">(</span><span class="n">TimeStamp</span> <span class="n">receive_time</span><span class="p">);</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="184-poller类">18.4 Poller类</h3>
 <p><strong>Poller概述:</strong></p>
 <p>负责监听文件描述符事件是否触发以及返回发生事件的文件描述符以及具体事件的模块就是Poller。所以可以理解为一个Poller对象对应一个事件监听器。</p>
 <p>muduo提供了epoll和poll两种IO多路复用方法来实现事件监听。不过默认是使用epoll来实现，也可以通过选项选择poll。</p>
 <p>这个Poller是个抽象虚类，由EpollPoller和PollPoller继承实现，与监听文件描述符和返回监听结果的具体方法是在这两个派生类中实现。EpollPoller就是封装了用epoll方法实现的与事件监听有关的各种方法，PollPoller就是封装了poll方法实现的与事件监听有关的各种方法。</p>
 <p><strong>Poller派生类的重要成员：</strong></p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="n">EventLoop</span> <span class="o">*</span><span class="n">ownerLoop_</span><span class="p">;</span> <span class="c1">// Poller所属EventLoop
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="n">EventLoop</span> <span class="o">*</span><span class="n">ownerLoop_</span><span class="p">;</span> <span class="c1">// Poller所属EventLoop
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kt">int</span> <span class="n">epollfd_</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl"><span class="n">EventList</span> <span class="n">events_</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl"><span class="n">ChannelMap</span> <span class="n">channels_</span><span class="p">;</span> <span class="c1">//文件标识符与Channel对象的映射关系
-</span></span></span></code></pre></div><ul>
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
 <li>ownerLoop_：Poller所属的EventLoop对象</li>
 <li>epollfd_：用epoll_create方法返回的epoll句柄</li>
 <li>events_：监听事件的集合，通过vector容器实现动态扩容</li>
 <li>channels_：文件描述符与Channel对象的映射关系，通过map容器来管理</li>
 </ul>
 <p><strong>Poller派生类给外部提供的最重要的方法：</strong></p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="n">TimeStamp</span> <span class="nf">poll</span><span class="p">(</span><span class="kt">int</span> <span class="n">timeoutMs</span><span class="p">,</span> <span class="n">ChannelList</span> <span class="o">*</span><span class="n">activeChannels</span><span class="p">);</span>
-</span></span></code></pre></div><p>  这个函数可以说是Poller的核心，当外部调用poll方法的时候，该方法底层其实是通过epoll_wait获取这个事件监听器上发生事件的fd及其对应发生的事件，我们知道每个fd都是由一个Channel封装的，通过哈希表channels_可以根据fd找到封装这个fd的Channel。将事件监听器监听到该fd发生的事件写进这个Channel中的revents成员变量中。然后再把这个Channel装进activeChannels中(它是一个<code>vector&lt;Channel*&gt;</code>)。这样，当外部调用完poll之后就能拿到事件监听器的<strong>监听结果</strong>(<code>activeChannels_</code>容器)。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="n">TimeStamp</span> <span class="nf">poll</span><span class="p">(</span><span class="kt">int</span> <span class="n">timeoutMs</span><span class="p">,</span> <span class="n">ChannelList</span> <span class="o">*</span><span class="n">activeChannels</span><span class="p">);</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>  这个函数可以说是Poller的核心，当外部调用poll方法的时候，该方法底层其实是通过epoll_wait获取这个事件监听器上发生事件的fd及其对应发生的事件，我们知道每个fd都是由一个Channel封装的，通过哈希表channels_可以根据fd找到封装这个fd的Channel。将事件监听器监听到该fd发生的事件写进这个Channel中的revents成员变量中。然后再把这个Channel装进activeChannels中(它是一个<code>vector&lt;Channel*&gt;</code>)。这样，当外部调用完poll之后就能拿到事件监听器的<strong>监听结果</strong>(<code>activeChannels_</code>容器)。</p>
 <h3 id="185-定时器">18.5 定时器</h3>
 <p>定时函数，用于让程序等待一段时间或安排计划任务：</p>
 <ul>
@@ -1272,13 +2002,68 @@ Channel对象不拥有fd(文件描述符)，也就是说当Channel对象销毁�
 </ul>
 <p><strong>信号转换成文件描述符来处理：</strong></p>
 <p>如果要处理信号的话，也可以让信号转换成文件描述符来处理，signalfd</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;sys/timerfd.h&gt;</span><span class="cp">
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;sys/timerfd.h&gt;</span><span class="cp">
 </span></span></span><span class="line"><span class="cl"><span class="cp"></span>
 </span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">timerfd_create</span><span class="p">(</span><span class="kt">int</span> <span class="n">clockid</span><span class="p">,</span> <span class="kt">int</span> <span class="n">flags</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">timerfd_settime</span><span class="p">(</span><span class="kt">int</span> <span class="n">fd</span><span class="p">,</span> <span class="kt">int</span> <span class="n">flags</span><span class="p">,</span> <span class="k">const</span> <span class="k">struct</span> <span class="nc">itimerspec</span> <span class="o">*</span><span class="n">new_value</span><span class="p">,</span> <span class="k">struct</span> <span class="nc">itimerspec</span> <span class="o">*</span><span class="n">old_value</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="n">timerfd_gettime</span><span class="p">(</span><span class="kt">int</span> <span class="n">fd</span><span class="p">,</span> <span class="k">struct</span> <span class="nc">itimerspec</span> <span class="o">*</span><span class="n">curr_value</span><span class="p">)</span>
-</span></span></code></pre></div><p>示例：</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&#34;Channel.h&#34;</span><span class="cp">
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>示例：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&#34;Channel.h&#34;</span><span class="cp">
 </span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&#34;EventLoop.h&#34;</span><span class="cp">
 </span></span></span><span class="line"><span class="cl"><span class="cp"></span>
 </span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;boost/bind.hpp&gt;</span><span class="cp">
@@ -1318,7 +2103,9 @@ Channel对象不拥有fd(文件描述符)，也就是说当Channel对象销毁�
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">  <span class="o">::</span><span class="n">close</span><span class="p">(</span><span class="n">timerfd</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span></code></pre></div><p>muduo的定时器由三个类实现，TimerId、Timer、TimerQueue，用户只能看到第一个类，其它两个都是内部实现细节。</p>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>muduo的定时器由三个类实现，TimerId、Timer、TimerQueue，用户只能看到第一个类，其它两个都是内部实现细节。</p>
 <p>TimerQueue的接口很简单，只有两个函数addTimer和cancel。调用addTimer 返回timerld。添加定时器， timerld 是外部类。调用cancel 传递timerld 取消定时器。实际使用也不用TimerQueue的方法，使用的时候用EventLoop提供的函数。TimerQueue 会调用实际的定时器函数。</p>
 <p>EventLoop：</p>
 <ul>
@@ -1328,9 +2115,17 @@ Channel对象不拥有fd(文件描述符)，也就是说当Channel对象销毁�
 <li>cancel		取消定时器</li>
 </ul>
 <p>TimerQueue数据结构的选择，能快速根据当前时间找到已到期的定时器，也要高效的添加和删除Timer，因而可以用二叉搜索树，用map或者set：</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="k">typedef</span> <span class="n">std</span><span class="o">::</span><span class="n">pair</span><span class="o">&lt;</span><span class="n">Timestamp</span><span class="p">,</span> <span class="n">Timer</span><span class="o">*&gt;</span> <span class="n">Entry</span><span class="p">;</span>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="k">typedef</span> <span class="n">std</span><span class="o">::</span><span class="n">pair</span><span class="o">&lt;</span><span class="n">Timestamp</span><span class="p">,</span> <span class="n">Timer</span><span class="o">*&gt;</span> <span class="n">Entry</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl"><span class="k">typedef</span> <span class="n">std</span><span class="o">::</span><span class="n">set</span><span class="o">&lt;</span><span class="n">Entry</span><span class="o">&gt;</span> <span class="n">TimerList</span><span class="p">;</span>
-</span></span></code></pre></div><blockquote>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><blockquote>
 <p>以Entry作为key时，存在Timestamp对象是相同的，只需保证pair的first(Timestamp)或second(Timer)其中一个不相等就可以。</p>
 </blockquote>
 <p><img
@@ -1347,7 +2142,30 @@ Channel对象不拥有fd(文件描述符)，也就是说当Channel对象销毁�
 <p>lower_bound()函数与upper_bound()函数都是基于二分搜索操作的函数，其操作对象是有序的。lower_bound()函数返回指向第一个不小于给定值的元素的迭代器，upper_bound()函数返回指向第一个大于给定值的元素的迭代器。</p>
 <p><strong>lower_bound函数：</strong></p>
 <p>对lower_bound函数而言，其默认的比较函数是operator&lt;。下面是一个简单的示例。例子中，data中存储的是按照非严格递增的方式存储的数据。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;algorithm&gt;</span><span class="cp">
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;algorithm&gt;</span><span class="cp">
 </span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp">
 </span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;vector&gt;</span><span class="cp">
 </span></span></span><span class="line"><span class="cl"><span class="cp"></span>
@@ -1366,8 +2184,22 @@ Channel对象不拥有fd(文件描述符)，也就是说当Channel对象销毁�
 </span></span><span class="line"><span class="cl">    <span class="p">}</span>
 </span></span><span class="line"><span class="cl">  <span class="p">}</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span></code></pre></div><p>output：</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-txt" data-lang="txt"><span class="line"><span class="cl">首个不小于0的元素的索引为：0 该元素为：1
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>output：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-txt" data-lang="txt"><span class="line"><span class="cl">首个不小于0的元素的索引为：0 该元素为：1
 </span></span><span class="line"><span class="cl">首个不小于1的元素的索引为：0 该元素为：1
 </span></span><span class="line"><span class="cl">首个不小于2的元素的索引为：1 该元素为：2
 </span></span><span class="line"><span class="cl">首个不小于3的元素的索引为：2 该元素为：4
@@ -1375,8 +2207,33 @@ Channel对象不拥有fd(文件描述符)，也就是说当Channel对象销毁�
 </span></span><span class="line"><span class="cl">首个不小于5的元素的索引为：3 该元素为：5
 </span></span><span class="line"><span class="cl">首个不小于6的元素的索引为：5 该元素为：6
 </span></span><span class="line"><span class="cl">data中不存在不小于7的元素
-</span></span></code></pre></div><p><strong>upper_bound函数：</strong></p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;algorithm&gt;</span><span class="cp">
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><strong>upper_bound函数：</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;algorithm&gt;</span><span class="cp">
 </span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp">
 </span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;vector&gt;</span><span class="cp">
 </span></span></span><span class="line"><span class="cl"><span class="cp"></span>
@@ -1395,8 +2252,22 @@ Channel对象不拥有fd(文件描述符)，也就是说当Channel对象销毁�
 </span></span><span class="line"><span class="cl">    <span class="p">}</span>
 </span></span><span class="line"><span class="cl">  <span class="p">}</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span></code></pre></div><p>output：</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-txt" data-lang="txt"><span class="line"><span class="cl">首个大于0的元素的索引为：0 该元素为：1
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>output：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-txt" data-lang="txt"><span class="line"><span class="cl">首个大于0的元素的索引为：0 该元素为：1
 </span></span><span class="line"><span class="cl">首个大于1的元素的索引为：1 该元素为：2
 </span></span><span class="line"><span class="cl">首个大于2的元素的索引为：2 该元素为：4
 </span></span><span class="line"><span class="cl">首个大于3的元素的索引为：2 该元素为：4
@@ -1404,12 +2275,40 @@ Channel对象不拥有fd(文件描述符)，也就是说当Channel对象销毁�
 </span></span><span class="line"><span class="cl">首个大于5的元素的索引为：5 该元素为：6
 </span></span><span class="line"><span class="cl">data中不存在大于6的元素
 </span></span><span class="line"><span class="cl">data中不存在大于7的元素
-</span></span></code></pre></div><h3 id="187-c-编译器优化之-rvo-与-nrvo">18.7 C++ 编译器优化之 RVO 与 NRVO</h3>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="187-c-编译器优化之-rvo-与-nrvo">18.7 C++ 编译器优化之 RVO 与 NRVO</h3>
 <blockquote>
 <p><a href="https://www.yhspy.com/2019/09/01/C-%E7%BC%96%E8%AF%91%E5%99%A8%E4%BC%98%E5%8C%96%E4%B9%8B-RVO-%E4%B8%8E-NRVO/"target="_blank" rel="external nofollow noopener noreferrer">C++ 编译器优化之 RVO 与 NRVO</a></p>
 </blockquote>
 <p>  RVO 即 “Return Value Optimization”，是一种编译器优化技术，通过该技术编译器可以减少函数返回时生成临时值值(对象)的个数，从某种程度上可以提高程序的运行效率，对需要分配大量内存的类对象其值复制过程十分友好。NRVO 全称为 “Named Return Value Optimization”，该优化的大致流程与 RVO 类似。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp">
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp">
 </span></span></span><span class="line"><span class="cl"><span class="cp"></span>
 </span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">A</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl"><span class="k">public</span><span class="o">:</span>
@@ -1431,10 +2330,20 @@ Channel对象不拥有fd(文件描述符)，也就是说当Channel对象销毁�
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">  <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span></code></pre></div><p>output：</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-txt" data-lang="txt"><span class="line"><span class="cl">[C] constructor fired.
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>output：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-txt" data-lang="txt"><span class="line"><span class="cl">[C] constructor fired.
 </span></span><span class="line"><span class="cl">[C] destructor fired.
-</span></span></code></pre></div><h3 id="188-线程唤醒">18.8 线程唤醒</h3>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="188-线程唤醒">18.8 线程唤醒</h3>
 <p><strong>线程唤醒方法：</strong></p>
 <p>一个线程如何通知另一个等待中的线程，可以有三个方法：</p>
 <ol>
@@ -1442,7 +2351,61 @@ Channel对象不拥有fd(文件描述符)，也就是说当Channel对象销毁�
 <li>socketpair 和管道一样有一对文件描述符，不同的是可以双向通信。</li>
 <li>eventfd。等待线程监听文件描述符可读事件，通知线程只要往这个线程写入数据，等待线程就会获得通知。是一个比 pipe 更高效的线程间事件通知机制，一方面它比 pipe 少用一个 file descripor，节省了资源；另一方面，eventfd 的缓冲区管理也简单得多，全部“buffer” 只有定长8 bytes，不像 pipe 那样可能有不定长的真正 buffer。</li>
 </ol>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">createEventfd</span><span class="p">()</span> <span class="p">{</span>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">createEventfd</span><span class="p">()</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">  <span class="kt">int</span> <span class="n">evtfd</span> <span class="o">=</span> <span class="o">::</span><span class="n">eventfd</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">EFD_NONBLOCK</span> <span class="o">|</span> <span class="n">EFD_CLOEXEC</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">  <span class="k">if</span> <span class="p">(</span><span class="n">evtfd</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="n">LOG_SYSERR</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;Failed in eventfd&#34;</span><span class="p">;</span>
@@ -1492,8 +2455,37 @@ Channel对象不拥有fd(文件描述符)，也就是说当Channel对象销毁�
 </span></span><span class="line"><span class="cl">    <span class="n">LOG_ERROR</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;EventLoop::handleRead() reads &#34;</span> <span class="o">&lt;&lt;</span> <span class="n">n</span> <span class="o">&lt;&lt;</span> <span class="s">&#34; bytes instead of 8&#34;</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">  <span class="p">}</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span></code></pre></div><p>  EventLoop中非常有用的一个函数EventLoop::runInLoop：在IO线程中执行某个回调函数，该函数可以跨线程调用。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="c1">// 在I/O线程中执行某个回调函数，该函数可以跨线程调用
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>  EventLoop中非常有用的一个函数EventLoop::runInLoop：在IO线程中执行某个回调函数，该函数可以跨线程调用。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="c1">// 在I/O线程中执行某个回调函数，该函数可以跨线程调用
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kt">void</span> <span class="n">EventLoop</span><span class="o">::</span><span class="n">runInLoop</span><span class="p">(</span><span class="k">const</span> <span class="n">Functor</span> <span class="o">&amp;</span><span class="n">cb</span><span class="p">)</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">  <span class="k">if</span> <span class="p">(</span><span class="n">isInLoopThread</span><span class="p">())</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="c1">// 如果是当前IO线程调用runInLoop，则同步调用cb
@@ -1516,8 +2508,43 @@ Channel对象不拥有fd(文件描述符)，也就是说当Channel对象销毁�
 </span></span><span class="line"><span class="cl">    <span class="n">wakeup</span><span class="p">();</span>
 </span></span><span class="line"><span class="cl">  <span class="p">}</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span></code></pre></div><p>  让IO线程也能执行一些计算任务，其他线程或者本线程添加的一些回调任务，IO不忙的时候，处于阻塞状态。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="c1">// 事件循环，该函数不能跨线程调用
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>  让IO线程也能执行一些计算任务，其他线程或者本线程添加的一些回调任务，IO不忙的时候，处于阻塞状态。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="c1">// 事件循环，该函数不能跨线程调用
 </span></span></span><span class="line"><span class="cl"><span class="c1">// 只能在创建该对象的线程中调用
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kt">void</span> <span class="n">EventLoop</span><span class="o">::</span><span class="n">loop</span><span class="p">()</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">  <span class="c1">//省略代码***************
@@ -1546,7 +2573,9 @@ Channel对象不拥有fd(文件描述符)，也就是说当Channel对象销毁�
 </span></span><span class="line"><span class="cl">  <span class="p">}</span>
 </span></span><span class="line"><span class="cl">  <span class="n">callingPendingFunctors_</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span></code></pre></div><ul>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
 <li>不是简单地在临界区内依次调用Functor，而是把回调列表swap到functors中，这样一方面减小了临界区的长度(意味着不会阻塞其它线程的queueInLoop())，另一方面，也避免了死锁(因为Functor可能再次调用queueInLoop())。</li>
 <li>由于doPendingFunctors()调用的Functor可能再次调用queueInLoop(cb)，这时，queueInLoop()就必须wakeup()，否则新增的cb可能就不能及时调用了。</li>
 <li>muduo没有反复执行doPendingFunctors()直到pendingFunctors为空，这是有意的，否则IO线程可能陷入死循环，无法处理IO事件。</li>
@@ -1587,7 +2616,40 @@ Channel对象不拥有fd(文件描述符)，也就是说当Channel对象销毁�
 <li>Acceptor的数据成员包括Socket、Channel，Acceptor的socket是listening socket(即server socket)。Channel用于观察此socket的readable事件，并回调Accptor::handleRead()，后者调用accept(2)来接受新连接，并回调用户callback。</li>
 </ul>
 <p><strong>Acceptor 示例：</strong></p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&#34;Acceptor.h&#34;</span><span class="cp">
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&#34;Acceptor.h&#34;</span><span class="cp">
 </span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&#34;EventLoop.h&#34;</span><span class="cp">
 </span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&#34;InetAddress.h&#34;</span><span class="cp">
 </span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&#34;SocketsOps.h&#34;</span><span class="cp">
@@ -1616,14 +2678,28 @@ Channel对象不拥有fd(文件描述符)，也就是说当Channel对象销毁�
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">  <span class="n">loop</span><span class="p">.</span><span class="n">loop</span><span class="p">();</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span></code></pre></div><p><strong>模拟客户端：</strong></p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ telnet 127.0.0.1 <span class="m">8888</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><strong>模拟客户端：</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ telnet 127.0.0.1 <span class="m">8888</span>
 </span></span><span class="line"><span class="cl">Trying 127.0.0.1...
 </span></span><span class="line"><span class="cl">Connected to 127.0.0.1.
 </span></span><span class="line"><span class="cl">Escape character is <span class="s1">&#39;^]&#39;</span>.
 </span></span><span class="line"><span class="cl">How are you?
 </span></span><span class="line"><span class="cl">Connection closed by foreign host.
-</span></span></code></pre></div><h2 id="tcpservertcpconnection">TcpServer/TcpConnection</h2>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="tcpservertcpconnection">TcpServer/TcpConnection</h2>
 <ul>
 <li>Acceptor类的主要功能是socket、bind、listen</li>
 <li>一般来说，在上层应用程序中，我们不直接使用Acceptor，而是把它作为TcpServer的成员</li>
@@ -1743,5 +2819,5 @@ Muduo Buffer 的设计考虑了常见的网络编程需求，我试图在易用�
         </div></div><div id="mask"></div><noscript>
     <div class="noscript-warning">Theme FixIt works best with JavaScript enabled.</div>
   </noscript>
-</div><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script src="/lib/autocomplete/autocomplete.min.js" defer></script><script src="/lib/lunr/lunr.min.js" defer></script><script src="/lib/lazysizes/lazysizes.min.js" async defer></script><script src="/lib/sharer/sharer.min.js" async defer></script><script src="/lib/typeit/index.umd.js" defer></script><script src="/lib/katex/katex.min.js" defer></script><script src="/lib/katex/auto-render.min.js" defer></script><script src="/lib/katex/copy-tex.min.js" defer></script><script src="/lib/katex/mhchem.min.js" defer></script><script src="/lib/cookieconsent/cookieconsent.min.js" defer></script><script>window.config={"code":{"copyTitle":"Copy to clipboard","editLockTitle":"Lock editable code block","editUnLockTitle":"Unlock editable code block","editable":true,"maxShownLines":10},"comment":{"enable":false},"cookieconsent":{"content":{"dismiss":"Got it!","link":"Learn more","message":"This website uses Cookies to improve your experience."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"data":{"typeit-header-desktop":"Home","typeit-header-title-mobile":"Home"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30},"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"typeit-header-desktop":["typeit-header-desktop"],"typeit-header-title-mobile":["typeit-header-title-mobile"]},"duration":-1,"speed":100}};</script><script src="/js/theme.min.js" defer></script></body>
+</div><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script src="/lib/autocomplete/autocomplete.min.js" defer></script><script src="/lib/lunr/lunr.min.js" defer></script><script src="/lib/lazysizes/lazysizes.min.js" async defer></script><script src="/lib/sharer/sharer.min.js" async defer></script><script src="/lib/typeit/index.umd.js" defer></script><script src="/lib/katex/katex.min.js" defer></script><script src="/lib/katex/auto-render.min.js" defer></script><script src="/lib/katex/copy-tex.min.js" defer></script><script src="/lib/katex/mhchem.min.js" defer></script><script src="/lib/cookieconsent/cookieconsent.min.js" defer></script><script>window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":30},"comment":{"enable":false},"cookieconsent":{"content":{"dismiss":"Got it!","link":"Learn more","message":"This website uses Cookies to improve your experience."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"data":{"typeit-header-desktop":"Home","typeit-header-title-mobile":"Home"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30},"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"typeit-header-desktop":["typeit-header-desktop"],"typeit-header-title-mobile":["typeit-header-title-mobile"]},"duration":-1,"speed":100}};</script><script src="/js/theme.min.js" defer></script></body>
 </html>

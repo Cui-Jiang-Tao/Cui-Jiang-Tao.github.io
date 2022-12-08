@@ -10,7 +10,7 @@
 <meta name="description" content="推荐使用 Hugo extended 版本 由于这个主题的一些特性需要将 SCSS 转换为 CSS, 推荐使用 Hugo extended 版本来获得更好的使用体验。 主题参考 ubuntu 如何安装snap 也就说你的Ubuntu" /><meta name="keywords" content='hugo' /><meta itemprop="name" content="Hugo的安装和FixIt 主题">
 <meta itemprop="description" content="推荐使用 Hugo extended 版本 由于这个主题的一些特性需要将 SCSS 转换为 CSS, 推荐使用 Hugo extended 版本来获得更好的使用体验。 主题参考 ubuntu 如何安装snap 也就说你的Ubuntu"><meta itemprop="datePublished" content="2022-12-08T00:00:00+00:00" />
 <meta itemprop="dateModified" content="2022-12-08T00:00:00+00:00" />
-<meta itemprop="wordCount" content="338">
+<meta itemprop="wordCount" content="346">
 <meta itemprop="keywords" content="hugo," /><meta property="og:title" content="Hugo的安装和FixIt 主题" />
 <meta property="og:description" content="推荐使用 Hugo extended 版本 由于这个主题的一些特性需要将 SCSS 转换为 CSS, 推荐使用 Hugo extended 版本来获得更好的使用体验。 主题参考 ubuntu 如何安装snap 也就说你的Ubuntu" />
 <meta property="og:type" content="article" />
@@ -32,7 +32,7 @@
     "mainEntityOfPage": {
       "@type": "WebPage",
       "@id": "https:\/\/cui-jiang-tao.github.io\/posts\/hugo%E6%90%AD%E5%BB%BA\/"
-    },"genre": "posts","keywords": "hugo","wordcount":  338 ,
+    },"genre": "posts","keywords": "hugo","wordcount":  346 ,
     "url": "https:\/\/cui-jiang-tao.github.io\/posts\/hugo%E6%90%AD%E5%BB%BA\/","datePublished": "2022-12-08T00:00:00+00:00","dateModified": "2022-12-08T00:00:00+00:00","publisher": {
       "@type": "Organization",
       "name": ""},"author": {
@@ -157,7 +157,7 @@
     alt="cjt"
     title="cjt"/>&nbsp;cjt</span></span>
           <span class="post-category">included in <a href="/categories/hugo/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> hugo</a></span></div>
-      <div class="post-meta-line"><span title=2022-12-08&#32;00:00:00><i class="fa-regular fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-12-08">2022-12-08</time></span>&nbsp;<span><i class="fa-solid fa-pencil-alt fa-fw" aria-hidden="true"></i> 338 words</span>&nbsp;<span><i class="fa-regular fa-clock fa-fw" aria-hidden="true"></i> One minute</span>&nbsp;</div>
+      <div class="post-meta-line"><span title=2022-12-08&#32;00:00:00><i class="fa-regular fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-12-08">2022-12-08</time></span>&nbsp;<span><i class="fa-solid fa-pencil-alt fa-fw" aria-hidden="true"></i> 346 words</span>&nbsp;<span><i class="fa-regular fa-clock fa-fw" aria-hidden="true"></i> One minute</span>&nbsp;</div>
     </div><div class="details toc" id="toc-static" data-kept="false">
         <div class="details-summary toc-title">
           <span>Contents</span>
@@ -182,20 +182,55 @@
 <p>也就说你的Ubuntu没有安装snap。 你可能需要自己手动安装它，运行命令 <code>sudo apt update &amp;&amp; sudo apt install snapd</code> ，apt命令将会更新软件包索引并安装snapd。</p>
 <h2 id="安装hugo">安装hugo</h2>
 <p>默认情况下，Hugo 在 Ubuntu 20.04 默认存储库中不可用。 现在使用 Snap 安装 Hugo：</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">sudo snap install hugo
-</span></span></code></pre></div><h2 id="使用hugo创建一个站点">使用Hugo创建一个站点</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">sudo snap install hugo
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="使用hugo创建一个站点">使用Hugo创建一个站点</h2>
 <p>由于是用snap安装的Hugo，我们在Hugo相关命令前要加上<code>snap run</code>：</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">snap run hugo new site my_website
-</span></span></code></pre></div><p>这样就在/home下创建了一个my-blog的文件夹，里面保存了Hugo生成网站的文件。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">snap run hugo new site my_website
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>这样就在/home下创建了一个my_website的文件夹，里面保存了Hugo生成网站的文件。</p>
 <h2 id="安装主题">安装主题</h2>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">git clone https://github.com/hugo-fixit/FixIt.git themes/FixIt
-</span></span></code></pre></div><h2 id="测试网站">测试网站</h2>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">snap run hugo server -D
-</span></span></code></pre></div><p>在浏览器中输入localhost:1313可以预览网站。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">git clone https://github.com/hugo-fixit/FixIt.git themes/FixIt
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="测试网站">测试网站</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">snap run hugo server -D
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>在浏览器中输入localhost:1313可以预览网站。</p>
 <h2 id="生成网站">生成网站</h2>
 <p>接下来我们要生成静态页面</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">snap run hugo
-</span></span></code></pre></div></div><div class="post-footer" id="post-footer">
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">snap run hugo
+</span></span></code></pre></td></tr></table>
+</div>
+</div></div><div class="post-footer" id="post-footer">
   <div class="post-info">
     <div class="post-info-line">
       <div class="post-info-mod">
@@ -230,5 +265,5 @@
         </div></div><div id="mask"></div><noscript>
     <div class="noscript-warning">Theme FixIt works best with JavaScript enabled.</div>
   </noscript>
-</div><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script src="/lib/autocomplete/autocomplete.min.js" defer></script><script src="/lib/lunr/lunr.min.js" defer></script><script src="/lib/lazysizes/lazysizes.min.js" async defer></script><script src="/lib/sharer/sharer.min.js" async defer></script><script src="/lib/typeit/index.umd.js" defer></script><script src="/lib/katex/katex.min.js" defer></script><script src="/lib/katex/auto-render.min.js" defer></script><script src="/lib/katex/copy-tex.min.js" defer></script><script src="/lib/katex/mhchem.min.js" defer></script><script src="/lib/cookieconsent/cookieconsent.min.js" defer></script><script>window.config={"code":{"copyTitle":"Copy to clipboard","editLockTitle":"Lock editable code block","editUnLockTitle":"Unlock editable code block","editable":true,"maxShownLines":10},"comment":{"enable":false},"cookieconsent":{"content":{"dismiss":"Got it!","link":"Learn more","message":"This website uses Cookies to improve your experience."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"data":{"typeit-header-desktop":"Home","typeit-header-title-mobile":"Home"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30},"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"typeit-header-desktop":["typeit-header-desktop"],"typeit-header-title-mobile":["typeit-header-title-mobile"]},"duration":-1,"speed":100}};</script><script src="/js/theme.min.js" defer></script></body>
+</div><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script src="/lib/autocomplete/autocomplete.min.js" defer></script><script src="/lib/lunr/lunr.min.js" defer></script><script src="/lib/lazysizes/lazysizes.min.js" async defer></script><script src="/lib/sharer/sharer.min.js" async defer></script><script src="/lib/typeit/index.umd.js" defer></script><script src="/lib/katex/katex.min.js" defer></script><script src="/lib/katex/auto-render.min.js" defer></script><script src="/lib/katex/copy-tex.min.js" defer></script><script src="/lib/katex/mhchem.min.js" defer></script><script src="/lib/cookieconsent/cookieconsent.min.js" defer></script><script>window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":30},"comment":{"enable":false},"cookieconsent":{"content":{"dismiss":"Got it!","link":"Learn more","message":"This website uses Cookies to improve your experience."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"data":{"typeit-header-desktop":"Home","typeit-header-title-mobile":"Home"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30},"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"typeit-header-desktop":["typeit-header-desktop"],"typeit-header-title-mobile":["typeit-header-title-mobile"]},"duration":-1,"speed":100}};</script><script src="/js/theme.min.js" defer></script></body>
 </html>

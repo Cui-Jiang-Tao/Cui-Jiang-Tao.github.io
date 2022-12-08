@@ -10,7 +10,7 @@
   <pubDate>Thu, 29 Sep 2022 00:00:00 &#43;0000</pubDate>
   <author>cjt</author>
   <guid>https://cui-jiang-tao.github.io/posts/git/</guid>
-  <description><![CDATA[1. 配置 git config --global user.name &#34;Your Name&#34; git config --global user.email &#34;email@example.com&#34; #设置远程仓库 git remote add origin git@github.com:vstk771/gitTest.git 注意： git config命令的&ndash;global参数，用了这个参数，表示你这台机器上]]></description>
+  <description><![CDATA[1. 配置 1 2 3 4 5 git config --global user.name &#34;Your Name&#34; git config --global user.email &#34;email@example.com&#34; #设置远程仓库 git remote add origin git@github.com:vstk771/gitTest.git 注意： git config命令的&ndash;global参数，用了这个参数，表示你]]></description>
 </item>
 </channel>
 </rss>

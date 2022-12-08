@@ -10,7 +10,7 @@
 <meta name="description" content="前言 CMake是一个跨平台的安装编译工具，可以用简单的语句来描述所有平台的安装(编译过程)。 CMake可以说已经成为大部分C&#43;&#43;开源项目标配" /><meta name="keywords" content='CMake' /><meta itemprop="name" content="CMake">
 <meta itemprop="description" content="前言 CMake是一个跨平台的安装编译工具，可以用简单的语句来描述所有平台的安装(编译过程)。 CMake可以说已经成为大部分C&#43;&#43;开源项目标配"><meta itemprop="datePublished" content="2022-09-15T00:00:00+00:00" />
 <meta itemprop="dateModified" content="2022-09-15T00:00:00+00:00" />
-<meta itemprop="wordCount" content="2428">
+<meta itemprop="wordCount" content="2656">
 <meta itemprop="keywords" content="CMake," /><meta property="og:title" content="CMake" />
 <meta property="og:description" content="前言 CMake是一个跨平台的安装编译工具，可以用简单的语句来描述所有平台的安装(编译过程)。 CMake可以说已经成为大部分C&#43;&#43;开源项目标配" />
 <meta property="og:type" content="article" />
@@ -32,7 +32,7 @@
     "mainEntityOfPage": {
       "@type": "WebPage",
       "@id": "https:\/\/cui-jiang-tao.github.io\/posts\/cmake\/"
-    },"genre": "posts","keywords": "CMake","wordcount":  2428 ,
+    },"genre": "posts","keywords": "CMake","wordcount":  2656 ,
     "url": "https:\/\/cui-jiang-tao.github.io\/posts\/cmake\/","datePublished": "2022-09-15T00:00:00+00:00","dateModified": "2022-09-15T00:00:00+00:00","publisher": {
       "@type": "Organization",
       "name": ""},"author": {
@@ -157,7 +157,7 @@
     alt="cjt"
     title="cjt"/>&nbsp;cjt</span></span>
           <span class="post-category">included in <a href="/categories/c++/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> c++</a></span></div>
-      <div class="post-meta-line"><span title=2022-09-15&#32;00:00:00><i class="fa-regular fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-09-15">2022-09-15</time></span>&nbsp;<span><i class="fa-solid fa-pencil-alt fa-fw" aria-hidden="true"></i> 2428 words</span>&nbsp;<span><i class="fa-regular fa-clock fa-fw" aria-hidden="true"></i> 5 minutes</span>&nbsp;</div>
+      <div class="post-meta-line"><span title=2022-09-15&#32;00:00:00><i class="fa-regular fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-09-15">2022-09-15</time></span>&nbsp;<span><i class="fa-solid fa-pencil-alt fa-fw" aria-hidden="true"></i> 2656 words</span>&nbsp;<span><i class="fa-regular fa-clock fa-fw" aria-hidden="true"></i> 6 minutes</span>&nbsp;</div>
     </div><div class="details toc" id="toc-static" data-kept="false">
         <div class="details-summary toc-title">
           <span>Contents</span>
@@ -199,10 +199,19 @@
 </li>
 <li>指令是大小写无关的，参数和变量是大小写相关的</li>
 </ul>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cmake" data-lang="cmake"><span class="line"><span class="cl"><span class="nb">set</span><span class="p">(</span><span class="s">HELLO</span> <span class="s">hello.cpp</span><span class="p">)</span><span class="err">
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cmake" data-lang="cmake"><span class="line"><span class="cl"><span class="nb">set</span><span class="p">(</span><span class="s">HELLO</span> <span class="s">hello.cpp</span><span class="p">)</span><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="nb">add_executable</span><span class="p">(</span><span class="s">hello</span> <span class="s">main.cpp</span> <span class="s">hello.cpp</span><span class="p">)</span><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="nb">ADD_EXECUTABLE</span><span class="p">(</span><span class="s">hello</span> <span class="s">main.cpp</span> <span class="o">${</span><span class="nv">HELLO</span><span class="o">}</span><span class="p">)</span><span class="err">
-</span></span></span></code></pre></div><ul>
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
 <li>变量使用${}方式取值，但是在 IF 控制语句中是直接使用变量名</li>
 </ul>
 <h2 id="2-重要指令和cmake常用变量">2. 重要指令和CMake常用变量</h2>
@@ -212,92 +221,182 @@
 <ul>
 <li>语法： <code>cmake_minimum_required(VERSION versionNumber [FATAL_ERROR])</code></li>
 </ul>
-<pre tabindex="0"><code class="language-camke" data-lang="camke"># CMake最小版本要求为2.8.3
-cmake_minimum_required(VERSION 2.8.3)
-</code></pre></li>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl"># CMake最小版本要求为2.8.3
+</span></span><span class="line"><span class="cl">cmake_minimum_required(VERSION 2.8.3)
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
 <li>
 <p>project - 定义工程名称，并可指定工程支持的语言</p>
 <ul>
 <li>语法： <code>project(projectname [CXX] [C] [Java])</code></li>
 </ul>
-<pre tabindex="0"><code class="language-g++" data-lang="g++"># 指定工程名为HELLOWORLD
-project(HELLOWORLD)
-</code></pre></li>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl"># 指定工程名为HELLOWORLD
+</span></span><span class="line"><span class="cl">project(HELLOWORLD)
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
 <li>
 <p>set - 显式的定义变量</p>
 <ul>
 <li>语法：<code>set(VAR [VALUE] [CACHE TYPE DOCSTRING [FORCE]])</code></li>
 </ul>
-<pre tabindex="0"><code class="language-g++" data-lang="g++"># 定义SRC变量，其值为sayHello.cpp hello.cpp
-set(SRC sayHello.cpp hello.cpp)
-</code></pre></li>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl"># 定义SRC变量，其值为sayHello.cpp hello.cpp
+</span></span><span class="line"><span class="cl">set(SRC sayHello.cpp hello.cpp)
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
 <li>
 <p>include_directories - 向工程添加多个特定的头文件搜索路径 &mdash;&gt;相当于指定g++编译器的-I参数</p>
 <ul>
 <li>语法： <code>include_directories([AFTER|BEFORE] [SYSTEM] dir1 dir2 ...)</code></li>
 </ul>
-<pre tabindex="0"><code class="language-g++" data-lang="g++"># 将/usr/include/myincludefolder 和 ./include 添加到头文件搜索路径
-include_directories(/usr/include/myincludefolder ./include)
-</code></pre></li>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl"># 将/usr/include/myincludefolder 和 ./include 添加到头文件搜索路径
+</span></span><span class="line"><span class="cl">include_directories(/usr/include/myincludefolder ./include)
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
 <li>
 <p>link_directories - 向工程添加多个特定的库文件搜索路径 &mdash;&gt;相当于指定g++编译器的-L参数</p>
 <ul>
 <li>语法： <code>link_directories(dir1 dir2 ...)</code></li>
 </ul>
-<pre tabindex="0"><code class="language-g++" data-lang="g++"># 将/usr/lib/mylibfolder 和 ./lib 添加到库文件搜索路径
-link_directories(/usr/lib/mylibfolder ./lib)
-</code></pre></li>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl"># 将/usr/lib/mylibfolder 和 ./lib 添加到库文件搜索路径
+</span></span><span class="line"><span class="cl">link_directories(/usr/lib/mylibfolder ./lib)
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
 <li>
 <p>add_library - 生成库文件</p>
 <ul>
 <li>语法： <code>add_library(libname [SHARED|STATIC|MODULE] [EXCLUDE_FROM_ALL] source1 source2 ... sourceN)</code></li>
 </ul>
-<pre tabindex="0"><code class="language-g++" data-lang="g++"># 通过变量 SRC 生成 libhello.so 共享库
-add_library(hello SHARED ${SRC})
-</code></pre></li>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl"># 通过变量 SRC 生成 libhello.so 共享库
+</span></span><span class="line"><span class="cl">add_library(hello SHARED ${SRC})
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
 <li>
 <p>add_compile_options - 添加编译参数</p>
 <ul>
 <li>语法：<code>add_compile_options()</code></li>
 </ul>
-<pre tabindex="0"><code class="language-g++" data-lang="g++"># 添加编译参数 -Wall -std=c++11 -O2
-add_compile_options(-Wall -std=c++11 -O2)
-</code></pre></li>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl"># 添加编译参数 -Wall -std=c++11 -O2
+</span></span><span class="line"><span class="cl">add_compile_options(-Wall -std=c++11 -O2)
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
 <li>
 <p>add_executable - 生成可执行文件</p>
 <ul>
 <li>语法：<code>add_executable(exename source1 source2 ... sourceN)</code></li>
 </ul>
-<pre tabindex="0"><code class="language-g++" data-lang="g++"># 编译main.cpp生成可执行文件main
-add_executable(main main.cpp)
-</code></pre></li>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl"># 编译main.cpp生成可执行文件main
+</span></span><span class="line"><span class="cl">add_executable(main main.cpp)
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
 <li>
 <p>target_link_libraries - 为 target 添加需要链接的共享库 &mdash;&gt;相同于指定g++编译器-l参数</p>
 <ul>
 <li>语法： <code>target_link_libraries(target library1&lt;debug | optimized&gt; library2...)</code></li>
 </ul>
-<pre tabindex="0"><code class="language-g++" data-lang="g++"># 将hello动态库文件链接到可执行文件main
-target_link_libraries(main hello)
-</code></pre></li>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl"># 将hello动态库文件链接到可执行文件main
+</span></span><span class="line"><span class="cl">target_link_libraries(main hello)
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
 <li>
 <p>add_subdirectory - 向当前工程添加存放源文件的子目录，并可以指定中间二进制和目标二进制
 存放的位置</p>
 <ul>
 <li>语法： <code>add_subdirectory(source_dir [binary_dir] [EXCLUDE_FROM_ALL])</code></li>
 </ul>
-<pre tabindex="0"><code class="language-g++" data-lang="g++"># 添加src子目录，src中需有一个CMakeLists.txt
-add_subdirectory(src)
-</code></pre></li>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl"># 添加src子目录，src中需有一个CMakeLists.txt
+</span></span><span class="line"><span class="cl">add_subdirectory(src)
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
 <li>
 <p>aux_source_directory - 发现一个目录下所有的源代码文件并将列表存储在一个变量中，这个指令临时被用来自动构建源文件列表</p>
 <ul>
 <li>语法： <code>aux_source_directory(dir VARIABLE)</code></li>
 </ul>
-<pre tabindex="0"><code class="language-g++" data-lang="g++"># 定义SRC变量，其值为当前目录下所有的源代码文件
-aux_source_directory(. SRC)
-# 编译SRC变量所代表的源代码文件，生成main可执行文件
-add_executable(main ${SRC})
-</code></pre></li>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl"># 定义SRC变量，其值为当前目录下所有的源代码文件
+</span></span><span class="line"><span class="cl">aux_source_directory(. SRC)
+</span></span><span class="line"><span class="cl"># 编译SRC变量所代表的源代码文件，生成main可执行文件
+</span></span><span class="line"><span class="cl">add_executable(main ${SRC})
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
 </ul>
 <h2 id="3-cmake常用变量">3. CMake常用变量</h2>
 <ul>
@@ -306,16 +405,34 @@ add_executable(main ${SRC})
 </li>
 <li>
 <p>CMAKE_CXX_FLAGS g++编译选项</p>
-<pre tabindex="0"><code class="language-g++" data-lang="g++"># 在CMAKE_CXX_FLAGS编译选项后追加-std=c++11
-set( CMAKE_CXX_FLAGS &#34;${CMAKE_CXX_FLAGS} -std=c++11&#34;)
-</code></pre></li>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl"># 在CMAKE_CXX_FLAGS编译选项后追加-std=c++11
+</span></span><span class="line"><span class="cl">set( CMAKE_CXX_FLAGS &#34;${CMAKE_CXX_FLAGS} -std=c++11&#34;)
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
 <li>
 <p>CMAKE_BUILD_TYPE 编译类型(Debug, Release)</p>
-<pre tabindex="0"><code class="language-g++" data-lang="g++"># 设定编译类型为debug，调试时需要选择debug
-set(CMAKE_BUILD_TYPE Debug)
-# 设定编译类型为release，发布时需要选择release
-set(CMAKE_BUILD_TYPE Release)
-</code></pre></li>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl"># 设定编译类型为debug，调试时需要选择debug
+</span></span><span class="line"><span class="cl">set(CMAKE_BUILD_TYPE Debug)
+</span></span><span class="line"><span class="cl"># 设定编译类型为release，发布时需要选择release
+</span></span><span class="line"><span class="cl">set(CMAKE_BUILD_TYPE Release)
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
 <li>
 <p>CMAKE_BINARY_DIR</p>
 </li>
@@ -324,11 +441,21 @@ set(CMAKE_BUILD_TYPE Release)
 </li>
 <li>
 <p>_BINARY_DIR</p>
-<pre tabindex="0"><code class="language-g++" data-lang="g++">1. 这三个变量指代的内容是一致的。
-2. 如果是 in source build，指的就是工程顶层目录。
-3. 如果是 out-of-source 编译,指的是工程编译发生的目录。
-4. PROJECT_BINARY_DIR 跟其他指令稍有区别，不过现在，你可以理解为他们是一致的。
-</code></pre></li>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">1. 这三个变量指代的内容是一致的。
+</span></span><span class="line"><span class="cl">2. 如果是 in source build，指的就是工程顶层目录。
+</span></span><span class="line"><span class="cl">3. 如果是 out-of-source 编译,指的是工程编译发生的目录。
+</span></span><span class="line"><span class="cl">4. PROJECT_BINARY_DIR 跟其他指令稍有区别，不过现在，你可以理解为他们是一致的。
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
 <li>
 <p>CMAKE_SOURCE_DIR</p>
 </li>
@@ -337,10 +464,19 @@ set(CMAKE_BUILD_TYPE Release)
 </li>
 <li>
 <p>_SOURCE_DIR</p>
-<pre tabindex="0"><code class="language-g+=" data-lang="g+=">1. 这三个变量指代的内容是一致的,不论采用何种编译方式,都是工程顶层目录。
-2. 也就是在 in source build时,他跟 CMAKE_BINARY_DIR 等变量一致。
-3. PROJECT_SOURCE_DIR 跟其他指令稍有区别,现在,你可以理解为他们是一致的。
-</code></pre></li>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">1. 这三个变量指代的内容是一致的,不论采用何种编译方式,都是工程顶层目录。
+</span></span><span class="line"><span class="cl">2. 也就是在 in source build时,他跟 CMAKE_BINARY_DIR 等变量一致。
+</span></span><span class="line"><span class="cl">3. PROJECT_SOURCE_DIR 跟其他指令稍有区别,现在,你可以理解为他们是一致的。
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
 <li>
 <p>CMAKE_C_COMPILER：指定C编译器</p>
 </li>
@@ -369,38 +505,87 @@ set(CMAKE_BUILD_TYPE Release)
 <li>执行命令 cmake PATH 生成 Makefile ( PATH 是顶层CMakeLists.txt 所在的目录 )。</li>
 <li>执行命令 make 进行编译。</li>
 </ul>
-<pre tabindex="0"><code class="language-g++" data-lang="g++"># important tips
-. # 表示当前目录
-./ # 表示当前目录
-.. # 表示上级目录
-../ # 表示上级目录
-</code></pre><h3 id="42-两种构建方式">4.2 两种构建方式</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl"># important tips
+</span></span><span class="line"><span class="cl">. # 表示当前目录
+</span></span><span class="line"><span class="cl">./ # 表示当前目录
+</span></span><span class="line"><span class="cl">.. # 表示上级目录
+</span></span><span class="line"><span class="cl">../ # 表示上级目录
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="42-两种构建方式">4.2 两种构建方式</h3>
 <ul>
 <li><strong>内部构建(in-source build)</strong>：不推荐使用</li>
 </ul>
 <p>内部构建会在同级目录下产生一大堆中间文件，这些中间文件并不是我们最终所需要的，和工程源文件放在一起会显得杂乱无章。</p>
-<pre tabindex="0"><code class="language-g++" data-lang="g++">## 内部构建
-# 在当前目录下，编译本目录的CMakeLists.txt，生成Makefile和其他文件
-cmake .
-# 执行make命令，生成target
-make
-</code></pre><ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">## 内部构建
+</span></span><span class="line"><span class="cl"># 在当前目录下，编译本目录的CMakeLists.txt，生成Makefile和其他文件
+</span></span><span class="line"><span class="cl">cmake .
+</span></span><span class="line"><span class="cl"># 执行make命令，生成target
+</span></span><span class="line"><span class="cl">make
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
 <li><strong>外部构建(out-of-source build)</strong>：推荐使用</li>
 </ul>
 <p>将编译输出文件与源文件放到不同目录中</p>
-<pre tabindex="0"><code class="language-g++" data-lang="g++">## 外部构建
-# 1. 在当前目录下，创建build文件夹
-mkdir build
-# 2. 进入到build文件夹
-cd build
-# 3. 编译上级目录的CMakeLists.txt，生成Makefile和其他文件
-cmake ..
-# 4. 执行make命令，生成target
-make
-</code></pre><h2 id="5-cmake代码实践">5. CMake代码实践</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">## 外部构建
+</span></span><span class="line"><span class="cl"># 1. 在当前目录下，创建build文件夹
+</span></span><span class="line"><span class="cl">mkdir build
+</span></span><span class="line"><span class="cl"># 2. 进入到build文件夹
+</span></span><span class="line"><span class="cl">cd build
+</span></span><span class="line"><span class="cl"># 3. 编译上级目录的CMakeLists.txt，生成Makefile和其他文件
+</span></span><span class="line"><span class="cl">cmake ..
+</span></span><span class="line"><span class="cl"># 4. 执行make命令，生成target
+</span></span><span class="line"><span class="cl">make
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="5-cmake代码实践">5. CMake代码实践</h2>
 <h3 id="51-简单cmake工程">5.1 简单CMake工程</h3>
 <p>test.cpp</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp">
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp">
 </span></span></span><span class="line"><span class="cl"><span class="cp"></span>
 </span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">
@@ -408,18 +593,60 @@ make
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span></code></pre></div><p>CMakeLists.txt</p>
-<pre tabindex="0"><code class="language-g++" data-lang="g++"># Set the minimum version of CMake that can be used
-cmake_minimum_required(VERSION 3.0)
-
-# Set the project name
-project (TEST)
-
-# Add an executable
-add_executable(test_cmake test.cpp)
-</code></pre><h3 id="52-多级目录工程---直接编译">5.2 多级目录工程 - 直接编译</h3>
-<pre tabindex="0"><code class="language-tree" data-lang="tree"></code></pre><p>say.h</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="cp">#pragma once    </span><span class="c1">//防止重复编译
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>CMakeLists.txt</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl"># Set the minimum version of CMake that can be used
+</span></span><span class="line"><span class="cl">cmake_minimum_required(VERSION 3.0)
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"># Set the project name
+</span></span><span class="line"><span class="cl">project (TEST)
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"># Add an executable
+</span></span><span class="line"><span class="cl">add_executable(test_cmake test.cpp)
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="52-多级目录工程---直接编译">5.2 多级目录工程 - 直接编译</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"></code></pre></td></tr></table>
+</div>
+</div><p>say.h</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="cp">#pragma once    </span><span class="c1">//防止重复编译
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp">
 </span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;string&gt;</span><span class="cp">
 </span></span></span><span class="line"><span class="cl"><span class="cp"></span>
@@ -435,14 +662,43 @@ add_executable(test_cmake test.cpp)
 </span></span><span class="line"><span class="cl"><span class="k">private</span><span class="o">:</span>
 </span></span><span class="line"><span class="cl">    <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">name</span><span class="p">;</span> 
 </span></span><span class="line"><span class="cl"><span class="p">};</span>
-</span></span></code></pre></div><p>say.cpp</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&#34;say.h&#34;</span><span class="cp">
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>say.cpp</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&#34;say.h&#34;</span><span class="cp">
 </span></span></span><span class="line"><span class="cl"><span class="cp"></span>
 </span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="n">Say</span><span class="o">::</span><span class="n">sayHello</span><span class="p">()</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">name</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;: say hello!!!&#34;</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span></code></pre></div><p>main.cpp</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&#34;say.h&#34;</span><span class="cp">
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>main.cpp</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&#34;say.h&#34;</span><span class="cp">
 </span></span></span><span class="line"><span class="cl"><span class="cp"></span>
 </span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="kt">char</span> <span class="o">**</span><span class="n">argv</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl"><span class="p">{</span>
@@ -454,64 +710,173 @@ add_executable(test_cmake test.cpp)
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span></code></pre></div><p>CMakeLists.txt</p>
-<pre tabindex="0"><code class="language-g++" data-lang="g++"># Set the minimum version of CMake that can be used
-cmake_minimum_required(VERSION 3.0)
-
-#project name
-project(SAYHELLO)
-
-#head file pat
-include_directories(include)
-
-#生成可执行文件
-add_executable(sayHello main.cpp src/say.cpp)
-</code></pre><h3 id="53-多级目录工程---生成库编译">5.3 多级目录工程 - 生成库编译</h3>
-<pre tabindex="0"><code class="language-g++" data-lang="g++"># Set the minimum version of CMake that can be used
-cmake_minimum_required(VERSION 3.0)
-
-#project name
-project(SAYHELLO_LIBRARY)
-
-#add compile options - 添加编译参数
-add_compile_options(-std=c++11 -Wall)
-
-#set CMAKE_BUILD_TYPE 编译类型(Debug)
-set(CMAKE_BUILD_TYPE Debug)
-
-# set output binary path
-set(EXECUTABLE_OUTPUT_PATH ${PROJECT_BINARY_DIR}/bin)
-
-############################################################
-
-# Create a library
-############################################################
-#Generate the static library from the library sources
-add_library(say_lib STATIC src/say.cpp)
-target_include_directories(say_lib PUBLIC ${PROJECT_SOURCE_DIR}/include)
-
-############################################################
-
-# Create an executable
-############################################################
-# Add an executable with the above sources
-add_executable(sayHello main.cpp)
-
-# link the new sayHello target with the say_lib target
-target_link_libraries(sayHello say_lib)
-</code></pre><h2 id="6-搭配-vs-code">6. 搭配 vs code</h2>
-<pre tabindex="0"><code class="language-tree" data-lang="tree">.
-├── CMakeLists.txt
-├── build
-├── include
-│   └── say.h
-├── main.cpp
-└── src
-    └── say.cpp
-
-3 directories, 4 files
-</code></pre><p>launch.json</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">{</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>CMakeLists.txt</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl"># Set the minimum version of CMake that can be used
+</span></span><span class="line"><span class="cl">cmake_minimum_required(VERSION 3.0)
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">#project name
+</span></span><span class="line"><span class="cl">project(SAYHELLO)
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">#head file pat
+</span></span><span class="line"><span class="cl">include_directories(include)
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">#生成可执行文件
+</span></span><span class="line"><span class="cl">add_executable(sayHello main.cpp src/say.cpp)
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="53-多级目录工程---生成库编译">5.3 多级目录工程 - 生成库编译</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl"># Set the minimum version of CMake that can be used
+</span></span><span class="line"><span class="cl">cmake_minimum_required(VERSION 3.0)
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">#project name
+</span></span><span class="line"><span class="cl">project(SAYHELLO_LIBRARY)
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">#add compile options - 添加编译参数
+</span></span><span class="line"><span class="cl">add_compile_options(-std=c++11 -Wall)
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">#set CMAKE_BUILD_TYPE 编译类型(Debug)
+</span></span><span class="line"><span class="cl">set(CMAKE_BUILD_TYPE Debug)
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"># set output binary path
+</span></span><span class="line"><span class="cl">set(EXECUTABLE_OUTPUT_PATH ${PROJECT_BINARY_DIR}/bin)
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">############################################################
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"># Create a library
+</span></span><span class="line"><span class="cl">############################################################
+</span></span><span class="line"><span class="cl">#Generate the static library from the library sources
+</span></span><span class="line"><span class="cl">add_library(say_lib STATIC src/say.cpp)
+</span></span><span class="line"><span class="cl">target_include_directories(say_lib PUBLIC ${PROJECT_SOURCE_DIR}/include)
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">############################################################
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"># Create an executable
+</span></span><span class="line"><span class="cl">############################################################
+</span></span><span class="line"><span class="cl"># Add an executable with the above sources
+</span></span><span class="line"><span class="cl">add_executable(sayHello main.cpp)
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"># link the new sayHello target with the say_lib target
+</span></span><span class="line"><span class="cl">target_link_libraries(sayHello say_lib)
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="6-搭配-vs-code">6. 搭配 vs code</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">.
+</span></span><span class="line"><span class="cl">├── CMakeLists.txt
+</span></span><span class="line"><span class="cl">├── build
+</span></span><span class="line"><span class="cl">├── include
+</span></span><span class="line"><span class="cl">│   └── say.h
+</span></span><span class="line"><span class="cl">├── main.cpp
+</span></span><span class="line"><span class="cl">└── src
+</span></span><span class="line"><span class="cl">    └── say.cpp
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">3 directories, 4 files
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>launch.json</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="c1">// Use IntelliSense to learn about possible attributes.
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="c1">// Hover to view descriptions of existing attributes.
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="c1">// For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
@@ -543,8 +908,49 @@ target_link_libraries(sayHello say_lib)
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">    <span class="p">]</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span></code></pre></div><p>tasks.json</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">{</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>tasks.json</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="nt">&#34;version&#34;</span><span class="p">:</span> <span class="s2">&#34;2.0.0&#34;</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">    <span class="nt">&#34;options&#34;</span><span class="p">:</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">        <span class="nt">&#34;cwd&#34;</span><span class="p">:</span> <span class="s2">&#34;${workspaceFolder}/c++/build&#34;</span>
@@ -579,7 +985,9 @@ target_link_libraries(sayHello say_lib)
 </span></span><span class="line"><span class="cl">        <span class="p">}</span>
 </span></span><span class="line"><span class="cl">    <span class="p">],</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span></code></pre></div></div><div class="post-footer" id="post-footer">
+</span></span></code></pre></td></tr></table>
+</div>
+</div></div><div class="post-footer" id="post-footer">
   <div class="post-info">
     <div class="post-info-line">
       <div class="post-info-mod">
@@ -615,5 +1023,5 @@ target_link_libraries(sayHello say_lib)
         </div></div><div id="mask"></div><noscript>
     <div class="noscript-warning">Theme FixIt works best with JavaScript enabled.</div>
   </noscript>
-</div><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script src="/lib/autocomplete/autocomplete.min.js" defer></script><script src="/lib/lunr/lunr.min.js" defer></script><script src="/lib/lazysizes/lazysizes.min.js" async defer></script><script src="/lib/sharer/sharer.min.js" async defer></script><script src="/lib/typeit/index.umd.js" defer></script><script src="/lib/katex/katex.min.js" defer></script><script src="/lib/katex/auto-render.min.js" defer></script><script src="/lib/katex/copy-tex.min.js" defer></script><script src="/lib/katex/mhchem.min.js" defer></script><script src="/lib/cookieconsent/cookieconsent.min.js" defer></script><script>window.config={"code":{"copyTitle":"Copy to clipboard","editLockTitle":"Lock editable code block","editUnLockTitle":"Unlock editable code block","editable":true,"maxShownLines":10},"comment":{"enable":false},"cookieconsent":{"content":{"dismiss":"Got it!","link":"Learn more","message":"This website uses Cookies to improve your experience."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"data":{"typeit-header-desktop":"Home","typeit-header-title-mobile":"Home"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30},"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"typeit-header-desktop":["typeit-header-desktop"],"typeit-header-title-mobile":["typeit-header-title-mobile"]},"duration":-1,"speed":100}};</script><script src="/js/theme.min.js" defer></script></body>
+</div><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script src="/lib/autocomplete/autocomplete.min.js" defer></script><script src="/lib/lunr/lunr.min.js" defer></script><script src="/lib/lazysizes/lazysizes.min.js" async defer></script><script src="/lib/sharer/sharer.min.js" async defer></script><script src="/lib/typeit/index.umd.js" defer></script><script src="/lib/katex/katex.min.js" defer></script><script src="/lib/katex/auto-render.min.js" defer></script><script src="/lib/katex/copy-tex.min.js" defer></script><script src="/lib/katex/mhchem.min.js" defer></script><script src="/lib/cookieconsent/cookieconsent.min.js" defer></script><script>window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":30},"comment":{"enable":false},"cookieconsent":{"content":{"dismiss":"Got it!","link":"Learn more","message":"This website uses Cookies to improve your experience."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"data":{"typeit-header-desktop":"Home","typeit-header-title-mobile":"Home"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30},"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"typeit-header-desktop":["typeit-header-desktop"],"typeit-header-title-mobile":["typeit-header-title-mobile"]},"duration":-1,"speed":100}};</script><script src="/js/theme.min.js" defer></script></body>
 </html>

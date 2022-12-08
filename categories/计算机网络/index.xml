@@ -10,7 +10,7 @@
   <pubDate>Mon, 24 Oct 2022 00:00:00 &#43;0000</pubDate>
   <author>cjt</author>
   <guid>https://cui-jiang-tao.github.io/posts/wireshark/</guid>
-  <description><![CDATA[1. 开始前的准备 首先在cmd窗口执行ifconfig命令，查看主机ip地址： C:\Users\Administrator&gt;ipconfig Windows IP 配置 以太网适配器 以太网: 连接特定的 DNS 后缀 . . . . . . . : 本地]]></description>
+  <description><![CDATA[1. 开始前的准备 首先在cmd窗口执行ifconfig命令，查看主机ip地址： 1 2 3 4 5 6 7 8 9 10 11 C:\Users\Administrator&gt;ipconfig Windows IP 配置 以太网适配器 以太网: 连接特定的 DNS 后]]></description>
 </item>
 </channel>
 </rss>

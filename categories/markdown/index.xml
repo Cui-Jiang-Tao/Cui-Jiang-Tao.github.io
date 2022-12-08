@@ -10,7 +10,7 @@
   <pubDate>Wed, 14 Sep 2022 00:00:00 &#43;0000</pubDate>
   <author>cjt</author>
   <guid>https://cui-jiang-tao.github.io/posts/markdown/</guid>
-  <description><![CDATA[1.标题 # h1 标题 ## h2 标题 ### h3 标题 #### h4 标题 ##### h5 标题 ###### h6 标题 2.注释 &lt;!-- 这是一段注释 --&gt; 3.水平线 ___:三个连续的下划线 下面两个警告：MD035/]]></description>
+  <description><![CDATA[1.标题 1 2 3 4 5 6 # h1 标题 ## h2 标题 ### h3 标题 #### h4 标题 ##### h5 标题 ###### h6 标题 2.注释 1 &lt;!-- 这是一段注释 --&gt; 3.水平线 1 2 3 4 5 ___:三个连续的下划线 下]]></description>
 </item>
 </channel>
 </rss>

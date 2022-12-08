@@ -44,7 +44,7 @@
   <pubDate>Mon, 24 Oct 2022 00:00:00 &#43;0000</pubDate>
   <author>cjt</author>
   <guid>https://cui-jiang-tao.github.io/posts/wireshark/</guid>
-  <description><![CDATA[1. 开始前的准备 首先在cmd窗口执行ifconfig命令，查看主机ip地址： C:\Users\Administrator&gt;ipconfig Windows IP 配置 以太网适配器 以太网: 连接特定的 DNS 后缀 . . . . . . . : 本地]]></description>
+  <description><![CDATA[1. 开始前的准备 首先在cmd窗口执行ifconfig命令，查看主机ip地址： 1 2 3 4 5 6 7 8 9 10 11 C:\Users\Administrator&gt;ipconfig Windows IP 配置 以太网适配器 以太网: 连接特定的 DNS 后]]></description>
 </item>
 <item>
   <title>C标准库</title>
@@ -52,7 +52,7 @@
   <pubDate>Sun, 16 Oct 2022 00:00:00 &#43;0000</pubDate>
   <author>cjt</author>
   <guid>https://cui-jiang-tao.github.io/posts/c%E6%A0%87%E5%87%86%E5%BA%93/</guid>
-  <description><![CDATA[1. 头文件stdio.h 1.1 fopen函数 C 库函数 FILE *fopen(const char *filename, const char *mode) 使用给定的模式 mode 打开 filename 所指向的文件。 #include &lt;stdio.h&gt; FILE *fopen(const char *filename, const char *mode) 调用fopen函数，成功返]]></description>
+  <description><![CDATA[1. 头文件stdio.h 1.1 fopen函数 C 库函数 FILE *fopen(const char *filename, const char *mode) 使用给定的模式 mode 打开 filename 所指向的文件。 1 2 3 #include &lt;stdio.h&gt; FILE *fopen(const char *filename, const char *mode) 调用fopen函数，]]></description>
 </item>
 <item>
   <title>TCP/IP网络编程</title>
@@ -68,7 +68,7 @@
   <pubDate>Thu, 29 Sep 2022 00:00:00 &#43;0000</pubDate>
   <author>cjt</author>
   <guid>https://cui-jiang-tao.github.io/posts/git/</guid>
-  <description><![CDATA[1. 配置 git config --global user.name &#34;Your Name&#34; git config --global user.email &#34;email@example.com&#34; #设置远程仓库 git remote add origin git@github.com:vstk771/gitTest.git 注意： git config命令的&ndash;global参数，用了这个参数，表示你这台机器上]]></description>
+  <description><![CDATA[1. 配置 1 2 3 4 5 git config --global user.name &#34;Your Name&#34; git config --global user.email &#34;email@example.com&#34; #设置远程仓库 git remote add origin git@github.com:vstk771/gitTest.git 注意： git config命令的&ndash;global参数，用了这个参数，表示你]]></description>
 </item>
 <item>
   <title>c&#43;&#43;反汇编(x86)</title>
@@ -76,7 +76,7 @@
   <pubDate>Sat, 24 Sep 2022 00:00:00 &#43;0000</pubDate>
   <author>cjt</author>
   <guid>https://cui-jiang-tao.github.io/posts/c&#43;&#43;%E5%8F%8D%E6%B1%87%E7%BC%96/</guid>
-  <description><![CDATA[1.类型大小 1. 基本数据类型 printf(&#34;%d\n&#34;, sizeof(char)); //1 printf(&#34;%d\n&#34;, sizeof(short int)); //2 printf(&#34;%d\n&#34;, sizeof(int)); //4 printf(&#34;%d\n&#34;, sizeof(long int)); //4 printf(&#34;%d\n&#34;, sizeof(__int64)); //8 printf(&#34;%d\n&#34;, sizeof(float)); //4 printf(&#34;%d\n&#34;, sizeof(double)); //8 2. 数组类型 char arr1[10] = { 0 }; short arr2[10] = { 0 }; int arr3[10] = { 0 }; printf(&#34;%d\n&#34;, sizeof(arr1)); //10 printf(&#34;%d\n&#34;, sizeof(arr2)); //20 printf(&#34;%d\n&#34;, sizeof(arr3)); //40 printf(&#34;%d\n&#34;, sizeof(arr1[10]));]]></description>
+  <description><![CDATA[1.类型大小 1. 基本数据类型 1 2 3 4 5 6 7 printf(&#34;%d\n&#34;, sizeof(char)); //1 printf(&#34;%d\n&#34;, sizeof(short int)); //2 printf(&#34;%d\n&#34;, sizeof(int)); //4 printf(&#34;%d\n&#34;, sizeof(long int)); //4 printf(&#34;%d\n&#34;, sizeof(__int64)); //8 printf(&#34;%d\n&#34;, sizeof(float)); //4 printf(&#34;%d\n&#34;, sizeof(double)); //8 2. 数组类型 1 2 3 4 5 6 7 8 9 10 11 char arr1[10] = { 0 }; short arr2[10] = { 0]]></description>
 </item>
 <item>
   <title>CMake</title>
