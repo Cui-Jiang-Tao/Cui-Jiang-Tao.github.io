@@ -1,0 +1,16 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+  <channel>
+    <title>hugo - Category - vstk的网站</title>
+    <link>https://cui-jiang-tao.github.io/categories/hugo/</link>
+    <description>hugo - Category - vstk的网站</description>
+    <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>cjt953899262@gmail.com (cjt)</managingEditor>
+      <webMaster>cjt953899262@gmail.com (cjt)</webMaster><lastBuildDate>Thu, 08 Dec 2022 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://cui-jiang-tao.github.io/categories/hugo/" rel="self" type="application/rss+xml" /><item>
+  <title>Hugo的安装和FixIt 主题</title>
+  <link>https://cui-jiang-tao.github.io/posts/hugo%E6%90%AD%E5%BB%BA/</link>
+  <pubDate>Thu, 08 Dec 2022 00:00:00 &#43;0000</pubDate>
+  <author>cjt</author>
+  <guid>https://cui-jiang-tao.github.io/posts/hugo%E6%90%AD%E5%BB%BA/</guid>
+  <description><![CDATA[推荐使用 Hugo extended 版本 由于这个主题的一些特性需要将 SCSS 转换为 CSS, 推荐使用 Hugo extended 版本来获得更好的使用体验。 主题参考 ubuntu 如何安装snap 也就说你的Ubuntu]]></description>
+</item>
+</channel>
+</rss>

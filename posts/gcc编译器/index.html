@@ -1,116 +1,208 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="robots" content="noodp" />
-        <title>GCC编译器 - vstk的网站</title><meta name="Description" content="This is my cool site"><meta property="og:title" content="GCC编译器" />
+<html itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+  <head>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+    <meta name="robots" content="noodp" />
+    <title>GCC编译器 - vstk的网站</title><meta name="author" content="cjt">
+<meta name="author-link" content="">
+<meta name="description" content="使用gcc指令编译c代码 使用g&#43;&#43;指令编译c&#43;&#43;代码 1.编译过程 test.cpp #include &lt;iostream&gt; int main() { #ifdef DEBUG std::cout &lt;&lt; &#34;DEBUG ...&#34; &lt;&lt; std::endl; #else std::cout &lt;&lt; &#34;hello world!!!&#34; &lt;&lt; std::endl; #endif return 0; } 预处理(Pre-Proce" /><meta name="keywords" content='GCC' /><meta itemprop="name" content="GCC编译器">
+<meta itemprop="description" content="使用gcc指令编译c代码 使用g&#43;&#43;指令编译c&#43;&#43;代码 1.编译过程 test.cpp #include &lt;iostream&gt; int main() { #ifdef DEBUG std::cout &lt;&lt; &#34;DEBUG ...&#34; &lt;&lt; std::endl; #else std::cout &lt;&lt; &#34;hello world!!!&#34; &lt;&lt; std::endl; #endif return 0; } 预处理(Pre-Proce"><meta itemprop="datePublished" content="2022-09-14T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2022-09-14T00:00:00+00:00" />
+<meta itemprop="wordCount" content="2064">
+<meta itemprop="keywords" content="GCC," /><meta property="og:title" content="GCC编译器" />
 <meta property="og:description" content="使用gcc指令编译c代码 使用g&#43;&#43;指令编译c&#43;&#43;代码 1.编译过程 test.cpp #include &lt;iostream&gt; int main() { #ifdef DEBUG std::cout &lt;&lt; &#34;DEBUG ...&#34; &lt;&lt; std::endl; #else std::cout &lt;&lt; &#34;hello world!!!&#34; &lt;&lt; std::endl; #endif return 0; } 预处理(Pre-Proce" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://cui-jiang-tao.github.io/posts/gcc%E7%BC%96%E8%AF%91%E5%99%A8/" />
+<meta property="og:url" content="https://cui-jiang-tao.github.io/posts/gcc%E7%BC%96%E8%AF%91%E5%99%A8/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2022-09-14T00:00:00+00:00" />
-<meta property="article:modified_time" content="2022-09-14T00:00:00+00:00" /><meta property="og:site_name" content="My cool site" />
+<meta property="article:modified_time" content="2022-09-14T00:00:00+00:00" />
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="GCC编译器"/>
 <meta name="twitter:description" content="使用gcc指令编译c代码 使用g&#43;&#43;指令编译c&#43;&#43;代码 1.编译过程 test.cpp #include &lt;iostream&gt; int main() { #ifdef DEBUG std::cout &lt;&lt; &#34;DEBUG ...&#34; &lt;&lt; std::endl; #else std::cout &lt;&lt; &#34;hello world!!!&#34; &lt;&lt; std::endl; #endif return 0; } 预处理(Pre-Proce"/>
-<meta name="application-name" content="My cool site">
-<meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
-        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://cui-jiang-tao.github.io/posts/gcc%E7%BC%96%E8%AF%91%E5%99%A8/" /><link rel="prev" href="https://cui-jiang-tao.github.io/posts/gdb%E8%B0%83%E8%AF%95%E5%99%A8/" /><link rel="next" href="https://cui-jiang-tao.github.io/posts/cmake/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
-    {
-        "@context": "http://schema.org",
-        "@type": "BlogPosting",
-        "headline": "GCC编译器",
-        "inLanguage": "zh-CN",
-        "mainEntityOfPage": {
-            "@type": "WebPage",
-            "@id": "https:\/\/cui-jiang-tao.github.io\/posts\/gcc%E7%BC%96%E8%AF%91%E5%99%A8\/"
-        },"genre": "posts","keywords": "GCC","wordcount":  2063 ,
-        "url": "https:\/\/cui-jiang-tao.github.io\/posts\/gcc%E7%BC%96%E8%AF%91%E5%99%A8\/","datePublished": "2022-09-14T00:00:00+00:00","dateModified": "2022-09-14T00:00:00+00:00","publisher": {
-            "@type": "Organization",
-            "name": ""},"author": {
-                "@type": "Person",
-                "name": "cjt"
-            },"description": ""
-    }
-    </script></head>
-    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
-
-        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+<meta name="application-name" content="FixIt">
+<meta name="apple-mobile-web-app-title" content="FixIt"><meta name="theme-color" data-light="#f8f8f8" data-dark="#252627" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" href="https://cui-jiang-tao.github.io/posts/gcc%E7%BC%96%E8%AF%91%E5%99%A8/" /><link rel="prev" href="https://cui-jiang-tao.github.io/posts/gdb%E8%B0%83%E8%AF%95%E5%99%A8/" /><link rel="next" href="https://cui-jiang-tao.github.io/posts/cmake/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "BlogPosting",
+    "headline": "GCC编译器",
+    "inLanguage": "zh-CN",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https:\/\/cui-jiang-tao.github.io\/posts\/gcc%E7%BC%96%E8%AF%91%E5%99%A8\/"
+    },"genre": "posts","keywords": "GCC","wordcount":  2064 ,
+    "url": "https:\/\/cui-jiang-tao.github.io\/posts\/gcc%E7%BC%96%E8%AF%91%E5%99%A8\/","datePublished": "2022-09-14T00:00:00+00:00","dateModified": "2022-09-14T00:00:00+00:00","publisher": {
+      "@type": "Organization",
+      "name": ""},"author": {
+        "@type": "Person",
+        "name": "cjt"
+      },"description": ""
+  }
+  </script></head>
+  <body data-header-desktop="fixed" data-header-mobile="auto"><script>(window.localStorage?.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('data-theme', 'dark');</script><div class="wrapper"><header class="desktop animate__faster" id="header-desktop">
+  <div class="header-wrapper">
+    <div class="header-title">
+      <a href="/" title="vstk的网站"><span class="header-title-pre"><i class='far fa-kiss-wink-heart fa-fw' aria-hidden='true'></i></span><span id="typeit-header-desktop" class="typeit"></span></a><span class="header-subtitle"></span></div>
+    <nav>
+      <ul class="menu"><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/posts/"
+                
+                
+              >文章</a></li><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/tags/"
+                
+                
+              >标签</a></li><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/categories/"
+                
+                
+              >分类</a></li><li class="menu-item delimiter"></li><li class="menu-item search" id="search-desktop">
+            <input type="text" placeholder="Search titles or contents ..." id="search-input-desktop">
+            <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+              <i class="fa-solid fa-search fa-fw" aria-hidden="true"></i>
+            </a>
+            <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+              <i class="fa-solid fa-times-circle fa-fw" aria-hidden="true"></i>
+            </a>
+            <span class="search-button search-loading" id="search-loading-desktop">
+              <i class="fa-solid fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+            </span>
+          </li><li class="menu-item theme-switch" title="Switch Theme">
+          <i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</header><header class="mobile animate__faster" id="header-mobile">
+  <div class="header-container">
     <div class="header-wrapper">
-        <div class="header-title">
-            <a href="/" title="vstk的网站"><span class="header-title-pre"><i class='far fa-kiss-wink-heart fa-fw' aria-hidden='true'></i></span><span id="id-1" class="typeit"></span></a>
-        </div>
-        <div class="menu">
-            <div class="menu-inner"><a class="menu-item" href="/posts/"> 文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
-                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
-                </a></div>
-        </div>
+      <div class="header-title">
+        <a href="/" title="vstk的网站"><span class="header-title-pre"><i class='far fa-kiss-wink-heart fa-fw' aria-hidden='true'></i></span><span id="typeit-header-title-mobile" class="typeit"></span></a><span class="header-subtitle"></span></div>
+      <div class="menu-toggle" id="menu-toggle-mobile">
+        <span></span><span></span><span></span>
+      </div>
     </div>
-</header><header class="mobile" id="header-mobile">
-    <div class="header-container">
-        <div class="header-wrapper">
-            <div class="header-title">
-                <a href="/" title="vstk的网站"><span class="header-title-pre"><i class='far fa-kiss-wink-heart fa-fw' aria-hidden='true'></i></span><span id="id-2" class="typeit"></span></a>
+    <nav>
+      <ul class="menu" id="menu-mobile"><li class="search-wrapper">
+            <div class="search mobile" id="search-mobile">
+              <input type="text" placeholder="Search titles or contents ..." id="search-input-mobile">
+              <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                <i class="fa-solid fa-search fa-fw" aria-hidden="true"></i>
+              </a>
+              <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                <i class="fa-solid fa-times-circle fa-fw" aria-hidden="true"></i>
+              </a>
+              <span class="search-button search-loading" id="search-loading-mobile">
+                <i class="fa-solid fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+              </span>
             </div>
-            <div class="menu-toggle" id="menu-toggle-mobile">
-                <span></span><span></span><span></span>
-            </div>
+            <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+              Cancel
+            </a>
+          </li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/posts/"
+                  
+                  
+                >文章</a></li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/tags/"
+                  
+                  
+                >标签</a></li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/categories/"
+                  
+                  
+                >分类</a></li><li class="menu-item theme-switch" title="Switch Theme">
+          <i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i>
+        </li></ul>
+    </nav>
+  </div>
+</header><div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+  </div>
+  <div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+  </div><main class="container" data-page-style="wide"><aside class="toc" id="toc-auto"><h2 class="toc-title">Contents&nbsp;<i class="toc-icon fa-solid fa-angle-down fa-fw" aria-hidden="true"></i></h2>
+      <div class="toc-content" id="toc-content-auto"></div></aside>
+
+  <aside class="aside-custom">
+    </aside>
+
+  <article class="page single">
+    <div class="header"><h1 class="single-title animate__animated animate__flipInX">
+        <span>GCC编译器</span>
+      </h1></div><div class="post-meta">
+      <div class="post-meta-line"><span class="post-author"><span class="author"><img
+    class="lazyload avatar"
+    src="/svg/loading.min.svg"
+    data-src="https://www.gravatar.com/avatar/736cc0685dbd22dd674add9c481fc755?s=32&amp;d="
+    data-srcset="https://www.gravatar.com/avatar/736cc0685dbd22dd674add9c481fc755?s=32&amp;d=, https://www.gravatar.com/avatar/736cc0685dbd22dd674add9c481fc755?s=32&amp;d= 1.5x, https://www.gravatar.com/avatar/736cc0685dbd22dd674add9c481fc755?s=32&amp;d= 2x"
+    data-sizes="auto"
+    alt="cjt"
+    title="cjt"/>&nbsp;cjt</span></span>
+          <span class="post-category">included in <a href="/categories/c++/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> c++</a></span></div>
+      <div class="post-meta-line"><span title=2022-09-14&#32;00:00:00><i class="fa-regular fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-09-14">2022-09-14</time></span>&nbsp;<span><i class="fa-solid fa-pencil-alt fa-fw" aria-hidden="true"></i> 2064 words</span>&nbsp;<span><i class="fa-regular fa-clock fa-fw" aria-hidden="true"></i> 5 minutes</span>&nbsp;</div>
+    </div><div class="details toc" id="toc-static" data-kept="false">
+        <div class="details-summary toc-title">
+          <span>Contents</span>
+          <span><i class="details-icon fa-solid fa-angle-right" aria-hidden="true"></i></span>
         </div>
-        <div class="menu" id="menu-mobile"><a class="menu-item" href="/posts/" title="">文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
-                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
-            </a></div>
-    </div>
-</header><main class="main">
-                <div class="container"><div class="toc" id="toc-auto">
-            <h2 class="toc-title">Contents</h2>
-            <div class="toc-content" id="toc-content-auto"></div>
-        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">GCC编译器</h1><div class="post-meta">
-            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>cjt</a></span>&nbsp;<span class="post-category">included in <a href="/categories/c++/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>c++</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-09-14">2022-09-14</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;2063 words&nbsp;
-                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;5 minutes&nbsp;</div>
-        </div><div class="details toc" id="toc-static"  data-kept="">
-                <div class="details-summary toc-title">
-                    <span>Contents</span>
-                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
-                </div>
-                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+        <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
   <ul>
     <li><a href="#1编译过程">1.编译过程</a></li>
     <li><a href="#2g编译参数">2.g++编译参数</a></li>
     <li><a href="#3g命令编译">3.g++命令编译</a>
       <ul>
         <li><a href="#1-直接编译">1. 直接编译</a></li>
-        <li><a href="#2生成库文件并编译">2.生成库文件并编译</a></li>
+        <li><a href="#2生成库文件并编译">2.生成库文件并编译</a>
+          <ul>
+            <li><a href="#1-链接静态库生成可执行文件">1. 链接<strong>静态库</strong>生成可执行文件</a></li>
+            <li><a href="#2-链接动态库生成可执行文件">2. 链接<strong>动态库</strong>生成可执行文件</a></li>
+          </ul>
+        </li>
       </ul>
     </li>
   </ul>
 </nav></div>
-            </div><div class="content" id="content"><ul>
+      </div><div class="content" id="content"><ul>
 <li>使用gcc指令编译c代码</li>
 <li>使用g++指令编译c++代码</li>
 </ul>
 <h2 id="1编译过程">1.编译过程</h2>
 <p>test.cpp</p>
-<div class="highlight"><pre class="chroma"><code class="language-c++" data-lang="c++"><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp">
-</span><span class="cp"></span>
-<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
-
-    <span class="cp">#ifdef DEBUG
-</span><span class="cp"></span>        <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;DEBUG ...&#34;</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
-    <span class="cp">#else
-</span><span class="cp"></span>      <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;hello world!!!&#34;</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
-    <span class="cp">#endif
-</span><span class="cp"></span>
-    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></div><ol>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span>
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="cp">#ifdef DEBUG
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span>        <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;DEBUG ...&#34;</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="cp">#else
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span>      <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;hello world!!!&#34;</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="cp">#endif
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><ol>
 <li>预处理(Pre-Processing)</li>
 </ol>
 <p>-E 选项指示编译器仅对输入文件进行预处理</p>
-<pre><code class="language-g++" data-lang="g++">g++ -E test.cpp -o test.i //.i文件
+<pre tabindex="0"><code class="language-g++" data-lang="g++">g++ -E test.cpp -o test.i //.i文件
 </code></pre><ol start="2">
 <li>编译(Compiling)</li>
 </ol>
@@ -118,7 +210,7 @@
 <li>-S 编译选项告诉 g++ 在为 C++ 代码产生了汇编语言文件后停止编译</li>
 <li>g++ 产生的汇编语言文件的缺省扩展名是 .s</li>
 </ul>
-<pre><code class="language-g++" data-lang="g++">g++ -S test.i -o test.s //.s文件
+<pre tabindex="0"><code class="language-g++" data-lang="g++">g++ -S test.i -o test.s //.s文件
 </code></pre><ol start="3">
 <li>汇编(Assmebling)</li>
 </ol>
@@ -126,25 +218,25 @@
 <li>-c 选项告诉 g++ 仅把源代码编译为<strong>机器语言的目标代码</strong></li>
 <li>缺省时 g++ 建立的目标代码文件有一个 .o 的扩展名。</li>
 </ul>
-<pre><code class="language-g++" data-lang="g++">g++ -c test.s -o test.o //.o文件
+<pre tabindex="0"><code class="language-g++" data-lang="g++">g++ -c test.s -o test.o //.o文件
 </code></pre><ol start="4">
 <li>链接(Linking)</li>
 </ol>
 <ul>
 <li>-o 编译选项来为将产生的<strong>可执行文件</strong>用指定的文件名</li>
 </ul>
-<pre><code class="language-g++" data-lang="g++">g++ test.o -o test.bin  //.bin文件
+<pre tabindex="0"><code class="language-g++" data-lang="g++">g++ test.o -o test.bin  //.bin文件
 </code></pre><h2 id="2g编译参数">2.g++编译参数</h2>
 <ol>
 <li>-g 编译带调试信息的可执行文件</li>
 </ol>
-<pre><code class="language-g++" data-lang="g++"># -g 选项告诉 GCC 产生能被 GNU 调试器GDB使用的调试信息，以调试程序。
+<pre tabindex="0"><code class="language-g++" data-lang="g++"># -g 选项告诉 GCC 产生能被 GNU 调试器GDB使用的调试信息，以调试程序。
 # 产生带调试信息的可执行文件test
 g++ -g test.cpp
 </code></pre><ol start="2">
 <li>-O[n] 优化源代码</li>
 </ol>
-<pre><code class="language-g++" data-lang="g++">## 所谓优化，例如省略掉代码中从未使用过的变量、直接将常量表达式用结果值代替等等，这些操作
+<pre tabindex="0"><code class="language-g++" data-lang="g++">## 所谓优化，例如省略掉代码中从未使用过的变量、直接将常量表达式用结果值代替等等，这些操作
 会缩减目标文件所包含的代码量，提高最终生成的可执行文件的运行效率。
 # -O 选项告诉 g++ 对源代码进行基本优化。这些优化在大多数情况下都会使程序执行的更快。 -O2
 选项告诉 g++ 产生尽可能小和尽可能快的代码。 如-O2，-O3，-On（n 常为0–3）
@@ -159,7 +251,7 @@ g++ -O2 test.cpp
 </code></pre><ol start="3">
 <li>-l 和 -L 指定库文件 | 指定库文件路径</li>
 </ol>
-<pre><code class="language-g++" data-lang="g++"># -l参数(小写)就是用来指定程序要链接的库，-l参数紧接着就是库名
+<pre tabindex="0"><code class="language-g++" data-lang="g++"># -l参数(小写)就是用来指定程序要链接的库，-l参数紧接着就是库名
 # 在/lib和/usr/lib和/usr/local/lib里的库直接用-l参数就能链接
 # 链接glog库
 g++ -lglog test.cpp
@@ -170,7 +262,7 @@ g++ -L/home/bing/mytestlibfolder -lmytest test.cpp
 </code></pre><ol start="4">
 <li>-l 指定头文件搜索目录</li>
 </ol>
-<pre><code class="language-g++" data-lang="g++"># -I
+<pre tabindex="0"><code class="language-g++" data-lang="g++"># -I
 # /usr/include目录一般是不用指定的，gcc知道去那里找，但 是如果头文件不在/usr/icnclude
 里我们就要用-I参数指定了，比如头文件放在/myinclude目录里，那编译命令行就要加上-
 I/myinclude 参数了，如果不加你会得到一个”xxxx.h: No such file or directory”的错
@@ -180,34 +272,34 @@ g++ -I/myinclude test.cpp
 </code></pre><ol start="5">
 <li>-Wall 打印警告信息</li>
 </ol>
-<pre><code class="language-g++" data-lang="g++"># 打印出gcc提供的警告信息
+<pre tabindex="0"><code class="language-g++" data-lang="g++"># 打印出gcc提供的警告信息
 g++ -Wall test.cpp
 </code></pre><ol start="6">
 <li>-w 关闭警告信息</li>
 </ol>
-<pre><code class="language-g++" data-lang="g++"># 关闭所有警告信息
+<pre tabindex="0"><code class="language-g++" data-lang="g++"># 关闭所有警告信息
 g++ -w test.cpp
 </code></pre><ol start="7">
 <li>-std=c++11 设置编译标准</li>
 </ol>
-<pre><code class="language-g++" data-lang="g++"># 使用 c++11 标准编译 test.cpp
+<pre tabindex="0"><code class="language-g++" data-lang="g++"># 使用 c++11 标准编译 test.cpp
 g++ -std=c++11 test.cpp
 </code></pre><ol start="8">
 <li>-o 指定输出文件名</li>
 </ol>
-<pre><code class="language-g++" data-lang="g++"># 指定即将产生的文件名
+<pre tabindex="0"><code class="language-g++" data-lang="g++"># 指定即将产生的文件名
 # 指定输出可执行文件名为test
 g++ test.cpp -o test
 </code></pre><ol start="9">
 <li>-D 定义宏</li>
 </ol>
-<pre><code class="language-g++" data-lang="g++"># 在使用gcc/g++编译的时候定义宏
+<pre tabindex="0"><code class="language-g++" data-lang="g++"># 在使用gcc/g++编译的时候定义宏
 # 常用场景：
 # -DDEBUG 定义DEBUG宏，可能文件中有DEBUG宏部分的相关信息，用个DDEBUG来选择开启或关闭
 DEBUG
 g++ test.cpp -DDEBUG -o test 
 </code></pre><h2 id="3g命令编译">3.g++命令编译</h2>
-<pre><code class="language-tree" data-lang="tree">.
+<pre tabindex="0"><code class="language-tree" data-lang="tree">.
 ├── include
 │   └── say.h
 ├── main.cpp
@@ -216,50 +308,50 @@ g++ test.cpp -DDEBUG -o test
 
 2 directories, 3 files
 </code></pre><p>say.h</p>
-<div class="highlight"><pre class="chroma"><code class="language-c++" data-lang="c++"><span class="cp">#pragma once    </span><span class="c1">//防止重复编译
-</span><span class="c1"></span><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp">
-</span><span class="cp">#include</span> <span class="cpf">&lt;string&gt;</span><span class="cp">
-</span><span class="cp"></span>
-<span class="k">class</span> <span class="nc">Say</span>
-<span class="p">{</span>
-<span class="k">public</span><span class="o">:</span>
-    <span class="n">Say</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">name</span><span class="p">)</span> <span class="o">:</span> <span class="n">name</span><span class="p">(</span><span class="n">name</span><span class="p">)</span> <span class="p">{</span>
-
-    <span class="p">}</span>
-
-    <span class="kt">void</span> <span class="nf">sayHello</span><span class="p">();</span>
-
-<span class="k">private</span><span class="o">:</span>
-    <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">name</span><span class="p">;</span> 
-<span class="p">};</span>
-</code></pre></div><p>say.cpp</p>
-<div class="highlight"><pre class="chroma"><code class="language-c++" data-lang="c++"><span class="cp">#include</span> <span class="cpf">&#34;say.h&#34;</span><span class="cp">
-</span><span class="cp"></span>
-<span class="kt">void</span> <span class="n">Say</span><span class="o">::</span><span class="n">sayHello</span><span class="p">()</span> <span class="p">{</span>
-    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">name</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;: say hello!!!&#34;</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></div><p>main.cpp</p>
-<div class="highlight"><pre class="chroma"><code class="language-c++" data-lang="c++"><span class="cp">#include</span> <span class="cpf">&#34;say.h&#34;</span><span class="cp">
-</span><span class="cp"></span>
-<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="kt">char</span> <span class="o">**</span><span class="n">argv</span><span class="p">)</span>
-<span class="p">{</span>
-    <span class="kt">bool</span> <span class="n">wall</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>  <span class="c1">//未使用的变量
-</span><span class="c1"></span>
-    <span class="n">Say</span> <span class="n">say</span><span class="p">(</span><span class="s">&#34;cjt&#34;</span><span class="p">);</span>
-
-    <span class="n">say</span><span class="p">.</span><span class="n">sayHello</span><span class="p">();</span>
-
-    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></div><h3 id="1-直接编译">1. 直接编译</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="cp">#pragma once    </span><span class="c1">//防止重复编译
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;string&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span>
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Say</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl"><span class="k">public</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Say</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">name</span><span class="p">)</span> <span class="o">:</span> <span class="n">name</span><span class="p">(</span><span class="n">name</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kt">void</span> <span class="nf">sayHello</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">private</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">    <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">name</span><span class="p">;</span> 
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span></code></pre></div><p>say.cpp</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&#34;say.h&#34;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span>
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="n">Say</span><span class="o">::</span><span class="n">sayHello</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">name</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;: say hello!!!&#34;</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>main.cpp</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&#34;say.h&#34;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span>
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="kt">char</span> <span class="o">**</span><span class="n">argv</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">bool</span> <span class="n">wall</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>  <span class="c1">//未使用的变量
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl">    <span class="n">Say</span> <span class="n">say</span><span class="p">(</span><span class="s">&#34;cjt&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">say</span><span class="p">.</span><span class="n">sayHello</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><h3 id="1-直接编译">1. 直接编译</h3>
 <p>编译，生成可执行文件</p>
-<pre><code class="language-g++" data-lang="g++">g++ main.cpp src/say.cpp -Iinclude -o sayHello
+<pre tabindex="0"><code class="language-g++" data-lang="g++">g++ main.cpp src/say.cpp -Iinclude -o sayHello
 </code></pre><p>增加参数编译，生成可执行文件</p>
-<pre><code class="language-g++" data-lang="g++">g++ main.cpp src/say.cpp -Iinclude -std=c++11 -o2 -Wall -o sayHello
+<pre tabindex="0"><code class="language-g++" data-lang="g++">g++ main.cpp src/say.cpp -Iinclude -std=c++11 -o2 -Wall -o sayHello
 </code></pre><h3 id="2生成库文件并编译">2.生成库文件并编译</h3>
 <p>可参考：
-<a href="https://www.cnblogs.com/skynet/p/3372855.html/" title="C&#43;&#43;静态库与动态库" target="_blank" rel="noopener noreffer ">C++静态库与动态库</a> 、
-<a href="https://cloud.tencent.com/developer/article/1656728/" title="C语言静态库VS动态库" target="_blank" rel="noopener noreffer ">C语言静态库VS动态库</a></p>
+<a href="https://www.cnblogs.com/skynet/p/3372855.html/" title="C&#43;&#43;静态库与动态库"target="_blank" rel="external nofollow noopener noreferrer">C++静态库与动态库</a> 、
+<a href="https://cloud.tencent.com/developer/article/1656728/" title="C语言静态库VS动态库"target="_blank" rel="external nofollow noopener noreferrer">C语言静态库VS动态库</a></p>
 <p>静态库VS动态库</p>
 <p>静态库和动态库的载入时间是不一样的。</p>
 <p>静态库的代码在编译的过程中已经载入到可执行文件中，所以最后生成的可执行文件相对较大。</p>
@@ -270,7 +362,7 @@ g++ test.cpp -DDEBUG -o test
 <p>无论静态库，还是动态库，都是由.o文件创建的。因此，我们必须将源程序.cpp通过g++先编译成.o文件。</p>
 <hr>
 <h4 id="1-链接静态库生成可执行文件">1. 链接<strong>静态库</strong>生成可执行文件</h4>
-<pre><code class="language-g++" data-lang="g++">#汇编生成sayHello.o文件
+<pre tabindex="0"><code class="language-g++" data-lang="g++">#汇编生成sayHello.o文件
 g++ src/say.cpp -Iinclude -c -o sayHello.o
 
 #生成静态库libsayHello.o
@@ -283,7 +375,7 @@ g++ main.cpp -Iinclude -L. -lsayHello -o main
 #运行可执行文件
 ./main
 </code></pre><h4 id="2-链接动态库生成可执行文件">2. 链接<strong>动态库</strong>生成可执行文件</h4>
-<pre><code class="language-g++" data-lang="g++">#生成动态库libsayHello.so
+<pre tabindex="0"><code class="language-g++" data-lang="g++">#生成动态库libsayHello.so
 g++ src/say.cpp -Iinclude -fPIC -shared -o libsayHello.so
 
 #链接，生成可执行文件 main
@@ -293,39 +385,40 @@ g++ main.cpp -Iinclude -L. -lsayHello -o main
 说明: 需要指定动态库的路径
 LD_LIBRARY_PATH=. ./main 
 </code></pre></div><div class="post-footer" id="post-footer">
-    <div class="post-info">
-        <div class="post-info-line">
-            <div class="post-info-mod">
-                <span>Updated on 2022-09-14</span>
-            </div></div>
-        <div class="post-info-line">
-            <div class="post-info-md"></div>
-            <div class="post-info-share">
-                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://cui-jiang-tao.github.io/posts/gcc%E7%BC%96%E8%AF%91%E5%99%A8/" data-title="GCC编译器" data-hashtags="GCC"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://cui-jiang-tao.github.io/posts/gcc%E7%BC%96%E8%AF%91%E5%99%A8/" data-hashtag="GCC"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="https://cui-jiang-tao.github.io/posts/gcc%E7%BC%96%E8%AF%91%E5%99%A8/" data-title="GCC编译器"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="https://cui-jiang-tao.github.io/posts/gcc%E7%BC%96%E8%AF%91%E5%99%A8/" data-title="GCC编译器"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@7.3.0/icons/line.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="https://cui-jiang-tao.github.io/posts/gcc%E7%BC%96%E8%AF%91%E5%99%A8/" data-title="GCC编译器"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
-            </div>
-        </div>
+  <div class="post-info">
+    <div class="post-info-line">
+      <div class="post-info-mod">
+        <span title=2022-09-14&#32;00:00:00>Updated on 2022-09-14&nbsp;</span>
+      </div><div class="post-info-license">
+          <span><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span>
+        </div></div>
+    <div class="post-info-line">
+      <div class="post-info-md"></div>
+      <div class="post-info-share">
+        <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://cui-jiang-tao.github.io/posts/gcc%E7%BC%96%E8%AF%91%E5%99%A8/" data-title="GCC编译器" data-hashtags="GCC"><i class="fa-brands fa-twitter fa-fw" aria-hidden="true"></i></a>
+  <a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://cui-jiang-tao.github.io/posts/gcc%E7%BC%96%E8%AF%91%E5%99%A8/" data-hashtag="GCC"><i class="fa-brands fa-facebook-square fa-fw" aria-hidden="true"></i></a>
+  <a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="https://cui-jiang-tao.github.io/posts/gcc%E7%BC%96%E8%AF%91%E5%99%A8/" data-title="GCC编译器"><i class="fa-brands fa-weibo fa-fw" aria-hidden="true"></i></a>
+  </span>
+      </div>
     </div>
+  </div>
 
-    <div class="post-info-more">
-        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/gcc/">GCC</a></section>
-        <section>
-            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
-        </section>
-    </div>
+  <div class="post-info-more">
+    <section class="post-tags"><i class="fa-solid fa-tags fa-fw me-1" aria-hidden="true"></i><a href='/tags/gcc/' class="post-tag">GCC</a></section>
+    <section>
+      <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+    </section>
+  </div>
 
-    <div class="post-nav"><a href="/posts/gdb%E8%B0%83%E8%AF%95%E5%99%A8/" class="prev" rel="prev" title="GDB调试器"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>GDB调试器</a>
-            <a href="/posts/cmake/" class="next" rel="next" title="CMake">CMake<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+  <div class="post-nav"><a href="/posts/gdb%E8%B0%83%E8%AF%95%E5%99%A8/" class="post-nav-item" rel="prev" title="GDB调试器"><i class="fa-solid fa-angle-left fa-fw" aria-hidden="true"></i>GDB调试器</a>
+      <a href="/posts/cmake/" class="post-nav-item" rel="next" title="CMake">CMake<i class="fa-solid fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
 </div>
-</article></div>
-            </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022</span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
-        </div>
-    </footer></div>
-
-        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
-                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
-            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
-                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
-            </a>
-        </div><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.5.1/sharer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/typeit@8.6.0/dist/index.umd.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{},"data":{"id-1":"Home","id-2":"Home"},"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"id-1":["id-1"],"id-2":["id-2"]},"duration":-1,"speed":100}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</article></main><footer class="footer">
+    <div class="footer-container"><div class="footer-line copyright" itemscope itemtype="http://schema.org/CreativeWork"><i class="fa-regular fa-copyright fa-fw" aria-hidden="true"></i>
+            <span itemprop="copyrightYear">2022</span><span class="license footer-divider"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div><div class="footer-line statistics"></div></div>
+  </footer></div><div class="widgets"><div class="fixed-buttons animate__faster d-none"><div class="fixed-button back-to-top" role="button" aria-label="Back to Top"><i class="fa-solid fa-arrow-up fa-fw" aria-hidden="true"></i><span class="variant-numeric d-none">0%</span>
+        </div></div><div id="mask"></div><noscript>
+    <div class="noscript-warning">Theme FixIt works best with JavaScript enabled.</div>
+  </noscript>
+</div><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script src="/lib/autocomplete/autocomplete.min.js" defer></script><script src="/lib/lunr/lunr.min.js" defer></script><script src="/lib/lazysizes/lazysizes.min.js" async defer></script><script src="/lib/sharer/sharer.min.js" async defer></script><script src="/lib/typeit/index.umd.js" defer></script><script src="/lib/katex/katex.min.js" defer></script><script src="/lib/katex/auto-render.min.js" defer></script><script src="/lib/katex/copy-tex.min.js" defer></script><script src="/lib/katex/mhchem.min.js" defer></script><script src="/lib/cookieconsent/cookieconsent.min.js" defer></script><script>window.config={"code":{"copyTitle":"Copy to clipboard","editLockTitle":"Lock editable code block","editUnLockTitle":"Unlock editable code block","editable":true,"maxShownLines":10},"comment":{"enable":false},"cookieconsent":{"content":{"dismiss":"Got it!","link":"Learn more","message":"This website uses Cookies to improve your experience."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"data":{"typeit-header-desktop":"Home","typeit-header-title-mobile":"Home"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30},"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"typeit-header-desktop":["typeit-header-desktop"],"typeit-header-title-mobile":["typeit-header-title-mobile"]},"duration":-1,"speed":100}};</script><script src="/js/theme.min.js" defer></script></body>
 </html>

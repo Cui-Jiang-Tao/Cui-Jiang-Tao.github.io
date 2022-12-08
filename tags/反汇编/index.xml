@@ -1,16 +1,16 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
-    <channel>
-        <title>反汇编 - Tag - vstk的网站</title>
-        <link>https://cui-jiang-tao.github.io/tags/%E5%8F%8D%E6%B1%87%E7%BC%96/</link>
-        <description>反汇编 - Tag - vstk的网站</description>
-        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>cjt953899262@gmail.com (cjt)</managingEditor>
-            <webMaster>cjt953899262@gmail.com (cjt)</webMaster><lastBuildDate>Sat, 24 Sep 2022 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://cui-jiang-tao.github.io/tags/%E5%8F%8D%E6%B1%87%E7%BC%96/" rel="self" type="application/rss+xml" /><item>
-    <title>c&#43;&#43;反汇编(x86)</title>
-    <link>https://cui-jiang-tao.github.io/posts/c&#43;&#43;%E5%8F%8D%E6%B1%87%E7%BC%96/</link>
-    <pubDate>Sat, 24 Sep 2022 00:00:00 &#43;0000</pubDate>
-    <author>cjt</author>
-    <guid>https://cui-jiang-tao.github.io/posts/c&#43;&#43;%E5%8F%8D%E6%B1%87%E7%BC%96/</guid>
-    <description><![CDATA[1.类型大小 1. 基本数据类型 printf(&#34;%d\n&#34;, sizeof(char)); //1 printf(&#34;%d\n&#34;, sizeof(short int)); //2 printf(&#34;%d\n&#34;, sizeof(int)); //4 printf(&#34;%d\n&#34;, sizeof(long int)); //4 printf(&#34;%d\n&#34;, sizeof(__int64)); //8 printf(&#34;%d\n&#34;, sizeof(float)); //4 printf(&#34;%d\n&#34;, sizeof(double)); //8 2. 数组类型 char arr1[10] = { 0 }; short arr2[10] = { 0 }; int arr3[10] = { 0 }; printf(&#34;%d\n&#34;, sizeof(arr1)); //10 printf(&#34;%d\n&#34;, sizeof(arr2)); //20 printf(&#34;%d\n&#34;, sizeof(arr3)); //40 printf(&#34;%d\n&#34;, sizeof(arr1[10]));]]></description>
+  <channel>
+    <title>反汇编 - Tag - vstk的网站</title>
+    <link>https://cui-jiang-tao.github.io/tags/%E5%8F%8D%E6%B1%87%E7%BC%96/</link>
+    <description>反汇编 - Tag - vstk的网站</description>
+    <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>cjt953899262@gmail.com (cjt)</managingEditor>
+      <webMaster>cjt953899262@gmail.com (cjt)</webMaster><lastBuildDate>Sat, 24 Sep 2022 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://cui-jiang-tao.github.io/tags/%E5%8F%8D%E6%B1%87%E7%BC%96/" rel="self" type="application/rss+xml" /><item>
+  <title>c&#43;&#43;反汇编(x86)</title>
+  <link>https://cui-jiang-tao.github.io/posts/c&#43;&#43;%E5%8F%8D%E6%B1%87%E7%BC%96/</link>
+  <pubDate>Sat, 24 Sep 2022 00:00:00 &#43;0000</pubDate>
+  <author>cjt</author>
+  <guid>https://cui-jiang-tao.github.io/posts/c&#43;&#43;%E5%8F%8D%E6%B1%87%E7%BC%96/</guid>
+  <description><![CDATA[1.类型大小 1. 基本数据类型 printf(&#34;%d\n&#34;, sizeof(char)); //1 printf(&#34;%d\n&#34;, sizeof(short int)); //2 printf(&#34;%d\n&#34;, sizeof(int)); //4 printf(&#34;%d\n&#34;, sizeof(long int)); //4 printf(&#34;%d\n&#34;, sizeof(__int64)); //8 printf(&#34;%d\n&#34;, sizeof(float)); //4 printf(&#34;%d\n&#34;, sizeof(double)); //8 2. 数组类型 char arr1[10] = { 0 }; short arr2[10] = { 0 }; int arr3[10] = { 0 }; printf(&#34;%d\n&#34;, sizeof(arr1)); //10 printf(&#34;%d\n&#34;, sizeof(arr2)); //20 printf(&#34;%d\n&#34;, sizeof(arr3)); //40 printf(&#34;%d\n&#34;, sizeof(arr1[10]));]]></description>
 </item>
 </channel>
 </rss>

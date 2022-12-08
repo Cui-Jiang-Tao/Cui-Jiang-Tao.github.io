@@ -1,16 +1,16 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
-    <channel>
-        <title>Git - Tag - vstk的网站</title>
-        <link>https://cui-jiang-tao.github.io/tags/git/</link>
-        <description>Git - Tag - vstk的网站</description>
-        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>cjt953899262@gmail.com (cjt)</managingEditor>
-            <webMaster>cjt953899262@gmail.com (cjt)</webMaster><lastBuildDate>Thu, 29 Sep 2022 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://cui-jiang-tao.github.io/tags/git/" rel="self" type="application/rss+xml" /><item>
-    <title>Git</title>
-    <link>https://cui-jiang-tao.github.io/posts/git/</link>
-    <pubDate>Thu, 29 Sep 2022 00:00:00 &#43;0000</pubDate>
-    <author>cjt</author>
-    <guid>https://cui-jiang-tao.github.io/posts/git/</guid>
-    <description><![CDATA[1. 配置 git config --global user.name &quot;Your Name&quot; git config --global user.email &quot;email@example.com&quot; #设置远程仓库 git remote add origin git@github.com:vstk771/gitTest.git 注意： git config命令的&ndash;global参数，用了这个参数，表示你这台机器上]]></description>
+  <channel>
+    <title>Git - Tag - vstk的网站</title>
+    <link>https://cui-jiang-tao.github.io/tags/git/</link>
+    <description>Git - Tag - vstk的网站</description>
+    <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>cjt953899262@gmail.com (cjt)</managingEditor>
+      <webMaster>cjt953899262@gmail.com (cjt)</webMaster><lastBuildDate>Thu, 29 Sep 2022 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://cui-jiang-tao.github.io/tags/git/" rel="self" type="application/rss+xml" /><item>
+  <title>Git</title>
+  <link>https://cui-jiang-tao.github.io/posts/git/</link>
+  <pubDate>Thu, 29 Sep 2022 00:00:00 &#43;0000</pubDate>
+  <author>cjt</author>
+  <guid>https://cui-jiang-tao.github.io/posts/git/</guid>
+  <description><![CDATA[1. 配置 git config --global user.name &#34;Your Name&#34; git config --global user.email &#34;email@example.com&#34; #设置远程仓库 git remote add origin git@github.com:vstk771/gitTest.git 注意： git config命令的&ndash;global参数，用了这个参数，表示你这台机器上]]></description>
 </item>
 </channel>
 </rss>
