@@ -4,9 +4,17 @@
     <link>https://cui-jiang-tao.github.io/</link>
     <description>This is my new Hugo FixIt site</description>
     <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>cjt953899262@gmail.com (cjt)</managingEditor>
-      <webMaster>cjt953899262@gmail.com (cjt)</webMaster><lastBuildDate>Thu, 08 Dec 2022 00:00:00 &#43;0000</lastBuildDate>
+      <webMaster>cjt953899262@gmail.com (cjt)</webMaster><lastBuildDate>Fri, 09 Dec 2022 00:00:00 &#43;0000</lastBuildDate>
       <atom:link href="https://cui-jiang-tao.github.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
+  <title>Linux常用命令</title>
+  <link>https://cui-jiang-tao.github.io/posts/linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</link>
+  <pubDate>Fri, 09 Dec 2022 00:00:00 &#43;0000</pubDate>
+  <author>cjt</author>
+  <guid>https://cui-jiang-tao.github.io/posts/linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</guid>
+  <description><![CDATA[1. 路径相关 1.1 pwd 显示当前路径 在终端中输入pwd命令，显示当前我们所在的位置： 1 2 ubuntu@VM-12-11-ubuntu:~$ pwd /home/ubuntu 1.2 ls 查看当前目录 1 2 ubuntu@VM-12-11-ubuntu:~$ ls build c++ muduo my-website recipes snap 可以使用如下命令让这]]></description>
+</item>
+<item>
   <title>Hugo的安装和FixIt 主题</title>
   <link>https://cui-jiang-tao.github.io/posts/hugo%E6%90%AD%E5%BB%BA/</link>
   <pubDate>Thu, 08 Dec 2022 00:00:00 &#43;0000</pubDate>
@@ -20,7 +28,7 @@
   <pubDate>Tue, 06 Dec 2022 00:00:00 &#43;0000</pubDate>
   <author>cjt</author>
   <guid>https://cui-jiang-tao.github.io/posts/muduo%E7%BD%91%E7%BB%9C%E5%BA%93%E6%BA%90%E7%A0%81%E5%AD%A6%E4%B9%A0/</guid>
-  <description><![CDATA[第二部分：Muduo网络库 10. 初探EventLoop 10.1 什么都不做的EventLoop 一个EventLoop就是一个事件循环，下面将通过一个“什]]></description>
+  <description><![CDATA[第二部分：Muduo网络库 10. 初探EventLoop 10.1 什么都不做的EventLoop 一个EventLoop就是一个事件循环，下面将通过一个&q]]></description>
 </item>
 <item>
   <title>c&#43;&#43; primer 5th 要点记录</title>
@@ -77,14 +85,6 @@
   <author>cjt</author>
   <guid>https://cui-jiang-tao.github.io/posts/c&#43;&#43;%E5%8F%8D%E6%B1%87%E7%BC%96/</guid>
   <description><![CDATA[1.类型大小 1. 基本数据类型 1 2 3 4 5 6 7 printf(&#34;%d\n&#34;, sizeof(char)); //1 printf(&#34;%d\n&#34;, sizeof(short int)); //2 printf(&#34;%d\n&#34;, sizeof(int)); //4 printf(&#34;%d\n&#34;, sizeof(long int)); //4 printf(&#34;%d\n&#34;, sizeof(__int64)); //8 printf(&#34;%d\n&#34;, sizeof(float)); //4 printf(&#34;%d\n&#34;, sizeof(double)); //8 2. 数组类型 1 2 3 4 5 6 7 8 9 10 11 char arr1[10] = { 0 }; short arr2[10] = { 0]]></description>
-</item>
-<item>
-  <title>CMake</title>
-  <link>https://cui-jiang-tao.github.io/posts/cmake/</link>
-  <pubDate>Thu, 15 Sep 2022 00:00:00 &#43;0000</pubDate>
-  <author>cjt</author>
-  <guid>https://cui-jiang-tao.github.io/posts/cmake/</guid>
-  <description><![CDATA[前言 CMake是一个跨平台的安装编译工具，可以用简单的语句来描述所有平台的安装(编译过程)。 CMake可以说已经成为大部分C++开源项目标配]]></description>
 </item>
 </channel>
 </rss>

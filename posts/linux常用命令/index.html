@@ -1,0 +1,817 @@
+<!DOCTYPE html>
+<html itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+  <head>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+    <meta name="robots" content="noodp" />
+    <title>Linux常用命令 - vstk的网站</title><meta name="author" content="cjt">
+<meta name="author-link" content="">
+<meta name="description" content="1. 路径相关 1.1 pwd 显示当前路径 在终端中输入pwd命令，显示当前我们所在的位置： 1 2 ubuntu@VM-12-11-ubuntu:~$ pwd /home/ubuntu 1.2 ls 查看当前目录 1 2 ubuntu@VM-12-11-ubuntu:~$ ls build c&#43;&#43; muduo my-website recipes snap 可以使用如下命令让这" /><meta name="keywords" content='Linux' /><meta itemprop="name" content="Linux常用命令">
+<meta itemprop="description" content="1. 路径相关 1.1 pwd 显示当前路径 在终端中输入pwd命令，显示当前我们所在的位置： 1 2 ubuntu@VM-12-11-ubuntu:~$ pwd /home/ubuntu 1.2 ls 查看当前目录 1 2 ubuntu@VM-12-11-ubuntu:~$ ls build c&#43;&#43; muduo my-website recipes snap 可以使用如下命令让这"><meta itemprop="datePublished" content="2022-12-09T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2022-12-09T00:00:00+00:00" />
+<meta itemprop="wordCount" content="2039">
+<meta itemprop="keywords" content="Linux," /><meta property="og:title" content="Linux常用命令" />
+<meta property="og:description" content="1. 路径相关 1.1 pwd 显示当前路径 在终端中输入pwd命令，显示当前我们所在的位置： 1 2 ubuntu@VM-12-11-ubuntu:~$ pwd /home/ubuntu 1.2 ls 查看当前目录 1 2 ubuntu@VM-12-11-ubuntu:~$ ls build c&#43;&#43; muduo my-website recipes snap 可以使用如下命令让这" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://cui-jiang-tao.github.io/posts/linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-12-09T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-12-09T00:00:00+00:00" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Linux常用命令"/>
+<meta name="twitter:description" content="1. 路径相关 1.1 pwd 显示当前路径 在终端中输入pwd命令，显示当前我们所在的位置： 1 2 ubuntu@VM-12-11-ubuntu:~$ pwd /home/ubuntu 1.2 ls 查看当前目录 1 2 ubuntu@VM-12-11-ubuntu:~$ ls build c&#43;&#43; muduo my-website recipes snap 可以使用如下命令让这"/>
+<meta name="application-name" content="FixIt">
+<meta name="apple-mobile-web-app-title" content="FixIt"><meta name="theme-color" data-light="#f8f8f8" data-dark="#252627" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" href="https://cui-jiang-tao.github.io/posts/linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" /><link rel="prev" href="https://cui-jiang-tao.github.io/posts/hugo%E6%90%AD%E5%BB%BA/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "BlogPosting",
+    "headline": "Linux常用命令",
+    "inLanguage": "zh-CN",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https:\/\/cui-jiang-tao.github.io\/posts\/linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4\/"
+    },"genre": "posts","keywords": "Linux","wordcount":  2039 ,
+    "url": "https:\/\/cui-jiang-tao.github.io\/posts\/linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4\/","datePublished": "2022-12-09T00:00:00+00:00","dateModified": "2022-12-09T00:00:00+00:00","publisher": {
+      "@type": "Organization",
+      "name": ""},"author": {
+        "@type": "Person",
+        "name": "cjt"
+      },"description": ""
+  }
+  </script></head>
+  <body data-header-desktop="fixed" data-header-mobile="auto"><script>(window.localStorage?.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('data-theme', 'dark');</script><div class="wrapper"><header class="desktop animate__faster" id="header-desktop">
+  <div class="header-wrapper">
+    <div class="header-title">
+      <a href="/" title="vstk的网站"><span class="header-title-pre"><i class='far fa-kiss-wink-heart fa-fw' aria-hidden='true'></i></span><span id="typeit-header-desktop" class="typeit"></span></a><span class="header-subtitle"></span></div>
+    <nav>
+      <ul class="menu"><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/posts/"
+                
+                
+              >文章</a></li><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/tags/"
+                
+                
+              >标签</a></li><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/categories/"
+                
+                
+              >分类</a></li><li class="menu-item delimiter"></li><li class="menu-item search" id="search-desktop">
+            <input type="text" placeholder="Search titles or contents ..." id="search-input-desktop">
+            <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+              <i class="fa-solid fa-search fa-fw" aria-hidden="true"></i>
+            </a>
+            <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+              <i class="fa-solid fa-times-circle fa-fw" aria-hidden="true"></i>
+            </a>
+            <span class="search-button search-loading" id="search-loading-desktop">
+              <i class="fa-solid fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+            </span>
+          </li><li class="menu-item theme-switch" title="Switch Theme">
+          <i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</header><header class="mobile animate__faster" id="header-mobile">
+  <div class="header-container">
+    <div class="header-wrapper">
+      <div class="header-title">
+        <a href="/" title="vstk的网站"><span class="header-title-pre"><i class='far fa-kiss-wink-heart fa-fw' aria-hidden='true'></i></span><span id="typeit-header-title-mobile" class="typeit"></span></a><span class="header-subtitle"></span></div>
+      <div class="menu-toggle" id="menu-toggle-mobile">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+    <nav>
+      <ul class="menu" id="menu-mobile"><li class="search-wrapper">
+            <div class="search mobile" id="search-mobile">
+              <input type="text" placeholder="Search titles or contents ..." id="search-input-mobile">
+              <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                <i class="fa-solid fa-search fa-fw" aria-hidden="true"></i>
+              </a>
+              <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                <i class="fa-solid fa-times-circle fa-fw" aria-hidden="true"></i>
+              </a>
+              <span class="search-button search-loading" id="search-loading-mobile">
+                <i class="fa-solid fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+              </span>
+            </div>
+            <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+              Cancel
+            </a>
+          </li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/posts/"
+                  
+                  
+                >文章</a></li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/tags/"
+                  
+                  
+                >标签</a></li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/categories/"
+                  
+                  
+                >分类</a></li><li class="menu-item theme-switch" title="Switch Theme">
+          <i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i>
+        </li></ul>
+    </nav>
+  </div>
+</header><div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+  </div>
+  <div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+  </div><main class="container" data-page-style="wide"><aside class="toc" id="toc-auto"><h2 class="toc-title">Contents&nbsp;<i class="toc-icon fa-solid fa-angle-down fa-fw" aria-hidden="true"></i></h2>
+      <div class="toc-content" id="toc-content-auto"></div></aside>
+
+  <aside class="aside-custom">
+    </aside>
+
+  <article class="page single">
+    <div class="header"><h1 class="single-title animate__animated animate__flipInX">
+        <span>Linux常用命令</span>
+      </h1></div><div class="post-meta">
+      <div class="post-meta-line"><span class="post-author"><span class="author"><img
+    class="lazyload avatar"
+    src="/svg/loading.min.svg"
+    data-src="https://www.gravatar.com/avatar/736cc0685dbd22dd674add9c481fc755?s=32&amp;d="
+    data-srcset="https://www.gravatar.com/avatar/736cc0685dbd22dd674add9c481fc755?s=32&amp;d=, https://www.gravatar.com/avatar/736cc0685dbd22dd674add9c481fc755?s=32&amp;d= 1.5x, https://www.gravatar.com/avatar/736cc0685dbd22dd674add9c481fc755?s=32&amp;d= 2x"
+    data-sizes="auto"
+    alt="cjt"
+    title="cjt"/>&nbsp;cjt</span></span>
+          <span class="post-category">included in <a href="/categories/linux/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> Linux</a></span></div>
+      <div class="post-meta-line"><span title=2022-12-09&#32;00:00:00><i class="fa-regular fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-12-09">2022-12-09</time></span>&nbsp;<span><i class="fa-solid fa-pencil-alt fa-fw" aria-hidden="true"></i> 2039 words</span>&nbsp;<span><i class="fa-regular fa-clock fa-fw" aria-hidden="true"></i> 5 minutes</span>&nbsp;</div>
+    </div><div class="details toc" id="toc-static" data-kept="false">
+        <div class="details-summary toc-title">
+          <span>Contents</span>
+          <span><i class="details-icon fa-solid fa-angle-right" aria-hidden="true"></i></span>
+        </div>
+        <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#1-路径相关">1. 路径相关</a>
+      <ul>
+        <li><a href="#11-pwd-显示当前路径">1.1 pwd 显示当前路径</a></li>
+        <li><a href="#12-ls-查看当前目录">1.2 ls 查看当前目录</a></li>
+        <li><a href="#13-cd-进入某个目录">1.3 cd 进入某个目录</a>
+          <ul>
+            <li><a href="#131-cd-dir">1.3.1 cd dir</a></li>
+            <li><a href="#132-cd-">1.3.2 cd ..</a></li>
+            <li><a href="#133-cd--与-cd-">1.3.3 cd / 与 cd ~</a></li>
+            <li><a href="#cd--">cd -</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#2-文件相关">2. 文件相关</a>
+      <ul>
+        <li><a href="#21-mkdir-创建目录">2.1 mkdir 创建目录</a></li>
+        <li><a href="#22-touch-创建文件">2.2 touch 创建文件</a></li>
+        <li><a href="#23-mv-命令">2.3 mv 命令</a>
+          <ul>
+            <li><a href="#231-文件重命名">2.3.1 文件重命名</a></li>
+            <li><a href="#232-移动文件">2.3.2 移动文件</a></li>
+          </ul>
+        </li>
+        <li><a href="#24-cp-拷贝文件目录">2.4 cp 拷贝文件/目录</a></li>
+        <li><a href="#25-rm-删除文件">2.5 rm 删除文件</a></li>
+        <li><a href="#26-tar-命令">2.6 tar 命令</a></li>
+      </ul>
+    </li>
+    <li><a href="#3-查找">3. 查找</a>
+      <ul>
+        <li><a href="#31-find-文件查找">3.1 find 文件查找</a>
+          <ul>
+            <li><a href="#311-根据名字查找文件">3.1.1 根据名字查找文件</a></li>
+            <li><a href="#312-根据名字查找目录">3.1.2 根据名字查找目录</a></li>
+            <li><a href="#313-根据名字查找目录或文件">3.1.3 根据名字查找目录或文件</a></li>
+            <li><a href="#314-根据文件大小查找">3.1.4 根据文件大小查找</a></li>
+            <li><a href="#315-根据名字查找目录文件忽略大小写">3.1.5 根据名字查找目录文件，忽略大小写</a></li>
+          </ul>
+        </li>
+        <li><a href="#2-grep-命令">2. grep 命令</a>
+          <ul>
+            <li><a href="#21-查找某字符串">2.1 查找某字符串</a></li>
+            <li><a href="#22-查找某字符串前后行内容">2.2 查找某字符串前后行内容</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+      </div><div class="content" id="content"><h2 id="1-路径相关">1. 路径相关</h2>
+<h3 id="11-pwd-显示当前路径">1.1 pwd 显示当前路径</h3>
+<p>在终端中输入pwd命令，显示当前我们所在的位置：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">ubuntu@VM-12-11-ubuntu:~$ <span class="nb">pwd</span>
+</span></span><span class="line"><span class="cl">/home/ubuntu
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="12-ls-查看当前目录">1.2 ls 查看当前目录</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">ubuntu@VM-12-11-ubuntu:~$ ls
+</span></span><span class="line"><span class="cl">build  c++  muduo  my-website  recipes  snap
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>可以使用如下命令让这些文件列表输出，并且显示文件相关的信息：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">ubuntu@VM-12-11-ubuntu:~$ ls -l
+</span></span><span class="line"><span class="cl">total <span class="m">24</span>
+</span></span><span class="line"><span class="cl">drwxrwxr-x  <span class="m">4</span> ubuntu ubuntu <span class="m">4096</span> Oct <span class="m">31</span> 14:07 build
+</span></span><span class="line"><span class="cl">drwxrwxr-x  <span class="m">9</span> ubuntu ubuntu <span class="m">4096</span> Dec  <span class="m">2</span> 14:34 c++
+</span></span><span class="line"><span class="cl">drwxrwxr-x  <span class="m">9</span> ubuntu ubuntu <span class="m">4096</span> Nov  <span class="m">3</span> 15:17 muduo
+</span></span><span class="line"><span class="cl">drwxrwxr-x <span class="m">17</span> ubuntu ubuntu <span class="m">4096</span> Dec  <span class="m">8</span> 19:33 my-website
+</span></span><span class="line"><span class="cl">drwxrwxr-x <span class="m">26</span> ubuntu ubuntu <span class="m">4096</span> Oct <span class="m">28</span> 14:21 recipes
+</span></span><span class="line"><span class="cl">drwx------  <span class="m">3</span> ubuntu ubuntu <span class="m">4096</span> Dec  <span class="m">8</span> 16:14 snap
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>使用<code>ls -al</code>列出所有的文件和文件夹，这里包含隐藏目录和文件：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">ubuntu@VM-12-11-ubuntu:~$ ls -al
+</span></span><span class="line"><span class="cl">total <span class="m">96</span>
+</span></span><span class="line"><span class="cl">drwxr-xr-x <span class="m">14</span> ubuntu ubuntu  <span class="m">4096</span> Dec  <span class="m">8</span> 19:16 .
+</span></span><span class="line"><span class="cl">drwxr-xr-x  <span class="m">4</span> root   root    <span class="m">4096</span> Oct <span class="m">28</span> 13:48 ..
+</span></span><span class="line"><span class="cl">-rw-------  <span class="m">1</span> ubuntu ubuntu <span class="m">12973</span> Dec  <span class="m">9</span> 14:50 .bash_history
+</span></span><span class="line"><span class="cl">-rw-r--r--  <span class="m">1</span> ubuntu ubuntu   <span class="m">220</span> Sep <span class="m">21</span> 16:16 .bash_logout
+</span></span><span class="line"><span class="cl">-rw-r--r--  <span class="m">1</span> ubuntu ubuntu  <span class="m">3771</span> Sep <span class="m">21</span> 16:16 .bashrc
+</span></span><span class="line"><span class="cl">drwxrwxr-x  <span class="m">4</span> ubuntu ubuntu  <span class="m">4096</span> Oct <span class="m">31</span> 14:07 build
+</span></span><span class="line"><span class="cl">drwxrwxr-x  <span class="m">9</span> ubuntu ubuntu  <span class="m">4096</span> Dec  <span class="m">2</span> 14:34 c++
+</span></span><span class="line"><span class="cl">drwx------  <span class="m">3</span> ubuntu ubuntu  <span class="m">4096</span> Oct <span class="m">28</span> 14:37 .cache
+</span></span><span class="line"><span class="cl">-rw-rw-r--  <span class="m">1</span> ubuntu ubuntu    <span class="m">61</span> Oct <span class="m">28</span> 15:11 .gitconfig
+</span></span><span class="line"><span class="cl">drwxrwxr-x  <span class="m">3</span> ubuntu ubuntu  <span class="m">4096</span> Oct <span class="m">28</span> 14:37 .local
+</span></span><span class="line"><span class="cl">drwxrwxr-x  <span class="m">9</span> ubuntu ubuntu  <span class="m">4096</span> Nov  <span class="m">3</span> 15:17 muduo
+</span></span><span class="line"><span class="cl">drwxrwxr-x <span class="m">17</span> ubuntu ubuntu  <span class="m">4096</span> Dec  <span class="m">8</span> 19:33 my-website
+</span></span><span class="line"><span class="cl">drwxrwxr-x  <span class="m">2</span> ubuntu ubuntu  <span class="m">4096</span> Sep <span class="m">21</span> 16:22 .pip
+</span></span><span class="line"><span class="cl">-rw-r--r--  <span class="m">1</span> ubuntu ubuntu   <span class="m">807</span> Sep <span class="m">21</span> 16:16 .profile
+</span></span><span class="line"><span class="cl">-rw-rw-r--  <span class="m">1</span> ubuntu ubuntu    <span class="m">73</span> Oct <span class="m">28</span> 13:48 .pydistutils.cfg
+</span></span><span class="line"><span class="cl">drwxrwxr-x <span class="m">26</span> ubuntu ubuntu  <span class="m">4096</span> Oct <span class="m">28</span> 14:21 recipes
+</span></span><span class="line"><span class="cl">drwx------  <span class="m">3</span> ubuntu ubuntu  <span class="m">4096</span> Dec  <span class="m">8</span> 16:14 snap
+</span></span><span class="line"><span class="cl">drwx------  <span class="m">2</span> ubuntu ubuntu  <span class="m">4096</span> Oct <span class="m">28</span> 15:09 .ssh
+</span></span><span class="line"><span class="cl">-rw-r--r--  <span class="m">1</span> ubuntu ubuntu     <span class="m">0</span> Oct <span class="m">28</span> 14:00 .sudo_as_admin_successful
+</span></span><span class="line"><span class="cl">-rw-------  <span class="m">1</span> ubuntu ubuntu     <span class="m">0</span> Oct <span class="m">28</span> 13:48 .viminfo
+</span></span><span class="line"><span class="cl">drwxrwxr-x  <span class="m">2</span> ubuntu ubuntu  <span class="m">4096</span> Oct <span class="m">30</span> 19:37 .vscode
+</span></span><span class="line"><span class="cl">drwxrwxr-x  <span class="m">5</span> ubuntu ubuntu  <span class="m">4096</span> Dec  <span class="m">9</span> 09:19 .vscode-server
+</span></span><span class="line"><span class="cl">-rw-rw-r--  <span class="m">1</span> ubuntu ubuntu   <span class="m">183</span> Dec  <span class="m">8</span> 20:32 .wget-hsts
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>其中包含.和..目录，也就是当前路径和上级目录，以.开始的文件就是隐藏文件。</p>
+<h3 id="13-cd-进入某个目录">1.3 cd 进入某个目录</h3>
+<h4 id="131-cd-dir">1.3.1 cd dir</h4>
+<p>在命令行终端中可以使用cd进入某个目录</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">ubuntu@VM-12-11-ubuntu:~$ <span class="nb">cd</span> my-website/
+</span></span><span class="line"><span class="cl">ubuntu@VM-12-11-ubuntu:~/my-website$ 
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>这里还有个技巧，你可以只输入文件/文件夹名字的前几个字母，然后点击tab键，让linux自动补全。</p>
+<h4 id="132-cd-">1.3.2 cd ..</h4>
+<p>返回上一级目录，这时可以使用<code>cd ..</code>返回上级目录，例如：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">ubuntu@VM-12-11-ubuntu:~/my-website$ <span class="nb">cd</span> ..
+</span></span><span class="line"><span class="cl">ubuntu@VM-12-11-ubuntu:~$ 
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="133-cd--与-cd-">1.3.3 cd / 与 cd ~</h4>
+<p>可以使用<code>cd /</code>命令切换到操作系统根目录，<code>cd</code>、<code>cd ~</code>命令返回到用户目录。</p>
+<h4 id="cd--">cd -</h4>
+<p>使用<code>cd -</code>命令可以回到上一个打开的目录</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">ubuntu@VM-12-11-ubuntu:~$ <span class="nb">cd</span> my-website/content/
+</span></span><span class="line"><span class="cl">ubuntu@VM-12-11-ubuntu:~/my-website/content$ <span class="nb">cd</span> -
+</span></span><span class="line"><span class="cl">/home/ubuntu
+</span></span><span class="line"><span class="cl">ubuntu@VM-12-11-ubuntu:~$ 
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="2-文件相关">2. 文件相关</h2>
+<h3 id="21-mkdir-创建目录">2.1 mkdir 创建目录</h3>
+<p>使用mkdir命令创建一个文件夹</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">mkdir workspace
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="22-touch-创建文件">2.2 touch 创建文件</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">ubuntu@VM-12-11-ubuntu:~$ touch workspace/test.txt
+</span></span><span class="line"><span class="cl">ubuntu@VM-12-11-ubuntu:~$ tree workspace/
+</span></span><span class="line"><span class="cl">workspace/
+</span></span><span class="line"><span class="cl">└── test.txt
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="m">0</span> directories, <span class="m">1</span> file
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="23-mv-命令">2.3 mv 命令</h3>
+<h4 id="231-文件重命名">2.3.1 文件重命名</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">ubuntu@VM-12-11-ubuntu:~$ mv workspace/test.txt workspace/newFile.txt
+</span></span><span class="line"><span class="cl">ubuntu@VM-12-11-ubuntu:~$ tree workspace/
+</span></span><span class="line"><span class="cl">workspace/
+</span></span><span class="line"><span class="cl">└── newFile.txt
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="m">0</span> directories, <span class="m">1</span> file
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="232-移动文件">2.3.2 移动文件</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">ubuntu@VM-12-11-ubuntu:~/workspace$ mv newFile.txt ~
+</span></span><span class="line"><span class="cl">ubuntu@VM-12-11-ubuntu:~/workspace$ <span class="nb">cd</span> ../
+</span></span><span class="line"><span class="cl">ubuntu@VM-12-11-ubuntu:~$ ll
+</span></span><span class="line"><span class="cl">-rw-rw-r--  <span class="m">1</span> ubuntu ubuntu     <span class="m">0</span> Dec  <span class="m">9</span> 15:07 newFile.txt
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>还原：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">ubuntu@VM-12-11-ubuntu:~/workspace$ mv ../newFile.txt .
+</span></span><span class="line"><span class="cl">ubuntu@VM-12-11-ubuntu:~/workspace$ ll
+</span></span><span class="line"><span class="cl">total <span class="m">8</span>
+</span></span><span class="line"><span class="cl">drwxrwxr-x  <span class="m">2</span> ubuntu ubuntu <span class="m">4096</span> Dec  <span class="m">9</span> 15:14 ./
+</span></span><span class="line"><span class="cl">drwxr-xr-x <span class="m">15</span> ubuntu ubuntu <span class="m">4096</span> Dec  <span class="m">9</span> 15:14 ../
+</span></span><span class="line"><span class="cl">-rw-rw-r--  <span class="m">1</span> ubuntu ubuntu    <span class="m">0</span> Dec  <span class="m">9</span> 15:07 newFile.txt
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="24-cp-拷贝文件目录">2.4 cp 拷贝文件/目录</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">ubuntu@VM-12-11-ubuntu:~/workspace$ cp newFile.txt copy_newFile.txt
+</span></span><span class="line"><span class="cl">ubuntu@VM-12-11-ubuntu:~/workspace$ tree
+</span></span><span class="line"><span class="cl">.
+</span></span><span class="line"><span class="cl">├── copy_newFile.txt
+</span></span><span class="line"><span class="cl">└── newFile.txt
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="m">0</span> directories, <span class="m">2</span> files
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="25-rm-删除文件">2.5 rm 删除文件</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">ubuntu@VM-12-11-ubuntu:~/workspace$ rm copy_newFile.txt 
+</span></span><span class="line"><span class="cl">ubuntu@VM-12-11-ubuntu:~/workspace$ tree
+</span></span><span class="line"><span class="cl">.
+</span></span><span class="line"><span class="cl">└── newFile.txt
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="m">0</span> directories, <span class="m">1</span> file
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>需要注意的是，rm可以直接删除一个文件，但是如果你想要删除整个文件夹中所有内容，那么你需要使用-rf选项：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">ubuntu@VM-12-11-ubuntu:~$ rm -rf workspace/
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="26-tar-命令">2.6 tar 命令</h3>
+<p>linux中有很多.tar.gz的压缩包文件，解压这些压缩包文件需要用到tar命令</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">tar xzf VMwareTools-10.3.10-13959562.tar.gz
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>直接 tar xzf 文件名.tar.gz就可以解压出文件。</p>
+<h2 id="3-查找">3. 查找</h2>
+<h3 id="31-find-文件查找">3.1 find 文件查找</h3>
+<p>命令格式：find (目录) [-type d | f] (文件夹 | 文件) -name （名称，可使用正则表达式）</p>
+<p>当前my-website目录结构：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">ubuntu@VM-12-11-ubuntu:~/my-website$ ls -l
+</span></span><span class="line"><span class="cl">total <span class="m">104</span>
+</span></span><span class="line"><span class="cl">-rw-rw-r--  <span class="m">1</span> ubuntu ubuntu  <span class="m">6661</span> Oct <span class="m">28</span> 15:13 404.html
+</span></span><span class="line"><span class="cl">drwxrwxr-x  <span class="m">2</span> ubuntu ubuntu  <span class="m">4096</span> Oct <span class="m">28</span> 15:13 archetypes
+</span></span><span class="line"><span class="cl">drwxrwxr-x  <span class="m">2</span> ubuntu ubuntu  <span class="m">4096</span> Dec  <span class="m">8</span> 14:56 categories
+</span></span><span class="line"><span class="cl">-rw-rw-r--  <span class="m">1</span> ubuntu ubuntu  <span class="m">4962</span> Dec  <span class="m">9</span> 09:33 config.toml
+</span></span><span class="line"><span class="cl">drwxrwxr-x  <span class="m">4</span> ubuntu ubuntu  <span class="m">4096</span> Oct <span class="m">28</span> 15:13 content
+</span></span><span class="line"><span class="cl">drwxrwxr-x  <span class="m">2</span> ubuntu ubuntu  <span class="m">4096</span> Oct <span class="m">28</span> 15:13 css
+</span></span><span class="line"><span class="cl">drwxrwxr-x  <span class="m">4</span> ubuntu ubuntu  <span class="m">4096</span> Oct <span class="m">28</span> 15:13 imgs
+</span></span><span class="line"><span class="cl">-rw-rw-r--  <span class="m">1</span> ubuntu ubuntu <span class="m">16845</span> Oct <span class="m">28</span> 15:13 index.html
+</span></span><span class="line"><span class="cl">-rw-rw-r--  <span class="m">1</span> ubuntu ubuntu  <span class="m">5845</span> Oct <span class="m">28</span> 15:13 index.xml
+</span></span><span class="line"><span class="cl">drwxrwxr-x  <span class="m">2</span> ubuntu ubuntu  <span class="m">4096</span> Oct <span class="m">28</span> 15:13 js
+</span></span><span class="line"><span class="cl">drwxrwxr-x  <span class="m">6</span> ubuntu ubuntu  <span class="m">4096</span> Oct <span class="m">28</span> 15:13 lib
+</span></span><span class="line"><span class="cl">drwxrwxr-x  <span class="m">3</span> ubuntu ubuntu  <span class="m">4096</span> Oct <span class="m">28</span> 15:13 page
+</span></span><span class="line"><span class="cl">drwxrwxr-x <span class="m">12</span> ubuntu ubuntu  <span class="m">4096</span> Oct <span class="m">28</span> 15:13 posts
+</span></span><span class="line"><span class="cl">drwxrwxr-x <span class="m">12</span> ubuntu ubuntu  <span class="m">4096</span> Dec  <span class="m">8</span> 21:12 public
+</span></span><span class="line"><span class="cl">drwxrwxr-x  <span class="m">3</span> ubuntu ubuntu  <span class="m">4096</span> Oct <span class="m">28</span> 15:13 resources
+</span></span><span class="line"><span class="cl">-rw-rw-r--  <span class="m">1</span> ubuntu ubuntu  <span class="m">3650</span> Oct <span class="m">28</span> 15:13 sitemap.xml
+</span></span><span class="line"><span class="cl">drwxrwxr-x  <span class="m">2</span> ubuntu ubuntu  <span class="m">4096</span> Oct <span class="m">28</span> 15:13 svg
+</span></span><span class="line"><span class="cl">drwxrwxr-x <span class="m">10</span> ubuntu ubuntu  <span class="m">4096</span> Oct <span class="m">28</span> 15:13 tags
+</span></span><span class="line"><span class="cl">drwxrwxr-x  <span class="m">3</span> ubuntu ubuntu  <span class="m">4096</span> Dec  <span class="m">8</span> 14:55 themes
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="311-根据名字查找文件">3.1.1 根据名字查找文件</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">ubuntu@VM-12-11-ubuntu:~/my-website$ sudo find . -type f -name *.txt
+</span></span><span class="line"><span class="cl">./themes/FixIt/layouts/robots.txt
+</span></span><span class="line"><span class="cl">./themes/FixIt/layouts/index.txt
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>加sudo的原因是有些文件夹的访问可能需要管理员权限。</p>
+<h4 id="312-根据名字查找目录">3.1.2 根据名字查找目录</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">ubuntu@VM-12-11-ubuntu:~/my-website$ sudo find . -type d -name imgs
+</span></span><span class="line"><span class="cl">./imgs
+</span></span><span class="line"><span class="cl">./content/imgs
+</span></span><span class="line"><span class="cl">./public/imgs
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="313-根据名字查找目录或文件">3.1.3 根据名字查找目录或文件</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">ubuntu@VM-12-11-ubuntu:~/my-website$ sudo find . -name *.txt
+</span></span><span class="line"><span class="cl">./themes/FixIt/layouts/robots.txt
+</span></span><span class="line"><span class="cl">./themes/FixIt/layouts/index.txt
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="314-根据文件大小查找">3.1.4 根据文件大小查找</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">ubuntu@VM-12-11-ubuntu:~/my-website$ sudo find . -size +1M
+</span></span><span class="line"><span class="cl">./.git/objects/pack/pack-baf6b2db7c80e5a63c106624efaf9c594488c31b.pack
+</span></span><span class="line"><span class="cl">./themes/FixIt/assets/lib/mermaid/mermaid.min.js
+</span></span><span class="line"><span class="cl">./themes/FixIt/assets/lib/lunr/lunr.segmentit.js
+</span></span><span class="line"><span class="cl">./themes/FixIt/.git/objects/pack/pack-cdb6d7f116069d8fc2ef2a77a3b30240576af855.pack
+</span></span><span class="line"><span class="cl">./public/.git/objects/pack/pack-6d1ce01d615acf91d67d8d57ee7c16dff4f27d36.pack
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">ubuntu@VM-12-11-ubuntu:~/my-website$ sudo find . -size +700k
+</span></span><span class="line"><span class="cl">./.git/objects/pack/pack-baf6b2db7c80e5a63c106624efaf9c594488c31b.pack
+</span></span><span class="line"><span class="cl">./themes/FixIt/assets/lib/mermaid/mermaid.min.js
+</span></span><span class="line"><span class="cl">./themes/FixIt/assets/lib/mapbox-gl/mapbox-gl.js
+</span></span><span class="line"><span class="cl">./themes/FixIt/assets/lib/gitalk/gitalk.min.js
+</span></span><span class="line"><span class="cl">./themes/FixIt/assets/lib/lunr/lunr.segmentit.js
+</span></span><span class="line"><span class="cl">./themes/FixIt/assets/lib/echarts/echarts.min.js
+</span></span><span class="line"><span class="cl">./themes/FixIt/.git/objects/pack/pack-cdb6d7f116069d8fc2ef2a77a3b30240576af855.pack
+</span></span><span class="line"><span class="cl">./public/.git/objects/pack/pack-6d1ce01d615acf91d67d8d57ee7c16dff4f27d36.pack
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="315-根据名字查找目录文件忽略大小写">3.1.5 根据名字查找目录文件，忽略大小写</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">ubuntu@VM-12-11-ubuntu:~/my-website$ sudo find . -type d -iname content
+</span></span><span class="line"><span class="cl">./content
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="2-grep-命令">2. grep 命令</h3>
+<p>find是查找文件，那么grep则是查找文件中的内容字段。</p>
+<p>grep家族总共有三个：grep，egrep，fgrep，其常用选项有：</p>
+<p>-E ：开启扩展（Extend）的正则表达式。
+-i ：忽略大小写（ignore case）。
+-v ：反过来（invert），只打印没有匹配的，而匹配的反而不打印。
+-n ：显示行号
+-w ：被匹配的文本只能是单词，而不能是单词中的某一部分，如文本中有liker，而我搜寻的只是like，就可以使用-w选项来避免匹配 liker
+-c ：显示总共有多少行被匹配到了，而不是显示被匹配到的内容，注意如果同时使用-cv选项是显示有多少行没有被匹配到。
+-o ：只显示被模式匹配到的字符串。
+&ndash;color :将匹配到的内容以颜色高亮显示。
+-A n：显示匹配到的字符串所在的行及其后n行，after
+-B n：显示匹配到的字符串所在的行及其前n行，before
+-C n：显示匹配到的字符串所在的行及其前后各n行，context</p>
+<p>以main.cpp为例：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;string&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span>
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">X</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl"><span class="k">public</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">	<span class="k">explicit</span> <span class="n">X</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">str</span><span class="p">)</span> <span class="o">:</span> <span class="n">str_</span><span class="p">(</span><span class="n">str</span><span class="p">)</span> <span class="p">{</span> <span class="p">};</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">private</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">	<span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">str_</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="n">X</span> <span class="n">x1</span><span class="p">(</span><span class="s">&#34;hello&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">//X x2(std::string(&#34;hello&#34;));
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl">	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="21-查找某字符串">2.1 查找某字符串</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">ubuntu@VM-12-11-ubuntu:~/c++/test_demo$ grep <span class="s2">&#34;hello&#34;</span> ./main.cpp 
+</span></span><span class="line"><span class="cl">        X x1<span class="o">(</span><span class="s2">&#34;hello&#34;</span><span class="o">)</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        //X x2<span class="o">(</span>std::string<span class="o">(</span><span class="s2">&#34;hello&#34;</span><span class="o">))</span><span class="p">;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="22-查找某字符串前后行内容">2.2 查找某字符串前后行内容</h4>
+<p>显示匹配到的字符串所在的行及其<strong>后n行</strong>：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">ubuntu@VM-12-11-ubuntu:~/c++/test_demo$ grep -A <span class="m">2</span> <span class="s2">&#34;main&#34;</span> ./main.cpp 
+</span></span><span class="line"><span class="cl">int main<span class="o">()</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        X x1<span class="o">(</span><span class="s2">&#34;hello&#34;</span><span class="o">)</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        //X x2<span class="o">(</span>std::string<span class="o">(</span><span class="s2">&#34;hello&#34;</span><span class="o">))</span><span class="p">;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>显示匹配到的字符串所在的行及其<strong>前n行</strong>：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">ubuntu@VM-12-11-ubuntu:~/c++/test_demo$ grep -B <span class="m">3</span> <span class="s2">&#34;main&#34;</span> ./main.cpp 
+</span></span><span class="line"><span class="cl">        std::string str_<span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">int main<span class="o">()</span> <span class="o">{</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>显示匹配到的字符串所在的行及其<strong>前后各n行</strong>：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">ubuntu@VM-12-11-ubuntu:~/c++/test_demo$ grep -C <span class="m">3</span> <span class="s2">&#34;main&#34;</span> ./main.cpp 
+</span></span><span class="line"><span class="cl">        std::string str_<span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">int main<span class="o">()</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        X x1<span class="o">(</span><span class="s2">&#34;hello&#34;</span><span class="o">)</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        //X x2<span class="o">(</span>std::string<span class="o">(</span><span class="s2">&#34;hello&#34;</span><span class="o">))</span><span class="p">;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></div><div class="post-footer" id="post-footer">
+  <div class="post-info">
+    <div class="post-info-line">
+      <div class="post-info-mod">
+        <span title=2022-12-09&#32;00:00:00>Updated on 2022-12-09&nbsp;</span>
+      </div><div class="post-info-license">
+          <span><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span>
+        </div></div>
+    <div class="post-info-line">
+      <div class="post-info-md"></div>
+      <div class="post-info-share">
+        <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://cui-jiang-tao.github.io/posts/linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" data-title="Linux常用命令" data-hashtags="Linux"><i class="fa-brands fa-twitter fa-fw" aria-hidden="true"></i></a>
+  <a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://cui-jiang-tao.github.io/posts/linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" data-hashtag="Linux"><i class="fa-brands fa-facebook-square fa-fw" aria-hidden="true"></i></a>
+  <a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="https://cui-jiang-tao.github.io/posts/linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" data-title="Linux常用命令"><i class="fa-brands fa-weibo fa-fw" aria-hidden="true"></i></a>
+  </span>
+      </div>
+    </div>
+  </div>
+
+  <div class="post-info-more">
+    <section class="post-tags"><i class="fa-solid fa-tags fa-fw me-1" aria-hidden="true"></i><a href='/tags/linux/' class="post-tag">Linux</a></section>
+    <section>
+      <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+    </section>
+  </div>
+
+  <div class="post-nav"><a href="/posts/hugo%E6%90%AD%E5%BB%BA/" class="post-nav-item" rel="prev" title="Hugo的安装和FixIt 主题"><i class="fa-solid fa-angle-left fa-fw" aria-hidden="true"></i>Hugo的安装和FixIt 主题</a></div>
+</div>
+</article></main><footer class="footer">
+    <div class="footer-container"><div class="footer-line copyright" itemscope itemtype="http://schema.org/CreativeWork"><i class="fa-regular fa-copyright fa-fw" aria-hidden="true"></i>
+            <span itemprop="copyrightYear">2022</span><span class="license footer-divider"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div><div class="footer-line statistics"></div></div>
+  </footer></div><div class="widgets"><div class="fixed-buttons animate__faster d-none"><div class="fixed-button back-to-top" role="button" aria-label="Back to Top"><i class="fa-solid fa-arrow-up fa-fw" aria-hidden="true"></i><span class="variant-numeric d-none">0%</span>
+        </div></div><div id="mask"></div><noscript>
+    <div class="noscript-warning">Theme FixIt works best with JavaScript enabled.</div>
+  </noscript>
+</div><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script src="/lib/autocomplete/autocomplete.min.js" defer></script><script src="/lib/lunr/lunr.min.js" defer></script><script src="/lib/lazysizes/lazysizes.min.js" async defer></script><script src="/lib/sharer/sharer.min.js" async defer></script><script src="/lib/typeit/index.umd.js" defer></script><script src="/lib/katex/katex.min.js" defer></script><script src="/lib/katex/auto-render.min.js" defer></script><script src="/lib/katex/copy-tex.min.js" defer></script><script src="/lib/katex/mhchem.min.js" defer></script><script src="/lib/cookieconsent/cookieconsent.min.js" defer></script><script>window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":-1},"comment":{"enable":false},"cookieconsent":{"content":{"dismiss":"Got it!","link":"Learn more","message":"This website uses Cookies to improve your experience."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"data":{"typeit-header-desktop":"Home","typeit-header-title-mobile":"Home"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30},"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"typeit-header-desktop":["typeit-header-desktop"],"typeit-header-title-mobile":["typeit-header-title-mobile"]},"duration":-1,"speed":100}};</script><script src="/js/theme.min.js" defer></script></body>
+</html>

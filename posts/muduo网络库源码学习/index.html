@@ -7,19 +7,19 @@
     <meta name="robots" content="noodp" />
     <title>muduo网络库源码学习 - vstk的网站</title><meta name="author" content="cjt">
 <meta name="author-link" content="">
-<meta name="description" content="第二部分：Muduo网络库 10. 初探EventLoop 10.1 什么都不做的EventLoop 一个EventLoop就是一个事件循环，下面将通过一个“什" /><meta name="keywords" content='muduo' /><meta itemprop="name" content="muduo网络库源码学习">
-<meta itemprop="description" content="第二部分：Muduo网络库 10. 初探EventLoop 10.1 什么都不做的EventLoop 一个EventLoop就是一个事件循环，下面将通过一个“什"><meta itemprop="datePublished" content="2022-12-06T00:00:00+00:00" />
-<meta itemprop="dateModified" content="2022-12-08T00:00:00+00:00" />
-<meta itemprop="wordCount" content="28610">
+<meta name="description" content="第二部分：Muduo网络库 10. 初探EventLoop 10.1 什么都不做的EventLoop 一个EventLoop就是一个事件循环，下面将通过一个&q" /><meta name="keywords" content='muduo' /><meta itemprop="name" content="muduo网络库源码学习">
+<meta itemprop="description" content="第二部分：Muduo网络库 10. 初探EventLoop 10.1 什么都不做的EventLoop 一个EventLoop就是一个事件循环，下面将通过一个&q"><meta itemprop="datePublished" content="2022-12-06T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2022-12-12T00:00:00+00:00" />
+<meta itemprop="wordCount" content="35643">
 <meta itemprop="keywords" content="muduo," /><meta property="og:title" content="muduo网络库源码学习" />
-<meta property="og:description" content="第二部分：Muduo网络库 10. 初探EventLoop 10.1 什么都不做的EventLoop 一个EventLoop就是一个事件循环，下面将通过一个“什" />
+<meta property="og:description" content="第二部分：Muduo网络库 10. 初探EventLoop 10.1 什么都不做的EventLoop 一个EventLoop就是一个事件循环，下面将通过一个&q" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://cui-jiang-tao.github.io/posts/muduo%E7%BD%91%E7%BB%9C%E5%BA%93%E6%BA%90%E7%A0%81%E5%AD%A6%E4%B9%A0/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2022-12-06T00:00:00+00:00" />
-<meta property="article:modified_time" content="2022-12-08T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-12-12T00:00:00+00:00" />
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="muduo网络库源码学习"/>
-<meta name="twitter:description" content="第二部分：Muduo网络库 10. 初探EventLoop 10.1 什么都不做的EventLoop 一个EventLoop就是一个事件循环，下面将通过一个“什"/>
+<meta name="twitter:description" content="第二部分：Muduo网络库 10. 初探EventLoop 10.1 什么都不做的EventLoop 一个EventLoop就是一个事件循环，下面将通过一个&q"/>
 <meta name="application-name" content="FixIt">
 <meta name="apple-mobile-web-app-title" content="FixIt"><meta name="theme-color" data-light="#f8f8f8" data-dark="#252627" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -32,8 +32,8 @@
     "mainEntityOfPage": {
       "@type": "WebPage",
       "@id": "https:\/\/cui-jiang-tao.github.io\/posts\/muduo%E7%BD%91%E7%BB%9C%E5%BA%93%E6%BA%90%E7%A0%81%E5%AD%A6%E4%B9%A0\/"
-    },"genre": "posts","keywords": "muduo","wordcount":  28610 ,
-    "url": "https:\/\/cui-jiang-tao.github.io\/posts\/muduo%E7%BD%91%E7%BB%9C%E5%BA%93%E6%BA%90%E7%A0%81%E5%AD%A6%E4%B9%A0\/","datePublished": "2022-12-06T00:00:00+00:00","dateModified": "2022-12-08T00:00:00+00:00","publisher": {
+    },"genre": "posts","keywords": "muduo","wordcount":  35643 ,
+    "url": "https:\/\/cui-jiang-tao.github.io\/posts\/muduo%E7%BD%91%E7%BB%9C%E5%BA%93%E6%BA%90%E7%A0%81%E5%AD%A6%E4%B9%A0\/","datePublished": "2022-12-06T00:00:00+00:00","dateModified": "2022-12-12T00:00:00+00:00","publisher": {
       "@type": "Organization",
       "name": ""},"author": {
         "@type": "Person",
@@ -157,7 +157,7 @@
     alt="cjt"
     title="cjt"/>&nbsp;cjt</span></span>
           <span class="post-category">included in <a href="/categories/c/c++/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> c/c++</a></span></div>
-      <div class="post-meta-line"><span title=2022-12-06&#32;00:00:00><i class="fa-regular fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-12-06">2022-12-06</time></span>&nbsp;<span><i class="fa-solid fa-pencil-alt fa-fw" aria-hidden="true"></i> 28610 words</span>&nbsp;<span><i class="fa-regular fa-clock fa-fw" aria-hidden="true"></i> 58 minutes</span>&nbsp;</div>
+      <div class="post-meta-line"><span title=2022-12-06&#32;00:00:00><i class="fa-regular fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-12-06">2022-12-06</time></span>&nbsp;<span><i class="fa-solid fa-pencil-alt fa-fw" aria-hidden="true"></i> 35643 words</span>&nbsp;<span><i class="fa-regular fa-clock fa-fw" aria-hidden="true"></i> 72 minutes</span>&nbsp;</div>
     </div><div class="details toc" id="toc-static" data-kept="false">
         <div class="details-summary toc-title">
           <span>Contents</span>
@@ -249,22 +249,41 @@
     <li><a href="#21-tcpconnection">21. TcpConnection</a>
       <ul>
         <li><a href="#211-设计思想">21.1 设计思想</a></li>
-        <li><a href="#212-tcp-网络编程最本质">21.2 TCP 网络编程最本质</a></li>
+        <li><a href="#212-tcp-网络编程的本质">21.2 TCP 网络编程的本质</a></li>
         <li><a href="#213-发送和接收缓冲区">21.3 发送和接收缓冲区</a></li>
         <li><a href="#214-连接事件处理">21.4 连接事件处理</a></li>
-        <li><a href="#215-读事件处理">21.5 “读”事件处理</a></li>
+        <li><a href="#215-读事件处理">21.5 &ldquo;读&quot;事件处理</a></li>
         <li><a href="#216-发送数据">21.6 发送数据</a></li>
-        <li><a href="#217-写事件处理">21.7 “写”事件处理</a></li>
+        <li><a href="#217-写事件处理">21.7 &ldquo;写&quot;事件处理</a></li>
       </ul>
     </li>
-    <li><a href="#22-tcpserver">22. TcpServer</a></li>
+    <li><a href="#22-tcpserver">22. TcpServer</a>
+      <ul>
+        <li><a href="#221-io-线程">22.1 I/O 线程</a></li>
+        <li><a href="#222-acceptor">22.2 Acceptor</a></li>
+        <li><a href="#223-启动服务器">22.3 启动服务器</a></li>
+        <li><a href="#224-处理客户端连接">22.4 处理客户端连接</a></li>
+        <li><a href="#225-释放资源">22.5 释放资源</a></li>
+      </ul>
+    </li>
+    <li><a href="#23-connector">23. Connector</a>
+      <ul>
+        <li><a href="#231-设计思想">23.1 设计思想</a></li>
+        <li><a href="#232-连接服务端">23.2 连接服务端</a></li>
+        <li><a href="#233-错误处理与重连">23.3 错误处理与重连</a></li>
+        <li><a href="#234-处理写事件">23.4 处理&quot;写&quot;事件</a></li>
+        <li><a href="#235-重置连接">23.5 重置连接</a></li>
+      </ul>
+    </li>
+    <li><a href="#24-tcpclient">24. TcpClient</a></li>
+    <li><a href="#25-阶段性总结">25. 阶段性总结</a></li>
   </ul>
 </nav></div>
       </div><div class="content" id="content"><h1 id="第二部分muduo网络库">第二部分：Muduo网络库</h1>
 <h2 id="10-初探eventloop">10. 初探EventLoop</h2>
 <h3 id="101-什么都不做的eventloop">10.1 什么都不做的EventLoop</h3>
-<p>一个EventLoop就是一个事件循环，下面将通过一个“什么都不做的EventLoop”来大致描述下muduo中EventLoop的功能。</p>
-<p>“什么都不做的EventLoop”有如下几个特点：</p>
+<p>一个EventLoop就是一个事件循环，下面将通过一个&quot;什么都不做的EventLoop&quot;来大致描述下muduo中EventLoop的功能。</p>
+<p>&ldquo;什么都不做的EventLoop&quot;有如下几个特点：</p>
 <ul>
 <li>one loop per thread意思是说每个线程最多只能有一个EventLoop对象。</li>
 <li>EventLoop对象构造的时候，会检查当前线程是否已经创建了其他EventLoop对象，如果已创建，终止程序(LOG_FATAL)</li>
@@ -272,11 +291,11 @@
 <li>创建了EventLoop对象的线程称为IO线程，其功能是运行事件循环(EventLoop::loop)</li>
 </ul>
 <h3 id="102-one-loop-per-thread">10.2 one loop per thread</h3>
-<p>这里指的是一个EventLoop只属于一个线程(但一个线程可以拥有多个EventLoop)，在muduo中，如果EventLoop一旦被创建，EventLoop会保持所属线程的一份tid拷贝，作为标识。如果该EventLoop被其他线程调用则会报错，muduo中使用assertInLoopThread函数来判断该EventLoop对象是否是在所属线程中执行。</p>
+<p>这里指的是一个EventLoop只属于一个线程(但一个线程可以拥有多个EventLoop)，在muduo中，如果EventLoop一旦被创建，EventLoop会保持所属线程的一份tid拷贝，作为标识。如果该EventLoop被其他线程调用则会报错，muduo中使用EventLoop::assertInLoopThread()函数来判断该EventLoop对象是否是在所属线程中执行。</p>
 <h3 id="103-事件循环">10.3 事件循环</h3>
 <p>一个EventLoop里其实是调用了poll/epoll来跟踪所关注的文件描述符的，当有文件描述符上有事件发生时，EventLoop会得到那些发生事件的文件描述符信息。</p>
 <h2 id="11-channel分析">11. Channel分析</h2>
-<p>Channel，可以理解为是一个“通道”，该“通道”中绑定了一个文件描述符及其所关注事件、注册的读写事件等信息。</p>
+<p>Channel，可以理解为是一个&quot;通道&rdquo;，该&quot;通道&quot;中绑定了一个文件描述符及其所关注事件、注册的读写事件等信息。</p>
 <h3 id="111-channel与文件描述符">11.1 Channel与文件描述符</h3>
 <p>一个Channel管理一个文件描述符，在创建Channel时需要指定：</p>
 <div class="highlight"><div class="chroma">
@@ -317,7 +336,7 @@
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="kt">int</span> <span class="n">events_</span><span class="p">;</span> <span class="c1">// 关注的事件
+<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="kt">int</span> <span class="n">events_</span><span class="p">;</span>  <span class="c1">// 关注的事件
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kt">int</span> <span class="n">revents_</span><span class="p">;</span> <span class="c1">// poll/epoll返回的事件，即实际监听到发生的事件类型
 </span></span></span></code></pre></td></tr></table>
 </div>
@@ -372,13 +391,13 @@
 </span><span class="lnt">12
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="n">ReadEventCallback</span> <span class="n">readCallback_</span><span class="p">;</span>
+<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="k">typedef</span> <span class="n">boost</span><span class="o">::</span><span class="n">function</span><span class="o">&lt;</span><span class="kt">void</span><span class="p">()</span><span class="o">&gt;</span> <span class="n">EventCallback</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">typedef</span> <span class="n">boost</span><span class="o">::</span><span class="n">function</span><span class="o">&lt;</span><span class="kt">void</span><span class="p">(</span><span class="n">Timestamp</span><span class="p">)</span><span class="o">&gt;</span> <span class="n">ReadEventCallback</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">ReadEventCallback</span> <span class="n">readCallback_</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl"><span class="n">EventCallback</span> <span class="n">writeCallback_</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl"><span class="n">EventCallback</span> <span class="n">closeCallback_</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl"><span class="n">EventCallback</span> <span class="n">errorCallback_</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="k">typedef</span> <span class="n">boost</span><span class="o">::</span><span class="n">function</span><span class="o">&lt;</span><span class="kt">void</span><span class="p">()</span><span class="o">&gt;</span> <span class="n">EventCallback</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl"><span class="k">typedef</span> <span class="n">boost</span><span class="o">::</span><span class="n">function</span><span class="o">&lt;</span><span class="kt">void</span><span class="p">(</span><span class="n">Timestamp</span><span class="p">)</span><span class="o">&gt;</span> <span class="n">ReadEventCallback</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">setReadCallback</span><span class="p">(</span><span class="k">const</span> <span class="n">ReadEventCallback</span> <span class="o">&amp;</span><span class="n">cb</span><span class="p">)</span> <span class="p">{</span> <span class="n">readCallback_</span> <span class="o">=</span> <span class="n">cb</span><span class="p">;</span> <span class="p">}</span>
 </span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">setWriteCallback</span><span class="p">(</span><span class="k">const</span> <span class="n">EventCallback</span> <span class="o">&amp;</span><span class="n">cb</span><span class="p">)</span> <span class="p">{</span> <span class="n">writeCallback_</span> <span class="o">=</span> <span class="n">cb</span><span class="p">;</span> <span class="p">}</span>
@@ -534,7 +553,7 @@
 <p>那么什么时候handleEvent函数会执行呢，在poll/epoll返回时，EventLoop对象在loop循环中会拿到有事件发生的Channel集合，并逐一执行它们的handleEvent函数。</p>
 <h2 id="12-poller">12. Poller</h2>
 <h3 id="121-poller">12.1 Poller</h3>
-<p>Poller是一个接口，指的是muduo封装的PollPoller、EPollPoller及其父类Poller的总称。在muduo中定义了一个Poller类，该类中定义了一些PollPoller和EPollPoller必须要实现的函数：</p>
+<p>Poller是一个抽象类，指的是muduo封装的PollPoller、EPollPoller及其父类Poller的总称。在muduo中定义了一个Poller类，该类中定义了一些PollPoller和EPollPoller必须要实现的函数：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -571,9 +590,9 @@
 </div>
 </div><h3 id="122-poller分析">12.2 Poller分析</h3>
 <h4 id="1221-pollpoller和eventloop关系">12.2.1 PollPoller和EventLoop关系</h4>
-<p>一个EventLoop关联一个PollPoller，Channel的update会调用EventLoop的update函数，而EventLoop又调用Poller相关的函数。EventLoop之所以能够“事件循环”也是其内部调用Poller的poll函数。</p>
+<p>一个EventLoop关联一个PollPoller，Channel的update会调用EventLoop的update函数，而EventLoop又调用Poller相关的函数。EventLoop之所以能够&quot;事件循环&quot;也是其内部调用Poller的poll函数。</p>
 <h4 id="1222-pollpoller和channel的关系">12.2.2 PollPoller和Channel的关系</h4>
-<p>Channel管理了一个文件描述符，在muduo中，一个Channel可以看作是一个文件描述符的“代表”，如果要操作一个文件描述符，则必须是通过该文件描述符对应的Channel。PollPoller需要监听和返回这些文件描述符上注册和实际发生的事件，所以必须提供操作Channel的函数和数据结构。下面这两个数据结构用于保存文件描述符及其Channel：</p>
+<p>Channel管理了一个文件描述符，在muduo中，一个Channel可以看作是一个文件描述符的&quot;代表&quot;，如果要操作一个文件描述符，则必须是通过该文件描述符对应的Channel。PollPoller需要监听和返回这些文件描述符上注册和实际发生的事件，所以必须提供操作Channel的函数和数据结构。下面这两个数据结构用于保存文件描述符及其Channel：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -595,7 +614,7 @@
 <li>channels_则是用于管理注册的Channel的，key是Channel对应的文件描述符fd，value就是该Channel的地址，使用map数据结构可以很方便地对Channel进行查找和删除。</li>
 </ul>
 <h4 id="1223-update-和-remove-channel">12.2.3 update 和 remove Channel</h4>
-<p><strong>12.2.3.1 updateChannel 函数</strong></p>
+<p><strong>1. updateChannel 函数</strong></p>
 <p>由于需要更新一个Channel，所以该函数的参数只有Channel的一份指针：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -651,12 +670,10 @@
 </span><span class="lnt">50
 </span><span class="lnt">51
 </span><span class="lnt">52
-</span><span class="lnt">53
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="cm">/**
-</span></span></span><span class="line"><span class="cl"><span class="cm"> * 主要时将Channel负责的文件描述符(fd)注册到Poller对象中, 或更新Poller对象 old
-</span></span></span><span class="line"><span class="cl"><span class="cm"> * fd_channels
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * 主要时将Channel负责的文件描述符(fd)注册到Poller对象中, 或更新Poller对象
 </span></span></span><span class="line"><span class="cl"><span class="cm"> */</span>
 </span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="n">PollPoller</span><span class="o">::</span><span class="n">updateChannel</span><span class="p">(</span><span class="n">Channel</span> <span class="o">*</span><span class="n">channel</span><span class="p">)</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">  <span class="n">Poller</span><span class="o">::</span><span class="n">assertInLoopThread</span><span class="p">();</span>
@@ -720,7 +737,7 @@
 <li>发生这种情况也意味着该Channel之前已经注册到该PollPoller中了，但是由于一些原因需要修改该文件描述符的关注事件，对于这种情况的Channel将调用else分支代码。</li>
 <li>代码中两个assert断言该Channel是否已经和PollPoller关联，如果关联则取出该pollfd数组中的该Channel对应的文件描述符及其结构体，更新该结构体中文件描述符监听事件。如果不再关注该Channel中文件描述符事件，则直接将该文件描述符赋值为其相反数减一。</li>
 </ul>
-<p><strong>12.2.3.2 removeChannel 函数</strong></p>
+<p><strong>2. removeChannel 函数</strong></p>
 <p>使用该函数之前一般需要调用 updateChannel 函数设置不再关注该Channel对应的文件描述符上的事件。</p>
 <p>该函数定义如下：</p>
 <div class="highlight"><div class="chroma">
@@ -925,7 +942,7 @@
 </span></span><span class="line"><span class="cl">      <span class="n">assert</span><span class="p">(</span><span class="n">channel</span><span class="o">-&gt;</span><span class="n">fd</span><span class="p">()</span> <span class="o">==</span> <span class="n">pfd</span><span class="o">-&gt;</span><span class="n">fd</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">      <span class="n">channel</span><span class="o">-&gt;</span><span class="n">set_revents</span><span class="p">(</span><span class="n">pfd</span><span class="o">-&gt;</span><span class="n">revents</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">      <span class="c1">// pfd-&gt;revents = 0;  //??? 暂不清楚意图
+</span></span><span class="line"><span class="cl">      <span class="c1">// pfd-&gt;revents = 0;
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span>      <span class="n">activeChannels</span><span class="o">-&gt;</span><span class="n">push_back</span><span class="p">(</span><span class="n">channel</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">    <span class="p">}</span>
 </span></span><span class="line"><span class="cl">  <span class="p">}</span>
@@ -935,9 +952,9 @@
 </div><p>需要注意的是Channel的index_，在PollPoller中，如果index_为-1，则说明该Channel是新的需要加入的通道；如果index_&gt;0，则说明该Channel已经和PollPoller关联了，index_的值用于在pollfds_数组中查找文件描述符对应的pollfd如果index_为其他负值，则说明该文件描述符将不被关注，该Channel也将被移除。</p>
 <h3 id="123-epollpoller-分析">12.3 EPollPoller 分析</h3>
 <h4 id="1231-epollpoller和eventloop关系">12.3.1 EPollPoller和EventLoop关系</h4>
-<p>一个EventLoop关联一个EPollPoller，Channel的update会调用EventLoop的update函数，而EventLoop又调用Poller相关的函数。EventLoop之所以能够“事件循环”也是其内部调用Poller的poll函数。</p>
+<p>一个EventLoop关联一个EPollPoller，Channel的update会调用EventLoop的update函数，而EventLoop又调用Poller相关的函数。EventLoop之所以能够&quot;事件循环&quot;也是其内部调用Poller的poll函数。</p>
 <h4 id="1232-epollpoller和channel的关系">12.3.2 EPollPoller和Channel的关系</h4>
-<p>Channel管理了一个文件描述符，在muduo中，一个Channel可以看作是一个文件描述符的“代表”，如果要操作一个文件描述符，则必须是通过该文件描述符对应的Channel。EPollPoller需要监听和返回这些文件描述符上注册和实际发生的事件，所以必须提供操作Channel的函数和数据结构。下面这两个数据结构用于保存文件描述符及其Channel：</p>
+<p>Channel管理了一个文件描述符，在muduo中，一个Channel可以看作是一个文件描述符的&quot;代表&quot;，如果要操作一个文件描述符，则必须是通过该文件描述符对应的Channel。EPollPoller需要监听和返回这些文件描述符上注册和实际发生的事件，所以必须提供操作Channel的函数和数据结构。下面这两个数据结构用于保存文件描述符及其Channel：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -956,7 +973,7 @@
 </div>
 </div><p>EventList events_的作用非常明显，因为epoll函数需要一个struct epoll_event的数组地址，所以该结构是用于epoll_wait函数参数。ChannelMap channels_则是用于管理注册的Channel的，key是Channel对应的文件描述符fd，value就是该Channel的地址，使用map数据结构可以很方便的对Channel进行查找和操作。</p>
 <h4 id="1233-update-和-remove-channel">12.3.3 update 和 remove Channel</h4>
-<p><strong>12.3.3.1 updateChannel 函数</strong></p>
+<p><strong>1. updateChannel 函数</strong></p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
@@ -1100,8 +1117,8 @@
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p>update函数内部也是调用了epoll_ctl函数。需要注意的是，epoll_event里并没有设置文件描述符，而是用了event.data.ptr指针保存了Channel，毕竟Channel中包含的文件描述符信息更加丰富。</p>
-<p>如果index_已经是added状态，那么判断该Channel中文件描述符是否被设置为“不关注”，如果是的话，直接调用updata函数将该文件描述符移除epoll事件监听，否则更新该文件描述符结构的events监听事件。</p>
-<p><strong>12.3.3.2 removeChannel 函数</strong></p>
+<p>如果index_已经是added状态，那么判断该Channel中文件描述符是否被设置为&quot;不关注&quot;，如果是的话，直接调用updata函数将该文件描述符移除epoll事件监听，否则更新该文件描述符结构的events监听事件。</p>
+<p><strong>2. removeChannel 函数</strong></p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
@@ -1131,9 +1148,10 @@
 </span><span class="lnt">25
 </span><span class="lnt">26
 </span><span class="lnt">27
+</span><span class="lnt">28
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="c1">//将Channel对象从channels_容器和epoll监控中移除，此操作必须是I/O线程调用的
+<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="c1">// 将Channel对象从channels_容器和epoll监控中移除，此操作必须是I/O线程调用的
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kt">void</span> <span class="n">EPollPoller</span><span class="o">::</span><span class="n">removeChannel</span><span class="p">(</span><span class="n">Channel</span> <span class="o">*</span><span class="n">channel</span><span class="p">)</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">  <span class="n">Poller</span><span class="o">::</span><span class="n">assertInLoopThread</span><span class="p">();</span>
 </span></span><span class="line"><span class="cl">
@@ -1146,18 +1164,19 @@
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span>
 </span></span><span class="line"><span class="cl">  <span class="kt">int</span> <span class="n">index</span> <span class="o">=</span> <span class="n">channel</span><span class="o">-&gt;</span><span class="n">index</span><span class="p">();</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">  <span class="c1">//很奇怪，要移除的Channel对象应该就只能是kDeleted的啊？？？
+</span></span><span class="line"><span class="cl">  <span class="c1">// 要移除的Channel对象应该就可能处于关联状态、也可能处于被取消关注状态(kDeleted)
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="n">assert</span><span class="p">(</span><span class="n">index</span> <span class="o">==</span> <span class="n">kAdded</span> <span class="o">||</span> <span class="n">index</span> <span class="o">==</span> <span class="n">kDeleted</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">  <span class="n">size_t</span> <span class="n">n</span> <span class="o">=</span> <span class="n">channels_</span><span class="p">.</span><span class="n">erase</span><span class="p">(</span><span class="n">fd</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">n</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">  <span class="n">assert</span><span class="p">(</span><span class="n">n</span> <span class="o">==</span> <span class="mi">1</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">  <span class="k">if</span> <span class="p">(</span><span class="n">index</span> <span class="o">==</span> <span class="n">kAdded</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="c1">// 处于关联状态，说明epoll还在监视它
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="k">if</span> <span class="p">(</span><span class="n">index</span> <span class="o">==</span> <span class="n">kAdded</span><span class="p">)</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="n">update</span><span class="p">(</span><span class="n">EPOLL_CTL_DEL</span><span class="p">,</span> <span class="n">channel</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">  <span class="p">}</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">  <span class="c1">//重新设置Channel为未被管理的初始状态
+</span></span><span class="line"><span class="cl">  <span class="c1">// 重新设置Channel为未被管理的初始状态
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="n">channel</span><span class="o">-&gt;</span><span class="n">set_index</span><span class="p">(</span><span class="n">kNew</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></td></tr></table>
@@ -1361,7 +1380,7 @@
 </ul>
 <p><strong>timerfd_gettime</strong>，此函数用于获得定时器距离下次超时还剩下的时间。如果调用时定时器已经到期，并且该定时器处于循环模式(设置超时时间时struct itimerspec::it_interval不为0)，那么调用此函数之后定时器重新开始计时。</p>
 <h3 id="132-timer-分析">13.2 Timer 分析</h3>
-<p>一个定时器会在某一个时刻执行某个任务，而且有可能是“定时执行”，所以，一个Timer里封装了该Timer的超时时间(定时时间)、任务的执行周期等信息：</p>
+<p>一个定时器会在某一个时刻执行某个任务，而且有可能是&quot;定时执行&quot;，所以，一个Timer里封装了该Timer的超时时间(定时时间)、任务的执行周期等信息：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -1371,11 +1390,11 @@
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="k">const</span> <span class="n">TimerCallback</span> <span class="n">callback_</span><span class="p">;</span> <span class="c1">//定时执行函数
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">Timestamp</span> <span class="n">expiration_</span><span class="p">;</span>  <span class="c1">// 超时时间
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">const</span> <span class="kt">double</span> <span class="n">interval_</span><span class="p">;</span> <span class="c1">// 执行间隔
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">const</span> <span class="kt">bool</span> <span class="n">repeat_</span><span class="p">;</span>  <span class="c1">// 是否重复定时执行任务
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">const</span> <span class="kt">int64_t</span> <span class="n">sequence_</span><span class="p">;</span> <span class="c1">// 序列号，每个Tmier的序列号都不一样
+<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="k">const</span> <span class="n">TimerCallback</span> <span class="n">callback_</span><span class="p">;</span>  <span class="c1">//定时执行函数
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">Timestamp</span> <span class="n">expiration_</span><span class="p">;</span>          <span class="c1">// 超时时间
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">const</span> <span class="kt">double</span> <span class="n">interval_</span><span class="p">;</span>         <span class="c1">// 执行间隔
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">const</span> <span class="kt">bool</span> <span class="n">repeat_</span><span class="p">;</span>             <span class="c1">// 是否重复定时执行任务
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">const</span> <span class="kt">int64_t</span> <span class="n">sequence_</span><span class="p">;</span>        <span class="c1">// 序列号，每个Tmier的序列号都不一样
 </span></span></span></code></pre></td></tr></table>
 </div>
 </div><p>其中sequence_是通过对一个静态变量的原子增加来保证独一无二的：</p>
@@ -1627,7 +1646,7 @@
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p>构造函数中Channel绑定的“读事件”回调函数是TimerQueue::handleRead，该函数定义如下：</p>
+</div><p>构造函数中Channel绑定的&quot;读事件&quot;回调函数是TimerQueue::handleRead，该函数定义如下：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
@@ -2082,7 +2101,7 @@
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p>该函数以TimerId的方式从TimerQueue中删除相关Timer内容，如果该当前TimerQueue已经有超时事件产生(handleRead中callingExpiredTimers_设置为true)，TimerQueue::getExpired会删除超时的Timer，那么还需要将该Timer保存到“待取消定时器队列”中：</p>
+</div><p>该函数以TimerId的方式从TimerQueue中删除相关Timer内容，如果该当前TimerQueue已经有超时事件产生(handleRead中callingExpiredTimers_设置为true)，TimerQueue::getExpired会删除超时的Timer，那么还需要将该Timer保存到&quot;待取消定时器队列&quot;中：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -2228,7 +2247,7 @@
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p>这个函数会检查这些超时的定时器Timer，如果是设置了repeat_为true并且不在“取消定时器队列”中则重置下一次定时器执行时间，否则(如一次性定时任务，或者取消了但未能避免执行)则直接删除。在执行handleRead时也会将cancelingTimers_清空。最后设置TimerQueue的timerfd_最近定时时间，准备下一次执行定时事件的到来。</p>
+</div><p>这个函数会检查这些超时的定时器Timer，如果是设置了repeat_为true并且不在&quot;取消定时器队列&quot;中则重置下一次定时器执行时间，否则(如一次性定时任务，或者取消了但未能避免执行)则直接删除。在执行handleRead时也会将cancelingTimers_清空。最后设置TimerQueue的timerfd_最近定时时间，准备下一次执行定时事件的到来。</p>
 <h4 id="1346-析构函数与资源销毁">13.4.6 析构函数与资源销毁</h4>
 <p>关闭timerfd_文件描述符，释放管理的所有Timer资源。</p>
 <div class="highlight"><div class="chroma">
@@ -2252,7 +2271,7 @@
 </span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="14-深入-eventloop">14. 深入 EventLoop</h2>
-<p>已经分析过一个“什么都不做的EventLoop”，muduo中的EventLoop有如下几个特点：</p>
+<p>已经分析过一个&quot;什么都不做的EventLoop&quot;，muduo中的EventLoop有如下几个特点：</p>
 <ul>
 <li>one loop per thread意思是说每个线程最多只能有一个EventLoop对象。</li>
 <li>EventLoop对象构造的时候，会检查当前线程是否已经创建了其他EventLoop对象，如果已创建，终止程序(LOG_FATAL)</li>
@@ -2261,7 +2280,7 @@
 </ul>
 <p>下面将深入具体分析muduo中的EventLoop的实现。</p>
 <h3 id="141-eventloop-与-channel">14.1 EventLoop 与 Channel</h3>
-<p>“一个Channel会关联一个EventLoop”，当Channel设置了监听文件描述符关注事件类型后会调用update函数，Channel中的update函数也是间接调用EventLoop的updateChannel函数，然后又间接调用Poller的updateChannel函数，该函数将会将该Channel及其相关文件描述符和Poller的事件监听联系。</p>
+<p>&ldquo;一个Channel会关联一个EventLoop&rdquo;，当Channel设置了监听文件描述符关注事件类型后会调用update函数，Channel中的update函数也是间接调用EventLoop的updateChannel函数，然后又间接调用Poller的updateChannel函数，该函数将会将该Channel及其相关文件描述符和Poller的事件监听联系。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -2696,6 +2715,7 @@
 </span><span class="lnt">14
 </span><span class="lnt">15
 </span><span class="lnt">16
+</span><span class="lnt">17
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="kt">void</span> <span class="n">EventLoop</span><span class="o">::</span><span class="n">queueInLoop</span><span class="p">(</span><span class="k">const</span> <span class="n">Functor</span> <span class="o">&amp;</span><span class="n">cb</span><span class="p">)</span> <span class="p">{</span>
@@ -2706,9 +2726,10 @@
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">  <span class="cm">/**
 </span></span></span><span class="line"><span class="cl"><span class="cm">   * 1. 调用queueInLoop的线程不是IO线程需要唤醒
-</span></span></span><span class="line"><span class="cl"><span class="cm">   * 2. 或者调用queueInLoop的线程是IO线程，并且此时正在调用任务队列(pendingFunctors_)，需要唤醒。只有I/O线程的事件回调中调用queueInLoop才不需要唤醒
-</span></span></span><span class="line"><span class="cl"><span class="cm">   *    =》这里不明白，既然调用queueInLoop的线程是IO线程，IO线程怎么会此时正在调用pendingFunctors_？？？
-</span></span></span><span class="line"><span class="cl"><span class="cm">   *        =》 因为I/O处于callingPendingFunctors_状态，任务队列(pendingFunctors_)中的任务执行完可能会处于阻塞状态(poll没事件发生)，新加入的任务无法执行。
+</span></span></span><span class="line"><span class="cl"><span class="cm">   * 2. 或者调用queueInLoop的线程是IO线程，并且此时正在调用任务队列(pendingFunctors_)，需要唤醒。
+</span></span></span><span class="line"><span class="cl"><span class="cm">   *     =》 因为I/O处于callingPendingFunctors_状态，任务队列(pendingFunctors_)中的任务执行完可能会处于阻塞状态(poll没事件发生)，新加入的任务无法执行。
+</span></span></span><span class="line"><span class="cl"><span class="cm">   * 
+</span></span></span><span class="line"><span class="cl"><span class="cm">   * 只有I/O线程的事件回调中调用queueInLoop才不需要唤醒
 </span></span></span><span class="line"><span class="cl"><span class="cm">   */</span>
 </span></span><span class="line"><span class="cl">  <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">isInLoopThread</span><span class="p">()</span> <span class="o">||</span> <span class="n">callingPendingFunctors_</span><span class="p">)</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="n">wakeup</span><span class="p">();</span>
@@ -2716,7 +2737,7 @@
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p>该函数会判断是否是在EventLoop所处线程中执行，如果不是的话则调用wakeup()函数。到这里先解释下跨线程调用的原理。一个EventLoop中有一个wakeupFd_文件描述符(eventfd 是一个比 pipe 更高效的线程间事件通知机制，一方面它比 pipe 少用一个 file descripor，节省了资源；另一方面，eventfd 的缓冲区管理也简单得多，全部“buffer” 只有定长8 bytes，不像 pipe 那样可能有不定长的真正 buffer)，该文件描述符在构造函数初始化列表中完成初始化：</p>
+</div><p>该函数会判断是否是在EventLoop所处线程中执行，如果不是的话则调用wakeup()函数。到这里先解释下跨线程调用的原理。一个EventLoop中有一个wakeupFd_文件描述符(eventfd 是一个比 pipe 更高效的线程间事件通知机制，一方面它比 pipe 少用一个 file descripor，节省了资源；另一方面，eventfd 的缓冲区管理也简单得多，全部&quot;buffer&quot; 只有定长8 bytes，不像 pipe 那样可能有不定长的真正 buffer)，该文件描述符在构造函数初始化列表中完成初始化：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
@@ -2737,15 +2758,7 @@
 </span><span class="lnt">16
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="n">EventLoop</span><span class="o">::</span><span class="n">EventLoop</span><span class="p">()</span>
-</span></span><span class="line"><span class="cl">  <span class="o">:</span> <span class="n">looping_</span><span class="p">(</span><span class="nb">false</span><span class="p">),</span>
-</span></span><span class="line"><span class="cl">  <span class="p">...</span>
-</span></span><span class="line"><span class="cl">    <span class="n">wakeupFd_</span><span class="p">(</span><span class="n">createEventfd</span><span class="p">()),</span>
-</span></span><span class="line"><span class="cl">  <span class="p">...</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">  <span class="p">...</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">createEventfd</span><span class="p">()</span> <span class="p">{</span>
+<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">createEventfd</span><span class="p">()</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">  <span class="kt">int</span> <span class="n">evtfd</span> <span class="o">=</span> <span class="o">::</span><span class="n">eventfd</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">EFD_NONBLOCK</span> <span class="o">|</span> <span class="n">EFD_CLOEXEC</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">  <span class="k">if</span> <span class="p">(</span><span class="n">evtfd</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="n">LOG_SYSERR</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;Failed in eventfd&#34;</span><span class="p">;</span>
@@ -2753,9 +2766,17 @@
 </span></span><span class="line"><span class="cl">  <span class="p">}</span>
 </span></span><span class="line"><span class="cl">  <span class="k">return</span> <span class="n">evtfd</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">EventLoop</span><span class="o">::</span><span class="n">EventLoop</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">  <span class="o">:</span> <span class="n">looping_</span><span class="p">(</span><span class="nb">false</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">  <span class="p">...</span>
+</span></span><span class="line"><span class="cl">    <span class="n">wakeupFd_</span><span class="p">(</span><span class="n">createEventfd</span><span class="p">()),</span>
+</span></span><span class="line"><span class="cl">  <span class="p">...</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="p">...</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p>而且EventLoop也为该wakeuFd_文件描述符提供了一个Channel：</p>
+</div><p>而且EventLoop也为该wakeuFd_文件描述符提供了一个Channel，该Channel的生命周期由EventLoop对象负责：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -2797,7 +2818,7 @@
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p>该Channel也加入到了Poller事件监听中，并且设置了“读事件”回调函数为EventLoop::handleRead：</p>
+</div><p>该Channel也加入到了Poller事件监听中，并且设置了&quot;读事件&quot;回调函数为EventLoop::handleRead：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -2869,7 +2890,7 @@
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p>然后进而调用doPendingFunctors函数，在该函数中执行这些跨线程调用的“未决函数”：</p>
+</div><p>然后进而调用doPendingFunctors函数，在该函数中执行这些跨线程调用的&quot;未决函数&quot;：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
@@ -2908,7 +2929,7 @@
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p>这样即使是跨线程调用某些函数，这些函数也不会立刻执行，而是存入该pendingFunctors_集合中等待wake，然后在EventLoop线程中“打包”执行。</p>
+</div><p>这样即使是跨线程调用某些函数，这些函数也不会立刻执行，而是存入该pendingFunctors_集合中等待wake，然后在EventLoop线程中&quot;打包&quot;执行。</p>
 <p>需要注意的是：</p>
 <ul>
 <li>不是简单地在临界区内依次调用Functor，而是把回调列表swap到functors中，这样一方面减小了临界区的长度(意味着不会阻塞其它线程的queueInLoop())，另一方面，也避免了死锁(因为Functor可能再次调用queueInLoop())</li>
@@ -3070,10 +3091,12 @@
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
+</span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="n">ThreadInitCallback</span> <span class="n">callback_</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl"><span class="k">typedef</span> <span class="n">boost</span><span class="o">::</span><span class="n">function</span><span class="o">&lt;</span><span class="kt">void</span><span class="p">(</span><span class="n">EventLoop</span><span class="o">*</span><span class="p">)</span><span class="o">&gt;</span> <span class="n">ThreadInitCallback</span><span class="p">;</span>
+<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="k">typedef</span> <span class="n">boost</span><span class="o">::</span><span class="n">function</span><span class="o">&lt;</span><span class="kt">void</span><span class="p">(</span><span class="n">EventLoop</span><span class="o">*</span><span class="p">)</span><span class="o">&gt;</span> <span class="n">ThreadInitCallback</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">ThreadInitCallback</span> <span class="n">callback_</span><span class="p">;</span>
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p>这是用作线程启动初始化执行的用户函数，如果用户想在线程初始化时执行一些函数，那么就可以在EventLoopThread构造函数中传入该函数，默认情况下EventLoopThread会创建一个空函数作为线程初始化函数：</p>
@@ -3085,7 +3108,7 @@
 <pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="n">EventLoopThread</span><span class="p">(</span><span class="k">const</span> <span class="n">ThreadInitCallback</span> <span class="o">&amp;</span><span class="n">cb</span> <span class="o">=</span> <span class="n">ThreadInitCallback</span><span class="p">());</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p>那么，如何启动一个IO线程呢？使用EventLoopThread::startLoop便可以“启动”一个IO线程，这里的“启动”只的是启动IO线程，而不是线程，因为构造函数在已经初始化一个线程了，光启动该线程还不能称为“IO线程”，因为EventLoop还没有初始化，EventLoopThread::startLoop会通过条件变量一直等待，直到EventLoop被初始化，条件满足时才返回该EventLoop地址：</p>
+</div><p>那么，如何启动一个IO线程呢？使用EventLoopThread::startLoop便可以&quot;启动&quot;一个IO线程，这里的&quot;启动&quot;只的是启动IO线程，而不是线程，因为构造函数在已经初始化一个线程了，光启动该线程还不能称为&quot;IO线程&quot;，因为EventLoop还没有初始化，EventLoopThread::startLoop会通过条件变量一直等待，直到EventLoop被初始化，条件满足时才返回该EventLoop地址：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
@@ -3140,12 +3163,14 @@
 </span><span class="lnt">17
 </span><span class="lnt">18
 </span><span class="lnt">19
+</span><span class="lnt">20
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="kt">void</span> <span class="n">EventLoopThread</span><span class="o">::</span><span class="n">threadFunc</span><span class="p">()</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">  <span class="n">EventLoop</span> <span class="n">loop</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">  <span class="k">if</span> <span class="p">(</span><span class="n">callback_</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="c1">// 线程初始化函数
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="k">if</span> <span class="p">(</span><span class="n">callback_</span><span class="p">)</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="n">callback_</span><span class="p">(</span><span class="o">&amp;</span><span class="n">loop</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">  <span class="p">}</span>
 </span></span><span class="line"><span class="cl">
@@ -3163,8 +3188,11 @@
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">}</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p>当EventLoopThread类创建后，会在构造函数阶段创建一个线程，而该线程便执行threadFunc函数，如果用户传入了“线程初始化函数”，那么在这里便会优先执行该函数，然后初始化所持有的EventLoop，并发让条件满足(loop_!=NULL)，然后启动EventLoop的事件循环(loop.loop())。</p>
+</div><p>当EventLoopThread类创建后，会在构造函数阶段创建一个线程，而该线程便执行threadFunc函数，如果用户传入了&quot;线程初始化函数&quot;，那么在这里便会优先执行该函数，然后初始化所持有的EventLoop，并发让条件满足(loop_!=NULL)，然后启动EventLoop的事件循环(loop.loop())。</p>
 <p>这一过程下来，当一个EventLoopThread 被创建后，该EventLoopThread 对象内部也创建并启动了一个EventLoop对象，用户代码需要startLoop函数来获取该EventLoop对象，然后让该EventLoop对象和一些Channel绑定，让Channel中的文件描述符加入事件监听中。所以该EventLoop可以在其他线程里被调用，这就是为什么EventLoop中还提供了runInLoop函数的原因，也为后续的EventLoopThreadPool做出铺垫。</p>
+<blockquote>
+<p>调用startLoop函数一定会发生在两个线程中，例如：main线程调用startLoop函数，那么startLoop内部会创建一个线程(可以理解为I/O线程)，startLoop函数返回的EventLoop对象一定是I/O线程线程创建的对象。</p>
+</blockquote>
 <p>最后的析构函数则做了些收尾工作：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -3254,7 +3282,7 @@
 </span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="17-eventloopthreadpool">17. EventLoopThreadPool</h2>
-<p>该类的作用就是“事先缓存多个EventLoopThread”，所以该类中需要有保存这些EventLoopThread及其EventLoop的数据结构：</p>
+<p>该类的作用就是&quot;事先缓存多个EventLoopThread&quot;，所以该类中需要有保存这些EventLoopThread及其EventLoop的数据结构：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -3517,7 +3545,7 @@
 </div><h2 id="19-buffer的设计">19. Buffer的设计</h2>
 <h2 id="20-acceptor-分析">20. Acceptor 分析</h2>
 <p>套接字TCP服务器编程中，服务器需要一个监听套接字，该套接字用于监听客户端连接。</p>
-<p>“监听套接字”也是一个文件描述符，一个文件描述符在muduo中应该和一个Channel联系。muduo网络库将专用于监听连接的套接字操作封装成了Acceptor。所以一个Acceptor中一定会有一个套接字socket和一个Channel，有了Channel一定会关联一个EventLoop：</p>
+<p>&ldquo;监听套接字&quot;也是一个文件描述符，一个文件描述符在muduo中应该和一个Channel联系。<strong>muduo网络库将专用于监听连接的套接字操作封装成了Acceptor</strong>。所以一个Acceptor中一定会有一个套接字socket和一个Channel，有了Channel一定会关联一个EventLoop：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -3526,7 +3554,7 @@
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="n">EventLoop</span> <span class="o">*</span><span class="n">loop_</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl"><span class="n">Socket</span> <span class="n">acceptSocket_</span><span class="p">;</span> <span class="c1">// listening socket(即server socket)
+</span></span><span class="line"><span class="cl"><span class="n">Socket</span> <span class="n">acceptSocket_</span><span class="p">;</span>   <span class="c1">// listening socket(即server socket)
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">Channel</span> <span class="n">acceptChannel_</span><span class="p">;</span> <span class="c1">// 用于观察acceptSocket_的readable事件，并回调Accptor::handleRead()
 </span></span></span></code></pre></td></tr></table>
 </div>
@@ -3543,12 +3571,16 @@
 </span><span class="lnt"> 8
 </span><span class="lnt"> 9
 </span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="n">Acceptor</span><span class="o">::</span><span class="n">Acceptor</span><span class="p">(</span><span class="n">EventLoop</span> <span class="o">*</span><span class="n">loop</span><span class="p">,</span> <span class="k">const</span> <span class="n">InetAddress</span> <span class="o">&amp;</span><span class="n">listenAddr</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">    <span class="o">:</span> <span class="n">loop_</span><span class="p">(</span><span class="n">loop</span><span class="p">),</span> <span class="n">acceptSocket_</span><span class="p">(</span><span class="n">sockets</span><span class="o">::</span><span class="n">createNonblockingOrDie</span><span class="p">()),</span>
+</span></span><span class="line"><span class="cl">    <span class="o">:</span> <span class="n">loop_</span><span class="p">(</span><span class="n">loop</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">      <span class="n">acceptSocket_</span><span class="p">(</span><span class="n">sockets</span><span class="o">::</span><span class="n">createNonblockingOrDie</span><span class="p">()),</span>
 </span></span><span class="line"><span class="cl">      <span class="c1">// Channel对象都是通过EventLoop对象注册的
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>      <span class="n">acceptChannel_</span><span class="p">(</span><span class="n">loop</span><span class="p">,</span> <span class="n">acceptSocket_</span><span class="p">.</span><span class="n">fd</span><span class="p">()),</span> <span class="n">listenning_</span><span class="p">(</span><span class="nb">false</span><span class="p">),</span>
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>      <span class="n">acceptChannel_</span><span class="p">(</span><span class="n">loop</span><span class="p">,</span> <span class="n">acceptSocket_</span><span class="p">.</span><span class="n">fd</span><span class="p">()),</span>
+</span></span><span class="line"><span class="cl">      <span class="n">listenning_</span><span class="p">(</span><span class="nb">false</span><span class="p">),</span>
 </span></span><span class="line"><span class="cl">      <span class="n">idleFd_</span><span class="p">(</span><span class="o">::</span><span class="n">open</span><span class="p">(</span><span class="s">&#34;/dev/null&#34;</span><span class="p">,</span> <span class="n">O_RDONLY</span> <span class="o">|</span> <span class="n">O_CLOEXEC</span><span class="p">))</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">  <span class="n">assert</span><span class="p">(</span><span class="n">idleFd_</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">  <span class="n">acceptSocket_</span><span class="p">.</span><span class="n">setReuseAddr</span><span class="p">(</span><span class="nb">true</span><span class="p">);</span> <span class="c1">// 设置了监听套接字地址复用
@@ -3655,7 +3687,7 @@
 </div>
 </div><p>可以理解，在setNewConnectionCallback中必然会处理客户端连接套接字，至于muduo如何处理，在TcpConnection中会介绍。如果该函数没有设置，也就是默认不处理该连接套接字，那么直接关闭该套接字。</p>
 <p>接下来再看看else分支情况。else分支中会判断errno 是否为 EMFILE，如果发生该情况则说明系统文件描述符用尽了，需要处理。由于我们使用的是电频触发，这个accept会一直触发，所以这里利用一个空闲的文件描述符来处理这个问题，它是在Acceptor初始化列表中就创建了。首先关闭idleFd_(空闲文件描述符)，再用来接收这个accept的acceptSocket_，再关闭它，最后再创建一个空闲的描述符。</p>
-<p>最后是析构函数，在该函数中将释放监听套接字资源，去除与其相关的Channel：</p>
+<p>最后是析构函数，在该函数中将释放监听套接字资源，去除与其相关的Channel及销毁空闲的文件描述符：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -3663,19 +3695,21 @@
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
+</span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="n">Acceptor</span><span class="o">::~</span><span class="n">Acceptor</span><span class="p">()</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">  <span class="n">acceptChannel_</span><span class="p">.</span><span class="n">disableAll</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">  <span class="c1">// 移除Channel需要保证它处于：kNoneEvent状态
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="n">acceptChannel_</span><span class="p">.</span><span class="n">disableAll</span><span class="p">();</span>
 </span></span><span class="line"><span class="cl">  <span class="n">acceptChannel_</span><span class="p">.</span><span class="n">remove</span><span class="p">();</span>
 </span></span><span class="line"><span class="cl">  <span class="o">::</span><span class="n">close</span><span class="p">(</span><span class="n">idleFd_</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="21-tcpconnection">21. TcpConnection</h2>
-<p>Acceptor代表了监听连接的套机子listenfd，那么TcpConnection 就代表了已连接的客户端套接字connfd。</p>
+<p>Acceptor代表了监听连接的套接字listenfd，那么TcpConnection 就代表了已连接的客户端套接字connfd。</p>
 <h3 id="211-设计思想">21.1 设计思想</h3>
-<p>TcpConnection 代表的是客户端连接套接字，所以TcpConnection 内部一定会管理一个文件描述符，以及该文件描述符对应的Channel，该Channel也需要关联一个EventLoop：</p>
+<p><strong>TcpConnection 代表的是客户端连接套接字</strong>，所以TcpConnection 内部一定会管理一个文件描述符，以及该文件描述符对应的Channel，该Channel也需要关联一个EventLoop：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -3683,7 +3717,7 @@
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="n">EventLoop</span><span class="o">*</span> <span class="n">loop_</span><span class="p">;</span>
+<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="n">EventLoop</span> <span class="o">*</span><span class="n">loop_</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl"><span class="n">boost</span><span class="o">::</span><span class="n">scoped_ptr</span><span class="o">&lt;</span><span class="n">Socket</span><span class="o">&gt;</span> <span class="n">socket_</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl"><span class="n">boost</span><span class="o">::</span><span class="n">scoped_ptr</span><span class="o">&lt;</span><span class="n">Channel</span><span class="o">&gt;</span> <span class="n">channel_</span><span class="p">;</span>
 </span></span></code></pre></td></tr></table>
@@ -3699,13 +3733,17 @@
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">InetAddress</span> <span class="n">peerAddr_</span><span class="p">;</span>  <span class="c1">// 对等方IP地址
 </span></span></span></code></pre></td></tr></table>
 </div>
-</div><p>使用一个状态flage来保存当前套接字的连接状态(未连接，连接还是断开状态)：</p>
+</div><p>使用一个状态来标识当前套接字的连接状态(已断开，正在连接(三次握手)，已连接，正在断开(四次挥手)状态)：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="n">StateE</span> <span class="n">state_</span><span class="p">;</span>    <span class="c1">// FIXME: use atomic variable
+<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="k">enum</span> <span class="nc">StateE</span> <span class="p">{</span> <span class="n">kDisconnected</span><span class="p">,</span> <span class="n">kConnecting</span><span class="p">,</span> <span class="n">kConnected</span><span class="p">,</span> <span class="n">kDisconnecting</span> <span class="p">};</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">StateE</span> <span class="n">state_</span><span class="p">;</span>    <span class="c1">// FIXME: use atomic variable
 </span></span></span></code></pre></td></tr></table>
 </div>
 </div><p>这些变量都在构造函数中被初始化了：</p>
@@ -3730,14 +3768,22 @@
 </span><span class="lnt">17
 </span><span class="lnt">18
 </span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="n">TcpConnection</span><span class="o">::</span><span class="n">TcpConnection</span><span class="p">(</span><span class="n">EventLoop</span> <span class="o">*</span><span class="n">loop</span><span class="p">,</span> <span class="k">const</span> <span class="n">string</span> <span class="o">&amp;</span><span class="n">nameArg</span><span class="p">,</span> <span class="kt">int</span> <span class="n">sockfd</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">                             <span class="k">const</span> <span class="n">InetAddress</span> <span class="o">&amp;</span><span class="n">localAddr</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">                             <span class="k">const</span> <span class="n">InetAddress</span> <span class="o">&amp;</span><span class="n">peerAddr</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">    <span class="o">:</span> <span class="n">loop_</span><span class="p">(</span><span class="n">CHECK_NOTNULL</span><span class="p">(</span><span class="n">loop</span><span class="p">)),</span> <span class="n">name_</span><span class="p">(</span><span class="n">nameArg</span><span class="p">),</span> <span class="n">state_</span><span class="p">(</span><span class="n">kConnecting</span><span class="p">),</span>
-</span></span><span class="line"><span class="cl">      <span class="n">socket_</span><span class="p">(</span><span class="k">new</span> <span class="n">Socket</span><span class="p">(</span><span class="n">sockfd</span><span class="p">)),</span> <span class="n">channel_</span><span class="p">(</span><span class="k">new</span> <span class="n">Channel</span><span class="p">(</span><span class="n">loop</span><span class="p">,</span> <span class="n">sockfd</span><span class="p">)),</span>
-</span></span><span class="line"><span class="cl">      <span class="n">localAddr_</span><span class="p">(</span><span class="n">localAddr</span><span class="p">),</span> <span class="n">peerAddr_</span><span class="p">(</span><span class="n">peerAddr</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">    <span class="o">:</span> <span class="n">loop_</span><span class="p">(</span><span class="n">CHECK_NOTNULL</span><span class="p">(</span><span class="n">loop</span><span class="p">)),</span>
+</span></span><span class="line"><span class="cl">      <span class="n">name_</span><span class="p">(</span><span class="n">nameArg</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">      <span class="n">state_</span><span class="p">(</span><span class="n">kConnecting</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">      <span class="n">socket_</span><span class="p">(</span><span class="k">new</span> <span class="n">Socket</span><span class="p">(</span><span class="n">sockfd</span><span class="p">)),</span>
+</span></span><span class="line"><span class="cl">      <span class="n">channel_</span><span class="p">(</span><span class="k">new</span> <span class="n">Channel</span><span class="p">(</span><span class="n">loop</span><span class="p">,</span> <span class="n">sockfd</span><span class="p">)),</span>
+</span></span><span class="line"><span class="cl">      <span class="n">localAddr_</span><span class="p">(</span><span class="n">localAddr</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">      <span class="n">peerAddr_</span><span class="p">(</span><span class="n">peerAddr</span><span class="p">),</span>
 </span></span><span class="line"><span class="cl">      <span class="n">highWaterMark_</span><span class="p">(</span><span class="mi">64</span> <span class="o">*</span> <span class="mi">1024</span> <span class="o">*</span> <span class="mi">1024</span><span class="p">)</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">  <span class="c1">// 通道可读事件到来的时候，回调TcpConnection::handleRead，_1是事件发生时间
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="n">channel_</span><span class="o">-&gt;</span><span class="n">setReadCallback</span><span class="p">(</span><span class="n">boost</span><span class="o">::</span><span class="n">bind</span><span class="p">(</span><span class="o">&amp;</span><span class="n">TcpConnection</span><span class="o">::</span><span class="n">handleRead</span><span class="p">,</span> <span class="k">this</span><span class="p">,</span> <span class="n">_1</span><span class="p">));</span>
@@ -3754,22 +3800,22 @@
 </span></span></code></pre></td></tr></table>
 </div>
 </div><ul>
-<li>构造函数初始化列表中的name_指的是该TcpConnection的名字，需要传入。highWaterMark_“高水位”标识在后面会介绍。</li>
+<li>构造函数初始化列表中的name_指的是该TcpConnection的名字，需要传入。highWaterMark_&ldquo;高水位&quot;标识在后面会介绍。</li>
 <li>构造函数将state_ 设置为了kConnecting状态，意思是还没有完成连接，当然还有kConnected和kDisconnected两种状态，这在后面会具体介绍。</li>
 <li>在构造函数中设置了Channel的读、写、关闭和错误回调函数，这些回调函数的具体内容会在后续介绍。</li>
 <li>构造函数中，设置了socket_-&gt;setKeepAlive(true)，设置套接字保持连接(TCP心跳)。</li>
 </ul>
-<p>构造函数调用之后，该连接套接字还没有让EventLoop中的Poller监听，因为Channel还没有调用enableXXX函数，该函数会在建立连接回调函数TcpConnection::connectEstablished()调用，这在后续会详细介绍。</p>
-<p>总之，一个TcpConnection代表了一个连接套接字及其Channel。</p>
-<h3 id="212-tcp-网络编程最本质">21.2 TCP 网络编程最本质</h3>
+<p>构造函数调用之后，该连接套接字还没有让EventLoop中的Poller监听，因为Channel还没有调用enableXXX函数，该函数会在建立连接回调TcpConnection::connectEstablished函数，这在后续会详细介绍。</p>
+<p><strong>总之，一个TcpConnection代表了一个连接套接字及其Channel</strong>。</p>
+<h3 id="212-tcp-网络编程的本质">21.2 TCP 网络编程的本质</h3>
 <p>TCP 网络编程最本质的是处理三个半事件：</p>
 <ul>
-<li>(1)连接的建立，包括服务端接受(accept) 新连接和客户端成功发起(connect) 连接。TCP 连接一旦建立，客户端和服务端是平等的，可以各自收发数据。</li>
-<li>(2)连接的断开，包括主动断开(close 或shutdown) 和被动断开(read(2) 返回0)。</li>
-<li>(3)消息到达，文件描述符可读。这是最为重要的一个事件，对它的处理方式决定了网络编程的风格(阻塞还是非阻塞，如何处理分包，应用层的缓冲如何设计等等)。</li>
-<li>(3.5)消息发送完毕，这算半个。对于低流量的服务，可以不必关心这个事件；另外，这里“发送完毕”是指将数据写入操作系统的缓冲区，将由TCP 协议栈负责数据的发送与重传，不代表对方已经收到数据。</li>
+<li>(1) 连接的建立，包括服务端接受(accept) 新连接和客户端成功发起(connect) 连接。TCP 连接一旦建立，客户端和服务端是平等的，可以各自收发数据。</li>
+<li>(2) 连接的断开，包括主动断开(close 或shutdown) 和被动断开(read(2) 返回0)。</li>
+<li>(3) 消息到达，文件描述符可读。这是最为重要的一个事件，对它的处理方式决定了网络编程的风格(阻塞还是非阻塞，如何处理分包，应用层的缓冲如何设计等等)。</li>
+<li>(3.5) 消息发送完毕，这算半个。对于低流量的服务，可以不必关心这个事件；另外，这里&quot;发送完毕&quot;是指将数据写入操作系统的缓冲区，将由TCP 协议栈负责数据的发送与重传，不代表对方已经收到数据。</li>
 </ul>
-<p>对于这“三个半事件”，在TcpConnection中体现如下：</p>
+<p>对于这&quot;三个半事件&rdquo;，在TcpConnection中体现如下：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
@@ -3788,14 +3834,10 @@
 </span><span class="lnt">14
 </span><span class="lnt">15
 </span><span class="lnt">16
+</span><span class="lnt">17
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="n">ConnectionCallback</span> <span class="n">connectionCallback_</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl"><span class="n">MessageCallback</span> <span class="n">messageCallback_</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl"><span class="n">WriteCompleteCallback</span> <span class="n">writeCompleteCallback_</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl"><span class="n">CloseCallback</span> <span class="n">closeCallback_</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="k">typedef</span> <span class="n">boost</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">TcpConnection</span><span class="o">&gt;</span> <span class="n">TcpConnectionPtr</span><span class="p">;</span>
+<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="k">typedef</span> <span class="n">boost</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">TcpConnection</span><span class="o">&gt;</span> <span class="n">TcpConnectionPtr</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="k">typedef</span> <span class="n">boost</span><span class="o">::</span><span class="n">function</span><span class="o">&lt;</span><span class="kt">void</span><span class="p">(</span><span class="k">const</span> <span class="n">TcpConnectionPtr</span> <span class="o">&amp;</span><span class="p">)</span><span class="o">&gt;</span> <span class="n">ConnectionCallback</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl"><span class="k">typedef</span> <span class="n">boost</span><span class="o">::</span><span class="n">function</span><span class="o">&lt;</span><span class="kt">void</span><span class="p">(</span><span class="k">const</span> <span class="n">TcpConnectionPtr</span> <span class="o">&amp;</span><span class="p">)</span><span class="o">&gt;</span> <span class="n">CloseCallback</span><span class="p">;</span>
@@ -3803,6 +3845,12 @@
 </span></span><span class="line"><span class="cl"><span class="c1">// the data has been read to (buf, len)
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">typedef</span> <span class="n">boost</span><span class="o">::</span><span class="n">function</span><span class="o">&lt;</span><span class="kt">void</span><span class="p">(</span><span class="k">const</span> <span class="n">TcpConnectionPtr</span> <span class="o">&amp;</span><span class="p">,</span> <span class="n">Buffer</span> <span class="o">*</span><span class="p">,</span> <span class="n">Timestamp</span><span class="p">)</span><span class="o">&gt;</span>
 </span></span><span class="line"><span class="cl">    <span class="n">MessageCallback</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">ConnectionCallback</span> <span class="n">connectionCallback_</span><span class="p">;</span>       <span class="c1">// 连接的建立
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">MessageCallback</span> <span class="n">messageCallback_</span><span class="p">;</span>             <span class="c1">// 消息的到达
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">WriteCompleteCallback</span> <span class="n">writeCompleteCallback_</span><span class="p">;</span> <span class="c1">// 消息发送完毕
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">CloseCallback</span> <span class="n">closeCallback_</span><span class="p">;</span>                 <span class="c1">// 连接的断开
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
 </span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">defaultConnectionCallback</span><span class="p">(</span><span class="k">const</span> <span class="n">TcpConnectionPtr</span> <span class="o">&amp;</span><span class="n">conn</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">defaultMessageCallback</span><span class="p">(</span><span class="k">const</span> <span class="n">TcpConnectionPtr</span> <span class="o">&amp;</span><span class="n">conn</span><span class="p">,</span> <span class="n">Buffer</span> <span class="o">*</span><span class="n">buffer</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">                            <span class="n">Timestamp</span> <span class="n">receiveTime</span><span class="p">);</span>
@@ -3846,10 +3894,12 @@
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
+</span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="n">Buffer</span> <span class="n">inputBuffer_</span><span class="p">;</span>   <span class="c1">// 应用层接收缓冲区
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">Buffer</span> <span class="n">outputBuffer_</span><span class="p">;</span>  <span class="c1">// 应用层发送缓冲区    FIXME: use list&lt;Buffer&gt; as output buffer.
+</span></span></span><span class="line"><span class="cl"><span class="c1">// FIXME: use list&lt;Buffer&gt; as output buffer.
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">Buffer</span> <span class="n">outputBuffer_</span><span class="p">;</span>  <span class="c1">// 应用层发送缓冲区
 </span></span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="214-连接事件处理">21.4 连接事件处理</h3>
@@ -3867,6 +3917,7 @@
 </span><span class="lnt"> 9
 </span><span class="lnt">10
 </span><span class="lnt">11
+</span><span class="lnt">12
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="kt">void</span> <span class="n">TcpConnection</span><span class="o">::</span><span class="n">connectEstablished</span><span class="p">()</span> <span class="p">{</span>
@@ -3874,7 +3925,8 @@
 </span></span><span class="line"><span class="cl">  <span class="n">assert</span><span class="p">(</span><span class="n">state_</span> <span class="o">==</span> <span class="n">kConnecting</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">  <span class="n">setState</span><span class="p">(</span><span class="n">kConnected</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">  <span class="n">LOG_TRACE</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;[3] usecount=&#34;</span> <span class="o">&lt;&lt;</span> <span class="n">shared_from_this</span><span class="p">().</span><span class="n">use_count</span><span class="p">();</span>
-</span></span><span class="line"><span class="cl">  <span class="n">channel_</span><span class="o">-&gt;</span><span class="n">tie</span><span class="p">(</span><span class="n">shared_from_this</span><span class="p">());</span>
+</span></span><span class="line"><span class="cl">  <span class="c1">// enable_shared_from_this是一个以其派生类为模板类型参数的基类模板，继承它，派生类的this指针就能变成一个shared_ptr。
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="n">channel_</span><span class="o">-&gt;</span><span class="n">tie</span><span class="p">(</span><span class="n">shared_from_this</span><span class="p">());</span>
 </span></span><span class="line"><span class="cl">  <span class="n">channel_</span><span class="o">-&gt;</span><span class="n">enableReading</span><span class="p">();</span> <span class="c1">// TcpConnection所对应的通道加入到Poller关注
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span>
 </span></span><span class="line"><span class="cl">  <span class="n">connectionCallback_</span><span class="p">(</span><span class="n">shared_from_this</span><span class="p">());</span>
@@ -3883,7 +3935,10 @@
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p>该函数不是TcpConnection调用的，是在TcpServer设置调用的，现在只需要了解即可。该函数在建立连接时会被调用，该函数设置连接状态为kConnected(如果之前没有连接)，然后会调用Channel的tie和enableReading函数，让该监听套接字及其Channel和EventLoop的Poller绑定。最后调用connectionCallback_。</p>
-<h3 id="215-读事件处理">21.5 “读”事件处理</h3>
+<blockquote>
+<p><a href="https://www.cnblogs.com/codingmengmeng/p/9123874.html"target="_blank" rel="external nofollow noopener noreferrer">关于boost中enable_shared_from_this类的原理分析</a></p>
+</blockquote>
+<h3 id="215-读事件处理">21.5 &ldquo;读&quot;事件处理</h3>
 <p>在构造函数中做过如下设置：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -4002,6 +4057,9 @@
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p>该函数利用了readv函数、iovec结构体和Buffer。vec[0]指向的是Buffer的写指针地址，vec[1]指向的是extrabuf的地址。这样做是为了双保险，如果读出的数据比较小，Buffer可以容纳，那么就全部读到Buffer中了，如果读出的数据很多，Buffer不够用了，那么还有65535字节的缓冲区可以接收这些数据，读出来的一些数据就保持在了Buffer中，剩下数据在extrabuf里，所以需要将在extrabuf中的数据再次append到Buffer中，Buffer也会适当扩容，最后所有数据都在Buffer中了。</p>
+<blockquote>
+<p><a href="https://blog.csdn.net/KingCat666/article/details/75269373"target="_blank" rel="external nofollow noopener noreferrer">linux ioctl()函数详解</a></p>
+</blockquote>
 <p>现在回到TcpConnection::handleRead中，如果读取到数据，则调用messageCallback_；如果读取到数据为0，说明客户端已经断开连接，那么调用handleClose()函数来关闭连接：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -4031,7 +4089,7 @@
 </span></span><span class="line"><span class="cl">  <span class="n">channel_</span><span class="o">-&gt;</span><span class="n">disableAll</span><span class="p">();</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">  <span class="n">TcpConnectionPtr</span> <span class="nf">guardThis</span><span class="p">(</span><span class="n">shared_from_this</span><span class="p">());</span>
-</span></span><span class="line"><span class="cl">  <span class="n">connectionCallback_</span><span class="p">(</span><span class="n">guardThis</span><span class="p">);</span> <span class="c1">// 这一行，可以不调用
+</span></span><span class="line"><span class="cl">  <span class="n">connectionCallback_</span><span class="p">(</span><span class="n">guardThis</span><span class="p">);</span> <span class="c1">// 这一行，可以不调用=》没懂
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="n">LOG_TRACE</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;[7] usecount=&#34;</span> <span class="o">&lt;&lt;</span> <span class="n">guardThis</span><span class="p">.</span><span class="n">use_count</span><span class="p">();</span>
 </span></span><span class="line"><span class="cl">  <span class="c1">// must be the last line
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="n">closeCallback_</span><span class="p">(</span><span class="n">guardThis</span><span class="p">);</span> <span class="c1">// 调用TcpServer::removeConnection
@@ -4039,7 +4097,7 @@
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p>该函数设置state_为kDisconnected，将连接套接字及其Channel从EventLoop的Poller中解除监听，然后依次调用connectionCallback_和closeCallback_函数。断开连接也属于connectionCallback_。</p>
+</div><p>该函数设置state_为kDisconnected，将连接套接字及其Channel从EventLoop的Poller中解除监听，然后依次调用connectionCallback_和closeCallback_函数。<strong>断开连接也属于connectionCallback_</strong>。  ？？？？？？？？？？</p>
 <p>如果读取出现错误，那么将调用handleError函数：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -4180,7 +4238,6 @@
 </span><span class="lnt">53
 </span><span class="lnt">54
 </span><span class="lnt">55
-</span><span class="lnt">56
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="kt">void</span> <span class="n">TcpConnection</span><span class="o">::</span><span class="n">sendInLoop</span><span class="p">(</span><span class="k">const</span> <span class="kt">void</span> <span class="o">*</span><span class="n">data</span><span class="p">,</span> <span class="n">size_t</span> <span class="n">len</span><span class="p">)</span> <span class="p">{</span>
@@ -4222,8 +4279,7 @@
 </span></span><span class="line"><span class="cl">  <span class="p">}</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">  <span class="n">assert</span><span class="p">(</span><span class="n">remaining</span> <span class="o">&lt;=</span> <span class="n">len</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">  <span class="c1">// 没有错误，并且还有未写完的数据(说明内核发送缓冲区满，要将未写完的数据添加到output
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="c1">// buffer中)
+</span></span><span class="line"><span class="cl">  <span class="c1">// 没有错误，并且还有未写完的数据(说明内核发送缓冲区满，要将未写完的数据添加到output buffer中)
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">error</span> <span class="o">&amp;&amp;</span> <span class="n">remaining</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="n">LOG_TRACE</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;I am going to write more data&#34;</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">    <span class="n">size_t</span> <span class="n">oldLen</span> <span class="o">=</span> <span class="n">outputBuffer_</span><span class="p">.</span><span class="n">readableBytes</span><span class="p">();</span>
@@ -4250,7 +4306,7 @@
 <pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">channel_</span><span class="o">-&gt;</span><span class="n">isWriting</span><span class="p">()</span> <span class="o">&amp;&amp;</span> <span class="n">outputBuffer_</span><span class="p">.</span><span class="n">readableBytes</span><span class="p">()</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p>判断该Channel有没有使能“写”。在第一次调用该函数时是没有使能“写”的，前面只是使能了“读”，关注读事件。而且会判断Buffer的输出缓冲区内是否有数据，如果是第一次调用了该函数，那么发送缓冲区内肯定是没有有数据的，只不过第一次调用时还没有使能“写”，所以该判断成立，直接调用write函数写入数据，如果数据写入比较少，一次性就发送完了，那么直接调用writeCompleteCallback_，结束该分支。如果一次性没有写完，那么代码会跳转到该分支执行：</p>
+</div><p>判断该Channel有没有使能&quot;写&rdquo;。在第一次调用该函数时是没有使能&quot;写&quot;的，前面只是使能了&quot;读&rdquo;，关注读事件。而且会判断Buffer的输出缓冲区内是否有数据，如果是第一次调用了该函数，那么发送缓冲区内肯定是没有有数据的，只不过第一次调用时还没有使能&quot;写&quot;，所以该判断成立，直接调用write函数写入数据，如果数据写入比较少，一次性就发送完了，那么直接调用writeCompleteCallback_，结束该分支。如果一次性没有写完，那么代码会跳转到该分支执行：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -4263,8 +4319,8 @@
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p>它会继续判断，当前的Buffer缓冲区里的数据长度(oldLen)与需要发送数据长度(remaining)之和是否大于“高水位标志”highWaterMark_，而且Buffer缓冲区内的数据小于highWaterMark_，是否设置了“高水位标志”回调函数highWaterMarkCallback_，如果设置了，那么执行highWaterMarkCallback_函数。然后将发送数据中没有发送的部分拷贝到Buffer中，然后使能“写”。接下来的数据就交给Poller返回后调用TcpConnection::handleWrite函数处理了。</p>
-<h3 id="217-写事件处理">21.7 “写”事件处理</h3>
+</div><p>它会继续判断，当前的Buffer缓冲区里的数据长度(oldLen)与需要发送数据长度(remaining)之和是否大于&quot;高水位标志&quot;highWaterMark_，而且Buffer缓冲区内的数据小于highWaterMark_，是否设置了&quot;高水位标志&quot;回调函数highWaterMarkCallback_，如果设置了，那么执行highWaterMarkCallback_函数。然后将发送数据中没有发送的部分拷贝到Buffer中，然后使能&quot;写&quot;。接下来的数据就交给Poller返回后调用TcpConnection::handleWrite函数处理了。</p>
+<h3 id="217-写事件处理">21.7 &ldquo;写&quot;事件处理</h3>
 <p>在构造函数中做过如下设置：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -4315,8 +4371,6 @@
 </span><span class="lnt">34
 </span><span class="lnt">35
 </span><span class="lnt">36
-</span><span class="lnt">37
-</span><span class="lnt">38
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="c1">// 内核发送缓冲区有空间了，回调该函数
@@ -4336,11 +4390,9 @@
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span>          <span class="n">loop_</span><span class="o">-&gt;</span><span class="n">queueInLoop</span><span class="p">(</span>
 </span></span><span class="line"><span class="cl">              <span class="n">boost</span><span class="o">::</span><span class="n">bind</span><span class="p">(</span><span class="n">writeCompleteCallback_</span><span class="p">,</span> <span class="n">shared_from_this</span><span class="p">()));</span>
 </span></span><span class="line"><span class="cl">        <span class="p">}</span>
-</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="n">state_</span> <span class="o">==</span>
-</span></span><span class="line"><span class="cl">            <span class="n">kDisconnecting</span><span class="p">)</span> <span class="c1">// 发送缓冲区已清空并且连接状态是kDisconnecting,
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                            <span class="c1">// 要关闭连接
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="p">{</span>
-</span></span><span class="line"><span class="cl">          <span class="n">shutdownInLoop</span><span class="p">();</span> <span class="c1">// 关闭连接
+</span></span><span class="line"><span class="cl">        <span class="c1">// 发送缓冲区已清空并且连接状态是kDisconnecting，要关闭连接
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="k">if</span> <span class="p">(</span><span class="n">state_</span> <span class="o">==</span> <span class="n">kDisconnecting</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">          <span class="n">shutdownInLoop</span><span class="p">();</span> <span class="c1">// 只关闭写的这一半，进入半关闭状态(close SHUT_WR)
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="p">}</span>
 </span></span><span class="line"><span class="cl">      <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">        <span class="n">LOG_TRACE</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;I am going to write more data&#34;</span><span class="p">;</span>
@@ -4359,7 +4411,10 @@
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p>当客户端套接字变得可写时，调用write往套接字中写入Buffer内容，如果写完了，那么设置Channel，客户端套接字停止“写行为”。如果设置了writeCompleteCallback_，则调用writeCompleteCallback_函数。</p>
+</div><p>当客户端套接字变得可写时，调用write往套接字中写入Buffer内容，如果写完了，那么设置Channel，客户端套接字停止&quot;写行为&rdquo;。如果设置了writeCompleteCallback_，则调用writeCompleteCallback_函数。</p>
+<blockquote>
+<p>当内核发送缓冲区有空间了，回调handleWrite函数，调用write往套接字中写入Buffer内容，如果写完了，那么设置Channel，客户端套接字停止&quot;写行为&quot;。那么已经取消关注了可写的事件，在什么地方又得重新设置再次关注可写事件呢？客户端每次发送数据都是通过send函数，它就在内部调用了enableWriting函数。</p>
+</blockquote>
 <p>如果当前TcpConnection状态为kDisconnecting，说明没有连接，则调用shutdownInLoop函数，关闭该套接字的写端，但仍然可以读：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -4407,11 +4462,1022 @@
 </div><p>使用该函数来断开连接。</p>
 <h2 id="22-tcpserver">22. TcpServer</h2>
 <p>TcpServer中融合了前面讲过的几乎所有东西。</p>
+<h3 id="221-io-线程">22.1 I/O 线程</h3>
+<p>TcpServer 正如其名，是一个服务器，而且是一个可以支持多线程Reactor的服务器，所以该服务器必须要有诸多IO线程：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="n">EventLoop</span> <span class="o">*</span><span class="n">loop_</span><span class="p">;</span>  <span class="c1">// the acceptor loop
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">boost</span><span class="o">::</span><span class="n">scoped_ptr</span><span class="o">&lt;</span><span class="n">EventLoopThreadPool</span><span class="o">&gt;</span> <span class="n">threadPool_</span><span class="p">;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>它们在构造函数中被初始化：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="n">TcpServer</span><span class="o">::</span><span class="n">TcpServer</span><span class="p">(</span><span class="n">EventLoop</span><span class="o">*</span> <span class="n">loop</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                     <span class="k">const</span> <span class="n">InetAddress</span><span class="o">&amp;</span> <span class="n">listenAddr</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                     <span class="k">const</span> <span class="n">string</span><span class="o">&amp;</span> <span class="n">nameArg</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="o">:</span> <span class="n">loop_</span><span class="p">(</span><span class="n">CHECK_NOTNULL</span><span class="p">(</span><span class="n">loop</span><span class="p">)),</span>
+</span></span><span class="line"><span class="cl">    <span class="p">...</span>
+</span></span><span class="line"><span class="cl">    <span class="n">threadPool_</span><span class="p">(</span><span class="k">new</span> <span class="n">EventLoopThreadPool</span><span class="p">(</span><span class="n">loop</span><span class="p">)),</span>
+</span></span><span class="line"><span class="cl">    <span class="p">...</span>
+</span></span><span class="line"><span class="cl">    <span class="n">nextConnId_</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="p">...</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>可通过该函数来创建多少个IO线程：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="kt">void</span> <span class="n">TcpServer</span><span class="o">::</span><span class="n">setThreadNum</span><span class="p">(</span><span class="kt">int</span> <span class="n">numThreads</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="n">assert</span><span class="p">(</span><span class="mi">0</span> <span class="o">&lt;=</span> <span class="n">numThreads</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="n">threadPool_</span><span class="o">-&gt;</span><span class="n">setThreadNum</span><span class="p">(</span><span class="n">numThreads</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="222-acceptor">22.2 Acceptor</h3>
+<p>TcpServer使用Acceptor来操作监听套接字，而且需要一个监听套接字地址和端口：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="n">TcpServer</span><span class="o">::</span><span class="n">TcpServer</span><span class="p">(</span><span class="n">EventLoop</span><span class="o">*</span> <span class="n">loop</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                     <span class="k">const</span> <span class="n">InetAddress</span><span class="o">&amp;</span> <span class="n">listenAddr</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                     <span class="k">const</span> <span class="n">string</span><span class="o">&amp;</span> <span class="n">nameArg</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="o">:</span> <span class="n">loop_</span><span class="p">(</span><span class="n">CHECK_NOTNULL</span><span class="p">(</span><span class="n">loop</span><span class="p">)),</span>
+</span></span><span class="line"><span class="cl">    <span class="n">hostport_</span><span class="p">(</span><span class="n">listenAddr</span><span class="p">.</span><span class="n">toIpPort</span><span class="p">()),</span>
+</span></span><span class="line"><span class="cl">    <span class="p">...</span>
+</span></span><span class="line"><span class="cl">    <span class="n">acceptor_</span><span class="p">(</span><span class="k">new</span> <span class="n">Acceptor</span><span class="p">(</span><span class="n">loop</span><span class="p">,</span> <span class="n">listenAddr</span><span class="p">)),</span>
+</span></span><span class="line"><span class="cl">    <span class="p">...</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="c1">// Acceptor::handleRead函数中会回调用TcpServer::newConnection
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="c1">// _1对应的是socket文件描述符，_2对应的是对等方的地址(InetAddress)
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="n">acceptor_</span><span class="o">-&gt;</span><span class="n">setNewConnectionCallback</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">      <span class="n">boost</span><span class="o">::</span><span class="n">bind</span><span class="p">(</span><span class="o">&amp;</span><span class="n">TcpServer</span><span class="o">::</span><span class="n">newConnection</span><span class="p">,</span> <span class="k">this</span><span class="p">,</span> <span class="n">_1</span><span class="p">,</span> <span class="n">_2</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>此时的Acceptor还没有加入事件监听中（没有调用Acceptor::listen()）。Acceptor需要TcpServer传入一个函数来处理连接事件（Acceptor只负责处理连接，所以只关注读事件）：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="n">acceptChannel_</span><span class="p">.</span><span class="n">setReadCallback</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">      <span class="n">boost</span><span class="o">::</span><span class="n">bind</span><span class="p">(</span><span class="o">&amp;</span><span class="n">Acceptor</span><span class="o">::</span><span class="n">handleRead</span><span class="p">,</span> <span class="k">this</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl"><span class="p">...</span>
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="n">Acceptor</span><span class="o">::</span><span class="n">handleRead</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="p">...</span>
+</span></span><span class="line"><span class="cl">  <span class="k">if</span> <span class="p">(</span><span class="n">connfd</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="n">newConnectionCallback_</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="n">newConnectionCallback_</span><span class="p">(</span><span class="n">connfd</span><span class="p">,</span> <span class="n">peerAddr</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="k">else</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="n">sockets</span><span class="o">::</span><span class="n">close</span><span class="p">(</span><span class="n">connfd</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="k">else</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="p">...</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>而该函数便是TcpServer::newConnection，该函数在下面详细介绍。</p>
+<h3 id="223-启动服务器">22.3 启动服务器</h3>
+<p>调用该函数即可启动服务器：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="c1">// 该函数多次调用是无害的
+</span></span></span><span class="line"><span class="cl"><span class="c1">// 该函数可以跨线程调用
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kt">void</span> <span class="n">TcpServer</span><span class="o">::</span><span class="n">start</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">started_</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">started_</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">threadPool_</span><span class="o">-&gt;</span><span class="n">start</span><span class="p">(</span><span class="n">threadInitCallback_</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">acceptor_</span><span class="o">-&gt;</span><span class="n">listenning</span><span class="p">())</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// get_pointer：返回原生指针
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">loop_</span><span class="o">-&gt;</span><span class="n">runInLoop</span><span class="p">(</span><span class="n">boost</span><span class="o">::</span><span class="n">bind</span><span class="p">(</span><span class="o">&amp;</span><span class="n">Acceptor</span><span class="o">::</span><span class="n">listen</span><span class="p">,</span> <span class="n">get_pointer</span><span class="p">(</span><span class="n">acceptor_</span><span class="p">)));</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>该函数首先启动了IO线程池，并传入线程初始化函数，TcpServer中threadInitCallback_定义如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="k">typedef</span> <span class="n">boost</span><span class="o">::</span><span class="n">function</span><span class="o">&lt;</span><span class="kt">void</span><span class="p">(</span><span class="n">EventLoop</span> <span class="o">*</span><span class="p">)</span><span class="o">&gt;</span> <span class="n">ThreadInitCallback</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">ThreadInitCallback</span> <span class="n">threadInitCallback_</span><span class="p">;</span> <span class="c1">// IO线程池中的线程在进入事件循环前，会回调用此函数
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>可通过该函数设置这一回调函数：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">setThreadInitCallback</span><span class="p">(</span><span class="k">const</span> <span class="n">ThreadInitCallback</span> <span class="o">&amp;</span><span class="n">cb</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">threadInitCallback_</span> <span class="o">=</span> <span class="n">cb</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>在初始化IO后便启动了Acceptor，Acceptor加入了事件循环。值得一提的是，如果IO线程池设置线程数量为0，那么全局只有一个EventLoop，threadPool_中的EventLoop也是指向TcpServer中的EventLoop。</p>
+<h3 id="224-处理客户端连接">22.4 处理客户端连接</h3>
+<p>Acceptor 绑定的&quot;读事件&quot;回调函数是newConnection，当有客户端连接时该函数将会被调用：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="kt">void</span> <span class="n">TcpServer</span><span class="o">::</span><span class="n">newConnection</span><span class="p">(</span><span class="kt">int</span> <span class="n">sockfd</span><span class="p">,</span> <span class="k">const</span> <span class="n">InetAddress</span> <span class="o">&amp;</span><span class="n">peerAddr</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="n">loop_</span><span class="o">-&gt;</span><span class="n">assertInLoopThread</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">  <span class="c1">// 按照轮叫的方式选择一个EventLoop
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="n">EventLoop</span> <span class="o">*</span><span class="n">ioLoop</span> <span class="o">=</span> <span class="n">threadPool_</span><span class="o">-&gt;</span><span class="n">getNextLoop</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">char</span> <span class="n">buf</span><span class="p">[</span><span class="mi">32</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">  <span class="n">snprintf</span><span class="p">(</span><span class="n">buf</span><span class="p">,</span> <span class="k">sizeof</span> <span class="n">buf</span><span class="p">,</span> <span class="s">&#34;:%s#%d&#34;</span><span class="p">,</span> <span class="n">hostport_</span><span class="p">.</span><span class="n">c_str</span><span class="p">(),</span> <span class="n">nextConnId_</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="o">++</span><span class="n">nextConnId_</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="n">string</span> <span class="n">connName</span> <span class="o">=</span> <span class="n">name_</span> <span class="o">+</span> <span class="n">buf</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="n">LOG_INFO</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;TcpServer::newConnection [&#34;</span> <span class="o">&lt;&lt;</span> <span class="n">name_</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;] - new connection [&#34;</span>
+</span></span><span class="line"><span class="cl">           <span class="o">&lt;&lt;</span> <span class="n">connName</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;] from &#34;</span> <span class="o">&lt;&lt;</span> <span class="n">peerAddr</span><span class="p">.</span><span class="n">toIpPort</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">  <span class="n">InetAddress</span> <span class="nf">localAddr</span><span class="p">(</span><span class="n">sockets</span><span class="o">::</span><span class="n">getLocalAddr</span><span class="p">(</span><span class="n">sockfd</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">  <span class="c1">// FIXME poll with zero timeout to double confirm the new connection
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="c1">// FIXME use make_shared if necessary
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="cm">/*TcpConnectionPtr conn(new TcpConnection(loop_,
+</span></span></span><span class="line"><span class="cl"><span class="cm">                                          connName,
+</span></span></span><span class="line"><span class="cl"><span class="cm">                                          sockfd,
+</span></span></span><span class="line"><span class="cl"><span class="cm">                                          localAddr,
+</span></span></span><span class="line"><span class="cl"><span class="cm">                                          peerAddr));*/</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="n">TcpConnectionPtr</span> <span class="nf">conn</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">      <span class="k">new</span> <span class="n">TcpConnection</span><span class="p">(</span><span class="n">ioLoop</span><span class="p">,</span> <span class="n">connName</span><span class="p">,</span> <span class="n">sockfd</span><span class="p">,</span> <span class="n">localAddr</span><span class="p">,</span> <span class="n">peerAddr</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="n">LOG_TRACE</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;[1] usecount=&#34;</span> <span class="o">&lt;&lt;</span> <span class="n">conn</span><span class="p">.</span><span class="n">use_count</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">  <span class="n">connections_</span><span class="p">[</span><span class="n">connName</span><span class="p">]</span> <span class="o">=</span> <span class="n">conn</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="n">LOG_TRACE</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;[2] usecount=&#34;</span> <span class="o">&lt;&lt;</span> <span class="n">conn</span><span class="p">.</span><span class="n">use_count</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">  <span class="n">conn</span><span class="o">-&gt;</span><span class="n">setConnectionCallback</span><span class="p">(</span><span class="n">connectionCallback_</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="n">conn</span><span class="o">-&gt;</span><span class="n">setMessageCallback</span><span class="p">(</span><span class="n">messageCallback_</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="n">conn</span><span class="o">-&gt;</span><span class="n">setWriteCompleteCallback</span><span class="p">(</span><span class="n">writeCompleteCallback_</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="n">conn</span><span class="o">-&gt;</span><span class="n">setCloseCallback</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">      <span class="n">boost</span><span class="o">::</span><span class="n">bind</span><span class="p">(</span><span class="o">&amp;</span><span class="n">TcpServer</span><span class="o">::</span><span class="n">removeConnection</span><span class="p">,</span> <span class="k">this</span><span class="p">,</span> <span class="n">_1</span><span class="p">));</span> <span class="c1">// FIXME: unsafe
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl">  <span class="c1">// conn-&gt;connectEstablished();
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="n">ioLoop</span><span class="o">-&gt;</span><span class="n">runInLoop</span><span class="p">(</span><span class="n">boost</span><span class="o">::</span><span class="n">bind</span><span class="p">(</span><span class="o">&amp;</span><span class="n">TcpConnection</span><span class="o">::</span><span class="n">connectEstablished</span><span class="p">,</span> <span class="n">conn</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">  <span class="n">LOG_TRACE</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;[5] usecount=&#34;</span> <span class="o">&lt;&lt;</span> <span class="n">conn</span><span class="p">.</span><span class="n">use_count</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>该函数调用后，TcpServer将从threadPool_轮询方式获取一个EventLoop，让该EventLoop来处理新连接客户端套接字事件。接下来会创建一个TcpConnection，然后将该TcpConnection保存到connections_中，该成员变量定义如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="k">typedef</span> <span class="n">std</span><span class="o">::</span><span class="n">map</span><span class="o">&lt;</span><span class="n">string</span><span class="p">,</span> <span class="n">TcpConnectionPtr</span><span class="o">&gt;</span> <span class="n">ConnectionMap</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">ConnectionMap</span> <span class="n">connections_</span><span class="p">;</span> <span class="c1">// 连接列表
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>再设置该TcpConnection的对应的回调事件，其中connectionCallback_和messageCallback_在构造函数中设置了默认处理函数，这两个默认函数里没有做任何实事：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="k">typedef</span> <span class="n">boost</span><span class="o">::</span><span class="n">function</span><span class="o">&lt;</span><span class="kt">void</span><span class="p">(</span><span class="k">const</span> <span class="n">TcpConnectionPtr</span> <span class="o">&amp;</span><span class="p">)</span><span class="o">&gt;</span> <span class="n">ConnectionCallback</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// the data has been read to (buf, len)
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">typedef</span> <span class="n">boost</span><span class="o">::</span><span class="n">function</span><span class="o">&lt;</span><span class="kt">void</span><span class="p">(</span><span class="k">const</span> <span class="n">TcpConnectionPtr</span> <span class="o">&amp;</span><span class="p">,</span> <span class="n">Buffer</span> <span class="o">*</span><span class="p">,</span> <span class="n">Timestamp</span><span class="p">)</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">MessageCallback</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">ConnectionCallback</span> <span class="n">connectionCallback_</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="n">MessageCallback</span> <span class="n">messageCallback_</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">TcpServer</span><span class="o">::</span><span class="n">TcpServer</span><span class="p">(</span><span class="n">EventLoop</span> <span class="o">*</span><span class="n">loop</span><span class="p">,</span> <span class="k">const</span> <span class="n">InetAddress</span> <span class="o">&amp;</span><span class="n">listenAddr</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                     <span class="k">const</span> <span class="n">string</span> <span class="o">&amp;</span><span class="n">nameArg</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="o">:</span> <span class="p">...</span>
+</span></span><span class="line"><span class="cl">      <span class="n">connectionCallback_</span><span class="p">(</span><span class="n">defaultConnectionCallback</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">      <span class="n">messageCallback_</span><span class="p">(</span><span class="n">defaultMessageCallback</span><span class="p">),</span> <span class="n">started_</span><span class="p">(</span><span class="nb">false</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">      <span class="p">...</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="p">...</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>可以通过如下函数来设置这些回调函数：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="c1">/// Set connection callback.
+</span></span></span><span class="line"><span class="cl"><span class="c1">/// Not thread safe.
+</span></span></span><span class="line"><span class="cl"><span class="c1">// 设置连接到来或者连接关闭回调函数
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kt">void</span> <span class="nf">setConnectionCallback</span><span class="p">(</span><span class="k">const</span> <span class="n">ConnectionCallback</span> <span class="o">&amp;</span><span class="n">cb</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="n">connectionCallback_</span> <span class="o">=</span> <span class="n">cb</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">/// Set message callback.
+</span></span></span><span class="line"><span class="cl"><span class="c1">/// Not thread safe.
+</span></span></span><span class="line"><span class="cl"><span class="c1">// 设置消息到来回调函数
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kt">void</span> <span class="nf">setMessageCallback</span><span class="p">(</span><span class="k">const</span> <span class="n">MessageCallback</span> <span class="o">&amp;</span><span class="n">cb</span><span class="p">)</span> <span class="p">{</span> <span class="n">messageCallback_</span> <span class="o">=</span> <span class="n">cb</span><span class="p">;</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">/// Set write complete callback.
+</span></span></span><span class="line"><span class="cl"><span class="c1">/// Not thread safe.
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kt">void</span> <span class="nf">setWriteCompleteCallback</span><span class="p">(</span><span class="k">const</span> <span class="n">WriteCompleteCallback</span> <span class="o">&amp;</span><span class="n">cb</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="n">writeCompleteCallback_</span> <span class="o">=</span> <span class="n">cb</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>需要注意的是，连接关闭回调函数绑定的是TcpServer::removeConnection：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="kt">void</span> <span class="n">TcpServer</span><span class="o">::</span><span class="n">removeConnection</span><span class="p">(</span><span class="k">const</span> <span class="n">TcpConnectionPtr</span><span class="o">&amp;</span> <span class="n">conn</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="c1">// FIXME: unsafe
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="n">loop_</span><span class="o">-&gt;</span><span class="n">runInLoop</span><span class="p">(</span><span class="n">boost</span><span class="o">::</span><span class="n">bind</span><span class="p">(</span><span class="o">&amp;</span><span class="n">TcpServer</span><span class="o">::</span><span class="n">removeConnectionInLoop</span><span class="p">,</span> <span class="k">this</span><span class="p">,</span> <span class="n">conn</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="n">TcpServer</span><span class="o">::</span><span class="n">removeConnectionInLoop</span><span class="p">(</span><span class="k">const</span> <span class="n">TcpConnectionPtr</span> <span class="o">&amp;</span><span class="n">conn</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="n">loop_</span><span class="o">-&gt;</span><span class="n">assertInLoopThread</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">  <span class="n">LOG_INFO</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;TcpServer::removeConnectionInLoop [&#34;</span> <span class="o">&lt;&lt;</span> <span class="n">name_</span>
+</span></span><span class="line"><span class="cl">           <span class="o">&lt;&lt;</span> <span class="s">&#34;] - connection &#34;</span> <span class="o">&lt;&lt;</span> <span class="n">conn</span><span class="o">-&gt;</span><span class="n">name</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="n">LOG_TRACE</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;[8] usecount=&#34;</span> <span class="o">&lt;&lt;</span> <span class="n">conn</span><span class="p">.</span><span class="n">use_count</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">  <span class="n">size_t</span> <span class="n">n</span> <span class="o">=</span> <span class="n">connections_</span><span class="p">.</span><span class="n">erase</span><span class="p">(</span><span class="n">conn</span><span class="o">-&gt;</span><span class="n">name</span><span class="p">());</span>
+</span></span><span class="line"><span class="cl">  <span class="n">LOG_TRACE</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;[9] usecount=&#34;</span> <span class="o">&lt;&lt;</span> <span class="n">conn</span><span class="p">.</span><span class="n">use_count</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">n</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="n">assert</span><span class="p">(</span><span class="n">n</span> <span class="o">==</span> <span class="mi">1</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="n">EventLoop</span> <span class="o">*</span><span class="n">ioLoop</span> <span class="o">=</span> <span class="n">conn</span><span class="o">-&gt;</span><span class="n">getLoop</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">  <span class="n">ioLoop</span><span class="o">-&gt;</span><span class="n">queueInLoop</span><span class="p">(</span><span class="n">boost</span><span class="o">::</span><span class="n">bind</span><span class="p">(</span><span class="o">&amp;</span><span class="n">TcpConnection</span><span class="o">::</span><span class="n">connectDestroyed</span><span class="p">,</span> <span class="n">conn</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="c1">// loop_-&gt;queueInLoop(
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="c1">//    boost::bind(&amp;TcpConnection::connectDestroyed, conn));
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="n">LOG_TRACE</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;[10] usecount=&#34;</span> <span class="o">&lt;&lt;</span> <span class="n">conn</span><span class="p">.</span><span class="n">use_count</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>这一串函数将该TcpConnection从TcpServer的connections_中删除，TcpServer与该TcpConnection没有任何关系了，然后调用TcpConnection::connectDestroyed将该TcpConnection的连接套接字及其Channel与EventLoop及其Poller解除联系，这样一来就彻底除掉该TcpConnection了。</p>
+<h3 id="225-释放资源">22.5 释放资源</h3>
+<p>将connections_保存的所有TcpConnection全部去除，去除方法和前面TcpServer::removeConnectionInLoop去除单个TcpConnection的方法是一样的。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="n">TcpServer</span><span class="o">::~</span><span class="n">TcpServer</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="n">loop_</span><span class="o">-&gt;</span><span class="n">assertInLoopThread</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">  <span class="n">LOG_TRACE</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;TcpServer::~TcpServer [&#34;</span> <span class="o">&lt;&lt;</span> <span class="n">name_</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;] destructing&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="k">for</span> <span class="p">(</span><span class="n">ConnectionMap</span><span class="o">::</span><span class="n">iterator</span> <span class="n">it</span><span class="p">(</span><span class="n">connections_</span><span class="p">.</span><span class="n">begin</span><span class="p">());</span>
+</span></span><span class="line"><span class="cl">       <span class="n">it</span> <span class="o">!=</span> <span class="n">connections_</span><span class="p">.</span><span class="n">end</span><span class="p">();</span> <span class="o">++</span><span class="n">it</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">TcpConnectionPtr</span> <span class="n">conn</span> <span class="o">=</span> <span class="n">it</span><span class="o">-&gt;</span><span class="n">second</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">it</span><span class="o">-&gt;</span><span class="n">second</span><span class="p">.</span><span class="n">reset</span><span class="p">();</span> <span class="c1">// 释放当前所控制的对象，引用计数减一
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">conn</span><span class="o">-&gt;</span><span class="n">getLoop</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">runInLoop</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">        <span class="n">boost</span><span class="o">::</span><span class="n">bind</span><span class="p">(</span><span class="o">&amp;</span><span class="n">TcpConnection</span><span class="o">::</span><span class="n">connectDestroyed</span><span class="p">,</span> <span class="n">conn</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">    <span class="n">conn</span><span class="p">.</span><span class="n">reset</span><span class="p">();</span> <span class="c1">// 释放当前所控制的对象，引用计数减一
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="23-connector">23. Connector</h2>
+<p>Connector 是为TcpClient所调用的，一个客户端需要一个套接字来与服务端通信，muduo 使用Connector 来封装这个与服务端通信的套接字（如同Acceptor 封装了监听客户端连接的套接字）。</p>
+<h3 id="231-设计思想">23.1 设计思想</h3>
+<p>前面说到，该Connector 封装了一个客户端用于连接服务器的套接字，本着muduo中 Every Fd is Channel 的精神，Connector也同样遵循这样的准测：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="n">EventLoop</span> <span class="o">*</span><span class="n">loop_</span><span class="p">;</span>                             <span class="c1">// 所属EventLoop
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">boost</span><span class="o">::</span><span class="n">scoped_ptr</span><span class="o">&lt;</span><span class="n">Channel</span><span class="o">&gt;</span> <span class="n">channel_</span><span class="p">;</span>          <span class="c1">// Connector所对应的Channel
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>但是成员变量中却没有套接字，该套接字是在建立连接时才创建的，待创建成功才与channel_绑定：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="kt">void</span> <span class="n">Connector</span><span class="o">::</span><span class="n">connect</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">int</span> <span class="n">sockfd</span> <span class="o">=</span> <span class="n">sockets</span><span class="o">::</span><span class="n">createNonblockingOrDie</span><span class="p">();</span> <span class="c1">// 创建非阻塞套接字
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="kt">int</span> <span class="n">ret</span> <span class="o">=</span> <span class="n">sockets</span><span class="o">::</span><span class="n">connect</span><span class="p">(</span><span class="n">sockfd</span><span class="p">,</span> <span class="n">serverAddr_</span><span class="p">.</span><span class="n">getSockAddrInet</span><span class="p">());</span>
+</span></span><span class="line"><span class="cl">  <span class="p">...</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>而且从构造函数来看，该Channel也没有和EventLoop绑定，至于为什么这样做，在后面会详细介绍。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="n">Connector</span><span class="o">::</span><span class="n">Connector</span><span class="p">(</span><span class="n">EventLoop</span><span class="o">*</span> <span class="n">loop</span><span class="p">,</span> <span class="k">const</span> <span class="n">InetAddress</span><span class="o">&amp;</span> <span class="n">serverAddr</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="o">:</span> <span class="n">loop_</span><span class="p">(</span><span class="n">loop</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">    <span class="n">serverAddr_</span><span class="p">(</span><span class="n">serverAddr</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">    <span class="n">connect_</span><span class="p">(</span><span class="nb">false</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">    <span class="n">state_</span><span class="p">(</span><span class="n">kDisconnected</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">    <span class="n">retryDelayMs_</span><span class="p">(</span><span class="n">kInitRetryDelayMs</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="n">LOG_DEBUG</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;ctor[&#34;</span> <span class="o">&lt;&lt;</span> <span class="k">this</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;]&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>构造函数中需要传入一个EventLoop和一个服务端地址结构，至于初始化列表中的后三个变量，在本文后续会详细介绍。</p>
+<h3 id="232-连接服务端">23.2 连接服务端</h3>
+<p>调用Connector::start函数可启动Connector：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="c1">// 可以跨线程调用
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kt">void</span> <span class="n">Connector</span><span class="o">::</span><span class="n">start</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="n">connect_</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="n">loop_</span><span class="o">-&gt;</span><span class="n">runInLoop</span><span class="p">(</span><span class="n">boost</span><span class="o">::</span><span class="n">bind</span><span class="p">(</span><span class="o">&amp;</span><span class="n">Connector</span><span class="o">::</span><span class="n">startInLoop</span><span class="p">,</span> <span class="k">this</span><span class="p">));</span> <span class="c1">// FIXME: unsafe
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>该函数又进而调用Connector::startInLoop函数：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="kt">void</span> <span class="n">Connector</span><span class="o">::</span><span class="n">startInLoop</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="n">loop_</span><span class="o">-&gt;</span><span class="n">assertInLoopThread</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">  <span class="n">assert</span><span class="p">(</span><span class="n">state_</span> <span class="o">==</span> <span class="n">kDisconnected</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="k">if</span> <span class="p">(</span><span class="n">connect_</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">connect</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">LOG_DEBUG</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;do not connect&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>由于一开始构造函数对state_的设置，assert(state_ == kDisconnected)成立。在Connector::start中已经将connect_设置为true，所以直接调用connect()函数，该函数定义如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="kt">void</span> <span class="n">Connector</span><span class="o">::</span><span class="n">connect</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">int</span> <span class="n">sockfd</span> <span class="o">=</span> <span class="n">sockets</span><span class="o">::</span><span class="n">createNonblockingOrDie</span><span class="p">();</span> <span class="c1">// 创建非阻塞套接字
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="kt">int</span> <span class="n">ret</span> <span class="o">=</span> <span class="n">sockets</span><span class="o">::</span><span class="n">connect</span><span class="p">(</span><span class="n">sockfd</span><span class="p">,</span> <span class="n">serverAddr_</span><span class="p">.</span><span class="n">getSockAddrInet</span><span class="p">());</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">int</span> <span class="n">savedErrno</span> <span class="o">=</span> <span class="p">(</span><span class="n">ret</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="o">?</span> <span class="mi">0</span> <span class="o">:</span> <span class="n">errno</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl">  <span class="k">switch</span> <span class="p">(</span><span class="n">savedErrno</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="k">case</span> <span class="mi">0</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">  <span class="k">case</span> <span class="nl">EINPROGRESS</span><span class="p">:</span> <span class="c1">// 非阻塞套接字，未连接成功返回码是EINPROGRESS表示正在连接
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="k">case</span> <span class="nl">EINTR</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">  <span class="k">case</span> <span class="nl">EISCONN</span><span class="p">:</span> <span class="c1">// 连接成功
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">connecting</span><span class="p">(</span><span class="n">sockfd</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="k">break</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="k">case</span> <span class="nl">EAGAIN</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">  <span class="k">case</span> <span class="nl">EADDRINUSE</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">  <span class="k">case</span> <span class="nl">EADDRNOTAVAIL</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">  <span class="k">case</span> <span class="nl">ECONNREFUSED</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">  <span class="k">case</span> <span class="nl">ENETUNREACH</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="n">retry</span><span class="p">(</span><span class="n">sockfd</span><span class="p">);</span> <span class="c1">// 重连
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="k">break</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="k">case</span> <span class="nl">EACCES</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">  <span class="k">case</span> <span class="nl">EPERM</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">  <span class="k">case</span> <span class="nl">EAFNOSUPPORT</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">  <span class="k">case</span> <span class="nl">EALREADY</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">  <span class="k">case</span> <span class="nl">EBADF</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">  <span class="k">case</span> <span class="nl">EFAULT</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">  <span class="k">case</span> <span class="nl">ENOTSOCK</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="n">LOG_SYSERR</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;connect error in Connector::startInLoop &#34;</span> <span class="o">&lt;&lt;</span> <span class="n">savedErrno</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">sockets</span><span class="o">::</span><span class="n">close</span><span class="p">(</span><span class="n">sockfd</span><span class="p">);</span> <span class="c1">// 不能重连，关闭sockfd
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="k">break</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="k">default</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">    <span class="n">LOG_SYSERR</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;Unexpected error in Connector::startInLoop &#34;</span> <span class="o">&lt;&lt;</span> <span class="n">savedErrno</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">sockets</span><span class="o">::</span><span class="n">close</span><span class="p">(</span><span class="n">sockfd</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// connectErrorCallback_();
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="k">break</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>在该函数中会创建一个非阻塞的套接字，并调用sockets::connect函数，如果连接成功则调用connecting函数，如果是连接超时，非阻塞套接字返回，那么调用retry函数，其他情况下都是出现错误，直接关闭该套接字。retry这种情况会在下一节内容中介绍，这部分主要关注connecting函数的调用：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="kt">void</span> <span class="n">Connector</span><span class="o">::</span><span class="n">connecting</span><span class="p">(</span><span class="kt">int</span> <span class="n">sockfd</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="n">setState</span><span class="p">(</span><span class="n">kConnecting</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="n">assert</span><span class="p">(</span><span class="o">!</span><span class="n">channel_</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="c1">// Channel与sockfd关联
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="n">channel_</span><span class="p">.</span><span class="n">reset</span><span class="p">(</span><span class="k">new</span> <span class="n">Channel</span><span class="p">(</span><span class="n">loop_</span><span class="p">,</span> <span class="n">sockfd</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">  <span class="c1">// 设置可写回调函数，这时候如果socket没有错误，sockfd就处于可写状态
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="n">channel_</span><span class="o">-&gt;</span><span class="n">setWriteCallback</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">      <span class="n">boost</span><span class="o">::</span><span class="n">bind</span><span class="p">(</span><span class="o">&amp;</span><span class="n">Connector</span><span class="o">::</span><span class="n">handleWrite</span><span class="p">,</span> <span class="k">this</span><span class="p">));</span> <span class="c1">// FIXME: unsafe
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="c1">// 设置错误回调函数
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="n">channel_</span><span class="o">-&gt;</span><span class="n">setErrorCallback</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">      <span class="n">boost</span><span class="o">::</span><span class="n">bind</span><span class="p">(</span><span class="o">&amp;</span><span class="n">Connector</span><span class="o">::</span><span class="n">handleError</span><span class="p">,</span> <span class="k">this</span><span class="p">));</span> <span class="c1">// FIXME: unsafe
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl">  <span class="c1">// channel_-&gt;tie(shared_from_this()); is not working,
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="c1">// as channel_ is not managed by shared_ptr
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="n">channel_</span><span class="o">-&gt;</span><span class="n">enableWriting</span><span class="p">();</span> <span class="c1">// 让Poller关注可写事件
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>该函数将state_设置为kConnecting状态，重置channel_的值，绑定EventLoop和连接成功的套接字sockfd，设置Channel的&quot;写&quot;和&quot;错误&quot;回调函数，并使能&quot;写&quot;，这样一来，Channel及其连接套接字就在EventLoop的Poller中了。</p>
+<p>Connector::handleWrite和Connector::handleError两个函数会在下几节介绍。</p>
+<h3 id="233-错误处理与重连">23.3 错误处理与重连</h3>
+<p>当连接套接字上出现错误时将调用该函数：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="kt">void</span> <span class="n">Connector</span><span class="o">::</span><span class="n">handleError</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="n">LOG_ERROR</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;Connector::handleError&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="n">assert</span><span class="p">(</span><span class="n">state_</span> <span class="o">==</span> <span class="n">kConnecting</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="kt">int</span> <span class="n">sockfd</span> <span class="o">=</span> <span class="n">removeAndResetChannel</span><span class="p">();</span> <span class="c1">// 从poller中移除关注，并将channel置空
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="kt">int</span> <span class="n">err</span> <span class="o">=</span> <span class="n">sockets</span><span class="o">::</span><span class="n">getSocketError</span><span class="p">(</span><span class="n">sockfd</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="n">LOG_TRACE</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;SO_ERROR = &#34;</span> <span class="o">&lt;&lt;</span> <span class="n">err</span> <span class="o">&lt;&lt;</span> <span class="s">&#34; &#34;</span> <span class="o">&lt;&lt;</span> <span class="n">strerror_tl</span><span class="p">(</span><span class="n">err</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="n">retry</span><span class="p">(</span><span class="n">sockfd</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>在该函数中会调用removeAndResetChannel函数，removeAndResetChannel会清除该连接套接字Channel和EventLoop的Poller绑定，释放channel_智能指针所管理的内存，并将该连接套接字返回：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="kt">int</span> <span class="n">Connector</span><span class="o">::</span><span class="n">removeAndResetChannel</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="n">channel_</span><span class="o">-&gt;</span><span class="n">disableAll</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">  <span class="n">channel_</span><span class="o">-&gt;</span><span class="n">remove</span><span class="p">();</span> <span class="c1">// 从poller移除关注
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="kt">int</span> <span class="n">sockfd</span> <span class="o">=</span> <span class="n">channel_</span><span class="o">-&gt;</span><span class="n">fd</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">  <span class="c1">// Can&#39;t reset channel_ here, because we are inside Channel::handleEvent
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="c1">// 不能在这里重置channel_，因为正在调用Channel::handleEvent
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="n">loop_</span><span class="o">-&gt;</span><span class="n">queueInLoop</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">      <span class="n">boost</span><span class="o">::</span><span class="n">bind</span><span class="p">(</span><span class="o">&amp;</span><span class="n">Connector</span><span class="o">::</span><span class="n">resetChannel</span><span class="p">,</span> <span class="k">this</span><span class="p">));</span> <span class="c1">// FIXME: unsafe
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="k">return</span> <span class="n">sockfd</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="n">Connector</span><span class="o">::</span><span class="n">resetChannel</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="n">channel_</span><span class="p">.</span><span class="n">reset</span><span class="p">();</span> <span class="c1">// channel_ 置空
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>回到Connector::handleError函数，在清理资源并获取到产生错误的sockfd后，该函数会再调用retry函数尝试连接：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="c1">// 采用back-off策略重连，即重连时间逐渐延长，0.5s, 1s, 2s, ...直至30s
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kt">void</span> <span class="n">Connector</span><span class="o">::</span><span class="n">retry</span><span class="p">(</span><span class="kt">int</span> <span class="n">sockfd</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="n">sockets</span><span class="o">::</span><span class="n">close</span><span class="p">(</span><span class="n">sockfd</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="n">setState</span><span class="p">(</span><span class="n">kDisconnected</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="k">if</span> <span class="p">(</span><span class="n">connect_</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">LOG_INFO</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;Connector::retry - Retry connecting to &#34;</span>
+</span></span><span class="line"><span class="cl">             <span class="o">&lt;&lt;</span> <span class="n">serverAddr_</span><span class="p">.</span><span class="n">toIpPort</span><span class="p">()</span> <span class="o">&lt;&lt;</span> <span class="s">&#34; in &#34;</span> <span class="o">&lt;&lt;</span> <span class="n">retryDelayMs_</span>
+</span></span><span class="line"><span class="cl">             <span class="o">&lt;&lt;</span> <span class="s">&#34; milliseconds. &#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// 注册一个定时操作，重连
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">loop_</span><span class="o">-&gt;</span><span class="n">runAfter</span><span class="p">(</span><span class="n">retryDelayMs_</span> <span class="o">/</span> <span class="mf">1000.0</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                    <span class="n">boost</span><span class="o">::</span><span class="n">bind</span><span class="p">(</span><span class="o">&amp;</span><span class="n">Connector</span><span class="o">::</span><span class="n">startInLoop</span><span class="p">,</span> <span class="n">shared_from_this</span><span class="p">()));</span>
+</span></span><span class="line"><span class="cl">    <span class="n">retryDelayMs_</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">min</span><span class="p">(</span><span class="n">retryDelayMs_</span> <span class="o">*</span> <span class="mi">2</span><span class="p">,</span> <span class="n">kMaxRetryDelayMs</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">LOG_DEBUG</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;do not connect&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>在介绍retry函数之前需要了解这两个常量：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="k">static</span> <span class="k">const</span> <span class="kt">int</span> <span class="n">kMaxRetryDelayMs</span> <span class="o">=</span> <span class="mi">30</span> <span class="o">*</span> <span class="mi">1000</span><span class="p">;</span> <span class="c1">// 30秒，最大重连延迟时间
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">static</span> <span class="k">const</span> <span class="kt">int</span> <span class="n">kInitRetryDelayMs</span> <span class="o">=</span> <span class="mi">500</span><span class="p">;</span>      <span class="c1">// 0.5秒，初始状态，连接不上，0.5秒后重连
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>kInitRetryDelayMs指的是过500ms便发动一次连接，尝试连接到服务器；kMaxRetryDelayMs指的是尝试超时连接总时间为30*1000ms。在retry函数中调用了runAfter定时函数来尝试连接。</p>
+<h3 id="234-处理写事件">23.4 处理&quot;写&quot;事件</h3>
+<p>如果socket没有错误，sockfd就处于可写状态，函数定义如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="kt">void</span> <span class="n">Connector</span><span class="o">::</span><span class="n">handleWrite</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="n">LOG_TRACE</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;Connector::handleWrite &#34;</span> <span class="o">&lt;&lt;</span> <span class="n">state_</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="k">if</span> <span class="p">(</span><span class="n">state_</span> <span class="o">==</span> <span class="n">kConnecting</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="n">sockfd</span> <span class="o">=</span> <span class="n">removeAndResetChannel</span><span class="p">();</span> <span class="c1">// 从poller中移除关注，并将channel置空
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="c1">// socket可写并不意味着连接一定建立成功
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="c1">// 还需要用getsockopt(sockfd, SOL_SOCKET, SO_ERROR, ...)再次确认一下。
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="kt">int</span> <span class="n">err</span> <span class="o">=</span> <span class="n">sockets</span><span class="o">::</span><span class="n">getSocketError</span><span class="p">(</span><span class="n">sockfd</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="n">err</span><span class="p">)</span> <span class="c1">// 有错误
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="n">LOG_WARN</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;Connector::handleWrite - SO_ERROR = &#34;</span> <span class="o">&lt;&lt;</span> <span class="n">err</span> <span class="o">&lt;&lt;</span> <span class="s">&#34; &#34;</span>
+</span></span><span class="line"><span class="cl">               <span class="o">&lt;&lt;</span> <span class="n">strerror_tl</span><span class="p">(</span><span class="n">err</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">      <span class="n">retry</span><span class="p">(</span><span class="n">sockfd</span><span class="p">);</span>                           <span class="c1">// 重连
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="p">}</span> <span class="k">else</span> <span class="nf">if</span> <span class="p">(</span><span class="n">sockets</span><span class="o">::</span><span class="n">isSelfConnect</span><span class="p">(</span><span class="n">sockfd</span><span class="p">))</span> <span class="c1">// 自连接
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="n">LOG_WARN</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;Connector::handleWrite - Self connect&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">      <span class="n">retry</span><span class="p">(</span><span class="n">sockfd</span><span class="p">);</span> <span class="c1">// 重连
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="p">}</span> <span class="k">else</span>           <span class="c1">// 连接成功
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="n">setState</span><span class="p">(</span><span class="n">kConnected</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">      <span class="k">if</span> <span class="p">(</span><span class="n">connect_</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">newConnectionCallback_</span><span class="p">(</span><span class="n">sockfd</span><span class="p">);</span> <span class="c1">// 回调
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>      <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">sockets</span><span class="o">::</span><span class="n">close</span><span class="p">(</span><span class="n">sockfd</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">      <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// what happened?
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">assert</span><span class="p">(</span><span class="n">state_</span> <span class="o">==</span> <span class="n">kDisconnected</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>在该函数中只是获取到连接成功套接字的文件描述符sockfd，并且将Channel清除，然后调用newConnectionCallback_函数，该函数在TcpClient中传入。为什么要将该连接Channel移除是有原因的，客户端连接套接字只有一个，而Connector中已经将该套接字与自己的Channel绑定了，只是负责连接而已，connect函数调用成功该套接字则变得可写，这时的Connector已经完成任务了，需要将该套接字的所有权转让给TcpClient，所以调用了newConnectionCallback_函数，而该函数在TcpClient中给该套接字绑定了一个新的Channel，该Channel和Connector中的Channel同属于一个EventLoop，所以转移所有权需要彻底，Connector中的Channel必须要被移除，否则将导致&quot;串台&quot;。</p>
+<h3 id="235-重置连接">23.5 重置连接</h3>
+<p>&ldquo;断线重连&quot;和&quot;重置连接&quot;是两个概念，&ldquo;断线重连&quot;指的是在已经连接成功的情况下又断开连接，再多次尝试连接；&ldquo;重置连接&quot;指的是放弃之前的连接，从零开始连接：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="c1">// 不能跨线程调用
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kt">void</span> <span class="n">Connector</span><span class="o">::</span><span class="n">restart</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="n">loop_</span><span class="o">-&gt;</span><span class="n">assertInLoopThread</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">  <span class="n">setState</span><span class="p">(</span><span class="n">kDisconnected</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="n">retryDelayMs_</span> <span class="o">=</span> <span class="n">kInitRetryDelayMs</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="n">connect_</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="n">startInLoop</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="24-tcpclient">24. TcpClient</h2>
+<p>在上一章的Connector中说到&quot;在该函数中只是获取到连接成功套接字的文件描述符sockfd，并且将Channel清除，然后调用newConnectionCallback_函数，该函数在TcpClient中传入&rdquo;，Connector::handleWrite函数是被TcpClient调用的，那么我们先一窥newConnectionCallback_函数究竟。</p>
+<p>在此之前，先看看TcpClient中的Connector：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="k">typedef</span> <span class="n">boost</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">Connector</span><span class="o">&gt;</span> <span class="n">ConnectorPtr</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">EventLoop</span> <span class="o">*</span><span class="n">loop_</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="n">ConnectorPtr</span> <span class="n">connector_</span><span class="p">;</span>                      <span class="c1">// 用于主动发起连接
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="n">TcpClient</span><span class="o">::</span><span class="n">TcpClient</span><span class="p">(</span><span class="n">EventLoop</span><span class="o">*</span> <span class="n">loop</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                     <span class="k">const</span> <span class="n">InetAddress</span><span class="o">&amp;</span> <span class="n">serverAddr</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                     <span class="k">const</span> <span class="n">string</span><span class="o">&amp;</span> <span class="n">name</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="o">:</span> <span class="n">loop_</span><span class="p">(</span><span class="n">CHECK_NOTNULL</span><span class="p">(</span><span class="n">loop</span><span class="p">)),</span>
+</span></span><span class="line"><span class="cl">    <span class="n">connector_</span><span class="p">(</span><span class="k">new</span> <span class="n">Connector</span><span class="p">(</span><span class="n">loop</span><span class="p">,</span> <span class="n">serverAddr</span><span class="p">)),</span>
+</span></span><span class="line"><span class="cl">    <span class="n">name_</span><span class="p">(</span><span class="n">name</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">    <span class="p">...</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="c1">// 设置连接成功回调函数
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="n">connector_</span><span class="o">-&gt;</span><span class="n">setNewConnectionCallback</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">      <span class="n">boost</span><span class="o">::</span><span class="n">bind</span><span class="p">(</span><span class="o">&amp;</span><span class="n">TcpClient</span><span class="o">::</span><span class="n">newConnection</span><span class="p">,</span> <span class="k">this</span><span class="p">,</span> <span class="n">_1</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">  <span class="c1">// FIXME setConnectFailedCallback
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="n">LOG_INFO</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;TcpClient::TcpClient[&#34;</span> <span class="o">&lt;&lt;</span> <span class="n">name_</span>
+</span></span><span class="line"><span class="cl">           <span class="o">&lt;&lt;</span> <span class="s">&#34;] - connector &#34;</span> <span class="o">&lt;&lt;</span> <span class="n">get_pointer</span><span class="p">(</span><span class="n">connector_</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>在构造函数中，Connector被设置了新连接回调函数TcpClient::newConnection，也就是前面的newConnectionCallback_，该函数定义如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="kt">void</span> <span class="n">TcpClient</span><span class="o">::</span><span class="n">newConnection</span><span class="p">(</span><span class="kt">int</span> <span class="n">sockfd</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="n">loop_</span><span class="o">-&gt;</span><span class="n">assertInLoopThread</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">  <span class="n">InetAddress</span> <span class="nf">peerAddr</span><span class="p">(</span><span class="n">sockets</span><span class="o">::</span><span class="n">getPeerAddr</span><span class="p">(</span><span class="n">sockfd</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">char</span> <span class="n">buf</span><span class="p">[</span><span class="mi">32</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">  <span class="n">snprintf</span><span class="p">(</span><span class="n">buf</span><span class="p">,</span> <span class="k">sizeof</span> <span class="n">buf</span><span class="p">,</span> <span class="s">&#34;:%s#%d&#34;</span><span class="p">,</span> <span class="n">peerAddr</span><span class="p">.</span><span class="n">toIpPort</span><span class="p">().</span><span class="n">c_str</span><span class="p">(),</span> <span class="n">nextConnId_</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="o">++</span><span class="n">nextConnId_</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="n">string</span> <span class="n">connName</span> <span class="o">=</span> <span class="n">name_</span> <span class="o">+</span> <span class="n">buf</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="n">InetAddress</span> <span class="nf">localAddr</span><span class="p">(</span><span class="n">sockets</span><span class="o">::</span><span class="n">getLocalAddr</span><span class="p">(</span><span class="n">sockfd</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">  <span class="c1">// FIXME poll with zero timeout to double confirm the new connection
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="c1">// FIXME use make_shared if necessary
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="n">TcpConnectionPtr</span> <span class="nf">conn</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">      <span class="k">new</span> <span class="n">TcpConnection</span><span class="p">(</span><span class="n">loop_</span><span class="p">,</span> <span class="n">connName</span><span class="p">,</span> <span class="n">sockfd</span><span class="p">,</span> <span class="n">localAddr</span><span class="p">,</span> <span class="n">peerAddr</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="n">conn</span><span class="o">-&gt;</span><span class="n">setConnectionCallback</span><span class="p">(</span><span class="n">connectionCallback_</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="n">conn</span><span class="o">-&gt;</span><span class="n">setMessageCallback</span><span class="p">(</span><span class="n">messageCallback_</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="n">conn</span><span class="o">-&gt;</span><span class="n">setWriteCompleteCallback</span><span class="p">(</span><span class="n">writeCompleteCallback_</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="n">conn</span><span class="o">-&gt;</span><span class="n">setCloseCallback</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">      <span class="n">boost</span><span class="o">::</span><span class="n">bind</span><span class="p">(</span><span class="o">&amp;</span><span class="n">TcpClient</span><span class="o">::</span><span class="n">removeConnection</span><span class="p">,</span> <span class="k">this</span><span class="p">,</span> <span class="n">_1</span><span class="p">));</span> <span class="c1">// FIXME: unsafe
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">MutexLockGuard</span> <span class="nf">lock</span><span class="p">(</span><span class="n">mutex_</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">connection_</span> <span class="o">=</span> <span class="n">conn</span><span class="p">;</span> <span class="c1">// 保存TcpConnection
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="n">conn</span><span class="o">-&gt;</span><span class="n">connectEstablished</span><span class="p">();</span> <span class="c1">// 这里回调connectionCallback_
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>该函数将连接成功的socfd封装为一个TcpConnection，并设置&quot;三个半&quot;回调事件函数。好的，到了这里就解释了前面Connector为什么不自己持有一个sockfd、为什么要在连接成功时清空Channel等诸多问题。拿到连接成功套接字后，创建TcpConnection与服务器进行数据交换。</p>
+<h2 id="25-阶段性总结">25. 阶段性总结</h2>
+<p>一张图总结服务/客户端调用关系：</p>
+<p><img
+    class="lazyload"
+    src="/svg/loading.min.svg"
+    data-src="../../imgs/muduo/muduo.jpg"
+    data-srcset="../../imgs/muduo/muduo.jpg, ../../imgs/muduo/muduo.jpg 1.5x, ../../imgs/muduo/muduo.jpg 2x"
+    data-sizes="auto"
+    alt="Muduo"
+    title="Muduo"/></p>
+<ul>
+<li>TcpConnection负责一个客户端连接成功套接字</li>
+<li>Acceptor负责一个服务器listen套接字</li>
+<li>Connector负责一个客户端connect套接字</li>
+<li>TcpServer中持有Acceptor，通过Acceptor获取新的连接套接字，然后TcpServer会为该连接套接字建立一个TcpConnection，然后往该TcpConnection中传递用户需要TcpServer相应事件对应的函数，用户传入的函数其实是和TcpConnection中的Channel间接绑定，然后在事件触发后被Channel间接执行。</li>
+<li>TcpClient中持有Connector，通过Connector里的Channel绑定一个连接套接字，在连接成功后，Connector会将该套接字转让给TcpClient，TcpClient中会为该连接套接字建立一个TcpConnection，然后往该TcpConnection中传递用户需要TcpClient相应事件对应的函数，用户传入的函数其实是和TcpConnection中的Channel间接绑定，然后在事件触发后被Channel间接执行。</li>
+</ul>
 </div><div class="post-footer" id="post-footer">
   <div class="post-info">
     <div class="post-info-line">
       <div class="post-info-mod">
-        <span title=2022-12-08&#32;00:00:00>Updated on 2022-12-08&nbsp;</span>
+        <span title=2022-12-12&#32;00:00:00>Updated on 2022-12-12&nbsp;</span>
       </div><div class="post-info-license">
           <span><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span>
         </div></div>
@@ -4443,5 +5509,5 @@
         </div></div><div id="mask"></div><noscript>
     <div class="noscript-warning">Theme FixIt works best with JavaScript enabled.</div>
   </noscript>
-</div><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script src="/lib/autocomplete/autocomplete.min.js" defer></script><script src="/lib/lunr/lunr.min.js" defer></script><script src="/lib/lazysizes/lazysizes.min.js" async defer></script><script src="/lib/sharer/sharer.min.js" async defer></script><script src="/lib/typeit/index.umd.js" defer></script><script src="/lib/katex/katex.min.js" defer></script><script src="/lib/katex/auto-render.min.js" defer></script><script src="/lib/katex/copy-tex.min.js" defer></script><script src="/lib/katex/mhchem.min.js" defer></script><script src="/lib/cookieconsent/cookieconsent.min.js" defer></script><script>window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":30},"comment":{"enable":false},"cookieconsent":{"content":{"dismiss":"Got it!","link":"Learn more","message":"This website uses Cookies to improve your experience."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"data":{"typeit-header-desktop":"Home","typeit-header-title-mobile":"Home"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30},"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"typeit-header-desktop":["typeit-header-desktop"],"typeit-header-title-mobile":["typeit-header-title-mobile"]},"duration":-1,"speed":100}};</script><script src="/js/theme.min.js" defer></script></body>
+</div><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script src="/lib/autocomplete/autocomplete.min.js" defer></script><script src="/lib/lunr/lunr.min.js" defer></script><script src="/lib/lazysizes/lazysizes.min.js" async defer></script><script src="/lib/sharer/sharer.min.js" async defer></script><script src="/lib/typeit/index.umd.js" defer></script><script src="/lib/katex/katex.min.js" defer></script><script src="/lib/katex/auto-render.min.js" defer></script><script src="/lib/katex/copy-tex.min.js" defer></script><script src="/lib/katex/mhchem.min.js" defer></script><script src="/lib/cookieconsent/cookieconsent.min.js" defer></script><script>window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":-1},"comment":{"enable":false},"cookieconsent":{"content":{"dismiss":"Got it!","link":"Learn more","message":"This website uses Cookies to improve your experience."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"data":{"typeit-header-desktop":"Home","typeit-header-title-mobile":"Home"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30},"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"typeit-header-desktop":["typeit-header-desktop"],"typeit-header-title-mobile":["typeit-header-title-mobile"]},"duration":-1,"speed":100}};</script><script src="/js/theme.min.js" defer></script></body>
 </html>

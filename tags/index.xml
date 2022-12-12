@@ -4,7 +4,15 @@
     <link>https://cui-jiang-tao.github.io/tags/</link>
     <description>Tags - Tag - vstk的网站</description>
     <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>cjt953899262@gmail.com (cjt)</managingEditor>
-      <webMaster>cjt953899262@gmail.com (cjt)</webMaster><lastBuildDate>Thu, 08 Dec 2022 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://cui-jiang-tao.github.io/tags/" rel="self" type="application/rss+xml" /><item>
+      <webMaster>cjt953899262@gmail.com (cjt)</webMaster><lastBuildDate>Fri, 09 Dec 2022 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://cui-jiang-tao.github.io/tags/" rel="self" type="application/rss+xml" /><item>
+  <title>Linux</title>
+  <link>https://cui-jiang-tao.github.io/tags/linux/</link>
+  <pubDate>Fri, 09 Dec 2022 00:00:00 &#43;0000</pubDate>
+  <author>cjt</author>
+  <guid>https://cui-jiang-tao.github.io/tags/linux/</guid>
+  <description><![CDATA[]]></description>
+</item>
+<item>
   <title>hugo</title>
   <link>https://cui-jiang-tao.github.io/tags/hugo/</link>
   <pubDate>Thu, 08 Dec 2022 00:00:00 &#43;0000</pubDate>
@@ -74,14 +82,6 @@
   <pubDate>Wed, 14 Sep 2022 00:00:00 &#43;0000</pubDate>
   <author>cjt</author>
   <guid>https://cui-jiang-tao.github.io/tags/gdb/</guid>
-  <description><![CDATA[]]></description>
-</item>
-<item>
-  <title>Markdown</title>
-  <link>https://cui-jiang-tao.github.io/tags/markdown/</link>
-  <pubDate>Wed, 14 Sep 2022 00:00:00 &#43;0000</pubDate>
-  <author>cjt</author>
-  <guid>https://cui-jiang-tao.github.io/tags/markdown/</guid>
   <description><![CDATA[]]></description>
 </item>
 </channel>

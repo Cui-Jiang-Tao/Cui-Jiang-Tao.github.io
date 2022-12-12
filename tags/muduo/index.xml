@@ -10,7 +10,7 @@
   <pubDate>Tue, 06 Dec 2022 00:00:00 &#43;0000</pubDate>
   <author>cjt</author>
   <guid>https://cui-jiang-tao.github.io/posts/muduo%E7%BD%91%E7%BB%9C%E5%BA%93%E6%BA%90%E7%A0%81%E5%AD%A6%E4%B9%A0/</guid>
-  <description><![CDATA[第二部分：Muduo网络库 10. 初探EventLoop 10.1 什么都不做的EventLoop 一个EventLoop就是一个事件循环，下面将通过一个“什]]></description>
+  <description><![CDATA[第二部分：Muduo网络库 10. 初探EventLoop 10.1 什么都不做的EventLoop 一个EventLoop就是一个事件循环，下面将通过一个&q]]></description>
 </item>
 <item>
   <title>大并发服务器开发</title>
