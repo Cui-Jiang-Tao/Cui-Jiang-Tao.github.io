@@ -9,14 +9,14 @@
 <meta name="author-link" content="">
 <meta name="description" content="源码参考：Muduo 第二部分：Muduo网络库 10. 初探EventLoop 10.1 什么都不做的EventLoop 一个EventLoop就是一个事件循环" /><meta name="keywords" content='muduo' /><meta itemprop="name" content="muduo网络库源码学习">
 <meta itemprop="description" content="源码参考：Muduo 第二部分：Muduo网络库 10. 初探EventLoop 10.1 什么都不做的EventLoop 一个EventLoop就是一个事件循环"><meta itemprop="datePublished" content="2022-12-06T00:00:00+00:00" />
-<meta itemprop="dateModified" content="2022-12-12T00:00:00+00:00" />
-<meta itemprop="wordCount" content="41188">
+<meta itemprop="dateModified" content="2022-12-17T00:00:00+00:00" />
+<meta itemprop="wordCount" content="52133">
 <meta itemprop="keywords" content="muduo," /><meta property="og:title" content="muduo网络库源码学习" />
 <meta property="og:description" content="源码参考：Muduo 第二部分：Muduo网络库 10. 初探EventLoop 10.1 什么都不做的EventLoop 一个EventLoop就是一个事件循环" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://cui-jiang-tao.github.io/posts/muduo%E7%BD%91%E7%BB%9C%E5%BA%93%E6%BA%90%E7%A0%81%E5%AD%A6%E4%B9%A0/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2022-12-06T00:00:00+00:00" />
-<meta property="article:modified_time" content="2022-12-12T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-12-17T00:00:00+00:00" />
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="muduo网络库源码学习"/>
 <meta name="twitter:description" content="源码参考：Muduo 第二部分：Muduo网络库 10. 初探EventLoop 10.1 什么都不做的EventLoop 一个EventLoop就是一个事件循环"/>
@@ -32,8 +32,8 @@
     "mainEntityOfPage": {
       "@type": "WebPage",
       "@id": "https:\/\/cui-jiang-tao.github.io\/posts\/muduo%E7%BD%91%E7%BB%9C%E5%BA%93%E6%BA%90%E7%A0%81%E5%AD%A6%E4%B9%A0\/"
-    },"genre": "posts","keywords": "muduo","wordcount":  41188 ,
-    "url": "https:\/\/cui-jiang-tao.github.io\/posts\/muduo%E7%BD%91%E7%BB%9C%E5%BA%93%E6%BA%90%E7%A0%81%E5%AD%A6%E4%B9%A0\/","datePublished": "2022-12-06T00:00:00+00:00","dateModified": "2022-12-12T00:00:00+00:00","publisher": {
+    },"genre": "posts","keywords": "muduo","wordcount":  52133 ,
+    "url": "https:\/\/cui-jiang-tao.github.io\/posts\/muduo%E7%BD%91%E7%BB%9C%E5%BA%93%E6%BA%90%E7%A0%81%E5%AD%A6%E4%B9%A0\/","datePublished": "2022-12-06T00:00:00+00:00","dateModified": "2022-12-17T00:00:00+00:00","publisher": {
       "@type": "Organization",
       "name": ""},"author": {
         "@type": "Person",
@@ -157,7 +157,7 @@
     alt="cjt"
     title="cjt"/>&nbsp;cjt</span></span>
           <span class="post-category">included in <a href="/categories/c/c++/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> c/c++</a></span></div>
-      <div class="post-meta-line"><span title=2022-12-06&#32;00:00:00><i class="fa-regular fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-12-06">2022-12-06</time></span>&nbsp;<span><i class="fa-solid fa-pencil-alt fa-fw" aria-hidden="true"></i> 41188 words</span>&nbsp;<span><i class="fa-regular fa-clock fa-fw" aria-hidden="true"></i> 83 minutes</span>&nbsp;</div>
+      <div class="post-meta-line"><span title=2022-12-06&#32;00:00:00><i class="fa-regular fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-12-06">2022-12-06</time></span>&nbsp;<span><i class="fa-solid fa-pencil-alt fa-fw" aria-hidden="true"></i> 52133 words</span>&nbsp;<span><i class="fa-regular fa-clock fa-fw" aria-hidden="true"></i> 105 minutes</span>&nbsp;</div>
     </div><div class="details toc" id="toc-static" data-kept="false">
         <div class="details-summary toc-title">
           <span>Contents</span>
@@ -172,7 +172,7 @@
         <li><a href="#103-事件循环">10.3 事件循环</a></li>
       </ul>
     </li>
-    <li><a href="#11-channel分析">11. Channel分析</a>
+    <li><a href="#11-channel">11. Channel</a>
       <ul>
         <li><a href="#111-channel与文件描述符">11.1 Channel与文件描述符</a></li>
         <li><a href="#112-设置监听回调函数">11.2 设置监听回调函数</a></li>
@@ -250,8 +250,13 @@
         <li><a href="#184-socket">18.4 Socket</a></li>
       </ul>
     </li>
-    <li><a href="#19-buffer的设计">19. Buffer的设计</a></li>
-    <li><a href="#20-acceptor-分析">20. Acceptor 分析</a></li>
+    <li><a href="#19-buffer">19. Buffer</a>
+      <ul>
+        <li><a href="#191-设计思想">19.1 设计思想</a></li>
+        <li><a href="#192-几个重要的成员函数">19.2 几个重要的成员函数</a></li>
+      </ul>
+    </li>
+    <li><a href="#20-acceptor">20. Acceptor</a></li>
     <li><a href="#21-tcpconnection">21. TcpConnection</a>
       <ul>
         <li><a href="#211-设计思想">21.1 设计思想</a></li>
@@ -261,6 +266,7 @@
         <li><a href="#215-读事件处理">21.5 &ldquo;读&quot;事件处理</a></li>
         <li><a href="#216-发送数据">21.6 发送数据</a></li>
         <li><a href="#217-写事件处理">21.7 &ldquo;写&quot;事件处理</a></li>
+        <li><a href="#218-tcpconnection生存期管理">21.8 TcpConnection生存期管理</a></li>
       </ul>
     </li>
     <li><a href="#22-tcpserver">22. TcpServer</a>
@@ -282,7 +288,20 @@
       </ul>
     </li>
     <li><a href="#24-tcpclient">24. TcpClient</a></li>
-    <li><a href="#25-阶段性总结">25. 阶段性总结</a></li>
+    <li><a href="#25-tcp网络编程本质">25 TCP网络编程本质</a>
+      <ul>
+        <li><a href="#251-连接建立">25.1 连接建立</a></li>
+        <li><a href="#252-消息到达">25.2 消息到达</a></li>
+        <li><a href="#253-消息发送完毕">25.3 消息发送完毕</a></li>
+        <li><a href="#254-连接断开">25.4 连接断开</a>
+          <ul>
+            <li><a href="#2541-被动断开">25.4.1 被动断开</a></li>
+            <li><a href="#2542-主动断开">25.4.2 主动断开</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#26-阶段性总结">26. 阶段性总结</a></li>
     <li><a href="#test">Test</a>
       <ul>
         <li><a href="#eventloop">EventLoop</a></li>
@@ -312,7 +331,7 @@
 <p>这里指的是一个EventLoop只属于一个线程(但一个线程可以拥有多个EventLoop)，在muduo中，如果EventLoop一旦被创建，EventLoop会保持所属线程的一份tid拷贝，作为标识。如果该EventLoop被其他线程调用则会报错，muduo中使用EventLoop::assertInLoopThread()函数来判断该EventLoop对象是否是在所属线程中执行。</p>
 <h3 id="103-事件循环">10.3 事件循环</h3>
 <p>一个EventLoop里其实是调用了poll/epoll来跟踪所关注的文件描述符的，当有文件描述符上有事件发生时，EventLoop会得到那些发生事件的文件描述符信息。</p>
-<h2 id="11-channel分析">11. Channel分析</h2>
+<h2 id="11-channel">11. Channel</h2>
 <p>Channel，可以理解为是一个&quot;通道&rdquo;，该&quot;通道&quot;中绑定了一个文件描述符及其所关注事件、注册的读写事件等信息。</p>
 <h3 id="111-channel与文件描述符">11.1 Channel与文件描述符</h3>
 <p>一个Channel管理一个文件描述符，在创建Channel时需要指定：</p>
@@ -4349,6 +4368,13 @@
 </span><span class="lnt">66
 </span><span class="lnt">67
 </span><span class="lnt">68
+</span><span class="lnt">69
+</span><span class="lnt">70
+</span><span class="lnt">71
+</span><span class="lnt">72
+</span><span class="lnt">73
+</span><span class="lnt">74
+</span><span class="lnt">75
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="cp">#ifndef MUDUO_NET_SOCKET_H
@@ -4379,17 +4405,24 @@
 </span></span><span class="line"><span class="cl">  <span class="kt">int</span> <span class="nf">fd</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span> <span class="k">return</span> <span class="n">sockfd_</span><span class="p">;</span> <span class="p">}</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">  <span class="c1">/// abort if address in use
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="c1">// 调用bind绑定服务器IP端口
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="kt">void</span> <span class="nf">bindAddress</span><span class="p">(</span><span class="k">const</span> <span class="n">InetAddress</span> <span class="o">&amp;</span><span class="n">localaddr</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">  <span class="c1">/// abort if address in use
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="c1">// 调用listen监听套接字
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="kt">void</span> <span class="nf">listen</span><span class="p">();</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">  <span class="c1">/// On success, returns a non-negative integer that is
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="c1">/// a descriptor for the accepted socket, which has been
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="c1">/// set to non-blocking and close-on-exec. *peeraddr is assigned.
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="c1">/// On error, -1 is returned, and *peeraddr is untouched.
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="c1">// 调用accept接受新客户连接请求
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="kt">int</span> <span class="nf">accept</span><span class="p">(</span><span class="n">InetAddress</span> <span class="o">*</span><span class="n">peeraddr</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">  <span class="kt">void</span> <span class="nf">shutdownWrite</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">  <span class="c1">// 调用shutdown关闭服务端写通道
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="kt">void</span> <span class="nf">shutdownWrite</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="cm">/* 下面四个函数都是调用setsockopt来设置一些socket选项 */</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">  <span class="c1">/// Nagle
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="c1">/// 算法是频繁发一些小的数据包，会攒在一起发送，合并包发送。一般来说这个延迟时间是200毫秒
@@ -4409,12 +4442,12 @@
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="c1">/// Enable/disable SO_KEEPALIVE
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="c1">///
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="c1">//
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="c1">//TCP keepalive是指定期探测连接是否存在，如果应用层有心跳的话，这个选项不是必需要设置的
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="c1">// TCP keepalive是指定期探测连接是否存在，如果应用层有心跳的话，这个选项不是必需要设置的
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="kt">void</span> <span class="nf">setKeepAlive</span><span class="p">(</span><span class="kt">bool</span> <span class="n">on</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="k">private</span><span class="o">:</span>
-</span></span><span class="line"><span class="cl">  <span class="k">const</span> <span class="kt">int</span> <span class="n">sockfd_</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span><span class="line"><span class="cl">  <span class="k">const</span> <span class="kt">int</span> <span class="n">sockfd_</span><span class="p">;</span> <span class="c1">//服务器监听套接字文件描述符
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">};</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="p">}</span> <span class="c1">// namespace net
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">}</span> <span class="c1">// namespace muduo
@@ -4526,8 +4559,93 @@
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">}</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><h2 id="19-buffer的设计">19. Buffer的设计</h2>
-<h2 id="20-acceptor-分析">20. Acceptor 分析</h2>
+</div><h2 id="19-buffer">19. Buffer</h2>
+<p>Buffer类其实是封装了一个用户缓冲区，以及向这个缓冲区写数据读数据等一系列控制方法。</p>
+<h3 id="191-设计思想">19.1 设计思想</h3>
+<p>这个缓冲区类的实现值得参考和借鉴，以前我们写的只支持一次性全部读出和写入，而这个Buffer类可以读一点，写一点，内部逻辑稳定。这个Buffer类是vector（方便动态扩容），对外表现出std::queue的特性，它的内部原理大概就是下图这样子的，用两个游标（readerIndex_和writerIndex_）标记可读缓冲区的起始位置和空闲空间的起始位置。</p>
+<p><img
+    class="lazyload"
+    src="/svg/loading.min.svg"
+    data-src="../../imgs/muduo/Buffer_index.jpg"
+    data-srcset="../../imgs/muduo/Buffer_index.jpg, ../../imgs/muduo/Buffer_index.jpg 1.5x, ../../imgs/muduo/Buffer_index.jpg 2x"
+    data-sizes="auto"
+    alt="Buffer游标"
+    title="Buffer游标"/></p>
+<p>其中需要关注的就是，随着写入数据和读入数据，蓝色的空闲空间会越来越少，prependable空间会越来越大，当什么时候空用空间耗尽了，就会向步骤4一样，把所有数据拷贝前移，重新调整。另外当整个缓冲区的prependable空间和蓝色的空闲空间都无法装下新来的数据时，那就会调用vector的resize，实现扩容机制。</p>
+<h3 id="192-几个重要的成员函数">19.2 几个重要的成员函数</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="c1">// 将data数据添加到缓冲区中
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">append</span><span class="p">(</span><span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">data</span><span class="p">,</span> <span class="n">size_t</span> <span class="n">len</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// 获取缓冲区中长度为len的数据，并以strnig返回
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">string</span> <span class="nf">retrieveAsString</span><span class="p">(</span><span class="n">size_t</span> <span class="n">len</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// 获取缓冲区所有数据，并以string返回。
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">string</span> <span class="nf">retrieveAllAsString</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// 确保缓冲区可写空间&gt;=len，如果不足则扩充
+</span></span></span><span class="line"><span class="cl"><span class="c1">// 当你打算向缓冲区写入长度为len的数据之前，先调用这个函数，这个函数会检查你的缓冲区可写空间能不能装下长度为len的数据，如果不能，就动态扩容。
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kt">void</span> <span class="n">ensureWritableBytes</span><span class="p">(</span><span class="n">size_t</span> <span class="n">len</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>下面这个方法主要是封装了调用了上面几个方法：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="c1">/// Read data directly into buffer.
+</span></span></span><span class="line"><span class="cl"><span class="c1">///
+</span></span></span><span class="line"><span class="cl"><span class="c1">/// It may implement with readv(2)
+</span></span></span><span class="line"><span class="cl"><span class="c1">/// @return result of read(2), @c errno is saved
+</span></span></span><span class="line"><span class="cl"><span class="c1">// 客户端发来数据，readFd从该TCP接收缓冲区中将数据读出来并放到Buffer中。
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">ssize_t</span> <span class="nf">readFd</span><span class="p">(</span><span class="kt">int</span> <span class="n">fd</span><span class="p">,</span> <span class="kt">int</span> <span class="o">*</span><span class="n">savedErrno</span><span class="p">);</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>值得说明的是，目前写数据通过将Buffer中的数据拷贝到TCP发送缓冲区中，以如下方式处理：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="p">...</span>
+</span></span><span class="line"><span class="cl"><span class="n">ssize_t</span> <span class="n">n</span> <span class="o">=</span> <span class="n">sockets</span><span class="o">::</span><span class="n">write</span><span class="p">(</span><span class="n">channel_</span><span class="o">-&gt;</span><span class="n">fd</span><span class="p">(),</span> <span class="n">outputBuffer_</span><span class="p">.</span><span class="n">peek</span><span class="p">(),</span>
+</span></span><span class="line"><span class="cl">                              <span class="n">outputBuffer_</span><span class="p">.</span><span class="n">readableBytes</span><span class="p">());</span>
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="p">(</span><span class="n">n</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="n">outputBuffer_</span><span class="p">.</span><span class="n">retrieve</span><span class="p">(</span><span class="n">n</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="p">...</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">...</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="20-acceptor">20. Acceptor</h2>
 <p>套接字TCP服务器编程中，服务器需要一个监听套接字，该套接字用于监听客户端连接。</p>
 <p>&ldquo;监听套接字&quot;也是一个文件描述符，一个文件描述符在muduo中应该和一个Channel联系。<strong>muduo网络库将专用于监听连接的套接字操作封装成了Acceptor</strong>。所以一个Acceptor中一定会有一个套接字socket和一个Channel，有了Channel一定会关联一个EventLoop：</p>
 <div class="highlight"><div class="chroma">
@@ -4830,31 +4948,28 @@
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">typedef</span> <span class="n">boost</span><span class="o">::</span><span class="n">function</span><span class="o">&lt;</span><span class="kt">void</span><span class="p">(</span><span class="k">const</span> <span class="n">TcpConnectionPtr</span> <span class="o">&amp;</span><span class="p">,</span> <span class="n">Buffer</span> <span class="o">*</span><span class="p">,</span> <span class="n">Timestamp</span><span class="p">)</span><span class="o">&gt;</span>
 </span></span><span class="line"><span class="cl">    <span class="n">MessageCallback</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">ConnectionCallback</span> <span class="n">connectionCallback_</span><span class="p">;</span>       <span class="c1">// 连接的建立
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">MessageCallback</span> <span class="n">messageCallback_</span><span class="p">;</span>             <span class="c1">// 消息的到达
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">WriteCompleteCallback</span> <span class="n">writeCompleteCallback_</span><span class="p">;</span> <span class="c1">// 消息发送完毕
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">CloseCallback</span> <span class="n">closeCallback_</span><span class="p">;</span>                 <span class="c1">// 连接的断开
+</span></span><span class="line"><span class="cl"><span class="n">ConnectionCallback</span> <span class="n">connectionCallback_</span><span class="p">;</span>       <span class="c1">// 连接建立或关闭后的处理函数
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">MessageCallback</span> <span class="n">messageCallback_</span><span class="p">;</span>             <span class="c1">// 收到消息后的处理函数
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">WriteCompleteCallback</span> <span class="n">writeCompleteCallback_</span><span class="p">;</span> <span class="c1">// 消息发送完后的处理函数
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">CloseCallback</span> <span class="n">closeCallback_</span><span class="p">;</span>                 <span class="c1">// 连接关闭后的处理函数
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span>
 </span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">defaultConnectionCallback</span><span class="p">(</span><span class="k">const</span> <span class="n">TcpConnectionPtr</span> <span class="o">&amp;</span><span class="n">conn</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">defaultMessageCallback</span><span class="p">(</span><span class="k">const</span> <span class="n">TcpConnectionPtr</span> <span class="o">&amp;</span><span class="n">conn</span><span class="p">,</span> <span class="n">Buffer</span> <span class="o">*</span><span class="n">buffer</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">                            <span class="n">Timestamp</span> <span class="n">receiveTime</span><span class="p">);</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p>并提供了如下函数来设置这些回调函数：</p>
+</div><p>并提供了如下函数，来供用户自定义这些回调函数：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">setConnectionCallback</span><span class="p">(</span><span class="k">const</span> <span class="n">ConnectionCallback</span> <span class="o">&amp;</span><span class="n">cb</span><span class="p">)</span> <span class="p">{</span>
@@ -4866,12 +4981,21 @@
 </span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">setWriteCompleteCallback</span><span class="p">(</span><span class="k">const</span> <span class="n">WriteCompleteCallback</span> <span class="o">&amp;</span><span class="n">cb</span><span class="p">)</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">  <span class="n">writeCompleteCallback_</span> <span class="o">=</span> <span class="n">cb</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1">/// Internal use only.
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>而Muduo库中定义的如下函数:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="c1">/// Internal use only.
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kt">void</span> <span class="nf">setCloseCallback</span><span class="p">(</span><span class="k">const</span> <span class="n">CloseCallback</span> <span class="o">&amp;</span><span class="n">cb</span><span class="p">)</span> <span class="p">{</span> <span class="n">closeCallback_</span> <span class="o">=</span> <span class="n">cb</span><span class="p">;</span> <span class="p">}</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p>这几个函数都是在TcpServer中传递的，所以在后续的TcpServer分析中会具体介绍这些函数。</p>
+</div><p>它与TcpServer::removeConnection或TcpClient::removeConnection函数进行绑定。</p>
+<p>上面几个函数都是在TcpServer或TcpClient中传递的，所以在后续的TcpServer分析中会具体介绍这些函数。</p>
 <h3 id="213-发送和接收缓冲区">21.3 发送和接收缓冲区</h3>
 <p>TcpConnection使用Buffer作为发送和接收缓冲区：</p>
 <div class="highlight"><div class="chroma">
@@ -5041,6 +5165,7 @@
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p>该函数利用了readv函数、iovec结构体和Buffer。vec[0]指向的是Buffer的写指针地址，vec[1]指向的是extrabuf的地址。这样做是为了双保险，如果读出的数据比较小，Buffer可以容纳，那么就全部读到Buffer中了，如果读出的数据很多，Buffer不够用了，那么还有65535字节的缓冲区可以接收这些数据，读出来的一些数据就保持在了Buffer中，剩下数据在extrabuf里，所以需要将在extrabuf中的数据再次append到Buffer中，Buffer也会适当扩容，最后所有数据都在Buffer中了。</p>
+<p>readFd巧妙的设计，可以让用户一次性把所有TCP接收缓冲区的所有数据全部都读出来并放到用户自定义的缓冲区Buffer中。用户自定义缓冲区Buffer是有大小限制的，我们一开始不知道TCP接收缓冲区中的数据量有多少，如果一次性读出来会不会导致Buffer装不下而溢出？所以在readFd()函数中会在栈上创建一个临时空间extrabuf，然后使用readv的分散读特性，将TCP缓冲区中的数据先拷贝到Buffer中，如果Buffer容量不够，就把剩余的数据都拷贝到extrabuf中，然后再调整Buffer的容量(动态扩容)，再把extrabuf的数据拷贝到Buffer中。当这个函数结束后，extrabuf也会被释放。另外extrabuf是在栈上开辟的空间，速度比在堆上开辟还要快。</p>
 <blockquote>
 <p><a href="https://blog.csdn.net/KingCat666/article/details/75269373"target="_blank" rel="external nofollow noopener noreferrer">linux ioctl()函数详解</a></p>
 </blockquote>
@@ -5073,15 +5198,15 @@
 </span></span><span class="line"><span class="cl">  <span class="n">channel_</span><span class="o">-&gt;</span><span class="n">disableAll</span><span class="p">();</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">  <span class="n">TcpConnectionPtr</span> <span class="nf">guardThis</span><span class="p">(</span><span class="n">shared_from_this</span><span class="p">());</span>
-</span></span><span class="line"><span class="cl">  <span class="n">connectionCallback_</span><span class="p">(</span><span class="n">guardThis</span><span class="p">);</span> <span class="c1">// 这一行，可以不调用=》没懂
+</span></span><span class="line"><span class="cl">  <span class="n">connectionCallback_</span><span class="p">(</span><span class="n">guardThis</span><span class="p">);</span> <span class="c1">// 调用连接建立或关闭后的处理函数
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="n">LOG_TRACE</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;[7] usecount=&#34;</span> <span class="o">&lt;&lt;</span> <span class="n">guardThis</span><span class="p">.</span><span class="n">use_count</span><span class="p">();</span>
 </span></span><span class="line"><span class="cl">  <span class="c1">// must be the last line
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="n">closeCallback_</span><span class="p">(</span><span class="n">guardThis</span><span class="p">);</span> <span class="c1">// 调用TcpServer::removeConnection
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="n">closeCallback_</span><span class="p">(</span><span class="n">guardThis</span><span class="p">);</span> <span class="c1">// 调用TcpServer::removeConnection或TcpClient::removeConnection
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="n">LOG_TRACE</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;[11] usecount=&#34;</span> <span class="o">&lt;&lt;</span> <span class="n">guardThis</span><span class="p">.</span><span class="n">use_count</span><span class="p">();</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p>该函数设置state_为kDisconnected，将连接套接字及其Channel从EventLoop的Poller中解除监听，然后依次调用connectionCallback_和closeCallback_函数。<strong>断开连接也属于connectionCallback_</strong>。  ？？？？？？？？？？</p>
+</div><p>该函数设置state_为kDisconnected，将连接套接字及其Channel从EventLoop的Poller中解除监听，然后依次调用connectionCallback_和closeCallback_函数。<strong>断开连接也属于connectionCallback_</strong>。(连接到来或者连接关闭都会调用ConnectionCallback回调函数)</p>
 <p>如果读取出现错误，那么将调用handleError函数：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -5299,6 +5424,9 @@
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p>它会继续判断，当前的Buffer缓冲区里的数据长度(oldLen)与需要发送数据长度(remaining)之和是否大于&quot;高水位标志&quot;highWaterMark_，而且Buffer缓冲区内的数据小于highWaterMark_，是否设置了&quot;高水位标志&quot;回调函数highWaterMarkCallback_，如果设置了，那么执行highWaterMarkCallback_函数。然后将发送数据中没有发送的部分拷贝到Buffer中，然后使能&quot;写&quot;。接下来的数据就交给Poller返回后调用TcpConnection::handleWrite函数处理了。</p>
+<blockquote>
+<p>因为Tcp发送缓冲区是有大小限制的，假如达到了高水位线，就没办法把发送的数据通过send()直接拷贝到Tcp发送缓冲区，而是暂存在这个outputBuffer_中，等TCP发送缓冲区有空间了，触发可写事件了，再把outputBuffer_中的数据拷贝到Tcp发送缓冲区中。</p>
+</blockquote>
 <h3 id="217-写事件处理">21.7 &ldquo;写&quot;事件处理</h3>
 <p>在构造函数中做过如下设置：</p>
 <div class="highlight"><div class="chroma">
@@ -5439,8 +5567,30 @@
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p>使用该函数来断开连接。</p>
+<h3 id="218-tcpconnection生存期管理">21.8 TcpConnection生存期管理</h3>
+<p><img
+    class="lazyload"
+    src="/svg/loading.min.svg"
+    data-src="../../imgs/large_concurrency/TcpServer&amp;TcpConnection_close.png"
+    data-srcset="../../imgs/large_concurrency/TcpServer&amp;TcpConnection_close.png, ../../imgs/large_concurrency/TcpServer&amp;TcpConnection_close.png 1.5x, ../../imgs/large_concurrency/TcpServer&amp;TcpConnection_close.png 2x"
+    data-sizes="auto"
+    alt="连接关闭时序图"
+    title="连接关闭时序图"/></p>
+<p>第5步，在TcpSever中removeConnection 移除掉TcpConnection, 正常应该在移除后销毁掉TcpConnection，但是不能销毁，如果现在销毁了TcpConnection的Channel对象也就跟着销毁了，而这时调用Channel的handleEvent() 函数，就会出现Core Dump，所以说TcpConnection 的生命期应该长于Channel对象。</p>
+<p>当连接到来，创建一个TcpConnection对象，立刻用share_ptr 来管理，引用计数为1，</p>
+<p>在Channel中维护一个weak_ptr(tie_)，将这个share_ptr 对象赋值给tie_，引用计数仍为1，</p>
+<p>当连接关闭，在handleEvent()，将tie_提升，得到一个share_ptr 对象，引用计数就变成了2。</p>
+<p>第6步TcpServer 中erase 后引用计数变为1，第七步queueInLoop 加入bind 引用计数变为2，handleEvent 执行完引用计数减1变为1，bind执行完后引用计数变为0，自动销毁。</p>
 <h2 id="22-tcpserver">22. TcpServer</h2>
-<p>TcpServer中融合了前面讲过的几乎所有东西。</p>
+<p>TcpServer中融合了前面讲过的几乎所有东西，通过TcpServer 提供了三个成员函数来注册三个回调函数，连接成功和断开用了同一个回调函数。</p>
+<p><img
+    class="lazyload"
+    src="/svg/loading.min.svg"
+    data-src="../../imgs/muduo/TcpServer.png"
+    data-srcset="../../imgs/muduo/TcpServer.png, ../../imgs/muduo/TcpServer.png 1.5x, ../../imgs/muduo/TcpServer.png 2x"
+    data-sizes="auto"
+    alt="TcpServer"
+    title="TcpServer"/></p>
 <h3 id="221-io-线程">22.1 I/O 线程</h3>
 <p>TcpServer 正如其名，是一个服务器，而且是一个可以支持多线程Reactor的服务器，所以该服务器必须要有诸多IO线程：</p>
 <div class="highlight"><div class="chroma">
@@ -5529,7 +5679,7 @@
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p>此时的Acceptor还没有加入事件监听中(没有调用Acceptor::listen())。Acceptor需要TcpServer传入一个函数来处理连接事件(Acceptor只负责处理连接，所以只关注读事件)：</p>
+</div><p>此时的Acceptor还没有加入事件监听中，也就是没有调用Acceptor::listen()方法。Acceptor需要TcpServer传入一个函数来处理连接事件，因为Acceptor只负责处理连接，所以只关注读事件：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
@@ -5570,7 +5720,7 @@
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p>而该函数便是TcpServer::newConnection，该函数在下面详细介绍。</p>
+</div><p>而这个函数便是TcpServer::newConnection，该函数在下面详细介绍。</p>
 <h3 id="223-启动服务器">22.3 启动服务器</h3>
 <p>调用该函数即可启动服务器：</p>
 <div class="highlight"><div class="chroma">
@@ -5727,7 +5877,7 @@
 </span></span><span class="line"><span class="cl"><span class="n">ConnectionMap</span> <span class="n">connections_</span><span class="p">;</span> <span class="c1">// 连接列表
 </span></span></span></code></pre></td></tr></table>
 </div>
-</div><p>再设置该TcpConnection的对应的回调事件，其中connectionCallback_和messageCallback_在构造函数中设置了默认处理函数，这两个默认函数里没有做任何实事：</p>
+</div><p>再设置该TcpConnection的对应的三个半的回调事件，其中connectionCallback_和messageCallback_在构造函数中设置了默认处理函数，这两个默认函数里没有做任何实事：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
@@ -5788,6 +5938,9 @@
 </span><span class="lnt">15
 </span><span class="lnt">16
 </span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="c1">/// Set connection callback.
@@ -5807,6 +5960,9 @@
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kt">void</span> <span class="nf">setWriteCompleteCallback</span><span class="p">(</span><span class="k">const</span> <span class="n">WriteCompleteCallback</span> <span class="o">&amp;</span><span class="n">cb</span><span class="p">)</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">  <span class="n">writeCompleteCallback_</span> <span class="o">=</span> <span class="n">cb</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">/// Internal use only.
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kt">void</span> <span class="nf">setCloseCallback</span><span class="p">(</span><span class="k">const</span> <span class="n">CloseCallback</span> <span class="o">&amp;</span><span class="n">cb</span><span class="p">)</span> <span class="p">{</span> <span class="n">closeCallback_</span> <span class="o">=</span> <span class="n">cb</span><span class="p">;</span> <span class="p">}</span>
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p>需要注意的是，连接关闭回调函数绑定的是TcpServer::removeConnection：</p>
@@ -6331,7 +6487,7 @@
 </span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="24-tcpclient">24. TcpClient</h2>
-<p>在上一章的Connector中说到&quot;在该函数中只是获取到连接成功套接字的文件描述符sockfd，并且将Channel清除，然后调用newConnectionCallback_函数，该函数在TcpClient中传入&rdquo;，Connector::handleWrite函数是被TcpClient调用的，那么我们先一窥newConnectionCallback_函数究竟。</p>
+<p>在Connector中说到&quot;在该函数中只是获取到连接成功套接字的文件描述符sockfd，并且将Channel清除，然后调用newConnectionCallback_函数，该函数在TcpClient中传入&rdquo;，Connector::handleWrite函数是被TcpClient调用的，那么我们先一窥newConnectionCallback_函数究竟。</p>
 <p>在此之前，先看看TcpClient中的Connector：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -6435,7 +6591,218 @@
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p>该函数将连接成功的socfd封装为一个TcpConnection，并设置&quot;三个半&quot;回调事件函数。好的，到了这里就解释了前面Connector为什么不自己持有一个sockfd、为什么要在连接成功时清空Channel等诸多问题。拿到连接成功套接字后，创建TcpConnection与服务器进行数据交换。</p>
-<h2 id="25-阶段性总结">25. 阶段性总结</h2>
+<h2 id="25-tcp网络编程本质">25 TCP网络编程本质</h2>
+<p>TCP网络编程最本质是的处理三个半事件：</p>
+<ul>
+<li>连接建立：服务器accept(被动)接受连接，客户端connect(主动)发起连接</li>
+<li>连接断开：主动断开(close、shutdown)，被动断开(read返回0)</li>
+<li>消息到达：文件描述符可读</li>
+<li>消息发送完毕：这算半个。对于低流量的服务，可不必关心这个事件;这里的发送完毕是指数据写入操作系统缓冲区，将由TCP协议栈负责数据的发送与重传，不代表对方已经接收到数据。</li>
+</ul>
+<p>一个套接字有两个缓冲区，一个接收缓冲区一个发送缓冲区，当一个套接字到来的时候先被内核缓冲区接收。</p>
+<p><img
+    class="lazyload"
+    src="/svg/loading.min.svg"
+    data-src="../../imgs/muduo/buf.png"
+    data-srcset="../../imgs/muduo/buf.png, ../../imgs/muduo/buf.png 1.5x, ../../imgs/muduo/buf.png 2x"
+    data-sizes="auto"
+    alt="缓冲区"
+    title="缓冲区"/></p>
+<p>当网络库事件循环中的可读事件触发，会将数据从内核缓冲区移动到应用缓冲区中。并且网络库会回调函数，如：OnMessage。由于TCP接收到的数据可能是宕包，OnMessage这个函数会根据协议判断这个数据包是否是完整的数据包，如果不是完整的数据OnMessage立刻返回，直到内核当中又有数据接收，进行下一次循环操作；如果读到完整的数据，将进行常规处理(read-&gt;decode-&gt;compute-&gt;encode-&gt;write-&gt;进行下一次事件循环)。</p>
+<p>调用write(buf,..)函数：如果数据全部填充到了内核缓冲区，网络库回调一个函数，如：OnWriteComplete函数。如果内核缓冲区的不足以容纳buf数据，就会将buf部分的数据放入进来，不足以容纳的数据存放到应用层的发送缓冲区当中。内核的发送缓冲区的数据发送完成后会触发可写事件，继续下一次的事件循环。</p>
+<h3 id="251-连接建立">25.1 连接建立</h3>
+<p><img
+    class="lazyload"
+    src="/svg/loading.min.svg"
+    data-src="../../imgs/muduo/Connection.jpg"
+    data-srcset="../../imgs/muduo/Connection.jpg, ../../imgs/muduo/Connection.jpg 1.5x, ../../imgs/muduo/Connection.jpg 2x"
+    data-sizes="auto"
+    alt="连接建立的代码逻辑"
+    title="连接建立的代码逻辑"/></p>
+<ol>
+<li>当我们创建一个TcpServer对象，构造函数将实例化了一个Acceptor对象，并往这个Acceptor对象注册了一个回调函数TcpServer::newConnection()。</li>
+<li>Acceptor的构造函数会实例化一个Channel对象，即acceptChannel_，该Channel对象封装了服务器监听套接字文件描述符（尚未注册到main EventLoop的事件监听器上）。</li>
+<li>接着Acceptor构造函数将Acceptor::handleRead()方法注册进acceptChannel_中，这也意味着，以后如果事件监听器监听到acceptChannel_发生可读事件，将会调用Acceptor::handleRead()函数。</li>
+<li>至此，TcpServer对象创建完毕，用户调用TcpServer::start()方法，启动TcpServer。</li>
+<li>cpServer::start()方法主要是调用Acceptor::listen()函数（底层是调用了linux的函数listen()）监听服务器套接字，以及将acceptChannel_注册到main EventLoop的事件监听器上监听它的可读事件（新用户连接事件）。</li>
+<li>接着用户调用loop.loop()，即调用了EventLoop::loop()函数，该函数就会循环的获取事件监听器的监听结果，并且根据监听结果调用注册在事件监听器上的Channel对象的事件处理函数。</li>
+<li>当回调Acceptor::handleRead()函数，说明acceptChannel_发生可读事件，程序处理新客户连接请求。该函数首先调用了Linux的函数accept()接受新客户连接。接着调用了TcpServer::newConnection()函数，这个函数是TcpServer注册给Acceptor，并由TcpServer成员变量newConnectionCallback_保存。</li>
+<li>TcpServer::newConnection()函数的主要功能就是将建立好的连接进行封装（封装成TcpConnection对象），并使用轮询的方式选择一个sub EventLoop，并调用TcpConnection::connectEstablished()将TcpConnection::channel_注册到刚刚选择的sub EventLoop上。</li>
+</ol>
+<h3 id="252-消息到达">25.2 消息到达</h3>
+<p><img
+    class="lazyload"
+    src="/svg/loading.min.svg"
+    data-src="../../imgs/muduo/TcpConnection.jpg"
+    data-srcset="../../imgs/muduo/TcpConnection.jpg, ../../imgs/muduo/TcpConnection.jpg 1.5x, ../../imgs/muduo/TcpConnection.jpg 2x"
+    data-sizes="auto"
+    alt="TcpConnection对象"
+    title="TcpConnection对象"/></p>
+<p>在main EventLoop中接受新连接请求之后，将这条Tcp连接封装成TcpConnection对象。其主要封装了连接套接字的fd(socket_)、连接套接字的channel_等。在TcpConnection的构造函数中会将TcpConnection::handleRead()、TcpConnection::handleWrite()、TcpConnection::handleClose()、TcpConnection::handleError()这个四个方法注册进这个channel_内。当TcpConnection对象建立完毕之后，main EventLoop的Acceptor会将这个TcpConnection对象中的channel_注册到某一个SubEventLoop中。</p>
+<p><img
+    class="lazyload"
+    src="/svg/loading.min.svg"
+    data-src="../../imgs/muduo/Message.jpg"
+    data-srcset="../../imgs/muduo/Message.jpg, ../../imgs/muduo/Message.jpg 1.5x, ../../imgs/muduo/Message.jpg 2x"
+    data-sizes="auto"
+    alt="消息读取逻辑"
+    title="消息读取逻辑"/></p>
+<p>如上图所示，SubEventLoop中的EventLoop::loop()函数内部会循环的执行上图中的步骤1和步骤2。</p>
+<ul>
+<li>步骤1就是调用Poller::poll()方法获取事件监听结果，这个事件监听结果是一个Channel集合，每一个Channel封装着一个fd及fd感兴趣的事件和事件监听器监听到该fd实际发生的事件。</li>
+<li>步骤2就是调用每一个Channel的Channel::HandlerEvent方法。该方法会根据每一个Channel的感兴趣事件以及实际发生的事件调用提前注册在Channel内的对应的事件处理函数（readCallback_、writeCallback_、closeCallback_、errorCallback_)。readCallback_保存的函数其实是TcpConnection::handleRead()，消息读取的处理逻辑也就是由这个函数提供的。</li>
+</ul>
+<p>TcpConnection::handleRead()函数首先调用Buffer_.readFd(channel_-&gt;fd(), &amp;saveErrno)，该函数底层调用Linux的函数readv()，将Tcp接收缓冲区数据拷贝到用户定义的缓冲区中（inputBuffer_）。如果在读取拷贝的过程中发生了什么错误，这个错误信息就会保存在savedErrno中。</p>
+<ul>
+<li>当readFd()返回值大于0，说明从接收缓冲区中读取到了数据，那么会接着调用messageCallback_中保存的用户自定义的读取消息后的处理函数。</li>
+<li>当readFd()返回值等于0，说明客户端连接关闭，这时候应该调用TcpConnection::handleClose()来处理连接关闭事件。</li>
+<li>当readFd()返回值等于-1，说明发生了错误，调用TcpConnection::handleError()来处理savedErrno的错误事件。</li>
+</ul>
+<p>Moduo库只支持LT模式，所以读事件不会出现EAGAIN的错误，所以一旦出现错误，说明肯定是比较不好的非正常错误了。而EAGAIN错误只不过是非阻塞IO调用时的一种常见错误而已。</p>
+<h3 id="253-消息发送完毕">25.3 消息发送完毕</h3>
+<p>当用户调用了TcpConnetion::send(buf)函数时，相当于要求muduo库把数据buf发送给该Tcp连接的客户端。此时该TcpConnection注册在事件监听器上的感兴趣事件中是没有可写事件的。TcpConnection::send(buf)函数内部，对持有的Channel设置&quot;写行为&rdquo;，当内核发送缓冲区有空间了，回调TcpConnection::handleWrite()，其内部就会调用了Linux的函数write()。如果TCP发送缓冲区能一次性容纳buf，那这个write()函数将buf全部拷贝到发送缓冲区中，就停止&quot;写行为&rdquo;，否则等到下一次事件循环再次回调TcpConnection::handleWrite()函数，直至清空发送缓冲区。</p>
+<h3 id="254-连接断开">25.4 连接断开</h3>
+<p>连接断开分为：主动断开(close、shutdown)和被动断开(read返回0)。</p>
+<h4 id="2541-被动断开">25.4.1 被动断开</h4>
+<p>服务端TcpConnection::handleRead()中read返回0感知到客户端把连接断开了。TcpConnection::handleRead()函数内部调用了Linux的函数readv()，当readv()返回0的时候，服务端就知道客户端断开连接了。然后就接着调用TcpConnection::handleClose()。</p>
+<p><img
+    class="lazyload"
+    src="/svg/loading.min.svg"
+    data-src="../../imgs/muduo/passive_disconnect.jpg"
+    data-srcset="../../imgs/muduo/passive_disconnect.jpg, ../../imgs/muduo/passive_disconnect.jpg 1.5x, ../../imgs/muduo/passive_disconnect.jpg 2x"
+    data-sizes="auto"
+    alt="被动断开"
+    title="被动断开"/></p>
+<ol>
+<li>在执行TcpConnection::handleClose()的时候，该函数还是在sub EventLoop线程中运行的，接着调用closeCallback_(const TcpConnectionPtr &amp;connPtr)回调函数，该函数保存的其实是TcpServer::removeConnection()函数。</li>
+<li>TcpServer::removeConnection()函数调用了removeConnectionInLoop()函数，该函数的运行是在main EventLoop线程中执行的。</li>
+<li>removeConnectionInLoop()函数：TcpServer对象中有一个connections_成员变量，这是一个unordered_map，负责保存string &ndash;&gt; TcpConnection的映射，其实就是保存着Tcp连接的名字到TcpConnection对象的映射。因为这个Tcp连接要关闭了，所以也要把这个TcpConnection对象从connections_中删掉。然后再调用TcpConnection::connectDestroyed函数。</li>
+</ol>
+<blockquote>
+<p>为什么removeConnectionInLoop()要在main EventLoop中运行，因为该函数需要从TcpServer对象中删除某条数据。而TcpServer对象是属于main EventLoop的。这也是贯彻了One Loop Per Thread的理念。</p>
+</blockquote>
+<ol start="4">
+<li>TcpConnection::connectDestroyed()函数的执行是又跳回到了sub EventLoop线程中。该函数就是将Tcp连接的监听描述符从事件监听器中移除。另外sub EventLoop中的Poller类对象还保存着这条Tcp连接的channel_，所以调用channel_.remove()将这个Tcp连接的channel对象从Poller内的数据结构中删除。</li>
+</ol>
+<h4 id="2542-主动断开">25.4.2 主动断开</h4>
+<p>当服务器主动关闭时，调用TcpServer::~TcpServer()析构函数。</p>
+<p>在创建TcpConnection对象时，Acceptor都要将这个对象分发给一个sub EventLoop来管理。这个TcpConnection对象的一切函数执行都要在其管理的sub EventLoop线程中运行。再一次贯彻One Loop Per Thread的设计模式。比如要想彻底删除一个TcpConnection对象，就必须要调用这个对象的connecDestroyed()方法，<strong>这个方法执行完后才能释放这个对象的堆内存</strong>。每个TcpConnection对象的connectDestroyed()方法都必须在这个TcpConnection对象所属的SubEventLoop绑定的线程中执行。</p>
+<p><img
+    class="lazyload"
+    src="/svg/loading.min.svg"
+    data-src="../../imgs/muduo/~TcpConnection.jpg"
+    data-srcset="../../imgs/muduo/~TcpConnection.jpg, ../../imgs/muduo/~TcpConnection.jpg 1.5x, ../../imgs/muduo/~TcpConnection.jpg 2x"
+    data-sizes="auto"
+    alt="析构TcpConnection"
+    title="析构TcpConnection"/></p>
+<p>不断循环的让这个TcpConnection对象所属的SubEventLoop线程执行TcpConnection::connectDestroyed()函数，同时在MainEventLoop的TcpServer::~TcpServer()函数中调用item.second.reset()释放保管TcpConnection对象的共享智能指针，以达到释放TcpConnection对象的堆内存空间的目的。</p>
+<p>TcpConnection::connectDestroyed()函数的执行以及这个TcpConnection对象的堆内存释放操作不在同一个线程中运行，所以要考虑怎么保证一个TcpConnectino对象的堆内存释放操作是在TcpConnection::connectDestroyed()调用完后。这个析构函数巧妙利用了共享智能指针的特点，当没有共享智能指针指向这个TcpConnection对象时（引用计数为0），这个TcpConnection对象就会被析构删除（堆内存释放）。</p>
+<p>TcpServer::~TcpServer()中的代码逻辑：</p>
+<ol>
+<li>首先TcpServer::connections_是一个unordered_map&lt;string, TcpConnectionPtr&gt;，其中TcpConnectionPtr的含义是指向TcpConnection的shared_ptr。</li>
+<li>在一开始，每一个TcpConnection对象都被一个共享智能指针TcpConnetionPtr持有，当执行了TcpConnectionPtr conn = it-&gt;second;时，这个TcpConnetion对象就被conn和这个item.second共同持有，但是这个conn的生存周期很短，只要离开了当前的这一次for循环，conn就会被释放。</li>
+<li>紧接着调用it-&gt;second.reset()释放掉TcpServer中保存的该TcpConnectino对象的智能指针。此时在当前情况下，只剩下conn还持有这个TcpConnection对象，因此当前TcpConnection对象还不会被析构。</li>
+<li>接着调用了conn-&gt;getLoop()-&gt;runInLoop(bind(&amp;TcpConnection::connectDestroyed, conn));，是让sub EventLoop线程去执行TcpConnection::connectDestroyed()函数。当你把这个conn的成员函数传进去的时候，conn所指向的资源的引用计数会加1。因为传给runInLoop的不只有函数，还有这个函数所属的对象conn。</li>
+<li>sub EventLoop线程开始运行TcpConnection::connectDestroyed()</li>
+<li>main EventLoop线程当前这一轮for循环跑完，共享智能指针conn离开代码块，因此被析构，但是TcpConnection对象还不会被释放，因为还有一个共享智能指针指向这个TcpConnection对象，而且这个智能指针在TcpConnection::connectDestroyed()中，只不过这个智能指针你看不到，它在这个函数中是一个隐式的this的存在。当这个函数执行完后，智能指针就真的被释放了。到此，就没有任何智能指针指向这个TcpConnection对象了。TcpConnection对象就彻底被析构删除了。</li>
+</ol>
+<p>如果TcpConnection中有正在发送的数据，怎么保证在触发TcpConnection关闭机制后，能先让TcpConnection先把数据发送完再释放TcpConnection对象的资源？</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="kt">void</span> <span class="n">TcpConnection</span><span class="o">::</span><span class="n">connectEstablished</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="n">loop_</span><span class="o">-&gt;</span><span class="n">assertInLoopThread</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">  <span class="n">assert</span><span class="p">(</span><span class="n">state_</span> <span class="o">==</span> <span class="n">kConnecting</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="n">setState</span><span class="p">(</span><span class="n">kConnected</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="n">LOG_TRACE</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;[3] usecount=&#34;</span> <span class="o">&lt;&lt;</span> <span class="n">shared_from_this</span><span class="p">().</span><span class="n">use_count</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">  <span class="c1">// enable_shared_from_this是一个以其派生类为模板类型参数的基类模板，继承它，派生类的this指针就能变成一个shared_ptr。
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="n">channel_</span><span class="o">-&gt;</span><span class="n">tie</span><span class="p">(</span><span class="n">shared_from_this</span><span class="p">());</span>
+</span></span><span class="line"><span class="cl">  <span class="n">channel_</span><span class="o">-&gt;</span><span class="n">enableReading</span><span class="p">();</span> <span class="c1">// TcpConnection所对应的通道加入到Poller关注
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl">  <span class="n">connectionCallback_</span><span class="p">(</span><span class="n">shared_from_this</span><span class="p">());</span>
+</span></span><span class="line"><span class="cl">  <span class="n">LOG_TRACE</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;[4] usecount=&#34;</span> <span class="o">&lt;&lt;</span> <span class="n">shared_from_this</span><span class="p">().</span><span class="n">use_count</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>TcpConnection类继承了一个类：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">TcpConnection</span> <span class="o">:</span><span class="k">public</span> <span class="n">std</span><span class="o">::</span><span class="n">enable_shared_from_this</span><span class="o">&lt;</span><span class="n">TcpConnection</span><span class="o">&gt;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>我们在TcpConnection对象中的成员函数中调用了shared_from_this()，该函数可以返回一个shared_ptr，并且这个shared_ptr指向的对象是TcpConnection本身。
+接着这个shared_ptr就作为channel_的Channel::tie()函数的函数参数。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="c1">//Channel.h
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">std</span><span class="o">::</span><span class="n">weak_ptr</span><span class="o">&lt;</span><span class="kt">void</span><span class="o">&gt;</span> <span class="n">tie_</span><span class="p">;</span> 
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="n">Channel</span><span class="o">::</span><span class="n">handleEvent</span><span class="p">(</span><span class="n">Timestamp</span> <span class="n">receiveTime</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="n">boost</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="kt">void</span><span class="o">&gt;</span> <span class="n">guard</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="k">if</span> <span class="p">(</span><span class="n">tied_</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">guard</span> <span class="o">=</span> <span class="n">tie_</span><span class="p">.</span><span class="n">lock</span><span class="p">();</span> <span class="c1">// 确定shared_ptr指针还存在
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="k">if</span> <span class="p">(</span><span class="n">guard</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="n">handleEventWithGuard</span><span class="p">(</span><span class="n">receiveTime</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">handleEventWithGuard</span><span class="p">(</span><span class="n">receiveTime</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>当事件监听器返回监听结果，就要对每一个发生事件的Channel对象调用它们的handleEvent()函数。在这个handleEvent函数中，会先把tie_这个weak_ptr提升为强共享智能指针。这个强共享智能指针会指向当前的TcpConnection对象。就算你外面调用删除析构了其他所有的指向该TcpConnection对象的智能指针。你只要handleEventWithGuard()函数没执行完，你这个TcpConnetion对象都不会被析构释放堆内存。而handleEventWithGuard()函数里面就有负责处理消息发送事件的逻辑。当handleEventWithGuard()函数调用完毕，这个guard智能指针就会被释放。</p>
+<h2 id="26-阶段性总结">26. 阶段性总结</h2>
+<p><code>multiple reactors + threadpool (one loop per thread + threadpool)</code>：Reactor 最核心的事件就是事件分发机制，即将IO multiplexing 拿到的IO事件分发给各个文件描述符(fd)的事件处理函数(handle)。</p>
+<p>EventLoop起到一个驱动循环的功能，Poller负责从事件监听器上获取监听结果。而Channel类则在其中起到了将fd及其相关属性封装的作用，将fd及其感兴趣事件和发生的事件以及不同事件对应的回调函数封装在一起，这样在各个模块中传递更加方便。</p>
+<p><img
+    class="lazyload"
+    src="/svg/loading.min.svg"
+    data-src="../../imgs/muduo/Multi-Reactor.jpg"
+    data-srcset="../../imgs/muduo/Multi-Reactor.jpg, ../../imgs/muduo/Multi-Reactor.jpg 1.5x, ../../imgs/muduo/Multi-Reactor.jpg 2x"
+    data-sizes="auto"
+    alt="Muduo"
+    title="Muduo"/></p>
+<p>Muduo库是基于Reactor模式实现的TCP网络编程库。Multi-Reactor模型如下所示：</p>
+<p><img
+    class="lazyload"
+    src="/svg/loading.min.svg"
+    data-src="../../imgs/muduo/Multi-Reactor.png"
+    data-srcset="../../imgs/muduo/Multi-Reactor.png, ../../imgs/muduo/Multi-Reactor.png 1.5x, ../../imgs/muduo/Multi-Reactor.png 2x"
+    data-sizes="auto"
+    alt="Muduo"
+    title="Muduo"/></p>
 <p>一张图总结服务/客户端调用关系：</p>
 <p><img
     class="lazyload"
@@ -6445,13 +6812,30 @@
     data-sizes="auto"
     alt="Muduo"
     title="Muduo"/></p>
+<blockquote>
+<p>白色部分是外部类，对外可见的。灰色部分是内部类，对外不可见。黑色尖头是组合关系，负责生命周期。白色是聚合关系不负责生命周期。</p>
+</blockquote>
 <ul>
-<li>TcpConnection负责一个客户端连接成功套接字</li>
-<li>Acceptor负责一个服务器listen套接字</li>
-<li>Connector负责一个客户端connect套接字</li>
+<li>EventLoop是对事件的抽象。一个EventLoop的Poller对象包含多个Channel，也就是说可以扑捉多个Channel的多个可读、可写事件。</li>
+<li>Poller 是对IO 复用的抽象，有两个派生类：PollPoller 对poll 的封装，EPollPoller对epoll的封装。这个地方是muduo 唯一使用面向对象封装的。</li>
+<li>Channel 是对IO事件的注册和响应的封装。Channel 的Update成员函数负责注册和更新IO的可读可写等事件。Channel 的handleEvent()成员函数是对所发生的IO事件进行处理。</li>
+<li>Channel是selectable IO channel，负责注册与响应IO 事件，它不拥有file descriptor。</li>
+<li>Channel是Acceptor、Connector、EventLoop、TimerQueue、TcpConnection的成员，生命期由后者控制。EventLoop 有一个特殊的Channel 用来唤醒loop实现跨线程调用，这个特殊的Channel的生命期由EventLoop负责。</li>
+<li>TcpConnection负责一个客户端连接成功套接字，一旦被动连接(Acceptor)或主动连接(Connector)建立，就会得到一个已连接的套接字。</li>
+<li>Acceptor负责一个服务器listen套接字，Accept被动连接，连接成功后都会创建一个TcpConnection对象。</li>
+<li>Connector负责一个客户端connect套接字，Connector主动连接，连接成功后会创建一个TcpConnection对象。</li>
 <li>TcpServer中持有Acceptor，通过Acceptor获取新的连接套接字，然后TcpServer会为该连接套接字建立一个TcpConnection，然后往该TcpConnection中传递用户需要TcpServer相应事件对应的函数，用户传入的函数其实是和TcpConnection中的Channel间接绑定，然后在事件触发后被Channel间接执行。</li>
 <li>TcpClient中持有Connector，通过Connector里的Channel绑定一个连接套接字，在连接成功后，Connector会将该套接字转让给TcpClient，TcpClient中会为该连接套接字建立一个TcpConnection，然后往该TcpConnection中传递用户需要TcpClient相应事件对应的函数，用户传入的函数其实是和TcpConnection中的Channel间接绑定，然后在事件触发后被Channel间接执行。</li>
 </ul>
+<p>  EventLoop与Poller的关系是组合，一个EventLoop包含一个Poller，并且Poller的生命周期由EventLoop控制，EventLoop::loop()函数实际是通过Poller::poll()函数来实现的。</p>
+<p>  Channel是对I/O事件的注册与响应的封装，Channel::update()函数负责注册或更新I/O的可读和可写事件，同时会调用到EventLoop::updateChannel()函数，这个函数又会调用Poller::updateChannel()函数，相当于将这个Channle这个对象注册到Poller对象中，或者说将Channel对象中的fd(文件描述符)的可读、可写事件注册到Poller对象中；Channel::handleEvent()函数负责对所发生的I/O事件进行处理。一个EventLoop对象包含多个Channel对象，也就是说EventLoop可捕获多个Channel(通道)的可读、可写事件。一对多，且是聚合的关系。也就是说EventLoop不负责Channel的生命周期。Channel的生命周期由TcpConnection、Acceptor、Connector等等这些类来控制。Channel对象不拥有fd(文件描述符)，也就是说当Channel对象销毁的时候不关闭文件描述符。Channel对象和文件描述符是关联关系，一个Chanel有一个fd，一个EventLoop有多个fd，而这个fd是被套接字(Socket)所拥有的。也就是说fd的生命周期由套接字来控制，当套接字对象销毁时，文件描述符对象就会销毁(Socket::close)。</p>
+<p>  Chanel对象又是TcpConnection、Acceptor、Connector类的成员，它们与Channel对象之间也是组合关系，Channel的生命周期由它们来控制。</p>
+<p>  Acceptor是对被动连接的抽象，它关心的是监听事件的可读事件，监听事件的可读事件是由Channel来注册，触发事件调用Channel::handleEvent()函数，这个函数通过回调从而调用Acceptor::handleRead()函数来响应事件。这样的手法是基于对象的编程思想。</p>
+<p>  TcpConnection是对已连接套接字的抽象。</p>
+<p>  一旦被动连接(Acceptor)或主动连接(Connector)建立，就会得到一个已连接的套接字。即获得TcpConnection。</p>
+<p>  TcpServer和Acceptor是组合关系，TcpServer控制着Acceptor的生命周期。</p>
+<p>  TcpClient和Connector是组合关系，TcpClient控制着Connector的生命周期。</p>
+<p>  TcpServer与TcpConnection是聚合关系，一个TcpServer包含多个TcpConnection，但不控制TcpConnection的生命周期。</p>
 <h2 id="test">Test</h2>
 <h3 id="eventloop">EventLoop</h3>
 <p>启动两个事件循环：</p>
@@ -7537,7 +7921,7 @@
   <div class="post-info">
     <div class="post-info-line">
       <div class="post-info-mod">
-        <span title=2022-12-12&#32;00:00:00>Updated on 2022-12-12&nbsp;</span>
+        <span title=2022-12-17&#32;00:00:00>Updated on 2022-12-17&nbsp;</span>
       </div><div class="post-info-license">
           <span><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span>
         </div></div>
