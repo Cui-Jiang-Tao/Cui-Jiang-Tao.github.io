@@ -1,0 +1,16 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+  <channel>
+    <title>makefile - Tag - 学习记录</title>
+    <link>https://cui-jiang-tao.github.io/tags/makefile/</link>
+    <description>makefile - Tag - 学习记录</description>
+    <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>cjt953899262@gmail.com (cjt)</managingEditor>
+      <webMaster>cjt953899262@gmail.com (cjt)</webMaster><lastBuildDate>Thu, 29 Dec 2022 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://cui-jiang-tao.github.io/tags/makefile/" rel="self" type="application/rss+xml" /><item>
+  <title>makefile的简单例子</title>
+  <link>https://cui-jiang-tao.github.io/posts/makefile/</link>
+  <pubDate>Thu, 29 Dec 2022 00:00:00 &#43;0000</pubDate>
+  <author>cjt</author>
+  <guid>https://cui-jiang-tao.github.io/posts/makefile/</guid>
+  <description><![CDATA[示例 树形结构： 1 2 3 4 5 6 7 8 9 ubuntu@VM-12-11-ubuntu:~/c++/makefile$ tree . ├── factorial.cpp ├── functions.h ├── main.cpp ├── Makefile └── printHello.cpp 0 directories, 5 files functions.h 1 2 3 4 5 6 #ifndef FUNCTIONS_H #define FUNCTIONS_H #include &lt;iostream&gt; void printHello(); int factorial(int n); #endif factorial.cpp 1 2 3 4 5 6 7]]></description>
+</item>
+</channel>
+</rss>

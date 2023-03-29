@@ -1,0 +1,40 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+  <channel>
+    <title>逆向 - Category - 学习记录</title>
+    <link>https://cui-jiang-tao.github.io/categories/%E9%80%86%E5%90%91/</link>
+    <description>逆向 - Category - 学习记录</description>
+    <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>cjt953899262@gmail.com (cjt)</managingEditor>
+      <webMaster>cjt953899262@gmail.com (cjt)</webMaster><lastBuildDate>Mon, 20 Mar 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://cui-jiang-tao.github.io/categories/%E9%80%86%E5%90%91/" rel="self" type="application/rss+xml" /><item>
+  <title>常见的汇编指令</title>
+  <link>https://cui-jiang-tao.github.io/posts/x86%E5%B8%B8%E8%A7%81%E6%B1%87%E7%BC%96%E6%8C%87%E4%BB%A4/</link>
+  <pubDate>Mon, 20 Mar 2023 00:00:00 &#43;0000</pubDate>
+  <author>cjt</author>
+  <guid>https://cui-jiang-tao.github.io/posts/x86%E5%B8%B8%E8%A7%81%E6%B1%87%E7%BC%96%E6%8C%87%E4%BB%A4/</guid>
+  <description><![CDATA[标志位 在汇编语言中，标志位是用于标识CPU执行指令时出现的一些状态信息的标志。常见的标志位包括： 零标志位（ZF）：当指令执行的结果为零时，该]]></description>
+</item>
+<item>
+  <title>c&#43;&#43;反汇编揭秘</title>
+  <link>https://cui-jiang-tao.github.io/posts/c&#43;&#43;%E5%8F%8D%E6%B1%87%E7%BC%96%E6%8F%AD%E7%A7%98/</link>
+  <pubDate>Tue, 07 Feb 2023 00:00:00 &#43;0000</pubDate>
+  <author>cjt</author>
+  <guid>https://cui-jiang-tao.github.io/posts/c&#43;&#43;%E5%8F%8D%E6%B1%87%E7%BC%96%E6%8F%AD%E7%A7%98/</guid>
+  <description><![CDATA[4. 观察各种表达式的求值过程 4.1 加法 release版 1 2 3 4 5 6 7 8 9 10 11 #include &lt;stdio.h&gt; int main(int argc, char* argv[]) { int n1 = argc; int n2 = argc; //复写传播：n2等价于引用argc，]]></description>
+</item>
+<item>
+  <title>PE</title>
+  <link>https://cui-jiang-tao.github.io/posts/%E6%BB%B4%E6%B0%B4%E4%B8%89%E6%9C%9F/</link>
+  <pubDate>Tue, 07 Feb 2023 00:00:00 &#43;0000</pubDate>
+  <author>cjt</author>
+  <guid>https://cui-jiang-tao.github.io/posts/%E6%BB%B4%E6%B0%B4%E4%B8%89%E6%9C%9F/</guid>
+  <description><![CDATA[1. PE头字段解析 PE(Portable Executable)文件，是windows上的可移植的可执行文件，常见的 .exe .dll .sys 等都是PE文件。那么PE文件和计算机网络的]]></description>
+</item>
+<item>
+  <title>汇编(8086)</title>
+  <link>https://cui-jiang-tao.github.io/posts/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/</link>
+  <pubDate>Tue, 07 Feb 2023 00:00:00 &#43;0000</pubDate>
+  <author>cjt</author>
+  <guid>https://cui-jiang-tao.github.io/posts/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/</guid>
+  <description><![CDATA[2. 寄存器 Debug基本指令 用 Debug的 R命令查看、改变CPU寄存器的内容 用 Debug的 D命令查看内存中的内容 用 Debug的 E命令改写内存中]]></description>
+</item>
+</channel>
+</rss>

@@ -1,0 +1,16 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+  <channel>
+    <title>Bash - Tag - 学习记录</title>
+    <link>https://cui-jiang-tao.github.io/tags/bash/</link>
+    <description>Bash - Tag - 学习记录</description>
+    <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>cjt953899262@gmail.com (cjt)</managingEditor>
+      <webMaster>cjt953899262@gmail.com (cjt)</webMaster><lastBuildDate>Sun, 15 Jan 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://cui-jiang-tao.github.io/tags/bash/" rel="self" type="application/rss+xml" /><item>
+  <title>Bash脚本入门</title>
+  <link>https://cui-jiang-tao.github.io/posts/bash%E8%84%9A%E6%9C%AC%E5%85%A5%E9%97%A8/</link>
+  <pubDate>Sun, 15 Jan 2023 00:00:00 &#43;0000</pubDate>
+  <author>cjt</author>
+  <guid>https://cui-jiang-tao.github.io/posts/bash%E8%84%9A%E6%9C%AC%E5%85%A5%E9%97%A8/</guid>
+  <description><![CDATA[Bash 是 Linux 和 Mac 的默认 Shell（命令行环境），系统管理和服务器开发都需要它。 1. Bash 简介 Bash 是 Unix 系统和 Linux 系统的一种 Shell（命令行环境），是目前绝大]]></description>
+</item>
+</channel>
+</rss>

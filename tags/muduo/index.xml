@@ -1,10 +1,18 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
   <channel>
-    <title>muduo - Tag - vstk的网站</title>
+    <title>muduo - Tag - 学习记录</title>
     <link>https://cui-jiang-tao.github.io/tags/muduo/</link>
-    <description>muduo - Tag - vstk的网站</description>
+    <description>muduo - Tag - 学习记录</description>
     <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>cjt953899262@gmail.com (cjt)</managingEditor>
-      <webMaster>cjt953899262@gmail.com (cjt)</webMaster><lastBuildDate>Tue, 06 Dec 2022 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://cui-jiang-tao.github.io/tags/muduo/" rel="self" type="application/rss+xml" /><item>
+      <webMaster>cjt953899262@gmail.com (cjt)</webMaster><lastBuildDate>Fri, 16 Dec 2022 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://cui-jiang-tao.github.io/tags/muduo/" rel="self" type="application/rss+xml" /><item>
+  <title>muduo网络库的使用</title>
+  <link>https://cui-jiang-tao.github.io/posts/muduo%E7%BD%91%E7%BB%9C%E5%BA%93%E7%9A%84%E4%BD%BF%E7%94%A8/</link>
+  <pubDate>Fri, 16 Dec 2022 00:00:00 &#43;0000</pubDate>
+  <author>cjt</author>
+  <guid>https://cui-jiang-tao.github.io/posts/muduo%E7%BD%91%E7%BB%9C%E5%BA%93%E7%9A%84%E4%BD%BF%E7%94%A8/</guid>
+  <description><![CDATA[1. echo服务的实现 muduo的使用非常简单，不需要从指定的类派生，也不用覆写虚函数，只需要注册几个回调函数去处理&quot;三个半的事件&]]></description>
+</item>
+<item>
   <title>muduo网络库源码学习</title>
   <link>https://cui-jiang-tao.github.io/posts/muduo%E7%BD%91%E7%BB%9C%E5%BA%93%E6%BA%90%E7%A0%81%E5%AD%A6%E4%B9%A0/</link>
   <pubDate>Tue, 06 Dec 2022 00:00:00 &#43;0000</pubDate>

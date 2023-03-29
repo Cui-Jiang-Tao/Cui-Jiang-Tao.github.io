@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+  <head>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+    <meta name="robots" content="noodp" />
+    <title>Bash脚本入门 - 学习记录</title><meta name="author" content="cjt">
+<meta name="author-link" content="">
+<meta name="description" content="Bash 是 Linux 和 Mac 的默认 Shell（命令行环境），系统管理和服务器开发都需要它。 1. Bash 简介 Bash 是 Unix 系统和 Linux 系统的一种 Shell（命令行环境），是目前绝大" /><meta name="keywords" content='Bash' /><meta itemprop="name" content="Bash脚本入门">
+<meta itemprop="description" content="Bash 是 Linux 和 Mac 的默认 Shell（命令行环境），系统管理和服务器开发都需要它。 1. Bash 简介 Bash 是 Unix 系统和 Linux 系统的一种 Shell（命令行环境），是目前绝大"><meta itemprop="datePublished" content="2023-01-15T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2023-01-15T00:00:00+00:00" />
+<meta itemprop="wordCount" content="5453">
+<meta itemprop="keywords" content="Bash," /><meta property="og:title" content="Bash脚本入门" />
+<meta property="og:description" content="Bash 是 Linux 和 Mac 的默认 Shell（命令行环境），系统管理和服务器开发都需要它。 1. Bash 简介 Bash 是 Unix 系统和 Linux 系统的一种 Shell（命令行环境），是目前绝大" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://cui-jiang-tao.github.io/posts/bash%E8%84%9A%E6%9C%AC%E5%85%A5%E9%97%A8/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-01-15T00:00:00+00:00" />
+<meta property="article:modified_time" content="2023-01-15T00:00:00+00:00" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Bash脚本入门"/>
+<meta name="twitter:description" content="Bash 是 Linux 和 Mac 的默认 Shell（命令行环境），系统管理和服务器开发都需要它。 1. Bash 简介 Bash 是 Unix 系统和 Linux 系统的一种 Shell（命令行环境），是目前绝大"/>
+<meta name="application-name" content="FixIt">
+<meta name="apple-mobile-web-app-title" content="FixIt"><meta name="theme-color" data-light="#f8f8f8" data-dark="#252627" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" href="https://cui-jiang-tao.github.io/posts/bash%E8%84%9A%E6%9C%AC%E5%85%A5%E9%97%A8/" /><link rel="prev" href="https://cui-jiang-tao.github.io/posts/cmake%E5%85%A5%E9%97%A8/" /><link rel="next" href="https://cui-jiang-tao.github.io/posts/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "BlogPosting",
+    "headline": "Bash脚本入门",
+    "inLanguage": "zh-CN",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https:\/\/cui-jiang-tao.github.io\/posts\/bash%E8%84%9A%E6%9C%AC%E5%85%A5%E9%97%A8\/"
+    },"genre": "posts","keywords": "Bash","wordcount":  5453 ,
+    "url": "https:\/\/cui-jiang-tao.github.io\/posts\/bash%E8%84%9A%E6%9C%AC%E5%85%A5%E9%97%A8\/","datePublished": "2023-01-15T00:00:00+00:00","dateModified": "2023-01-15T00:00:00+00:00","publisher": {
+      "@type": "Organization",
+      "name": ""},"author": {
+        "@type": "Person",
+        "name": "cjt"
+      },"description": ""
+  }
+  </script></head>
+  <body data-header-desktop="fixed" data-header-mobile="auto"><script>(window.localStorage?.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('data-theme', 'dark');</script><div class="wrapper"><header class="desktop animate__faster" id="header-desktop">
+  <div class="header-wrapper">
+    <div class="header-title">
+      <a href="/" title="学习记录"><span class="header-title-pre"><i class='far fa-kiss-wink-heart fa-fw' aria-hidden='true'></i></span><span id="typeit-header-desktop" class="typeit"></span></a><span class="header-subtitle"></span></div>
+    <nav>
+      <ul class="menu"><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/posts/"
+                
+                
+              ><i class="fa-solid fa-archive fa-fw fa-sm" aria-hidden="true"></i> 文章</a></li><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/categories/"
+                
+                
+              ><i class="fa-solid fa-th fa-fw fa-sm" aria-hidden="true"></i> 分类</a></li><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/tags/"
+                
+                
+              ><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> 标签</a></li><li class="menu-item delimiter"></li><li class="menu-item theme-switch" title="Switch Theme">
+          <i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</header><header class="mobile animate__faster" id="header-mobile">
+  <div class="header-container">
+    <div class="header-wrapper">
+      <div class="header-title">
+        <a href="/" title="学习记录"><span class="header-title-pre"><i class='far fa-kiss-wink-heart fa-fw' aria-hidden='true'></i></span><span id="typeit-header-title-mobile" class="typeit"></span></a><span class="header-subtitle"></span></div>
+      <div class="menu-toggle" id="menu-toggle-mobile">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+    <nav>
+      <ul class="menu" id="menu-mobile"><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/posts/"
+                  
+                  
+                ><i class="fa-solid fa-archive fa-fw fa-sm" aria-hidden="true"></i> 文章</a></li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/categories/"
+                  
+                  
+                ><i class="fa-solid fa-th fa-fw fa-sm" aria-hidden="true"></i> 分类</a></li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/tags/"
+                  
+                  
+                ><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> 标签</a></li><li class="menu-item theme-switch" title="Switch Theme">
+          <i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i>
+        </li></ul>
+    </nav>
+  </div>
+</header><main class="container" data-page-style="wide"><aside class="toc" id="toc-auto"><h2 class="toc-title">Contents&nbsp;<i class="toc-icon fa-solid fa-angle-down fa-fw" aria-hidden="true"></i></h2>
+      <div class="toc-content" id="toc-content-auto"></div></aside>
+
+  <aside class="aside-custom">
+    </aside>
+
+  <article class="page single">
+    <div class="header"><h1 class="single-title animate__animated animate__flipInX">
+        <span>Bash脚本入门</span>
+      </h1></div><div class="post-meta">
+      <div class="post-meta-line"><span class="post-author"><span class="author"><img
+    class="lazyload avatar"
+    src="/svg/loading.min.svg"
+    data-src="https://www.gravatar.com/avatar/736cc0685dbd22dd674add9c481fc755?s=32&amp;d="
+    data-srcset="https://www.gravatar.com/avatar/736cc0685dbd22dd674add9c481fc755?s=32&amp;d=, https://www.gravatar.com/avatar/736cc0685dbd22dd674add9c481fc755?s=32&amp;d= 1.5x, https://www.gravatar.com/avatar/736cc0685dbd22dd674add9c481fc755?s=32&amp;d= 2x"
+    data-sizes="auto"
+    alt="cjt"
+    title="cjt"/>&nbsp;cjt</span></span>
+          <span class="post-category">included in <a href="/categories/shell/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> shell</a></span></div>
+      <div class="post-meta-line"><span title=2023-01-15&#32;00:00:00><i class="fa-regular fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-01-15">2023-01-15</time></span>&nbsp;<span><i class="fa-solid fa-pencil-alt fa-fw" aria-hidden="true"></i> 5453 words</span>&nbsp;<span><i class="fa-regular fa-clock fa-fw" aria-hidden="true"></i> 11 minutes</span>&nbsp;</div>
+    </div><div class="details toc" id="toc-static" data-kept="false">
+        <div class="details-summary toc-title">
+          <span>Contents</span>
+          <span><i class="details-icon fa-solid fa-angle-right" aria-hidden="true"></i></span>
+        </div>
+        <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#1-bash-简介">1. Bash 简介</a>
+      <ul>
+        <li><a href="#11-shell-的含义">1.1 Shell 的含义</a></li>
+        <li><a href="#12-shell-的种类">1.2 Shell 的种类</a></li>
+        <li><a href="#13-命令行环境">1.3 命令行环境</a>
+          <ul>
+            <li><a href="#131-终端模拟器">1.3.1 终端模拟器</a></li>
+            <li><a href="#132-命令行提示符">1.3.2 命令行提示符</a></li>
+            <li><a href="#133-进入和退出方法">1.3.3 进入和退出方法</a></li>
+          </ul>
+        </li>
+        <li><a href="#14-shell-和-bash-的历史">1.4 Shell 和 Bash 的历史</a></li>
+      </ul>
+    </li>
+    <li><a href="#2-bash-的基本语法">2. Bash 的基本语法</a>
+      <ul>
+        <li><a href="#21-echo-命令">2.1 echo 命令</a>
+          <ul>
+            <li><a href="#211--n参数">2.1.1 <code>-n</code>参数</a></li>
+            <li><a href="#212--e参数">2.1.2 <code>-e</code>参数</a></li>
+          </ul>
+        </li>
+        <li><a href="#22-命令格式">2.2 命令格式</a></li>
+        <li><a href="#23-空格">2.3 空格</a></li>
+        <li><a href="#24-分号">2.4 分号</a></li>
+        <li><a href="#25-命令的组合符和">2.5 命令的组合符<code>&amp;&amp;</code>和<code>||</code></a></li>
+        <li><a href="#26-type-命令">2.6 type 命令</a></li>
+        <li><a href="#27-快捷键">2.7 快捷键</a></li>
+      </ul>
+    </li>
+    <li><a href="#3-bash-的模式扩展">3. Bash 的模式扩展</a>
+      <ul>
+        <li><a href="#31-简介">3.1 简介</a></li>
+        <li><a href="#32-波浪线扩展">3.2 波浪线扩展</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+      </div><div class="content" id="content"><p>Bash 是 Linux 和 Mac 的默认 Shell（命令行环境），系统管理和服务器开发都需要它。</p>
+<h2 id="1-bash-简介">1. Bash 简介</h2>
+<p>Bash 是 Unix 系统和 Linux 系统的一种 Shell（命令行环境），是目前绝大多数 Linux 发行版的默认 Shell。</p>
+<h3 id="11-shell-的含义">1.1 Shell 的含义</h3>
+<p>学习 Bash，首先需要理解 Shell 是什么。Shell 这个单词的原意是“外壳”，跟 kernel（内核）相对应，比喻内核外面的一层，即用户跟内核交互的对话界面。</p>
+<p>具体来说，Shell 这个词有多种含义。</p>
+<p>首先，Shell 是一个程序，提供一个与用户对话的环境。这个环境只有一个命令提示符，让用户从键盘输入命令，所以又称为命令行环境（command line interface，简写为 CLI）。Shell 接收到用户输入的命令，将命令送入操作系统执行，并将结果返回给用户。本书中，除非特别指明，Shell 指的就是命令行环境。</p>
+<p>其次，Shell 是一个命令解释器，解释用户输入的命令。它支持变量、条件判断、循环操作等语法，所以用户可以用 Shell 命令写出各种小程序，又称为脚本（script）。这些脚本都通过 Shell 的解释执行，而不通过编译。</p>
+<p>最后，Shell 是一个工具箱，提供了各种小工具，供用户方便地使用操作系统的功能。</p>
+<h3 id="12-shell-的种类">1.2 Shell 的种类</h3>
+<p>Shell 有很多种，只要能给用户提供命令行环境的程序，都可以看作是 Shell。</p>
+<p>历史上，主要的 Shell 有下面这些。</p>
+<ul>
+<li>Bourne Shell（sh）</li>
+<li>Bourne Again shell（bash）</li>
+<li>C Shell（csh）</li>
+<li>TENEX C Shell（tcsh）</li>
+<li>Korn shell（ksh）</li>
+<li>Z Shell（zsh）</li>
+<li>Friendly Interactive Shell（fish）</li>
+<li>Bash 是目前最常用的 Shell，除非特别指明，下文的 Shell 和 Bash 当作同义词使用，可以互换。</li>
+</ul>
+<p>下面的命令可以查看当前设备的默认 Shell。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ <span class="nb">echo</span> <span class="nv">$SHELL</span>
+</span></span><span class="line"><span class="cl">/bin/bash
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>当前正在使用的 Shell 不一定是默认 Shell，一般来说，ps命令结果的倒数第二行是当前 Shell。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ ps
+</span></span><span class="line"><span class="cl">    PID TTY          TIME CMD
+</span></span><span class="line"><span class="cl">  <span class="m">21944</span> pts/4    00:00:00 bash
+</span></span><span class="line"><span class="cl">  <span class="m">40013</span> pts/4    00:00:00 ps
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>上面示例中，ps命令结果的倒数第二行显示，运行的命令（cmd）是bash，表明当前正在使用的 Shell 是 Bash。</p>
+<p>下面的命令可以查看当前的 Linux 系统安装的所有 Shell。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ cat /etc/shells 
+</span></span><span class="line"><span class="cl"><span class="c1"># /etc/shells: valid login shells</span>
+</span></span><span class="line"><span class="cl">/bin/sh
+</span></span><span class="line"><span class="cl">/bin/bash
+</span></span><span class="line"><span class="cl">/usr/bin/bash
+</span></span><span class="line"><span class="cl">/bin/rbash
+</span></span><span class="line"><span class="cl">/usr/bin/rbash
+</span></span><span class="line"><span class="cl">/bin/dash
+</span></span><span class="line"><span class="cl">/usr/bin/dash
+</span></span><span class="line"><span class="cl">/usr/bin/tmux
+</span></span><span class="line"><span class="cl">/usr/bin/screen
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>上面三个命令中，<code>$</code>是命令行环境的提示符，用户只需要输入提示符后面的内容。</p>
+<p>Linux 允许每个用户使用不同的 Shell，用户的默认 Shell 一般都是 Bash，或者与 Bash 兼容。</p>
+<h3 id="13-命令行环境">1.3 命令行环境</h3>
+<h4 id="131-终端模拟器">1.3.1 终端模拟器</h4>
+<p>如果是不带有图形环境的 Linux 系统（比如专用于服务器的系统），启动后就直接是命令行环境。</p>
+<p>不过，现在大部分的 Linux 发行版，尤其是针对普通用户的发行版，都是图形环境。用户登录系统后，自动进入图形环境，需要自己启动终端模拟器，才能进入命令行环境。</p>
+<p>所谓“终端模拟器”（terminal emulator）就是一个模拟命令行窗口的程序，让用户在一个窗口中使用命令行环境，并且提供各种附加功能，比如调整颜色、字体大小、行距等等。</p>
+<p>不同 Linux 发行版（准确地说是不同的桌面环境）带有的终端程序是不一样的，比如 KDE 桌面环境的终端程序是 konsole，Gnome 桌面环境的终端程序是 gnome-terminal，用户也可以安装第三方的终端程序。所有终端程序，尽管名字不同，基本功能都是一样的，就是让用户可以进入命令行环境，使用 Shell。</p>
+<h4 id="132-命令行提示符">1.3.2 命令行提示符</h4>
+<p>进入命令行环境以后，用户会看到 Shell 的提示符。提示符往往是一串前缀，最后以一个美元符号<code>$</code>结尾，用户可以在这个符号后面输入各种命令。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>user@hostname<span class="o">]</span> $
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>上面例子中，完整的提示符是<code>[user@hostname] $</code>，其中前缀是用户名（user）加上@，再加主机名（hostname）。比如，用户名是bill，主机名是home-machine，前缀就是bill@home-machine。</p>
+<p>注意，根用户（root）的提示符，不以美元符号（<code>$</code>）结尾，而以井号（<code>#</code>）结尾，用来提醒用户，现在具有根权限，可以执行各种操作，务必小心，不要出现误操作。这个符号是可以自己定义的。</p>
+<p>为了简洁，后文的命令行提示符都只使用<code>$</code>表示。</p>
+<h4 id="133-进入和退出方法">1.3.3 进入和退出方法</h4>
+<p>进入命令行环境以后，一般就已经打开 Bash 了。如果你的 Shell 不是 Bash，可以输入<code>bash</code>命令启动 Bash。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ bash
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>退出 Bash 环境，可以使用<code>exit</code>命令，也可以同时按下<code>Ctrl + d</code>。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ <span class="nb">exit</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Bash 的基本用法就是在命令行输入各种命令，非常直观。作为练习，可以试着输入<code>pwd</code>命令。按下回车键，就会显示当前所在的目录。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ <span class="nb">pwd</span>
+</span></span><span class="line"><span class="cl">/home/ubuntu
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>如果不小心输入了<code>pwe</code>，会返回一个提示，表示输入出错，没有对应的可执行程序。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ pwe
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Command <span class="s1">&#39;pwe&#39;</span> not found, did you mean:
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="nb">command</span> <span class="s1">&#39;pee&#39;</span> from deb moreutils <span class="o">(</span>0.63-1<span class="o">)</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">command</span> <span class="s1">&#39;pwd&#39;</span> from deb coreutils <span class="o">(</span>8.30-3ubuntu2<span class="o">)</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">command</span> <span class="s1">&#39;we&#39;</span> from deb xwpe <span class="o">(</span>1.5.30a-2.1build3<span class="o">)</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">command</span> <span class="s1">&#39;xwe&#39;</span> from deb xwpe <span class="o">(</span>1.5.30a-2.1build3<span class="o">)</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">command</span> <span class="s1">&#39;wpe&#39;</span> from deb xwpe <span class="o">(</span>1.5.30a-2.1build3<span class="o">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Try: sudo apt install &lt;deb name&gt;
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="14-shell-和-bash-的历史">1.4 Shell 和 Bash 的历史</h3>
+<p>Shell 伴随着 Unix 系统的诞生而诞生。</p>
+<p>1969年，Ken Thompson 和 Dennis Ritchie 开发了第一版的 Unix。</p>
+<p>1971年，Ken Thompson 编写了最初的 Shell，称为 Thompson shell，程序名是sh，方便用户使用 Unix。</p>
+<p>1973年至1975年间，John R. Mashey 扩展了最初的 Thompson shell，添加了编程功能，使得 Shell 成为一种编程语言。这个版本的 Shell 称为 Mashey shell。</p>
+<p>1976年，Stephen Bourne 结合 Mashey shell 的功能，重写一个新的 Shell，称为 Bourne shell。</p>
+<p>1978年，加州大学伯克利分校的 Bill Joy 开发了 C shell，为 Shell 提供 C 语言的语法，程序名是csh。它是第一个真正替代sh的 UNIX shell，被合并到 Berkeley UNIX 的 2BSD 版本中。</p>
+<p>1979年，UNIX 第七版发布，内置了 Bourne Shell，导致它成为 Unix 的默认 Shell。注意，Thompson shell、Mashey shell 和 Bourne shell 都是贝尔实验室的产品，程序名都是sh。对于用户来说，它们是同一个东西，只是底层代码不同而已。</p>
+<p>1983年，David Korn 开发了Korn shell，程序名是ksh。</p>
+<p>1985年，Richard Stallman 成立了自由软件基金会（FSF），由于 Shell 的版权属于贝尔公司，所以他决定写一个自由版权的、使用 GNU 许可证的 Shell 程序，避免 Unix 的版权争议。</p>
+<p>1988年，自由软件基金会的第一个付薪程序员 Brian Fox 写了一个 Shell，功能基本上是 Bourne shell 的克隆，叫做 Bourne-Again SHell，简称 Bash，程序名为bash，任何人都可以免费使用。后来，它逐渐成为 Linux 系统的标准 Shell。</p>
+<p>1989年，Bash 发布1.0版。</p>
+<p>1996年，Bash 发布2.0版。</p>
+<p>2004年，Bash 发布3.0版。</p>
+<p>2009年，Bash 发布4.0版。</p>
+<p>2019年，Bash 发布5.0版。</p>
+<p>用户可以通过<code>bash</code>命令的<code>--version</code>参数或者环境变量<code>$BASH_VERSION</code>，查看本机的 Bash 版本。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ bash --version
+</span></span><span class="line"><span class="cl">GNU bash, version 5.0.17<span class="o">(</span>1<span class="o">)</span>-release <span class="o">(</span>x86_64-pc-linux-gnu<span class="o">)</span>
+</span></span><span class="line"><span class="cl">Copyright <span class="o">(</span>C<span class="o">)</span> <span class="m">2019</span> Free Software Foundation, Inc.
+</span></span><span class="line"><span class="cl">License GPLv3+: GNU GPL version <span class="m">3</span> or later &lt;http://gnu.org/licenses/gpl.html&gt;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">This is free software<span class="p">;</span> you are free to change and redistribute it.
+</span></span><span class="line"><span class="cl">There is NO WARRANTY, to the extent permitted by law.
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>或者</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ <span class="nb">echo</span> <span class="nv">$BASH_VERSION</span>
+</span></span><span class="line"><span class="cl">5.0.17<span class="o">(</span>1<span class="o">)</span>-release
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="2-bash-的基本语法">2. Bash 的基本语法</h2>
+<h3 id="21-echo-命令">2.1 echo 命令</h3>
+<p>由于后面的例子会大量用到<code>echo</code>命令，这里先介绍这个命令。</p>
+<p>echo命令的作用是在屏幕输出一行文本，可以将该命令的参数原样输出。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ <span class="nb">echo</span> hello world
+</span></span><span class="line"><span class="cl">hello world
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>上面例子中，<code>echo</code>的参数是<code>hello world</code>，可以原样输出。</p>
+<p>如果想要输出的是多行文本，即包括换行符。这时就需要把多行文本放在引号里面。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ <span class="nb">echo</span> <span class="s2">&#34;&lt;HTML&gt;
+</span></span></span><span class="line"><span class="cl"><span class="s2">&gt;     &lt;HEAD&gt;
+</span></span></span><span class="line"><span class="cl"><span class="s2">&gt;           &lt;TITLE&gt;Page Title&lt;/TITLE&gt;
+</span></span></span><span class="line"><span class="cl"><span class="s2">&gt;     &lt;/HEAD&gt;
+</span></span></span><span class="line"><span class="cl"><span class="s2">&gt;     &lt;BODY&gt;
+</span></span></span><span class="line"><span class="cl"><span class="s2">&gt;           Page body.
+</span></span></span><span class="line"><span class="cl"><span class="s2">&gt;     &lt;/BODY&gt;
+</span></span></span><span class="line"><span class="cl"><span class="s2">&gt; &lt;/HTML&gt;&#34;</span>
+</span></span><span class="line"><span class="cl">&lt;HTML&gt;
+</span></span><span class="line"><span class="cl">    &lt;HEAD&gt;
+</span></span><span class="line"><span class="cl">          &lt;TITLE&gt;Page Title&lt;/TITLE&gt;
+</span></span><span class="line"><span class="cl">    &lt;/HEAD&gt;
+</span></span><span class="line"><span class="cl">    &lt;BODY&gt;
+</span></span><span class="line"><span class="cl">          Page body.
+</span></span><span class="line"><span class="cl">    &lt;/BODY&gt;
+</span></span><span class="line"><span class="cl">&lt;/HTML&gt;
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>上面例子中，<code>echo</code>可以原样输出多行文本。</p>
+<h4 id="211--n参数">2.1.1 <code>-n</code>参数</h4>
+<p>默认情况下，<code>echo</code>输出的文本末尾会有一个回车符。<code>-n</code>参数可以取消末尾的回车符，使得下一个提示符紧跟在输出内容的后面。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ <span class="nb">echo</span> -n hello world
+</span></span><span class="line"><span class="cl">hello world$
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>上面例子中，world后面直接就是下一行的提示符$。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ <span class="nb">echo</span> a<span class="p">;</span><span class="nb">echo</span> b
+</span></span><span class="line"><span class="cl">a
+</span></span><span class="line"><span class="cl">b
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">$ <span class="nb">echo</span> -n a<span class="p">;</span><span class="nb">echo</span> b
+</span></span><span class="line"><span class="cl">ab
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="212--e参数">2.1.2 <code>-e</code>参数</h4>
+<p><code>-e</code>参数会解释引号（双引号和单引号）里面的特殊字符（比如换行符\n）。如果不使用<code>-e</code>参数，即默认情况下，引号会让特殊字符变成普通字符，echo不解释它们，原样输出。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ <span class="nb">echo</span> <span class="s2">&#34;Hello\nWorld&#34;</span>
+</span></span><span class="line"><span class="cl">Hello<span class="se">\n</span>World
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 双引号的情况</span>
+</span></span><span class="line"><span class="cl">$ <span class="nb">echo</span> -e <span class="s2">&#34;Hello\nWorld&#34;</span>
+</span></span><span class="line"><span class="cl">Hello
+</span></span><span class="line"><span class="cl">World
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 单引号的情况</span>
+</span></span><span class="line"><span class="cl">$ <span class="nb">echo</span> -e <span class="s1">&#39;Hello\nWorld&#39;</span>
+</span></span><span class="line"><span class="cl">Hello
+</span></span><span class="line"><span class="cl">World
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="22-命令格式">2.2 命令格式</h3>
+<p>命令行环境中，主要通过使用 Shell 命令，进行各种操作。Shell 命令基本都是下面的格式。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ <span class="nb">command</span> <span class="o">[</span> arg1 ... <span class="o">[</span> argN <span class="o">]]</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>上面代码中，<code>command</code>是具体的命令或者一个可执行文件，<code>arg1 ... argN</code>是传递给命令的参数，它们是可选的。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ ls -l
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>上面这个命令中，<code>ls</code>是命令，<code>-l</code>是参数。</p>
+<p>有些参数是命令的配置项，这些配置项一般都以一个连词线开头，比如上面的<code>-l</code>。同一个配置项往往有长和短两种形式，比如<code>-l</code>是短形式，<code>--list</code>是长形式，它们的作用完全相同。短形式便于手动输入，长形式一般用在脚本之中，可读性更好，利于解释自身的含义。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="c1"># 短形式</span>
+</span></span><span class="line"><span class="cl">$ ls -r
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 长形式</span>
+</span></span><span class="line"><span class="cl">$ ls --reverse
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>上面命令中，<code>-r</code>是短形式，<code>--reverse</code>是长形式，作用完全一样。前者便于输入，后者便于理解。</p>
+<p>Bash 单个命令一般都是一行，用户按下回车键，就开始执行。有些命令比较长，写成多行会有利于阅读和编辑，这时可以在每一行的结尾加上反斜杠，Bash 就会将下一行跟当前行放在一起解释。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ <span class="nb">echo</span> foo bar
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 等同于</span>
+</span></span><span class="line"><span class="cl">$ <span class="nb">echo</span> foo <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>bar
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="23-空格">2.3 空格</h3>
+<p>Bash 使用空格（或 Tab 键）区分不同的参数。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ <span class="nb">command</span> foo bar
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>上面命令中，<code>foo</code>和<code>bar</code>之间有一个空格，所以 Bash 认为它们是两个参数。</p>
+<p>如果参数之间有多个空格，Bash 会自动忽略多余的空格。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ <span class="nb">echo</span> this is a     <span class="nb">test</span>
+</span></span><span class="line"><span class="cl">this is a <span class="nb">test</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>上面命令中，<code>a</code>和<code>test</code>之间有多个空格，Bash 会忽略多余的空格。</p>
+<h3 id="24-分号">2.4 分号</h3>
+<p>分号（<code>;</code>）是命令的结束符，使得一行可以放置多个命令，上一个命令执行结束后，再执行第二个命令。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ clear<span class="p">;</span> ls
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>上面例子中，Bash 先执行<code>clear</code>命令，执行完成后，再执行<code>ls</code>命令。</p>
+<p>注意，使用分号时，第二个命令总是接着第一个命令执行，不管第一个命令执行成功或失败。</p>
+<h3 id="25-命令的组合符和">2.5 命令的组合符<code>&amp;&amp;</code>和<code>||</code></h3>
+<p>除了分号，Bash 还提供两个命令组合符&amp;&amp;和||，允许更好地控制多个命令之间的继发关系。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">Command1 <span class="o">&amp;&amp;</span> Command2
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>上面命令的意思是，如果<code>Command1</code>命令运行成功，则继续运行<code>Command2</code>命令。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">Command1 <span class="o">||</span> Command2
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>上面命令的意思是，如果Command1命令运行失败，则继续运行Command2命令。</p>
+<p>下面是一些例子。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ cat filelist.txt <span class="p">;</span> ls -l filelist.txt
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>上面例子中，只要<code>cat</code>命令执行结束，不管成功或失败，都会继续执行<code>ls</code>命令。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ cat filelist.txt <span class="o">&amp;&amp;</span> ls -l filelist.txt
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>上面例子中，只有<code>cat</code>命令执行成功，才会继续执行<code>ls</code>命令。如果<code>cat</code>执行失败（比如不存在文件<code>flielist.txt</code>），那么<code>ls</code>命令就不会执行。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ mkdir foo <span class="o">||</span> mkdir bar
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>上面例子中，只有<code>mkdir foo</code>命令执行失败（比如<code>foo</code>目录已经存在），才会继续执行<code>mkdir bar</code>命令。如果<code>mkdir foo</code>命令执行成功，就不会创建<code>bar</code>目录了。</p>
+<h3 id="26-type-命令">2.6 type 命令</h3>
+<p>Bash 本身内置了很多命令，同时也可以执行外部程序。怎么知道一个命令是内置命令，还是外部程序呢？</p>
+<p><code>type</code>命令用来判断命令的来源。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ <span class="nb">type</span> <span class="nb">echo</span>
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> is a shell <span class="nb">builtin</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">$ <span class="nb">type</span> ls
+</span></span><span class="line"><span class="cl">ls is hashed <span class="o">(</span>/bin/ls<span class="o">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>上面代码中，<code>type</code>命令告诉我们，<code>echo</code>是内部命令，<code>ls</code>是外部程序（/bin/ls）。</p>
+<p><code>type</code>命令本身也是内置命令。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ <span class="nb">type</span> <span class="nb">type</span>
+</span></span><span class="line"><span class="cl"><span class="nb">type</span> is a shell <span class="nb">builtin</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>如果要查看一个命令的所有定义，可以使用<code>type</code>命令的<code>-a</code>参数。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ <span class="nb">type</span> -a <span class="nb">echo</span>
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> is a shell <span class="nb">builtin</span>
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> is /usr/bin/echo
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> is /bin/echo
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>上面代码表示，<code>echo</code>命令既是内置命令，也有对应的外部程序。</p>
+<p><code>type</code>命令的<code>-t</code>参数，可以返回一个命令的类型：别名（alias），关键词（keyword），函数（function），内置命令（builtin）和文件（file）。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ <span class="nb">type</span> -t bash
+</span></span><span class="line"><span class="cl">file
+</span></span><span class="line"><span class="cl">$ <span class="nb">type</span> -t <span class="k">if</span>
+</span></span><span class="line"><span class="cl">keyword
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>上面例子中，<code>bash</code>是文件，<code>if</code>是关键词。</p>
+<h3 id="27-快捷键">2.7 快捷键</h3>
+<p>Bash 提供很多快捷键，可以大大方便操作。下面是一些最常用的快捷键：</p>
+<ul>
+<li><code>Ctrl + L</code>：清除屏幕并将当前行移到页面顶部。</li>
+<li><code>Ctrl + C</code>：中止当前正在执行的命令。</li>
+<li><code>Shift + PageUp</code>：向上滚动。</li>
+<li><code>Shift + PageDown</code>：向下滚动。</li>
+<li><code>Ctrl + U</code>：从光标位置删除到行首。</li>
+<li><code>Ctrl + K</code>：从光标位置删除到行尾。</li>
+<li><code>Ctrl + W</code>：删除光标位置前一个单词。</li>
+<li><code>Ctrl + D</code>：关闭 Shell 会话。</li>
+<li><code>↑</code>，<code>↓</code>：浏览已执行命令的历史记录。</li>
+</ul>
+<p>除了上面的快捷键，Bash 还具有自动补全功能。命令输入到一半的时候，可以按下 Tab 键，Bash 会自动完成剩下的部分。比如，输入<code>tou</code>，然后按一下 Tab 键，Bash 会自动补上<code>ch</code>。</p>
+<p>除了命令的自动补全，Bash 还支持路径的自动补全。有时，需要输入很长的路径，这时只需要输入前面的部分，然后按下 Tab 键，就会自动补全后面的部分。如果有多个可能的选择，按两次 Tab 键，Bash 会显示所有选项，让你选择。</p>
+<h2 id="3-bash-的模式扩展">3. Bash 的模式扩展</h2>
+<h3 id="31-简介">3.1 简介</h3>
+<p>Shell 接收到用户输入的命令以后，会根据空格将用户的输入，拆分成一个个词元（token）。然后，Shell 会扩展词元里面的特殊字符，扩展完成后才会调用相应的命令。</p>
+<p>这种特殊字符的扩展，称为模式扩展（globbing）。其中有些用到通配符，又称为通配符扩展（wildcard expansion）。Bash 一共提供八种扩展。</p>
+<ul>
+<li>波浪线扩展</li>
+<li><code>?</code> 字符扩展</li>
+<li><code>*</code> 字符扩展</li>
+<li>方括号扩展</li>
+<li>大括号扩展</li>
+<li>变量扩展</li>
+<li>子命令扩展</li>
+<li>算术扩展</li>
+</ul>
+<p>本节介绍这八种扩展。</p>
+<p>Bash 是先进行扩展，再执行命令。因此，扩展的结果是由 Bash 负责的，与所要执行的命令无关。命令本身并不存在参数扩展，收到什么参数就原样执行。这一点务必需要记住。</p>
+<p>模块扩展的英文单词是<code>globbing</code>，这个词来自于早期的 Unix 系统有一个<code>/etc/glob</code>文件，保存扩展的模板。后来 Bash 内置了这个功能，但是这个名字就保留了下来。</p>
+<p>模式扩展与正则表达式的关系是，模式扩展早于正则表达式出现，可以看作是原始的正则表达式。它的功能没有正则那么强大灵活，但是优点是简单和方便。</p>
+<p>Bash 允许用户关闭扩展。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ <span class="nb">set</span> -o noglob
+</span></span><span class="line"><span class="cl"><span class="c1"># 或者</span>
+</span></span><span class="line"><span class="cl">$ <span class="nb">set</span> -f
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>下面的命令可以重新打开扩展。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ <span class="nb">set</span> +o noglob
+</span></span><span class="line"><span class="cl"><span class="c1"># 或者</span>
+</span></span><span class="line"><span class="cl">$ <span class="nb">set</span> +f
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="32-波浪线扩展">3.2 波浪线扩展</h3>
+<p>波浪线<code>~</code>会自动扩展成当前用户的主目录。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ <span class="nb">echo</span> ~
+</span></span><span class="line"><span class="cl">/home/ubuntu
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><code>~/dir</code>表示扩展成主目录的某个子目录，dir是主目录里面的一个子目录名。</p>
+</div><div class="post-footer" id="post-footer">
+  <div class="post-info">
+    <div class="post-info-line">
+      <div class="post-info-mod">
+        <span title=2023-01-15&#32;00:00:00>Updated on 2023-01-15&nbsp;</span>
+      </div><div class="post-info-license">
+          <span><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span>
+        </div></div>
+    <div class="post-info-line">
+      <div class="post-info-md"></div>
+      <div class="post-info-share">
+        <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://cui-jiang-tao.github.io/posts/bash%E8%84%9A%E6%9C%AC%E5%85%A5%E9%97%A8/" data-title="Bash脚本入门" data-hashtags="Bash"><i class="fa-brands fa-twitter fa-fw" aria-hidden="true"></i></a>
+  <a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://cui-jiang-tao.github.io/posts/bash%E8%84%9A%E6%9C%AC%E5%85%A5%E9%97%A8/" data-hashtag="Bash"><i class="fa-brands fa-facebook-square fa-fw" aria-hidden="true"></i></a>
+  <a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="https://cui-jiang-tao.github.io/posts/bash%E8%84%9A%E6%9C%AC%E5%85%A5%E9%97%A8/" data-title="Bash脚本入门"><i class="fa-brands fa-weibo fa-fw" aria-hidden="true"></i></a>
+  </span>
+      </div>
+    </div>
+  </div>
+
+  <div class="post-info-more">
+    <section class="post-tags"><i class="fa-solid fa-tags fa-fw me-1" aria-hidden="true"></i><a href='/tags/bash/' class="post-tag">Bash</a></section>
+    <section>
+      <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+    </section>
+  </div>
+
+  <div class="post-nav"><a href="/posts/cmake%E5%85%A5%E9%97%A8/" class="post-nav-item" rel="prev" title="CMake入门"><i class="fa-solid fa-angle-left fa-fw" aria-hidden="true"></i>CMake入门</a>
+      <a href="/posts/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/" class="post-nav-item" rel="next" title="汇编(8086)">汇编(8086)<i class="fa-solid fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+</article></main><footer class="footer">
+    <div class="footer-container"><div class="footer-line copyright" itemscope itemtype="http://schema.org/CreativeWork"><i class="fa-regular fa-copyright fa-fw" aria-hidden="true"></i>
+            <span itemprop="copyrightYear">2022 - 2023</span><span class="license footer-divider"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div><div class="footer-line statistics"></div></div>
+  </footer></div><div class="widgets"><div class="fixed-buttons animate__faster d-none"><div class="fixed-button back-to-top" role="button" aria-label="Back to Top"><i class="fa-solid fa-arrow-up fa-fw" aria-hidden="true"></i><span class="variant-numeric d-none">0%</span>
+        </div></div><div id="mask"></div><noscript>
+    <div class="noscript-warning">Theme FixIt works best with JavaScript enabled.</div>
+  </noscript>
+</div><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script src="/lib/lazysizes/lazysizes.min.js" async defer></script><script src="/lib/sharer/sharer.min.js" async defer></script><script src="/lib/typeit/index.umd.js" defer></script><script src="/lib/katex/katex.min.js" defer></script><script src="/lib/katex/auto-render.min.js" defer></script><script src="/lib/katex/copy-tex.min.js" defer></script><script src="/lib/katex/mhchem.min.js" defer></script><script src="/lib/cookieconsent/cookieconsent.min.js" defer></script><script>window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":-1},"comment":{"enable":false},"cookieconsent":{"content":{"dismiss":"Got it!","link":"Learn more","message":"This website uses Cookies to improve your experience."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"data":{"typeit-header-desktop":"Home","typeit-header-title-mobile":"Home"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"typeit-header-desktop":["typeit-header-desktop"],"typeit-header-title-mobile":["typeit-header-title-mobile"]},"duration":-1,"speed":100}};</script><script src="/js/theme.min.js" defer></script></body>
+</html>

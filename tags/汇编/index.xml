@@ -1,0 +1,16 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+  <channel>
+    <title>汇编 - Tag - 学习记录</title>
+    <link>https://cui-jiang-tao.github.io/tags/%E6%B1%87%E7%BC%96/</link>
+    <description>汇编 - Tag - 学习记录</description>
+    <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>cjt953899262@gmail.com (cjt)</managingEditor>
+      <webMaster>cjt953899262@gmail.com (cjt)</webMaster><lastBuildDate>Tue, 07 Feb 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://cui-jiang-tao.github.io/tags/%E6%B1%87%E7%BC%96/" rel="self" type="application/rss+xml" /><item>
+  <title>汇编(8086)</title>
+  <link>https://cui-jiang-tao.github.io/posts/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/</link>
+  <pubDate>Tue, 07 Feb 2023 00:00:00 &#43;0000</pubDate>
+  <author>cjt</author>
+  <guid>https://cui-jiang-tao.github.io/posts/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/</guid>
+  <description><![CDATA[2. 寄存器 Debug基本指令 用 Debug的 R命令查看、改变CPU寄存器的内容 用 Debug的 D命令查看内存中的内容 用 Debug的 E命令改写内存中]]></description>
+</item>
+</channel>
+</rss>

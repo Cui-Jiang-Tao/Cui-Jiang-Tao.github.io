@@ -1,8 +1,8 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
   <channel>
-    <title>GDB - Tag - vstk的网站</title>
+    <title>GDB - Tag - 学习记录</title>
     <link>https://cui-jiang-tao.github.io/tags/gdb/</link>
-    <description>GDB - Tag - vstk的网站</description>
+    <description>GDB - Tag - 学习记录</description>
     <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>cjt953899262@gmail.com (cjt)</managingEditor>
       <webMaster>cjt953899262@gmail.com (cjt)</webMaster><lastBuildDate>Wed, 14 Sep 2022 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://cui-jiang-tao.github.io/tags/gdb/" rel="self" type="application/rss+xml" /><item>
   <title>GDB调试器</title>

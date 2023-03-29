@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+  <head>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+    <meta name="robots" content="noodp" />
+    <title>makefile的简单例子 - 学习记录</title><meta name="author" content="cjt">
+<meta name="author-link" content="">
+<meta name="description" content="示例 树形结构： 1 2 3 4 5 6 7 8 9 ubuntu@VM-12-11-ubuntu:~/c&#43;&#43;/makefile$ tree . ├── factorial.cpp ├── functions.h ├── main.cpp ├── Makefile └── printHello.cpp 0 directories, 5 files functions.h 1 2 3 4 5 6 #ifndef FUNCTIONS_H #define FUNCTIONS_H #include &lt;iostream&gt; void printHello(); int factorial(int n); #endif factorial.cpp 1 2 3 4 5 6 7" /><meta name="keywords" content='makefile' /><meta itemprop="name" content="makefile的简单例子">
+<meta itemprop="description" content="示例 树形结构： 1 2 3 4 5 6 7 8 9 ubuntu@VM-12-11-ubuntu:~/c&#43;&#43;/makefile$ tree . ├── factorial.cpp ├── functions.h ├── main.cpp ├── Makefile └── printHello.cpp 0 directories, 5 files functions.h 1 2 3 4 5 6 #ifndef FUNCTIONS_H #define FUNCTIONS_H #include &lt;iostream&gt; void printHello(); int factorial(int n); #endif factorial.cpp 1 2 3 4 5 6 7"><meta itemprop="datePublished" content="2022-12-29T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2022-12-29T00:00:00+00:00" />
+<meta itemprop="wordCount" content="851">
+<meta itemprop="keywords" content="makefile," /><meta property="og:title" content="makefile的简单例子" />
+<meta property="og:description" content="示例 树形结构： 1 2 3 4 5 6 7 8 9 ubuntu@VM-12-11-ubuntu:~/c&#43;&#43;/makefile$ tree . ├── factorial.cpp ├── functions.h ├── main.cpp ├── Makefile └── printHello.cpp 0 directories, 5 files functions.h 1 2 3 4 5 6 #ifndef FUNCTIONS_H #define FUNCTIONS_H #include &lt;iostream&gt; void printHello(); int factorial(int n); #endif factorial.cpp 1 2 3 4 5 6 7" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://cui-jiang-tao.github.io/posts/makefile/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-12-29T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-12-29T00:00:00+00:00" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="makefile的简单例子"/>
+<meta name="twitter:description" content="示例 树形结构： 1 2 3 4 5 6 7 8 9 ubuntu@VM-12-11-ubuntu:~/c&#43;&#43;/makefile$ tree . ├── factorial.cpp ├── functions.h ├── main.cpp ├── Makefile └── printHello.cpp 0 directories, 5 files functions.h 1 2 3 4 5 6 #ifndef FUNCTIONS_H #define FUNCTIONS_H #include &lt;iostream&gt; void printHello(); int factorial(int n); #endif factorial.cpp 1 2 3 4 5 6 7"/>
+<meta name="application-name" content="FixIt">
+<meta name="apple-mobile-web-app-title" content="FixIt"><meta name="theme-color" data-light="#f8f8f8" data-dark="#252627" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" href="https://cui-jiang-tao.github.io/posts/makefile/" /><link rel="prev" href="https://cui-jiang-tao.github.io/posts/muduo%E7%BD%91%E7%BB%9C%E5%BA%93%E7%9A%84%E4%BD%BF%E7%94%A8/" /><link rel="next" href="https://cui-jiang-tao.github.io/posts/cmake%E5%85%A5%E9%97%A8/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "BlogPosting",
+    "headline": "makefile的简单例子",
+    "inLanguage": "zh-CN",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https:\/\/cui-jiang-tao.github.io\/posts\/makefile\/"
+    },"genre": "posts","keywords": "makefile","wordcount":  851 ,
+    "url": "https:\/\/cui-jiang-tao.github.io\/posts\/makefile\/","datePublished": "2022-12-29T00:00:00+00:00","dateModified": "2022-12-29T00:00:00+00:00","publisher": {
+      "@type": "Organization",
+      "name": ""},"author": {
+        "@type": "Person",
+        "name": "cjt"
+      },"description": ""
+  }
+  </script></head>
+  <body data-header-desktop="fixed" data-header-mobile="auto"><script>(window.localStorage?.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('data-theme', 'dark');</script><div class="wrapper"><header class="desktop animate__faster" id="header-desktop">
+  <div class="header-wrapper">
+    <div class="header-title">
+      <a href="/" title="学习记录"><span class="header-title-pre"><i class='far fa-kiss-wink-heart fa-fw' aria-hidden='true'></i></span><span id="typeit-header-desktop" class="typeit"></span></a><span class="header-subtitle"></span></div>
+    <nav>
+      <ul class="menu"><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/posts/"
+                
+                
+              ><i class="fa-solid fa-archive fa-fw fa-sm" aria-hidden="true"></i> 文章</a></li><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/categories/"
+                
+                
+              ><i class="fa-solid fa-th fa-fw fa-sm" aria-hidden="true"></i> 分类</a></li><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/tags/"
+                
+                
+              ><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> 标签</a></li><li class="menu-item delimiter"></li><li class="menu-item theme-switch" title="Switch Theme">
+          <i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</header><header class="mobile animate__faster" id="header-mobile">
+  <div class="header-container">
+    <div class="header-wrapper">
+      <div class="header-title">
+        <a href="/" title="学习记录"><span class="header-title-pre"><i class='far fa-kiss-wink-heart fa-fw' aria-hidden='true'></i></span><span id="typeit-header-title-mobile" class="typeit"></span></a><span class="header-subtitle"></span></div>
+      <div class="menu-toggle" id="menu-toggle-mobile">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+    <nav>
+      <ul class="menu" id="menu-mobile"><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/posts/"
+                  
+                  
+                ><i class="fa-solid fa-archive fa-fw fa-sm" aria-hidden="true"></i> 文章</a></li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/categories/"
+                  
+                  
+                ><i class="fa-solid fa-th fa-fw fa-sm" aria-hidden="true"></i> 分类</a></li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/tags/"
+                  
+                  
+                ><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> 标签</a></li><li class="menu-item theme-switch" title="Switch Theme">
+          <i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i>
+        </li></ul>
+    </nav>
+  </div>
+</header><main class="container" data-page-style="wide"><aside class="toc" id="toc-auto"><h2 class="toc-title">Contents&nbsp;<i class="toc-icon fa-solid fa-angle-down fa-fw" aria-hidden="true"></i></h2>
+      <div class="toc-content" id="toc-content-auto"></div></aside>
+
+  <aside class="aside-custom">
+    </aside>
+
+  <article class="page single">
+    <div class="header"><h1 class="single-title animate__animated animate__flipInX">
+        <span>makefile的简单例子</span>
+      </h1></div><div class="post-meta">
+      <div class="post-meta-line"><span class="post-author"><span class="author"><img
+    class="lazyload avatar"
+    src="/svg/loading.min.svg"
+    data-src="https://www.gravatar.com/avatar/736cc0685dbd22dd674add9c481fc755?s=32&amp;d="
+    data-srcset="https://www.gravatar.com/avatar/736cc0685dbd22dd674add9c481fc755?s=32&amp;d=, https://www.gravatar.com/avatar/736cc0685dbd22dd674add9c481fc755?s=32&amp;d= 1.5x, https://www.gravatar.com/avatar/736cc0685dbd22dd674add9c481fc755?s=32&amp;d= 2x"
+    data-sizes="auto"
+    alt="cjt"
+    title="cjt"/>&nbsp;cjt</span></span>
+          <span class="post-category">included in <a href="/categories/makefile/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> makefile</a></span></div>
+      <div class="post-meta-line"><span title=2022-12-29&#32;00:00:00><i class="fa-regular fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-12-29">2022-12-29</time></span>&nbsp;<span><i class="fa-solid fa-pencil-alt fa-fw" aria-hidden="true"></i> 851 words</span>&nbsp;<span><i class="fa-regular fa-clock fa-fw" aria-hidden="true"></i> 2 minutes</span>&nbsp;</div>
+    </div><div class="details toc" id="toc-static" data-kept="false">
+        <div class="details-summary toc-title">
+          <span>Contents</span>
+          <span><i class="details-icon fa-solid fa-angle-right" aria-hidden="true"></i></span>
+        </div>
+        <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#示例">示例</a></li>
+    <li><a href="#版本-1">版本 1</a></li>
+    <li><a href="#版本-2">版本 2</a></li>
+    <li><a href="#版本-3">版本 3</a></li>
+    <li><a href="#版本-4">版本 4</a></li>
+  </ul>
+</nav></div>
+      </div><div class="content" id="content"><h2 id="示例">示例</h2>
+<p>树形结构：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">ubuntu@VM-12-11-ubuntu:~/c++/makefile$ tree
+</span></span><span class="line"><span class="cl">.
+</span></span><span class="line"><span class="cl">├── factorial.cpp
+</span></span><span class="line"><span class="cl">├── functions.h
+</span></span><span class="line"><span class="cl">├── main.cpp
+</span></span><span class="line"><span class="cl">├── Makefile
+</span></span><span class="line"><span class="cl">└── printHello.cpp
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="m">0</span> directories, <span class="m">5</span> files
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>functions.h</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="cp">#ifndef FUNCTIONS_H
+</span></span></span><span class="line"><span class="cl"><span class="cp">#define FUNCTIONS_H
+</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span><span class="kt">void</span> <span class="nf">printHello</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">factorial</span><span class="p">(</span><span class="kt">int</span> <span class="n">n</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="cp">#endif
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>factorial.cpp</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&#34;functions.h&#34;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span>
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">factorial</span><span class="p">(</span><span class="kt">int</span> <span class="n">n</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="k">if</span> <span class="p">(</span><span class="n">n</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="mi">1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">n</span> <span class="o">*</span> <span class="n">factorial</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>main.cpp</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&#34;functions.h&#34;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span>
+</span></span><span class="line"><span class="cl"><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">printHello</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;This is main：&#34;</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;The factorial of 5 is：&#34;</span> <span class="o">&lt;&lt;</span> <span class="n">factorial</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>printHello.cpp</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&#34;functions.h&#34;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span>
+</span></span><span class="line"><span class="cl"><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">printHello</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="n">i</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;Hello World!&#34;</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="版本-1">版本 1</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="line"><span class="cl"><span class="c">## VERSION 1
+</span></span></span><span class="line"><span class="cl"><span class="c"></span><span class="nf">hello</span><span class="o">:</span> <span class="n">main</span>.<span class="n">cpp</span> <span class="n">printHello</span>.<span class="n">cpp</span> <span class="n">factorial</span>.<span class="n">cpp</span>
+</span></span><span class="line"><span class="cl">	g++ -o hello main.cpp printHello.cpp factorial.cpp
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>第一个版本比较简单：</p>
+<ul>
+<li>hello的生成依赖于：main.cpp printHello.cpp factorial.cpp</li>
+<li>通过：g++ -o hello main.cpp printHello.cpp factorial.cpp 来生成hello这个目标</li>
+</ul>
+<h2 id="版本-2">版本 2</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="line"><span class="cl"><span class="nv">CXX</span> <span class="o">=</span> g++
+</span></span><span class="line"><span class="cl"><span class="nv">TARGET</span> <span class="o">=</span> hello
+</span></span><span class="line"><span class="cl"><span class="nv">OBJ</span> <span class="o">=</span> main.o printHello.o factorial.o
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nf">$(TARGET) </span><span class="o">:</span> <span class="k">$(</span><span class="nv">OBJ</span><span class="k">)</span>
+</span></span><span class="line"><span class="cl">	<span class="k">$(</span>CXX<span class="k">)</span> -o <span class="k">$(</span>TARGET<span class="k">)</span> <span class="k">$(</span>OBJ<span class="k">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nf">main.o </span><span class="o">:</span> <span class="n">main</span>.<span class="n">cpp</span>
+</span></span><span class="line"><span class="cl">	<span class="k">$(</span>CXX<span class="k">)</span> -c main.cpp
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nf">printHello.o </span><span class="o">:</span> <span class="n">printHello</span>.<span class="n">cpp</span>
+</span></span><span class="line"><span class="cl">	<span class="k">$(</span>CXX<span class="k">)</span> -c printHello.cpp
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nf">factorial.o </span><span class="o">:</span> <span class="n">factorial</span>.<span class="n">cpp</span>
+</span></span><span class="line"><span class="cl">	<span class="k">$(</span>CXX<span class="k">)</span> -c factorial.cpp
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>首先定义了3个变量，CXX、TARGET、OBJ；然后再说明定义的TARGET变量依赖于OBJ这个变量，如果OBJ变量更新的化，使用命令(<code>$(CXX) -o $(TARGET) $(OBJ)</code>)重新生成CXX。而OBJ变量依赖于main.o printHello.o factorial.o这三个文件，然后make会根据后面的解释生成这三个文件。</p>
+<p>make生成：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">ubuntu@VM-12-11-ubuntu:~/c++/makefile$ make
+</span></span><span class="line"><span class="cl">g++ -c main.cpp
+</span></span><span class="line"><span class="cl">g++ -c printHello.cpp
+</span></span><span class="line"><span class="cl">g++ -c factorial.cpp
+</span></span><span class="line"><span class="cl">g++ -o hello main.o printHello.o factorial.o
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="版本-3">版本 3</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="line"><span class="cl"><span class="nv">CXX</span> <span class="o">=</span> g++
+</span></span><span class="line"><span class="cl"><span class="nv">TARGET</span> <span class="o">=</span> hello
+</span></span><span class="line"><span class="cl"><span class="nv">OBJ</span> <span class="o">=</span> main.o printHello.o factorial.o
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c"># 增加了一条编译选项
+</span></span></span><span class="line"><span class="cl"><span class="c"></span><span class="nv">CXXFLAGS</span> <span class="o">=</span> -c -Wall
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nf">$(TARGET) </span><span class="o">:</span> ${<span class="n">OBJ</span>}
+</span></span><span class="line"><span class="cl">	<span class="si">${</span><span class="nv">CXX</span><span class="si">}</span> -o <span class="nv">$@</span> $^
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nf">%.o </span><span class="o">:</span> %.<span class="n">cpp</span>
+</span></span><span class="line"><span class="cl">	<span class="k">$(</span>CXX<span class="k">)</span> <span class="k">$(</span>CXXFLAGS<span class="k">)</span> $&lt; -o <span class="nv">$@</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nf">.PHONY </span><span class="o">:</span> <span class="n">clear</span>
+</span></span><span class="line"><span class="cl"><span class="nf">clear </span><span class="o">:</span> 
+</span></span><span class="line"><span class="cl">	rm -f *.o <span class="k">$(</span>TARGET<span class="k">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>其中，<code>$@</code> 代表的就是 <code>$(TARGET)</code>，<code>$^</code> 代表的就是 <code>${OBJ}</code></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="line"><span class="cl"><span class="nf">$(TARGET) </span><span class="o">:</span> ${<span class="n">OBJ</span>}
+</span></span><span class="line"><span class="cl">	<span class="si">${</span><span class="nv">CXX</span><span class="si">}</span> -o <span class="nv">$@</span> $^
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>如下的命令是将所以的.cpp文件生成对应的.o文件，以<code>$(CXX) $(CXXFLAGS) $&lt; -o $@</code>命令的方式生成。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="line"><span class="cl"><span class="nf">%.o </span><span class="o">:</span> %.<span class="n">cpp</span>
+</span></span><span class="line"><span class="cl">	<span class="k">$(</span>CXX<span class="k">)</span> <span class="k">$(</span>CXXFLAGS<span class="k">)</span> $&lt; -o <span class="nv">$@</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>这条命令是删除对应<code>*.o</code>文件和<code>$(TARGET)</code>文件</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="line"><span class="cl"><span class="nf">.PHONY </span><span class="o">:</span> <span class="n">clear</span>
+</span></span><span class="line"><span class="cl"><span class="nf">clear </span><span class="o">:</span> 
+</span></span><span class="line"><span class="cl">	rm -f *.o <span class="k">$(</span>TARGET<span class="k">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>其中<code>.PHONY : clear</code>用来避免歧义</p>
+<p>可以通过 <code>make clear</code>来执行：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">ubuntu@VM-12-11-ubuntu:~/c++/makefile$ make clear
+</span></span><span class="line"><span class="cl">rm -f *.o hello
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="版本-4">版本 4</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-makefile" data-lang="makefile"><span class="line"><span class="cl"><span class="nv">CXX</span> <span class="o">=</span> g++
+</span></span><span class="line"><span class="cl"><span class="nv">TARGET</span> <span class="o">=</span> hello
+</span></span><span class="line"><span class="cl"><span class="nv">SRC</span> <span class="o">=</span> <span class="k">$(</span>wildcard *.cpp<span class="k">)</span>
+</span></span><span class="line"><span class="cl"><span class="nv">OBJ</span> <span class="o">=</span> <span class="k">$(</span>patsubst %.cpp, %.o, <span class="si">${</span><span class="nv">SRC</span><span class="si">}</span><span class="k">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nv">CXXFLAGS</span> <span class="o">=</span> -c -Wall
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nf">$(TARGET) </span><span class="o">:</span> ${<span class="n">OBJ</span>}
+</span></span><span class="line"><span class="cl">	<span class="si">${</span><span class="nv">CXX</span><span class="si">}</span> -o <span class="nv">$@</span> $^
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nf">%.o </span><span class="o">:</span> %.<span class="n">cpp</span>
+</span></span><span class="line"><span class="cl">	<span class="k">$(</span>CXX<span class="k">)</span> <span class="k">$(</span>CXXFLAGS<span class="k">)</span> $&lt; -o <span class="nv">$@</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nf">.PHONY </span><span class="o">:</span> <span class="n">clear</span>
+</span></span><span class="line"><span class="cl"><span class="nf">clear </span><span class="o">:</span> 
+</span></span><span class="line"><span class="cl">	rm -f *.o <span class="k">$(</span>TARGET<span class="k">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><code>SRC = $(wildcard *.cpp)</code>，将所有当前目录的.cpp 都放到SRC变量中。</p>
+<p><code>OBJ = $(patsubst %.cpp, %.o, ${SRC})</code>，将SRC所有的.cpp文件 替换为.o文件</p>
+</div><div class="post-footer" id="post-footer">
+  <div class="post-info">
+    <div class="post-info-line">
+      <div class="post-info-mod">
+        <span title=2022-12-29&#32;00:00:00>Updated on 2022-12-29&nbsp;</span>
+      </div><div class="post-info-license">
+          <span><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span>
+        </div></div>
+    <div class="post-info-line">
+      <div class="post-info-md"></div>
+      <div class="post-info-share">
+        <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://cui-jiang-tao.github.io/posts/makefile/" data-title="makefile的简单例子" data-hashtags="makefile"><i class="fa-brands fa-twitter fa-fw" aria-hidden="true"></i></a>
+  <a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://cui-jiang-tao.github.io/posts/makefile/" data-hashtag="makefile"><i class="fa-brands fa-facebook-square fa-fw" aria-hidden="true"></i></a>
+  <a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="https://cui-jiang-tao.github.io/posts/makefile/" data-title="makefile的简单例子"><i class="fa-brands fa-weibo fa-fw" aria-hidden="true"></i></a>
+  </span>
+      </div>
+    </div>
+  </div>
+
+  <div class="post-info-more">
+    <section class="post-tags"><i class="fa-solid fa-tags fa-fw me-1" aria-hidden="true"></i><a href='/tags/makefile/' class="post-tag">makefile</a></section>
+    <section>
+      <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+    </section>
+  </div>
+
+  <div class="post-nav"><a href="/posts/muduo%E7%BD%91%E7%BB%9C%E5%BA%93%E7%9A%84%E4%BD%BF%E7%94%A8/" class="post-nav-item" rel="prev" title="muduo网络库的使用"><i class="fa-solid fa-angle-left fa-fw" aria-hidden="true"></i>muduo网络库的使用</a>
+      <a href="/posts/cmake%E5%85%A5%E9%97%A8/" class="post-nav-item" rel="next" title="CMake入门">CMake入门<i class="fa-solid fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+</article></main><footer class="footer">
+    <div class="footer-container"><div class="footer-line copyright" itemscope itemtype="http://schema.org/CreativeWork"><i class="fa-regular fa-copyright fa-fw" aria-hidden="true"></i>
+            <span itemprop="copyrightYear">2022 - 2023</span><span class="license footer-divider"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div><div class="footer-line statistics"></div></div>
+  </footer></div><div class="widgets"><div class="fixed-buttons animate__faster d-none"><div class="fixed-button back-to-top" role="button" aria-label="Back to Top"><i class="fa-solid fa-arrow-up fa-fw" aria-hidden="true"></i><span class="variant-numeric d-none">0%</span>
+        </div></div><div id="mask"></div><noscript>
+    <div class="noscript-warning">Theme FixIt works best with JavaScript enabled.</div>
+  </noscript>
+</div><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script src="/lib/lazysizes/lazysizes.min.js" async defer></script><script src="/lib/sharer/sharer.min.js" async defer></script><script src="/lib/typeit/index.umd.js" defer></script><script src="/lib/katex/katex.min.js" defer></script><script src="/lib/katex/auto-render.min.js" defer></script><script src="/lib/katex/copy-tex.min.js" defer></script><script src="/lib/katex/mhchem.min.js" defer></script><script src="/lib/cookieconsent/cookieconsent.min.js" defer></script><script>window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":-1},"comment":{"enable":false},"cookieconsent":{"content":{"dismiss":"Got it!","link":"Learn more","message":"This website uses Cookies to improve your experience."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"data":{"typeit-header-desktop":"Home","typeit-header-title-mobile":"Home"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"typeit-header-desktop":["typeit-header-desktop"],"typeit-header-title-mobile":["typeit-header-title-mobile"]},"duration":-1,"speed":100}};</script><script src="/js/theme.min.js" defer></script></body>
+</html>

@@ -1,10 +1,34 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
   <channel>
-    <title>c/c&#43;&#43; - Tag - vstk的网站</title>
+    <title>c/c&#43;&#43; - Tag - 学习记录</title>
     <link>https://cui-jiang-tao.github.io/tags/c/c&#43;&#43;/</link>
-    <description>c/c&#43;&#43; - Tag - vstk的网站</description>
+    <description>c/c&#43;&#43; - Tag - 学习记录</description>
     <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>cjt953899262@gmail.com (cjt)</managingEditor>
       <webMaster>cjt953899262@gmail.com (cjt)</webMaster><atom:link href="https://cui-jiang-tao.github.io/tags/c/c&#43;&#43;/" rel="self" type="application/rss+xml" /><item>
+  <title>常见的汇编指令</title>
+  <link>https://cui-jiang-tao.github.io/posts/x86%E5%B8%B8%E8%A7%81%E6%B1%87%E7%BC%96%E6%8C%87%E4%BB%A4/</link>
+  <pubDate>Mon, 20 Mar 2023 00:00:00 &#43;0000</pubDate>
+  <author>cjt</author>
+  <guid>https://cui-jiang-tao.github.io/posts/x86%E5%B8%B8%E8%A7%81%E6%B1%87%E7%BC%96%E6%8C%87%E4%BB%A4/</guid>
+  <description><![CDATA[标志位 在汇编语言中，标志位是用于标识CPU执行指令时出现的一些状态信息的标志。常见的标志位包括： 零标志位（ZF）：当指令执行的结果为零时，该]]></description>
+</item>
+<item>
+  <title>c&#43;&#43;小工具</title>
+  <link>https://cui-jiang-tao.github.io/posts/c&#43;&#43;%E5%B0%8F%E5%B7%A5%E5%85%B7/</link>
+  <pubDate>Tue, 14 Mar 2023 00:00:00 &#43;0000</pubDate>
+  <author>cjt</author>
+  <guid>https://cui-jiang-tao.github.io/posts/c&#43;&#43;%E5%B0%8F%E5%B7%A5%E5%85%B7/</guid>
+  <description><![CDATA[遍历一个文件夹 C++ 中遍历一个文件夹通常需要使用系统特定的 API。以下是使用 Windows API 实现遍历文件夹的示例代码： 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19]]></description>
+</item>
+<item>
+  <title>c&#43;&#43;反汇编揭秘</title>
+  <link>https://cui-jiang-tao.github.io/posts/c&#43;&#43;%E5%8F%8D%E6%B1%87%E7%BC%96%E6%8F%AD%E7%A7%98/</link>
+  <pubDate>Tue, 07 Feb 2023 00:00:00 &#43;0000</pubDate>
+  <author>cjt</author>
+  <guid>https://cui-jiang-tao.github.io/posts/c&#43;&#43;%E5%8F%8D%E6%B1%87%E7%BC%96%E6%8F%AD%E7%A7%98/</guid>
+  <description><![CDATA[4. 观察各种表达式的求值过程 4.1 加法 release版 1 2 3 4 5 6 7 8 9 10 11 #include &lt;stdio.h&gt; int main(int argc, char* argv[]) { int n1 = argc; int n2 = argc; //复写传播：n2等价于引用argc，]]></description>
+</item>
+<item>
   <title>C标准库</title>
   <link>https://cui-jiang-tao.github.io/posts/c%E6%A0%87%E5%87%86%E5%BA%93/</link>
   <pubDate>Sun, 16 Oct 2022 00:00:00 &#43;0000</pubDate>

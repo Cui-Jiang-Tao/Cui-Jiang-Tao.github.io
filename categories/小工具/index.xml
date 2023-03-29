@@ -1,0 +1,16 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+  <channel>
+    <title>小工具 - Category - 学习记录</title>
+    <link>https://cui-jiang-tao.github.io/categories/%E5%B0%8F%E5%B7%A5%E5%85%B7/</link>
+    <description>小工具 - Category - 学习记录</description>
+    <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>cjt953899262@gmail.com (cjt)</managingEditor>
+      <webMaster>cjt953899262@gmail.com (cjt)</webMaster><lastBuildDate>Tue, 14 Mar 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://cui-jiang-tao.github.io/categories/%E5%B0%8F%E5%B7%A5%E5%85%B7/" rel="self" type="application/rss+xml" /><item>
+  <title>c&#43;&#43;小工具</title>
+  <link>https://cui-jiang-tao.github.io/posts/c&#43;&#43;%E5%B0%8F%E5%B7%A5%E5%85%B7/</link>
+  <pubDate>Tue, 14 Mar 2023 00:00:00 &#43;0000</pubDate>
+  <author>cjt</author>
+  <guid>https://cui-jiang-tao.github.io/posts/c&#43;&#43;%E5%B0%8F%E5%B7%A5%E5%85%B7/</guid>
+  <description><![CDATA[遍历一个文件夹 C++ 中遍历一个文件夹通常需要使用系统特定的 API。以下是使用 Windows API 实现遍历文件夹的示例代码： 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19]]></description>
+</item>
+</channel>
+</rss>

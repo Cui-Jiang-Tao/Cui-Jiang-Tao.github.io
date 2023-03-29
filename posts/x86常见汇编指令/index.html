@@ -1,0 +1,962 @@
+<!DOCTYPE html>
+<html itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+  <head>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+    <meta name="robots" content="noodp" />
+    <title>常见的汇编指令 - 学习记录</title><meta name="author" content="cjt">
+<meta name="author-link" content="">
+<meta name="description" content="标志位 在汇编语言中，标志位是用于标识CPU执行指令时出现的一些状态信息的标志。常见的标志位包括： 零标志位（ZF）：当指令执行的结果为零时，该" /><meta name="keywords" content='c/c&#43;&#43;' /><meta itemprop="name" content="常见的汇编指令">
+<meta itemprop="description" content="标志位 在汇编语言中，标志位是用于标识CPU执行指令时出现的一些状态信息的标志。常见的标志位包括： 零标志位（ZF）：当指令执行的结果为零时，该"><meta itemprop="datePublished" content="2023-03-20T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2023-03-20T00:00:00+00:00" />
+<meta itemprop="wordCount" content="18348">
+<meta itemprop="keywords" content="c/c&#43;&#43;," /><meta property="og:title" content="常见的汇编指令" />
+<meta property="og:description" content="标志位 在汇编语言中，标志位是用于标识CPU执行指令时出现的一些状态信息的标志。常见的标志位包括： 零标志位（ZF）：当指令执行的结果为零时，该" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://cui-jiang-tao.github.io/posts/x86%E5%B8%B8%E8%A7%81%E6%B1%87%E7%BC%96%E6%8C%87%E4%BB%A4/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-03-20T00:00:00+00:00" />
+<meta property="article:modified_time" content="2023-03-20T00:00:00+00:00" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="常见的汇编指令"/>
+<meta name="twitter:description" content="标志位 在汇编语言中，标志位是用于标识CPU执行指令时出现的一些状态信息的标志。常见的标志位包括： 零标志位（ZF）：当指令执行的结果为零时，该"/>
+<meta name="application-name" content="FixIt">
+<meta name="apple-mobile-web-app-title" content="FixIt"><meta name="theme-color" data-light="#f8f8f8" data-dark="#252627" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" href="https://cui-jiang-tao.github.io/posts/x86%E5%B8%B8%E8%A7%81%E6%B1%87%E7%BC%96%E6%8C%87%E4%BB%A4/" /><link rel="prev" href="https://cui-jiang-tao.github.io/posts/c&#43;&#43;%E5%B0%8F%E5%B7%A5%E5%85%B7/" /><link rel="next" href="https://cui-jiang-tao.github.io/posts/%E5%8A%A0%E5%AF%86%E4%B8%8E%E8%A7%A3%E5%AF%86%E7%AE%97%E6%B3%95/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "BlogPosting",
+    "headline": "常见的汇编指令",
+    "inLanguage": "zh-CN",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https:\/\/cui-jiang-tao.github.io\/posts\/x86%E5%B8%B8%E8%A7%81%E6%B1%87%E7%BC%96%E6%8C%87%E4%BB%A4\/"
+    },"genre": "posts","keywords": "c\/c\u002b\u002b","wordcount":  18348 ,
+    "url": "https:\/\/cui-jiang-tao.github.io\/posts\/x86%E5%B8%B8%E8%A7%81%E6%B1%87%E7%BC%96%E6%8C%87%E4%BB%A4\/","datePublished": "2023-03-20T00:00:00+00:00","dateModified": "2023-03-20T00:00:00+00:00","publisher": {
+      "@type": "Organization",
+      "name": ""},"author": {
+        "@type": "Person",
+        "name": "cjt"
+      },"description": ""
+  }
+  </script></head>
+  <body data-header-desktop="fixed" data-header-mobile="auto"><script>(window.localStorage?.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('data-theme', 'dark');</script><div class="wrapper"><header class="desktop animate__faster" id="header-desktop">
+  <div class="header-wrapper">
+    <div class="header-title">
+      <a href="/" title="学习记录"><span class="header-title-pre"><i class='far fa-kiss-wink-heart fa-fw' aria-hidden='true'></i></span><span id="typeit-header-desktop" class="typeit"></span></a><span class="header-subtitle"></span></div>
+    <nav>
+      <ul class="menu"><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/posts/"
+                
+                
+              ><i class="fa-solid fa-archive fa-fw fa-sm" aria-hidden="true"></i> 文章</a></li><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/categories/"
+                
+                
+              ><i class="fa-solid fa-th fa-fw fa-sm" aria-hidden="true"></i> 分类</a></li><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/tags/"
+                
+                
+              ><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> 标签</a></li><li class="menu-item delimiter"></li><li class="menu-item theme-switch" title="Switch Theme">
+          <i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</header><header class="mobile animate__faster" id="header-mobile">
+  <div class="header-container">
+    <div class="header-wrapper">
+      <div class="header-title">
+        <a href="/" title="学习记录"><span class="header-title-pre"><i class='far fa-kiss-wink-heart fa-fw' aria-hidden='true'></i></span><span id="typeit-header-title-mobile" class="typeit"></span></a><span class="header-subtitle"></span></div>
+      <div class="menu-toggle" id="menu-toggle-mobile">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+    <nav>
+      <ul class="menu" id="menu-mobile"><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/posts/"
+                  
+                  
+                ><i class="fa-solid fa-archive fa-fw fa-sm" aria-hidden="true"></i> 文章</a></li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/categories/"
+                  
+                  
+                ><i class="fa-solid fa-th fa-fw fa-sm" aria-hidden="true"></i> 分类</a></li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/tags/"
+                  
+                  
+                ><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> 标签</a></li><li class="menu-item theme-switch" title="Switch Theme">
+          <i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i>
+        </li></ul>
+    </nav>
+  </div>
+</header><main class="container" data-page-style="wide"><aside class="toc" id="toc-auto"><h2 class="toc-title">Contents&nbsp;<i class="toc-icon fa-solid fa-angle-down fa-fw" aria-hidden="true"></i></h2>
+      <div class="toc-content" id="toc-content-auto"></div></aside>
+
+  <aside class="aside-custom">
+    </aside>
+
+  <article class="page single">
+    <div class="header"><h1 class="single-title animate__animated animate__flipInX">
+        <span>常见的汇编指令</span>
+      </h1></div><div class="post-meta">
+      <div class="post-meta-line"><span class="post-author"><span class="author"><img
+    class="lazyload avatar"
+    src="/svg/loading.min.svg"
+    data-src="https://www.gravatar.com/avatar/736cc0685dbd22dd674add9c481fc755?s=32&amp;d="
+    data-srcset="https://www.gravatar.com/avatar/736cc0685dbd22dd674add9c481fc755?s=32&amp;d=, https://www.gravatar.com/avatar/736cc0685dbd22dd674add9c481fc755?s=32&amp;d= 1.5x, https://www.gravatar.com/avatar/736cc0685dbd22dd674add9c481fc755?s=32&amp;d= 2x"
+    data-sizes="auto"
+    alt="cjt"
+    title="cjt"/>&nbsp;cjt</span></span>
+          <span class="post-category">included in <a href="/categories/%E9%80%86%E5%90%91/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 逆向</a></span></div>
+      <div class="post-meta-line"><span title=2023-03-20&#32;00:00:00><i class="fa-regular fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-03-20">2023-03-20</time></span>&nbsp;<span><i class="fa-solid fa-pencil-alt fa-fw" aria-hidden="true"></i> 18348 words</span>&nbsp;<span><i class="fa-regular fa-clock fa-fw" aria-hidden="true"></i> 37 minutes</span>&nbsp;</div>
+    </div><div class="details toc" id="toc-static" data-kept="false">
+        <div class="details-summary toc-title">
+          <span>Contents</span>
+          <span><i class="details-icon fa-solid fa-angle-right" aria-hidden="true"></i></span>
+        </div>
+        <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#标志位">标志位</a></li>
+    <li><a href="#条件跳转指令">条件跳转指令</a>
+      <ul>
+        <li><a href="#jz">JZ</a></li>
+        <li><a href="#jnz">JNZ</a></li>
+        <li><a href="#je">JE</a></li>
+        <li><a href="#jne">JNE</a></li>
+        <li><a href="#js">JS</a></li>
+        <li><a href="#jns">JNS</a></li>
+        <li><a href="#jpjpe">JP/JPE</a></li>
+        <li><a href="#jnpjpo">JNP/JPO</a></li>
+        <li><a href="#jo">JO</a></li>
+        <li><a href="#jno">JNO</a></li>
+        <li><a href="#jc">JC</a></li>
+        <li><a href="#jnc">JNC</a></li>
+        <li><a href="#jb">JB</a></li>
+        <li><a href="#jnb">JNB</a></li>
+        <li><a href="#jae">JAE</a></li>
+        <li><a href="#jnae">JNAE</a></li>
+        <li><a href="#jbe">JBE</a></li>
+        <li><a href="#jnbe">JNBE</a></li>
+        <li><a href="#ja">JA</a></li>
+        <li><a href="#jna">JNA</a></li>
+        <li><a href="#jp">JP</a></li>
+        <li><a href="#jnp">JNP</a></li>
+        <li><a href="#jl">JL</a></li>
+        <li><a href="#jnl">JNL</a></li>
+        <li><a href="#jge">JGE</a></li>
+        <li><a href="#jnge">JNGE</a></li>
+        <li><a href="#jle">JLE</a></li>
+        <li><a href="#jnle">JNLE</a></li>
+        <li><a href="#jg">JG</a></li>
+        <li><a href="#jng">JNG</a></li>
+      </ul>
+    </li>
+    <li><a href="#常见的汇编指令">常见的汇编指令</a>
+      <ul>
+        <li><a href="#cmp指令">CMP指令</a></li>
+      </ul>
+    </li>
+    <li><a href="#例子">例子</a>
+      <ul>
+        <li><a href="#setnz---al"><code>setnz   al</code></a></li>
+        <li><a href="#cmp-----ebpargc-5"><code>cmp     [ebp+argc], 5</code></a></li>
+        <li><a href="#cmovz---eax-ecx"><code>cmovz   eax, ecx</code></a></li>
+        <li><a href="#test----eax-eax"><code>test    eax, eax</code></a></li>
+        <li><a href="#dec-----eax"><code>dec     eax</code></a></li>
+        <li><a href="#movzx---eax-byte-ptr-dsindex_tableeax"><code>movzx   eax, byte ptr ds:Index_table[eax]</code></a></li>
+        <li><a href="#xor-----eax-eax"><code>xor     eax, eax</code></a></li>
+        <li><a href="#cmovle--esi-eax"><code>cmovle  esi, eax</code></a></li>
+        <li><a href="#movq----xmm0-qword-ptr-dsahelloworld"><code>movq    xmm0, qword ptr ds:aHelloWorld</code></a></li>
+        <li><a href="#xorps---xmm0-xmm0"><code>xorps   xmm0, xmm0</code></a></li>
+        <li><a href="#movups--xmmword-ptr-ebpbuffer1-xmm0"><code>movups  xmmword ptr [ebp+buffer+1], xmm0</code></a></li>
+        <li><a href="#rep-movsd"><code>rep movsd</code></a></li>
+      </ul>
+    </li>
+    <li><a href="#特殊的一些指令或函数">特殊的一些指令或函数</a>
+      <ul>
+        <li><a href="#align-10h"><code>align 10h</code></a></li>
+        <li><a href="#__autoclassinit2函数"><code>__autoclassinit2</code>函数</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+      </div><div class="content" id="content"><h2 id="标志位">标志位</h2>
+<p>在汇编语言中，标志位是用于标识CPU执行指令时出现的一些状态信息的标志。常见的标志位包括：</p>
+<ul>
+<li>零标志位（ZF）：当指令执行的结果为零时，该标志位被设置为1；否则被清零。</li>
+<li>进位标志位（CF）：当无符号数相加或减法产生进位或借位时，该标志位被设置为1；否则被清零。</li>
+<li>奇偶标志位（PF）：当指令执行的结果具有偶数个1时，该标志位被设置为1；否则被清零。</li>
+<li>符号标志位（SF）：当指令执行的结果为负数时，该标志位被设置为1；否则被清零。</li>
+<li>溢出标志位（OF）：当有符号数相加或减法产生溢出时，该标志位被设置为1；否则被清零。</li>
+</ul>
+<p>这些标志位通常会被用来进行条件分支和循环等操作，比如，当需要判断某个数的正负时，可以通过检查符号标志位来实现。当需要判断两个数的大小时，可以通过检查进位标志位、零标志位和溢出标志位等来实现。需要注意的是，不同的指令可能会影响不同的标志位，因此在编写汇编程序时需要注意处理标志位的值。</p>
+<h2 id="条件跳转指令">条件跳转指令</h2>
+<p><img
+    class="lazyload"
+    src="/svg/loading.min.svg"
+    data-src="../../imgs/x86/jump_indicator.png"
+    data-srcset="../../imgs/x86/jump_indicator.png, ../../imgs/x86/jump_indicator.png 1.5x, ../../imgs/x86/jump_indicator.png 2x"
+    data-sizes="auto"
+    alt="&amp;ldquo;条件跳转指令表&amp;rdquo;"
+    title="&amp;ldquo;条件跳转指令表&amp;rdquo;"/></p>
+<p>汇编语言中的条件跳转指令通常称为「条件转移指令」或「分支指令」。这些指令根据特定的条件（如结果是否为零）决定是否跳转到另一条指令执行。</p>
+<p>以下是常见的汇编跳转指令列表：</p>
+<ul>
+<li>JMP（Jump）：无条件跳转到指定地址。</li>
+<li>JZ（Jump if Zero）：如果零标志位为1，则跳转到指定地址。</li>
+<li>JNZ（Jump if Not Zero）：如果零标志位为0，则跳转到指定地址。</li>
+<li>JE（Jump if Equal）：如果两个数相等，则跳转到指定地址。</li>
+<li>JNE（Jump if Not Equal）：如果两个数不相等，则跳转到指定地址。</li>
+<li>JS（Jump if Sign）：如果符号标志位为1，则跳转到指定地址。</li>
+<li>JNS（Jump if Not Sign）：如果符号标志位为0，则跳转到指定地址。</li>
+<li>JP/JPE（Jump if Parity / Jump if Parity Even）：如果奇偶标志位为1，则跳转到指定地址。</li>
+<li>JNP/JPO（Jump if Not Parity / Jump if Parity Odd）：如果奇偶标志位为0，则跳转到指定地址。</li>
+<li>JO（Jump if Overflow）：如果溢出标志位为1，则跳转到指定地址。</li>
+<li>JNO（Jump if Not Overflow）：如果溢出标志位为0，则跳转到指定地址。</li>
+<li>JC（Jump if Carry）：如果进位标志位为1，则跳转到指定地址。</li>
+<li>JNC（Jump if Not Carry）：如果进位标志位为0，则跳转到指定地址。</li>
+<li>JB（Jump if Below）：如果无符号数小于，则跳转到指定地址。</li>
+<li>JNB（Jump if Not Below）：如果不发生下溢，则跳转到指定地址。</li>
+<li>JAE（Jump if Above or Equal）：如果无符号数大于等于，则跳转到指定地址。</li>
+<li>JNAE（Jump if Not Above or Equal）：如果无进位标志位为1，则跳转到指定地址。</li>
+<li>JBE（Jump if Below or Equal）：如果无符号数小于等于，则跳转到指定地址。</li>
+<li>JNBE（Jump if Not Below or Equal）：如果未发生下溢并且发生进位，则跳转到指定地址。</li>
+<li>JA（Jump if Above）：如果无符号数大于，则跳转到指定地址。</li>
+<li>JNA（Jump if Not Above）：如果不大于，则跳转到指定地址。</li>
+<li>JP（Jump if Parity）：如果奇偶标志位为1，则跳转到指定地址。</li>
+<li>JNP（Jump if Not Parity）：如果奇偶标志位为0，则跳转到指定地址。</li>
+<li>JL（Jump if Less）：如果有符号数小于，则跳转到指定地址。</li>
+<li>JNL（Jump if Not Less）：如果不小于，则跳转到指定地址。</li>
+<li>JGE（Jump if Greater or Equal）：如果有符号数大于等于，则跳转到指定地址。</li>
+<li>JNGE（Jump if Not Greater or Equal）：如果小于，则跳转到指定地址。</li>
+<li>JLE（Jump if Less or Equal）：如果有符号数小于等于，则跳转到指定地址。</li>
+<li>JNLE（Jump if Not Less or Equal）：如果大于，则跳转到指定地址。</li>
+<li>JG（Jump if Greater）：如果有符号数大于，则跳转到指定地址。</li>
+<li>JNG（Jump if Not Greater）：如果小于等于，则跳转到指定地址。</li>
+</ul>
+<p>以下是一些其他的汇编跳转指令：</p>
+<ul>
+<li>JECXZ（Jump if ECX is Zero）：如果ECX寄存器的值为零，则跳转到指定地址。</li>
+<li>LOOP（Loop While CX is Not Zero）：循环指令，如果CX寄存器的值不为零，则跳转到指定地址。</li>
+<li>LOOPE、LOOPZ（Loop While Equal/Zero）：循环指令，如果ZF标志位为1且CX寄存器的值不为零，则跳转到指定地址。</li>
+<li>LOOPNE、LOOPNZ（Loop While Not Equal/Zero）：循环指令，如果ZF标志位为0且CX寄存器的值不为零，则跳转到指定地址。</li>
+<li>JCXZ（Jump if CX is Zero）：如果CX寄存器的值为零，则跳转到指定地址。</li>
+<li>JMPFAR（Far Jump）：跳转到指定的远地址。</li>
+<li>JUMP SHORT（Short Jump）：跳转到相对于当前指令的短距离地址。</li>
+<li>JNOINTER（Jump If Not Interrupted）：如果中断标志位为0，则跳转到指定地址。</li>
+<li>JLABEL（Jump to Label）：跳转到指定的标签位置。</li>
+</ul>
+<p>需要注意的是，不同的CPU架构和汇编语言可能会有略微不同的指令集。以上列举的指令是比较通用且常见的指令。在实际编程中，根据具体的需求和条件选择合适的跳转指令是非常重要的。</p>
+<h3 id="jz">JZ</h3>
+<p>JZ是汇编中的一种条件转移指令，其含义为“Jump if Zero”，即如果操作数为零，则跳转到指定地址。</p>
+<p>JZ指令用于判断操作数是否为零，通常用于循环和条件分支语句中。在执行JZ指令时，首先判断操作数的值是否为零，如果为零，则跳转到指定地址；如果不为零，则继续执行下一条指令。</p>
+<p>JZ指令通常与其他指令结合使用，如MOV（数据传送指令）、CMP（比较指令）等，如：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">MOV</span> <span class="no">AX</span><span class="p">,</span> <span class="mi">0</span>   <span class="c1">; 将AX寄存器的值置为0
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">CMP</span> <span class="no">AX</span><span class="p">,</span> <span class="no">BX</span>  <span class="c1">; 比较AX和BX的值
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">JZ</span>  <span class="no">Label</span>   <span class="c1">; 如果AX为0，则跳转到Label处
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>上述代码首先将AX寄存器的值置为0，然后比较AX和BX的值，如果AX为0，则跳转到Label处执行相应的代码。如果AX不为0，则继续执行下一条指令。</p>
+<p>JZ指令还可以与其他条件转移指令结合使用，如JE（Jump if Equal）、JNE（Jump if Not Equal）等，实现更加灵活的条件分支。</p>
+<h3 id="jnz">JNZ</h3>
+<p>JNZ是汇编中的一种条件转移指令，其含义为“Jump if Not Zero”，即如果操作数不为零，则跳转到指定地址。</p>
+<p>JNZ指令用于判断操作数是否为零，通常用于循环和条件分支语句中。在执行JNZ指令时，首先判断操作数的值是否为零，如果不为零，则跳转到指定地址；如果为零，则继续执行下一条指令。</p>
+<p>JNZ指令通常与其他指令结合使用，如MOV（数据传送指令）、CMP（比较指令）等，如：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">MOV</span> <span class="no">AX</span><span class="p">,</span> <span class="mi">1</span>   <span class="c1">; 将AX寄存器的值置为1
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">CMP</span> <span class="no">AX</span><span class="p">,</span> <span class="no">BX</span>  <span class="c1">; 比较AX和BX的值
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">JNZ</span> <span class="no">Label</span>   <span class="c1">; 如果AX不为0，则跳转到Label处
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>上述代码首先将AX寄存器的值置为1，然后比较AX和BX的值，如果AX不为0，则跳转到Label处执行相应的代码。如果AX为0，则继续执行下一条指令。</p>
+<p>JNZ指令还可以与其他条件转移指令结合使用，如JE（Jump if Equal）、JNE（Jump if Not Equal）等，实现更加灵活的条件分支。</p>
+<h3 id="je">JE</h3>
+<p>JE是汇编中的一种条件转移指令，其含义为“Jump if Equal”，即如果两个操作数相等，则跳转到指定地址。</p>
+<p>JE指令用于比较操作数的相等性，通常用于控制程序的条件分支。在执行JE指令时，首先比较两个操作数的值是否相等，如果相等，则跳转到指定地址；如果不相等，则继续执行下一条指令。</p>
+<p>JE指令通常与CMP（比较指令）一起使用，如：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">CMP</span> <span class="no">AX</span><span class="p">,</span> <span class="no">BX</span>   <span class="c1">; 比较AX和BX的值
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">JE</span>  <span class="no">Label</span>    <span class="c1">; 如果相等，则跳转到Label处
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>上述代码首先比较AX和BX的值，如果相等，则跳转到Label处执行相应的代码。如果不相等，则继续执行下一条指令。</p>
+<p>JE指令还可以与其他条件转移指令结合使用，如JNE（Jump if Not Equal）、JZ（Jump if Zero）等，实现更加灵活的条件分支。</p>
+<h3 id="jne">JNE</h3>
+<p>JNE是汇编中的一种条件转移指令，其含义为“Jump if Not Equal”，即如果两个操作数不相等，则跳转到指定地址。</p>
+<p>JNE指令用于比较操作数的不等性，通常用于控制程序的条件分支。在执行JNE指令时，首先比较两个操作数的值是否不相等，如果不相等，则跳转到指定地址；如果相等，则继续执行下一条指令。</p>
+<p>JNE指令通常与CMP（比较指令）一起使用，如：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">CMP</span> <span class="no">AX</span><span class="p">,</span> <span class="no">BX</span>   <span class="c1">; 比较AX和BX的值
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">JNE</span> <span class="no">Label</span>    <span class="c1">; 如果不相等，则跳转到Label处
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>上述代码首先比较AX和BX的值，如果不相等，则跳转到Label处执行相应的代码。如果相等，则继续执行下一条指令。</p>
+<p>JNE指令还可以与其他条件转移指令结合使用，如JE（Jump if Equal）、JZ（Jump if Zero）等，实现更加灵活的条件分支。</p>
+<h3 id="js">JS</h3>
+<p>JS是汇编中的一种条件转移指令，其含义为“Jump if Sign”，即如果符号标志位为1，则跳转到指定地址。</p>
+<p>JS指令用于判断操作数的符号位，通常用于有符号数的比较和条件分支。在执行JS指令时，首先判断符号标志位的值是否为1，如果为1，则跳转到指定地址；如果为0，则继续执行下一条指令。</p>
+<p>JS指令通常与其他指令结合使用，如CMP（比较指令）等，如：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">MOV</span> <span class="no">AX</span><span class="p">,</span> <span class="p">-</span><span class="mi">1</span>   <span class="c1">; 将AX寄存器的值置为-1
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">CMP</span> <span class="no">AX</span><span class="p">,</span> <span class="no">BX</span>   <span class="c1">; 比较AX和BX的值
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">JS</span>  <span class="no">Label</span>    <span class="c1">; 如果AX为负数，则跳转到Label处
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>上述代码首先将AX寄存器的值置为-1，然后比较AX和BX的值，如果AX为负数，则跳转到Label处执行相应的代码。如果AX为非负数，则继续执行下一条指令。</p>
+<p>JS指令还可以与其他条件转移指令结合使用，如JNS（Jump if Not Sign）等，实现更加灵活的条件分支。</p>
+<h3 id="jns">JNS</h3>
+<p>JNS是汇编中的一种条件转移指令，其含义为“Jump if Not Sign”，即如果符号标志位为0，则跳转到指定地址。</p>
+<p>JNS指令用于判断操作数的符号位，通常用于有符号数的比较和条件分支。在执行JNS指令时，首先判断符号标志位的值是否为0，如果为0，则跳转到指定地址；如果为1，则继续执行下一条指令。</p>
+<p>JNS指令通常与其他指令结合使用，如CMP（比较指令）等，如：</p>
+<p>MOV AX, 2    ; 将AX寄存器的值置为2
+CMP AX, BX   ; 比较AX和BX的值
+JNS Label    ; 如果AX为非负数，则跳转到Label处
+上述代码首先将AX寄存器的值置为2，然后比较AX和BX的值，如果AX为非负数，则跳转到Label处执行相应的代码。如果AX为负数，则继续执行下一条指令。</p>
+<p>JNS指令还可以与其他条件转移指令结合使用，如JS（Jump if Sign）等，实现更加灵活的条件分支。</p>
+<h3 id="jpjpe">JP/JPE</h3>
+<p>JP和JPE都是汇编中的条件转移指令，其含义分别为“Jump if Parity”和“Jump if Parity Even”，即如果奇偶标志位为1，则跳转到指定地址。</p>
+<p>这两条指令用于检查操作数的二进制位中1的个数是否为偶数。在执行JP/JPE指令时，首先判断奇偶标志位的值是否为1，如果为1，则跳转到指定地址；如果为0，则继续执行下一条指令。</p>
+<p>JP和JPE指令通常与其他指令结合使用，如ADD（加法指令）、SUB（减法指令）等，如：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">MOV</span> <span class="no">AH</span><span class="p">,</span> <span class="mi">0</span><span class="no">Fh</span>   <span class="c1">; 将AH寄存器的值置为0Fh
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">ADD</span> <span class="no">AH</span><span class="p">,</span> <span class="no">AL</span>    <span class="c1">; 将AL的值加到AH中
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">JP</span>  <span class="no">Label</span>     <span class="c1">; 如果1的个数为偶数，则跳转到Label处
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>上述代码首先将AH寄存器的值置为0Fh，然后将AL的值加到AH中，如果AH中1的个数为偶数，则跳转到Label处执行相应的代码。如果AH中1的个数为奇数，则继续执行下一条指令。</p>
+<p>JP/JPE指令在现代计算机中已经很少使用，因为奇偶标志位已经不再是必需的寄存器标志位。</p>
+<h3 id="jnpjpo">JNP/JPO</h3>
+<p>JNP和JPO都是汇编中的条件转移指令，其含义分别为“Jump if Not Parity”和“Jump if Parity Odd”，即如果奇偶标志位为0，则跳转到指定地址。</p>
+<p>这两条指令用于检查操作数的二进制位中1的个数是否为偶数。在执行JNP/JPO指令时，首先判断奇偶标志位的值是否为0，如果为0，则跳转到指定地址；如果为1，则继续执行下一条指令。</p>
+<p>JNP和JPO指令通常与其他指令结合使用，如ADD（加法指令）、SUB（减法指令）等，如：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">MOV</span> <span class="no">AH</span><span class="p">,</span> <span class="mi">0</span><span class="no">Fh</span>   <span class="c1">; 将AH寄存器的值置为0Fh
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">ADD</span> <span class="no">AH</span><span class="p">,</span> <span class="no">AL</span>    <span class="c1">; 将AL的值加到AH中
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">JNP</span> <span class="no">Label</span>     <span class="c1">; 如果1的个数为奇数，则跳转到Label处
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>上述代码首先将AH寄存器的值置为0Fh，然后将AL的值加到AH中，如果AH中1的个数为奇数，则跳转到Label处执行相应的代码。如果AH中1的个数为偶数，则继续执行下一条指令。</p>
+<p>JNP/JPO指令在现代计算机中已经很少使用，因为奇偶标志位已经不再是必需的寄存器标志位。</p>
+<h3 id="jo">JO</h3>
+<p>JO是汇编中的条件转移指令，其含义为“Jump if Overflow”，即如果溢出标志位为1，则跳转到指定地址。</p>
+<p>JO指令用于检查运算结果是否溢出，通常用于有符号数的加减运算。在执行JO指令时，首先判断溢出标志位的值是否为1，如果为1，则跳转到指定地址；如果为0，则继续执行下一条指令。</p>
+<p>JO指令通常与其他指令结合使用，如ADD（加法指令）、SUB（减法指令）等，如：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">MOV</span> <span class="no">AX</span><span class="p">,</span> <span class="mi">7</span><span class="no">FFFh</span>   <span class="c1">; 将AX寄存器的值置为最大的有符号数
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">ADD</span> <span class="no">AX</span><span class="p">,</span> <span class="mi">1</span>        <span class="c1">; 将AX加上1
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">JO</span>  <span class="no">Label</span>        <span class="c1">; 如果结果溢出，则跳转到Label处
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>上述代码首先将AX寄存器的值置为最大的有符号数，然后将AX加上1，如果结果溢出，则跳转到Label处执行相应的代码。如果结果未溢出，则继续执行下一条指令。</p>
+<p>JO指令还可以与其他条件转移指令结合使用，如JNO（Jump if Not Overflow）等，实现更加灵活的条件分支。</p>
+<h3 id="jno">JNO</h3>
+<p>JNO是汇编中的条件转移指令，其含义为“Jump if Not Overflow”，即如果溢出标志位为0，则跳转到指定地址。</p>
+<p>JNO指令用于检查运算结果是否溢出，通常用于有符号数的加减运算。在执行JNO指令时，首先判断溢出标志位的值是否为0，如果为0，则跳转到指定地址；如果为1，则继续执行下一条指令。</p>
+<p>JNO指令通常与其他指令结合使用，如ADD（加法指令）、SUB（减法指令）等，如：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">MOV</span> <span class="no">AX</span><span class="p">,</span> <span class="mi">7</span><span class="no">FFFh</span>   <span class="c1">; 将AX寄存器的值置为最大的有符号数
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">ADD</span> <span class="no">AX</span><span class="p">,</span> <span class="mi">1</span>        <span class="c1">; 将AX加上1
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">JNO</span> <span class="no">Label</span>        <span class="c1">; 如果结果未溢出，则跳转到Label处
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>上述代码首先将AX寄存器的值置为最大的有符号数，然后将AX加上1，如果结果未溢出，则跳转到Label处执行相应的代码。如果结果溢出，则继续执行下一条指令。</p>
+<p>JNO指令还可以与其他条件转移指令结合使用，如JO（Jump if Overflow）等，实现更加灵活的条件分支。</p>
+<h3 id="jc">JC</h3>
+<p>JC是汇编中的条件转移指令，其含义为“Jump if Carry”，即如果进位标志位为1，则跳转到指定地址。</p>
+<p>JC指令用于检查无符号数的加法操作是否进位，通常用于无符号数的比较和条件分支。在执行JC指令时，首先判断进位标志位的值是否为1，如果为1，则跳转到指定地址；如果为0，则继续执行下一条指令。</p>
+<p>JC指令通常与其他指令结合使用，如ADD（加法指令）、SUB（减法指令）等，如：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">MOV</span> <span class="no">AX</span><span class="p">,</span> <span class="no">FFFFh</span>   <span class="c1">; 将AX寄存器的值置为最大的无符号数
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">ADD</span> <span class="no">AX</span><span class="p">,</span> <span class="mi">1</span>        <span class="c1">; 将AX加上1
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">JC</span>  <span class="no">Label</span>        <span class="c1">; 如果结果进位，则跳转到Label处
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>上述代码首先将AX寄存器的值置为最大的无符号数，然后将AX加上1，如果结果进位，则跳转到Label处执行相应的代码。如果结果未进位，则继续执行下一条指令。</p>
+<p>JC指令还可以与其他条件转移指令结合使用，如JNC（Jump if Not Carry）等，实现更加灵活的条件分支。</p>
+<h3 id="jnc">JNC</h3>
+<p>JNC是汇编中的一种条件转移指令，它的含义为“Jump if Not Carry”，即如果进位标志位为0，则跳转到指定地址。</p>
+<p>JNC指令用于判断进位标志位的值是否为0，通常用于循环和条件分支语句中。在执行JNC指令时，首先判断进位标志位的值是否为0，如果为0，则跳转到指定地址；如果为1，则继续执行下一条指令。</p>
+<p>JNC指令通常与其他指令结合使用，如ADD（加法指令）、SUB（减法指令）等，如：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">MOV</span> <span class="no">AX</span><span class="p">,</span> <span class="mi">100</span>    <span class="c1">; 将AX寄存器的值置为100
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">SUB</span> <span class="no">AX</span><span class="p">,</span> <span class="no">BX</span>     <span class="c1">; 将BX的值从AX中减去
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">JNC</span> <span class="no">Label</span>      <span class="c1">; 如果无进位，则跳转到Label处
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>上述代码首先将AX寄存器的值置为100，然后将BX的值从AX中减去，如果减法操作没有进位，则跳转到Label处执行相应的代码。如果减法操作有进位，则继续执行下一条指令。</p>
+<p>需要注意的是，JNC指令的功能与JC（Jump if Carry）指令相反，JC指令是判断进位标志位是否为1，而JNC指令是判断进位标志位是否为0。</p>
+<h3 id="jb">JB</h3>
+<p>JB是汇编中的条件转移指令，其含义为“Jump if Below”，即如果下溢标志位为1，则跳转到指定地址。</p>
+<p>JB指令用于检查有符号数的减法操作是否下溢，通常用于有符号数的比较和条件分支。在执行JB指令时，首先判断下溢标志位的值是否为1，如果为1，则跳转到指定地址；如果为0，则继续执行下一条指令。</p>
+<p>JB指令通常与其他指令结合使用，如CMP（比较指令）、SUB（减法指令）等，如：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">MOV</span> <span class="no">AX</span><span class="p">,</span> <span class="mi">8000</span><span class="no">h</span>   <span class="c1">; 将AX寄存器的值置为最小的有符号数
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">SUB</span> <span class="no">AX</span><span class="p">,</span> <span class="mi">1</span>        <span class="c1">; 将AX减去1
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">JB</span>  <span class="no">Label</span>        <span class="c1">; 如果结果下溢，则跳转到Label处
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>上述代码首先将AX寄存器的值置为最小的有符号数，然后将AX减去1，如果结果下溢，则跳转到Label处执行相应的代码。如果结果未下溢，则继续执行下一条指令。</p>
+<p>JB指令还可以与其他条件转移指令结合使用，如JNB（Jump if Not Below）等，实现更加灵活的条件分支。</p>
+<h3 id="jnb">JNB</h3>
+<p>JNB是汇编中的条件转移指令，其含义为“Jump if Not Below”，即如果不发生下溢，则跳转到指定地址。</p>
+<p>JNB指令用于检查有符号数的减法操作是否不发生下溢，通常用于有符号数的比较和条件分支。在执行JNB指令时，首先判断下溢标志位的值是否为0，如果为0，则跳转到指定地址；如果为1，则继续执行下一条指令。</p>
+<p>JNB指令通常与其他指令结合使用，如CMP（比较指令）、SUB（减法指令）等，如：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">MOV</span> <span class="no">AX</span><span class="p">,</span> <span class="mi">8000</span><span class="no">h</span>   <span class="c1">; 将AX寄存器的值置为最小的有符号数
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">SUB</span> <span class="no">AX</span><span class="p">,</span> <span class="mi">1</span>        <span class="c1">; 将AX减去1
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">JNB</span>  <span class="no">Label</span>       <span class="c1">; 如果结果不发生下溢，则跳转到Label处
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>上述代码首先将AX寄存器的值置为最小的有符号数，然后将AX减去1，如果结果不发生下溢，则跳转到Label处执行相应的代码。如果结果发生下溢，则继续执行下一条指令。</p>
+<p>JNB指令还可以与其他条件转移指令结合使用，如JB（Jump if Below）等，实现更加灵活的条件分支。</p>
+<h3 id="jae">JAE</h3>
+<p>JAE是汇编中的条件转移指令，其含义为“Jump if Above or Equal”，即如果不发生下溢，则跳转到指定地址。</p>
+<p>JAE指令用于检查有符号数的减法操作是否不发生下溢，通常用于有符号数的比较和条件分支。在执行JAE指令时，首先判断下溢标志位的值是否为0，如果为0，则跳转到指定地址；如果为1，则继续执行下一条指令。</p>
+<p>JAE指令通常与其他指令结合使用，如CMP（比较指令）、SUB（减法指令）等，如：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">MOV</span> <span class="no">AX</span><span class="p">,</span> <span class="mi">7</span><span class="no">FFFh</span>    <span class="c1">; 将AX寄存器的值置为最大的有符号数
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">SUB</span> <span class="no">AX</span><span class="p">,</span> <span class="mi">1</span>         <span class="c1">; 将AX减去1
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">JAE</span> <span class="no">Label</span>         <span class="c1">; 如果结果不发生下溢，则跳转到Label处
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>上述代码首先将AX寄存器的值置为最大的有符号数，然后将AX减去1，如果结果不发生下溢，则跳转到Label处执行相应的代码。如果结果发生下溢，则继续执行下一条指令。</p>
+<p>JAE指令还可以与其他条件转移指令结合使用，如JB（Jump if Below）等，实现更加灵活的条件分支。</p>
+<h3 id="jnae">JNAE</h3>
+<p>JNAE是汇编中的条件转移指令，其含义为“Jump if Not Above or Equal”，即如果无进位标志位为1，则跳转到指定地址。</p>
+<p>JNAE指令用于检查无符号数的减法操作是否无进位，通常用于无符号数的比较和条件分支。在执行JNAE指令时，首先判断无进位标志位的值是否为1，如果为1，则跳转到指定地址；如果为0，则继续执行下一条指令。</p>
+<p>JNAE指令通常与其他指令结合使用，如CMP（比较指令）、SUB（减法指令）等，如：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">MOV</span> <span class="no">AX</span><span class="p">,</span> <span class="no">FFFFh</span>   <span class="c1">; 将AX寄存器的值置为最大的无符号数
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">SUB</span> <span class="no">AX</span><span class="p">,</span> <span class="mi">1</span>        <span class="c1">; 将AX减去1
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">JNAE</span>  <span class="no">Label</span>      <span class="c1">; 如果结果无进位，则跳转到Label处
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>上述代码首先将AX寄存器的值置为最大的无符号数，然后将AX减去1，如果结果无进位，则跳转到Label处执行相应的代码。如果结果有进位，则继续执行下一条指令。</p>
+<p>JNAE指令还可以与其他条件转移指令结合使用，如JAE（Jump if Above or Equal）等，实现更加灵活的条件分支。</p>
+<h3 id="jbe">JBE</h3>
+<p>JBE是汇编中的条件转移指令，其含义为“Jump if Below or Equal”，即如果发生下溢或者无进位，则跳转到指定地址。</p>
+<p>JBE指令用于检查有符号数或无符号数的减法操作是否发生下溢或无进位，通常用于比较和条件分支。在执行JBE指令时，首先判断下溢标志位或无进位标志位的值是否为1，如果为1，则跳转到指定地址；如果为0，则继续执行下一条指令。</p>
+<p>JBE指令通常与其他指令结合使用，如CMP（比较指令）、SUB（减法指令）等，如：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">MOV</span> <span class="no">AX</span><span class="p">,</span> <span class="mi">8000</span><span class="no">h</span>   <span class="c1">; 将AX寄存器的值置为最小的有符号数
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">SUB</span> <span class="no">AX</span><span class="p">,</span> <span class="mi">1</span>        <span class="c1">; 将AX减去1
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">JBE</span>  <span class="no">Label</span>       <span class="c1">; 如果结果发生下溢，则跳转到Label处
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>上述代码首先将AX寄存器的值置为最小的有符号数，然后将AX减去1，如果结果发生下溢或无进位，则跳转到Label处执行相应的代码。如果结果既没有发生下溢也没有无进位，则继续执行下一条指令。</p>
+<p>JBE指令还可以与其他条件转移指令结合使用，如JA（Jump if Above）等，实现更加灵活的条件分支。</p>
+<h3 id="jnbe">JNBE</h3>
+<p>JNBE是汇编中的条件转移指令，其含义为“Jump if Not Below or Equal”，即如果未发生下溢并且发生进位，则跳转到指定地址。</p>
+<p>JNBE指令用于检查无符号数的减法操作是否未发生下溢并且发生进位，通常用于无符号数的比较和条件分支。在执行JNBE指令时，首先判断无进位标志位和溢出标志位的值是否相等且为0，如果为0，则跳转到指定地址；如果为1，则继续执行下一条指令。</p>
+<p>JNBE指令通常与其他指令结合使用，如CMP（比较指令）、SUB（减法指令）等，如：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">MOV</span> <span class="no">AX</span><span class="p">,</span> <span class="no">FFFFh</span>   <span class="c1">; 将AX寄存器的值置为最大的无符号数
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">SUB</span> <span class="no">AX</span><span class="p">,</span> <span class="mi">1</span>        <span class="c1">; 将AX减去1
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">JNBE</span>  <span class="no">Label</span>      <span class="c1">; 如果结果未发生下溢并且发生进位，则跳转到Label处
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>上述代码首先将AX寄存器的值置为最大的无符号数，然后将AX减去1，如果结果未发生下溢并且发生进位，则跳转到Label处执行相应的代码。如果结果下溢或未发生进位，则继续执行下一条指令。</p>
+<p>JNBE指令还可以与其他条件转移指令结合使用，如JBE（Jump if Below or Equal）等，实现更加灵活的条件分支。</p>
+<h3 id="ja">JA</h3>
+<p>JA是汇编中的条件转移指令，其含义为“Jump if Above”，即如果大于，则跳转到指定地址。</p>
+<p>JA指令用于检查无符号数的比较操作是否大于，通常用于无符号数的比较和条件分支。在执行JA指令时，首先判断零标志位和进位标志位的值是否相等且为0，如果为0，则跳转到指定地址；如果为1，则继续执行下一条指令。</p>
+<p>JA指令通常与其他指令结合使用，如CMP（比较指令）等，如：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">MOV</span> <span class="no">AX</span><span class="p">,</span> <span class="mi">8000</span><span class="no">h</span>   <span class="c1">; 将AX寄存器的值置为最小的无符号数
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">CMP</span> <span class="no">AX</span><span class="p">,</span> <span class="mi">0</span>        <span class="c1">; 将AX与0比较
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">JA</span>   <span class="no">Label</span>       <span class="c1">; 如果AX大于0，则跳转到Label处
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>上述代码首先将AX寄存器的值置为最小的无符号数，然后将AX与0进行比较，如果AX大于0，则跳转到Label处执行相应的代码。如果AX小于等于0，则继续执行下一条指令。</p>
+<p>JA指令还可以与其他条件转移指令结合使用，如JNA（Jump if Not Above）等，实现更加灵活的条件分支。</p>
+<h3 id="jna">JNA</h3>
+<p>JNA是汇编中的条件转移指令，其含义为“Jump if Not Above”，即如果不大于，则跳转到指定地址。</p>
+<p>JNA指令用于检查有符号数或无符号数的比较操作是否不大于，通常用于比较和条件分支。在执行JNA指令时，首先判断零标志位或符号标志位的值是否为1，或者无进位标志位和溢出标志位的值是否相等且为1，如果为1，则跳转到指定地址；如果为0，则继续执行下一条指令。</p>
+<p>JNA指令通常与其他指令结合使用，如CMP（比较指令）、SUB（减法指令）等，如：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">MOV</span> <span class="no">AX</span><span class="p">,</span> <span class="mi">8000</span><span class="no">h</span>   <span class="c1">; 将AX寄存器的值置为最小的有符号数
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">CMP</span> <span class="no">AX</span><span class="p">,</span> <span class="mi">0</span>        <span class="c1">; 将AX与0比较
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">JNA</span>  <span class="no">Label</span>       <span class="c1">; 如果AX小于等于0，则跳转到Label处
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>上述代码首先将AX寄存器的值置为最小的有符号数，然后将AX与0进行比较，如果AX小于等于0，则跳转到Label处执行相应的代码。如果AX大于0，则继续执行下一条指令。</p>
+<p>JNA指令还可以与其他条件转移指令结合使用，如JA（Jump if Above）等，实现更加灵活的条件分支。</p>
+<h3 id="jp">JP</h3>
+<p>JP是汇编中的一种条件转移指令，它的含义为“Jump if Parity”，即如果奇偶标志位为1，则跳转到指定地址。</p>
+<p>JP指令用于判断奇偶标志位的值是否为1，通常用于对数据进行奇偶校验等操作。在执行JP指令时，首先判断奇偶标志位的值是否为1，如果为1，则跳转到指定地址；如果为0，则继续执行下一条指令。</p>
+<p>JP指令通常与其他指令结合使用，如CMP（比较指令）、AND（逻辑与指令）等，如：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">MOV</span> <span class="no">AX</span><span class="p">,</span> <span class="mi">0x0F</span>    <span class="c1">; 将AX寄存器的值置为0x0F
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">AND</span> <span class="no">AX</span><span class="p">,</span> <span class="mi">0x03</span>    <span class="c1">; 将AX寄存器的值与0x03进行逻辑与操作
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">JP</span> <span class="no">Label</span>        <span class="c1">; 如果结果的奇偶标志位为1，则跳转到Label处
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>上述代码首先将AX寄存器的值置为0x0F，然后将AX寄存器的值与0x03进行逻辑与操作，结果的奇偶标志位为1，因此跳转到Label处执行相应的代码。</p>
+<p>需要注意的是，JP指令已经被Intel和AMD等处理器厂商废弃，不再使用。现代处理器通常使用JPE（Jump if Parity Even）和JPO（Jump if Parity Odd）指令来判断奇偶标志位的值。</p>
+<h3 id="jnp">JNP</h3>
+<p>JNP是汇编中的一种条件转移指令，它的含义为“Jump if Not Parity”，即如果奇偶标志位为0，则跳转到指定地址。</p>
+<p>JNP指令用于判断奇偶标志位的值是否为0，通常用于对数据进行奇偶校验等操作。在执行JNP指令时，首先判断奇偶标志位的值是否为0，如果为0，则跳转到指定地址；如果为1，则继续执行下一条指令。</p>
+<p>JNP指令通常与其他指令结合使用，如CMP（比较指令）、AND（逻辑与指令）等，如：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">MOV</span> <span class="no">AX</span><span class="p">,</span> <span class="mi">0x0F</span>    <span class="c1">; 将AX寄存器的值置为0x0F
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">AND</span> <span class="no">AX</span><span class="p">,</span> <span class="mi">0x03</span>    <span class="c1">; 将AX寄存器的值与0x03进行逻辑与操作
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">JNP</span> <span class="no">Label</span>       <span class="c1">; 如果结果的奇偶标志位为0，则跳转到Label处
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>上述代码首先将AX寄存器的值置为0x0F，然后将AX寄存器的值与0x03进行逻辑与操作，结果的奇偶标志位为0，因此跳转到Label处执行相应的代码。</p>
+<p>需要注意的是，JNP指令已经被Intel和AMD等处理器厂商废弃，不再使用。现代处理器通常使用JPO（Jump if Parity Odd）和JPE（Jump if Parity Even）指令来判断奇偶标志位的值。</p>
+<h3 id="jl">JL</h3>
+<p>JL是汇编中的条件转移指令，其含义为“Jump if Less”，即如果小于，则跳转到指定地址。</p>
+<p>JL指令用于检查有符号数的比较操作是否小于，通常用于有符号数的比较和条件分支。在执行JL指令时，首先判断零标志位、符号标志位和溢出标志位的值是否相等且为0，或者符号标志位和溢出标志位的值是否相等且为1，如果为1，则跳转到指定地址；如果为0，则继续执行下一条指令。</p>
+<p>JL指令通常与其他指令结合使用，如CMP（比较指令）等，如：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">MOV</span> <span class="no">AX</span><span class="p">,</span> <span class="mi">8000</span><span class="no">h</span>   <span class="c1">; 将AX寄存器的值置为最小的有符号数
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">CMP</span> <span class="no">AX</span><span class="p">,</span> <span class="mi">0</span>        <span class="c1">; 将AX与0比较
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">JL</span>   <span class="no">Label</span>       <span class="c1">; 如果AX小于0，则跳转到Label处
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>上述代码首先将AX寄存器的值置为最小的有符号数，然后将AX与0进行比较，如果AX小于0，则跳转到Label处执行相应的代码。如果AX大于等于0，则继续执行下一条指令。</p>
+<p>JL指令还可以与其他条件转移指令结合使用，如JGE（Jump if Greater or Equal）等，实现更加灵活的条件分支。</p>
+<h3 id="jnl">JNL</h3>
+<p>JNL是汇编中的条件转移指令，其含义为“Jump if Not Less”，即如果不小于，则跳转到指定地址。</p>
+<p>JNL指令用于检查有符号数的比较操作是否不小于，通常用于有符号数的比较和条件分支。在执行JNL指令时，首先判断零标志位、符号标志位和溢出标志位的值是否相等且为1，或者符号标志位和溢出标志位的值是否相等且为0，如果为1，则跳转到指定地址；如果为0，则继续执行下一条指令。</p>
+<p>JNL指令通常与其他指令结合使用，如CMP（比较指令）等，如：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">MOV</span> <span class="no">AX</span><span class="p">,</span> <span class="mi">7</span><span class="no">FFFh</span>   <span class="c1">; 将AX寄存器的值置为最大的有符号数
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">CMP</span> <span class="no">AX</span><span class="p">,</span> <span class="mi">0</span>        <span class="c1">; 将AX与0比较
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">JNL</span> <span class="no">Label</span>        <span class="c1">; 如果AX大于等于0，则跳转到Label处
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>上述代码首先将AX寄存器的值置为最大的有符号数，然后将AX与0进行比较，如果AX大于等于0，则跳转到Label处执行相应的代码。如果AX小于0，则继续执行下一条指令。</p>
+<p>JNL指令还可以与其他条件转移指令结合使用，如JNG（Jump if Not Greater）等，实现更加灵活的条件分支。</p>
+<h3 id="jge">JGE</h3>
+<p>JGE是汇编中的条件转移指令，其含义为“Jump if Greater or Equal”，即如果大于等于，则跳转到指定地址。</p>
+<p>JGE指令用于检查有符号数的比较操作是否大于等于，通常用于有符号数的比较和条件分支。在执行JGE指令时，首先判断零标志位、符号标志位和溢出标志位的值是否相等且为1，或者符号标志位和溢出标志位的值是否相等且为0，如果为1，则跳转到指定地址；如果为0，则继续执行下一条指令。</p>
+<p>JGE指令通常与其他指令结合使用，如CMP（比较指令）等，如：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">MOV</span> <span class="no">AX</span><span class="p">,</span> <span class="mi">7</span><span class="no">FFFh</span>   <span class="c1">; 将AX寄存器的值置为最大的有符号数
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">CMP</span> <span class="no">AX</span><span class="p">,</span> <span class="mi">0</span>        <span class="c1">; 将AX与0比较
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">JGE</span> <span class="no">Label</span>        <span class="c1">; 如果AX大于等于0，则跳转到Label处
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>上述代码首先将AX寄存器的值置为最大的有符号数，然后将AX与0进行比较，如果AX大于等于0，则跳转到Label处执行相应的代码。如果AX小于0，则继续执行下一条指令。</p>
+<p>JGE指令还可以与其他条件转移指令结合使用，如JL（Jump if Less）等，实现更加灵活的条件分支。</p>
+<h3 id="jnge">JNGE</h3>
+<p>JNGE是汇编中的条件转移指令，其含义为“Jump if Not Greater or Equal”，即如果小于，则跳转到指定地址。</p>
+<p>JNGE指令用于检查有符号数的比较操作是否小于，通常用于有符号数的比较和条件分支。在执行JNGE指令时，首先判断零标志位、符号标志位和溢出标志位的值是否相等且为0，或者符号标志位和溢出标志位的值是否相等且为1，如果为0，则跳转到指定地址；如果为1，则继续执行下一条指令。</p>
+<p>JNGE指令通常与其他指令结合使用，如CMP（比较指令）等，如：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">MOV</span> <span class="no">AX</span><span class="p">,</span> <span class="mi">8000</span><span class="no">h</span>   <span class="c1">; 将AX寄存器的值置为最小的有符号数
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">CMP</span> <span class="no">AX</span><span class="p">,</span> <span class="mi">0</span>        <span class="c1">; 将AX与0比较
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">JNGE</span> <span class="no">Label</span>       <span class="c1">; 如果AX小于0，则跳转到Label处
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>上述代码首先将AX寄存器的值置为最小的有符号数，然后将AX与0进行比较，如果AX小于0，则跳转到Label处执行相应的代码。如果AX大于等于0，则继续执行下一条指令。</p>
+<p>JNGE指令还可以与其他条件转移指令结合使用，如JL（Jump if Less）等，实现更加灵活的条件分支。</p>
+<h3 id="jle">JLE</h3>
+<p>JLE是汇编中的条件转移指令，其含义为“Jump if Less or Equal”，即如果小于等于，则跳转到指定地址。</p>
+<p>JLE指令用于检查有符号数的比较操作是否小于等于，通常用于有符号数的比较和条件分支。在执行JLE指令时，首先判断零标志位、符号标志位和溢出标志位的值是否相等且为1，或者符号标志位和溢出标志位的值是否相等且为0，如果为1，则跳转到指定地址；如果为0，则继续执行下一条指令。</p>
+<p>JLE指令通常与其他指令结合使用，如CMP（比较指令）等，如：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">MOV</span> <span class="no">AX</span><span class="p">,</span> <span class="mi">8000</span><span class="no">h</span>   <span class="c1">; 将AX寄存器的值置为最小的有符号数
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">CMP</span> <span class="no">AX</span><span class="p">,</span> <span class="mi">0</span>        <span class="c1">; 将AX与0比较
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">JLE</span> <span class="no">Label</span>        <span class="c1">; 如果AX小于等于0，则跳转到Label处
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>上述代码首先将AX寄存器的值置为最小的有符号数，然后将AX与0进行比较，如果AX小于等于0，则跳转到Label处执行相应的代码。如果AX大于0，则继续执行下一条指令。</p>
+<p>JLE指令还可以与其他条件转移指令结合使用，如JG（Jump if Greater）等，实现更加灵活的条件分支。</p>
+<h3 id="jnle">JNLE</h3>
+<p>JNLE是汇编中的条件转移指令，其含义为“Jump if Not Less or Equal”，即如果大于，则跳转到指定地址。</p>
+<p>JNLE指令用于检查有符号数的比较操作是否不小于等于，通常用于有符号数的比较和条件分支。在执行JNLE指令时，首先判断零标志位、符号标志位和溢出标志位的值是否相等且为0，或者符号标志位和溢出标志位的值是否相等且为1，如果为1，则跳转到指定地址；如果为0，则继续执行下一条指令。</p>
+<p>JNLE指令通常与其他指令结合使用，如CMP（比较指令）等，如：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">MOV</span> <span class="no">AX</span><span class="p">,</span> <span class="mi">7</span><span class="no">FFFh</span>   <span class="c1">; 将AX寄存器的值置为最大的有符号数
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">CMP</span> <span class="no">AX</span><span class="p">,</span> <span class="mi">0</span>        <span class="c1">; 将AX与0比较
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">JNLE</span> <span class="no">Label</span>       <span class="c1">; 如果AX大于0，则跳转到Label处
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>上述代码首先将AX寄存器的值置为最大的有符号数，然后将AX与0进行比较，如果AX大于0，则跳转到Label处执行相应的代码。如果AX小于等于0，则继续执行下一条指令。</p>
+<p>JNLE指令还可以与其他条件转移指令结合使用，如JL（Jump if Less）等，实现更加灵活的条件分支。</p>
+<h3 id="jg">JG</h3>
+<p>JG是汇编条件转移指令之一，它的含义为“Jump if Greater”，即如果操作数大于零，则跳转到指定地址。</p>
+<p>JG指令用于比较两个数的大小，当第一个操作数大于第二个操作数时，程序跳转到指定地址执行。在执行JG指令时，首先比较两个操作数的大小，如果第一个操作数大于第二个操作数，则跳转到指定地址；如果第一个操作数小于等于第二个操作数，则继续执行下一条指令。</p>
+<p>JG指令通常与其他指令结合使用，如CMP（比较指令）等，如：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">MOV</span> <span class="no">AX</span><span class="p">,</span> <span class="mi">10</span>    <span class="c1">; 将AX寄存器的值置为10
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">MOV</span> <span class="no">BX</span><span class="p">,</span> <span class="mi">5</span>     <span class="c1">; 将BX寄存器的值置为5
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">CMP</span> <span class="no">AX</span><span class="p">,</span> <span class="no">BX</span>    <span class="c1">; 比较AX和BX的值
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">JG</span>  <span class="no">Label</span>     <span class="c1">; 如果AX大于BX，则跳转到Label处
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>上述代码首先将AX寄存器的值置为10，将BX寄存器的值置为5，然后比较AX和BX的值，如果AX大于BX，则跳转到Label处执行相应的代码。如果AX小于等于BX，则继续执行下一条指令。</p>
+<p>需要注意的是，JG指令只能用于有符号数的比较，如果要比较无符号数，需要使用JA指令。另外，JG指令还可以使用别名JNLE表示，含义相同。</p>
+<h3 id="jng">JNG</h3>
+<p>JNG是汇编中的条件转移指令，其含义为“Jump if Not Greater”，即如果小于等于，则跳转到指定地址。</p>
+<p>JNG指令用于检查有符号数的比较操作是否小于等于，通常用于有符号数的比较和条件分支。在执行JNG指令时，首先判断零标志位和符号标志位的值是否相等且为1，或者符号标志位和溢出标志位的值是否相等且为0，如果为0，则跳转到指定地址；如果为1，则继续执行下一条指令。</p>
+<p>JNG指令通常与其他指令结合使用，如CMP（比较指令）等，如：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">MOV</span> <span class="no">AX</span><span class="p">,</span> <span class="mi">8000</span><span class="no">h</span>   <span class="c1">; 将AX寄存器的值置为最小的有符号数
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">CMP</span> <span class="no">AX</span><span class="p">,</span> <span class="mi">0</span>        <span class="c1">; 将AX与0比较
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">JNG</span> <span class="no">Label</span>        <span class="c1">; 如果AX小于等于0，则跳转到Label处
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>上述代码首先将AX寄存器的值置为最小的有符号数，然后将AX与0进行比较，如果AX小于等于0，则跳转到Label处执行相应的代码。如果AX大于0，则继续执行下一条指令。</p>
+<p>JNG指令还可以与其他条件转移指令结合使用，如JNL（Jump if Not Less）等，实现更加灵活的条件分支。</p>
+<h2 id="常见的汇编指令">常见的汇编指令</h2>
+<h3 id="cmp指令">CMP指令</h3>
+<p>CMP指令是汇编语言中的一条比较指令，用于比较两个操作数的大小关系，并将结果保存在标志寄存器中。具体来说，CMP指令执行的操作是将第一个操作数减去第二个操作数，但不保存结果，只更新标志寄存器的值。</p>
+<p>CMP指令的语法格式如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">CMP</span> <span class="no">destination</span><span class="p">,</span> <span class="no">source</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>其中，destination表示第一个操作数，可以是寄存器、内存单元或立即数；source表示第二个操作数，可以是寄存器、内存单元或立即数。指令执行时，将source的值从destination中减去，并更新标志寄存器的值。</p>
+<p>例如，下面的代码比较了两个有符号数的大小关系：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">MOV</span> <span class="no">AX</span><span class="p">,</span> <span class="mi">100</span>   <span class="c1">; 将AX寄存器的值置为100
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">MOV</span> <span class="no">BX</span><span class="p">,</span> <span class="mi">200</span>   <span class="c1">; 将BX寄存器的值置为200
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">CMP</span> <span class="no">AX</span><span class="p">,</span> <span class="no">BX</span>    <span class="c1">; 比较AX和BX的值
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>在执行完CMP指令后，如果AX的值小于BX，则符号标志位（SF）和溢出标志位（OF）都被设置为1；如果AX的值等于BX，则零标志位（ZF）被设置为1；如果AX的值大于BX，则进位标志位（CF）被清零，符号标志位（SF）和溢出标志位（OF）都被清零。</p>
+<p>需要注意的是，CMP指令只更新标志寄存器的值，不会改变操作数的值。因此，在使用CMP指令时，通常需要结合条件转移指令（如JZ、JNZ、JG、JGE、JL、JLE等）来实现条件分支和循环等操作。</p>
+<h2 id="例子">例子</h2>
+<h3 id="setnz---al"><code>setnz   al</code></h3>
+<p>这段汇编代码的含义是：根据前面的操作结果（通常是与或等位运算或者比较操作的结果），将零标志位（ZF）的值设为0或1。具体而言，如果前面的操作结果不为零，则ZF被设为0，否则ZF被设为1。然后，setnz al 这条指令会根据ZF的值来设置寄存器al的值，如果ZF为0，则al的值被设置为1，否则al的值被设置为0。</p>
+<p>在实际编程中，这个指令通常用于逻辑判断或者条件赋值，比如判断一个值是否为零，或者根据某个条件来决定赋值的结果。</p>
+<h3 id="cmp-----ebpargc-5"><code>cmp     [ebp+argc], 5</code></h3>
+<p>这段汇编代码的含义是：将寄存器ebp中存储的栈基址地址加上偏移量argc所指定的偏移量，得到一个内存地址，然后比较这个内存地址处的值是否等于5。cmp指令是比较指令，用于比较两个操作数的大小。在这里，它在内存地址[ebp+argc]处读取一个值，然后将这个值与字面值5进行比较。</p>
+<p>通常在函数调用时，函数参数都是保存在栈中的，[ebp+argc]表示当前函数栈帧中第argc个参数所在的内存地址。在这段代码中，它的作用是比较函数调用时传递给函数的第五个参数的值是否等于5。如果比较结果为相等，那么ZF标志位被设置为1，否则为0。根据ZF标志位的值，可以用条件跳转指令来决定后续的执行流程。</p>
+<h3 id="cmovz---eax-ecx"><code>cmovz   eax, ecx</code></h3>
+<p>这段汇编代码的含义是：根据零标志位（ZF）的值，将寄存器eax的值设置为寄存器ecx的值或者保持不变。cmovz指令是条件移动指令，根据ZF标志位的值来决定是否执行移动操作。</p>
+<p>具体来说，如果ZF标志位为1，即前面的比较操作结果为相等，那么cmovz指令就会将寄存器eax的值设置为寄存器ecx的值。如果ZF标志位为0，即前面的比较操作结果为不相等，那么cmovz指令就不会执行任何操作，寄存器eax的值保持不变。</p>
+<p>在实际编程中，cmovz指令通常用于替代条件分支指令，例如if语句，可以使代码更简洁和高效。</p>
+<h3 id="test----eax-eax"><code>test    eax, eax</code></h3>
+<p>这段汇编代码的含义是：对寄存器eax的值进行逻辑和操作（bitwise AND）并将结果设置为零标志位（ZF）和符号标志位（SF）。</p>
+<p>具体来说，test指令会将eax寄存器中的值与自己进行逻辑与运算，这个操作不会改变eax寄存器中的值。然后根据逻辑运算的结果，将ZF标志位和SF标志位进行相应的设置。如果eax寄存器中的值为零，那么ZF标志位被设置为1，否则为0。如果eax寄存器中的值的最高位（即符号位）是1，那么SF标志位被设置为1，否则为0。</p>
+<p>在实际编程中，test指令常用于检测一个寄存器或者内存地址中的值是否为零，或者是否具有某些特定的位模式，通常用于条件跳转语句的判断条件。</p>
+<h3 id="dec-----eax"><code>dec     eax</code></h3>
+<p>这段汇编代码的含义是：将寄存器eax的值减1，并将结果保存回eax寄存器中。</p>
+<p>具体来说，dec指令是减1指令，它将指定寄存器或内存地址中的值减1，然后将结果保存回相同的位置。在这里，eax寄存器是指令中的唯一操作数，所以该指令的作用是将eax寄存器中的值减去1，并将结果再次保存回eax寄存器中。</p>
+<p>在实际编程中，dec指令通常用于对计数器等变量进行递减操作，可以用于多种算术和逻辑操作的实现。与sub指令相比，dec指令更适用于对值进行简单递增或递减的情况。</p>
+<h3 id="movzx---eax-byte-ptr-dsindex_tableeax"><code>movzx   eax, byte ptr ds:Index_table[eax]</code></h3>
+<p>这行代码的含义是将 <code>Index_table</code> 数组中索引为 <code>eax</code> 的字节，零扩展（zero-extended）到32位并存储到 eax 寄存器中。具体解释如下：</p>
+<ul>
+<li>movzx 是一个x86汇编指令，表示move with zero-extend，也就是说它会将源操作数中的数据复制到目标操作数中，并将目标操作数的高位清零。</li>
+<li>ceax 是x86架构中的一个通用寄存器。在这行代码中，它是目标操作数。</li>
+<li>byte ptr 是x86汇编中的一种内存寻址方式，表示byte类型数据的指针。</li>
+<li>ds 是x86架构中的一个段寄存器，代表数据段寄存器。</li>
+<li>Index_table[eax] 表示在Index_table数组中索引为eax的位置所存储的字节。</li>
+</ul>
+<p>所以这行代码是将Index_table数组中索引为 eax 的字节，零扩展到32位并存储到 eax 寄存器中。</p>
+<h3 id="xor-----eax-eax"><code>xor     eax, eax</code></h3>
+<p>这段代码的含义是将寄存器eax的值与自身进行异或运算，结果将会是0，因为任何数与自身异或运算都得到0。这通常是用来清空寄存器eax的值，因为在处理一些数据时需要寄存器eax初始化为0。</p>
+<h3 id="cmovle--esi-eax"><code>cmovle  esi, eax</code></h3>
+<p>该指令的含义是，如果比较标志位指示eax小于或等于另一个操作数，则将另一个操作数的值存储到esi寄存器中，否则不执行任何操作。CMOVLE是根据条件移动指令，可以将一个数据从一个寄存器或内存位置移到另一个寄存器或内存位置，但此移动的操作仅在某些条件符合的情况下才会执行。因此，如果条件不满足，那么就不会修改esi的值。</p>
+<p><code>cmp     eax, 64h</code>
+<code>cmovle  esi, eax</code></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="k">if</span><span class="p">(</span><span class="n">eax</span> <span class="o">&lt;=</span> <span class="mi">64</span><span class="n">h</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">    <span class="n">esi</span> <span class="o">=</span> <span class="n">eax</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="movq----xmm0-qword-ptr-dsahelloworld"><code>movq    xmm0, qword ptr ds:aHelloWorld</code></h3>
+<p>这段代码使用MOVQ指令将数据从内存中的aHelloWorld地址加载到XMM0寄存器中。其中，QWORD PTR DS是用来指示操作数的数据类型和存储位置的前缀。具体解释如下：</p>
+<ul>
+<li>MOVQ：这是一个x86/x64指令，用于将数据从一个位置移动到另一个位置。</li>
+<li>XMM0：这是一个16字节宽的XMM寄存器，用于存储浮点数或向量数据。</li>
+<li>QWORD PTR：这是指定操作数的数据类型的前缀，表示一个8字节宽的数据。</li>
+<li>DS：这是数据段寄存器，用于指示要从哪个数据段（或内存区域）中读取数据。</li>
+</ul>
+<p>因此，该代码的含义是将存储在aHelloWorld地址中的8字节数据加载到XMM0寄存器中。但是，只有在了解上下文和代码所在的程序的目的时，才能对该代码的含义进行更准确的解释。</p>
+<h3 id="xorps---xmm0-xmm0"><code>xorps   xmm0, xmm0</code></h3>
+<p>这段代码使用XORPS指令对XMM0寄存器中的内容执行异或操作，其结果为0，具体解释如下：</p>
+<ul>
+<li>XORPS：这是一个x86/x64指令，用于执行两个XMM寄存器中的数据进行异或操作，结果存储在第一个操作数中。</li>
+<li>XMM0：这是一个16字节宽的XMM寄存器，用于存储浮点数或向量数据。</li>
+</ul>
+<p>因此，该代码的含义是将XMM0寄存器中的数据与自身进行异或操作，由于异或操作的特性，两个相同的操作数进行异或后结果为0，因此该代码的作用是将XMM0寄存器中的数据清零。在编写代码时往往使用XORPS指令来清零寄存器，因为其相对于MOV指令来说执行速度更快。</p>
+<h3 id="movups--xmmword-ptr-ebpbuffer1-xmm0"><code>movups  xmmword ptr [ebp+buffer+1], xmm0</code></h3>
+<p>这段代码使用MOVUPS指令将XMM0寄存器中的128位数据从内存中的XMMWORD PTR [EBP+buffer+1]地址存储到另一个内存地址中，具体解释如下：</p>
+<ul>
+<li>MOVUPS：这是一个x86/x64指令，用于将128位数据从源操作数移动到目标操作数。在这个例子中，源操作数为XMM0寄存器中的128位数据。</li>
+<li>XMM0：这是一个16字节宽的XMM寄存器，用于存储浮点数或向量数据。</li>
+<li>XMMWORD PTR：这是指定操作数的数据类型的前缀，表示一个128位宽的数据。</li>
+<li>EBP：这是基址指针，指向当前栈帧的基地址。</li>
+<li>buffer+1：这是相对于EBP指向的地址偏移量，用于计算内存地址。在这个例子中，这表示从EBP指向的内存地址后面的第一个字节开始存储数据。</li>
+</ul>
+<p>因此，该代码的含义是将XMM0寄存器中的128位数据存储到以EBP作为基址指针，偏移量为buffer+1的内存地址中。但是，在理解代码含义时需要考虑上下文和代码所在程序的目的。</p>
+<h3 id="rep-movsd"><code>rep movsd</code></h3>
+<p>这段代码使用REP MOVSD指令将一个存储区域的数据块复制到另一个存储区域中，具体解释如下：</p>
+<ul>
+<li>REP：这是一个x86/x64指令前缀，用于指示后面的指令重复执行指定次数。</li>
+<li>MOVSD：这是一个x86/x64指令，用于将一个双字(32位)宽的值从源操作数指向的内存地址复制到目标操作数指向的内存地址中，并更新指针以指向下一个位置。</li>
+</ul>
+<p>因此，该代码的含义是将源操作数指向的存储区域中的双字(32位)块复制到以EDI寄存器指向的目标操作数指向的存储区域中，并更新指针以指向下一个位置，重复执行ECX次数。Movsd指令是重复执行的，因此在该指令之前必须将源操作数指针(ESI)、目标操作数指针(EDI)和重复次数(ECX)传递给CPU。此外，该指令是有副作用的，即会更新ESI和EDI指针，因此在使用之前应该确保源操作数和目标操作数指针指向的内存区域是合法的，并且确保该指令不会破坏程序的其他部分。需要根据上下文和程序的目的来理解代码的具体含义。</p>
+<h2 id="特殊的一些指令或函数">特殊的一些指令或函数</h2>
+<h3 id="align-10h"><code>align 10h</code></h3>
+<p>这段汇编代码的含义是：将当前位置调整为16字节对齐。</p>
+<p>具体来说，align指令用于在代码或数据中对齐指定的边界。在这里，10h（即16）指定了边界的大小，表示将当前位置调整为16字节对齐。这个指令会在当前位置增加一些填充字节或移动当前位置，使其满足对齐要求。</p>
+<p>在实际编程中，align指令通常用于优化内存访问和数据传输操作，以提高程序的执行效率和速度。在处理内存地址时，按照最低有效位对齐可以减少访问时需要额外的位移运算，提高访问效率。</p>
+<h3 id="__autoclassinit2函数"><code>__autoclassinit2</code>函数</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nl">.text:</span><span class="err">00414</span><span class="nf">D4A</span>                 <span class="no">lea</span>     <span class="no">ecx</span><span class="p">,</span> <span class="p">[</span><span class="no">ebp</span><span class="err">+</span><span class="no">person</span><span class="p">]</span> <span class="c1">; this
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nl">.text:</span><span class="err">00414</span><span class="nf">D4D</span>                 <span class="no">call</span>    <span class="no">j_</span><span class="err">?</span><span class="no">__autoclassinit2@Person@@QAEXI@Z</span> <span class="c1">; 将person对象的变量初始化为默认值或者自定义值，这里设置为0
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>在VC++编译器中，<code>__autoclassinit2</code>是一种用于类初始化的内部链接函数（internal-linkage function），主要用于调用类的构造函数和其他的初始化函数，通过该函数可以将类的变量初始化为默认值或者自定义值。该函数的定义如下：</p>
+<p><code>void __autoclassinit2(void*);</code></p>
+<p>该函数接受一个指向类对象的指针作为参数，用于初始化该类对象的数据成员。此外，该函数还可以在类对象的存储区域之前进行一些额外的初始化工作，例如在类对象之前加入一些辅助数据或初始化其他的全局变量等。</p>
+<p>在x86汇编中，<code>__autoclassinit2</code>的作用主要是调用类的构造函数和初始化函数，按照类的成员变量在内存中的顺序，对类的每个成员变量调用其相应的构造函数和初始化函数，完成类对象的初始化。由于类对象在内存中的存储结构是一段连续的内存区域，因此可以通过指针运算和偏移量来访问每个数据成员，并对其进行初始化。</p>
+<p>需要注意的是，在使用<code>__autoclassinit2</code>函数初始化类对象时，必须保证类对象已经被正确地分配了内存空间，并且其所有的数据成员均已经初始化。此外，在使用<code>__autoclassinit2</code>函数时，还需注意避免多次调用类的构造函数，否则可能会引起内存泄漏等问题。</p>
+</div><div class="post-footer" id="post-footer">
+  <div class="post-info">
+    <div class="post-info-line">
+      <div class="post-info-mod">
+        <span title=2023-03-20&#32;00:00:00>Updated on 2023-03-20&nbsp;</span>
+      </div><div class="post-info-license">
+          <span><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span>
+        </div></div>
+    <div class="post-info-line">
+      <div class="post-info-md"></div>
+      <div class="post-info-share">
+        <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://cui-jiang-tao.github.io/posts/x86%E5%B8%B8%E8%A7%81%E6%B1%87%E7%BC%96%E6%8C%87%E4%BB%A4/" data-title="常见的汇编指令" data-hashtags="c/c&#43;&#43;"><i class="fa-brands fa-twitter fa-fw" aria-hidden="true"></i></a>
+  <a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://cui-jiang-tao.github.io/posts/x86%E5%B8%B8%E8%A7%81%E6%B1%87%E7%BC%96%E6%8C%87%E4%BB%A4/" data-hashtag="c/c&#43;&#43;"><i class="fa-brands fa-facebook-square fa-fw" aria-hidden="true"></i></a>
+  <a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="https://cui-jiang-tao.github.io/posts/x86%E5%B8%B8%E8%A7%81%E6%B1%87%E7%BC%96%E6%8C%87%E4%BB%A4/" data-title="常见的汇编指令"><i class="fa-brands fa-weibo fa-fw" aria-hidden="true"></i></a>
+  </span>
+      </div>
+    </div>
+  </div>
+
+  <div class="post-info-more">
+    <section class="post-tags"><i class="fa-solid fa-tags fa-fw me-1" aria-hidden="true"></i><a href='/tags/c/c&#43;&#43;/' class="post-tag">c/c&#43;&#43;</a></section>
+    <section>
+      <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+    </section>
+  </div>
+
+  <div class="post-nav"><a href="/posts/c&#43;&#43;%E5%B0%8F%E5%B7%A5%E5%85%B7/" class="post-nav-item" rel="prev" title="c&#43;&#43;小工具"><i class="fa-solid fa-angle-left fa-fw" aria-hidden="true"></i>c&#43;&#43;小工具</a>
+      <a href="/posts/%E5%8A%A0%E5%AF%86%E4%B8%8E%E8%A7%A3%E5%AF%86%E7%AE%97%E6%B3%95/" class="post-nav-item" rel="next" title="加密与解密算法">加密与解密算法<i class="fa-solid fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+</article></main><footer class="footer">
+    <div class="footer-container"><div class="footer-line copyright" itemscope itemtype="http://schema.org/CreativeWork"><i class="fa-regular fa-copyright fa-fw" aria-hidden="true"></i>
+            <span itemprop="copyrightYear">2022 - 2023</span><span class="license footer-divider"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div><div class="footer-line statistics"></div></div>
+  </footer></div><div class="widgets"><div class="fixed-buttons animate__faster d-none"><div class="fixed-button back-to-top" role="button" aria-label="Back to Top"><i class="fa-solid fa-arrow-up fa-fw" aria-hidden="true"></i><span class="variant-numeric d-none">0%</span>
+        </div></div><div id="mask"></div><noscript>
+    <div class="noscript-warning">Theme FixIt works best with JavaScript enabled.</div>
+  </noscript>
+</div><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script src="/lib/lazysizes/lazysizes.min.js" async defer></script><script src="/lib/sharer/sharer.min.js" async defer></script><script src="/lib/typeit/index.umd.js" defer></script><script src="/lib/katex/katex.min.js" defer></script><script src="/lib/katex/auto-render.min.js" defer></script><script src="/lib/katex/copy-tex.min.js" defer></script><script src="/lib/katex/mhchem.min.js" defer></script><script src="/lib/cookieconsent/cookieconsent.min.js" defer></script><script>window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":-1},"comment":{"enable":false},"cookieconsent":{"content":{"dismiss":"Got it!","link":"Learn more","message":"This website uses Cookies to improve your experience."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"data":{"typeit-header-desktop":"Home","typeit-header-title-mobile":"Home"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"typeit-header-desktop":["typeit-header-desktop"],"typeit-header-title-mobile":["typeit-header-title-mobile"]},"duration":-1,"speed":100}};</script><script src="/js/theme.min.js" defer></script></body>
+</html>

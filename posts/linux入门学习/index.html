@@ -1,0 +1,1338 @@
+<!DOCTYPE html>
+<html itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+  <head>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+    <meta name="robots" content="noodp" />
+    <title>Linux入门学习 - 学习记录</title><meta name="author" content="cjt">
+<meta name="author-link" content="">
+<meta name="description" content="1. Linux基本操作 1.1 文本登录 文本方式登陆： 输入用户名和密码 /etc/passwd文件对照 /etc/shadow文件对照 启动相应的外壳程序 用" /><meta name="keywords" content='Linux' /><meta itemprop="name" content="Linux入门学习">
+<meta itemprop="description" content="1. Linux基本操作 1.1 文本登录 文本方式登陆： 输入用户名和密码 /etc/passwd文件对照 /etc/shadow文件对照 启动相应的外壳程序 用"><meta itemprop="datePublished" content="2022-12-14T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2022-12-14T00:00:00+00:00" />
+<meta itemprop="wordCount" content="6682">
+<meta itemprop="keywords" content="Linux," /><meta property="og:title" content="Linux入门学习" />
+<meta property="og:description" content="1. Linux基本操作 1.1 文本登录 文本方式登陆： 输入用户名和密码 /etc/passwd文件对照 /etc/shadow文件对照 启动相应的外壳程序 用" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://cui-jiang-tao.github.io/posts/linux%E5%85%A5%E9%97%A8%E5%AD%A6%E4%B9%A0/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-12-14T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-12-14T00:00:00+00:00" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Linux入门学习"/>
+<meta name="twitter:description" content="1. Linux基本操作 1.1 文本登录 文本方式登陆： 输入用户名和密码 /etc/passwd文件对照 /etc/shadow文件对照 启动相应的外壳程序 用"/>
+<meta name="application-name" content="FixIt">
+<meta name="apple-mobile-web-app-title" content="FixIt"><meta name="theme-color" data-light="#f8f8f8" data-dark="#252627" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" href="https://cui-jiang-tao.github.io/posts/linux%E5%85%A5%E9%97%A8%E5%AD%A6%E4%B9%A0/" /><link rel="prev" href="https://cui-jiang-tao.github.io/posts/linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" /><link rel="next" href="https://cui-jiang-tao.github.io/posts/muduo%E7%BD%91%E7%BB%9C%E5%BA%93%E7%9A%84%E4%BD%BF%E7%94%A8/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "BlogPosting",
+    "headline": "Linux入门学习",
+    "inLanguage": "zh-CN",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https:\/\/cui-jiang-tao.github.io\/posts\/linux%E5%85%A5%E9%97%A8%E5%AD%A6%E4%B9%A0\/"
+    },"genre": "posts","keywords": "Linux","wordcount":  6682 ,
+    "url": "https:\/\/cui-jiang-tao.github.io\/posts\/linux%E5%85%A5%E9%97%A8%E5%AD%A6%E4%B9%A0\/","datePublished": "2022-12-14T00:00:00+00:00","dateModified": "2022-12-14T00:00:00+00:00","publisher": {
+      "@type": "Organization",
+      "name": ""},"author": {
+        "@type": "Person",
+        "name": "cjt"
+      },"description": ""
+  }
+  </script></head>
+  <body data-header-desktop="fixed" data-header-mobile="auto"><script>(window.localStorage?.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('data-theme', 'dark');</script><div class="wrapper"><header class="desktop animate__faster" id="header-desktop">
+  <div class="header-wrapper">
+    <div class="header-title">
+      <a href="/" title="学习记录"><span class="header-title-pre"><i class='far fa-kiss-wink-heart fa-fw' aria-hidden='true'></i></span><span id="typeit-header-desktop" class="typeit"></span></a><span class="header-subtitle"></span></div>
+    <nav>
+      <ul class="menu"><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/posts/"
+                
+                
+              ><i class="fa-solid fa-archive fa-fw fa-sm" aria-hidden="true"></i> 文章</a></li><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/categories/"
+                
+                
+              ><i class="fa-solid fa-th fa-fw fa-sm" aria-hidden="true"></i> 分类</a></li><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/tags/"
+                
+                
+              ><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> 标签</a></li><li class="menu-item delimiter"></li><li class="menu-item theme-switch" title="Switch Theme">
+          <i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</header><header class="mobile animate__faster" id="header-mobile">
+  <div class="header-container">
+    <div class="header-wrapper">
+      <div class="header-title">
+        <a href="/" title="学习记录"><span class="header-title-pre"><i class='far fa-kiss-wink-heart fa-fw' aria-hidden='true'></i></span><span id="typeit-header-title-mobile" class="typeit"></span></a><span class="header-subtitle"></span></div>
+      <div class="menu-toggle" id="menu-toggle-mobile">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+    <nav>
+      <ul class="menu" id="menu-mobile"><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/posts/"
+                  
+                  
+                ><i class="fa-solid fa-archive fa-fw fa-sm" aria-hidden="true"></i> 文章</a></li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/categories/"
+                  
+                  
+                ><i class="fa-solid fa-th fa-fw fa-sm" aria-hidden="true"></i> 分类</a></li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/tags/"
+                  
+                  
+                ><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> 标签</a></li><li class="menu-item theme-switch" title="Switch Theme">
+          <i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i>
+        </li></ul>
+    </nav>
+  </div>
+</header><main class="container" data-page-style="wide"><aside class="toc" id="toc-auto"><h2 class="toc-title">Contents&nbsp;<i class="toc-icon fa-solid fa-angle-down fa-fw" aria-hidden="true"></i></h2>
+      <div class="toc-content" id="toc-content-auto"></div></aside>
+
+  <aside class="aside-custom">
+    </aside>
+
+  <article class="page single">
+    <div class="header"><h1 class="single-title animate__animated animate__flipInX">
+        <span>Linux入门学习</span>
+      </h1></div><div class="post-meta">
+      <div class="post-meta-line"><span class="post-author"><span class="author"><img
+    class="lazyload avatar"
+    src="/svg/loading.min.svg"
+    data-src="https://www.gravatar.com/avatar/736cc0685dbd22dd674add9c481fc755?s=32&amp;d="
+    data-srcset="https://www.gravatar.com/avatar/736cc0685dbd22dd674add9c481fc755?s=32&amp;d=, https://www.gravatar.com/avatar/736cc0685dbd22dd674add9c481fc755?s=32&amp;d= 1.5x, https://www.gravatar.com/avatar/736cc0685dbd22dd674add9c481fc755?s=32&amp;d= 2x"
+    data-sizes="auto"
+    alt="cjt"
+    title="cjt"/>&nbsp;cjt</span></span>
+          <span class="post-category">included in <a href="/categories/linux/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> Linux</a></span></div>
+      <div class="post-meta-line"><span title=2022-12-14&#32;00:00:00><i class="fa-regular fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-12-14">2022-12-14</time></span>&nbsp;<span><i class="fa-solid fa-pencil-alt fa-fw" aria-hidden="true"></i> 6682 words</span>&nbsp;<span><i class="fa-regular fa-clock fa-fw" aria-hidden="true"></i> 14 minutes</span>&nbsp;</div>
+    </div><div class="details toc" id="toc-static" data-kept="false">
+        <div class="details-summary toc-title">
+          <span>Contents</span>
+          <span><i class="details-icon fa-solid fa-angle-right" aria-hidden="true"></i></span>
+        </div>
+        <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#1-linux基本操作">1. Linux基本操作</a>
+      <ul>
+        <li><a href="#11-文本登录">1.1 文本登录</a></li>
+        <li><a href="#12-口令文件格式">1.2 口令文件格式</a></li>
+        <li><a href="#13-linux登录时shell环境文件">1.3 Linux登录时Shell环境文件</a></li>
+        <li><a href="#14-多终端登录">1.4 多终端登录</a></li>
+        <li><a href="#15-简单命令">1.5 简单命令</a></li>
+        <li><a href="#16-man帮助手册">1.6 man(帮助手册)</a></li>
+      </ul>
+    </li>
+    <li><a href="#2-linux基本命令">2. Linux基本命令</a>
+      <ul>
+        <li><a href="#ls命令">ls命令</a></li>
+      </ul>
+    </li>
+    <li><a href="#3-bash基础">3. Bash基础</a>
+      <ul>
+        <li><a href="#31-通配符">3.1 通配符</a></li>
+        <li><a href="#32-输入输出重定向">3.2 输入/输出重定向</a></li>
+        <li><a href="#33-管道">3.3 管道</a></li>
+        <li><a href="#34-后台作业">3.4 后台作业</a></li>
+        <li><a href="#35-历史记录">3.5 历史记录</a></li>
+        <li><a href="#36-命令补全">3.6 命令补全</a></li>
+        <li><a href="#37-别名">3.7 别名</a></li>
+      </ul>
+    </li>
+    <li><a href="#4-文件系统">4. 文件系统</a>
+      <ul>
+        <li><a href="#41-什么是文件系统">4.1 什么是文件系统</a></li>
+        <li><a href="#42-linux主要目录结构">4.2 Linux主要目录结构</a></li>
+        <li><a href="#43-linux文件类型">4.3 Linux文件类型</a></li>
+        <li><a href="#44-mountumount">4.4 mount,umount</a></li>
+        <li><a href="#45-硬链接">4.5 硬链接</a></li>
+        <li><a href="#46-硬连接与软连接的区别">4.6 硬连接与软连接的区别</a></li>
+      </ul>
+    </li>
+    <li><a href="#5-linux-管理命令">5. Linux 管理命令</a>
+      <ul>
+        <li><a href="#51-dfdu">5.1 df、du</a></li>
+        <li><a href="#52-free">5.2 free</a></li>
+        <li><a href="#53-ps">5.3 ps</a></li>
+        <li><a href="#54-top">5.4 top</a></li>
+        <li><a href="#55-kill">5.5 kill</a></li>
+        <li><a href="#56-文件备份tar">5.6 文件备份(tar)</a></li>
+        <li><a href="#linux-文件权限">Linux 文件权限</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+      </div><div class="content" id="content"><h2 id="1-linux基本操作">1. Linux基本操作</h2>
+<h3 id="11-文本登录">1.1 文本登录</h3>
+<p>文本方式登陆：</p>
+<ul>
+<li>输入用户名和密码</li>
+<li>/etc/passwd文件对照</li>
+<li>/etc/shadow文件对照</li>
+<li>启动相应的外壳程序</li>
+<li>用户得到一个虚终端，通过Shell与系统交互</li>
+<li>进入到用户的家目录</li>
+</ul>
+<p>passwd文件存放的用户信息：用户名、用户的id，用户所属的组id，用户的家目录，以及用户所使用的一些shell程序。
+shadow存放的是与密码相关的信息：包含的是用户加密过的密码，以及密码过期的时间等等..。</p>
+<p>当输入的密码和用户名验证通知之后，系统会启动一个程序，叫做外壳程序(也就是shell)，并且获得一个终端，然后可以和系统交互了，并且进入到用户的家目录。</p>
+<h3 id="12-口令文件格式">1.2 口令文件格式</h3>
+<p>口令文件格式：</p>
+<ul>
+<li>username:用户名</li>
+<li>password:密码</li>
+<li>uid:用户标识号</li>
+<li>gid:组标识号</li>
+<li>comment:备注信息(可选)</li>
+<li>home:家目录</li>
+<li>shell:shell程序</li>
+</ul>
+<p>口令文件格式：<code>root:x:0:0:root:/root:/bin/bash</code></p>
+<p>这个信息保存在<code>/etc/passwd</code>文件中</p>
+<p>查看密码文件的内容，并且具有分页的功能：<code>cat /etc/passwd | more</code></p>
+<p>查看shadow文件内容：<code>cat /etc/shadow | more</code>，发现权限不够。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">ubuntu@VM-12-11-ubuntu:~/my-website$ cat /etc/shadow <span class="p">|</span> more
+</span></span><span class="line"><span class="cl">cat: /etc/shadow: Permission denied
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>增加权限：<code>sudo cat /etc/shadow | more</code></p>
+<p>系统将用户输入的密码进行加密，然后将加密过的密码和shadow文件的密码进行比较，验证通过的话才运行用户登录，然后在启动一个shell程序，这个shell程序就是口令文件配置的shell，然后为这个shell获得一个控制终端，最后将用户的当前目录更改到用户的家目录，这个家目录也是存放在密码文件当中的。</p>
+<h3 id="13-linux登录时shell环境文件">1.3 Linux登录时Shell环境文件</h3>
+<p><strong>该节内容了解即可!!!</strong></p>
+<ul>
+<li>/etc/bashrc：包含系统定义的命令别名和bash的环境变量定义。</li>
+<li>/etc/profile：包含系统的环境定义，并指定启动时必须运行的程序。</li>
+<li>/etc/inputrc：包含系统的键盘设定，以及针对不同终端程序的键位配置信息。</li>
+<li>$HOME/.bashrc：包含为用户定义的命令别名和bash的环境变量定义。</li>
+<li>$HOME/.bash_profile：包含为用户定义的环境变量，并指定用户登录时需要启动的程序</li>
+<li>$HOME/.inputrc：包含用户的键盘设定，以及针对用户终端的键位配置信息</li>
+</ul>
+<h3 id="14-多终端登录">1.4 多终端登录</h3>
+<p>Linux预设提供了六个命令窗口终端机让我们来登录。</p>
+<ul>
+<li>默认我们登录的就是第一个窗口，也就是tty1，这个六个窗口分别为tty1,tty2 … tty6，按下Ctrl + Alt + F1 ~ F6 来切换它们。</li>
+<li>图形切命令：Ctrl + Alt + F1 ~ F6  /Alt + Shift + Ctrl + F1~F6 (vmware)</li>
+<li>命令切图形：Ctrl + Alt + F7 / Alt + Space + F1~F6 (vmware)</li>
+</ul>
+<p>虚终端：Linux主机上的键盘和显示器它被多个终端共享，这样的终端称为虚终端。</p>
+<p>物理终端： 物理终端是通过串口与主机相连的，每个物理终端都有自己的键盘和显示器，但没cpu(也就是说基本没处理能力)。</p>
+<p>仿真终端：如vs code、xshell连接。</p>
+<h3 id="15-简单命令">1.5 简单命令</h3>
+<p>显示日期：<code>date</code></p>
+<p>显示当月日历：<code>cal</code></p>
+<p>显示一整年的日历：<code>cal 1998</code></p>
+<p>查看谁在使用系统：<code>who</code></p>
+<p>查看我是谁：<code>who am i</code></p>
+<p>清除屏幕：<code>clear</code></p>
+<p>计算器：<code>bc</code></p>
+<p>结束符：<code>ctrl + d</code></p>
+<p>中断前台进程：<code>ctr + c</code></p>
+<h3 id="16-man帮助手册">1.6 man(帮助手册)</h3>
+<p>Linux的命令有很多参数，我们不可能全记住，我们可以通过查看联机手册获取帮助。访问Linux手册页的命令是man</p>
+<p>如：<code>man date</code></p>
+<h2 id="2-linux基本命令">2. Linux基本命令</h2>
+<h3 id="ls命令">ls命令</h3>
+<p>功能说明：显示文件信息</p>
+<p>用法示例：<code>ls [option]  [file]</code></p>
+<p>选项：</p>
+<ul>
+<li>-l：除档案名称外，亦将档案型态、权限、拥有者、档案大小等资讯详细列出</li>
+<li>-a：显示所有档案及目录 (ls内定将档案名或目录名称开头为&quot;&quot;.&ldquo;&ldquo;的视为隐藏档，不会列出)</li>
+<li>-r：将档案以相反次序显示(原定依英文字母次序)</li>
+<li>-t：将档案依建立时间之先后次序列出</li>
+<li>-F：在列出的档案名称后加一符号；例如可执行档则加 &ldquo;&rdquo;*&rdquo;&rdquo;, 目录则加 &ldquo;&rdquo;/&quot;&quot;</li>
+<li>-R：若目录下有档案，则以下之档案亦皆依序列出</li>
+<li>-A：同 -a ，但不列出 &ldquo;&rdquo;.&quot;&quot; (目前目录) 及 &ldquo;&rdquo;..&quot;&quot; (父目录)</li>
+</ul>
+<p>显示某目录下所有的文件及子目录的详细信息：<code>ls –lR /test</code></p>
+<p>显示当前目录下所有文件详细信息：<code>ls –l</code></p>
+<h2 id="3-bash基础">3. Bash基础</h2>
+<h3 id="31-通配符">3.1 通配符</h3>
+<ul>
+<li>*：匹配所有字符；示例：<code>ls *.o</code></li>
+<li>?：匹配所有的单个字符；示例：<code>ls net???</code></li>
+<li>[a-z]：匹配属于a到z范围集合内的一个字符；示例：<code>ls [a-i]*</code></li>
+<li>[&hellip;]：与方括号内的某个字符匹配；示例：<code>ls [abc]*.c</code></li>
+<li>[!&hellip;]或[^&hellip;]：与不在括号内的某个字符匹配；示例：<code>ls [^a]*.c</code></li>
+<li>{c1,c2}：同c1或c2集合匹配；示例：<code>ls {[0-9]*,[acr]}</code></li>
+</ul>
+<h3 id="32-输入输出重定向">3.2 输入/输出重定向</h3>
+<ul>
+<li>ls -l /usr/tmp &gt;dir</li>
+<li>ls -l /usr/tmp &raquo;dir</li>
+<li>ls /usr/tmp 2&gt;err.file</li>
+<li>ls /usr/tmp &amp;&gt;output.file</li>
+<li>wc &lt;/etc/passwd</li>
+</ul>
+<h3 id="33-管道">3.3 管道</h3>
+<p>管道指的是，将前一条命令的标准输出，作为后一条命令的标准输入。它实际上是进程通讯的一种手段，在内核的表现形式就是一个内存缓冲区。</p>
+<p>显示当前的一些进程：<code>ps aux</code></p>
+<p>查找更bash相关的进行：<code>ps aux | grep bash</code>，在此基础上还可以过滤叼grep的信息：<code>ps aux | grep bash | grep -v grep</code></p>
+<h3 id="34-后台作业">3.4 后台作业</h3>
+<p><img
+    class="lazyload"
+    src="/svg/loading.min.svg"
+    data-src="../../imgs/Linux_start/3.4.1.png"
+    data-srcset="../../imgs/Linux_start/3.4.1.png, ../../imgs/Linux_start/3.4.1.png 1.5x, ../../imgs/Linux_start/3.4.1.png 2x"
+    data-sizes="auto"
+    alt="shell等待命令结束"
+    title="shell等待命令结束"/>
+<img
+    class="lazyload"
+    src="/svg/loading.min.svg"
+    data-src="../../imgs/Linux_start/3.4.2.jpg"
+    data-srcset="../../imgs/Linux_start/3.4.2.jpg, ../../imgs/Linux_start/3.4.2.jpg 1.5x, ../../imgs/Linux_start/3.4.2.jpg 2x"
+    data-sizes="auto"
+    alt="执行后台作业"
+    title="执行后台作业"/></p>
+<p>后台执行：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">ubuntu@VM-12-11-ubuntu:~/workspace$ wc <span class="p">&amp;</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span>1<span class="o">]</span> <span class="m">239173</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">[</span>1<span class="o">]</span>+  Stopped                 wc
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>查看状态：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">ubuntu@VM-12-11-ubuntu:~/workspace$ <span class="nb">jobs</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span>1<span class="o">]</span>+  Stopped                 wc
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><code>fg</code>，将一个后台作业转到前台：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">ubuntu@VM-12-11-ubuntu:~/workspace$ <span class="nb">fg</span>
+</span></span><span class="line"><span class="cl">wc
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><code>ctr + z</code>，可以将一个前台进程停止掉</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">^Z
+</span></span><span class="line"><span class="cl"><span class="o">[</span>1<span class="o">]</span>+  Stopped                 wc
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><code>bg</code>，将一个停止状态的作业转到后台执行：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">ubuntu@VM-12-11-ubuntu:~/workspace$ <span class="nb">bg</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span>1<span class="o">]</span>+ wc <span class="p">&amp;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">[</span>1<span class="o">]</span>+  Stopped                 wc
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="35-历史记录">3.5 历史记录</h3>
+<p>bash在送入命令时，会将这些命令保存在历史表里，可以用history命令查看历史表。</p>
+<p>存放在<code>~/.bash_history</code>文件当中</p>
+<h3 id="36-命令补全">3.6 命令补全</h3>
+<p>在送入命令的时候，可以按tab键，Shell就会试图补全该命令</p>
+<h3 id="37-别名">3.7 别名</h3>
+<ul>
+<li>如果命令太长或者不符合用户的习惯，那么为它指定一个别名是不错的办法。</li>
+<li>查看当前环境中的别名：alias</li>
+<li>创建别名：alias cls=‘clear’</li>
+<li>删除别名：unalias cls</li>
+<li>如果需要一直使用别名，可以在.bashrc文件中配置别名。</li>
+<li>如果需要所有用户都使用别名可以在/etc/bashrc文件中配置</li>
+</ul>
+<p>可以给一些命令取一些其他名称，如：<code>alias cls='clear'</code>，需要注意的是<code>=</code>两边不能有空格，原命令需要用单引号包裹。</p>
+<p>清除别名：<code>unalias cls</code></p>
+<p>这样的操作只能对当前的shell程序有效，如何让该用户一直效果，需要配置到<code>~/.bashrc</code>文件中：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="nb">alias</span> <span class="nv">cls</span><span class="o">=</span><span class="s1">&#39;clear&#39;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>再次执行：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">ubuntu@VM-12-11-ubuntu:~/workspace$ cls
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Command <span class="s1">&#39;cls&#39;</span> not found, but there are <span class="m">17</span> similar ones.
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>发现没效果，这是因为用户已经登录了，需要重新执行一下<code>~/.bashrc</code>文件，这个文件会在用户登录的时候执行：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">ubuntu@VM-12-11-ubuntu:~/workspace$ . ~/.bashrc 
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>如果想让所有用户都起效果，需要配置<code>/etc/bash.bashrc</code>文件。</p>
+<h2 id="4-文件系统">4. 文件系统</h2>
+<h3 id="41-什么是文件系统">4.1 什么是文件系统</h3>
+<ul>
+<li>A directory structure contained within a disk drive or disk area（文件系统是包括在一个磁盘或分区的目录结构）</li>
+<li>A method of organising files on a disk, eg NTFS, FAT,Sytem V,ext2,ext3。（文件系统是在一个磁盘组织文件的方法，如NTFS，FAT，Sytem V，ext2,ext3）</li>
+<li>刚买回来的硬盘是没有文件系统的，只有当它用FDISK这样的工具进行分区与格式化之后才有，这个过程称为建立文件系统。</li>
+<li>Linux系统中每个分区都是一个文件系统，有它自己的顶层目录和下面的目录层次结构。并将一个文件系统的顶层目录装配到另一个文件系统的子目录上形成一个总的目录层次结构。</li>
+</ul>
+<p>三个文件系统形成一个层次结构：</p>
+<p><img
+    class="lazyload"
+    src="/svg/loading.min.svg"
+    data-src="../../imgs/Linux_start/4.4.1.png"
+    data-srcset="../../imgs/Linux_start/4.4.1.png, ../../imgs/Linux_start/4.4.1.png 1.5x, ../../imgs/Linux_start/4.4.1.png 2x"
+    data-sizes="auto"
+    alt="三个文件系统形成一个层次结构"
+    title="三个文件系统形成一个层次结构"/></p>
+<p>磁盘组织文件首先要解决的一个问题是，磁盘分区。磁盘上面有那些分区，这个分区实际上是保存在磁盘上面的一个零磁道、零扇区上面512个字节的扇区上的，它不能保存在内存当中，因为内存中的数据一旦关机就消失了，那么在开机的时候就无法读取到这个磁盘上的分区，也就是说磁盘的分区应该由磁盘自身来维护。另外磁盘不光管理磁盘分区表，还应该管理磁盘的一些使用状况，如：那些空间是被使用的，那些空间是空闲的。所以磁盘不能存放实际大小空间的数据，要留一部分的空间来管理自身。不同的管理方式就导致了不同的分区格式，如NTFS，FAT，Sytem V，ext2,ext3）。</p>
+<p>需要注意的是，根分区地下的目录或者说路径，不一定都属于根分区。而windows地下的目录一定属于上层目录。</p>
+<h3 id="42-linux主要目录结构">4.2 Linux主要目录结构</h3>
+<ul>
+<li>/etc：存放Linux系统管理中的各种配置文件和子目录</li>
+<li>/sbin：存放系统管理员的系统管理程序</li>
+<li>/dev：存放系统所使用的各种外设（外设入口文件）</li>
+<li>/bin：系统常用命令（内部命令）</li>
+<li>/boot：系统启动时所使用的各种文件</li>
+<li>/lib：存放系统中的共享动态连接库</li>
+<li>/proc：存放系统信息文件，与内存映像</li>
+<li>/root：root用户的主目录</li>
+<li>/home：该目录下存放了各个用户的工作目录</li>
+<li>/usr：存放系统应用程序（可以说是外围工具、程序或命令）；/usr/bin;/usr/lib;/usr/include跟开发相关</li>
+</ul>
+<h3 id="43-linux文件类型">4.3 Linux文件类型</h3>
+<ul>
+<li>普通文件：字节集合，分为文本文件与二进制文件</li>
+<li>目录文件：目录好比一个容器，用来存放其他文件和目录。</li>
+<li>特殊文件：也称设备文件，代表着某种设备，一般放在/dev目录下。</li>
+<li>符号连接文件：它是一个文本文件，其中包含它提供连接的另一个文件的路径名。用ls来查看，连接文件的标志用l开头，文件后面以“－&gt;”指向所连接的文件。</li>
+</ul>
+<p>普通文件，第一位是-，如CMakeLists.txt文件：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">-rw-rw-r-- <span class="m">1</span> ubuntu ubuntu <span class="m">1064</span> Dec  <span class="m">6</span> 11:13 CMakeLists.txt
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>目录文件，第一位是d，如base目录：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">drwxrwxr-x <span class="m">2</span> ubuntu ubuntu <span class="m">4096</span> Nov <span class="m">22</span> 22:34 base/
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>特殊文件：</p>
+<p>字符设备文件，第一位是c</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ ll /dev/tty
+</span></span><span class="line"><span class="cl">crw-rw-rw- <span class="m">1</span> root tty 5, <span class="m">0</span> Dec <span class="m">13</span> 19:51 /dev/tty
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>块设备文件，第一位是b</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ ls -l /dev/vda1 
+</span></span><span class="line"><span class="cl">brw-rw---- <span class="m">1</span> root disk 252, <span class="m">1</span> Dec <span class="m">13</span> 19:51 /dev/vda1
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>符号连接文件，也称为软连接文件</p>
+<p>查看分区状况：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ sudo fdisk -l
+</span></span><span class="line"><span class="cl">Disk /dev/loop0: 63.24 MiB, <span class="m">66301952</span> bytes, <span class="m">129496</span> sectors
+</span></span><span class="line"><span class="cl">Units: sectors of <span class="m">1</span> * <span class="nv">512</span> <span class="o">=</span> <span class="m">512</span> bytes
+</span></span><span class="line"><span class="cl">Sector size <span class="o">(</span>logical/physical<span class="o">)</span>: <span class="m">512</span> bytes / <span class="m">512</span> bytes
+</span></span><span class="line"><span class="cl">I/O size <span class="o">(</span>minimum/optimal<span class="o">)</span>: <span class="m">512</span> bytes / <span class="m">512</span> bytes
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Disk /dev/loop1: 97.98 MiB, <span class="m">102711296</span> bytes, <span class="m">200608</span> sectors
+</span></span><span class="line"><span class="cl">Units: sectors of <span class="m">1</span> * <span class="nv">512</span> <span class="o">=</span> <span class="m">512</span> bytes
+</span></span><span class="line"><span class="cl">Sector size <span class="o">(</span>logical/physical<span class="o">)</span>: <span class="m">512</span> bytes / <span class="m">512</span> bytes
+</span></span><span class="line"><span class="cl">I/O size <span class="o">(</span>minimum/optimal<span class="o">)</span>: <span class="m">512</span> bytes / <span class="m">512</span> bytes
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Disk /dev/loop2: 49.64 MiB, <span class="m">52031488</span> bytes, <span class="m">101624</span> sectors
+</span></span><span class="line"><span class="cl">Units: sectors of <span class="m">1</span> * <span class="nv">512</span> <span class="o">=</span> <span class="m">512</span> bytes
+</span></span><span class="line"><span class="cl">Sector size <span class="o">(</span>logical/physical<span class="o">)</span>: <span class="m">512</span> bytes / <span class="m">512</span> bytes
+</span></span><span class="line"><span class="cl">I/O size <span class="o">(</span>minimum/optimal<span class="o">)</span>: <span class="m">512</span> bytes / <span class="m">512</span> bytes
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Disk /dev/loop3: 97.97 MiB, <span class="m">102703104</span> bytes, <span class="m">200592</span> sectors
+</span></span><span class="line"><span class="cl">Units: sectors of <span class="m">1</span> * <span class="nv">512</span> <span class="o">=</span> <span class="m">512</span> bytes
+</span></span><span class="line"><span class="cl">Sector size <span class="o">(</span>logical/physical<span class="o">)</span>: <span class="m">512</span> bytes / <span class="m">512</span> bytes
+</span></span><span class="line"><span class="cl">I/O size <span class="o">(</span>minimum/optimal<span class="o">)</span>: <span class="m">512</span> bytes / <span class="m">512</span> bytes
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Disk /dev/vda: <span class="m">40</span> GiB, <span class="m">42949672960</span> bytes, <span class="m">83886080</span> sectors
+</span></span><span class="line"><span class="cl">Units: sectors of <span class="m">1</span> * <span class="nv">512</span> <span class="o">=</span> <span class="m">512</span> bytes
+</span></span><span class="line"><span class="cl">Sector size <span class="o">(</span>logical/physical<span class="o">)</span>: <span class="m">512</span> bytes / <span class="m">512</span> bytes
+</span></span><span class="line"><span class="cl">I/O size <span class="o">(</span>minimum/optimal<span class="o">)</span>: <span class="m">512</span> bytes / <span class="m">512</span> bytes
+</span></span><span class="line"><span class="cl">Disklabel type: gpt
+</span></span><span class="line"><span class="cl">Disk identifier: 884D39AE-2030-4231-B486-520515A9ADD7
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Device     Start      End  Sectors Size Type
+</span></span><span class="line"><span class="cl">/dev/vda1   <span class="m">2048</span>     <span class="m">4095</span>     <span class="m">2048</span>   1M BIOS boot
+</span></span><span class="line"><span class="cl">/dev/vda2   <span class="m">4096</span> <span class="m">83886046</span> <span class="m">83881951</span>  40G Linux filesystem
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="44-mountumount">4.4 mount,umount</h3>
+<ul>
+<li>如果您想进入一个文件系统，首先您要做的是挂载（mount）文件系统；为了挂载（mount）文件系统，您必须指定一个挂载点</li>
+<li>特殊设备如光驱，我们不能直接访问，必须先挂载（mount）到指定目录,如：<code>mount /dev/cdrom /mnt/cdrom</code></li>
+<li>与mount对应的是umount命令，用法如下：<code>umount /mnt/cdrom</code></li>
+</ul>
+<p>查看各个分区的挂载点：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ df -h
+</span></span><span class="line"><span class="cl">Filesystem      Size  Used Avail Use% Mounted on
+</span></span><span class="line"><span class="cl">udev            946M     <span class="m">0</span>  946M   0% /dev
+</span></span><span class="line"><span class="cl">tmpfs           199M 1016K  198M   1% /run
+</span></span><span class="line"><span class="cl">/dev/vda2        40G   19G   20G  49% /
+</span></span><span class="line"><span class="cl">tmpfs           992M   24K  992M   1% /dev/shm
+</span></span><span class="line"><span class="cl">tmpfs           5.0M     <span class="m">0</span>  5.0M   0% /run/lock
+</span></span><span class="line"><span class="cl">tmpfs           992M     <span class="m">0</span>  992M   0% /sys/fs/cgroup
+</span></span><span class="line"><span class="cl">/dev/loop0       64M   64M     <span class="m">0</span> 100% /snap/core20/1738
+</span></span><span class="line"><span class="cl">/dev/loop1       98M   98M     <span class="m">0</span> 100% /snap/hugo/14702
+</span></span><span class="line"><span class="cl">/dev/loop2       50M   50M     <span class="m">0</span> 100% /snap/snapd/17883
+</span></span><span class="line"><span class="cl">/dev/loop3       98M   98M     <span class="m">0</span> 100% /snap/hugo/14869
+</span></span><span class="line"><span class="cl">tmpfs           199M     <span class="m">0</span>  199M   0% /run/user/1000
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>/dev/shm/ 下创建的文件都在内存中</p>
+<p>查看u盘的分区设备号，可以通过fdisk -l来得到：</p>
+<p>比如将u盘(/dev/sdc5)挂载到mnt下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ <span class="nb">cd</span> /mnt/
+</span></span><span class="line"><span class="cl">$ mkdir udisk
+</span></span><span class="line"><span class="cl">$ mount /dev/sdc5 /mnt/udisk/
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>取消挂载：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ umount /mnt/udisk/
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="45-硬链接">4.5 硬链接</h3>
+<ul>
+<li>索引结点号(i节点号)：Linux对存放在磁盘中的每一个文件，都分配一个号码，称为索引结点号。</li>
+<li>索引结点连接：目录中每一对文件名称和索引结点号称为一个连接（link）。</li>
+<li>创建一个连接可以用ln命令。</li>
+<li>查看文件的索引结点号可以用ls -i命令</li>
+</ul>
+<p>单个文件多个连接：</p>
+<p><img
+    class="lazyload"
+    src="/svg/loading.min.svg"
+    data-src="../../imgs/Linux_start/4.5.1.png"
+    data-srcset="../../imgs/Linux_start/4.5.1.png, ../../imgs/Linux_start/4.5.1.png 1.5x, ../../imgs/Linux_start/4.5.1.png 2x"
+    data-sizes="auto"
+    alt="三个文件系统形成一个层次结构"
+    title="三个文件系统形成一个层次结构"/></p>
+<p>i节点号，实际上是某一个分区上的数组入口的索引号，每个分区都有很多个i节点号，把它组织到一个数组当中。每一个节点号又跟一个索引节点相关。索引节点保存了一个文件的管理信息，比如：文件是什么时候创建的，文件属于谁，文件的数据块存在磁盘分区的什么位置。</p>
+<p>目录也是一个文件，目录实际上是文件的名称+索引节点号 形成一张表格，因为它是一个容器，这张表格记录了目录底下具有那些文件。</p>
+<p>查看某一文件的索引节点号：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">ubuntu@VM-12-11-ubuntu:~/workspace$ touch a
+</span></span><span class="line"><span class="cl">ubuntu@VM-12-11-ubuntu:~/workspace$ ls -li a
+</span></span><span class="line"><span class="cl"><span class="m">659008</span> -rw-rw-r-- <span class="m">1</span> ubuntu ubuntu <span class="m">0</span> Dec <span class="m">25</span> 18:17 a
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>可以用ln命令创建一个连接：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">ubuntu@VM-12-11-ubuntu:~/workspace$ ls -li b
+</span></span><span class="line"><span class="cl"><span class="m">659008</span> -rw-rw-r-- <span class="m">2</span> ubuntu ubuntu <span class="m">0</span> Dec <span class="m">25</span> 18:17 b
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>可以发现，文件a的索引号和b是一样的，也就是说，文件a和b共享了空一块磁盘空间。现在a和b对应的连接数已经变成2了，只有当a和b都被删除了，该文件才会被删除。</p>
+<p>创建一个目录文件，并查看文件信息：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">ubuntu@VM-12-11-ubuntu:~/workspace$ mkdir temp
+</span></span><span class="line"><span class="cl">ubuntu@VM-12-11-ubuntu:~/workspace$ ls -ld temp
+</span></span><span class="line"><span class="cl">drwxrwxr-x <span class="m">2</span> ubuntu ubuntu <span class="m">4096</span> Dec <span class="m">25</span> 18:25 temp
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>可以发现，temp目录文件一被创建，它的连接数就变成了2。那是因为temp文件有两个名称，temp和temp/.</p>
+<p>若在temp目录下再创建一个目录文件：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">ubuntu@VM-12-11-ubuntu:~/workspace$ <span class="nb">cd</span> temp/
+</span></span><span class="line"><span class="cl">ubuntu@VM-12-11-ubuntu:~/workspace/temp$ mkdir temp2
+</span></span><span class="line"><span class="cl">ubuntu@VM-12-11-ubuntu:~/workspace/temp$ ls -lid temp2/
+</span></span><span class="line"><span class="cl"><span class="m">656443</span> drwxrwxr-x <span class="m">2</span> ubuntu ubuntu <span class="m">4096</span> Dec <span class="m">25</span> 18:30 temp2/
+</span></span><span class="line"><span class="cl">ubuntu@VM-12-11-ubuntu:~/workspace/temp$ <span class="nb">cd</span> ..
+</span></span><span class="line"><span class="cl">ubuntu@VM-12-11-ubuntu:~/workspace$ ls -lid temp
+</span></span><span class="line"><span class="cl"><span class="m">660232</span> drwxrwxr-x <span class="m">3</span> ubuntu ubuntu <span class="m">4096</span> Dec <span class="m">25</span> 18:30 temp
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>temp的连接数变成了3，temp文件现在有三个名称，temp、temp/.和temp/temp2/..</p>
+<h3 id="46-硬连接与软连接的区别">4.6 硬连接与软连接的区别</h3>
+<ul>
+<li>符号连接：使用索引连接的问题在于不能在不同的分区建立连接，为解决这个问题引入了符号连接。符号连接可以用带－s参数的ln命令来建立</li>
+<li>为了与符号连接区别，我们把索引结点连接称为硬连接（hard link） ，符号连接称为软连接（soft link）。</li>
+</ul>
+<h2 id="5-linux-管理命令">5. Linux 管理命令</h2>
+<h3 id="51-dfdu">5.1 df、du</h3>
+<p>df只能查看磁盘分区的使用状况</p>
+<p>df –h 以直观的方式显式磁盘分区使用状况</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">ubuntu@VM-12-11-ubuntu:~/workspace$ df -h
+</span></span><span class="line"><span class="cl">Filesystem      Size  Used Avail Use% Mounted on
+</span></span><span class="line"><span class="cl">udev            946M     <span class="m">0</span>  946M   0% /dev
+</span></span><span class="line"><span class="cl">tmpfs           199M 1016K  198M   1% /run
+</span></span><span class="line"><span class="cl">/dev/vda2        40G   19G   20G  49% /
+</span></span><span class="line"><span class="cl">tmpfs           992M   24K  992M   1% /dev/shm
+</span></span><span class="line"><span class="cl">tmpfs           5.0M     <span class="m">0</span>  5.0M   0% /run/lock
+</span></span><span class="line"><span class="cl">tmpfs           992M     <span class="m">0</span>  992M   0% /sys/fs/cgroup
+</span></span><span class="line"><span class="cl">/dev/loop0       64M   64M     <span class="m">0</span> 100% /snap/core20/1738
+</span></span><span class="line"><span class="cl">/dev/loop1       98M   98M     <span class="m">0</span> 100% /snap/hugo/14702
+</span></span><span class="line"><span class="cl">/dev/loop2       50M   50M     <span class="m">0</span> 100% /snap/snapd/17883
+</span></span><span class="line"><span class="cl">/dev/loop3       98M   98M     <span class="m">0</span> 100% /snap/hugo/14869
+</span></span><span class="line"><span class="cl">tmpfs           199M     <span class="m">0</span>  199M   0% /run/user/1000
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>可以查看某个目录到底属于那个分区：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">ubuntu@VM-12-11-ubuntu:~$ df workspace/
+</span></span><span class="line"><span class="cl">Filesystem     1K-blocks     Used Available Use% Mounted on
+</span></span><span class="line"><span class="cl">/dev/vda2       <span class="m">41174636</span> <span class="m">19119444</span>  <span class="m">20282504</span>  49% /
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>du查看某个目录使用状况</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">ubuntu@VM-12-11-ubuntu:~$ du -h workspace/
+</span></span><span class="line"><span class="cl">4.0K    workspace/temp/temp2
+</span></span><span class="line"><span class="cl">8.0K    workspace/temp
+</span></span><span class="line"><span class="cl">20K     workspace/
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>只显示当前目录的情况：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">ubuntu@VM-12-11-ubuntu:~$ du -sh workspace/
+</span></span><span class="line"><span class="cl">20K     workspace/
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="52-free">5.2 free</h3>
+<p>free查看内存的使用情况：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">ubuntu@VM-12-11-ubuntu:~$ free
+</span></span><span class="line"><span class="cl">              total        used        free      shared  buff/cache   available
+</span></span><span class="line"><span class="cl">Mem:        <span class="m">2030144</span>      <span class="m">719200</span>      <span class="m">127384</span>        <span class="m">2620</span>     <span class="m">1183560</span>     <span class="m">1121296</span>
+</span></span><span class="line"><span class="cl">Swap:             <span class="m">0</span>           <span class="m">0</span>           <span class="m">0</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>total:物理内存</li>
+<li>used:已使用</li>
+<li>free:剩余的</li>
+<li>buffers:系统分配但未被使用的buffer</li>
+<li>cached:系统分配但未被使用的cache</li>
+</ul>
+<h3 id="53-ps">5.3 ps</h3>
+<p>ps 用来查看进程</p>
+<p>查看当前用户所启用的进程：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">ubuntu@VM-12-11-ubuntu:~$ ps
+</span></span><span class="line"><span class="cl">    PID TTY          TIME CMD
+</span></span><span class="line"><span class="cl"><span class="m">2721295</span> pts/0    00:00:00 bash
+</span></span><span class="line"><span class="cl"><span class="m">2754746</span> pts/0    00:00:00 ps
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>显示系统中所有启动的进程：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">ubuntu@VM-12-11-ubuntu:~$ ps -aux
+</span></span><span class="line"><span class="cl">USER         PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+</span></span><span class="line"><span class="cl">.............................................................................
+</span></span><span class="line"><span class="cl">root     <span class="m">2743227</span>  0.0  0.0      <span class="m">0</span>     <span class="m">0</span> ?        I    20:07   0:00 <span class="o">[</span>kworker/0:2<span class="o">]</span>
+</span></span><span class="line"><span class="cl">root     <span class="m">2745627</span>  0.0  0.0      <span class="m">0</span>     <span class="m">0</span> ?        I    20:23   0:00 <span class="o">[</span>kworker/1:0-events<span class="o">]</span>
+</span></span><span class="line"><span class="cl">root     <span class="m">2751717</span>  0.0  0.0      <span class="m">0</span>     <span class="m">0</span> ?        I    20:57   0:00 <span class="o">[</span>kworker/u4:1-events_power_efficient<span class="o">]</span>
+</span></span><span class="line"><span class="cl">root     <span class="m">2753414</span>  0.0  0.0      <span class="m">0</span>     <span class="m">0</span> ?        R    21:04   0:00 <span class="o">[</span>kworker/u4:0-events_unbound<span class="o">]</span>
+</span></span><span class="line"><span class="cl">ubuntu   <span class="m">2754242</span>  0.0  0.0   <span class="m">5476</span>   <span class="m">584</span> ?        S    21:08   0:00 sleep <span class="m">180</span>
+</span></span><span class="line"><span class="cl">root     <span class="m">2755001</span>  0.0  0.0      <span class="m">0</span>     <span class="m">0</span> ?        I    21:10   0:00 <span class="o">[</span>kworker/u4:2<span class="o">]</span>
+</span></span><span class="line"><span class="cl">root     <span class="m">2755002</span>  0.0  0.4  <span class="m">13480</span>  <span class="m">8340</span> ?        Ss   21:10   0:00 sshd: unknown <span class="o">[</span>priv<span class="o">]</span>
+</span></span><span class="line"><span class="cl">sshd     <span class="m">2755003</span>  0.0  0.2  <span class="m">12176</span>  <span class="m">4480</span> ?        S    21:10   0:00 sshd: unknown <span class="o">[</span>net<span class="o">]</span>
+</span></span><span class="line"><span class="cl">ubuntu   <span class="m">2755015</span>  0.0  0.1   <span class="m">9076</span>  <span class="m">3564</span> pts/0    R+   21:10   0:00 ps -aux
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>多出父进程列：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">ubuntu@VM-12-11-ubuntu:~$ ps -ef
+</span></span><span class="line"><span class="cl">UID          PID    PPID  C STIME TTY          TIME CMD
+</span></span><span class="line"><span class="cl">......................................................................
+</span></span><span class="line"><span class="cl">ubuntu   <span class="m">2755135</span> <span class="m">2720849</span>  <span class="m">0</span> 21:11 ?        00:00:00 sleep <span class="m">180</span>
+</span></span><span class="line"><span class="cl">root     <span class="m">2755414</span>     <span class="m">866</span>  <span class="m">0</span> 21:12 ?        00:00:00 sshd: root <span class="o">[</span>priv<span class="o">]</span>
+</span></span><span class="line"><span class="cl">root     <span class="m">2755421</span>     <span class="m">866</span>  <span class="m">0</span> 21:12 ?        00:00:00 sshd: root <span class="o">[</span>priv<span class="o">]</span>
+</span></span><span class="line"><span class="cl">sshd     <span class="m">2755428</span> <span class="m">2755414</span>  <span class="m">0</span> 21:12 ?        00:00:00 sshd: root <span class="o">[</span>net<span class="o">]</span>
+</span></span><span class="line"><span class="cl">sshd     <span class="m">2755448</span> <span class="m">2755421</span>  <span class="m">0</span> 21:12 ?        00:00:00 sshd: root <span class="o">[</span>net<span class="o">]</span>
+</span></span><span class="line"><span class="cl">root     <span class="m">2755464</span>     <span class="m">866</span>  <span class="m">1</span> 21:12 ?        00:00:00 sshd: unknown <span class="o">[</span>priv<span class="o">]</span>
+</span></span><span class="line"><span class="cl">sshd     <span class="m">2755465</span> <span class="m">2755464</span>  <span class="m">0</span> 21:12 ?        00:00:00 sshd: unknown <span class="o">[</span>net<span class="o">]</span>
+</span></span><span class="line"><span class="cl">ubuntu   <span class="m">2755474</span> <span class="m">2720946</span>  <span class="m">0</span> 21:12 ?        00:00:00 /bin/sh -c /usr/bin/ps -ax -o <span class="nv">pid</span><span class="o">=</span>,ppid<span class="o">=</span>,pcpu<span class="o">=</span>,pmem<span class="o">=</span>,command<span class="o">=</span>
+</span></span><span class="line"><span class="cl">ubuntu   <span class="m">2755475</span> <span class="m">2721295</span>  <span class="m">0</span> 21:12 pts/0    00:00:00 ps -ef
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="54-top">5.4 top</h3>
+<ul>
+<li>top相当于free+ps</li>
+</ul>
+<p>top用来观察当前进程的一些动态变化(类似Windows的任务管理器)：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ top
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>按q退出</p>
+<h3 id="55-kill">5.5 kill</h3>
+<p>kill命令用向一个进程发送信号</p>
+<ul>
+<li>kill -l：列出信号列表</li>
+<li>kill -9 pid：杀死pid进程</li>
+<li>killall 进程名称：杀死名称对应的所有进程</li>
+</ul>
+<p>显示所有的信号列表：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">ubuntu@VM-12-11-ubuntu:~$ <span class="nb">kill</span> -l
+</span></span><span class="line"><span class="cl"> 1<span class="o">)</span> SIGHUP       2<span class="o">)</span> SIGINT       3<span class="o">)</span> SIGQUIT      4<span class="o">)</span> SIGILL       5<span class="o">)</span> SIGTRAP
+</span></span><span class="line"><span class="cl"> 6<span class="o">)</span> SIGABRT      7<span class="o">)</span> SIGBUS       8<span class="o">)</span> SIGFPE       9<span class="o">)</span> SIGKILL     10<span class="o">)</span> SIGUSR1
+</span></span><span class="line"><span class="cl">11<span class="o">)</span> SIGSEGV     12<span class="o">)</span> SIGUSR2     13<span class="o">)</span> SIGPIPE     14<span class="o">)</span> SIGALRM     15<span class="o">)</span> SIGTERM
+</span></span><span class="line"><span class="cl">16<span class="o">)</span> SIGSTKFLT   17<span class="o">)</span> SIGCHLD     18<span class="o">)</span> SIGCONT     19<span class="o">)</span> SIGSTOP     20<span class="o">)</span> SIGTSTP
+</span></span><span class="line"><span class="cl">21<span class="o">)</span> SIGTTIN     22<span class="o">)</span> SIGTTOU     23<span class="o">)</span> SIGURG      24<span class="o">)</span> SIGXCPU     25<span class="o">)</span> SIGXFSZ
+</span></span><span class="line"><span class="cl">26<span class="o">)</span> SIGVTALRM   27<span class="o">)</span> SIGPROF     28<span class="o">)</span> SIGWINCH    29<span class="o">)</span> SIGIO       30<span class="o">)</span> SIGPWR
+</span></span><span class="line"><span class="cl">31<span class="o">)</span> SIGSYS      34<span class="o">)</span> SIGRTMIN    35<span class="o">)</span> SIGRTMIN+1  36<span class="o">)</span> SIGRTMIN+2  37<span class="o">)</span> SIGRTMIN+3
+</span></span><span class="line"><span class="cl">38<span class="o">)</span> SIGRTMIN+4  39<span class="o">)</span> SIGRTMIN+5  40<span class="o">)</span> SIGRTMIN+6  41<span class="o">)</span> SIGRTMIN+7  42<span class="o">)</span> SIGRTMIN+8
+</span></span><span class="line"><span class="cl">43<span class="o">)</span> SIGRTMIN+9  44<span class="o">)</span> SIGRTMIN+10 45<span class="o">)</span> SIGRTMIN+11 46<span class="o">)</span> SIGRTMIN+12 47<span class="o">)</span> SIGRTMIN+13
+</span></span><span class="line"><span class="cl">48<span class="o">)</span> SIGRTMIN+14 49<span class="o">)</span> SIGRTMIN+15 50<span class="o">)</span> SIGRTMAX-14 51<span class="o">)</span> SIGRTMAX-13 52<span class="o">)</span> SIGRTMAX-12
+</span></span><span class="line"><span class="cl">53<span class="o">)</span> SIGRTMAX-11 54<span class="o">)</span> SIGRTMAX-10 55<span class="o">)</span> SIGRTMAX-9  56<span class="o">)</span> SIGRTMAX-8  57<span class="o">)</span> SIGRTMAX-7
+</span></span><span class="line"><span class="cl">58<span class="o">)</span> SIGRTMAX-6  59<span class="o">)</span> SIGRTMAX-5  60<span class="o">)</span> SIGRTMAX-4  61<span class="o">)</span> SIGRTMAX-3  62<span class="o">)</span> SIGRTMAX-2
+</span></span><span class="line"><span class="cl">63<span class="o">)</span> SIGRTMAX-1  64<span class="o">)</span> SIGRTMAX
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>杀死某一个进程：<code>kill -9 pid</code></p>
+<p>杀死名称对应的所有进程：<code>killall 进程名称</code></p>
+<h3 id="56-文件备份tar">5.6 文件备份(tar)</h3>
+<ul>
+<li>功能说明：用来创建归档（档案）文件，备份文件及恢复文件，另外tar命令也有压缩与解压缩的功能</li>
+<li>用法示例：<code>tar  [option]  [file]</code></li>
+</ul>
+<p>选项：</p>
+<ul>
+<li>-c：创建一个新的归档</li>
+<li>-r：备份内容从档案尾开始存放（追加）</li>
+<li>-u：备份新的及修改过的文件（备份更新）</li>
+<li>-x：将文件从归档中恢复到磁盘上</li>
+<li>-t：显示归档中文件的文件名</li>
+<li>-v：显示执行过程中的文件清单</li>
+<li>-f：用来指定所用介质的设备文件名</li>
+</ul>
+<p>tar实例：</p>
+<ul>
+<li><code>tar -cvf text.tar text</code>：创建一个备份档案</li>
+<li><code>tar -tvf text.tar</code>：查看一个备份档案内容列表</li>
+<li><code>tar -xvf text.tar</code>：从备份档案中提取文件</li>
+<li><code>tar -zcvf text.tar.gz text</code>：备份档案并压缩</li>
+<li><code>tar -zxvf text.tar.gz</code>：从压缩包中提取文件</li>
+</ul>
+<p>创建一个文件归档(压缩)：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">ubuntu@VM-12-11-ubuntu:~$ tar -cvzf workspace.tar workspace
+</span></span><span class="line"><span class="cl">workspace/
+</span></span><span class="line"><span class="cl">workspace/temp/
+</span></span><span class="line"><span class="cl">workspace/temp/temp2/
+</span></span><span class="line"><span class="cl">workspace/b
+</span></span><span class="line"><span class="cl">workspace/a
+</span></span><span class="line"><span class="cl">workspace/test.txt
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>恢复一个文件归档(解压)：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">ubuntu@VM-12-11-ubuntu:~$ mkdir temp_workspace
+</span></span><span class="line"><span class="cl">ubuntu@VM-12-11-ubuntu:~$ tar -xvzf workspace.tar -C temp_workspace
+</span></span><span class="line"><span class="cl">workspace/
+</span></span><span class="line"><span class="cl">workspace/temp/
+</span></span><span class="line"><span class="cl">workspace/temp/temp2/
+</span></span><span class="line"><span class="cl">workspace/b
+</span></span><span class="line"><span class="cl">workspace/a
+</span></span><span class="line"><span class="cl">workspace/test.txt
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="linux-文件权限">Linux 文件权限</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">ubuntu@VM-12-11-ubuntu:~$ cat /etc/group
+</span></span><span class="line"><span class="cl">root:x:0:
+</span></span><span class="line"><span class="cl">daemon:x:1:
+</span></span><span class="line"><span class="cl">bin:x:2:
+</span></span><span class="line"><span class="cl">sys:x:3:
+</span></span><span class="line"><span class="cl">adm:x:4:syslog,ubuntu
+</span></span><span class="line"><span class="cl">tty:x:5:syslog
+</span></span><span class="line"><span class="cl">disk:x:6:
+</span></span><span class="line"><span class="cl">lp:x:7:
+</span></span><span class="line"><span class="cl">mail:x:8:
+</span></span><span class="line"><span class="cl">news:x:9:
+</span></span><span class="line"><span class="cl">uucp:x:10:
+</span></span><span class="line"><span class="cl">man:x:12:
+</span></span><span class="line"><span class="cl">proxy:x:13:
+</span></span><span class="line"><span class="cl">kmem:x:15:
+</span></span><span class="line"><span class="cl">dialout:x:20:
+</span></span><span class="line"><span class="cl">fax:x:21:
+</span></span><span class="line"><span class="cl">voice:x:22:
+</span></span><span class="line"><span class="cl">cdrom:x:24:ubuntu
+</span></span><span class="line"><span class="cl">floppy:x:25:
+</span></span><span class="line"><span class="cl">tape:x:26:
+</span></span><span class="line"><span class="cl">sudo:x:27:ubuntu
+</span></span><span class="line"><span class="cl">audio:x:29:
+</span></span><span class="line"><span class="cl">dip:x:30:ubuntu
+</span></span><span class="line"><span class="cl">www-data:x:33:
+</span></span><span class="line"><span class="cl">backup:x:34:
+</span></span><span class="line"><span class="cl">operator:x:37:
+</span></span><span class="line"><span class="cl">list:x:38:
+</span></span><span class="line"><span class="cl">irc:x:39:
+</span></span><span class="line"><span class="cl">src:x:40:
+</span></span><span class="line"><span class="cl">gnats:x:41:
+</span></span><span class="line"><span class="cl">shadow:x:42:
+</span></span><span class="line"><span class="cl">utmp:x:43:
+</span></span><span class="line"><span class="cl">video:x:44:
+</span></span><span class="line"><span class="cl">sasl:x:45:
+</span></span><span class="line"><span class="cl">plugdev:x:46:ubuntu
+</span></span><span class="line"><span class="cl">staff:x:50:
+</span></span><span class="line"><span class="cl">games:x:60:
+</span></span><span class="line"><span class="cl">users:x:100:
+</span></span><span class="line"><span class="cl">nogroup:x:65534:
+</span></span><span class="line"><span class="cl">systemd-journal:x:101:
+</span></span><span class="line"><span class="cl">systemd-network:x:102:
+</span></span><span class="line"><span class="cl">systemd-resolve:x:103:
+</span></span><span class="line"><span class="cl">systemd-timesync:x:104:
+</span></span><span class="line"><span class="cl">crontab:x:105:
+</span></span><span class="line"><span class="cl">messagebus:x:106:
+</span></span><span class="line"><span class="cl">input:x:107:
+</span></span><span class="line"><span class="cl">kvm:x:108:
+</span></span><span class="line"><span class="cl">render:x:109:
+</span></span><span class="line"><span class="cl">syslog:x:110:
+</span></span><span class="line"><span class="cl">tss:x:111:
+</span></span><span class="line"><span class="cl">uuidd:x:112:
+</span></span><span class="line"><span class="cl">tcpdump:x:113:
+</span></span><span class="line"><span class="cl">ssh:x:114:
+</span></span><span class="line"><span class="cl">landscape:x:115:
+</span></span><span class="line"><span class="cl">lxd:x:116:ubuntu
+</span></span><span class="line"><span class="cl">systemd-coredump:x:999:
+</span></span><span class="line"><span class="cl">ubuntu:x:1000:
+</span></span><span class="line"><span class="cl">ntp:x:117:
+</span></span><span class="line"><span class="cl">bind:x:118:
+</span></span><span class="line"><span class="cl">netdev:x:119:
+</span></span><span class="line"><span class="cl">lighthouse:x:1001:lighthouse
+</span></span><span class="line"><span class="cl">fwupd-refresh:x:120:
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span><span class="lnt">64
+</span><span class="lnt">65
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">ubuntu@VM-12-11-ubuntu:~$ cat /etc/gshadow
+</span></span><span class="line"><span class="cl">cat: /etc/gshadow: Permission denied
+</span></span><span class="line"><span class="cl">ubuntu@VM-12-11-ubuntu:~$ sudo cat /etc/gshadow
+</span></span><span class="line"><span class="cl">root:*::
+</span></span><span class="line"><span class="cl">daemon:*::
+</span></span><span class="line"><span class="cl">bin:*::
+</span></span><span class="line"><span class="cl">sys:*::
+</span></span><span class="line"><span class="cl">adm:*::syslog,ubuntu
+</span></span><span class="line"><span class="cl">tty:*::syslog
+</span></span><span class="line"><span class="cl">disk:*::
+</span></span><span class="line"><span class="cl">lp:*::
+</span></span><span class="line"><span class="cl">mail:*::
+</span></span><span class="line"><span class="cl">news:*::
+</span></span><span class="line"><span class="cl">uucp:*::
+</span></span><span class="line"><span class="cl">man:*::
+</span></span><span class="line"><span class="cl">proxy:*::
+</span></span><span class="line"><span class="cl">kmem:*::
+</span></span><span class="line"><span class="cl">dialout:*::
+</span></span><span class="line"><span class="cl">fax:*::
+</span></span><span class="line"><span class="cl">voice:*::
+</span></span><span class="line"><span class="cl">cdrom:*::ubuntu
+</span></span><span class="line"><span class="cl">floppy:*::
+</span></span><span class="line"><span class="cl">tape:*::
+</span></span><span class="line"><span class="cl">sudo:*::ubuntu
+</span></span><span class="line"><span class="cl">audio:*::
+</span></span><span class="line"><span class="cl">dip:*::ubuntu
+</span></span><span class="line"><span class="cl">www-data:*::
+</span></span><span class="line"><span class="cl">backup:*::
+</span></span><span class="line"><span class="cl">operator:*::
+</span></span><span class="line"><span class="cl">list:*::
+</span></span><span class="line"><span class="cl">irc:*::
+</span></span><span class="line"><span class="cl">src:*::
+</span></span><span class="line"><span class="cl">gnats:*::
+</span></span><span class="line"><span class="cl">shadow:*::
+</span></span><span class="line"><span class="cl">utmp:*::
+</span></span><span class="line"><span class="cl">video:*::
+</span></span><span class="line"><span class="cl">sasl:*::
+</span></span><span class="line"><span class="cl">plugdev:*::ubuntu
+</span></span><span class="line"><span class="cl">staff:*::
+</span></span><span class="line"><span class="cl">games:*::
+</span></span><span class="line"><span class="cl">users:*::
+</span></span><span class="line"><span class="cl">nogroup:*::
+</span></span><span class="line"><span class="cl">systemd-journal:!::
+</span></span><span class="line"><span class="cl">systemd-network:!::
+</span></span><span class="line"><span class="cl">systemd-resolve:!::
+</span></span><span class="line"><span class="cl">systemd-timesync:!::
+</span></span><span class="line"><span class="cl">crontab:!::
+</span></span><span class="line"><span class="cl">messagebus:!::
+</span></span><span class="line"><span class="cl">input:!::
+</span></span><span class="line"><span class="cl">kvm:!::
+</span></span><span class="line"><span class="cl">render:!::
+</span></span><span class="line"><span class="cl">syslog:!::
+</span></span><span class="line"><span class="cl">tss:!::
+</span></span><span class="line"><span class="cl">uuidd:!::
+</span></span><span class="line"><span class="cl">tcpdump:!::
+</span></span><span class="line"><span class="cl">ssh:!::
+</span></span><span class="line"><span class="cl">landscape:!::
+</span></span><span class="line"><span class="cl">lxd:!::ubuntu
+</span></span><span class="line"><span class="cl">systemd-coredump:!!::
+</span></span><span class="line"><span class="cl">ubuntu:!::
+</span></span><span class="line"><span class="cl">ntp:!::
+</span></span><span class="line"><span class="cl">bind:!::
+</span></span><span class="line"><span class="cl">netdev:!::
+</span></span><span class="line"><span class="cl">lighthouse:!::lighthouse
+</span></span><span class="line"><span class="cl">fwupd-refresh:!::
+</span></span></code></pre></td></tr></table>
+</div>
+</div></div><div class="post-footer" id="post-footer">
+  <div class="post-info">
+    <div class="post-info-line">
+      <div class="post-info-mod">
+        <span title=2022-12-14&#32;00:00:00>Updated on 2022-12-14&nbsp;</span>
+      </div><div class="post-info-license">
+          <span><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span>
+        </div></div>
+    <div class="post-info-line">
+      <div class="post-info-md"></div>
+      <div class="post-info-share">
+        <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://cui-jiang-tao.github.io/posts/linux%E5%85%A5%E9%97%A8%E5%AD%A6%E4%B9%A0/" data-title="Linux入门学习" data-hashtags="Linux"><i class="fa-brands fa-twitter fa-fw" aria-hidden="true"></i></a>
+  <a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://cui-jiang-tao.github.io/posts/linux%E5%85%A5%E9%97%A8%E5%AD%A6%E4%B9%A0/" data-hashtag="Linux"><i class="fa-brands fa-facebook-square fa-fw" aria-hidden="true"></i></a>
+  <a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="https://cui-jiang-tao.github.io/posts/linux%E5%85%A5%E9%97%A8%E5%AD%A6%E4%B9%A0/" data-title="Linux入门学习"><i class="fa-brands fa-weibo fa-fw" aria-hidden="true"></i></a>
+  </span>
+      </div>
+    </div>
+  </div>
+
+  <div class="post-info-more">
+    <section class="post-tags"><i class="fa-solid fa-tags fa-fw me-1" aria-hidden="true"></i><a href='/tags/linux/' class="post-tag">Linux</a></section>
+    <section>
+      <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+    </section>
+  </div>
+
+  <div class="post-nav"><a href="/posts/linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" class="post-nav-item" rel="prev" title="Linux常用命令"><i class="fa-solid fa-angle-left fa-fw" aria-hidden="true"></i>Linux常用命令</a>
+      <a href="/posts/muduo%E7%BD%91%E7%BB%9C%E5%BA%93%E7%9A%84%E4%BD%BF%E7%94%A8/" class="post-nav-item" rel="next" title="muduo网络库的使用">muduo网络库的使用<i class="fa-solid fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+</article></main><footer class="footer">
+    <div class="footer-container"><div class="footer-line copyright" itemscope itemtype="http://schema.org/CreativeWork"><i class="fa-regular fa-copyright fa-fw" aria-hidden="true"></i>
+            <span itemprop="copyrightYear">2022 - 2023</span><span class="license footer-divider"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div><div class="footer-line statistics"></div></div>
+  </footer></div><div class="widgets"><div class="fixed-buttons animate__faster d-none"><div class="fixed-button back-to-top" role="button" aria-label="Back to Top"><i class="fa-solid fa-arrow-up fa-fw" aria-hidden="true"></i><span class="variant-numeric d-none">0%</span>
+        </div></div><div id="mask"></div><noscript>
+    <div class="noscript-warning">Theme FixIt works best with JavaScript enabled.</div>
+  </noscript>
+</div><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script src="/lib/lazysizes/lazysizes.min.js" async defer></script><script src="/lib/sharer/sharer.min.js" async defer></script><script src="/lib/typeit/index.umd.js" defer></script><script src="/lib/katex/katex.min.js" defer></script><script src="/lib/katex/auto-render.min.js" defer></script><script src="/lib/katex/copy-tex.min.js" defer></script><script src="/lib/katex/mhchem.min.js" defer></script><script src="/lib/cookieconsent/cookieconsent.min.js" defer></script><script>window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":-1},"comment":{"enable":false},"cookieconsent":{"content":{"dismiss":"Got it!","link":"Learn more","message":"This website uses Cookies to improve your experience."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"data":{"typeit-header-desktop":"Home","typeit-header-title-mobile":"Home"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"typeit-header-desktop":["typeit-header-desktop"],"typeit-header-title-mobile":["typeit-header-title-mobile"]},"duration":-1,"speed":100}};</script><script src="/js/theme.min.js" defer></script></body>
+</html>
