@@ -4,7 +4,15 @@
     <link>https://cui-jiang-tao.github.io/tags/</link>
     <description>Tags - Tag - 学习记录</description>
     <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>cjt953899262@gmail.com (cjt)</managingEditor>
-      <webMaster>cjt953899262@gmail.com (cjt)</webMaster><lastBuildDate>Wed, 29 Mar 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://cui-jiang-tao.github.io/tags/" rel="self" type="application/rss+xml" /><item>
+      <webMaster>cjt953899262@gmail.com (cjt)</webMaster><lastBuildDate>Thu, 30 Mar 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://cui-jiang-tao.github.io/tags/" rel="self" type="application/rss+xml" /><item>
+  <title>Python入门</title>
+  <link>https://cui-jiang-tao.github.io/tags/python%E5%85%A5%E9%97%A8/</link>
+  <pubDate>Thu, 30 Mar 2023 00:00:00 &#43;0000</pubDate>
+  <author>cjt</author>
+  <guid>https://cui-jiang-tao.github.io/tags/python%E5%85%A5%E9%97%A8/</guid>
+  <description><![CDATA[]]></description>
+</item>
+<item>
   <title>Ubuntu常用命令</title>
   <link>https://cui-jiang-tao.github.io/tags/ubuntu%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</link>
   <pubDate>Wed, 29 Mar 2023 00:00:00 &#43;0000</pubDate>
@@ -74,14 +82,6 @@
   <pubDate>Wed, 14 Dec 2022 00:00:00 &#43;0000</pubDate>
   <author>cjt</author>
   <guid>https://cui-jiang-tao.github.io/tags/linux/</guid>
-  <description><![CDATA[]]></description>
-</item>
-<item>
-  <title>hugo</title>
-  <link>https://cui-jiang-tao.github.io/tags/hugo/</link>
-  <pubDate>Thu, 08 Dec 2022 00:00:00 &#43;0000</pubDate>
-  <author>cjt</author>
-  <guid>https://cui-jiang-tao.github.io/tags/hugo/</guid>
   <description><![CDATA[]]></description>
 </item>
 </channel>

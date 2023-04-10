@@ -10,7 +10,7 @@
 <meta name="description" content="标志位 在汇编语言中，标志位是用于标识CPU执行指令时出现的一些状态信息的标志。常见的标志位包括： 零标志位（ZF）：当指令执行的结果为零时，该" /><meta name="keywords" content='c/c&#43;&#43;' /><meta itemprop="name" content="常见的汇编指令">
 <meta itemprop="description" content="标志位 在汇编语言中，标志位是用于标识CPU执行指令时出现的一些状态信息的标志。常见的标志位包括： 零标志位（ZF）：当指令执行的结果为零时，该"><meta itemprop="datePublished" content="2023-03-20T00:00:00+00:00" />
 <meta itemprop="dateModified" content="2023-03-20T00:00:00+00:00" />
-<meta itemprop="wordCount" content="18348">
+<meta itemprop="wordCount" content="18616">
 <meta itemprop="keywords" content="c/c&#43;&#43;," /><meta property="og:title" content="常见的汇编指令" />
 <meta property="og:description" content="标志位 在汇编语言中，标志位是用于标识CPU执行指令时出现的一些状态信息的标志。常见的标志位包括： 零标志位（ZF）：当指令执行的结果为零时，该" />
 <meta property="og:type" content="article" />
@@ -32,7 +32,7 @@
     "mainEntityOfPage": {
       "@type": "WebPage",
       "@id": "https:\/\/cui-jiang-tao.github.io\/posts\/x86%E5%B8%B8%E8%A7%81%E6%B1%87%E7%BC%96%E6%8C%87%E4%BB%A4\/"
-    },"genre": "posts","keywords": "c\/c\u002b\u002b","wordcount":  18348 ,
+    },"genre": "posts","keywords": "c\/c\u002b\u002b","wordcount":  18616 ,
     "url": "https:\/\/cui-jiang-tao.github.io\/posts\/x86%E5%B8%B8%E8%A7%81%E6%B1%87%E7%BC%96%E6%8C%87%E4%BB%A4\/","datePublished": "2023-03-20T00:00:00+00:00","dateModified": "2023-03-20T00:00:00+00:00","publisher": {
       "@type": "Organization",
       "name": ""},"author": {
@@ -125,7 +125,7 @@
     alt="cjt"
     title="cjt"/>&nbsp;cjt</span></span>
           <span class="post-category">included in <a href="/categories/%E9%80%86%E5%90%91/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 逆向</a></span></div>
-      <div class="post-meta-line"><span title=2023-03-20&#32;00:00:00><i class="fa-regular fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-03-20">2023-03-20</time></span>&nbsp;<span><i class="fa-solid fa-pencil-alt fa-fw" aria-hidden="true"></i> 18348 words</span>&nbsp;<span><i class="fa-regular fa-clock fa-fw" aria-hidden="true"></i> 37 minutes</span>&nbsp;</div>
+      <div class="post-meta-line"><span title=2023-03-20&#32;00:00:00><i class="fa-regular fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-03-20">2023-03-20</time></span>&nbsp;<span><i class="fa-solid fa-pencil-alt fa-fw" aria-hidden="true"></i> 18616 words</span>&nbsp;<span><i class="fa-regular fa-clock fa-fw" aria-hidden="true"></i> 38 minutes</span>&nbsp;</div>
     </div><div class="details toc" id="toc-static" data-kept="false">
         <div class="details-summary toc-title">
           <span>Contents</span>
@@ -171,6 +171,7 @@
     <li><a href="#常见的汇编指令">常见的汇编指令</a>
       <ul>
         <li><a href="#cmp指令">CMP指令</a></li>
+        <li><a href="#test指令">TEST指令</a></li>
       </ul>
     </li>
     <li><a href="#例子">例子</a>
@@ -821,6 +822,18 @@ JNS Label    ; 如果AX为非负数，则跳转到Label处
 </div>
 </div><p>在执行完CMP指令后，如果AX的值小于BX，则符号标志位（SF）和溢出标志位（OF）都被设置为1；如果AX的值等于BX，则零标志位（ZF）被设置为1；如果AX的值大于BX，则进位标志位（CF）被清零，符号标志位（SF）和溢出标志位（OF）都被清零。</p>
 <p>需要注意的是，CMP指令只更新标志寄存器的值，不会改变操作数的值。因此，在使用CMP指令时，通常需要结合条件转移指令（如JZ、JNZ、JG、JGE、JL、JLE等）来实现条件分支和循环等操作。</p>
+<h3 id="test指令">TEST指令</h3>
+<p>汇编语言中的 test 指令是逻辑 AND 操作。它的语法如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">test</span> <span class="no">destination</span><span class="p">,</span> <span class="no">source</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>该指令将目标操作数和源操作数进行逻辑 AND 操作，并将结果存储在标志寄存器中，不影响目标操作数和源操作数的值。它的作用是在比较两个值时，同时设置标志寄存器，以便进行后续的条件分支操作。</p>
+<p>例如，<code>test eax, eax</code> 将 EAX 寄存器与自己相与，结果存储在标志寄存器中。如果 EAX 等于零，则标志寄存器的零标志位（ZF）将被设置为 1，否则 ZF 为 0。如果 EAX 的最高位为 1，则标志寄存器的符号标志位（SF）将被设置为 1，否则为 0。</p>
 <h2 id="例子">例子</h2>
 <h3 id="setnz---al"><code>setnz   al</code></h3>
 <p>这段汇编代码的含义是：根据前面的操作结果（通常是与或等位运算或者比较操作的结果），将零标志位（ZF）的值设为0或1。具体而言，如果前面的操作结果不为零，则ZF被设为0，否则ZF被设为1。然后，setnz al 这条指令会根据ZF的值来设置寄存器al的值，如果ZF为0，则al的值被设置为1，否则al的值被设置为0。</p>
@@ -836,7 +849,18 @@ JNS Label    ; 如果AX为非负数，则跳转到Label处
 <p>这段汇编代码的含义是：对寄存器eax的值进行逻辑和操作（bitwise AND）并将结果设置为零标志位（ZF）和符号标志位（SF）。</p>
 <p>具体来说，test指令会将eax寄存器中的值与自己进行逻辑与运算，这个操作不会改变eax寄存器中的值。然后根据逻辑运算的结果，将ZF标志位和SF标志位进行相应的设置。如果eax寄存器中的值为零，那么ZF标志位被设置为1，否则为0。如果eax寄存器中的值的最高位（即符号位）是1，那么SF标志位被设置为1，否则为0。</p>
 <p>在实际编程中，test指令常用于检测一个寄存器或者内存地址中的值是否为零，或者是否具有某些特定的位模式，通常用于条件跳转语句的判断条件。</p>
-<h3 id="dec-----eax"><code>dec     eax</code></h3>
+<p>例子，如果结果表明 EAX 寄存器等于零或小于零，则跳转到地址 loc_401058 执行代码。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">test</span>    <span class="no">eax</span><span class="p">,</span> <span class="no">eax</span>
+</span></span><span class="line"><span class="cl"><span class="nf">jle</span>     <span class="no">short</span> <span class="no">loc_401058</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="dec-----eax"><code>dec     eax</code></h3>
 <p>这段汇编代码的含义是：将寄存器eax的值减1，并将结果保存回eax寄存器中。</p>
 <p>具体来说，dec指令是减1指令，它将指定寄存器或内存地址中的值减1，然后将结果保存回相同的位置。在这里，eax寄存器是指令中的唯一操作数，所以该指令的作用是将eax寄存器中的值减去1，并将结果再次保存回eax寄存器中。</p>
 <p>在实际编程中，dec指令通常用于对计数器等变量进行递减操作，可以用于多种算术和逻辑操作的实现。与sub指令相比，dec指令更适用于对值进行简单递增或递减的情况。</p>

@@ -10,7 +10,7 @@
   <pubDate>Tue, 14 Mar 2023 00:00:00 &#43;0000</pubDate>
   <author>cjt</author>
   <guid>https://cui-jiang-tao.github.io/posts/c&#43;&#43;%E5%B0%8F%E5%B7%A5%E5%85%B7/</guid>
-  <description><![CDATA[遍历一个文件夹 C++ 中遍历一个文件夹通常需要使用系统特定的 API。以下是使用 Windows API 实现遍历文件夹的示例代码： 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19]]></description>
+  <description><![CDATA[数值操作 将一个无符号数值转换为多个无符号字符 可以使用 C++ 中的位运算来实现将一个无符号数值转换为多个无符号字符。以下是示例代码： 1 2 3 4 5 6 7 8]]></description>
 </item>
 </channel>
 </rss>

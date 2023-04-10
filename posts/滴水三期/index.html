@@ -10,7 +10,7 @@
 <meta name="description" content="1. PE头字段解析 PE(Portable Executable)文件，是windows上的可移植的可执行文件，常见的 .exe .dll .sys 等都是PE文件。那么PE文件和计算机网络的" /><meta name="keywords" content='PE' /><meta itemprop="name" content="PE">
 <meta itemprop="description" content="1. PE头字段解析 PE(Portable Executable)文件，是windows上的可移植的可执行文件，常见的 .exe .dll .sys 等都是PE文件。那么PE文件和计算机网络的"><meta itemprop="datePublished" content="2023-02-07T00:00:00+00:00" />
 <meta itemprop="dateModified" content="2023-02-07T00:00:00+00:00" />
-<meta itemprop="wordCount" content="8176">
+<meta itemprop="wordCount" content="17436">
 <meta itemprop="keywords" content="PE," /><meta property="og:title" content="PE" />
 <meta property="og:description" content="1. PE头字段解析 PE(Portable Executable)文件，是windows上的可移植的可执行文件，常见的 .exe .dll .sys 等都是PE文件。那么PE文件和计算机网络的" />
 <meta property="og:type" content="article" />
@@ -32,7 +32,7 @@
     "mainEntityOfPage": {
       "@type": "WebPage",
       "@id": "https:\/\/cui-jiang-tao.github.io\/posts\/%E6%BB%B4%E6%B0%B4%E4%B8%89%E6%9C%9F\/"
-    },"genre": "posts","keywords": "PE","wordcount":  8176 ,
+    },"genre": "posts","keywords": "PE","wordcount":  17436 ,
     "url": "https:\/\/cui-jiang-tao.github.io\/posts\/%E6%BB%B4%E6%B0%B4%E4%B8%89%E6%9C%9F\/","datePublished": "2023-02-07T00:00:00+00:00","dateModified": "2023-02-07T00:00:00+00:00","publisher": {
       "@type": "Organization",
       "name": ""},"author": {
@@ -125,7 +125,7 @@
     alt="cjt"
     title="cjt"/>&nbsp;cjt</span></span>
           <span class="post-category">included in <a href="/categories/%E9%80%86%E5%90%91/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 逆向</a></span></div>
-      <div class="post-meta-line"><span title=2023-02-07&#32;00:00:00><i class="fa-regular fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-02-07">2023-02-07</time></span>&nbsp;<span><i class="fa-solid fa-pencil-alt fa-fw" aria-hidden="true"></i> 8176 words</span>&nbsp;<span><i class="fa-regular fa-clock fa-fw" aria-hidden="true"></i> 17 minutes</span>&nbsp;</div>
+      <div class="post-meta-line"><span title=2023-02-07&#32;00:00:00><i class="fa-regular fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-02-07">2023-02-07</time></span>&nbsp;<span><i class="fa-solid fa-pencil-alt fa-fw" aria-hidden="true"></i> 17436 words</span>&nbsp;<span><i class="fa-regular fa-clock fa-fw" aria-hidden="true"></i> 35 minutes</span>&nbsp;</div>
     </div><div class="details toc" id="toc-static" data-kept="false">
         <div class="details-summary toc-title">
           <span>Contents</span>
@@ -139,7 +139,12 @@
         <li><a href="#12-pe文件头nt头">1.2 PE文件头(NT头)</a></li>
         <li><a href="#13-标准pe头20字节">1.3 标准PE头(20字节)</a></li>
         <li><a href="#14-可选pe头大小是不确定的">1.4 可选PE头(大小是不确定的)</a></li>
-        <li><a href="#15-节表40字节">1.5 节表(40字节)</a></li>
+        <li><a href="#15-节表40字节">1.5 节表(40字节)</a>
+          <ul>
+            <li><a href="#151-联合体">1.5.1 联合体</a></li>
+            <li><a href="#152-节表">1.5.2 节表</a></li>
+          </ul>
+        </li>
         <li><a href="#16-打印pe头信息">1.6 打印PE头信息</a></li>
       </ul>
     </li>
@@ -154,17 +159,22 @@
         <li><a href="#22-模拟pe加载过程">2.2 模拟PE加载过程</a></li>
         <li><a href="#23-在代码空白区添加代码手动">2.3 在代码空白区添加代码(手动)</a>
           <ul>
-            <li><a href="#24-在filebuffer中添加代码">2.4 在FileBuffer中添加代码</a></li>
-            <li><a href="#25-在imagebuffer中添加代码">2.5 在ImageBuffer中添加代码</a></li>
+            <li><a href="#231-messagebox函数">2.3.1 MessageBox函数</a></li>
+            <li><a href="#232-call与jmp指令的硬编码">2.3.2 call与jmp指令的硬编码</a></li>
+            <li><a href="#233-效果说明">2.3.3 效果说明</a></li>
+            <li><a href="#234-思路">2.3.4 思路</a></li>
+            <li><a href="#235-实现">2.3.5 实现</a></li>
           </ul>
         </li>
+        <li><a href="#24-在代码空白区添加代码编码">2.4 在代码空白区添加代码(编码)</a></li>
+        <li><a href="#25-在imagebuffer中添加代码">2.5 在ImageBuffer中添加代码</a></li>
       </ul>
     </li>
   </ul>
 </nav></div>
       </div><div class="content" id="content"><h2 id="1-pe头字段解析">1. PE头字段解析</h2>
 <p>PE(Portable Executable)文件，是windows上的可移植的可执行文件，常见的 <code>.exe</code>  <code>.dll</code>   <code>.sys</code> 等都是PE文件。那么PE文件和计算机网络的各种包头一样，都有自己独特的格式。</p>
-<p>首先PE文件开头就是DOS头 <code>DOS_HEADER</code>，DOS头只需要看第一个字段<code>magic</code>和最后一个<code>lfanew</code>，<code>magic</code>字段为一个<code>WORD</code>即两字节，若为MZ则属于PE文件，<code>lfanew</code>是指向NT头<code>NT_HEADER</code>的相对偏移，即文件起始位置(magic字段所在位置)+ <code>lfanew</code> 即为NT头的位置。</p>
+<p>首先PE文件开头就是DOS头 <code>DOS_HEADER</code>，DOS头只需要看第一个字段<code>magic</code>和最后一个字段<code>lfanew</code>；<code>magic</code>字段为一个<code>WORD</code>即两字节，若为MZ则属于PE文件；<code>lfanew</code>是指向NT头<code>NT_HEADER</code>的相对偏移，即文件起始位置(magic字段所在位置)+ <code>lfanew</code> 即为NT头的位置。</p>
 <p>可以用十六进制查看器查看会有更直观的印象。<code>lfanew</code>字段到NT头之间会有一段说明字符串或者垃圾数据称为<code>DOS stub</code></p>
 <p>接下来NT头分为一个字段和两大部分，<code>Signature</code>字段，一大部分是<code>FILE_HEADER</code>(即COFF头或称文件头/标准PE头)，另一大部分是<code>OPTIONAL_HEADER</code> 可选头。注意<code>FILE_HEADER</code>一共有0x14的长度，可以看成一个大的结构体，结构体内容就是图中<code>_IMAGE_FILE_HEADER</code>的部分。<code>OPTIONAL_HEADER</code> 可选头。</p>
 <p>同理过了NT头，就是节表<code>SECTION_HEADER</code> 了。节表类似于结构体数组的形式，图所示会有多个同样结构的<code>SECTION_HEADER</code>重复。</p>
@@ -374,16 +384,20 @@
 </span><span class="lnt">5
 </span><span class="lnt">6
 </span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="mh">0x00</span> <span class="n">WORD</span> <span class="n">Machine</span><span class="p">;</span>              <span class="c1">//014C * 程序运行的CPU型号，0x0任何处理器/0x14C Intel 386及后续处理器
+<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="k">typedef</span> <span class="k">struct</span> <span class="nc">_IMAGE_FILE_HEADER</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl"><span class="mh">0x00</span> <span class="n">WORD</span> <span class="n">Machine</span><span class="p">;</span>              <span class="c1">//014C * 程序运行的CPU型号，0x0任何处理器/0x14C Intel 386及后续处理器
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="mh">0x02</span> <span class="n">WORD</span> <span class="n">NumberOfSections</span><span class="p">;</span>     <span class="c1">//0008 * 文件中存在的节的总数，除了头，还有几节数据，如果要新增节或者合并节就要修改这个值.
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="mh">0x04</span> <span class="n">DWORD</span> <span class="n">TimeDateStamp</span><span class="p">;</span>       <span class="c1">//3E22F0DF * 时间戳:文件的创建时间（和操作系统的创建时间无关），编译器填写的
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="mh">0x08</span> <span class="n">DWORD</span> <span class="n">PointerToSymbolTable</span><span class="p">;</span><span class="c1">//00000000
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="mh">0x0c</span> <span class="n">DWORD</span> <span class="n">NumberOfSymbols</span><span class="p">;</span>     <span class="c1">//00000000
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="mh">0x10</span> <span class="n">WORD</span> <span class="n">SizeOfOptionalHeader</span><span class="p">;</span> <span class="c1">//00E0 * 可选PE头的大小，32位PE文件默认E0h=16*14，64位PE文件默认为F0h，大小可以自定义
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="mh">0x12</span> <span class="n">WORD</span> <span class="n">Characteristics</span><span class="p">;</span>      <span class="c1">//010E * 每个位有不同的含义，可执行文件值为10F 即0 1 2 3 8位置1
-</span></span></span></code></pre></td></tr></table>
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">}</span> <span class="n">IMAGE_FILE_HEADER</span><span class="p">,</span> <span class="o">*</span><span class="n">PIMAGE_FILE_HEADER</span><span class="p">;</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="14-可选pe头大小是不确定的">1.4 可选PE头(大小是不确定的)</h3>
 <p>程序入口 + 内存镜像基址 才是真正的地址</p>
@@ -400,7 +414,7 @@
 <tr>
 <td style="text-align:center">WORD</td>
 <td style="text-align:center">Magic</td>
-<td style="text-align:center">*</td>
+<td style="text-align:center">**</td>
 <td style="text-align:center">说明文件类型：10B 32位下的PE文件，20B 64位下的PE文件</td>
 </tr>
 <tr>
@@ -436,7 +450,7 @@
 <tr>
 <td style="text-align:center">DWORD</td>
 <td style="text-align:center">AddressOfEntryPoint</td>
-<td style="text-align:center">*</td>
+<td style="text-align:center">**</td>
 <td style="text-align:center">程序入口</td>
 </tr>
 <tr>
@@ -454,19 +468,19 @@
 <tr>
 <td style="text-align:center">DWORD</td>
 <td style="text-align:center">ImageBase</td>
-<td style="text-align:center">*</td>
+<td style="text-align:center">**</td>
 <td style="text-align:center">内存镜像基址</td>
 </tr>
 <tr>
 <td style="text-align:center">DWORD</td>
 <td style="text-align:center">SectionAlignment</td>
-<td style="text-align:center">*</td>
+<td style="text-align:center">**</td>
 <td style="text-align:center">内存对齐</td>
 </tr>
 <tr>
 <td style="text-align:center">DWORD</td>
 <td style="text-align:center">FileAlignment</td>
-<td style="text-align:center">*</td>
+<td style="text-align:center">**</td>
 <td style="text-align:center">文件对齐</td>
 </tr>
 <tr>
@@ -514,13 +528,13 @@
 <tr>
 <td style="text-align:center">DWORD</td>
 <td style="text-align:center">SizeOfImage</td>
-<td style="text-align:center">*</td>
+<td style="text-align:center">**</td>
 <td style="text-align:center">内存中整个PE文件的映射的尺寸，可以比实际的值大，但必须是SectionAlignment的整数倍</td>
 </tr>
 <tr>
 <td style="text-align:center">DWORD</td>
 <td style="text-align:center">SizeOfHeaders</td>
-<td style="text-align:center">*</td>
+<td style="text-align:center">**</td>
 <td style="text-align:center">所有头+节表按照文件对齐后的大小，否则加载会出错</td>
 </tr>
 <tr>
@@ -648,6 +662,7 @@
 </span></span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="15-节表40字节">1.5 节表(40字节)</h3>
+<h4 id="151-联合体">1.5.1 联合体</h4>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -662,13 +677,19 @@
 </span></span><span class="line"><span class="cl"><span class="p">};</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p>TestUnion联合体的占用的内存空间为：<code>sizeof(int)</code></p>
+</div><p>TestUnion联合体的占用的内存空间为：<code>max(sizeof(int), sizeof(char))</code> = <code>sizeof(int)</code></p>
 <p>特点:</p>
 <ol>
 <li>联合体的成员是共享内存空间的</li>
 <li>联合体的内存空间大小是联合体成员中对内存空间大小要求最大的空间大小</li>
 <li>联合体最多只有一个成员有效</li>
 </ol>
+<h4 id="152-节表">1.5.2 节表</h4>
+<p>一个PE文件有多少个节，就有多少个节表！每一个节表的大小是确定的，40字节。</p>
+<p>如何确定有多少个节：可以通过标准PE头中的<code>NumberOfsections</code>字段的值来确定；确定了有多少个节，就确定了有多少一个节表，一个节表记录管理一个节的信息</p>
+<p>一个PE文件从哪里开始是节表（硬盘上的地址）：DOS头大小 + 垃圾空位 + PE签名大小 + 标准PE头大小 + 可选PE头大小(需要查)；我们知道DOS头大小固定为64字节；PE签名大小为4字节；标准PE头大小固定为20字节；可选PE头大小可以通过标准PE头中的<code>SizeOfOptionalHeader</code>字段的值来确定：<code>e_lfanew + 4(Signature) + 20(标准PE头) + SizeOfOptionalHeader = 节表开始地址</code></p>
+<p><strong>如果文件运行装载到内存中节表在4GB内存中的地址要加上imagebase的值，才是节表真正在内存中的起始地址。</strong></p>
+<p>每一个节表的结构是一个结构体类型的，长度固定为0x28，即40字节。如下：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
@@ -752,6 +773,277 @@
     title="&amp;ldquo;Buffer&amp;rdquo;"/></p>
 <h3 id="16-打印pe头信息">1.6 打印PE头信息</h3>
 <p>使用<code>window.h</code> 都有相匹配的结构体，直接.或者-&gt;都能找到需要的字段，在VS中会识别出比这里更多的高亮，比如<code>DWORD</code> 、 <code>PIMAGE_DOS_HEADER</code> 之类的windows.h 才有的宏定义。</p>
+<p>说明：一位16进制数占一个字节大小；在32位系统中，指针占用4字节空间，即指向的地址大小占用4字节，所以对地址的操作都要转换为<code>DWORD</code></p>
+<p>方式1(推荐)</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">  1
+</span><span class="lnt">  2
+</span><span class="lnt">  3
+</span><span class="lnt">  4
+</span><span class="lnt">  5
+</span><span class="lnt">  6
+</span><span class="lnt">  7
+</span><span class="lnt">  8
+</span><span class="lnt">  9
+</span><span class="lnt"> 10
+</span><span class="lnt"> 11
+</span><span class="lnt"> 12
+</span><span class="lnt"> 13
+</span><span class="lnt"> 14
+</span><span class="lnt"> 15
+</span><span class="lnt"> 16
+</span><span class="lnt"> 17
+</span><span class="lnt"> 18
+</span><span class="lnt"> 19
+</span><span class="lnt"> 20
+</span><span class="lnt"> 21
+</span><span class="lnt"> 22
+</span><span class="lnt"> 23
+</span><span class="lnt"> 24
+</span><span class="lnt"> 25
+</span><span class="lnt"> 26
+</span><span class="lnt"> 27
+</span><span class="lnt"> 28
+</span><span class="lnt"> 29
+</span><span class="lnt"> 30
+</span><span class="lnt"> 31
+</span><span class="lnt"> 32
+</span><span class="lnt"> 33
+</span><span class="lnt"> 34
+</span><span class="lnt"> 35
+</span><span class="lnt"> 36
+</span><span class="lnt"> 37
+</span><span class="lnt"> 38
+</span><span class="lnt"> 39
+</span><span class="lnt"> 40
+</span><span class="lnt"> 41
+</span><span class="lnt"> 42
+</span><span class="lnt"> 43
+</span><span class="lnt"> 44
+</span><span class="lnt"> 45
+</span><span class="lnt"> 46
+</span><span class="lnt"> 47
+</span><span class="lnt"> 48
+</span><span class="lnt"> 49
+</span><span class="lnt"> 50
+</span><span class="lnt"> 51
+</span><span class="lnt"> 52
+</span><span class="lnt"> 53
+</span><span class="lnt"> 54
+</span><span class="lnt"> 55
+</span><span class="lnt"> 56
+</span><span class="lnt"> 57
+</span><span class="lnt"> 58
+</span><span class="lnt"> 59
+</span><span class="lnt"> 60
+</span><span class="lnt"> 61
+</span><span class="lnt"> 62
+</span><span class="lnt"> 63
+</span><span class="lnt"> 64
+</span><span class="lnt"> 65
+</span><span class="lnt"> 66
+</span><span class="lnt"> 67
+</span><span class="lnt"> 68
+</span><span class="lnt"> 69
+</span><span class="lnt"> 70
+</span><span class="lnt"> 71
+</span><span class="lnt"> 72
+</span><span class="lnt"> 73
+</span><span class="lnt"> 74
+</span><span class="lnt"> 75
+</span><span class="lnt"> 76
+</span><span class="lnt"> 77
+</span><span class="lnt"> 78
+</span><span class="lnt"> 79
+</span><span class="lnt"> 80
+</span><span class="lnt"> 81
+</span><span class="lnt"> 82
+</span><span class="lnt"> 83
+</span><span class="lnt"> 84
+</span><span class="lnt"> 85
+</span><span class="lnt"> 86
+</span><span class="lnt"> 87
+</span><span class="lnt"> 88
+</span><span class="lnt"> 89
+</span><span class="lnt"> 90
+</span><span class="lnt"> 91
+</span><span class="lnt"> 92
+</span><span class="lnt"> 93
+</span><span class="lnt"> 94
+</span><span class="lnt"> 95
+</span><span class="lnt"> 96
+</span><span class="lnt"> 97
+</span><span class="lnt"> 98
+</span><span class="lnt"> 99
+</span><span class="lnt">100
+</span><span class="lnt">101
+</span><span class="lnt">102
+</span><span class="lnt">103
+</span><span class="lnt">104
+</span><span class="lnt">105
+</span><span class="lnt">106
+</span><span class="lnt">107
+</span><span class="lnt">108
+</span><span class="lnt">109
+</span><span class="lnt">110
+</span><span class="lnt">111
+</span><span class="lnt">112
+</span><span class="lnt">113
+</span><span class="lnt">114
+</span><span class="lnt">115
+</span><span class="lnt">116
+</span><span class="lnt">117
+</span><span class="lnt">118
+</span><span class="lnt">119
+</span><span class="lnt">120
+</span><span class="lnt">121
+</span><span class="lnt">122
+</span><span class="lnt">123
+</span><span class="lnt">124
+</span><span class="lnt">125
+</span><span class="lnt">126
+</span><span class="lnt">127
+</span><span class="lnt">128
+</span><span class="lnt">129
+</span><span class="lnt">130
+</span><span class="lnt">131
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="cp">#pragma warning(disable:4996)
+</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;windows.h&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;fstream&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;vector&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span>
+</span></span><span class="line"><span class="cl"><span class="cp">#define FILE_PATH &#34;CRACKME.EXE&#34;
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span>
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">analysis_PE_head</span><span class="p">(</span><span class="kt">char</span><span class="o">*</span> <span class="n">File_buffer</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// 实例化PE文件头几个结构体
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="n">PIMAGE_DOS_HEADER</span> <span class="n">pDosHeader</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>			<span class="c1">// DOS头
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="n">PIMAGE_NT_HEADERS</span> <span class="n">pNTHeader</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>				<span class="c1">// NT头
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="n">PIMAGE_FILE_HEADER</span> <span class="n">pPEHeader</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>			<span class="c1">// 标准PE头
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="n">PIMAGE_OPTIONAL_HEADER32</span> <span class="n">pOptionHeader</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>	<span class="c1">// 可选PE头
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="n">PIMAGE_SECTION_HEADER</span> <span class="n">pSectionHeader</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>	<span class="c1">// SECTION(节)头
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// PIMAGE_DOS_HEADER结构体类型转换
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="n">pDosHeader</span> <span class="o">=</span> <span class="p">(</span><span class="n">PIMAGE_DOS_HEADER</span><span class="p">)</span><span class="n">File_buffer</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="c1">// 判断是不是有效的MZ标志
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="k">if</span> <span class="p">(</span><span class="o">*</span><span class="p">((</span><span class="n">PWORD</span><span class="p">)</span><span class="n">pDosHeader</span><span class="p">)</span> <span class="o">!=</span> <span class="n">IMAGE_DOS_SIGNATURE</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="n">printf</span><span class="p">(</span><span class="s">&#34;不是有效的MZ标志!</span><span class="se">\r\n</span><span class="s">&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">		<span class="k">return</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="c1">// 打印DOS头
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="n">printf</span><span class="p">(</span><span class="s">&#34;=============================DOS头信息如下=============================</span><span class="se">\r\n</span><span class="s">&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">	<span class="n">printf</span><span class="p">(</span><span class="s">&#34;MZ标志：</span><span class="se">\t\t\t</span><span class="s">0x%04X</span><span class="se">\r\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">pDosHeader</span><span class="o">-&gt;</span><span class="n">e_magic</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">	<span class="n">printf</span><span class="p">(</span><span class="s">&#34;PE偏移：</span><span class="se">\t\t\t</span><span class="s">0x%08X</span><span class="se">\r\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">pDosHeader</span><span class="o">-&gt;</span><span class="n">e_lfanew</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="c1">// 判断是不是有效的PE标志  =》 说明：一位16进制数占一个字节大小；在32位系统中，指针占用4字节空间，即指向的地址大小占用4字节。
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="k">if</span> <span class="p">(</span><span class="o">*</span><span class="p">((</span><span class="n">PDWORD</span><span class="p">)((</span><span class="n">DWORD</span><span class="p">)</span><span class="n">File_buffer</span> <span class="o">+</span> <span class="n">pDosHeader</span><span class="o">-&gt;</span><span class="n">e_lfanew</span><span class="p">))</span> <span class="o">!=</span> <span class="n">IMAGE_NT_SIGNATURE</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="n">printf</span><span class="p">(</span><span class="s">&#34;不是有效的PE标志!</span><span class="se">\r\n</span><span class="s">&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">		<span class="k">return</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">x</span> <span class="o">=</span> <span class="p">(</span><span class="n">DWORD</span><span class="p">)</span><span class="n">File_buffer</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">x2</span> <span class="o">=</span> <span class="p">(</span><span class="n">DWORD</span><span class="p">)</span><span class="n">File_buffer</span> <span class="o">+</span> <span class="n">pDosHeader</span><span class="o">-&gt;</span><span class="n">e_lfanew</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="c1">// 类型转换 PIMAGE_NT_HEADERS结构体
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="n">pNTHeader</span> <span class="o">=</span> <span class="p">(</span><span class="n">PIMAGE_NT_HEADERS</span><span class="p">)((</span><span class="n">DWORD</span><span class="p">)</span><span class="n">File_buffer</span> <span class="o">+</span> <span class="n">pDosHeader</span><span class="o">-&gt;</span><span class="n">e_lfanew</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// 打印NT头
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="n">printf</span><span class="p">(</span><span class="s">&#34;=============================NT头信息如下===============================</span><span class="se">\r\n</span><span class="s">&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">	<span class="n">printf</span><span class="p">(</span><span class="s">&#34;NT:</span><span class="se">\t\t\t\t</span><span class="s">0x%08X</span><span class="se">\r\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">pNTHeader</span><span class="o">-&gt;</span><span class="n">Signature</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="c1">// 类型转换 PIMAGE_FILE_HEADER结构体
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="n">pPEHeader</span> <span class="o">=</span> <span class="p">(</span><span class="n">PIMAGE_FILE_HEADER</span><span class="p">)((</span><span class="n">DWORD</span><span class="p">)</span><span class="n">pNTHeader</span> <span class="o">+</span> <span class="mi">4</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// 打印标准PE文件头
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="n">printf</span><span class="p">(</span><span class="s">&#34;=============================标准PE头信息如下============================</span><span class="se">\r\n</span><span class="s">&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">	<span class="n">printf</span><span class="p">(</span><span class="s">&#34;Machine:</span><span class="se">\t\t\t</span><span class="s">0x%04X</span><span class="se">\r\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">pPEHeader</span><span class="o">-&gt;</span><span class="n">Machine</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">	<span class="n">printf</span><span class="p">(</span><span class="s">&#34;NumberOfSections:</span><span class="se">\t\t</span><span class="s">0x%04X</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">pPEHeader</span><span class="o">-&gt;</span><span class="n">NumberOfSections</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">	<span class="n">printf</span><span class="p">(</span><span class="s">&#34;TimeDateStamp:</span><span class="se">\t\t\t</span><span class="s">0x%08X</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">pPEHeader</span><span class="o">-&gt;</span><span class="n">TimeDateStamp</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">	<span class="n">printf</span><span class="p">(</span><span class="s">&#34;SizeOfOptionalHeader：</span><span class="se">\t\t</span><span class="s">0x%04X</span><span class="se">\r\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">pPEHeader</span><span class="o">-&gt;</span><span class="n">SizeOfOptionalHeader</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">	<span class="n">printf</span><span class="p">(</span><span class="s">&#34;Characteristics：</span><span class="se">\t\t</span><span class="s">0x%04X</span><span class="se">\r\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">pPEHeader</span><span class="o">-&gt;</span><span class="n">Characteristics</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="c1">// 可选PE头的位置 = 标准PE的位置 + 标准PE头的大小(IMAGE_SIZEOF_FILE_HEADER)
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="n">pOptionHeader</span> <span class="o">=</span> <span class="p">(</span><span class="n">PIMAGE_OPTIONAL_HEADER32</span><span class="p">)((</span><span class="n">DWORD</span><span class="p">)</span><span class="n">pPEHeader</span> <span class="o">+</span> <span class="n">IMAGE_SIZEOF_FILE_HEADER</span><span class="p">);</span><span class="c1">//
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// 打印可选PE头
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="n">printf</span><span class="p">(</span><span class="s">&#34;==============================可选PE头信息如下==============================</span><span class="se">\r\n</span><span class="s">&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">	<span class="n">printf</span><span class="p">(</span><span class="s">&#34;Magic：</span><span class="se">\t\t\t\t</span><span class="s">0x%04X</span><span class="se">\r\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">pOptionHeader</span><span class="o">-&gt;</span><span class="n">Magic</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">	<span class="n">printf</span><span class="p">(</span><span class="s">&#34;AddressOfEntryPoint:</span><span class="se">\t\t</span><span class="s">0x%08X</span><span class="se">\r\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">pOptionHeader</span><span class="o">-&gt;</span><span class="n">AddressOfEntryPoint</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">	<span class="n">printf</span><span class="p">(</span><span class="s">&#34;ImageBase:</span><span class="se">\t\t\t</span><span class="s">0x%08X</span><span class="se">\r\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">pOptionHeader</span><span class="o">-&gt;</span><span class="n">ImageBase</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">	<span class="n">printf</span><span class="p">(</span><span class="s">&#34;SectionAlignment:</span><span class="se">\t\t</span><span class="s">0x%08X</span><span class="se">\r\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">pOptionHeader</span><span class="o">-&gt;</span><span class="n">SectionAlignment</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">	<span class="n">printf</span><span class="p">(</span><span class="s">&#34;FileAlignment:</span><span class="se">\t\t\t</span><span class="s">0x%08X</span><span class="se">\r\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">pOptionHeader</span><span class="o">-&gt;</span><span class="n">FileAlignment</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">	<span class="n">printf</span><span class="p">(</span><span class="s">&#34;SizeOfImage:</span><span class="se">\t\t\t</span><span class="s">0x%08X</span><span class="se">\r\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">pOptionHeader</span><span class="o">-&gt;</span><span class="n">SizeOfImage</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">	<span class="n">printf</span><span class="p">(</span><span class="s">&#34;SizeOfHeaders:</span><span class="se">\t\t\t</span><span class="s">0x%08X</span><span class="se">\r\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">pOptionHeader</span><span class="o">-&gt;</span><span class="n">SizeOfHeaders</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="c1">// 节表的位置 = 可选PE头的位置 + 可选PE头的大小
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="n">pSectionHeader</span> <span class="o">=</span> <span class="p">(</span><span class="n">PIMAGE_SECTION_HEADER</span><span class="p">)((</span><span class="n">DWORD</span><span class="p">)</span><span class="n">pOptionHeader</span> <span class="o">+</span> <span class="n">pPEHeader</span><span class="o">-&gt;</span><span class="n">SizeOfOptionalHeader</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">	<span class="n">printf</span><span class="p">(</span><span class="s">&#34;==============================节表信息如下===============================</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">//printf(&#34;name:0x%s\n&#34;,pSectionHeader-&gt;Misc);
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="n">DWORD</span> <span class="n">dwNumberOfSection</span> <span class="o">=</span> <span class="n">pPEHeader</span><span class="o">-&gt;</span><span class="n">NumberOfSections</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="n">printf</span><span class="p">(</span><span class="s">&#34;节表的数量：%d</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">dwNumberOfSection</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">	<span class="cm">/*
+</span></span></span><span class="line"><span class="cl"><span class="cm">	printf(&#34;0x%x\n&#34;,pPEHeader-&gt;NumberOfSections);
+</span></span></span><span class="line"><span class="cl"><span class="cm">	printf(&#34;IMAGE_SIZEOF_SHORT_NAME:0x%x\n&#34;,IMAGE_SIZEOF_SHORT_NAME);
+</span></span></span><span class="line"><span class="cl"><span class="cm">	printf(&#34;option_add:0x%x\n&#34;,pOptionHeader);
+</span></span></span><span class="line"><span class="cl"><span class="cm">	printf(&#34;psection_add:0x%x\n&#34;,pSectionHeader);
+</span></span></span><span class="line"><span class="cl"><span class="cm">	printf(&#34;==============================================================\n&#34;);*/</span>
+</span></span><span class="line"><span class="cl">	<span class="k">for</span> <span class="p">(</span><span class="n">DWORD</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">dwNumberOfSection</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">,</span> <span class="n">pSectionHeader</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="n">printf</span><span class="p">(</span><span class="s">&#34;========================第%d个节信息：===============================</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">		<span class="n">printf</span><span class="p">(</span><span class="s">&#34;section_name: &#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">		<span class="k">for</span> <span class="p">(</span><span class="n">DWORD</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">IMAGE_SIZEOF_SHORT_NAME</span><span class="p">;</span> <span class="n">j</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">			<span class="n">printf</span><span class="p">(</span><span class="s">&#34;%c&#34;</span><span class="p">,</span> <span class="n">pSectionHeader</span><span class="o">-&gt;</span><span class="n">Name</span><span class="p">[</span><span class="n">j</span><span class="p">]);</span>
+</span></span><span class="line"><span class="cl">		<span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">		<span class="n">printf</span><span class="p">(</span><span class="s">&#34;</span><span class="se">\r\n</span><span class="s">&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">		<span class="n">printf</span><span class="p">(</span><span class="s">&#34;Misc:</span><span class="se">\t\t\t\t</span><span class="s">0x%08X</span><span class="se">\r\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">pSectionHeader</span><span class="o">-&gt;</span><span class="n">Misc</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">		<span class="n">printf</span><span class="p">(</span><span class="s">&#34;VirtualAddress:</span><span class="se">\t\t\t</span><span class="s">0x%08X</span><span class="se">\r\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">pSectionHeader</span><span class="o">-&gt;</span><span class="n">VirtualAddress</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">		<span class="n">printf</span><span class="p">(</span><span class="s">&#34;SizeOfRawData:</span><span class="se">\t\t\t</span><span class="s">0x%08X</span><span class="se">\r\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">pSectionHeader</span><span class="o">-&gt;</span><span class="n">SizeOfRawData</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">		<span class="n">printf</span><span class="p">(</span><span class="s">&#34;PointerToRawData:</span><span class="se">\t\t</span><span class="s">0x%08X</span><span class="se">\r\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">pSectionHeader</span><span class="o">-&gt;</span><span class="n">PointerToRawData</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">		<span class="n">printf</span><span class="p">(</span><span class="s">&#34;Characteristics:</span><span class="se">\t\t</span><span class="s">0x%08X</span><span class="se">\r\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">pSectionHeader</span><span class="o">-&gt;</span><span class="n">Characteristics</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">printNTHeaders</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="n">std</span><span class="o">::</span><span class="n">ifstream</span> <span class="n">input</span><span class="p">(</span><span class="n">FILE_PATH</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">ios</span><span class="o">::</span><span class="n">binary</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">input</span><span class="p">.</span><span class="n">is_open</span><span class="p">())</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;文件打开失败&#34;</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="c1">// 计算文件长度
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="n">input</span><span class="p">.</span><span class="n">seekg</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">ios</span><span class="o">::</span><span class="n">end</span><span class="p">);</span>	<span class="c1">// 设置到文件的末尾
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="k">const</span> <span class="kt">int</span> <span class="n">file_size</span> <span class="o">=</span> <span class="n">input</span><span class="p">.</span><span class="n">tellg</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="n">input</span><span class="p">.</span><span class="n">seekg</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">ios</span><span class="o">::</span><span class="n">beg</span><span class="p">);</span><span class="c1">// 重新设置到文件的开始
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// 分配内存，并置零
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">char</span><span class="o">&gt;</span> <span class="n">file_buffer</span><span class="p">(</span><span class="n">file_size</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">//memset(file_buffer.data(), 0, file_size);
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// 将文件写入file_buffer中
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="n">input</span><span class="p">.</span><span class="n">read</span><span class="p">(</span><span class="n">file_buffer</span><span class="p">.</span><span class="n">data</span><span class="p">(),</span> <span class="n">file_size</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="c1">// 打印PE头部信息
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="n">analysis_PE_head</span><span class="p">(</span><span class="n">file_buffer</span><span class="p">.</span><span class="n">data</span><span class="p">());</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="kt">char</span><span class="o">*</span> <span class="n">argv</span><span class="p">[])</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="n">printNTHeaders</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="n">system</span><span class="p">(</span><span class="s">&#34;pause&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>方式2</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">  1
@@ -1057,7 +1349,7 @@
 </span></span><span class="line"><span class="cl">	<span class="n">printf</span><span class="p">(</span><span class="s">&#34;MZ标志：</span><span class="se">\t\t\t</span><span class="s">0x%04X</span><span class="se">\r\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">pDosHeader</span><span class="o">-&gt;</span><span class="n">e_magic</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">	<span class="n">printf</span><span class="p">(</span><span class="s">&#34;PE偏移：</span><span class="se">\t\t\t</span><span class="s">0x%08X</span><span class="se">\r\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">pDosHeader</span><span class="o">-&gt;</span><span class="n">e_lfanew</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">	<span class="c1">// 判断是不是有效的PE标志  =》 说明：一位16进制数占一个字节大小，指针占8字节
+</span></span><span class="line"><span class="cl">	<span class="c1">// 判断是不是有效的PE标志  =》 说明：一位16进制数占一个字节大小
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="k">if</span> <span class="p">(</span><span class="o">*</span><span class="p">((</span><span class="n">PDWORD</span><span class="p">)((</span><span class="n">DWORD</span><span class="p">)</span><span class="n">File_buffer</span> <span class="o">+</span> <span class="n">pDosHeader</span><span class="o">-&gt;</span><span class="n">e_lfanew</span><span class="p">))</span> <span class="o">!=</span> <span class="n">IMAGE_NT_SIGNATURE</span><span class="p">)</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">		<span class="n">printf</span><span class="p">(</span><span class="s">&#34;不是有效的PE标志!</span><span class="se">\r\n</span><span class="s">&#34;</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">		<span class="n">free</span><span class="p">(</span><span class="n">File_buffer</span><span class="p">);</span>
@@ -1397,6 +1689,8 @@
 </span><span class="lnt">244
 </span><span class="lnt">245
 </span><span class="lnt">246
+</span><span class="lnt">247
+</span><span class="lnt">248
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="cp">#pragma warning(disable : 4996)
@@ -1408,19 +1702,20 @@
 </span></span></span><span class="line"><span class="cl"><span class="cp"></span>
 </span></span><span class="line"><span class="cl"><span class="cp">#define test 1
 </span></span></span><span class="line"><span class="cl"><span class="cp"></span>
-</span></span><span class="line"><span class="cl"><span class="n">DWORD</span> <span class="nf">ToLoaderPE</span><span class="p">(</span><span class="n">LPSTR</span> <span class="n">file_path</span><span class="p">,</span> <span class="n">PVOID</span> <span class="o">*</span><span class="n">pFileBuffer</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="n">DWORD</span> <span class="nf">ToLoaderPE</span><span class="p">(</span><span class="n">LPSTR</span> <span class="n">file_path</span><span class="p">,</span> <span class="n">PVOID</span><span class="o">*</span> <span class="n">pFileBuffer</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">DWORD</span> <span class="nf">CopyFileBufferToImageBuffer</span><span class="p">(</span><span class="n">PVOID</span> <span class="n">pFileBuffer</span><span class="p">,</span> <span class="n">PVOID</span> <span class="o">*</span><span class="n">pImageBuffer</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl"><span class="n">DWORD</span> <span class="nf">CopyImageBufferToNewFileBuffer</span><span class="p">(</span><span class="n">PVOID</span> <span class="n">pImageBuffer</span><span class="p">,</span> <span class="n">PVOID</span> <span class="o">*</span><span class="n">pNewFileBuffer</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="n">DWORD</span> <span class="nf">CopyFileBufferToImageBuffer</span><span class="p">(</span><span class="n">PVOID</span> <span class="n">pFileBuffer</span><span class="p">,</span> <span class="n">PVOID</span><span class="o">*</span> <span class="n">pImageBuffer</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="n">DWORD</span> <span class="nf">CopyImageBufferToNewFileBuffer</span><span class="p">(</span><span class="n">PVOID</span> <span class="n">pImageBuffer</span><span class="p">,</span> <span class="n">PVOID</span><span class="o">*</span> <span class="n">pNewFileBuffer</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl"><span class="n">BOOL</span> <span class="nf">MemoryToFile</span><span class="p">(</span><span class="n">PVOID</span> <span class="n">pMemBuffer</span><span class="p">,</span> <span class="n">DWORD</span> <span class="n">size</span><span class="p">,</span> <span class="n">LPSTR</span> <span class="n">lpszFile</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="kt">char</span> <span class="n">file_path</span><span class="p">[]</span> <span class="o">=</span> <span class="s">&#34;C:</span><span class="se">\\</span><span class="s">Windows</span><span class="se">\\</span><span class="s">System32</span><span class="se">\\</span><span class="s">notepad.exe&#34;</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl"><span class="c1">//char file_path[] = &#34;CRACKME.EXE&#34;;
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kt">char</span> <span class="n">write_file_path</span><span class="p">[]</span> <span class="o">=</span> <span class="s">&#34;2.exe&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="c1">//char file_path[] = &#34;C:\\Windows\\System32\\notepad.exe&#34;;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kt">char</span> <span class="n">file_path</span><span class="p">[]</span> <span class="o">=</span> <span class="s">&#34;notepad.exe&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="kt">char</span> <span class="n">imageBuffer_file_path</span><span class="p">[]</span> <span class="o">=</span> <span class="s">&#34;imageBuffer.exe&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="kt">char</span> <span class="n">fileBuffer_file_path</span><span class="p">[]</span> <span class="o">=</span> <span class="s">&#34;fileBuffer.exe&#34;</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="c1">//返回PE文件大小
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">DWORD</span> <span class="nf">ToLoaderPE</span><span class="p">(</span><span class="n">LPSTR</span> <span class="n">file_path</span><span class="p">,</span> <span class="n">PVOID</span> <span class="o">*</span><span class="n">pFileBuffer</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">	<span class="n">FILE</span> <span class="o">*</span><span class="n">pFile</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">DWORD</span> <span class="nf">ToLoaderPE</span><span class="p">(</span><span class="n">LPSTR</span> <span class="n">file_path</span><span class="p">,</span> <span class="n">PVOID</span><span class="o">*</span> <span class="n">pFileBuffer</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="n">FILE</span><span class="o">*</span> <span class="n">pFile</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">	<span class="n">DWORD</span> <span class="n">FileSize</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">	<span class="n">PVOID</span> <span class="n">pFileBufferTemp</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">
@@ -1459,7 +1754,7 @@
 </span></span><span class="line"><span class="cl">	<span class="k">return</span> <span class="n">FileSize</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">DWORD</span> <span class="nf">CopyFileBufferToImageBuffer</span><span class="p">(</span><span class="n">PVOID</span> <span class="n">pFileBuffer</span><span class="p">,</span> <span class="n">PVOID</span> <span class="o">*</span><span class="n">pImageBuffer</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl"><span class="n">DWORD</span> <span class="nf">CopyFileBufferToImageBuffer</span><span class="p">(</span><span class="n">PVOID</span> <span class="n">pFileBuffer</span><span class="p">,</span> <span class="n">PVOID</span><span class="o">*</span> <span class="n">pImageBuffer</span><span class="p">)</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">	<span class="n">PIMAGE_DOS_HEADER</span> <span class="n">pDosHeader</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">	<span class="n">PIMAGE_NT_HEADERS</span> <span class="n">pNTHeader</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">	<span class="n">PIMAGE_FILE_HEADER</span> <span class="n">pPEHeader</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>
@@ -1518,7 +1813,7 @@
 </span></span><span class="line"><span class="cl">		<span class="n">memcpy</span><span class="p">((</span><span class="n">PVOID</span><span class="p">)((</span><span class="n">DWORD</span><span class="p">)</span><span class="n">pImageTemp</span> <span class="o">+</span> <span class="n">pSectionHeaderTemp</span><span class="o">-&gt;</span><span class="n">VirtualAddress</span><span class="p">),</span>
 </span></span><span class="line"><span class="cl">			<span class="p">(</span><span class="n">PVOID</span><span class="p">)((</span><span class="n">DWORD</span><span class="p">)</span><span class="n">pFileBuffer</span> <span class="o">+</span> <span class="n">pSectionHeaderTemp</span><span class="o">-&gt;</span><span class="n">PointerToRawData</span><span class="p">),</span>
 </span></span><span class="line"><span class="cl">			<span class="n">pSectionHeaderTemp</span><span class="o">-&gt;</span><span class="n">SizeOfRawData</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">		<span class="n">printf</span><span class="p">(</span><span class="s">&#34;VirtualAddress%d: %#10x         PointerToRawData%d: %#10x</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> 
+</span></span><span class="line"><span class="cl">		<span class="n">printf</span><span class="p">(</span><span class="s">&#34;VirtualAddress%d: %#10x         PointerToRawData%d: %#10x</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">			<span class="n">n</span><span class="p">,</span> <span class="p">(</span><span class="n">DWORD</span><span class="p">)</span><span class="n">pImageTemp</span> <span class="o">+</span> <span class="n">pSectionHeader</span><span class="o">-&gt;</span><span class="n">VirtualAddress</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">			<span class="n">n</span><span class="p">,</span> <span class="p">(</span><span class="n">DWORD</span><span class="p">)</span><span class="n">pFileBuffer</span> <span class="o">+</span> <span class="n">pSectionHeader</span><span class="o">-&gt;</span><span class="n">PointerToRawData</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">	<span class="p">}</span>
@@ -1529,7 +1824,7 @@
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="k">return</span> <span class="n">pOptionHeader</span><span class="o">-&gt;</span><span class="n">SizeOfImage</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">DWORD</span> <span class="nf">CopyImageBufferToNewFileBuffer</span><span class="p">(</span><span class="n">PVOID</span> <span class="n">pImageBuffer</span><span class="p">,</span> <span class="n">PVOID</span> <span class="o">*</span><span class="n">pNewFileBuffer</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl"><span class="n">DWORD</span> <span class="nf">CopyImageBufferToNewFileBuffer</span><span class="p">(</span><span class="n">PVOID</span> <span class="n">pImageBuffer</span><span class="p">,</span> <span class="n">PVOID</span><span class="o">*</span> <span class="n">pNewFileBuffer</span><span class="p">)</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">	<span class="n">PIMAGE_DOS_HEADER</span> <span class="n">pDosHeader</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">	<span class="n">PIMAGE_NT_HEADERS</span> <span class="n">pNTHeader</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">	<span class="n">PIMAGE_FILE_HEADER</span> <span class="n">pPEHeader</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>
@@ -1569,10 +1864,9 @@
 </span></span></span><span class="line"><span class="cl"><span class="cm">	 *		SizeOfRawData：节在文件中对齐后的尺寸
 </span></span></span><span class="line"><span class="cl"><span class="cm">	 */</span>
 </span></span><span class="line"><span class="cl">	<span class="kt">int</span> <span class="n">new_buffer_size</span> <span class="o">=</span> <span class="n">pOptionHeader</span><span class="o">-&gt;</span><span class="n">SizeOfHeaders</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">	<span class="k">for</span> <span class="p">(</span><span class="n">DWORD</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">pPEHeader</span><span class="o">-&gt;</span><span class="n">NumberOfSections</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>\
-</span></span><span class="line"><span class="cl">		<span class="n">new_buffer_size</span> <span class="o">+=</span>
-</span></span><span class="line"><span class="cl">			<span class="n">pSectionHeader</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">SizeOfRawData</span><span class="p">;</span> <span class="c1">// pSectionHeader[i]另一种加法
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="p">}</span>
+</span></span><span class="line"><span class="cl">	<span class="k">for</span> <span class="p">(</span><span class="n">DWORD</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">pPEHeader</span><span class="o">-&gt;</span><span class="n">NumberOfSections</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">			<span class="n">new_buffer_size</span> <span class="o">+=</span> <span class="n">pSectionHeader</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">SizeOfRawData</span><span class="p">;</span> 
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">	<span class="c1">// 分配内存（newbuffer）
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="n">pTempNewbuffer</span> <span class="o">=</span> <span class="n">malloc</span><span class="p">(</span><span class="n">new_buffer_size</span><span class="p">);</span>
@@ -1592,7 +1886,7 @@
 </span></span></span><span class="line"><span class="cl"><span class="cm">	 * SizeOfRawData：节在文件中对齐后的尺寸
 </span></span></span><span class="line"><span class="cl"><span class="cm">	 */</span>
 </span></span><span class="line"><span class="cl">	<span class="n">PIMAGE_SECTION_HEADER</span> <span class="n">pTempSectionHeader</span> <span class="o">=</span> <span class="n">pSectionHeader</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">	<span class="k">for</span> <span class="p">(</span><span class="n">DWORD</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">pPEHeader</span><span class="o">-&gt;</span><span class="n">NumberOfSections</span><span class="p">;</span> <span class="n">j</span><span class="o">++</span><span class="p">,</span> <span class="n">pTempSectionHeader</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span> 
+</span></span><span class="line"><span class="cl">	<span class="k">for</span> <span class="p">(</span><span class="n">DWORD</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">pPEHeader</span><span class="o">-&gt;</span><span class="n">NumberOfSections</span><span class="p">;</span> <span class="n">j</span><span class="o">++</span><span class="p">,</span> <span class="n">pTempSectionHeader</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">		<span class="n">memcpy</span><span class="p">(</span>
 </span></span><span class="line"><span class="cl">			<span class="p">(</span><span class="n">PDWORD</span><span class="p">)((</span><span class="n">DWORD</span><span class="p">)</span><span class="n">pTempNewbuffer</span> <span class="o">+</span> <span class="n">pTempSectionHeader</span><span class="o">-&gt;</span><span class="n">PointerToRawData</span><span class="p">),</span>
 </span></span><span class="line"><span class="cl">			<span class="p">(</span><span class="n">PDWORD</span><span class="p">)((</span><span class="n">DWORD</span><span class="p">)</span><span class="n">pImageBuffer</span> <span class="o">+</span> <span class="n">pTempSectionHeader</span><span class="o">-&gt;</span><span class="n">VirtualAddress</span><span class="p">),</span>
@@ -1606,7 +1900,7 @@
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">}</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="n">BOOL</span> <span class="nf">MemoryToFile</span><span class="p">(</span><span class="n">PVOID</span> <span class="n">pMemBuffer</span><span class="p">,</span> <span class="n">DWORD</span> <span class="n">size</span><span class="p">,</span> <span class="n">LPSTR</span> <span class="n">lpszFile</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">	<span class="n">FILE</span> <span class="o">*</span><span class="n">fp</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="n">FILE</span><span class="o">*</span> <span class="n">fp</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">	<span class="n">fp</span> <span class="o">=</span> <span class="n">fopen</span><span class="p">(</span><span class="n">lpszFile</span><span class="p">,</span> <span class="s">&#34;wb&#34;</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">	<span class="k">if</span> <span class="p">(</span><span class="n">fp</span> <span class="o">!=</span> <span class="nb">NULL</span><span class="p">)</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">		<span class="n">fwrite</span><span class="p">(</span><span class="n">pMemBuffer</span><span class="p">,</span> <span class="n">size</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">fp</span><span class="p">);</span>
@@ -1629,10 +1923,12 @@
 </span></span><span class="line"><span class="cl">	<span class="n">DWORD</span> <span class="n">ret2</span> <span class="o">=</span> <span class="n">CopyFileBufferToImageBuffer</span><span class="p">(</span><span class="n">pFileBuffer</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">pImageBuffer</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">	<span class="n">printf</span><span class="p">(</span><span class="s">&#34;filebuffer -&gt; imagebuffer返回值为计算所得文件大小：%#x</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">ret2</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="n">MemoryToFile</span><span class="p">(</span><span class="n">pImageBuffer</span><span class="p">,</span> <span class="n">ret2</span><span class="p">,</span> <span class="n">imageBuffer_file_path</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">	<span class="n">DWORD</span> <span class="n">ret3</span> <span class="o">=</span> <span class="n">CopyImageBufferToNewFileBuffer</span><span class="p">(</span><span class="n">pImageBuffer</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">pNewFileBuffer</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">	<span class="n">printf</span><span class="p">(</span><span class="s">&#34;imagebuffer -&gt; newfilebuffer返回值为计算所得文件大小：%#x</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">ret3</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">	<span class="n">MemoryToFile</span><span class="p">(</span><span class="n">pNewFileBuffer</span><span class="p">,</span> <span class="n">ret3</span><span class="p">,</span> <span class="n">write_file_path</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">	<span class="n">MemoryToFile</span><span class="p">(</span><span class="n">pNewFileBuffer</span><span class="p">,</span> <span class="n">ret3</span><span class="p">,</span> <span class="n">fileBuffer_file_path</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">	<span class="n">free</span><span class="p">(</span><span class="n">pFileBuffer</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">	<span class="n">free</span><span class="p">(</span><span class="n">pNewFileBuffer</span><span class="p">);</span>
@@ -1648,7 +1944,160 @@
 </span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="23-在代码空白区添加代码手动">2.3 在代码空白区添加代码(手动)</h3>
-<h4 id="24-在filebuffer中添加代码">2.4 在FileBuffer中添加代码</h4>
+<h4 id="231-messagebox函数">2.3.1 MessageBox函数</h4>
+<p>API函数–-MessageBoxA。包含在头文件windows.h；如果一个程序中包含user32.dll，则此程序就有MessageBoxA API函数</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">MessageBox</span><span class="p">(</span> <span class="n">HWND</span> <span class="n">hWnd</span><span class="p">,</span><span class="n">LPCTSTR</span> <span class="n">lpText</span><span class="p">,</span> <span class="n">LPCTSTR</span> <span class="n">lpCaption</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">,</span> <span class="n">UINT</span> <span class="n">nType</span> <span class="o">=</span> <span class="n">MB_OK</span><span class="p">);</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>hWnd：表示窗口句柄，指定该对话框的所有者窗口；如果该参数为空(0/NULL)，则该对话框不属于任何窗口。</li>
+<li>lpText：字符串，指显示在对话框中的内容。</li>
+<li>lpCaption：字符串，指对话框的标题；如果此参数为空，则默认使用“错误”作为标题。</li>
+<li>nType：指定显示按钮的数目及形式，表名使用的图标样式、缺省按钮是什么、以及消息框的强制回应等。</li>
+</ul>
+<h4 id="232-call与jmp指令的硬编码">2.3.2 call与jmp指令的硬编码</h4>
+<ul>
+<li>call指令的硬编码：E8 后面跟了4个字节(转换后的地址)</li>
+<li>jmp指令的硬编码：E9 后面跟了4个字节(转换后的地址)</li>
+<li>push指令的硬编码：6A 参数的值（传入函数参数的值是什么对应的参数硬编码就是什么）</li>
+</ul>
+<p>E8 和 E9 后面4字节地址X的转换公式：<strong>X = 真正要跳转的地址 - E8这条指令的下一行地址</strong>，因为call 地址的硬编码固定一共占5字节，所以E8指令的下一行地址 = E8当前地址 + 5；</p>
+<p>所以公式最终为：<strong>X = 要跳转的地址 - (E8的地址 + 该指令长度)</strong></p>
+<blockquote>
+<p>注意：这些公式中所用到的地址值全部是可执行文件在虚拟内存中的地址值，不是文件地址！</p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span>
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">Function</span><span class="p">(</span><span class="kt">int</span> <span class="n">a</span><span class="p">,</span> <span class="kt">int</span> <span class="n">b</span><span class="p">,</span> <span class="kt">int</span> <span class="n">c</span><span class="p">,</span> <span class="kt">int</span> <span class="n">d</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="kt">char</span><span class="o">*</span> <span class="n">argv</span><span class="p">[])</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Function</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">vs2019_project_test.exe</span><span class="p">!</span><span class="no">main</span><span class="p">(</span><span class="no">int</span><span class="p">,</span> <span class="no">char</span> <span class="p">*</span> <span class="p">*):</span>
+</span></span><span class="line"><span class="cl"><span class="err">00</span><span class="nf">E817A0</span> <span class="mi">55</span>                   <span class="no">push</span>        <span class="no">ebp</span>  
+</span></span><span class="line"><span class="cl"><span class="mi">00</span><span class="no">E817A1</span> <span class="mi">8</span><span class="no">B</span> <span class="no">EC</span>                <span class="no">mov</span>         <span class="no">ebp</span><span class="p">,</span><span class="no">esp</span>  
+</span></span><span class="line"><span class="cl"><span class="mi">00</span><span class="no">E817A3</span> <span class="mi">81</span> <span class="no">EC</span> <span class="no">C0</span> <span class="mi">00</span> <span class="mi">00</span> <span class="mi">00</span>    <span class="no">sub</span>         <span class="no">esp</span><span class="p">,</span><span class="mi">0</span><span class="no">C0h</span>  
+</span></span><span class="line"><span class="cl"><span class="mi">00</span><span class="no">E817A9</span> <span class="mi">53</span>                   <span class="no">push</span>        <span class="no">ebx</span>  
+</span></span><span class="line"><span class="cl"><span class="mi">00</span><span class="no">E817AA</span> <span class="mi">56</span>                   <span class="no">push</span>        <span class="no">esi</span>  
+</span></span><span class="line"><span class="cl"><span class="mi">00</span><span class="no">E817AB</span> <span class="mi">57</span>                   <span class="no">push</span>        <span class="no">edi</span>  
+</span></span><span class="line"><span class="cl"><span class="mi">00</span><span class="no">E817AC</span> <span class="mi">8</span><span class="no">B</span> <span class="no">FD</span>                <span class="no">mov</span>         <span class="no">edi</span><span class="p">,</span><span class="no">ebp</span>  
+</span></span><span class="line"><span class="cl"><span class="mi">00</span><span class="no">E817AE</span> <span class="mi">33</span> <span class="no">C9</span>                <span class="no">xor</span>         <span class="no">ecx</span><span class="p">,</span><span class="no">ecx</span>  
+</span></span><span class="line"><span class="cl"><span class="mi">00</span><span class="no">E817B0</span> <span class="no">B8</span> <span class="no">CC</span> <span class="no">CC</span> <span class="no">CC</span> <span class="no">CC</span>       <span class="no">mov</span>         <span class="no">eax</span><span class="p">,</span><span class="mi">0</span><span class="no">CCCCCCCCh</span>  
+</span></span><span class="line"><span class="cl"><span class="mi">00</span><span class="no">E817B5</span> <span class="no">F3</span> <span class="no">AB</span>                <span class="no">rep</span> <span class="no">stos</span>    <span class="no">dword</span> <span class="no">ptr</span> <span class="no">es</span><span class="p">:[</span><span class="no">edi</span><span class="p">]</span>  
+</span></span><span class="line"><span class="cl"><span class="mi">00</span><span class="no">E817B7</span> <span class="no">B9</span> <span class="mi">00</span> <span class="no">C0</span> <span class="no">E8</span> <span class="mi">00</span>       <span class="no">mov</span>         <span class="no">ecx</span><span class="p">,</span><span class="no">offset</span> <span class="no">_E4C34A80_main@cpp</span> <span class="p">(</span><span class="mi">0</span><span class="no">E8C000h</span><span class="p">)</span>  
+</span></span><span class="line"><span class="cl"><span class="mi">00</span><span class="no">E817BC</span> <span class="no">E8</span> <span class="mi">4</span><span class="no">B</span> <span class="no">FB</span> <span class="no">FF</span> <span class="no">FF</span>       <span class="no">call</span>        <span class="err">@</span><span class="no">__CheckForDebuggerJustMyCode@4</span> <span class="p">(</span><span class="mi">0</span><span class="no">E8130Ch</span><span class="p">)</span>  
+</span></span><span class="line"><span class="cl"><span class="mi">00</span><span class="no">E817C1</span> <span class="mi">6</span><span class="no">A</span> <span class="mi">04</span>                <span class="no">push</span>        <span class="mi">4</span>  
+</span></span><span class="line"><span class="cl"><span class="mi">00</span><span class="no">E817C3</span> <span class="mi">6</span><span class="no">A</span> <span class="mi">03</span>                <span class="no">push</span>        <span class="mi">3</span>  
+</span></span><span class="line"><span class="cl"><span class="mi">00</span><span class="no">E817C5</span> <span class="mi">6</span><span class="no">A</span> <span class="mi">02</span>                <span class="no">push</span>        <span class="mi">2</span>  
+</span></span><span class="line"><span class="cl"><span class="mi">00</span><span class="no">E817C7</span> <span class="mi">6</span><span class="no">A</span> <span class="mi">01</span>                <span class="no">push</span>        <span class="mi">1</span>  
+</span></span><span class="line"><span class="cl"><span class="mi">00</span><span class="no">E817C9</span> <span class="no">E8</span> <span class="mi">95</span> <span class="no">F9</span> <span class="no">FF</span> <span class="no">FF</span>       <span class="no">call</span>        <span class="no">Function</span> <span class="p">(</span><span class="mi">0</span><span class="no">E81163h</span><span class="p">)</span>  
+</span></span><span class="line"><span class="cl"><span class="mi">00</span><span class="no">E817CE</span> <span class="mi">83</span> <span class="no">C4</span> <span class="mi">10</span>             <span class="no">add</span>         <span class="no">esp</span><span class="p">,</span><span class="mi">10</span><span class="no">h</span>  
+</span></span><span class="line"><span class="cl"><span class="mi">00</span><span class="no">E817D1</span> <span class="mi">33</span> <span class="no">C0</span>                <span class="no">xor</span>         <span class="no">eax</span><span class="p">,</span><span class="no">eax</span>  
+</span></span><span class="line"><span class="cl"><span class="mi">00</span><span class="no">E817D3</span> <span class="mi">5</span><span class="no">F</span>                   <span class="no">pop</span>         <span class="no">edi</span>  
+</span></span><span class="line"><span class="cl"><span class="mi">00</span><span class="no">E817D4</span> <span class="mi">5</span><span class="no">E</span>                   <span class="no">pop</span>         <span class="no">esi</span>  
+</span></span><span class="line"><span class="cl"><span class="mi">00</span><span class="no">E817D5</span> <span class="mi">5</span><span class="no">B</span>                   <span class="no">pop</span>         <span class="no">ebx</span>  
+</span></span><span class="line"><span class="cl"><span class="mi">00</span><span class="no">E817D6</span> <span class="mi">81</span> <span class="no">C4</span> <span class="no">C0</span> <span class="mi">00</span> <span class="mi">00</span> <span class="mi">00</span>    <span class="no">add</span>         <span class="no">esp</span><span class="p">,</span><span class="mi">0</span><span class="no">C0h</span>  
+</span></span><span class="line"><span class="cl"><span class="mi">00</span><span class="no">E817DC</span> <span class="mi">3</span><span class="no">B</span> <span class="no">EC</span>                <span class="no">cmp</span>         <span class="no">ebp</span><span class="p">,</span><span class="no">esp</span>  
+</span></span><span class="line"><span class="cl"><span class="mi">00</span><span class="no">E817DE</span> <span class="no">E8</span> <span class="mi">52</span> <span class="no">FA</span> <span class="no">FF</span> <span class="no">FF</span>       <span class="no">call</span>        <span class="no">__RTC_CheckEsp</span> <span class="p">(</span><span class="mi">0</span><span class="no">E81235h</span><span class="p">)</span>  
+</span></span><span class="line"><span class="cl"><span class="mi">00</span><span class="no">E817E3</span> <span class="mi">8</span><span class="no">B</span> <span class="no">E5</span>                <span class="no">mov</span>         <span class="no">esp</span><span class="p">,</span><span class="no">ebp</span>  
+</span></span><span class="line"><span class="cl"><span class="mi">00</span><span class="no">E817E5</span> <span class="mi">5</span><span class="no">D</span>                   <span class="no">pop</span>         <span class="no">ebp</span>  
+</span></span><span class="line"><span class="cl"><span class="mi">00</span><span class="no">E817E6</span> <span class="no">C3</span>                   <span class="no">ret</span>  
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>计算E8后面跟的4字节地址:</p>
+<p>因为E8的当前地址为0x00E817C9，真正要跳转的Function函数的地址为0x0E81163，所有根据公式：X = 要跳转的地址 - (E8的地址 + 该指令长度) = 0x0E81163 - （0x00E817C9 + 5）= 0xFFFFF995，由于内存是低地址向高地址存储，所以为95 F9 FF FF，所以最后call指令的硬编码为E8 95 F9 FF FF</p>
+<h4 id="233-效果说明">2.3.3 效果说明</h4>
+<p>我们将一段MessageBox函数添加到一个可执行文件中，当我们双击此文件时先弹出我们写的弹框窗口，点击确定按钮后再重新正常执行文件。所以我们的目的就是将此可执行文件的入口改成我们添加的代码位置，执行完代码后再jmp到此文件的原来的入口地址。</p>
+<blockquote>
+<p>注意在代码节空白区添加代码相当于给在硬盘上的文件中添加数据，添加完后再运行文件，所以这个过程可以理解为文件注入；但是我们平时说的注入，则是文件在运行时我把代码添加进去，这个过程可以理解为内存注入。</p>
+</blockquote>
+<h4 id="234-思路">2.3.4 思路</h4>
+<p>程序其实就是一堆二进制数据组成的，所以我们不可能直接将MessageBox函数加到一个可执行文件中，而是要想办法得到这个函数<strong>对应的二进制数据</strong>，将这些数据添加到文件中。</p>
+<p>但是我们没必要去自己再去写一个MessageBox函数的二进制，因为只要是user32的可执行文件中都会调用系统API函数–-MessageBoxA，所以我们只要找到此文件中的MessageBox函数的地址，使用call 这个地址，在call之前先push需要的4个参数就等于使用了弹框的功能。因为最终我们要添加的是二进制数据，所以我们要知道传入4个参数的指令硬编码和<code>call MessageBox</code>地址指令对应的硬编码，最后再加上一个<strong>jmp 程序原来的入口地址对应的硬编码</strong>即可。</p>
+<blockquote>
+<p>但是这个思路有一个小问题，换一个机器就用不了了，后面学习会知道原因。</p>
+</blockquote>
+<p>获取运行时MessageBoxAPI函数的地址：</p>
+<ul>
+<li>使用OD打开可执行文件，在左下角的命令栏输入：<code>bp MessageBoxA</code> 回车，表示在此函数起始位置设置断点，接着我们点击上方栏中的B按钮，表示查看断点，接着双击我们刚设置的断点会跳转到断点所在位置，这个地址就是MessageBoxA函数的起始地址。</li>
+</ul>
+<p>记下来此程序本来的入口地址：通过可选PE头中的AddressOfEntryPoint字段值可以知道程序入口地址的偏移量，再通过可选PE头中的ImageBase字段知道文件装载到内存中的起始地址，根据ImageBase + AddressOfEntryPoint可以得出来程序在虚拟内存中的真正的入口地址。</p>
+<p>按照要求，我们只需要构造这样一个功能的代码：</p>
+<ol>
+<li>push MessageBox函数需要的4个参数；</li>
+<li>call MessageBox函数地址；</li>
+<li>jmp 程序原来的入口地址。</li>
+</ol>
+<p><strong>先初步判断空白区的长度是否能存放得下添加的硬编码(使用节对应的节表中的 SizeOfRawData - Misc.VirtualSize 计算空白区的大小)</strong>。因为push4个参数，一个push硬编码长度为2字节；call和jmp硬编码长度为5字节；加起来一共是18字节。</p>
+<p>接着将这个功能的代码转换成对应的硬编码：其中需要计算E8 和 E9后面的地址，所以要用公式X = 要跳转的地址 - (E8的地址 + 5)进行计算，如果我们使用UE编辑器打开可执行文件进行编辑修改，由于UE编辑器打开的文件是在硬盘上的状态，即我们如果在UE或者winhex中改数据是改的FileBuffer中的数据，不是ImageBuffer中的，则公式的地址都是需要从文件地址转换成内存地址后再计算的！</p>
+<blockquote>
+<p>如果是ipmsg.exe，由于在文件对齐和内存对齐是一样的，所以文件在硬盘上的数据格式和加载到内存中的格式是一样的，那使用UE打开上面显式的地址是什么就用就行，因为文件地址此时等于内存地址。但是如果是notepad.exe等，文件对齐和内存对齐不一样，从硬盘加载到内存是需要&quot;拉伸&quot;的，所以如果此时用UE添加硬编码计算E8 E9后面的地址值时需要使用内存地址，所以多了一个FOA转化成RVA的过程。</p>
+</blockquote>
+<p>定位到任意一个节后面的空白区，将这段硬编码加到任意节的空白区中，但是最好是代码节中（节的名字一般默认为.text），因为代码区的属性一般是可执行的，所以加到代码节中不用修改节的characteristic属性。记下来这段添加的硬编码的起始偏移地址。</p>
+<p>我们如果写程序来模拟这个过程，添加硬编码在&quot;拉伸&quot;后的文件中添加。</p>
+<blockquote>
+<p>为什么要在拉伸后的文件中添加：因为我们添加的硬编码中有call和jmp指令后面的地址，这个地址是要转化能得到的—X = 要跳转的地址 - (E8的地址 + 5)，转换完才得到了添加的代码的完整硬编码，而地址转化公式中使用的E8当前的地址 + 5，这个E8当前的地址值为文件运行时装入4GB内存（拉伸后）后的值；而且公式中要跳转的地址也是文件装入内存后的MessageBoxA函数的地址。综上我们应该将要添加的硬编码添加到拉伸后的文件任意节的空白区中，这样更方便计算E8 和 E9后面跟的地址值。如果我们想在文件在硬盘上的状态中添加也可以，但是计算E8 和 E9 后面跟的地址值使用公式前，还要自己先把文件地址转换成内存地址，就比较麻烦。</p>
+</blockquote>
+<p>最后找到程序的AddressOfEntryPoint字段所在地址，将此字段的值改为添加的硬编码的偏移地址。</p>
+<h4 id="235-实现">2.3.5 实现</h4>
+<p>开始在FileBuffer中添加代码：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
@@ -1676,36 +2125,815 @@
 </span><span class="lnt">23
 </span><span class="lnt">24
 </span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-txt" data-lang="txt"><span class="line"><span class="cl">bp MessageBoxA：77D507EA
+<pre tabindex="0" class="chroma"><code class="language-txt" data-lang="txt"><span class="line"><span class="cl">bp MessageBoxA：0x77D507EA  
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">AddressOfEntryPoint程序入口：0000739D
-</span></span><span class="line"><span class="cl">ImageBase装载地址：01000000
+</span></span><span class="line"><span class="cl">AddressOfEntryPoint程序入口：0x0000739D
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">ImageBase装载地址：0x01000000
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">.txt 
-</span></span><span class="line"><span class="cl">	VirtualAddress内存中的偏移地址: 1000
-</span></span><span class="line"><span class="cl">	VirtualSize该节在没有对齐前的真实尺寸: 7748
-</span></span><span class="line"><span class="cl">	PointerToRawData节区在文件中的偏移:400
+</span></span><span class="line"><span class="cl">	VirtualAddress内存中的偏移地址: 0x1000
+</span></span><span class="line"><span class="cl">	VirtualSize该节在没有对齐前的真实尺寸: 0x7748
+</span></span><span class="line"><span class="cl">	PointerToRawData节区在文件中的偏移:0x400
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">加入代码的地方：7B48	
+</span></span><span class="line"><span class="cl">加入代码的地方 0x7B48 = PointerToRawData + VirtualSize = 0x7748 + 0x400
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">.text节在内存中的起始地址 VirtualAddress + ImageBase：1000 + 01000000 = 1001000
+</span></span><span class="line"><span class="cl">通过下一个节表的PointerToRawData字段值为0x7c00，综合0x7172可以判断出.text节的空白区大小为0x7c00 - 0x7B48 = 0xB8。空间还很大，所以我们可以将代码添加在这个空白区的任意大小合适的位置。
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">E8: 7B50   相对于.txt的偏移位置：7750
-</span></span><span class="line"><span class="cl">E8的内存地址：7750 + 1001000 = 1008750
-</span></span><span class="line"><span class="cl">E8后面的 MessageBoxA - (E8的内存地址+5): 77D507EA - 1008750 - 5 = 76D48095
+</span></span><span class="line"><span class="cl">接着就是构造ShellCode：
 </span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">从0x7B48处填充：6A 00 6A 00 6A 00 6A 00 E8 00 00 00 00 E9 00 00 00 00
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">E9: 7B55   相对于.txt的偏移位置：7755
-</span></span><span class="line"><span class="cl">E9的内存地址：7755 + 1001000 = 1008755
-</span></span><span class="line"><span class="cl">运行入口AddressOfEntryPoint + ImageBase：0000739D + 01000000 = 100739D
-</span></span><span class="line"><span class="cl">E9后面的 运行入口 - (E9的内存地址+5): 100739D - 1008755- 5 = 76D48090 = FFFFEC43
+</span></span><span class="line"><span class="cl">由于现在加的位置是文件在硬盘上的地址，不是加载到ImageBuffer中的地址，所以要做地址转换。
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">加入代码的地方的内存入口 VirtualSize + VirtualAddress：7748 + 1000 = 8748
+</span></span><span class="line"><span class="cl">.text节在内存中的起始地址 VirtualAddress + ImageBase：0x1000 + 0x01000000 = 0x1001000
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">E8的文件地址: 0x7B50   相对于.txt的偏移位置：0x7750 = 0x7B50 - PointerToRawData = 0x7B50 - 0x400
+</span></span><span class="line"><span class="cl">E8的内存地址：0x7750 + 0x1001000 = 0x1008750
+</span></span><span class="line"><span class="cl">E8后面的 MessageBoxA - (E8的内存地址+5): 0x77D507EA - 0x1008750 - 5 = 0x76D48095
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">E9的文件地址: 0x7B55   相对于.txt的偏移位置：0x7755 = 0x7B55 - PointerToRawData = 0x7B55 - 0x400
+</span></span><span class="line"><span class="cl">E9的内存地址：0x7755 + 0x1001000 = 0x1008755
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">实际程序加载到内存的入口：运行入口AddressOfEntryPoint + ImageBase：0x0000739D + 0x01000000 = 0x100739D
+</span></span><span class="line"><span class="cl">E9后面的 运行入口 - (E9的内存地址+5): 0x100739D - 0x1008755- 5 = 0x76D48090 = 0xFFFFEC43
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">E9相当于最终调转到实际程序加载到内存的入口的地方。
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">最终0x7B48处填充：6A 00 6A 00 6A 00 6A 00 E8 95 80 D4 76 E9 43 EC FF FF
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">加入代码的地方的内存入口 VirtualSize + VirtualAddress：0x7748 + 0x1000 = 0x8748
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">重新设置AddressOfEntryPoint程序入口 = 0x8748
 </span></span></code></pre></td></tr></table>
 </div>
-</div><h4 id="25-在imagebuffer中添加代码">2.5 在ImageBuffer中添加代码</h4>
+</div><h3 id="24-在代码空白区添加代码编码">2.4 在代码空白区添加代码(编码)</h3>
+<p>我们用OD打开一个文件，模拟的是文件真正运行时的状态，所以此时左侧栏显示的所有地址都是内存地址，文件的起始地址就是ImageBase</p>
+<p>我们使用UE和winhex打开一个文件，起始就是一个将文件在硬盘上时的数据复制一份存到FileBuffer内存中，所以此时左侧栏显示的地址是文件地址，文件的起始地址是逻辑地址地址为0x0</p>
+<p>我们使用winhex–tools–open ram打开一个正在运行时的文件，此时左侧栏显示的地址就是文件真正运行时的内存地址，文件的起始地址就是ImageBase</p>
+<p>我们如果使用C语言来模拟FileBuffer-&gt;ImageBuffer-&gt;NewBuffer的过程：</p>
+<ul>
+<li>由于我们使用malloc开辟一块内存空间模拟FileBuffer，这块内存的起始地址就不在是我们说的文件在硬盘上的起始逻辑地址0x0，而是随机动态分配的一个起始地址，所以我们在计算FileBuffer中的地址时，就要注意偏移量加的不是0x0了，而是要用偏移量加上动态分配的起始地址才是在FileBuffer中地址。</li>
+<li>接着如果我们再模拟拉伸的过程，即FileBuffer到ImageBuffer的过程时，由于也使用malloc动态给ImageBuffer分配内存，所以此时ImageBuffer中文件起始地址不再是ImageBase，而也是一个随机分配的地址，所以我们使用动态分配的起始地址加偏移量的方式计算ImageBuffer中的地址时，就不是加ImageBase！而且我们计算call和jmp等硬编码E8、E9后面的4字节值时，需要用到的E8、E9当前的内存地址不是现在在ImageBuffer中的值，因为这也只是我们模拟出来的文件运行状态的ImageBuffer，而不是最后程序在操作系统上真正装入内存时的状态，所以我们此时计算E8当前的内存地址还要想象一下文件真正被执行的状态，那么起始地址就要用ImageBase了，用这个值来计算E8、E9后面要跟的4字节值。</li>
+<li>包括最后ImageBuffer到NewBuffer的过程也是同样如此</li>
+</ul>
+<p>文件双击真正运行时的起始地址就为ImageBase的值了</p>
+<p><img
+    class="lazyload"
+    src="/svg/loading.min.svg"
+    data-src="../../imgs/pe/FileBufferToImageBuffer.png"
+    data-srcset="../../imgs/pe/FileBufferToImageBuffer.png, ../../imgs/pe/FileBufferToImageBuffer.png 1.5x, ../../imgs/pe/FileBufferToImageBuffer.png 2x"
+    data-sizes="auto"
+    alt="&amp;quot;&amp;quot;"
+    title="&amp;quot;&amp;quot;"/></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">  1
+</span><span class="lnt">  2
+</span><span class="lnt">  3
+</span><span class="lnt">  4
+</span><span class="lnt">  5
+</span><span class="lnt">  6
+</span><span class="lnt">  7
+</span><span class="lnt">  8
+</span><span class="lnt">  9
+</span><span class="lnt"> 10
+</span><span class="lnt"> 11
+</span><span class="lnt"> 12
+</span><span class="lnt"> 13
+</span><span class="lnt"> 14
+</span><span class="lnt"> 15
+</span><span class="lnt"> 16
+</span><span class="lnt"> 17
+</span><span class="lnt"> 18
+</span><span class="lnt"> 19
+</span><span class="lnt"> 20
+</span><span class="lnt"> 21
+</span><span class="lnt"> 22
+</span><span class="lnt"> 23
+</span><span class="lnt"> 24
+</span><span class="lnt"> 25
+</span><span class="lnt"> 26
+</span><span class="lnt"> 27
+</span><span class="lnt"> 28
+</span><span class="lnt"> 29
+</span><span class="lnt"> 30
+</span><span class="lnt"> 31
+</span><span class="lnt"> 32
+</span><span class="lnt"> 33
+</span><span class="lnt"> 34
+</span><span class="lnt"> 35
+</span><span class="lnt"> 36
+</span><span class="lnt"> 37
+</span><span class="lnt"> 38
+</span><span class="lnt"> 39
+</span><span class="lnt"> 40
+</span><span class="lnt"> 41
+</span><span class="lnt"> 42
+</span><span class="lnt"> 43
+</span><span class="lnt"> 44
+</span><span class="lnt"> 45
+</span><span class="lnt"> 46
+</span><span class="lnt"> 47
+</span><span class="lnt"> 48
+</span><span class="lnt"> 49
+</span><span class="lnt"> 50
+</span><span class="lnt"> 51
+</span><span class="lnt"> 52
+</span><span class="lnt"> 53
+</span><span class="lnt"> 54
+</span><span class="lnt"> 55
+</span><span class="lnt"> 56
+</span><span class="lnt"> 57
+</span><span class="lnt"> 58
+</span><span class="lnt"> 59
+</span><span class="lnt"> 60
+</span><span class="lnt"> 61
+</span><span class="lnt"> 62
+</span><span class="lnt"> 63
+</span><span class="lnt"> 64
+</span><span class="lnt"> 65
+</span><span class="lnt"> 66
+</span><span class="lnt"> 67
+</span><span class="lnt"> 68
+</span><span class="lnt"> 69
+</span><span class="lnt"> 70
+</span><span class="lnt"> 71
+</span><span class="lnt"> 72
+</span><span class="lnt"> 73
+</span><span class="lnt"> 74
+</span><span class="lnt"> 75
+</span><span class="lnt"> 76
+</span><span class="lnt"> 77
+</span><span class="lnt"> 78
+</span><span class="lnt"> 79
+</span><span class="lnt"> 80
+</span><span class="lnt"> 81
+</span><span class="lnt"> 82
+</span><span class="lnt"> 83
+</span><span class="lnt"> 84
+</span><span class="lnt"> 85
+</span><span class="lnt"> 86
+</span><span class="lnt"> 87
+</span><span class="lnt"> 88
+</span><span class="lnt"> 89
+</span><span class="lnt"> 90
+</span><span class="lnt"> 91
+</span><span class="lnt"> 92
+</span><span class="lnt"> 93
+</span><span class="lnt"> 94
+</span><span class="lnt"> 95
+</span><span class="lnt"> 96
+</span><span class="lnt"> 97
+</span><span class="lnt"> 98
+</span><span class="lnt"> 99
+</span><span class="lnt">100
+</span><span class="lnt">101
+</span><span class="lnt">102
+</span><span class="lnt">103
+</span><span class="lnt">104
+</span><span class="lnt">105
+</span><span class="lnt">106
+</span><span class="lnt">107
+</span><span class="lnt">108
+</span><span class="lnt">109
+</span><span class="lnt">110
+</span><span class="lnt">111
+</span><span class="lnt">112
+</span><span class="lnt">113
+</span><span class="lnt">114
+</span><span class="lnt">115
+</span><span class="lnt">116
+</span><span class="lnt">117
+</span><span class="lnt">118
+</span><span class="lnt">119
+</span><span class="lnt">120
+</span><span class="lnt">121
+</span><span class="lnt">122
+</span><span class="lnt">123
+</span><span class="lnt">124
+</span><span class="lnt">125
+</span><span class="lnt">126
+</span><span class="lnt">127
+</span><span class="lnt">128
+</span><span class="lnt">129
+</span><span class="lnt">130
+</span><span class="lnt">131
+</span><span class="lnt">132
+</span><span class="lnt">133
+</span><span class="lnt">134
+</span><span class="lnt">135
+</span><span class="lnt">136
+</span><span class="lnt">137
+</span><span class="lnt">138
+</span><span class="lnt">139
+</span><span class="lnt">140
+</span><span class="lnt">141
+</span><span class="lnt">142
+</span><span class="lnt">143
+</span><span class="lnt">144
+</span><span class="lnt">145
+</span><span class="lnt">146
+</span><span class="lnt">147
+</span><span class="lnt">148
+</span><span class="lnt">149
+</span><span class="lnt">150
+</span><span class="lnt">151
+</span><span class="lnt">152
+</span><span class="lnt">153
+</span><span class="lnt">154
+</span><span class="lnt">155
+</span><span class="lnt">156
+</span><span class="lnt">157
+</span><span class="lnt">158
+</span><span class="lnt">159
+</span><span class="lnt">160
+</span><span class="lnt">161
+</span><span class="lnt">162
+</span><span class="lnt">163
+</span><span class="lnt">164
+</span><span class="lnt">165
+</span><span class="lnt">166
+</span><span class="lnt">167
+</span><span class="lnt">168
+</span><span class="lnt">169
+</span><span class="lnt">170
+</span><span class="lnt">171
+</span><span class="lnt">172
+</span><span class="lnt">173
+</span><span class="lnt">174
+</span><span class="lnt">175
+</span><span class="lnt">176
+</span><span class="lnt">177
+</span><span class="lnt">178
+</span><span class="lnt">179
+</span><span class="lnt">180
+</span><span class="lnt">181
+</span><span class="lnt">182
+</span><span class="lnt">183
+</span><span class="lnt">184
+</span><span class="lnt">185
+</span><span class="lnt">186
+</span><span class="lnt">187
+</span><span class="lnt">188
+</span><span class="lnt">189
+</span><span class="lnt">190
+</span><span class="lnt">191
+</span><span class="lnt">192
+</span><span class="lnt">193
+</span><span class="lnt">194
+</span><span class="lnt">195
+</span><span class="lnt">196
+</span><span class="lnt">197
+</span><span class="lnt">198
+</span><span class="lnt">199
+</span><span class="lnt">200
+</span><span class="lnt">201
+</span><span class="lnt">202
+</span><span class="lnt">203
+</span><span class="lnt">204
+</span><span class="lnt">205
+</span><span class="lnt">206
+</span><span class="lnt">207
+</span><span class="lnt">208
+</span><span class="lnt">209
+</span><span class="lnt">210
+</span><span class="lnt">211
+</span><span class="lnt">212
+</span><span class="lnt">213
+</span><span class="lnt">214
+</span><span class="lnt">215
+</span><span class="lnt">216
+</span><span class="lnt">217
+</span><span class="lnt">218
+</span><span class="lnt">219
+</span><span class="lnt">220
+</span><span class="lnt">221
+</span><span class="lnt">222
+</span><span class="lnt">223
+</span><span class="lnt">224
+</span><span class="lnt">225
+</span><span class="lnt">226
+</span><span class="lnt">227
+</span><span class="lnt">228
+</span><span class="lnt">229
+</span><span class="lnt">230
+</span><span class="lnt">231
+</span><span class="lnt">232
+</span><span class="lnt">233
+</span><span class="lnt">234
+</span><span class="lnt">235
+</span><span class="lnt">236
+</span><span class="lnt">237
+</span><span class="lnt">238
+</span><span class="lnt">239
+</span><span class="lnt">240
+</span><span class="lnt">241
+</span><span class="lnt">242
+</span><span class="lnt">243
+</span><span class="lnt">244
+</span><span class="lnt">245
+</span><span class="lnt">246
+</span><span class="lnt">247
+</span><span class="lnt">248
+</span><span class="lnt">249
+</span><span class="lnt">250
+</span><span class="lnt">251
+</span><span class="lnt">252
+</span><span class="lnt">253
+</span><span class="lnt">254
+</span><span class="lnt">255
+</span><span class="lnt">256
+</span><span class="lnt">257
+</span><span class="lnt">258
+</span><span class="lnt">259
+</span><span class="lnt">260
+</span><span class="lnt">261
+</span><span class="lnt">262
+</span><span class="lnt">263
+</span><span class="lnt">264
+</span><span class="lnt">265
+</span><span class="lnt">266
+</span><span class="lnt">267
+</span><span class="lnt">268
+</span><span class="lnt">269
+</span><span class="lnt">270
+</span><span class="lnt">271
+</span><span class="lnt">272
+</span><span class="lnt">273
+</span><span class="lnt">274
+</span><span class="lnt">275
+</span><span class="lnt">276
+</span><span class="lnt">277
+</span><span class="lnt">278
+</span><span class="lnt">279
+</span><span class="lnt">280
+</span><span class="lnt">281
+</span><span class="lnt">282
+</span><span class="lnt">283
+</span><span class="lnt">284
+</span><span class="lnt">285
+</span><span class="lnt">286
+</span><span class="lnt">287
+</span><span class="lnt">288
+</span><span class="lnt">289
+</span><span class="lnt">290
+</span><span class="lnt">291
+</span><span class="lnt">292
+</span><span class="lnt">293
+</span><span class="lnt">294
+</span><span class="lnt">295
+</span><span class="lnt">296
+</span><span class="lnt">297
+</span><span class="lnt">298
+</span><span class="lnt">299
+</span><span class="lnt">300
+</span><span class="lnt">301
+</span><span class="lnt">302
+</span><span class="lnt">303
+</span><span class="lnt">304
+</span><span class="lnt">305
+</span><span class="lnt">306
+</span><span class="lnt">307
+</span><span class="lnt">308
+</span><span class="lnt">309
+</span><span class="lnt">310
+</span><span class="lnt">311
+</span><span class="lnt">312
+</span><span class="lnt">313
+</span><span class="lnt">314
+</span><span class="lnt">315
+</span><span class="lnt">316
+</span><span class="lnt">317
+</span><span class="lnt">318
+</span><span class="lnt">319
+</span><span class="lnt">320
+</span><span class="lnt">321
+</span><span class="lnt">322
+</span><span class="lnt">323
+</span><span class="lnt">324
+</span><span class="lnt">325
+</span><span class="lnt">326
+</span><span class="lnt">327
+</span><span class="lnt">328
+</span><span class="lnt">329
+</span><span class="lnt">330
+</span><span class="lnt">331
+</span><span class="lnt">332
+</span><span class="lnt">333
+</span><span class="lnt">334
+</span><span class="lnt">335
+</span><span class="lnt">336
+</span><span class="lnt">337
+</span><span class="lnt">338
+</span><span class="lnt">339
+</span><span class="lnt">340
+</span><span class="lnt">341
+</span><span class="lnt">342
+</span><span class="lnt">343
+</span><span class="lnt">344
+</span><span class="lnt">345
+</span><span class="lnt">346
+</span><span class="lnt">347
+</span><span class="lnt">348
+</span><span class="lnt">349
+</span><span class="lnt">350
+</span><span class="lnt">351
+</span><span class="lnt">352
+</span><span class="lnt">353
+</span><span class="lnt">354
+</span><span class="lnt">355
+</span><span class="lnt">356
+</span><span class="lnt">357
+</span><span class="lnt">358
+</span><span class="lnt">359
+</span><span class="lnt">360
+</span><span class="lnt">361
+</span><span class="lnt">362
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="cp">#pragma warning(disable : 4996)
+</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;string.h&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span>
+</span></span><span class="line"><span class="cl"><span class="k">typedef</span> <span class="kt">unsigned</span> <span class="kt">short</span> <span class="n">WORD</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">typedef</span> <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">DWORD</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">typedef</span> <span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">BYTE</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="cp">#define MZ 0x5A4D
+</span></span></span><span class="line"><span class="cl"><span class="cp">#define PE 0x4550
+</span></span></span><span class="line"><span class="cl"><span class="cp">#define IMAGE_SIZEOF_SHORT_NAME 8
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span>
+</span></span><span class="line"><span class="cl"><span class="cp">#define MessageBox_Address 0x754034B0 </span><span class="c1">//宏定义的MessageBox内存地址
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">filePath</span> <span class="o">=</span> <span class="s">&#34;CRACKME.EXE&#34;</span><span class="p">;</span>  <span class="c1">//你要打开的PE文件路径
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">storagePath</span> <span class="o">=</span> <span class="s">&#34;new_CRACKME.exe&#34;</span><span class="p">;</span> <span class="c1">//保存路径
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="c1">//shellcode：定义要添加的硬编码全局变量，确定的写好，不确定的先用0x00填充，后面计算完再改
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">BYTE</span> <span class="n">shellcode</span><span class="p">[]</span> <span class="o">=</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="mh">0x6A</span><span class="p">,</span><span class="mh">0x00</span><span class="p">,</span><span class="mh">0x6A</span><span class="p">,</span><span class="mh">0x00</span><span class="p">,</span><span class="mh">0x6A</span><span class="p">,</span><span class="mh">0x00</span><span class="p">,</span><span class="mh">0x6A</span><span class="p">,</span><span class="mh">0x00</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">	<span class="mh">0xE8</span><span class="p">,</span><span class="mh">0x00</span><span class="p">,</span><span class="mh">0x00</span><span class="p">,</span><span class="mh">0x00</span><span class="p">,</span><span class="mh">0x00</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">	<span class="mh">0xE9</span><span class="p">,</span><span class="mh">0x00</span><span class="p">,</span><span class="mh">0x00</span><span class="p">,</span><span class="mh">0x00</span><span class="p">,</span><span class="mh">0x00</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">//DOS头
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">struct</span> <span class="nc">_IMAGE_DOS_HEADER</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="n">WORD</span> <span class="n">e_magic</span><span class="p">;</span>  <span class="c1">//MZ标记
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="n">WORD</span> <span class="n">e_cblp</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="n">WORD</span> <span class="n">e_cp</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="n">WORD</span> <span class="n">e_crlc</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="n">WORD</span> <span class="n">e_cparhdr</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="n">WORD</span> <span class="n">e_minalloc</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="n">WORD</span> <span class="n">e_maxalloc</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="n">WORD</span> <span class="n">e_ss</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="n">WORD</span> <span class="n">e_sp</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="n">WORD</span> <span class="n">e_csum</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="n">WORD</span> <span class="n">e_ip</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="n">WORD</span> <span class="n">e_cs</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="n">WORD</span> <span class="n">e_lfarlc</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="n">WORD</span> <span class="n">e_ovno</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="n">WORD</span> <span class="n">e_res</span><span class="p">[</span><span class="mi">4</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">	<span class="n">WORD</span> <span class="n">e_oemid</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="n">WORD</span> <span class="n">e_oeminfo</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="n">WORD</span> <span class="n">e_res2</span><span class="p">[</span><span class="mi">10</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">	<span class="n">DWORD</span> <span class="n">e_lfanew</span><span class="p">;</span>  <span class="c1">//PE文件真正开始的偏移地址
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">};</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">//标准PE头
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">struct</span> <span class="nc">_IMAGE_FILE_HEADER</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="n">WORD</span> <span class="n">Machine</span><span class="p">;</span>  <span class="c1">//文件运行平台
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="n">WORD</span> <span class="n">NumberOfSections</span><span class="p">;</span>  <span class="c1">//节数量
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="n">DWORD</span> <span class="n">TimeDateStamp</span><span class="p">;</span>  <span class="c1">//时间戳
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="n">DWORD</span> <span class="n">PointerToSymbolTable</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="n">DWORD</span> <span class="n">NumberOfSymbols</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="n">WORD</span> <span class="n">SizeOfOptionalHeader</span><span class="p">;</span>  <span class="c1">//可选PE头大小
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="n">WORD</span> <span class="n">Characteristics</span><span class="p">;</span>  <span class="c1">//特征值
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">};</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">//可选PE头
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">struct</span> <span class="nc">_IMAGE_OPTIONAL_HEADER</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="n">WORD</span> <span class="n">Magic</span><span class="p">;</span>  <span class="c1">//文件类型
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="n">BYTE</span> <span class="n">MajorLinkerVersion</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="n">BYTE</span> <span class="n">MinorLinkerVersion</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="n">DWORD</span> <span class="n">SizeOfCode</span><span class="p">;</span>   <span class="c1">//代码节文件对齐后的大小
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="n">DWORD</span> <span class="n">SizeOfInitializedData</span><span class="p">;</span>  <span class="c1">//初始化数据文件对齐后的大小
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="n">DWORD</span> <span class="n">SizeOfUninitializedData</span><span class="p">;</span>  <span class="c1">//未初始化数据文件对齐后大小
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="n">DWORD</span> <span class="n">AddressOfEntryPoint</span><span class="p">;</span>  <span class="c1">//程序入口点（偏移量）
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="n">DWORD</span> <span class="n">BaseOfCode</span><span class="p">;</span>  <span class="c1">//代码基址
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="n">DWORD</span> <span class="n">BaseOfData</span><span class="p">;</span>  <span class="c1">//数据基址
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="n">DWORD</span> <span class="n">ImageBase</span><span class="p">;</span>   <span class="c1">//内存镜像基址
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="n">DWORD</span> <span class="n">SectionAlignment</span><span class="p">;</span>  <span class="c1">//内存对齐粒度
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="n">DWORD</span> <span class="n">FileAlignment</span><span class="p">;</span>  <span class="c1">//文件对齐粒度
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="n">WORD</span> <span class="n">MajorOperatingSystemVersion</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="n">WORD</span> <span class="n">MinorOperatingSystemVersion</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="n">WORD</span> <span class="n">MajorImageVersion</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="n">WORD</span> <span class="n">MinorImageVersion</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="n">WORD</span> <span class="n">MajorSubsystemVersion</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="n">WORD</span> <span class="n">MinorSubsystemVersion</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="n">DWORD</span> <span class="n">Win32VersionValue</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="n">DWORD</span> <span class="n">SizeOfImage</span><span class="p">;</span>  <span class="c1">//文件装入虚拟内存后大小
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="n">DWORD</span> <span class="n">SizeOfHeaders</span><span class="p">;</span>  <span class="c1">//DOS、NT头和节表大小
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="n">DWORD</span> <span class="n">CheckSum</span><span class="p">;</span>  <span class="c1">//校验和
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="n">WORD</span> <span class="n">Subsystem</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="n">WORD</span> <span class="n">DllCharacteristics</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="n">DWORD</span> <span class="n">SizeOfStackReserve</span><span class="p">;</span>  <span class="c1">//预留堆栈大小
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="n">DWORD</span> <span class="n">SizeOfStackCommit</span><span class="p">;</span>  <span class="c1">//实际分配堆栈大小
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="n">DWORD</span> <span class="n">SizeOfHeapReserve</span><span class="p">;</span>  <span class="c1">//预留堆大小
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="n">DWORD</span> <span class="n">SizeOfHeapCommit</span><span class="p">;</span>  <span class="c1">//实际分配堆大小
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="n">DWORD</span> <span class="n">LoaderFlags</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="n">DWORD</span> <span class="n">NumberOfRvaAndSizes</span><span class="p">;</span>  <span class="c1">//目录项数目
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">//_IMAGE_DATA_DIRECTORY DataDirectory[16];  //这个先不管
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">};</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">//NT头
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">struct</span> <span class="nc">_IMAGE_NT_HEADERS</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="n">DWORD</span> <span class="n">Signature</span><span class="p">;</span>  <span class="c1">//PE签名
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="n">_IMAGE_FILE_HEADER</span> <span class="n">FileHeader</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="n">_IMAGE_OPTIONAL_HEADER</span> <span class="n">OptionalHeader</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">//节表
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">struct</span> <span class="nc">_IMAGE_SECTION_HEADER</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="n">BYTE</span> <span class="n">Name</span><span class="p">[</span><span class="n">IMAGE_SIZEOF_SHORT_NAME</span><span class="p">];</span>  <span class="c1">//节表名
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="k">union</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="n">DWORD</span> <span class="n">PhysicalAddress</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">		<span class="n">DWORD</span> <span class="n">VirtualSize</span><span class="p">;</span>  <span class="c1">//内存中未对齐大小
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="p">}</span><span class="n">Misc</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="n">DWORD</span> <span class="n">VirtualAddress</span><span class="p">;</span>  <span class="c1">//该节在内存中偏移地址
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="n">DWORD</span> <span class="n">SizeOfRawData</span><span class="p">;</span>  <span class="c1">//该节在硬盘上文件对齐后大小
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="n">DWORD</span> <span class="n">PointerToRawData</span><span class="p">;</span>  <span class="c1">//该节在硬盘上文件对齐后偏移地址
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="n">DWORD</span> <span class="n">PointerToRelocations</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="n">DWORD</span> <span class="n">PointerToLinenumbers</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="n">WORD</span> <span class="n">NumberOfRelocations</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="n">WORD</span> <span class="n">NumberOfLinenumbers</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="n">DWORD</span> <span class="n">Characteristics</span><span class="p">;</span>  <span class="c1">//该节特征属性
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">};</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="cm">/*计算文件大小函数
+</span></span></span><span class="line"><span class="cl"><span class="cm">参数：文件绝对路径
+</span></span></span><span class="line"><span class="cl"><span class="cm">返回值：返回文件大小（单位字节）
+</span></span></span><span class="line"><span class="cl"><span class="cm">*/</span>
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">compute_file_size</span><span class="p">(</span><span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">filePath</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="n">FILE</span><span class="o">*</span> <span class="n">fp</span> <span class="o">=</span> <span class="n">fopen</span><span class="p">(</span><span class="n">filePath</span><span class="p">,</span> <span class="s">&#34;rb&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">	<span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">fp</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="n">printf</span><span class="p">(</span><span class="s">&#34;打开文件失败&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">		<span class="n">exit</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl">	<span class="n">fseek</span><span class="p">(</span><span class="n">fp</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">	<span class="kt">int</span> <span class="n">size</span> <span class="o">=</span> <span class="n">ftell</span><span class="p">(</span><span class="n">fp</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">//fseek(fp,0,0); 单纯计算文件大小，就不需要还原指针了
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="n">fclose</span><span class="p">(</span><span class="n">fp</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">	<span class="k">return</span> <span class="n">size</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="cm">/*将文件读入FileBuffer函数
+</span></span></span><span class="line"><span class="cl"><span class="cm">参数：文件绝对路径
+</span></span></span><span class="line"><span class="cl"><span class="cm">返回值：FileBuffer起始地址
+</span></span></span><span class="line"><span class="cl"><span class="cm">*/</span>
+</span></span><span class="line"><span class="cl"><span class="kt">char</span><span class="o">*</span> <span class="nf">to_FileBuffer</span><span class="p">(</span><span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">filePath</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="n">FILE</span><span class="o">*</span> <span class="n">fp</span> <span class="o">=</span> <span class="n">fopen</span><span class="p">(</span><span class="n">filePath</span><span class="p">,</span> <span class="s">&#34;rb&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">	<span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">fp</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="n">printf</span><span class="p">(</span><span class="s">&#34;打开文件失败&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">		<span class="n">exit</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl">	<span class="kt">int</span> <span class="n">size</span> <span class="o">=</span> <span class="n">compute_file_size</span><span class="p">(</span><span class="n">filePath</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="kt">char</span><span class="o">*</span> <span class="n">mp</span> <span class="o">=</span> <span class="p">(</span><span class="kt">char</span><span class="o">*</span><span class="p">)</span><span class="n">malloc</span><span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="kt">char</span><span class="p">)</span> <span class="o">*</span> <span class="n">size</span><span class="p">);</span>  <span class="c1">//分配内存空间
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">mp</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="n">printf</span><span class="p">(</span><span class="s">&#34;分配空间失败&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">		<span class="n">fclose</span><span class="p">(</span><span class="n">fp</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">		<span class="n">exit</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="kt">int</span> <span class="n">isSucceed</span> <span class="o">=</span> <span class="n">fread</span><span class="p">(</span><span class="n">mp</span><span class="p">,</span> <span class="n">size</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">fp</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">	<span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">isSucceed</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="n">printf</span><span class="p">(</span><span class="s">&#34;读取数据失败&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">		<span class="n">free</span><span class="p">(</span><span class="n">mp</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">		<span class="n">fclose</span><span class="p">(</span><span class="n">fp</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">		<span class="n">exit</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="n">fclose</span><span class="p">(</span><span class="n">fp</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">	<span class="k">return</span> <span class="n">mp</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="cm">/*FileBuffer到ImageBuffer函数
+</span></span></span><span class="line"><span class="cl"><span class="cm">参数：FileBuffer起始地址
+</span></span></span><span class="line"><span class="cl"><span class="cm">返回值：ImageBuffer起始地址
+</span></span></span><span class="line"><span class="cl"><span class="cm">*/</span>
+</span></span><span class="line"><span class="cl"><span class="kt">char</span><span class="o">*</span> <span class="nf">fileBuffer_to_ImageBuffer</span><span class="p">(</span><span class="kt">char</span><span class="o">*</span> <span class="n">fileBufferp</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="n">_IMAGE_DOS_HEADER</span><span class="o">*</span> <span class="n">_image_dos_header</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="n">_IMAGE_FILE_HEADER</span><span class="o">*</span> <span class="n">_image_file_header</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="n">_IMAGE_OPTIONAL_HEADER</span><span class="o">*</span> <span class="n">_image_optional_header</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="n">_IMAGE_SECTION_HEADER</span><span class="o">*</span> <span class="n">_image_section_header</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="n">_image_dos_header</span> <span class="o">=</span> <span class="p">(</span><span class="n">_IMAGE_DOS_HEADER</span><span class="o">*</span><span class="p">)</span><span class="n">fileBufferp</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="n">_image_file_header</span> <span class="o">=</span> <span class="p">(</span><span class="n">_IMAGE_FILE_HEADER</span><span class="o">*</span><span class="p">)(</span><span class="n">fileBufferp</span> <span class="o">+</span> <span class="n">_image_dos_header</span><span class="o">-&gt;</span><span class="n">e_lfanew</span> <span class="o">+</span> <span class="mi">4</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">	<span class="n">_image_optional_header</span> <span class="o">=</span> <span class="p">(</span><span class="n">_IMAGE_OPTIONAL_HEADER</span><span class="o">*</span><span class="p">)((</span><span class="kt">char</span><span class="o">*</span><span class="p">)</span><span class="n">_image_file_header</span> <span class="o">+</span> <span class="mi">20</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">	<span class="n">_image_section_header</span> <span class="o">=</span> <span class="p">(</span><span class="n">_IMAGE_SECTION_HEADER</span><span class="o">*</span><span class="p">)((</span><span class="kt">char</span><span class="o">*</span><span class="p">)</span><span class="n">_image_optional_header</span> <span class="o">+</span> <span class="n">_image_file_header</span><span class="o">-&gt;</span><span class="n">SizeOfOptionalHeader</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="n">DWORD</span> <span class="n">sizeofImage</span> <span class="o">=</span> <span class="n">_image_optional_header</span><span class="o">-&gt;</span><span class="n">SizeOfImage</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="kt">char</span><span class="o">*</span> <span class="n">imageBufferp</span> <span class="o">=</span> <span class="p">(</span><span class="kt">char</span><span class="o">*</span><span class="p">)</span><span class="n">malloc</span><span class="p">(</span><span class="n">sizeofImage</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">	<span class="k">if</span> <span class="p">(</span><span class="nb">NULL</span> <span class="o">==</span> <span class="n">imageBufferp</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="n">printf</span><span class="p">(</span><span class="s">&#34;动态申请ImageBuffer内存失败</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">		<span class="n">exit</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl">	<span class="n">memset</span><span class="p">(</span><span class="n">imageBufferp</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">sizeofImage</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="c1">// 复制所有头
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="n">memcpy</span><span class="p">(</span><span class="n">imageBufferp</span><span class="p">,</span> <span class="n">fileBufferp</span><span class="p">,</span> <span class="n">_image_optional_header</span><span class="o">-&gt;</span><span class="n">SizeOfHeaders</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="c1">// 将文件中的节表复制到内存上
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">_image_file_header</span><span class="o">-&gt;</span><span class="n">NumberOfSections</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="n">memcpy</span><span class="p">(</span><span class="n">imageBufferp</span> <span class="o">+</span> <span class="n">_image_section_header</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">VirtualAddress</span><span class="p">,</span> <span class="n">fileBufferp</span> <span class="o">+</span> <span class="n">_image_section_header</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">PointerToRawData</span><span class="p">,</span> <span class="n">_image_section_header</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">SizeOfRawData</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="k">return</span> <span class="n">imageBufferp</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="cm">/*计算NewBuffer大小函数
+</span></span></span><span class="line"><span class="cl"><span class="cm">参数：NewBuffer起始地址
+</span></span></span><span class="line"><span class="cl"><span class="cm">返回值：unsigned int类型（单位：字节）
+</span></span></span><span class="line"><span class="cl"><span class="cm">*/</span>
+</span></span><span class="line"><span class="cl"><span class="n">DWORD</span> <span class="nf">compute_NewBuffer_size</span><span class="p">(</span><span class="kt">char</span><span class="o">*</span> <span class="n">newBufferp</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="n">_IMAGE_DOS_HEADER</span><span class="o">*</span> <span class="n">_image_dos_header</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="n">_IMAGE_FILE_HEADER</span><span class="o">*</span> <span class="n">_image_file_header</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="n">_IMAGE_OPTIONAL_HEADER</span><span class="o">*</span> <span class="n">_image_optional_header</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="n">_IMAGE_SECTION_HEADER</span><span class="o">*</span> <span class="n">_image_section_header</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="n">_image_dos_header</span> <span class="o">=</span> <span class="p">(</span><span class="n">_IMAGE_DOS_HEADER</span><span class="o">*</span><span class="p">)</span><span class="n">newBufferp</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="n">_image_file_header</span> <span class="o">=</span> <span class="p">(</span><span class="n">_IMAGE_FILE_HEADER</span><span class="o">*</span><span class="p">)(</span><span class="n">newBufferp</span> <span class="o">+</span> <span class="n">_image_dos_header</span><span class="o">-&gt;</span><span class="n">e_lfanew</span> <span class="o">+</span> <span class="mi">4</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">	<span class="n">_image_optional_header</span> <span class="o">=</span> <span class="p">(</span><span class="n">_IMAGE_OPTIONAL_HEADER</span><span class="o">*</span><span class="p">)((</span><span class="kt">char</span><span class="o">*</span><span class="p">)</span><span class="n">_image_file_header</span> <span class="o">+</span> <span class="mi">20</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">	<span class="n">_image_section_header</span> <span class="o">=</span> <span class="p">(</span><span class="n">_IMAGE_SECTION_HEADER</span><span class="o">*</span><span class="p">)((</span><span class="kt">char</span><span class="o">*</span><span class="p">)</span><span class="n">_image_optional_header</span> <span class="o">+</span> <span class="n">_image_file_header</span><span class="o">-&gt;</span><span class="n">SizeOfOptionalHeader</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="n">_IMAGE_SECTION_HEADER</span><span class="o">*</span> <span class="n">last_image_section_header</span> <span class="o">=</span> <span class="n">_image_section_header</span> <span class="o">+</span> <span class="n">_image_file_header</span><span class="o">-&gt;</span><span class="n">NumberOfSections</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="n">DWORD</span> <span class="n">sizeofNewBuffer</span> <span class="o">=</span> <span class="n">last_image_section_header</span><span class="o">-&gt;</span><span class="n">PointerToRawData</span> <span class="o">+</span> <span class="n">last_image_section_header</span><span class="o">-&gt;</span><span class="n">SizeOfRawData</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="k">return</span> <span class="n">sizeofNewBuffer</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="cm">/*ImageBuffer到NewBuffer函数
+</span></span></span><span class="line"><span class="cl"><span class="cm">参数：ImageBuffer起始地址
+</span></span></span><span class="line"><span class="cl"><span class="cm">返回值：NewBuffer起始地址
+</span></span></span><span class="line"><span class="cl"><span class="cm">*/</span>
+</span></span><span class="line"><span class="cl"><span class="kt">char</span><span class="o">*</span> <span class="nf">imageBuffer_to_NewBuffer</span><span class="p">(</span><span class="kt">char</span><span class="o">*</span> <span class="n">imageBufferp</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="n">_IMAGE_DOS_HEADER</span><span class="o">*</span> <span class="n">_image_dos_header</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="n">_IMAGE_FILE_HEADER</span><span class="o">*</span> <span class="n">_image_file_header</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="n">_IMAGE_OPTIONAL_HEADER</span><span class="o">*</span> <span class="n">_image_optional_header</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="n">_IMAGE_SECTION_HEADER</span><span class="o">*</span> <span class="n">_image_section_header</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="n">_image_dos_header</span> <span class="o">=</span> <span class="p">(</span><span class="n">_IMAGE_DOS_HEADER</span><span class="o">*</span><span class="p">)</span><span class="n">imageBufferp</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="n">_image_file_header</span> <span class="o">=</span> <span class="p">(</span><span class="n">_IMAGE_FILE_HEADER</span><span class="o">*</span><span class="p">)(</span><span class="n">imageBufferp</span> <span class="o">+</span> <span class="n">_image_dos_header</span><span class="o">-&gt;</span><span class="n">e_lfanew</span> <span class="o">+</span> <span class="mi">4</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">	<span class="n">_image_optional_header</span> <span class="o">=</span> <span class="p">(</span><span class="n">_IMAGE_OPTIONAL_HEADER</span><span class="o">*</span><span class="p">)((</span><span class="kt">char</span><span class="o">*</span><span class="p">)</span><span class="n">_image_file_header</span> <span class="o">+</span> <span class="mi">20</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">	<span class="n">_image_section_header</span> <span class="o">=</span> <span class="p">(</span><span class="n">_IMAGE_SECTION_HEADER</span><span class="o">*</span><span class="p">)((</span><span class="kt">char</span><span class="o">*</span><span class="p">)</span><span class="n">_image_optional_header</span> <span class="o">+</span> <span class="n">_image_file_header</span><span class="o">-&gt;</span><span class="n">SizeOfOptionalHeader</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="c1">//重新计算newBuffer需要大小
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="cm">/*方法一:SizeOfHEADER + 所有节的SizeOfRawData之和
+</span></span></span><span class="line"><span class="cl"><span class="cm">	int sizeofSections = 0;
+</span></span></span><span class="line"><span class="cl"><span class="cm">	_IMAGE_SECTION_HEADER* _image_section_header_temp = _image_section_header;
+</span></span></span><span class="line"><span class="cl"><span class="cm">	for(DWORD int i = 0;i &lt; _image_file_header-&gt;NumberOfSections;i++){
+</span></span></span><span class="line"><span class="cl"><span class="cm">		sizeofSections += _image_section_header_temp-&gt;SizeOfRawData;
+</span></span></span><span class="line"><span class="cl"><span class="cm">		_image_section_header_temp++;
+</span></span></span><span class="line"><span class="cl"><span class="cm">	}
+</span></span></span><span class="line"><span class="cl"><span class="cm">	char* newBufferp = (char*)malloc(_image_optional_header-&gt;SizeOfHeaders + sizeofSections);
+</span></span></span><span class="line"><span class="cl"><span class="cm">	*/</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="c1">//方法二:使用最后一个节的文件偏移地址 + 最后一个节对齐后的大小
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="n">DWORD</span> <span class="n">size</span> <span class="o">=</span> <span class="n">compute_NewBuffer_size</span><span class="p">(</span><span class="n">imageBufferp</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">	<span class="kt">char</span><span class="o">*</span> <span class="n">newBufferp</span> <span class="o">=</span> <span class="p">(</span><span class="kt">char</span><span class="o">*</span><span class="p">)</span><span class="n">malloc</span><span class="p">(</span><span class="n">size</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">	<span class="k">if</span> <span class="p">(</span><span class="nb">NULL</span> <span class="o">==</span> <span class="n">newBufferp</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="n">printf</span><span class="p">(</span><span class="s">&#34;NewBuffer内存分配失败</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">		<span class="n">exit</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl">	<span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">size</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="o">*</span><span class="p">(</span><span class="n">newBufferp</span> <span class="o">+</span> <span class="n">i</span><span class="p">)</span> <span class="o">=</span> <span class="mh">0x00</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">_image_optional_header</span><span class="o">-&gt;</span><span class="n">SizeOfHeaders</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="o">*</span><span class="p">(</span><span class="n">newBufferp</span> <span class="o">+</span> <span class="n">i</span><span class="p">)</span> <span class="o">=</span> <span class="o">*</span><span class="p">(</span><span class="n">imageBufferp</span> <span class="o">+</span> <span class="n">i</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">_image_file_header</span><span class="o">-&gt;</span><span class="n">NumberOfSections</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="k">for</span> <span class="p">(</span><span class="n">DWORD</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">_image_section_header</span><span class="o">-&gt;</span><span class="n">SizeOfRawData</span><span class="p">;</span> <span class="n">j</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span> <span class="c1">//不用VirtualSize因为害怕会多复制覆盖下一个节
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>			<span class="o">*</span><span class="p">(</span><span class="n">newBufferp</span> <span class="o">+</span> <span class="n">_image_section_header</span><span class="o">-&gt;</span><span class="n">PointerToRawData</span> <span class="o">+</span> <span class="n">j</span><span class="p">)</span> <span class="o">=</span> <span class="o">*</span><span class="p">(</span><span class="n">imageBufferp</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">				<span class="n">_image_section_header</span><span class="o">-&gt;</span><span class="n">VirtualAddress</span> <span class="o">+</span> <span class="n">j</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">		<span class="p">}</span>
+</span></span><span class="line"><span class="cl">		<span class="n">_image_section_header</span><span class="o">++</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="k">return</span> <span class="n">newBufferp</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="cm">/*NewBuffer存盘函数
+</span></span></span><span class="line"><span class="cl"><span class="cm">参数：需要写出数据的内存首地址，保存绝对路径，写出的数据大小（单位：字节）
+</span></span></span><span class="line"><span class="cl"><span class="cm">返回值：成功返回1，失败返回0
+</span></span></span><span class="line"><span class="cl"><span class="cm">*/</span>
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">save_to_disk</span><span class="p">(</span><span class="kt">char</span><span class="o">*</span> <span class="n">newBufferp</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">storagePath</span><span class="p">,</span> <span class="n">DWORD</span> <span class="n">size</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="n">FILE</span><span class="o">*</span> <span class="n">fp</span> <span class="o">=</span> <span class="n">fopen</span><span class="p">(</span><span class="n">storagePath</span><span class="p">,</span> <span class="s">&#34;wb&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">	<span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">fp</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="n">printf</span><span class="p">(</span><span class="s">&#34;打开文件失败&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">		<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl">	<span class="kt">int</span> <span class="n">isSucceed</span> <span class="o">=</span> <span class="n">fwrite</span><span class="p">(</span><span class="n">newBufferp</span><span class="p">,</span> <span class="n">size</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">fp</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">	<span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">isSucceed</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="n">free</span><span class="p">(</span><span class="n">newBufferp</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">		<span class="n">fclose</span><span class="p">(</span><span class="n">fp</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">		<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl">	<span class="n">fclose</span><span class="p">(</span><span class="n">fp</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">	<span class="k">return</span> <span class="mi">1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="cm">/*向第一个节.text中注入shellcode函数
+</span></span></span><span class="line"><span class="cl"><span class="cm">参数：要注入的可执行文件的ImageBuffer起始地址
+</span></span></span><span class="line"><span class="cl"><span class="cm">返回值：0则注入失败，1则注入成功
+</span></span></span><span class="line"><span class="cl"><span class="cm">*/</span>
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">add_shellcode</span><span class="p">(</span><span class="kt">char</span><span class="o">*</span> <span class="n">imageBufferp</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="n">_IMAGE_DOS_HEADER</span><span class="o">*</span> <span class="n">_image_dos_header</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="n">_IMAGE_FILE_HEADER</span><span class="o">*</span> <span class="n">_image_file_header</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="n">_IMAGE_OPTIONAL_HEADER</span><span class="o">*</span> <span class="n">_image_optional_header</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="n">_IMAGE_SECTION_HEADER</span><span class="o">*</span> <span class="n">_image_section_header</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="n">_image_dos_header</span> <span class="o">=</span> <span class="p">(</span><span class="n">_IMAGE_DOS_HEADER</span><span class="o">*</span><span class="p">)</span><span class="n">imageBufferp</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="n">_image_file_header</span> <span class="o">=</span> <span class="p">(</span><span class="n">_IMAGE_FILE_HEADER</span><span class="o">*</span><span class="p">)(</span><span class="n">imageBufferp</span> <span class="o">+</span> <span class="n">_image_dos_header</span><span class="o">-&gt;</span><span class="n">e_lfanew</span> <span class="o">+</span> <span class="mi">4</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">	<span class="n">_image_optional_header</span> <span class="o">=</span> <span class="p">(</span><span class="n">_IMAGE_OPTIONAL_HEADER</span><span class="o">*</span><span class="p">)((</span><span class="kt">char</span><span class="o">*</span><span class="p">)</span><span class="n">_image_file_header</span> <span class="o">+</span> <span class="mi">20</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">	<span class="n">_image_section_header</span> <span class="o">=</span> <span class="p">(</span><span class="n">_IMAGE_SECTION_HEADER</span><span class="o">*</span><span class="p">)((</span><span class="kt">char</span><span class="o">*</span><span class="p">)</span><span class="n">_image_optional_header</span> <span class="o">+</span> <span class="n">_image_file_header</span><span class="o">-&gt;</span><span class="n">SizeOfOptionalHeader</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="cm">/** 
+</span></span></span><span class="line"><span class="cl"><span class="cm">	*  用SizeofRawData - VirtualSize判断空白区是否存的下shellcode：这里要考虑到一个问题：我们使用的是secp-&gt;VirtualAddress + secp-&gt;Misc.VirtualSize来确定内存中此节的空白区的偏移起始地址，
+</span></span></span><span class="line"><span class="cl"><span class="cm">	*  这个算法是没错的，但是还记得前面将FileBuffer装载到ImageBuffer时我们复制每个节的长度是按照SizeOfRawData复制的，而且ImageBuffer到NewBuffer也是每个节按照SizeOfRawData复制的。
+</span></span></span><span class="line"><span class="cl"><span class="cm">	*  那么如果某一个节的VirtualSize&gt;SizeOfRawData，就会出现我们添加代码的地方确实在节装入内存时的空白区，
+</span></span></span><span class="line"><span class="cl"><span class="cm">	*  但是最后ImageBuffer到NewBuffer时，复制的时候只复制了这个节开始的SizeOfRawData个字节，我们加的代码并没有复制进去，就可能出现问题，所以干脆直接要求SizeOfRawData &gt; VirtualSize才能注入
+</span></span></span><span class="line"><span class="cl"><span class="cm">	*/</span>
+</span></span><span class="line"><span class="cl">	<span class="k">if</span> <span class="p">((</span><span class="kt">int</span><span class="p">)(</span><span class="n">_image_section_header</span><span class="o">-&gt;</span><span class="n">SizeOfRawData</span> <span class="o">-</span> <span class="n">_image_section_header</span><span class="o">-&gt;</span><span class="n">Misc</span><span class="p">.</span><span class="n">VirtualSize</span><span class="p">)</span> <span class="o">&lt;</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">shellcode</span><span class="p">)</span> <span class="o">/</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">shellcode</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="n">printf</span><span class="p">(</span><span class="s">&#34;此节空白区大小不够，添加失败&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">		<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="c1">//将shellcode注入到节空白区
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="kt">char</span><span class="o">*</span> <span class="n">shellcode_ptr</span> <span class="o">=</span> <span class="n">imageBufferp</span> <span class="o">+</span> <span class="n">_image_section_header</span><span class="o">-&gt;</span><span class="n">VirtualAddress</span> <span class="o">+</span> <span class="n">_image_section_header</span><span class="o">-&gt;</span><span class="n">Misc</span><span class="p">.</span><span class="n">VirtualSize</span><span class="p">;</span>	<span class="c1">//计算插入代码的位置
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="kt">char</span><span class="o">*</span> <span class="n">newOEP</span> <span class="o">=</span> <span class="n">shellcode_ptr</span><span class="p">;</span>  <span class="c1">//此shellcode注入起始地址即为新的OEP地址
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="n">memcpy</span><span class="p">(</span><span class="n">shellcode_ptr</span><span class="p">,</span> <span class="n">shellcode</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">shellcode</span><span class="p">)</span> <span class="o">/</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">shellcode</span><span class="p">[</span><span class="mi">0</span><span class="p">]));</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="c1">//修改call MessageBox的硬编码E8后面的4字节
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="n">DWORD</span> <span class="n">E8_fill_value</span> <span class="o">=</span> <span class="n">MessageBox_Address</span> <span class="o">-</span> <span class="p">((</span><span class="n">shellcode_ptr</span> <span class="o">-</span> <span class="n">imageBufferp</span> <span class="o">+</span> <span class="n">_image_optional_header</span><span class="o">-&gt;</span><span class="n">ImageBase</span><span class="p">)</span> <span class="o">+</span> <span class="mi">8</span> <span class="o">+</span> <span class="mi">5</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">	<span class="o">*</span><span class="p">(</span><span class="n">DWORD</span><span class="o">*</span><span class="p">)(</span><span class="n">shellcode_ptr</span> <span class="o">+</span> <span class="mi">9</span><span class="p">)</span> <span class="o">=</span> <span class="n">E8_fill_value</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="c1">//修改jmp 原OEP的硬编码E9后面的4字节
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="n">DWORD</span> <span class="n">E9_fill_value</span> <span class="o">=</span> <span class="n">_image_optional_header</span><span class="o">-&gt;</span><span class="n">AddressOfEntryPoint</span> <span class="o">-</span> <span class="p">(</span><span class="n">shellcode_ptr</span> <span class="o">-</span> <span class="n">imageBufferp</span> <span class="o">+</span> <span class="mi">8</span> <span class="o">+</span> <span class="mi">5</span> <span class="o">+</span> <span class="mi">5</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">	<span class="o">*</span><span class="p">(</span><span class="n">DWORD</span><span class="o">*</span><span class="p">)(</span><span class="n">shellcode_ptr</span> <span class="o">+</span> <span class="mi">14</span><span class="p">)</span> <span class="o">=</span> <span class="n">E9_fill_value</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="c1">//修改OEP指向shellcode
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="n">_image_optional_header</span><span class="o">-&gt;</span><span class="n">AddressOfEntryPoint</span> <span class="o">=</span> <span class="p">(</span><span class="n">DWORD</span><span class="p">)(</span><span class="n">newOEP</span> <span class="o">-</span> <span class="n">imageBufferp</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="k">return</span> <span class="mi">1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="kt">char</span><span class="o">*</span> <span class="n">argv</span><span class="p">[])</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="kt">char</span><span class="o">*</span> <span class="n">fileBufferp</span> <span class="o">=</span> <span class="n">to_FileBuffer</span><span class="p">(</span><span class="n">filePath</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">	<span class="kt">char</span><span class="o">*</span> <span class="n">imageBufferp</span> <span class="o">=</span> <span class="n">fileBuffer_to_ImageBuffer</span><span class="p">(</span><span class="n">fileBufferp</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="c1">// 注入提示框
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">add_shellcode</span><span class="p">(</span><span class="n">imageBufferp</span><span class="p">))</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="n">printf</span><span class="p">(</span><span class="s">&#34;shellcode注入失败&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">		<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="kt">char</span><span class="o">*</span> <span class="n">newBufferp</span> <span class="o">=</span> <span class="n">imageBuffer_to_NewBuffer</span><span class="p">(</span><span class="n">imageBufferp</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">	<span class="kt">int</span> <span class="n">isSucceed</span> <span class="o">=</span> <span class="n">save_to_disk</span><span class="p">(</span><span class="n">newBufferp</span><span class="p">,</span> <span class="n">storagePath</span><span class="p">,</span> <span class="n">compute_NewBuffer_size</span><span class="p">(</span><span class="n">newBufferp</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">	<span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">isSucceed</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">		<span class="n">printf</span><span class="p">(</span><span class="s">&#34;存盘失败&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">	<span class="k">else</span>
+</span></span><span class="line"><span class="cl">		<span class="n">printf</span><span class="p">(</span><span class="s">&#34;存盘成功&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="n">free</span><span class="p">(</span><span class="n">fileBufferp</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">	<span class="n">free</span><span class="p">(</span><span class="n">imageBufferp</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">	<span class="n">free</span><span class="p">(</span><span class="n">newBufferp</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="25-在imagebuffer中添加代码">2.5 在ImageBuffer中添加代码</h3>
 </div><div class="post-footer" id="post-footer">
   <div class="post-info">
     <div class="post-info-line">
