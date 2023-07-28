@@ -1,0 +1,16 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+  <channel>
+    <title>破解 - Tag - Notes</title>
+    <link>https://cui-jiang-tao.github.io/tags/%E7%A0%B4%E8%A7%A3/</link>
+    <description>破解 - Tag - Notes</description>
+    <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>cjt953899262@gmail.com (cjt)</managingEditor>
+      <webMaster>cjt953899262@gmail.com (cjt)</webMaster><lastBuildDate>Fri, 28 Jul 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://cui-jiang-tao.github.io/tags/%E7%A0%B4%E8%A7%A3/" rel="self" type="application/rss+xml" /><item>
+  <title>160个CrackMe之001</title>
+  <link>https://cui-jiang-tao.github.io/posts/160_crackme/001/</link>
+  <pubDate>Fri, 28 Jul 2023 00:00:00 &#43;0000</pubDate>
+  <author>cjt</author>
+  <guid>https://cui-jiang-tao.github.io/posts/160_crackme/001/</guid>
+  <description><![CDATA[1. 程序分析 想要破解一个程序，必须先了解这个程序。所以，在破解过程中，对最初程序的分析很重要，它可以帮助我们理解作者的目的和意图，特别是对于注]]></description>
+</item>
+</channel>
+</rss>

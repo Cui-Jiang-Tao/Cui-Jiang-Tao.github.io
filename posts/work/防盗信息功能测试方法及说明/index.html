@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+  <head>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+    <meta name="robots" content="noodp" />
+    <title> - Notes</title><meta name="author" content="cjt">
+<meta name="author-link" content="">
+<meta name="description" content="日期: 2023-07-06 更新日期: 2023-07-10 更新说明：修正字段信息，增加测试bug及问题 防盗信息功能测试方法及说明 1. 字段信息: 1 2 3 ACTSPEC,0xAA,0x00,0x00,0x00,0x04 &#34;防盗信息&#34; ACTSPEC,0xAA,0x00,0x00,0x00,0x04" /><meta name="keywords" content='Hugo, FixIt' /><meta itemprop="name" content="">
+<meta itemprop="description" content="日期: 2023-07-06 更新日期: 2023-07-10 更新说明：修正字段信息，增加测试bug及问题 防盗信息功能测试方法及说明 1. 字段信息: 1 2 3 ACTSPEC,0xAA,0x00,0x00,0x00,0x04 &#34;防盗信息&#34; ACTSPEC,0xAA,0x00,0x00,0x00,0x04">
+
+<meta itemprop="wordCount" content="897">
+<meta itemprop="keywords" content="" /><meta property="og:title" content="" />
+<meta property="og:description" content="日期: 2023-07-06 更新日期: 2023-07-10 更新说明：修正字段信息，增加测试bug及问题 防盗信息功能测试方法及说明 1. 字段信息: 1 2 3 ACTSPEC,0xAA,0x00,0x00,0x00,0x04 &#34;防盗信息&#34; ACTSPEC,0xAA,0x00,0x00,0x00,0x04" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://cui-jiang-tao.github.io/posts/work/%E9%98%B2%E7%9B%97%E4%BF%A1%E6%81%AF%E5%8A%9F%E8%83%BD%E6%B5%8B%E8%AF%95%E6%96%B9%E6%B3%95%E5%8F%8A%E8%AF%B4%E6%98%8E/" /><meta property="article:section" content="posts" />
+
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=""/>
+<meta name="twitter:description" content="日期: 2023-07-06 更新日期: 2023-07-10 更新说明：修正字段信息，增加测试bug及问题 防盗信息功能测试方法及说明 1. 字段信息: 1 2 3 ACTSPEC,0xAA,0x00,0x00,0x00,0x04 &#34;防盗信息&#34; ACTSPEC,0xAA,0x00,0x00,0x00,0x04"/>
+<meta name="application-name" content="FixIt">
+<meta name="apple-mobile-web-app-title" content="FixIt"><meta name="theme-color" data-light="#f8f8f8" data-dark="#252627" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" href="https://cui-jiang-tao.github.io/posts/work/%E9%98%B2%E7%9B%97%E4%BF%A1%E6%81%AF%E5%8A%9F%E8%83%BD%E6%B5%8B%E8%AF%95%E6%96%B9%E6%B3%95%E5%8F%8A%E8%AF%B4%E6%98%8E/" /><link rel="next" href="https://cui-jiang-tao.github.io/posts/work/%E9%98%B2%E7%9B%97%E4%BF%A1%E6%81%AF/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "BlogPosting",
+    "headline": "",
+    "inLanguage": "zh-CN",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https:\/\/cui-jiang-tao.github.io\/posts\/work\/%E9%98%B2%E7%9B%97%E4%BF%A1%E6%81%AF%E5%8A%9F%E8%83%BD%E6%B5%8B%E8%AF%95%E6%96%B9%E6%B3%95%E5%8F%8A%E8%AF%B4%E6%98%8E\/"
+    },"genre": "posts","wordcount":  897 ,
+    "url": "https:\/\/cui-jiang-tao.github.io\/posts\/work\/%E9%98%B2%E7%9B%97%E4%BF%A1%E6%81%AF%E5%8A%9F%E8%83%BD%E6%B5%8B%E8%AF%95%E6%96%B9%E6%B3%95%E5%8F%8A%E8%AF%B4%E6%98%8E\/","publisher": {
+      "@type": "Organization",
+      "name": ""},"author": {
+        "@type": "Person",
+        "name": "cjt"
+      },"description": ""
+  }
+  </script></head>
+  <body data-header-desktop="fixed" data-header-mobile="auto"><script>(window.localStorage?.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('data-theme', 'dark');</script><div class="wrapper" data-page-style="wide"><header class="desktop animate__faster" id="header-desktop">
+  <div class="header-wrapper">
+    <div class="header-title">
+      <a href="/" title="Notes"><span class="header-title-pre"><i class='far fa-kiss-wink-heart fa-fw' aria-hidden='true'></i></span><span id="typeit-header-desktop" class="typeit"></span></a><span class="header-subtitle"></span></div>
+    <nav>
+      <ul class="menu"><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/posts/"
+                
+                
+              ><i class="fa-solid fa-archive fa-fw fa-sm" aria-hidden="true"></i> 文章</a></li><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/categories/"
+                
+                
+              ><i class="fa-solid fa-th fa-fw fa-sm" aria-hidden="true"></i> 分类</a></li><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/tags/"
+                
+                
+              ><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> 标签</a></li><li class="menu-item delimiter"></li><li class="menu-item theme-switch" title="Switch Theme">
+          <i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i>
+        </li></ul>
+    </nav>
+  </div>
+</header><header class="mobile animate__faster" id="header-mobile">
+  <div class="header-container">
+    <div class="header-wrapper">
+      <div class="header-title">
+        <a href="/" title="Notes"><span class="header-title-pre"><i class='far fa-kiss-wink-heart fa-fw' aria-hidden='true'></i></span><span id="typeit-header-title-mobile" class="typeit"></span></a><span class="header-subtitle"></span></div>
+      <div class="menu-toggle" id="menu-toggle-mobile">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+    <nav>
+      <ul class="menu" id="menu-mobile"><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/posts/"
+                  
+                  
+                ><i class="fa-solid fa-archive fa-fw fa-sm" aria-hidden="true"></i> 文章</a></li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/categories/"
+                  
+                  
+                ><i class="fa-solid fa-th fa-fw fa-sm" aria-hidden="true"></i> 分类</a></li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/tags/"
+                  
+                  
+                ><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> 标签</a></li><li class="menu-item menu-system">
+          <span class="menu-system-item theme-switch" title="Switch Theme"><i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i></span></li>
+      </ul>
+    </nav>
+  </div>
+</header><main class="container"><aside class="toc" id="toc-auto"><h2 class="toc-title">Contents&nbsp;<i class="toc-icon fa-solid fa-angle-down fa-fw" aria-hidden="true"></i></h2>
+      <div class="toc-content" id="toc-content-auto"></div></aside>
+
+  <aside class="aside-custom">
+    </aside>
+
+  <article class="page single">
+    <div class="header"><h1 class="single-title animate__animated animate__flipInX"><span></span>
+      </h1></div><div class="post-meta">
+      <div class="post-meta-line"><span class="post-author"><span class="author"><i class="fa-solid fa-user-circle" aria-hidden="true"></i>
+      cjt</span></span></div>
+      <div class="post-meta-line"><span title="published on 0001-01-01 00:00:00"><i class="fa-regular fa-calendar-alt fa-fw me-1" aria-hidden="true"></i><time datetime="0001-01-01">0001-01-01</time></span>&nbsp;<span title="Updated on 0001-01-01 00:00:00"><i class="fa-regular fa-edit fa-fw me-1" aria-hidden="true"></i><time datetime="0001-01-01">0001-01-01</time></span>&nbsp;<span><i class="fa-solid fa-pencil-alt fa-fw me-1" aria-hidden="true"></i>897 words</span>&nbsp;<span><i class="fa-regular fa-clock fa-fw me-1" aria-hidden="true"></i>2 minutes</span>&nbsp;</div>
+    </div><div class="details toc" id="toc-static" data-kept="false">
+        <div class="details-summary toc-title">
+          <span>Contents</span>
+          <span><i class="details-icon fa-solid fa-angle-right" aria-hidden="true"></i></span>
+        </div>
+        <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#防盗信息功能测试方法及说明">防盗信息功能测试方法及说明</a>
+      <ul>
+        <li><a href="#1-字段信息">1. 字段信息:</a></li>
+        <li><a href="#2-文件信息">2. 文件信息</a></li>
+        <li><a href="#3-数据库信息">3. 数据库信息</a></li>
+        <li><a href="#4-数据库的比对">4. <em>数据库的比对</em></a></li>
+        <li><a href="#5-防盗信息显示">5. 防盗信息显示</a></li>
+        <li><a href="#6-测试bug及问题">6. 测试bug及问题</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+      </div><div class="content" id="content"><p>日期: 2023-07-06
+更新日期: 2023-07-10</p>
+<p>更新说明：修正字段信息，增加测试bug及问题</p>
+<h2 id="防盗信息功能测试方法及说明">防盗信息功能测试方法及说明</h2>
+<h3 id="1-字段信息">1. 字段信息:</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">ACTSPEC,0xAA,0x00,0x00,0x00,0x04		&#34;防盗信息&#34;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">ACTSPEC,0xAA,0x00,0x00,0x00,0x04		&#34;IMMO Info.&#34;
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="2-文件信息">2. 文件信息</h3>
+<p><code>Helps/</code>目录：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cmd" data-lang="cmd"><span class="line"><span class="cl">\Helps 的目录
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">2023/07/04  14:28           161,519 CN_FIAT_Html.bin
+</span></span><span class="line"><span class="cl">2023/07/04  14:28           194,319 CZ_FIAT_Html.bin
+</span></span><span class="line"><span class="cl">2023/07/04  14:28           193,847 DE_FIAT_Html.bin
+</span></span><span class="line"><span class="cl">2023/07/04  14:28           250,800 EL_FIAT_Html.bin
+</span></span><span class="line"><span class="cl">2023/07/04  14:28           180,140 EN_FIAT_Html.bin
+</span></span><span class="line"><span class="cl">2023/07/04  14:28           199,906 ES_FIAT_Html.bin
+</span></span><span class="line"><span class="cl">2023/07/04  14:28           213,949 FA_FIAT_Html.bin
+</span></span><span class="line"><span class="cl">2023/07/04  14:28           197,294 FR_FIAT_Html.bin
+</span></span><span class="line"><span class="cl">2023/07/04  14:28           201,198 HE_FIAT_Html.bin
+</span></span><span class="line"><span class="cl">2023/07/04  14:28           184,932 ID_FIAT_Html.bin
+</span></span><span class="line"><span class="cl">2023/07/04  14:28           194,812 IT_FIAT_Html.bin
+</span></span><span class="line"><span class="cl">2023/07/04  14:28           184,468 KR_FIAT_Html.bin
+</span></span><span class="line"><span class="cl">2023/07/04  14:28           189,337 NL_FIAT_Html.bin
+</span></span><span class="line"><span class="cl">2023/07/04  14:28           189,782 PL_FIAT_Html.bin
+</span></span><span class="line"><span class="cl">2023/07/04  14:28           196,993 PT_FIAT_Html.bin
+</span></span><span class="line"><span class="cl">2023/07/04  14:28           238,224 RU_FIAT_Html.bin
+</span></span><span class="line"><span class="cl">2023/07/04  14:28           182,960 SV_FIAT_Html.bin
+</span></span><span class="line"><span class="cl">2023/07/04  14:28           262,968 TH_FIAT_Html.bin
+</span></span><span class="line"><span class="cl">2023/07/04  14:28           191,025 TR_FIAT_Html.bin
+</span></span><span class="line"><span class="cl">2023/07/04  14:28           174,948 TW_FIAT_Html.bin
+</span></span><span class="line"><span class="cl">2023/07/04  14:28           202,709 VN_FIAT_Html.bin
+</span></span><span class="line"><span class="cl">2023/06/28  18:02               380 style.css
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>该目录下必须包含工程发行语言对应的<code>bin</code>文件及<code>style.css</code>文件</p>
+<h3 id="3-数据库信息">3. 数据库信息</h3>
+<p>以玛莎拉蒂为例，工程数据库信息如下：</p>
+<table>
+<thead>
+<tr>
+<th>Brand</th>
+<th>Area</th>
+<th>Model</th>
+<th>System</th>
+<th>Year</th>
+<th>Type</th>
+<th>file_name</th>
+<th>data_id</th>
+<th>dimension_id</th>
+<th>idm</th>
+<th>g_nParameter</th>
+<th>Help</th>
+<th>OBD</th>
+<th>KEY_PIC</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>玛莎拉蒂</td>
+<td></td>
+<td>GHIBLI(吉博力)</td>
+<td>智能钥匙</td>
+<td>2018-2021</td>
+<td></td>
+<td>玛莎拉蒂 GHIBLI(吉博力) 智能钥匙 2018-2021</td>
+<td></td>
+<td>46</td>
+<td>IDM_EMPTY_MENU_TYPE1</td>
+<td>0xFC050000</td>
+<td>Fiat_1336829760</td>
+<td>2</td>
+<td>Maserati_04</td>
+</tr>
+<tr>
+<td>玛莎拉蒂</td>
+<td></td>
+<td>GHIBLI(吉博力)</td>
+<td>智能钥匙</td>
+<td>2017</td>
+<td></td>
+<td>玛莎拉蒂 GHIBLI(吉博力) 智能钥匙 2017</td>
+<td></td>
+<td>46</td>
+<td>IDM_EMPTY_MENU_TYPE1</td>
+<td>0</td>
+<td>Fiat_1336829760</td>
+<td>2</td>
+<td>Maserati_04</td>
+</tr>
+</tbody>
+</table>
+<p>数据库增加三个字段：<code>Help</code>、<code>OBD</code>、<code>KEY_PIC</code></p>
+<h3 id="4-数据库的比对">4. <em>数据库的比对</em></h3>
+<p>主要是比对如下字段</p>
+<p>车辆工程数据库：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-txt" data-lang="txt"><span class="line"><span class="cl">品牌	区域	车型	钥匙类型	年份
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>开发人员给的excel数据库</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-txt" data-lang="txt"><span class="line"><span class="cl">Help	区域	车辆类型	品牌	子品牌	车型	车型(中文)	年款	钥匙类型	Html名称	OBD接口位置	KEY_PIC
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>通过字段对比是否一致，一致则填充到工程数据库的3个字段(<code>Help</code>、<code>OBD</code>(<code>OBD接口位置</code>)、<code>KEY_PIC</code>)</p>
+<blockquote>
+<p>注意：当<code>Html名称</code>字段内容为空时，代表无需填充那3个字段</p>
+</blockquote>
+<p>测试时需要确保，填充的字段内容无误，由于只有部分数据是人工填写，所以抽样测试20%即可。</p>
+<h3 id="5-防盗信息显示">5. 防盗信息显示</h3>
+<p>需要保证每个唯一的Help字段，都需点击查看，大体对比一下相同Help字段显示的防盗信息的中英文是否一致(及少数字段可能存在翻译问题)，建议两个平板对比测试。</p>
+<p><strong>最后，为了保证测试和开发效率，如有问题及时同开发人员沟通，有问题的字段进行颜色标注处理</strong>。</p>
+<h3 id="6-测试bug及问题">6. 测试bug及问题</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-txt" data-lang="txt"><span class="line"><span class="cl">bug：51697
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	1.钥匙类型不一致
+</span></span><span class="line"><span class="cl">		由于提取的中英文库版本库不一致，导致信息不一致，这类问题此版本暂不修正，后期再优化
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	2.“直板遥控钥匙”翻译
+</span></span><span class="line"><span class="cl">		问题如1
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	3. 提取库的信息无误，这类问题此版本暂不修正，后期再优化
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	4.英文优化
+</span></span><span class="line"><span class="cl">		IMMO Info: IMMO Info.
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">bug: 51728
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	不差片 ： No missing parts
+</span></span><span class="line"><span class="cl">	65号：Code 65
+</span></span></code></pre></td></tr></table>
+</div>
+</div></div><div class="post-footer" id="post-footer">
+  <div class="post-info">
+    <div class="post-info-line">
+      <div class="post-info-mod">
+        <span title="Updated on 0001-01-01 00:00:00">Updated on 0001-01-01&nbsp;</span>
+      </div><div class="post-info-license">
+          <span><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span>
+        </div></div>
+    <div class="post-info-line">
+      <div class="post-info-md"></div>
+      <div class="post-info-share">
+        <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://cui-jiang-tao.github.io/posts/work/%E9%98%B2%E7%9B%97%E4%BF%A1%E6%81%AF%E5%8A%9F%E8%83%BD%E6%B5%8B%E8%AF%95%E6%96%B9%E6%B3%95%E5%8F%8A%E8%AF%B4%E6%98%8E/" data-title=""><i class="fa-brands fa-twitter fa-fw" aria-hidden="true"></i></a>
+  <a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://cui-jiang-tao.github.io/posts/work/%E9%98%B2%E7%9B%97%E4%BF%A1%E6%81%AF%E5%8A%9F%E8%83%BD%E6%B5%8B%E8%AF%95%E6%96%B9%E6%B3%95%E5%8F%8A%E8%AF%B4%E6%98%8E/"><i class="fa-brands fa-facebook-square fa-fw" aria-hidden="true"></i></a>
+  <a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="https://cui-jiang-tao.github.io/posts/work/%E9%98%B2%E7%9B%97%E4%BF%A1%E6%81%AF%E5%8A%9F%E8%83%BD%E6%B5%8B%E8%AF%95%E6%96%B9%E6%B3%95%E5%8F%8A%E8%AF%B4%E6%98%8E/" data-title=""><i class="fa-brands fa-weibo fa-fw" aria-hidden="true"></i></a>
+  </span>
+      </div>
+    </div>
+  </div>
+
+  <div class="post-info-more">
+    <section class="post-tags"></section>
+    <section>
+      <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+    </section>
+  </div>
+
+  <div class="post-nav">
+      <a href="/posts/work/%E9%98%B2%E7%9B%97%E4%BF%A1%E6%81%AF/" class="post-nav-item" rel="next" title=""><i class="fa-solid fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+</article></main><footer class="footer">
+    <div class="footer-container"><div class="footer-line copyright" itemscope itemtype="http://schema.org/CreativeWork"><i class="fa-regular fa-copyright fa-fw" aria-hidden="true"></i>
+            <span itemprop="copyrightYear">2022 - 2023</span><span class="license footer-divider"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div><div class="footer-line statistics"></div></div>
+  </footer></div><div class="widgets"><div class="fixed-buttons animate__faster d-none"><div class="fixed-button back-to-top" role="button" aria-label="Back to Top"><i class="fa-solid fa-arrow-up fa-fw" aria-hidden="true"></i><span class="variant-numeric d-none">0%</span>
+        </div></div><div id="mask"></div><noscript>
+    <div class="noscript-warning">Theme FixIt works best with JavaScript enabled.</div>
+  </noscript>
+</div><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script src="/lib/sharer/sharer.min.js" async defer></script><script src="/lib/typeit/index.umd.js" defer></script><script src="/lib/katex/katex.min.js" defer></script><script src="/lib/katex/auto-render.min.js" defer></script><script src="/lib/katex/copy-tex.min.js" defer></script><script src="/lib/katex/mhchem.min.js" defer></script><script src="/lib/cookieconsent/cookieconsent.min.js" defer></script><script>window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":-1},"comment":{"enable":false},"cookieconsent":{"content":{"dismiss":"Got it!","link":"Learn more","message":"This website uses Cookies to improve your experience."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"data":{"typeit-header-desktop":"Home","typeit-header-title-mobile":"Home"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"typeit-header-desktop":["typeit-header-desktop"],"typeit-header-title-mobile":["typeit-header-title-mobile"]},"duration":-1,"loop":false,"speed":100}};</script><script src="/js/theme.min.js" defer></script></body>
+</html>

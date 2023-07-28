@@ -1,0 +1,16 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+  <channel>
+    <title>Windows 10 - Tag - Notes</title>
+    <link>https://cui-jiang-tao.github.io/tags/windows-10/</link>
+    <description>Windows 10 - Tag - Notes</description>
+    <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>cjt953899262@gmail.com (cjt)</managingEditor>
+      <webMaster>cjt953899262@gmail.com (cjt)</webMaster><lastBuildDate>Fri, 09 Dec 2022 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://cui-jiang-tao.github.io/tags/windows-10/" rel="self" type="application/rss+xml" /><item>
+  <title>Windows 10 远程桌面</title>
+  <link>https://cui-jiang-tao.github.io/posts/work/win10%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2/</link>
+  <pubDate>Fri, 09 Dec 2022 00:00:00 &#43;0000</pubDate>
+  <author>cjt</author>
+  <guid>https://cui-jiang-tao.github.io/posts/work/win10%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2/</guid>
+  <description><![CDATA[远程桌面 被远程的主机 首先win键 -&gt; 设置 -&gt; 系统 -&gt; 远程桌面，启动远程桌面功能。 再查看本机IP地址：win + r 组合键，输入cmd，回车确定，在cm]]></description>
+</item>
+</channel>
+</rss>

@@ -1,16 +1,19 @@
-<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>汇编 - Tag - 学习记录</title>
-    <link>https://cui-jiang-tao.github.io/tags/%E6%B1%87%E7%BC%96/</link>
-    <description>汇编 - Tag - 学习记录</description>
-    <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>cjt953899262@gmail.com (cjt)</managingEditor>
-      <webMaster>cjt953899262@gmail.com (cjt)</webMaster><lastBuildDate>Tue, 07 Feb 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://cui-jiang-tao.github.io/tags/%E6%B1%87%E7%BC%96/" rel="self" type="application/rss+xml" /><item>
-  <title>汇编(8086)</title>
-  <link>https://cui-jiang-tao.github.io/posts/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/</link>
-  <pubDate>Tue, 07 Feb 2023 00:00:00 &#43;0000</pubDate>
-  <author>cjt</author>
-  <guid>https://cui-jiang-tao.github.io/posts/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/</guid>
-  <description><![CDATA[2. 寄存器 Debug基本指令 用 Debug的 R命令查看、改变CPU寄存器的内容 用 Debug的 D命令查看内存中的内容 用 Debug的 E命令改写内存中]]></description>
-</item>
-</channel>
+    <title>汇编 on </title>
+    <link>/tags/%E6%B1%87%E7%BC%96/</link>
+    <description>Recent content in 汇编 on </description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Tue, 07 Feb 2023 00:00:00 +0000</lastBuildDate><atom:link href="/tags/%E6%B1%87%E7%BC%96/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>汇编(8086)</title>
+      <link>/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/</link>
+      <pubDate>Tue, 07 Feb 2023 00:00:00 +0000</pubDate>
+      
+      <guid>/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/</guid>
+      <description>2. 寄存器 Debug基本指令 用 Debug的 R命令查看、改变CPU寄存器的内容 用 Debug的 D命令查看内存中的内容 用 Debug的 E命令改写内存中的内容 用 Debug的 U命令将内存中的机器指令翻译成汇编指令 用 Debug的 T命令执行一条机器指令 用 Debug的 A命令以汇编指令的格式在内存中写入一条机器指令 </description>
+    </item>
+    
+  </channel>
 </rss>

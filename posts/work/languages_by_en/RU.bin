@@ -1,0 +1,709 @@
+(SEMI)SMART KEY::(Полу) Умный ключ
+-2001(13/48 CHIP FREQUENCY:315/433)-2003(13 CHIP FREQUENCY:313)2003-2008(48 CHIP FREQUENCY:433)2008-2011(46 CHIP FREQUENCY 433/313.8)2010-2014(46 CHIP FREQUENCY:433)2014-(47 CHIP FREQUENCY:433)::-2001 (13.: 433) 2014- (47 Чип частота: 433)
+-2001(48 CHIP FREQUENCY:433)::-2001 (48 Частота чипа: 433)
+-2002(13 CHIP FREQUENCY:433)::-2002 (13 Чип частота: 433)
+-2005(13 CHIP FREQUENCY:307.9)::-2005 (13 Чип частота: 307,9)
+-2005(13/48 CHIP FREQUENCY:315/433)2006-2008(8E CHIP FREQUENCY:433)2009-2015(46 CHIP FREQUENCY:433)::-2005 (13/48 Частота чипа: 315/433) 2006-2008 (8E Частота чипа: 433) 2009-2015 (46 Чип частота: 433)
+-2006(47/48,315)2006-2009(8E,433)2011-2013(46,313)2009-2014(46,433)::-2006 (47/48,315) 2006-2009 (8E, 433) 2011-2013 (46 313) 2009-2014 (46 433)
+-2008(48 CHIP FREQUENCY:315)-2014(46 CHIP FREQUENCY:433)2014-(47 CHIP FREQUENCY:433)::-2008 (48 Чип частота: 315) -2014 (46 Частота чипа: 433) 2014- (47 Чип частота: 433)
+-2008(48 CHIP FREQUENCY:315)::-2008 (48 Частота чипа: 315)
+-2016(46 CHIP FREQUENCY:433)2016(HITAG 3 FREQUENCY:433)::-2016 (46 Чип частота: 433) 2016 (HITAG 3 Частота: 433)
+01 NUMBER::Код 01
+01/51 NUMBER::Код 01/51
+02 NUMBER::Код 02
+02/56 NUMBER::Код 02/56
+02/69::02/69
+04 NUMBER::Код 04
+05 NUMBER::Код 05
+06 NUMBER::Код 06
+07 NUMBER::Код 07
+07年前48芯片；07-2010年无芯片::48 чипсов до 2007 года;07-2010 без чипсов
+07年前4C芯片，07年后67/68芯片::Чипсы 4C до 2007 года, 67/68 чипсов после 2007 года
+09 NUMBER::Код 09
+09年前无芯片::Нет чипа до 2009 года
+0X00,0X00,0X36,0XEE::0x00,0x00,0x36,0xee
+101 NUMBER::Код 101
+10::10
+128 BIT('H'KEY)::128 бит ('h'key)
+13 NUMBER::Код 13
+13/48::13/48
+135 NUMBER::Код 135
+13::13
+145 NUMBER::Код 145
+15 NUMBER::Код 15
+15年前无芯片::Без чипов 15 лет назад
+16 NUMBER::Код 16
+17 NUMBER或83 NUMBER::Код 17 или код 83
+1993-2001(13 CHIP FREQUENCY:433)2004-2007(48 CHIP FREQUENCY:433)::1993-2001 (13 Чип частота: 433) 2004-2007 (48 Чип частота: 433)
+1994-1999(13,313)-2004(13,313)2004-2008(48,433)2009-(46,433)::1994-1999 (13 313) -2004 (13 313) 2004-2008 (48 433) 2009- (46 433)
+1994-2000(13 CHIP FREQUENCY:433)::1994-2000 (13 Чип частота: 433)
+1995-1999: ID73 1999-2005: ID46::1995-1999: ID73 1999-2005: ID46
+1996-1999:ID33,2000-2001:ID45,2002-2004:ID46::1996-1999: ID33,2000-2001: ID45,2002-2004: ID46
+1996-2000(13/48 CHIP FREQUENCY:315/433)2000-2005(13 CHIP FREQUENCY:313)2006-2013(46 CHIP FREQUENCY:313/433)2015-(47 CHIP FREQUENCY:433)::1996-2000 (13/48 Частота чипа: 315/433) 2000-2005 (13 Чип частота: 313) 2006-2013 (46 Чип частота: 313/433) 2015- (47 Чип частота: 433)
+1996-2000(13/48 CHIP FREQUENCY:315/433)2000-2005(13 CHIP FREQUENCY:313)2006-2013(46 CHIP FREQUENCY:433)2015-(47 CHIP FREQUENCY:433)::1996-2000 (13/48 Частота чипа: 315/433) 2000-2005 (13 Чип частота: 313) 2006-2013 (46 Чип частота: 433) 2015- (47 Частота чипа: 433)
+1996-2004(13 CHIP FREQUENCY:307.9)2005-2012(46 CHIP FREQUENCY:311.9)::1996-2004 (13 Чип частота: 307,9) 2005-2012 (46 Чип частота: 311,9)
+1996-2004(13 CHIP FREQUENCY:307.9)::1996-2004 (13 Чип частота: 307,9)
+1996-2006(13/48 CHIP FREQUENCY:315/433)2006-2008(8E CHIP FREQUENCY:433)2008-2013(46 CHIP FREQUENCY:313)::1996-2006 (13/48 Частота чипа: 315/433) 2006-2008 (8E Частота чипа: 433) 2008-2013 (46 Чип частота: 313)
+1998-2000:ID33,2001-2008:ID46::1998-2000: ID33,2001-2008: ID46
+1998-2002(13,313)2003-2006(48,315/433)2006-2008(8E,433)2009-2013(46,433)2014-2017(47,433)::1998-2002 (13 313) 2003-2006 (48 315/433) 2006-2008 (8E, 433) 2009-2013 (46 433) 2014-2017 (47 433)
+1998-2003(13 CHIP FREQUENCY:433/307)::1998-2003 (13 Чип частота: 433/307)
+1999-2003(13 CHIP FREQUENCY:307.9)2004-2006(46 CHIP FREQUENCY:313.85)2009-2014(46 CHIP FREQUENCY:313.85)::1999-2003 (13 Чип частота: 307,9) 2004-2006 (46 Чип частота: 313,85) 2009-2014 (46 Чип частота: 313,85)
+1999-2003(13 CHIP FREQUENCY:307.9)::1999-2003 (13 Чип частота: 307,9)
+1999-2003(48 CHIP FREQUENCY:433)2004-2005(48 CHIP FREQUENCY:433)2006-2010(46 CHIP FREQUENCY:313)::1999-2003 (48 Частота чипа: 433) 2004-2005 (48 Чип частота: 433) 2006-2010 (46 Чип частота: 313)
+1999:10 2000-2001:5::1999: 10 2000-2001: 5
+1::1
+2 OR 4(2007) 8(2008-09)::2 или 4 (2007) 8 (2008-09)
+2000-2006(13 CHIP FREQUENCY:307.9)2010-2014(46 CHIP FREQUENCY:313.8)::2000-2006 (13 Чип частота: 307,9) 2010-2014 (46 Чип частота: 313,8)
+2000-2006(48 CHIP FREQUENCY:433)2014-2018(47 CHIP FREQUENCY:313)::2000-2006 (48 Чип частота: 433) 2014-2018 (47 Чип частота: 313)
+2001-2002(48 CHIP FREQUENCY:433)2003-2007(48 CHIP FREQUENCY:433)::2001-2002 (48 Чип частота: 433) 2003-2007 (48 Чип частота: 433)
+2001-2005(13 CHIP FREQUENCY:307.9)::2001-2005 (13 Чип частота: 307,9)
+2001-2006(13 CHIP FREQUENCY:307.9)2007-2013(46 CHIP FREQUENCY:313.8)2014-2017(47 CHIP FRFREQUENCY:3-924)::2001-2006 (13 Чип частота: 307,9) 2007-2013 (46 Чип частота: 313,8) 2014-2017 (47 Чип Фрочаность: 3-924)
+2001-2006(13 CHIP FREQUENCY:307.9)2007-2013(46 CHIP FREQUENCY:313.85)::2001-2006 (13 Чип частота: 307,9) 2007-2013 (46 Чип частота: 313,85)
+2002-2006(13 CHIP FREQUENCY:307.9)::2002-2006 (13 Чип частота: 307,9)
+2003-2005(48 CHIP FREQUENCY:433)2006-2007(8E CHIP FREQUENCY:433)::2003-2005 (48 Частота чипа: 433) 2006-2007 (8E Частота чипа: 433)
+2003-2006(13 CHIP FREQUENCY:313)2007-2012(46 CHIP FREQUENCY:313)::2003-2006 (13 Чип частота: 313) 2007-2012 (46 Чип частота: 313)
+2003-2007(46 CHIP FREQUENCY:433)2009-2015(46 CHIP FREQUENCY:313.8)2016-2018(HITAG 3 FREQUENCY:433)::2003-2007 (46 Частота чипа: 433) 2009-2015 (46 Чип частота: 313,8) 2016-2018 (HITAG 3 Частота: 433)
+2004-2007(48 CHIP FREQUENCY:433)2007-2009(8E CHIP FREQUENCY:433)::2004-2007 (48 Частота чипа: 433) 2007-2009 (8E Частота чипа: 433)
+2004-2008(46 CHIP FREQUENCY:313.85)::2004-2008 (46 Чип частота: 313,85)
+2004-2009(46 CHIP FREQUENCY:313.8)::2004-2009 (46 Чип частота: 313,8)
+2004-2009(48 CHIP FREQUENCY:433)::2004-2009 (48 Чип частота: 433)
+2004-2009(48 MEGAMOS 433) 2005-2008(PCF7936A 433)::2004-2009 (48 мегамос 433) 2005-2008 (PCF7936A 433)
+2004-2014(46 CHIP FREQUENCY:313.85)::2004-2014 (46 Чип частота: 313,85)
+2005-2009(8E CHIP FREQUENCY:433)::2005-2009 (8E Частота чипа: 433)
+2006-(8E CHIP FREQUENCY:433)::2006- (8E Частота чипа: 433)
+2006-2011(46 CHIP FREQUENCY:313.85)::2006-2011 (46 Чип частота: 313,85)
+2006-2014(46 CHIP FREQUENCY:313)::2006-2014 (46 Чип частота: 313)
+2007-2009:4D63 2010-2016:49::2007-2009: 4D63 2010-2016: 49
+2007-2012(46 CHIP FREQUENCY:313.85)::2007-2012 (46 Чип частота: 313,85)
+2008-2010(46 CHIP FREQUENCY:433)::2008-2010 (46 Чип частота: 433)
+2008年前4D63芯片 2008年后4D60芯片::К 2008 году 4D63 Чип 4D60 Чип после 2008 года
+2009-2013(46 CHIP FREQUENCY:433)::2009-2013 (46 Чип частота: 433)
+2009-2014(46 CHIP FREQUENCY:313.85)::2009-2014 (46 Чип частота: 313,85)
+2009-2014(46 CHIP FREQUENCY:433)::2009-2014 (46 Чип частота: 433)
+2009-2015(46 CHIP FREQUENCY:433)::2009-2015 (46 Чип частота: 433)
+2009年前差片 2009年后不差片::Плохие фильмы до 2009 года не плохие фильмы после 2009 года
+2010-(46 CHIP FREQUENCY:313.8)::2010- (46 Чип Частота: 313,8)
+2010-2013(46 CHIP FREQUENCY:313)2013-2016(47 CHIP FREQUENCY:313)::2010-2013 (46 Чип частота: 313) 2013-2016 (47 Чип частота: 313)
+2010-2013(46 CHIP FREQUENCY:313)::2010-2013 (46 Чип частота: 313)
+2010-2014(46 CHIP FREQUENCY:313.85)::2010-2014 (46 Чип частота: 313,85)
+2010-2014(46 CHIP FREQUENCY:433)::2010-2014 (46 Чип частота: 433)
+2011-2013(46 CHIP FREQUENCY:313)::2011-2013 (46 Чип частота: 313)
+2013-(46 CHIP FREQUENCY:313.85)::2013- (Частота 46 чипов: 313,85)
+2013-(46 CHIP FREQUENCY:433)::2013- (Частота 46 чипов: 433)
+2013-(47 CHIP FREQUENCY:433)::2013- (47 Чип частота: 433)
+2013-2016(47 CHIP FREQUENCY:313)::2013-2016 (47 Чип частота: 313)
+2013年前31 NUMBER 2013年后13 NUMBER::Для моделей до 2013 года, код 31. Для моделей после 2013 года, код 13.
+2014 YEARS AGO 46 CHIP 2014 YEARS LATER 47 CHIP::2014 лет назад 46 Чип 2014 года спустя 47 чип
+2014-(47 CHIP FREQUENCY:433)::2014- (47 Чип частота: 433)
+2014-2017(47,433)2018-(4A,433)::2014-2017 (47 433) 2018- (4A, 433)
+2015 YEARS AGO 46 CHIP 2015 YEARS LATER 47 CHIP::2015 год назад 46 чип 2015 года спустя 47 чип
+2015-(47 CHIP FREQUENCY:433)::2015- (47 Чип частота: 433)
+2015-2018(47 CHIP FREQUENCY:433)::2015-2018 (47 Чип частота: 433)
+2015年前差两片 2015年后不差片::До 2015 года было два плохих фильма, а после 2015 года не было плохих фильмов
+2016(47 CHIP FREQUENCY:313)::2016 (47 Чип частота: 313)
+2016(HITAG 3 FREQUENCY:433)::2016 (HITAG 3 Частота: 433)
+2016-2018(HITAG 3 FREQUENCY:433)::2016-2018 (HITAG 3 Частота: 433)
+2017-2019(47 CHIP FREQUENCY:433)::2017-2019 (47 Чип частота: 433)
+2017年前无芯片::Нет чипа до 2017 года
+2018(47 CHIP FREQUENCY:433)::2018 (47 Чип частота: 433)
+2019-(47 CHIP FREQUENCY:433)::2019- (47 Чип частота: 433)
+22 NUMBER::Код 22
+24 NUMBER::Код 24
+24/38 NUMBER::Код 24/38
+25 NUMBER::Код 25
+26 NUMBER::Код 26
+27 NUMBER::Код 27
+29 NUMBER::Код 29
+2::2
+30 NUMBER::Код 30
+30/51::30/51
+304::304
+308::308
+31 NUMBER::Код 31
+312::312
+313::313
+314/433::314/433
+314::314
+315 433::315 433
+315/315.5::315/315,5
+315/430::315/430
+315/433/434::315/433/434
+315/433/868/902::315/433/868/902
+315/433/868::315/433/868
+315/433/902::315/433/902
+315/433::315/433
+315/868/902::315/868/902
+315/902::315/902
+315::315
+315、433::315、433
+32 NUMBER::Код 32
+33 NUMBER::Код 33
+33/41::33/41
+33/46::33/46
+33/50 NO.::33/50 №
+33/60::33/60
+33/PCF7930::33/PCF7930
+33::33
+34 NUMBER::Код 34
+37 NUMBER::Код 37
+38 NUMBER::Код 38
+38::38
+39 NUMBER::Код 39
+39::39
+3::3
+4 (2007) 8 (2008-2009)::4 (2007) 8 (2008-2009)
+4 MASTER KEYS 2 SLAVE KEYS::4 Master Keys 2 подчиненные клавиши
+4(2006-2007) 8(2008-2010)::4 (2006-2007) 8 (2008-2010)
+40 NUMBER::Код 40
+40/46::40/46
+40::40
+41::41
+41芯片::Для кода 41, чип.
+430::430
+433/315::433/315
+433/868/902::433/868/902
+433/868::433/868
+433/902::433/902
+433::433
+434::434
+43::43
+44 NUMBER::Код 44
+44/46::44/46
+44/48::44/48
+447::447
+44::44
+45::45
+46 (PCF7945)::46 (PCF7945)
+46 8A::46 8а
+46 CHIP 47 CHIP::46 чип 47 чип
+46 CHIP PCF7952A::46 Чип PCF7952A
+46 CHIP::46 чипсов
+46 NO CHIP::46 Нет чипа
+46 PCF7936 ID60-6F::46 PCF7936 ID60-6F
+46 PCF7936/4D-ID65 HITAG 3(PCF7938)/HITAG AES PCF7952A::46 PCF7936/4D-ID65 HITAG 3 (PCF7938)/HITAG AES PCF7952A
+46 PCF7936::46 PCF7936
+46(2011-2014) 47(2014-2018)::46 (2011-2014) 47 (2014-2018)
+46(PCF7936)::46 (PCF7936)
+46(PCF7941)::46 (PCF7941)
+46(PCF7945A)::46 (PCF7945A)
+46(PCF7952)::46 (PCF7952)
+46(PCF7952A)::46 (PCF7952A)
+46(PCF7953A)::46 (PCF7953A)
+46+::46+
+46-PCF7936::46-PCF7936
+46.PCF7936/46 T14.TP12::46.pcf7936/46 T14.tp12
+46/46+::46/46+
+46/47/4A::Bs/h./cha
+46/47::Беременный
+46/48::FS/48
+46/4A::BSH/Cha
+46/4D/60::FS/PD/60
+46/4D60 80-BIT::FS/4D60 80-бизнес
+46/4D::BS/HD
+46/60::BS/60
+46/64::BS/SH,
+46/8A::BS/8A
+46/HI-TAG3 PRO::Bsh/h-tagz pro
+46/HITAG AES CYPTO 3::Fs/hitag aes cypto 3
+46/HITAG AES::46/hitag aes
+46/NO CHIP::46/нет чипа
+46/PCF7936::46/PCF7936
+46/PCF7937E::46/PCF7937E
+46/PCF7941::46/PCF7941
+46/PCF7945::46/PCF7945
+46/PCF7952::46/PCF7952
+46::46
+47 (HITAG 3)::47 (Hitag 3)
+47 4A::47 4A
+47 CHIP 8A CHIP::47 чип 8A чип
+47 CHIP FREQUENCY:433::47 Частота чипа: 433
+47 CHIP HITAG 3 NCF2951X::47 Chip Hitag 3 NCF2951X
+47 CHIP::47 чипсов
+47/4A CHIP::Hos/чип
+47/4A::Что/ча
+47/8A::Привет/8а
+47::Где
+48 CHIP::48 чип
+48/46::48/bs
+48/4A::48/ча
+48::48
+49 CHIP::Чипсы
+49(PCF7953P)::HIA (PF7953P)
+49::Прыгать
+4::Час
+4A CHIP::Чип
+4A::Глава
+4C CHIP::Чип
+4C/4D/8A::CC/HD/8A
+4C/4D67::Чтз
+4C/4D68::CC/4D68
+4C/60::CC/60
+4C::Чтз
+4D 70 DST80芯片::HD 70 DST80 чип
+4D 70芯片::HD 70 чипсов
+4D DST40/DST80::HD40/DST80
+4D DST40::HD DS40
+4D DST80::HD DS80
+4D+DST80 ID83::HD+DST80 ID83
+4D-60 80-BIT::HD-60 80-бизнес
+4D-60 80BIT::HD-60 80bt
+4D-60::HD-60
+4D-63 80 BIT::HD-Plot 80 бит
+4D-63-80BIT::HD-SS-80BIB
+4D-67/68/70::HD-Hard/68/70
+4D-67::Капюшон
+4D-72-G::HD-72-G
+4D-74(128-BIT)/8A::HD-HCC (128-бизнес)/8A
+4D-74(128-BIT)::4D-74 (128-битный)
+4D-ID62::4D-ID62
+4D-ID70::4d -d70
+4D-TMS37126 (9F)::4D-TMS37126 (9F)
+4D-TMS37126(9F)::HD-TMS37126 (YAF)
+4D/46::HD/B.
+4D/60::HD/60
+4D/72G/8A::HD/72G/8A
+4D60 (80 BIT)::4d60 (80 бит)
+4D60 40-BIT::4D60 40-бизнес
+4D60 80-BIT::4D60 80-битный
+4D60(80 BIT)::4d60 (80 бит)
+4D60/4D70::4d60/4d70
+4D60::4d60
+4D60X80::4d6080
+4D61/46::4d61/bs
+4D61::4d61
+4D62::4d62
+4D63-80BIT::4d63-80bit
+4D63::4d63
+4D64::4d64
+4D65::4d65
+4D67 80-BIT::4D67 80-битный
+4D67/4D68/8A::4d67/4d68/8a
+4D67/4D68::4d67/4d68
+4D67/68::4d67/68
+4D67/8A::4d67/8a
+4D67::4d67
+4D68::4d68
+4D69::4d69
+4D70 80-BIT::4D70 80-битный
+4D70::4d70
+4D72 80-BIT::4d72 80-бит
+4D82::4d82
+4D83/TEXAS ID-4D-63-128BIT::4D83/Texas ID-4D-63-128BIT
+4D::4d
+4W::4 Вт
+5 MASTER KEYS 3 SLAVE KEYS::5 главных клавиш 3 клавиша рабов
+5 NUMBER::Код 5
+50 NUMBER::Код 50
+51 NUMBER::Код 51
+51::51
+52 NUMBER::Код 52
+53 NUMBER::Код 53
+54 NUMBER::Код 54
+55 NUMBER::Код 55
+56 NUMBER::Код 56
+56胚号的差一片 02胚号的不差片::56 эмбрионов не хватает одного куска, и 02 эмбрионов не плохие
+57 NUMBER::Код 57
+58 NUMBER::Код 58
+59 NUMBER::Код 59
+5::5
+60/62/H CHIP::60/62/H чип
+60/62::60/62
+60/63::60/63
+60/70/48/8E::60/70/48/8E
+60/70::60/70
+60::60
+61 NUMBER::Код 61
+62::62
+63 40-BIT::63 40-бит
+63/83::63/83
+63::63
+64::64
+65 NUMBER::Код 65
+65/46::65/46
+65/66::65/66
+65::65
+66 NUMBER::Код 66
+66/46::66/46
+67 G-KEY::67 G-ключ
+67 NUMBER::Код 67
+67/31::67/31
+67/68::67/68
+67::67
+68::68
+69 NUMBER::Код 69
+6::6
+6A::6A
+6E*80::6e*80
+6E-80 BIT::6e-80 бит
+6E-80::6e-80
+7 MASTER KEYS  3 SLAVE KEYS  5 MASTER KEYS  3 SLAVE KEYS::7 Master Keys 3 подчиненные клавиши 5 Master Keys 3 клавиши рабов
+7 MASTER KEYS 3 SLAVE KEYS::7 Master Keys 3 клавиши рабов
+70 CHIP::70 чип
+70/46::70/46
+70/4D60::70/4D60
+70/8A::70/8а
+70::70
+70芯片::70 чипсов
+71 NUMBER::Код 71
+71::71
+71芯片::71 чип
+72G/8A::72 г/8а
+72G::72G
+73/44::73/44
+73::73
+74::74
+75 NUMBER::Код 75
+76 NUMBER::Код 76
+78 NUMBER::Код 78
+7935::7935
+7::7
+80 NUMBER::Код 80
+82G/H CHIP::Чип 82 г/ч
+82G::82G
+83 NUMBER::Код 83
+83/17::83/17
+83::83
+868::868
+87 NUMBER::Код 87
+87/13::87/13
+87::87
+8::8
+8A CHIP::8а чип
+8A TRPWS21/TIRIS RF430(8A)::8a trpws21/tiris rf430 (8a)
+8A/47::8a/47
+8A/4A::8a/4a
+8A::8а
+8C::8C
+8E::8e.
+ACCESS TO READ IMMOBILIZER PASSWORD FUNCTION::Доступ к чтению функции пароля иммобилайзер
+AES ID74(DST 128)::AES ID74 (DST 128)
+ARE THE DOOR LOCK AND IANITATION FAULTY::Дверные замки и янитация ошибочны
+ARE THE DOOR LOCK AND IANITION FAULTY::Дверные замки и янитация ошибочны
+ATMEL AES::Атмель AES
+ATML::Атмосфера
+BLADE BLADE BLADE PROXIMITY PROXIMITY::Клинок лезвия лезвия близость
+BLADE BLADE BLADE::Лезвие лезвия лезвия
+BLADE BLADE PROXIMITY::Близость лезвия лезвия
+BLADE BLADE::Лезвие лезвия
+BLADE FLIP REMOTE KEY::Blade Flip Remote Key
+BLADE KEY FLIP REMOTE KEY::Ключ Blade Flip Remote Key
+BLADE KEY HEAD REMOTE PROXIMITY::Ключевая головка Blade
+BLADE KEY HEAD REMOTE::Blade Key Head удаленная
+BLADE KEY KEY HEAD REMOTE SMART KEY::Ключ -клавиша Blade Head удаленная интеллектуальная клавиша
+BLADE KEY KEY HEAD REMOTE::Ключ -клавиша лезвия
+BLADE KEY NON-REMOTE KEY::Ключ-ключ к лезвию без переоборудования
+BLADE KEY REMOTE FLIP KEY KEY HEAD REMOTE::Ключ -клавиша удаленного клавиша клавиши пульт удаленного ключа
+BLADE KEY/KEY HEAD REMOTE/PROXIMITY KEY::Клавиша лезвия/клавиша пульт дистанционного/близости ключа/близость
+BLADE KEY/REMOTE FILP KEY::Клавиша лезвия/пульт -клавиша FILP
+BLADE KEY:4 KEYS SMART KEY:4 KEYS::Ключ -лезвие: 4 клавиши смарт -ключ: 4 клавиши
+BLADE KEY:4 KEYS::Ключ -лезвие: 4 ключи
+BLADE KEY::Ключ -лезвие
+BLADE NON-REMOTE KEY::Ключ без перерыва лезвия
+BLADE PROXIMITY PROXIMITY::Близость лезвия
+BLADE PROXIMITY::Клинок близость
+BLADE::Лезвие
+BLADED::Лезвие
+CENTER CONSOLE KEY SPARE SLOT::Запасной слот центральной консоли ключа
+CENTER CONSOLE STORAGE BOX::Центральная консольная ящик для хранения
+DEDICATED SMART CARD::Выделенная смарт -карта
+DST AES::DST AES
+DST ID6F-60 46 CHIP::DST ID6F-60 46 Чип
+DST-AES::DST-AES
+DST128 46 CHIP::DST128 46 Чип
+DST128 ID7A('H'KEY)::DST128 id7a ('h'key)
+DST128::DST128
+DST40 ID63::DST40 ID63
+DST40 ID6F-60/63::DST40 ID6F-60/63
+DST40 ID6F-60::DST40 ID6F-60
+DST40 ID6F-63::DST40 ID6F-63
+DST40 ID6F-67::DST40 ID6F-67
+DST80 ID6E-63::DST80 ID6E-63
+DST80 ID6F-60::DST80 ID6F-60
+DST80 ID6F-63::DST80 ID6F-63
+DST80 ID71::DST80 ID71
+ELECTRONIC 47 CHIP::Электронный 47 чип
+FIVE MECHANICAL KEYS FOUR PROXIMITY KEYS::Пять механических клавиш четыре клавиша близости
+FLIP REMOTE KEY KEY HEAD REMOTE FLIP REMOTE KEY::Flip удаленная клавиша клавиши с удаленным удаленным клавиш
+FLIP REMOTE KEY KEY HEAD REMOTE::Flip удаленной ключ -клавиш
+FLIP REMOTE KEY::Переверните удаленный ключ
+FLIP REMOTE/SMART (NO ELECTRIC SLIDING DOOR) FLIP REMOTE/SMART (ELECTRIC SLIDING DOOR)::Flip Remote/Smart (без электрической раздвижной двери) Flip Remote/Smart (электрическая раздвижная дверь)
+FLIP REMOTE/SMART::Flip пульт/умный
+FOBIK KEY::Fobik Key
+FOBIK SLOT::Фобик слот
+G CHIP/H CHIP::G Chip/H Chip
+G CHIP::G Чип
+H CHIP::H Чип
+H-CHIP::H-chip
+HI-TAG EXTENDED::Hi-Tag расширился
+HIAG AES NCF29A1M::HIAG AES NCF29A1M
+HIAG AES PCF7953M/HIAG3 PCF7952XTT::HIAG AES PCF7953M/HIAG3 PCF7952XTT
+HIAG AES PCF7953M::HIAG AES PCF7953M
+HIAG3 PCF7952XTT/HIAG3 AES PCF7953M::HIAG3 PCF7952XTT/HIAG3 AES PCF7953M
+HIAG3 PCF7952XTT/PCF7936::HIAG3 PCF7952XTT/PCF7936
+HIAG3 PCF7952XTT::HIAG3 PCF7952XTT
+HITA AES::Хита Аес
+HITAG 2-PCF7936::HITAG 2-PCF7936
+HITAG 3::Hitag 3
+HITAG AES 4A/ID51::HITAG AES 4A/ID51
+HITAG AES NCF29A1M::HITAG AES NCF29A1M
+HITAG AES PCF7939MA::Hitag AES PCF7939MA
+HITAG AES PCF7953M::HITAG AES PCF7953M
+HITAG AES/4A::HITAG AES/4A
+HITAG AES/NCF29AX HITAG AES/NCF29A1M::Hitag AES/NCF29AX HITAG AES/NCF29A1M
+HITAG AES::Hitag Aes
+HITAG PRO::Hitag Pro
+HITAG VAG CHIP::Hitag Vag Chip
+HITAG-PRO(ID49)::Hitag-pro (id49)
+HITAG2 CHIP/MEGAMOS 48 CHIP::Hitag2 Chip/Megamos 48 чип
+HITAG2 CHIP::HITAG2 Чип
+HITAG3 NCF2952X::HITAG3 NCF2952X
+HITAG3::Hitag3
+HU100::HU100
+HU133R::HU133R
+HU46::HU46
+HU83/TBC::HU83/TBC
+HU83::HU83
+HYQ14ACX::Hyq14acx
+ID 46/PCF7941::ID 46/PCF7941
+ID33::ID33
+ID40-PCF7935/HITAG 3::Id40-pcf7935/hitag 3
+ID40-PCF7935::ID40-PCF7935
+ID40::ID40
+ID44::ID44
+ID46 - PCF7941 G4::ID46-PCF7941G4
+ID46 - PCF7946::ID46 - PCF7946
+ID46 - PCF7947::ID46 - PCF7947
+ID46 EXT-PCF7937::ID46 EXT-PCF7937
+ID46 PCF7936::ID46 PCF7936
+ID46 PCF7936AA::ID46 PCF7936AA
+ID46 PCF7952::ID46 PCF7952
+ID46-PCF7936::ID46-PCF7936
+ID46-PCF7939E/HITAG2 ID46 PCF7937E::ID46-PCF7939E/HITAG2 ID46 PCF7937E
+ID46-PCF7946/TBC::ID46-PCF7946/TBC
+ID46/HITAG 3::Id46/hitag 3
+ID46/PCF 7941::ID46/PCF 7941
+ID46::ID46
+ID47,GITAG3,ID49::Id47, gitag3, id49
+ID47::ID47
+ID48 MEGAMOS AES::ID48 мегамос AES
+ID48::ID48
+ID4C/60/61::Id4c/60/61
+ID4C/ID60/ID63::Id4c/id60/id63
+ID4C::Id4c
+ID4C\60\61::Id4c \ 60 \ 61
+ID60-6F::ID60-6F
+ID64::ID64
+ID6E-17('G')::Id6e-17 ('g')
+ID6F-60::ID6F-60
+ID6F-63-80BIT::ID6F-63-80BT
+ID70::ID70
+ID8C::Id8c
+KEY HEAD REMOTE (SEMI)SMART KEY::Ключевая дистанционная (полу) Смарт -ключ
+KEY HEAD REMOTE BLADE KEY::Ключ удаленного лезвия ключа
+KEY HEAD REMOTE BLADE::Ключевая голова удаленного лезвия
+KEY HEAD REMOTE FLIP REMOTE KEY BLADE KEY::Ключ удаленной рубежной клавиши пульт -клавиш
+KEY HEAD REMOTE FLIP REMOTE KEY::Ключевая удаленная отдаленная пульт -клавиша
+KEY HEAD REMOTE KEY HEAD REMOTE::Удаленная головка ключа удаленной головки
+KEY HEAD REMOTE NON-REMOTE KEY::Ключевая удаленная не удаленная клавиша
+KEY HEAD REMOTE PROXIMITY::Ключевая удаленная близость
+KEY HEAD REMOTE REMOTE FLIP KEY::Ключевой дистанционный переворот
+KEY HEAD REMOTE SMART KEY SMART KEY::Удаленный смарт -ключ с ключом удаленной смарт -ключ
+KEY HEAD REMOTE SMART KEY::Ключевая удаленная смарт -ключ
+KEY HEAD REMOTE/FLIP REMOTE KEY::Ключевая удаленная/переворачивающаяся удаленная клавиша
+KEY HEAD REMOTE/PROXIMITY KEY::Ключ удаленная/близость
+KEY HEAD REMOTE/REMOTE FILP KEY::Ключ -головка удаленной/удаленной клавиши FILP
+KEY HEAD REMOTE/REMOTE FLIP KEY::Ключ -головка удаленной/удаленной переворотной клавиши
+KEY HEAD REMOTE::Ключевая голова удаленной
+KEY SENSING AREA IN BOX BEHIND CUP HOLDER::Зона зондирования ключа в коробке за чашкой
+KEY SENSING POSITION::Положение ощущения ключа
+KEY SLOT::Ключевой слот
+KEY SPARE SLOT IN FRONT OF CENTER CONSOLE STORAGE BOX::Ключевой запасной слот перед центральной консольной коробкой для хранения консоли
+KEY TYPE::Тип ключа
+KONB-STYLE SMART CARD::Смарт-карта в стиле Konb
+LS THE TRANSPONDER COPYABLE::LS Transponder копируется
+MAXIMUM NUMBER OF KEYS::Максимальное количество ключей
+MEGAMOS 13::Мегамос 13
+MEGAMOS 48 CHIP::Мегамос 48 Чип
+MEGAMOS 8E CHIP::Мегамос 8E чип
+MEGAMOS AES CHIP::Megamos aes Chip
+MEGAMOS AES::Мегамос AES
+MEGAMOS ID48(EMULATOR)::Мегамос ID48 (эмулятор)
+N/A::N/a
+NCF2951E/HITAG 2/7937E::NCF2951E/HITAG 2/7937E
+NO CHIP 46::Нет чипа 46
+NO CHIP/46::Нет чипа/46
+NO CHIP/DST 4D ID65::Нет чипа/DST 4D ID65
+NO CHIP::Нет чипа
+NO::Нет
+NON-REMOTE KEY BLADE KEY::Ключ-лопаток без переоборудования
+NON-REMOTE KEY KEY HEAD REMOTE::Неокрашенная ключа клавиша удаленная
+NON-REMOTE KEY PROXIMITY SMART KEY::Смарт-ключ без переоборудования.
+NON-REMOTE KEY SMART KEY::Смарт-ключ без переоборудования
+NON-REMOTE KEY/KEY HEAD REMOTE/PROXIMITY KEY::Неокрашенная клавиша/клавиша удара/близость
+NON-REMOTE KEY/PROXIMITY KEY::Ключ без переоборудования/клавиша близости
+NON-REMOTE KEY/REMOTE FLIP KEY::Неокрашенная ключ/удаленный флип-ключ
+NON-REMOTE KEY::Необогаченный ключ
+NONE-REMOTE KEY REMOTE FLIP KEY::Необоротный клавиш удаленного флип-ключа
+NONE-REMOTE KEY/NONE-REMOTE KEY::None-remote key/one-remote ключа
+NONE-REMOTE KEY::Не рисковать ключ
+NOT BAD FILM::Нет недостающих частей
+NOT BAD::Неплохо
+NUMBER OF KEY BLANK::Количество клавиш пусто
+NXP AES 128 BIT::NXP AES 128 бит
+OEM PROX::OEM Prox
+OEM PROXIMITY KEY::OEM близости ключ
+ORDINARY 46 CHIP::Обычный 46 чип
+ORDINARY 48 CHIP::Обычный 48 чип
+PCF7935(ID40)::PCF7935 (ID40)
+PCF7935(T16)::PCF7935 (T16)
+PCF7936(ID46 VIRGEM)::PCF7936 (ID46 Virgem)
+PCF7936(T19)/PCF7937::PCF7936 (T19)/PCF7937
+PCF7936::PCF7936
+PCF7936A::PCF7936A
+PCF7937E NCF2951E/PCF7941::PCF7937E NCF2951E/PCF7941
+PCF7937E NCF2951E::PCF7937E NCF2951E
+PCF7937E/HITAG 2/ID46::PCF7937E/HITAG2/ID46
+PCF7937E/NCF2951E(46)::PCF7937E/NCF2951E (46)
+PCF7937E/NCF2951E::PCF7937E/NCF2951E
+PCF7937E::PCF7937E
+PCF7937EA::PCF7937EA
+PCF7938::PCF7938
+PCF7938XA::PCF7938XA
+PCF7941 G1/G4::PCF7941 G1/G4
+PCF7941::PCF7941
+PCF7945::PCF7945
+PCF7946/PCF7947::PCF7946/PCF7947
+PCF7946::PCF7946
+PCF7952 HITAG 2/ID46::PCF7952 HITAG 2/ID46
+PCF7952/HITAG AES::PCF7952/HITAG AES
+PCF7952/PCF7952E::PCF7952/PCF7952E
+PCF7952::PCF7952
+PCF7952A/HIAG AES PCF7953M/HIAG3 PCF7952XTT::PCF7952A/HIAG AES PCF7953M/HIAG3 PCF7952XTT
+PCF7952A/HIAG AES PCF7953M::PCF7952A/HIAG AES PCF7953M
+PCF7952A/PCF7953M::PCF7952A/PCF7953M
+PCF7952A::PCF7952A
+PCF7952E::PCF7952E
+PCF7952X::PCF7952X
+PCF7953::PCF7953
+PCF7953M/HIAG AES NCF29A1M::PCF7953M/HIAG AES NCF29A1M
+PCF7953M::PCF7953M
+PCF7961M::PCF7961M
+PHILIPS 42 CHIP/PHILIPS 4W CHIP::Philips 42 Chip/Philips 4W чип
+PHILIPS 42 CHIP::Philips 42 Чип
+PHILIPS 44 CHIP/MEGAMOS 48 CHIP::Philips 44 Chip/Megamos 48 Chip
+PHILIPS 44 CHIP::Philips 44 Чип
+PHILIPS 4W CHIP::Philips 4W чип
+PINCODE REQUIRED::Требуется пинкод
+PINCODE SOURCE::Источник пинкодов
+PRE-CODE KEY::Предварительный ключ
+PROGRAM REMOTES::Программа удаленных
+PROXIMITY BLADE BLADE::Близовая лезвие лезвия
+PROXIMITY BLADE::Клинок близости
+PROXIMITY CARD::КАРТА ПРИЛОЖЕНИЯ
+PROXIMITY KEY HEAD REMOTE SMART KEY::Близовая ключа удаленная смарт -ключ
+PROXIMITY KEY KEY HEAD REMOTE::Ключ Ключа близости удален
+PROXIMITY KEY NON-REMOTE KEY::Ключ близости, не переоборудованный ключом
+PROXIMITY KEY REMOTE FLIP KEY::Ключ -клавиша близости удаленный флип -ключ
+PROXIMITY KEY/KEY HEAD REMOTE::Ключ для близости/удаленная головка ключа
+PROXIMITY KEY::Ключ близости
+PROXIMITY PROXIMITY PROXIMITY::Близость близости
+PROXIMITY SMART KEY::Близость Умный ключ
+PROXIMITY::БЛИЗОСТЬ
+REMOTE FILP KEY::Удаленный ключ FILP
+REMOTE FLIP KEY  KEY HEAD REMOTE::Удаленная клавиша клавиши удаленного клавиши удаленной
+REMOTE FLIP KEY /PROXIMITY KEY::Удаленный флип -ключ /близость
+REMOTE FLIP KEY NON-REMOTE KEY::Удаленный флип-ключ без переоборудования
+REMOTE FLIP KEY PROXIMITY KEY::Ключ близости с удаленным флип -ключом
+REMOTE FLIP KEY/PROXIMITY KEY::Удаленный флип -ключ/близость
+REMOTE FLIP KEY::Удаленный флип -ключ
+REMOTE FREQUENCY::Удаленная частота
+REMOTE KEY NON-REMOTE KEY::Удаленный ключ без переоборудования
+REN-KB2A::Ren-kb2a
+RIGHT SIDE OF STEERING COLUMN::Правая сторона рулевой колонны
+SEMI-SMART KEY BLADE KEY (SEMI)SMART KEY::Смарт-ключ с ключом полусмно
+SEMI-SMART KEY BLADE KEY::Полусмный ключ клавиша лезвия
+SEMI-SMART KEY KEY HEAD REMOTE (SEMI)SMART KEY::Полумменный ключ удаленная (полу) интеллектуальный ключ
+SEMI-SMART KEY KEY HEAD REMOTE::Полусменный ключ ключа удаленной
+SEMI-SMART KEY::Полумсменный ключ
+SIP22/TBC::SIP22/TBC
+SLOT::Слот
+SMART CARD::Интеллектуальная карточка
+SMART KEY CARD SLOT POSITION::Положение слота для карт смарт -ключей
+SMART KEY PROXIMITY SMART KEY::Smart Key Litxity Smart Key
+SMART KEY PROXIMITY::Смарт -ключ близость
+SMART KEY SMART KEY SMART KEY::Smart Key Smart Key Smart Key
+SMART KEY:4 KEYS::Умный ключ: 4 ключа
+SMART KEY::Умный ключ
+SPARE SLOT OF CENTER CONSOLE STORAGE BOX::Запасной слот центральной консоли хранения
+STANDBY POSITION OF CENTER ARMREST OF CENTER CONSOLE::Вспомогательное положение центрального подлокотника центральной консоли
+STANDBY SLOT OF CENTER CONSOLE::Резервный слот центральной консоли
+START/STOP BUTTON::Кнопка запуска/остановки
+STEERING COLUMN::Рулевая колонка
+STEERING WHEEL BOTTOM LEFT SMART CARD SLOT::Рулевое колесо внизу левая слот для смарт -карт
+T5::T5
+TBC::ТБК
+TEXAS CRYPTO/128-BIT AES ID75 8A::Техасский крипто/128-битный AES ID75 8A
+TEXAS ID4D 63 128BIT::Texas ID4D 63 128Bit
+THE ARMREST BOX::Коробка отдыха рук
+THE BOTTLE RACK::Бутылка
+THE GLOVE BOX::Перчаточный ящик
+THE KNOB TYPE 2015 YEARS AGO 46 CHIP TOUCH-TONE 2015 YEARS LATER 47 CHIP::The Clink Type 2015 лет назад 46 Чип Touch-Tone 2015 лет спустя 47 Чип
+THE MIDDLE OF THE TRAY IN FRONT OF THE SHIFT LEVER::Середина подноса перед рычагом сдвига
+THE SLOT POSITION IS UNDER THE SHIFT KNOB(WITH THE KEY IDENTIFICATION MARK)::Положение слота находится под ручкой сдвига (с идентификацией ключа)
+THE SPECIAL CHIP::Специальный чип
+TI 4D60(80 BIT)::Ti 4d60 (80 бит)
+TI 4D61(80-BIT)::Ti 4d61 (80-бит)
+TI 4D72::Ti 4d72
+TIRIS RF430 (8A)::Tiris RF430 (8a)
+TOUCH-TONE SMART CARD::Сборная смарт-карта с сенсорным тоном
+TOYOTA-H::Toyota-H
+TOYOTO-H::Toyoto-H
+TRANSPONDER TYPE::Тип транспондера
+UNDER THE CENTER CONSOLE CUP HOLDER::Под держателем Center Console Cup
+VA2::VA2
+WORKING KEY REQUIRED::Требуется рабочий ключ
+YES::Да
+不差片::Нет недостающих частей
+专用46芯片::Выделенные 46 чипсов
+专用4A芯片::Выделенный 4A чип
+专用74芯片::Специальный 74 чип
+专用圆棍型::Специальный тип круговой палки
+专用圆棍钥匙::Специальный круглый ключ
+专用小钥匙::Специальный маленький ключ
+专用智能卡小钥匙::Специальная смарт -карта маленький ключ
+专用智能卡（思域智能卡都是专用）::Выделенная смарт -карта (Civic Smart Cards выделены)
+专用芯片::Выделенный чип
+小钥匙46芯片 智能卡不带芯片::Small Key 46 Ship Smart Card без чипа
+小钥匙56 NUMBER::Ключевой код 56
+小钥匙无芯片 智能卡46芯片::Small Bless Ship Smart Card 46 чип
+小钥匙无芯片 智能卡47芯片::Small Bless Ship Smart Card 47 Chip
+小钥匙无芯片 智能卡专用4A芯片::Маленький ключ без чипа 4A чип для смарт -карты
+小钥匙无芯片::Маленький чип без ключа
+差一片::Отсутствует один чип
+差一片（钥匙尖上）::Один за другим (на кончике ключа)
+扶手箱内::扶手箱 内
+无 433::Нет 433
+是 差2片::2 ломтика
+是 差2片（钥匙根部） 智能卡车型不差片::Это 2 ломтика (ключевые корни) модели интеллектуальных грузовиков не плохие
+是 差2片（钥匙根部）::Да, 2 часа разница (кнопка ключа)
+是 差3片 头上2片根部1片::Есть 2 головы и 2 корня и 1 таблетку.
+是 差3片::3 куска
+是 点火8片 门锁7片::Да, зажигание 8 штук, дверная блокировка 7 штук
+水杯架内::Внутри чашки
+水杯架或扶手箱内::В чашке или коробке подлокотника
+水杯架正前方，点烟器旁边::Прямо перед держателем водяной чашки, рядом с сигаретой зажигали
+点火1号 2号位差片::Зажигание № 1 № 2 Бит -разница
+点火A面1号位差一片::Положение № 1 на стороне A зажигания находится на расстоянии одного квартала
+点烟器下方::Ниже сигарета зажигалка
+点烟器右边的卡槽::Слот для карты на правой стороне сигареты зажигалка
+点烟器旁边::Рядом с сигаретой зажигалка
+电阻::Сопротивление
+直板智能钥匙::Прямой умный ключ
+老款15 NUMBER 新款13 NUMBER::Для старой модели код 15. Для новой модели, код 13.
+老款15 NUMBER 新款31 NUMBER::Для старой модели код 15. Для новой модели, код 31.
+老款54 NUMBER，07年后58 NUMBER::Для старой модели, код 54. Для моделей после 2007 года, код 58.
+老款69 NUMBER 新款13 NUMBER::Для старой модели, код 69. Для новой модели, код 13.
+老款无芯片::Для старой модели, без чипа
+设备读取密码::Устройство чтения пароля
+请通过售后查询::Пожалуйста, проверьте после -Sales
+请通过第三方平台查询::Пожалуйста, проверьте стороннюю платформу

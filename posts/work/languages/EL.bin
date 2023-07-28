@@ -1,0 +1,756 @@
+(SEMI)SMART KEY::(Ημι) έξυπνο κλειδί
+-2001(13/48 CHIP FREQUENCY:315/433)-2003(13 CHIP FREQUENCY:313)2003-2008(48 CHIP FREQUENCY:433)2008-2011(46 CHIP FREQUENCY 433/313.8)2010-2014(46 CHIP FREQUENCY:433)2014-(47 CHIP FREQUENCY:433)::-2001 (13/48 Συχνότητα τσιπ: 315/433) -2003 (13 Συχνότητα τσιπ: 313) 2003-2008 (48 Συχνότητα τσιπ: 433) 2008-2011 (46 Συχνότητα τσιπ 433/313.8) 2010-2014 (46 συχνότητα τσιπ: 433) 2014- (47 Συχνότητα τσιπ: 433)
+-2001(48 CHIP FREQUENCY:433)::-2001 (48 Συχνότητα τσιπ: 433)
+-2002(13 CHIP FREQUENCY:433)::-2002 (13 Συχνότητα τσιπ: 433)
+-2005(13 CHIP FREQUENCY:307.9)::-2005 (13 Συχνότητα τσιπ: 307.9)
+-2005(13/48 CHIP FREQUENCY:315/433)2006-2008(8E CHIP FREQUENCY:433)2009-2015(46 CHIP FREQUENCY:433)::-2005 (13/48 Συχνότητα τσιπ: 315/433) 2006-2008 (συχνότητα τσιπ 8E: 433) 2009-2015 (46 Συχνότητα τσιπ: 433)
+-2006(47/48,315)2006-2009(8E,433)2011-2013(46,313)2009-2014(46,433)::-2006 (47/48.315) 2006-2009 (8e, 433) 2011-2013 (46.313) 2009-2014 (46.433)
+-2008(48 CHIP FREQUENCY:315)-2014(46 CHIP FREQUENCY:433)2014-(47 CHIP FREQUENCY:433)::-2008 (48 Συχνότητα τσιπ: 315) -2014 (46 Συχνότητα τσιπ: 433) 2014- (47 Συχνότητα τσιπ: 433)
+-2008(48 CHIP FREQUENCY:315)::-2008 (48 Συχνότητα τσιπ: 315)
+-2016(46 CHIP FREQUENCY:433)2016(HITAG 3 FREQUENCY:433)::-2016 (46 Συχνότητα τσιπ: 433) 2016 (Hitag 3 Συχνότητα: 433)
+01 NUMBER::Κωδικός 01
+01/51 NUMBER::Κωδικός 01/51
+02 NUMBER::Κωδικός 02
+02/56 NUMBER::Κωδικός 02/56
+02/69::02/69
+04 NUMBER::Κωδικός 04
+05 NUMBER::Κωδικός 05
+06 NUMBER::Κωδικός 06
+07 NUMBER::Κωδικός 07
+07年前48芯片；07-2010年无芯片::48 μάρκες πριν από το 2007.07-2010 χωρίς μάρκες
+07年前4C芯片，07年后67/68芯片::4C μάρκες πριν από το 2007, 67/68 μάρκες μετά το 2007
+09 NUMBER::Κωδικός 09
+09年前无芯片::Χωρίς τσιπ πριν το 2009
+0X00,0X00,0X36,0XEE::0x00,0x00,0x36,0xee
+101 NUMBER::Κωδικός 101
+10::10
+128 BIT('H'KEY)::128 bit ('h'key)
+13 NUMBER::Κωδικός 13
+13/48::13/48
+135 NUMBER::Κωδικός 135
+13::13
+145 NUMBER::Κωδικός 145
+15 NUMBER::Κωδικός 15
+15年前无芯片::Chipless πριν από 15 χρόνια
+16 NUMBER::Κωδικός 16
+17 NUMBER或83 NUMBER::Κωδικός 17 ή κωδικός 83
+1993-2001(13 CHIP FREQUENCY:433)2004-2007(48 CHIP FREQUENCY:433)::1993-2001 (13 Συχνότητα τσιπ: 433) 2004-2007 (48 Συχνότητα τσιπ: 433)
+1994-1999(13,313)-2004(13,313)2004-2008(48,433)2009-(46,433)::1994-1999 (13,313) -2004 (13,313) 2004-2008 (48,433) 2009- (46,433)
+1994-2000(13 CHIP FREQUENCY:433)::1994-2000 (13 Συχνότητα τσιπ: 433)
+1995-1999: ID73 1999-2005: ID46::1995-1999: ID73 1999-2005: ID46
+1996-1999:ID33,2000-2001:ID45,2002-2004:ID46::1996-1999: ID33,2000-2001: ID45,2002-2004: ID46
+1996-2000(13/48 CHIP FREQUENCY:315/433)2000-2005(13 CHIP FREQUENCY:313)2006-2013(46 CHIP FREQUENCY:313/433)2015-(47 CHIP FREQUENCY:433)::1996-2000 (13/48 Συχνότητα τσιπ: 315/433) 2000-2005 (13 Συχνότητα τσιπ: 313) 2006-2013 (46 Συχνότητα τσιπ: 313/433) 2015- (47 Συχνότητα τσιπ: 433)
+1996-2000(13/48 CHIP FREQUENCY:315/433)2000-2005(13 CHIP FREQUENCY:313)2006-2013(46 CHIP FREQUENCY:433)2015-(47 CHIP FREQUENCY:433)::1996-2000 (13/48 Συχνότητα τσιπ: 315/433) 2000-2005 (13 Συχνότητα τσιπ: 313) 2006-2013 (46 Συχνότητα τσιπ: 433) 2015- (47 Συχνότητα τσιπ: 433)
+1996-2004 (13 CHIP FREQUENCY: 307.9)::1996-2004 (13 συχνότητα τσιπ: 307.9)
+1996-2004(13 CHIP FREQUENCY:307.9)2005-2012(46 CHIP FREQUENCY:311.9)::1996-2004 (13 Συχνότητα τσιπ: 307.9) 2005-2012 (46 Συχνότητα τσιπ: 311.9)
+1996-2004(13 CHIP FREQUENCY:307.9)::1996-2004 (13 συχνότητα τσιπ: 307.9)
+1996-2006(13/48 CHIP FREQUENCY:315/433)2006-2008(8E CHIP FREQUENCY:433)2008-2013(46 CHIP FREQUENCY:313)::1996-2006 (13/48 Συχνότητα τσιπ: 315/433) 2006-2008 (συχνότητα τσιπ 8E: 433) 2008-2013 (46 Συχνότητα τσιπ: 313)
+1998-2000:ID33,2001-2008:ID46::1998-2000: ID33.2001-2008: ID46
+1998-2002(13,313)2003-2006(48,315/433)2006-2008(8E,433)2009-2013(46,433)2014-2017(47,433)::1998-2002 (13,313) 2003-2006 (48,315/433) 2006-2008 (8e, 433) 2009-2013 (46,433) 2014-2017 (47,433)
+1998-2003(13 CHIP FREQUENCY:433/307)::1998-2003 (13 συχνότητα τσιπ: 433/307)
+1999-2003(13 CHIP FREQUENCY:307.9)2004-2006(46 CHIP FREQUENCY:313.85)2009-2014(46 CHIP FREQUENCY:313.85)::1999-2003 (13 Συχνότητα τσιπ: 307.9) 2004-2006 (46 Συχνότητα τσιπ: 313.85) 2009-2014 (46 Συχνότητα τσιπ: 313.85)
+1999-2003(13 CHIP FREQUENCY:307.9)::1999-2003 (13 Συχνότητα τσιπ: 307.9)
+1999-2003(48 CHIP FREQUENCY:433)2004-2005(48 CHIP FREQUENCY:433)2006-2010(46 CHIP FREQUENCY:313)::1999-2003 (48 Συχνότητα τσιπ: 433) 2004-2005 (48 Συχνότητα τσιπ: 433) 2006-2010 (46 Συχνότητα τσιπ: 313)
+1999:10 2000-2001:5::1999: 10 2000-2001: 5
+1::1
+2 OR 4(2007) 8(2008-09)::2 ή 4 (2007) 8 (2008-09)
+2 SLICES::2 φέτες
+2000-2006(13 CHIP FREQUENCY:307.9)2010-2014(46 CHIP FREQUENCY:313.8)::2000-2006 (13 Συχνότητα τσιπ: 307.9) 2010-2014 (46 Συχνότητα τσιπ: 313.8)
+2000-2006(48 CHIP FREQUENCY:433)2014-2018(47 CHIP FREQUENCY:313)::2000-2006 (48 Συχνότητα τσιπ: 433) 2014-2018 (47 Συχνότητα τσιπ: 313)
+2001-2002(48 CHIP FREQUENCY:433)2003-2007(48 CHIP FREQUENCY:433)::2001-2002 (48 Συχνότητα τσιπ: 433) 2003-2007 (48 Συχνότητα τσιπ: 433)
+2001-2005 (13 CHIP FREQUENCY: 307.9)::2001-2005 (13 συχνότητα τσιπ: 307.9)
+2001-2005(13 CHIP FREQUENCY:307.9)::2001-2005 (13 συχνότητα τσιπ: 307.9)
+2001-2006(13 CHIP FREQUENCY:307.9)2007-2013(46 CHIP FREQUENCY:313.8)2014-2017(47 CHIP FRFREQUENCY:3-924)::2001-2006 (13 Συχνότητα τσιπ: 307.9) 2007-2013 (46 Συχνότητα τσιπ: 313.8) 2014-2017 (47 chip frfrequency: 3-924)
+2001-2006(13 CHIP FREQUENCY:307.9)2007-2013(46 CHIP FREQUENCY:313.85)::2001-2006 (13 Συχνότητα τσιπ: 307.9) 2007-2013 (46 Συχνότητα τσιπ: 313.85)
+2002-2006 (13 CHIP FREQUENCY: 307.9)::2002-2006 (13 συχνότητα τσιπ: 307.9)
+2002-2006(13 CHIP FREQUENCY:307.9)::2002-2006 (13 συχνότητα τσιπ: 307.9)
+2003-2005(48 CHIP FREQUENCY:433)2006-2007(8E CHIP FREQUENCY:433)::2003-2005 (48 Συχνότητα τσιπ: 433) 2006-2007 (συχνότητα τσιπ 8E: 433)
+2003-2006(13 CHIP FREQUENCY:313)2007-2012(46 CHIP FREQUENCY:313)::2003-2006 (13 Συχνότητα τσιπ: 313) 2007-2012 (46 Συχνότητα τσιπ: 313)
+2003-2007(46 CHIP FREQUENCY:433)2009-2015(46 CHIP FREQUENCY:313.8)2016-2018(HITAG 3 FREQUENCY:433)::2003-2007 (46 Συχνότητα τσιπ: 433) 2009-2015 (46 Συχνότητα τσιπ: 313.8) 2016-2018 (HITAG 3 Συχνότητα: 433)
+2004-2007(48 CHIP FREQUENCY:433)2007-2009(8E CHIP FREQUENCY:433)::2004-2007 (48 Συχνότητα τσιπ: 433) 2007-2009 (συχνότητα τσιπ 8E: 433)
+2004-2008(46 CHIP FREQUENCY:313.85)::2004-2008 (46 Συχνότητα τσιπ: 313.85)
+2004-2009 (46 CHIP FREQUENCY: 313.8)::2004-2009 (46 Συχνότητα τσιπ: 313.8)
+2004-2009 (48 CHIP FREQUENCY: 433)::2004-2009 (48 Συχνότητα τσιπ: 433)
+2004-2009(46 CHIP FREQUENCY:313.8)::2004-2009 (46 Συχνότητα τσιπ: 313.8)
+2004-2009(48 CHIP FREQUENCY:433)::2004-2009 (48 Συχνότητα τσιπ: 433)
+2004-2009(48 MEGAMOS 433) 2005-2008(PCF7936A 433)::2004-2009 (48 megamos 433) 2005-2008 (PCF7936A 433)
+2004-2014 (46 CHIP FREQUENCY: 313.85)::2004-2014 (46 Συχνότητα τσιπ: 313.85)
+2004-2014(46 CHIP FREQUENCY:313.85)::2004-2014 (46 Συχνότητα τσιπ: 313.85)
+2005-2009(8E CHIP FREQUENCY:433)::2005-2009 (συχνότητα τσιπ 8E: 433)
+2006-(8E CHIP FREQUENCY: 433)::2006- (8E Συχνότητα τσιπ: 433)
+2006-(8E CHIP FREQUENCY:433)::2006- (8E Συχνότητα τσιπ: 433)
+2006-2011(46 CHIP FREQUENCY:313.85)::2006-2011 (46 Συχνότητα τσιπ: 313.85)
+2006-2014(46 CHIP FREQUENCY:313)::2006-2014 (46 Συχνότητα τσιπ: 313)
+2007-2009:4D63 2010-2016:49::2007-2009: 4D63 2010-2016: 49
+2007-2012(46 CHIP FREQUENCY:313.85)::2007-2012 (46 Συχνότητα τσιπ: 313.85)
+2008-2010 (46 CHIP FREQUENCY: 433)::2008-2010 (46 Συχνότητα τσιπ: 433)
+2008-2010(46 CHIP FREQUENCY:433)::2008-2010 (46 Συχνότητα τσιπ: 433)
+2008年前4D63芯片 2008年后4D60芯片::Μέχρι το 2008 4D63 Chip 4d60 Chip μετά το 2008
+2009-2013(46 CHIP FREQUENCY:433)::2009-2013 (46 Συχνότητα τσιπ: 433)
+2009-2014(46 CHIP FREQUENCY:313.85)::2009-2014 (46 Συχνότητα τσιπ: 313.85)
+2009-2014(46 CHIP FREQUENCY:433)::2009-2014 (46 Συχνότητα τσιπ: 433)
+2009-2015(46 CHIP FREQUENCY:433)::2009-2015 (46 Συχνότητα τσιπ: 433)
+2009年前差片 2009年后不差片::Κακές ταινίες πριν από το 2009 όχι κακές ταινίες μετά το 2009
+2010-(46 CHIP FREQUENCY: 313.8)::2010- (46 Συχνότητα τσιπ: 313.8)
+2010-(46 CHIP FREQUENCY:313.8)::2010- (46 Συχνότητα τσιπ: 313.8)
+2010-2013(46 CHIP FREQUENCY:313)2013-2016(47 CHIP FREQUENCY:313)::2010-2013 (46 Συχνότητα τσιπ: 313) 2013-2016 (47 Συχνότητα τσιπ: 313)
+2010-2013(46 CHIP FREQUENCY:313)::2010-2013 (46 Συχνότητα τσιπ: 313)
+2010-2014(46 CHIP FREQUENCY:313.85)::2010-2014 (46 Συχνότητα τσιπ: 313.85)
+2010-2014(46 CHIP FREQUENCY:433)::2010-2014 (46 Συχνότητα τσιπ: 433)
+2011-2013(46 CHIP FREQUENCY:313)::2011-2013 (46 Συχνότητα τσιπ: 313)
+2013-(46 CHIP FREQUENCY: 433)::2013- (46 Συχνότητα τσιπ: 433)
+2013-(46 CHIP FREQUENCY:313.85)::2013- (46 Συχνότητα τσιπ: 313.85)
+2013-(46 CHIP FREQUENCY:433)::2013- (46 Συχνότητα τσιπ: 433)
+2013-(47 CHIP FREQUENCY:433)::2013- (47 Συχνότητα τσιπ: 433)
+2013-2016 (47 CHIP FREQUENCY: 313)::2013-2016 (47 Συχνότητα τσιπ: 313)
+2013-2016(47 CHIP FREQUENCY:313)::2013-2016 (47 Συχνότητα τσιπ: 313)
+2013年前31 NUMBER 2013年后13 NUMBER::Για μοντέλα πριν από το 2013, κωδικός 31. Για μοντέλα μετά το 2013, κωδικός 13.
+2014 YEARS AGO 46 CHIP 2014 YEARS LATER 47 CHIP::2014 χρόνια πριν 46 Chip 2014 χρόνια αργότερα 47 Chip
+2014-(47 CHIP FREQUENCY: 433)::2014- (47 Συχνότητα τσιπ: 433)
+2014-(47 CHIP FREQUENCY:433)::2014- (47 Συχνότητα τσιπ: 433)
+2014-2017(47,433)2018-(4A,433)::2014-2017 (47.433) 2018- (4Α, 433)
+2015 YEARS AGO 46 CHIP 2015 YEARS LATER 47 CHIP::2015 χρόνια πριν 46 Chip 2015 χρόνια αργότερα 47 Chip
+2015-(47 CHIP FREQUENCY:433)::2015- (47 Συχνότητα τσιπ: 433)
+2015-2018(47 CHIP FREQUENCY:433)::2015-2018 (47 Συχνότητα τσιπ: 433)
+2015年前差两片 2015年后不差片::Πριν από το 2015, υπήρχαν δύο κακές ταινίες, και μετά το 2015, δεν υπήρχαν κακές ταινίες
+2016 (HITAG 3 FREQUENCY: 433)::2016 (Hitag 3 Συχνότητα: 433)
+2016(47 CHIP FREQUENCY:313)::2016 (47 Συχνότητα τσιπ: 313)
+2016(HITAG 3 FREQUENCY:433)::2016 (Hitag 3 Συχνότητα: 433)
+2016-2018(HITAG 3 FREQUENCY:433)::2016-2018 (Hitag 3 Συχνότητα: 433)
+2017-2019(47 CHIP FREQUENCY:433)::2017-2019 (47 Συχνότητα τσιπ: 433)
+2017年前无芯片::Χωρίς τσιπ πριν από το 2017
+2018(47 CHIP FREQUENCY:433)::2018 (47 Συχνότητα τσιπ: 433)
+2019-(47 CHIP FREQUENCY:433)::2019- (47 Συχνότητα τσιπ: 433)
+22 NUMBER::Κωδικός 22
+24 NUMBER::Κωδικός 24
+24/38 NUMBER::Κωδικός 24/38
+25 NUMBER::Κωδικός 25
+26 NUMBER::Κωδικός 26
+27 NUMBER::Κωδικός 27
+29 NUMBER::Κωδικός 29
+2::2
+30 NUMBER::Κωδικός 30
+30/51::30/51
+304::304
+308::308
+31 NUMBER::Κωδικός 31
+312::312
+313::313
+314/433::314/433
+314::314
+315 433::315 433
+315/315.5::315/315.5
+315/430::315/430
+315/433/434::315/433/434
+315/433/868/902::315/433/868/902
+315/433/868::315/433/868
+315/433/902::315/433/902
+315/433::315/433
+315/868/902::315/868/902
+315/902::315/902
+315::315
+315、433::315、433
+32 NUMBER::Κωδικός 32
+33 NUMBER::Κωδικός 33
+33/41::33/41
+33/46::33/46
+33/50 NO.::33/50 Όχι
+33/60::33/60
+33/PCF7930::33/PCF7930
+33::33
+34 NUMBER::Κωδικός 34
+37 NUMBER::Κωδικός 37
+38 NUMBER::Κωδικός 38
+38::38
+39 NUMBER::Κωδικός 39
+39::39
+3::3
+4 (2007) 8 (2008-2009)::4 (2007) 8 (2008-2009)
+4 MASTER KEYS 2 SLAVE KEYS::4 Master Keys 2 Slave Keys
+4(2006-2007) 8(2008-2010)::4 (2006-2007) 8 (2008-2010)
+40 NUMBER::Κωδικός 40
+40/46::40/46
+40::40
+41::41
+41芯片::Για τον κωδικό 41, τσιπ.
+430::430
+433/315::433/315
+433/868/902::433/868/902
+433/868::433/868
+433/902::433/902
+433::433
+434::434
+43::43
+44 NUMBER::Κωδικός 44
+44/46::44/46
+44/48::44/48
+447::447
+44::44
+45::45
+46 (PCF7936)::46 (PCF7936)
+46 (PCF7941)::46 (PCF7941)
+46 (PCF7945)::46 (PCF7945)
+46 8A::46 8Α
+46 CHIP 47 CHIP::46 Chip 47 Chip
+46 CHIP PCF7952A::46 Chip PCF7952A
+46 CHIP::46 μάρκες
+46 CHIPS::46 μάρκες
+46 NO CHIP::46 Χωρίς τσιπ
+46 PCF7936 ID60-6F::46 PCF7936 ID60-6F
+46 PCF7936/4D-ID65 HITAG 3(PCF7938)/HITAG AES PCF7952A::46 PCF7936/4D-ID65 HITAG 3 (PCF7938)/HITAG AES PCF7952A
+46 PCF7936::46 PCF7936
+46(2011-2014) 47(2014-2018)::46 (2011-2014) 47 (2014-2018)
+46(PCF7936)::46 (PCF7936)
+46(PCF7941)::46 (PCF7941)
+46(PCF7945A)::46 (PCF7945A)
+46(PCF7952)::46 (PCF7952)
+46(PCF7952A)::46 (PCF7952A)
+46(PCF7953A)::46 (PCF7953A)
+46+::46+
+46-PCF7936::46-PCF7936
+46.PCF7936/46 T14.TP12::46.PCF7936/46 T14.TP12
+46/46+::46/46+
+46/47/4A::Bs/h./cha
+46/47::Σι
+46/48::FS/48
+46/4A::Bsh/cha
+46/4D/60::FS/PD/60
+46/4D60 80-BIT::FS/4D60 80-Business
+46/4D::BS/HD
+46/60::BS/60
+46/64::BS/SH,
+46/8A::BS/8A
+46/HI-TAG3 PRO::BSH/H-TAGZ Pro
+46/HITAG AES CYPTO 3::Fs/hitag aes cypto 3
+46/HITAG AES::46/hitag AES
+46/NO CHIP::46/Χωρίς τσιπ
+46/PCF7936::46/PCF7936
+46/PCF7937E::46/PCF7937E
+46/PCF7941::46/PCF7941
+46/PCF7945::46/PCF7945
+46/PCF7952::46/PCF7952
+46::46
+47 (HITAG 3)::47 (Hitag 3)
+47 4A::47 4Α
+47 CHIP 8A CHIP::47 Chip 8a Chip
+47 CHIP FREQUENCY: 433::47 Συχνότητα τσιπ: 433
+47 CHIP FREQUENCY:433::47 Συχνότητα τσιπ: 433
+47 CHIP HITAG 3 NCF2951X::47 Chip hitag 3 NCF2951x
+47 CHIP::47 μάρκες
+47 CHIPS::47 μάρκες
+47/4A CHIP::Hos/chip
+47/4A::Ποιο/cha
+47/8A::Γεια/8Α
+47::Που
+48 CHIP::48 τσιπ
+48/46::48/BS
+48/4A::48/cha
+48::48
+49 CHIP::Τσιπς
+49 CHIPS::49 μάρκες
+49(PCF7953P)::HIA (PF7953P)
+49::Λυκίσκος
+4::H
+4A CHIP::Πατατακι
+4A::Σκάσιμο
+4C CHIP::Πατατακι
+4C/4D/8A::CC/HD/8A
+4C/4D67::Chz
+4C/4D68::CC/4D68
+4C/60::CC/60
+4C::Chz
+4D 70 DST80芯片::Τσιπ HD 70 DST80
+4D 70芯片::HD 70 μάρκες
+4D DST40/DST80::HD40/DST80
+4D DST40::HD DS40
+4D DST80::HD DS80
+4D+DST80 ID83::HD+DST80 ID83
+4D-60 80-BIT::HD-60 80-Business
+4D-60 80BIT::HD-60 80bt
+4D-60::HD-60
+4D-63 80 BIT::HD-Plot 80 bit
+4D-63-80BIT::HD-SS-80BIB
+4D-67/68/70::HD-HARD/68/70
+4D-67::Κουκούλα
+4D-72-G::HD-72-G
+4D-74 (128-BIT)/8A::4D-74 (128-bit)/8a
+4D-74(128-BIT)/8A::HD-HCC (128-Business)/8Α
+4D-74(128-BIT)::4D-74 (128-bit)
+4D-ID62::4D-ID62
+4D-ID70::4D -D70
+4D-TMS37126 (9F)::4D-TMS37126 (9f)
+4D-TMS37126(9F)::HD-TMS37126 (YAF)
+4D/46::HD/B
+4D/60::HD/60
+4D/72G/8A::HD/72G/8A
+4D60 (80 BIT)::4D60 (80 bit)
+4D60 40-BIT::4D60 40-Business
+4D60 80-BIT::4D60 80-bit
+4D60(80 BIT)::4D60 (80bits)
+4D60/4D70::4D60/4D70
+4D60::4D60
+4D60X80::4D6080
+4D61/46::4D61/BS
+4D61::4D61
+4D62::4D62
+4D63-80BIT::4D63-80bit
+4D63::4D63
+4D64::4D64
+4D65::4D65
+4D67 80-BIT::4D67 80-bit
+4D67/4D68/8A::4D67/4D68/8A
+4D67/4D68::4D67/4D68
+4D67/68::4D67/68
+4D67/8A::4D67/8A
+4D67::4D67
+4D68::4D68
+4D69::4D69
+4D70 80-BIT::4D70 80-bit
+4D70::4D70
+4D72 80-BIT::4D72 80-bit
+4D82::4D82
+4D83/TEXAS ID-4D-63-128BIT::4D83/TEXAS ID-4D-63-128bit
+4D::4δ
+4W::4W
+5 MASTER KEYS 3 SLAVE KEYS::5 Master Keys 3 Κλειδιά σκλάβων
+5 NUMBER::Κωδικός 5
+50 NUMBER::Κωδικός 50
+51 NUMBER::Κωδικός 51
+51::51
+52 NUMBER::Κωδικός 52
+53 NUMBER::Κωδικός 53
+54 NUMBER::Κωδικός 54
+55 NUMBER::Κωδικός 55
+56 NUMBER::Κωδικός 56
+56胚号的差一片 02胚号的不差片::56 Έμβρυα δεν είναι από ένα κομμάτι και τα έμβρυα 02 δεν είναι κακά
+57 NUMBER::Κωδικός 57
+58 NUMBER::Κωδικός 58
+59 NUMBER::Κωδικός 59
+5::5
+60/62/H CHIP::60/62/h τσιπ
+60/62::60/62
+60/63::60/63
+60/70/48/8E::60/70/48/8E
+60/70::60/70
+60::60
+61 NUMBER::Κωδικός 61
+62::62
+63 40-BIT::63 40-bit
+63/83::63/83
+63::63
+64::64
+65 NUMBER::Κωδικός 65
+65/46::65/46
+65/66::65/66
+65::65
+66 NUMBER::Κωδικός 66
+66/46::66/46
+67 G-KEY::67 G-κλειδί
+67 NUMBER::Κωδικός 67
+67/31::67/31
+67/68::67/68
+67::67
+68::68
+69 NUMBER::Κωδικός 69
+6::6
+6A::6α
+6E*80::6e*80
+6E-80 BIT::6E-80 bit
+6E-80::6E-80
+7 MASTER KEYS  3 SLAVE KEYS  5 MASTER KEYS  3 SLAVE KEYS::7 Master Keys 3 Slave Keys 5 Master Keys 3 Slave Keys
+7 MASTER KEYS 3 SLAVE KEYS 5 MASTER KEYS 3 SLAVE KEYS::7 Master Keys 3 Slave Keys 5 Master Keys 3 Slave Keys
+7 MASTER KEYS 3 SLAVE KEYS::7 Master Keys 3 Κλειδιά σκλάβων
+70 CHIP::70 τσιπ
+70/46::70/46
+70/4D60::70/4D60
+70/8A::70/8Α
+70::70
+70芯片::70 μάρκες
+71 NUMBER::Κωδικός 71
+71::71
+71芯片::71 τσιπ
+72G/8A::72G/8A
+72G::72G
+73/44::73/44
+73::73
+74::74
+75 NUMBER::Κωδικός 75
+76 NUMBER::Κωδικός 76
+78 NUMBER::Κωδικός 78
+7935::7935
+7::7
+80 NUMBER::Κωδικός 80
+82G/H CHIP::82g/h τσιπ
+82G::82G
+83 NUMBER::Κωδικός 83
+83/17::83/17
+83::83
+868::868
+87 NUMBER::Κωδικός 87
+87/13::87/13
+87::87
+8::8
+8A CHIP::8Α τσιπ
+8A TRPWS21/TIRIS RF430(8A)::8Α TRPWS21/TIRIS RF430 (8Α)
+8A/47::8Α/47
+8A/4A::8Α/4Α
+8A::8α
+8C::8C
+8E::8Ε
+ACCESS TO READ IMMOBILIZER PASSWORD FUNCTION::Πρόσβαση στη λειτουργία ανάγνωσης κωδικού πρόσβασης ακινητοποιητή
+AES ID74(DST 128)::AES ID74 (DST 128)
+ARE THE DOOR LOCK AND IANITATION FAULTY::Είναι ελαττωματικά η κλειδαριά της πόρτας και η ανάφλεξη
+ARE THE DOOR LOCK AND IANITION FAULTY::Είναι ελαττωματικά η κλειδαριά της πόρτας και η ανάφλεξη
+ARE THE DOOR LOCK AND IGNITION FAULTY::Είναι ελαττωματικά η κλειδαριά της πόρτας και η ανάφλεξη
+ATMEL AES::Atmel Aes
+ATML::ATML
+BLADE BLADE BLADE PROXIMITY PROXIMITY::Εγγύτητα λεπίδας λεπίδας
+BLADE BLADE BLADE::Λεπίδα λεπίδας
+BLADE BLADE PROXIMITY::Εγγύτητα λεπίδων
+BLADE BLADE::Λεπίδα
+BLADE FLIP REMOTE KEY::Λειτουργικό πλήκτρο Flip Flip
+BLADE KEY FLIP REMOTE KEY::Κλειδί πτερυγίου Flip Remote Key
+BLADE KEY HEAD REMOTE PROXIMITY::Απομακρυσμένη εγγύτητα κλειδιού λεπίδας
+BLADE KEY HEAD REMOTE::Απομακρυσμένη κεφαλή κλειδιού λεπίδας
+BLADE KEY KEY HEAD REMOTE SMART KEY::Κλειδί κλειδί κλειδιού λεπίδων Απομακρυσμένο έξυπνο κλειδί
+BLADE KEY KEY HEAD REMOTE::Απομακρυσμένη κεφαλή κλειδιού λεπίδας
+BLADE KEY NON-REMOTE KEY::Κλειδί κλειδιού λεπίδων κλειδί re-remote
+BLADE KEY REMOTE FLIP KEY KEY HEAD REMOTE::Κλειδί πλήκτρο απομακρυσμένου κλειδιού Κλειδί Κλειδί
+BLADE KEY/KEY HEAD REMOTE/PROXIMITY KEY::Κλειδί κλειδιού/κλειδιού Κλειδί/κλειδί
+BLADE KEY/REMOTE FILP KEY::Πλήκτρο κλειδιού λεπίδας/απομακρυσμένο πλήκτρο FILP
+BLADE KEY: 4 KEYS SMART KEY: 4 KEYS::Κλειδί Blade: 4 Keys Smart Key: 4 πλήκτρα
+BLADE KEY: 4 KEYS::Κλειδί λεπίδας: 4 πλήκτρα
+BLADE KEY:4 KEYS SMART KEY:4 KEYS::Κλειδί Blade: 4 Keys Smart Key: 4 πλήκτρα
+BLADE KEY:4 KEYS::Κλειδί λεπίδας: 4 πλήκτρα
+BLADE KEY::Πλήκτρο λεπίδας
+BLADE NON-REMOTE KEY::Λειτουργικό κλειδί με λεπίδες
+BLADE PROXIMITY PROXIMITY::Εγγύτητα εγγύτητας
+BLADE PROXIMITY::Εγγύτητα λεπίδων
+BLADE::Λεπίδα
+BLADED::Φτερωτός
+CENTER CONSOLE KEY SPARE SLOT::Κεντρική κονσόλα κλειδί εφεδρική υποδοχή
+CENTER CONSOLE STORAGE BOX::Κιβώτιο αποθήκευσης κεντρικής κονσόλας
+CODE 04::Κωδικός 04
+CODE 13::Κωδικός 13
+CODE 22::Κωδικός 22
+CODE 65::Κωδικός 65
+CODE 69::Κωδικός 69
+CODE 71::Κωδικός 71
+CODE 87::Κωδικός 87
+DEDICATED SMART CARD::Αφιερωμένη έξυπνη κάρτα
+DEVICE READ PASSWORD::Κωδικός πρόσβασης ανάγνωσης συσκευής
+DST AES::DST AES
+DST ID6F-60 46 CHIP::DST ID6F-60 46 Chip
+DST-AES::DST-AES
+DST128 46 CHIP::DST128 46 Chip
+DST128 ID7A('H'KEY)::DST128 ID7A ('h'key)
+DST128::DST128
+DST40 ID63::DST40 ID63
+DST40 ID6F-60/63::DST40 ID6F-60/63
+DST40 ID6F-60::DST40 ID6F-60
+DST40 ID6F-63::DST40 ID6F-63
+DST40 ID6F-67::DST40 ID6F-67
+DST80 ID6E-63::DST80 ID6E-63
+DST80 ID6F-60::DST80 ID6F-60
+DST80 ID6F-63::DST80 ID6F-63
+DST80 ID71::DST80 ID71
+ELECTRONIC 47 CHIP::Ηλεκτρονικό 47 τσιπ
+FIVE MECHANICAL KEYS FOUR PROXIMITY KEYS::Πέντε μηχανικά κλειδιά τέσσερα πλήκτρα εγγύτητας
+FLIP REMOTE KEY KEY HEAD REMOTE FLIP REMOTE KEY::Flip Remote Key Head Remote Flip Remote Key
+FLIP REMOTE KEY KEY HEAD REMOTE::Flip Remote Key Key Head Remote
+FLIP REMOTE KEY::Flip Remote Key
+FLIP REMOTE/SMART (NO ELECTRIC SLIDING DOOR) FLIP REMOTE/SMART (ELECTRIC SLIDING DOOR)::Flip Remote/Smart (χωρίς ηλεκτρική συρόμενη πόρτα) Flip Remote/Smart (ηλεκτρική συρόμενη πόρτα)
+FLIP REMOTE/SMART::Flip Remote/Smart
+FOBIK KEY::Κλειδί Fobik
+FOBIK SLOT::Κουλοχέρη Fobik
+G CHIP/H CHIP::G Chip/H Chip
+G CHIP::G τσιπ
+H CHIP::H τσιπ
+H-CHIP::H-τσιπ
+HI-TAG EXTENDED::Hi-Tag Extended
+HIAG AES NCF29A1M::Hiag aes ncf29a1m
+HIAG AES PCF7953M/HIAG3 PCF7952XTT::Hiag AES PCF7953M/HIAG3 PCF7952XTT
+HIAG AES PCF7953M::Hiag AES PCF7953M
+HIAG3 PCF7952XTT/HIAG3 AES PCF7953M::HIAG3 PCF7952XTT/HIAG3 AES PCF7953M
+HIAG3 PCF7952XTT/PCF7936::Hiag3 PCF7952XTT/PCF7936
+HIAG3 PCF7952XTT::Hiag3 PCF7952XTT
+HITA AES::Χίτα ΑΕ
+HITAG 2-PCF7936::HITAG 2-PCF7936
+HITAG 3::Hitag 3
+HITAG AES 4A/ID51::Hitag AES 4A/ID51
+HITAG AES NCF29A1M::Hitag aes ncf29a1m
+HITAG AES PCF7939MA::Hitag aes pcf7939ma
+HITAG AES PCF7953M::Hitag AES PCF7953M
+HITAG AES/4A::Hitag aes/4a
+HITAG AES/NCF29AX HITAG AES/NCF29A1M::Hitag AES/NCF29AX HITAG AES/NCF29A1M
+HITAG AES::Hitag Aes
+HITAG PRO::Hitag Pro
+HITAG VAG CHIP::Τσιπ Hitag Vag
+HITAG-PRO(ID49)::Hitag-Pro (ID49)
+HITAG2 CHIP/MEGAMOS 48 CHIP::Hitag2 Chip/Megamos 48 Chip
+HITAG2 CHIP::Τσιπ Hitag2
+HITAG3 NCF2952X::Hitag3 NCF2952X
+HITAG3::Hitag3
+HU100::HU100
+HU133R::HU133R
+HU46::HU46
+HU83/TBC::HU83/TBC
+HU83::HU83
+HYQ14ACX::Hyq14acx
+ID 46/PCF7941::ID 46/PCF7941
+ID33::Id33
+ID40-PCF7935/HITAG 3::ID40-PCF7935/HITAG 3
+ID40-PCF7935::ID40-PCF7935
+ID40::ID40
+ID44::ID44
+ID46 - PCF7941 G4::ID46-PCF7941G4
+ID46 - PCF7946::ID46 - PCF7946
+ID46 - PCF7947::ID46 - PCF7947
+ID46 EXT-PCF7937::ID46 ext-pcf7937
+ID46 PCF7936::ID46 PCF7936
+ID46 PCF7936AA::ID46 PCF7936AA
+ID46 PCF7952::ID46 PCF7952
+ID46-PCF7936::ID46-PCF7936
+ID46-PCF7939E/HITAG2 ID46 PCF7937E::ID46-PCF7939E/HITAG2 ID46 PCF7937E
+ID46-PCF7946/TBC::ID46-PCF7946/TBC
+ID46/HITAG 3::Id46/hitag 3
+ID46/PCF 7941::ID46/PCF 7941
+ID46::ID46
+ID47,GITAG3,ID49::Id47, Gitag3, Id49
+ID47::ID47
+ID48 MEGAMOS AES::Id48 megamos aes
+ID48::ID48
+ID4C/60/61::ID4C/60/61
+ID4C/ID60/ID63::ID4C/ID60/ID63
+ID4C::Id4c
+ID4C\60\61::Id4c \ 60 \ 61
+ID60-6F::Id60-6f
+ID64::Id64
+ID6E-17('G')::Id6e-17 ('g')
+ID6F-60::ID6F-60
+ID6F-63-80BIT::Id6f-63-80bit
+ID70::Id70
+ID8C::Id8c
+IS THE TRANSPONDER COPYABLE::Είναι ο αναμεταδότης αντιγραφής
+IT IS 2 SLICES (KEY ROOTS) SMART TRUCK MODELS ARE NOT BAD::Είναι 2 φέτες (βασικές ρίζες) Τα έξυπνα μοντέλα φορτηγών δεν είναι κακά
+KEY HEAD REMOTE (SEMI)SMART KEY::Απομακρυσμένο πλήκτρο κλειδιού (ημι) έξυπνο κλειδί
+KEY HEAD REMOTE BLADE KEY::Κλειδί κλειδιού Απομακρυσμένου Κλειδί
+KEY HEAD REMOTE BLADE::Απομακρυσμένη λεπίδα κεφαλής κλειδιού
+KEY HEAD REMOTE FLIP REMOTE KEY BLADE KEY::Κλειδί κλειδί απομακρυσμένου κλειδιού κλειδιού κλειδιού κλειδιού
+KEY HEAD REMOTE FLIP REMOTE KEY::Κλειδί απομακρυσμένου κλειδιού απομακρυσμένου κλειδιού
+KEY HEAD REMOTE KEY HEAD REMOTE::Απομακρυσμένη κεφαλή κλειδιού Απομακρυσμένη κεφαλή
+KEY HEAD REMOTE NON-REMOTE KEY::Κλειδί κλειδί απομακρυσμένου μη επαναπροσδιορισμού
+KEY HEAD REMOTE PROXIMITY::Απομακρυσμένη εγγύτητα βασικού κεφαλιού
+KEY HEAD REMOTE REMOTE FLIP KEY::Κλειδί απομακρυσμένου απομακρυσμένου κλειδιού
+KEY HEAD REMOTE SMART KEY SMART KEY::Κλειδί απομακρυσμένο έξυπνο κλειδί Smart Key
+KEY HEAD REMOTE SMART KEY::Κλειδί απομακρυσμένου έξυπνου κλειδιού κλειδιού
+KEY HEAD REMOTE/FLIP REMOTE KEY::Απομακρυσμένο πλήκτρο κεφαλής κλειδιού/Flip Remote
+KEY HEAD REMOTE/PROXIMITY KEY::Κλειδί κλειδί απομακρυσμένου/εγγύτητας
+KEY HEAD REMOTE/REMOTE FILP KEY::Κλειδί πλήκτρου Key Head Remote/Remote FILP
+KEY HEAD REMOTE/REMOTE FLIP KEY::Κλειδί κλειδί απομακρυσμένου/απομακρυσμένου κλειδιού Flip
+KEY HEAD REMOTE::Απομακρυσμένη κεφαλή κλειδιού
+KEY SENSING AREA IN BOX BEHIND CUP HOLDER::Περιοχή ανίχνευσης κλειδιού στο κουτί πίσω από το κάτοχο του κυπέλλου
+KEY SENSING POSITION::Θέση ανίχνευσης κλειδιού
+KEY SLOT::Βασική θέση
+KEY SPARE SLOT IN FRONT OF CENTER CONSOLE STORAGE BOX::Κλειδί εφεδρική υποδοχή μπροστά από το κιβώτιο αποθήκευσης κονσόλας κεντρικής κονσόλας
+KEY TYPE::Τύπος κλειδιού
+KONB-STYLE SMART CARD::Έξυπνη κάρτα τύπου Konb
+LS THE TRANSPONDER COPYABLE::Είναι ο αναμεταδότης αντιγραφής
+MAXIMUM NUMBER OF KEYS::Μέγιστος αριθμός κλειδιών
+MEGAMOS 13::Megamos 13
+MEGAMOS 48 CHIP::Megamos 48 Chip
+MEGAMOS 8E CHIP::Megamos 8e Chip
+MEGAMOS AES CHIP::Megamos aes chip
+MEGAMOS AES::Megamos aes
+MEGAMOS ID48(EMULATOR)::Megamos id48 (εξομοιωτής)
+N/A::N/a
+NCF2951E/HITAG 2/7937E::NCF2951E/HITAG 2/7937E
+NO CHIP 46::Χωρίς τσιπ 46
+NO CHIP/46::Χωρίς τσιπ/46
+NO CHIP/DST 4D ID65::Χωρίς chip/dst 4d id65
+NO CHIP::Χωρίς τσιπ
+NO MISSING PARTS::Χωρίς τμήματα που λείπουν
+NO::Οχι
+NON-REMOTE KEY BLADE KEY::Κλειδί μη βασικού κλειδιού
+NON-REMOTE KEY KEY HEAD REMOTE::Απομακρυσμένη κεφαλή κλειδιού μη επαναπροσδιορίσματος
+NON-REMOTE KEY PROXIMITY SMART KEY::Το Smart Key εκτός Remote Key
+NON-REMOTE KEY SMART KEY::Μη-re-remote κλειδί έξυπνο κλειδί
+NON-REMOTE KEY/KEY HEAD REMOTE/PROXIMITY KEY::Κλειδί re-re-re-remote/κλειδί απομακρυσμένου/εγγύτητας
+NON-REMOTE KEY/PROXIMITY KEY::Πλήκτρο πλήκτρου/εγγύτητας μη Ρεματ.
+NON-REMOTE KEY/REMOTE FLIP KEY::Μη re-remote κλειδί/απομακρυσμένο πλήκτρο Flip
+NON-REMOTE KEY::Μη-επαναπροσδιορές
+NONE 433::Κανένα 433
+NONE-REMOTE KEY REMOTE FLIP KEY::Κανένα κλειδί remote remote flip κλειδί
+NONE-REMOTE KEY/NONE-REMOTE KEY::Κανένα κλειδί remote/none-remote κλειδί
+NONE-REMOTE KEY::Κανένα κλειδί remote
+NOT BAD FILM::Χωρίς τμήματα που λείπουν
+NOT BAD::Όχι κακός
+NUMBER OF KEY BLANK::Αριθμός κλειδιού κενό
+NXP AES 128 BIT::NXP AES 128 bit
+OEM PROX::Prox Prox
+OEM PROXIMITY KEY::Κλειδί εγγύτητας OEM
+ORDINARY 46 CHIP::Τσιπ 46
+ORDINARY 48 CHIP::Συνηθισμένο τσιπ 48
+PCF7935(ID40)::PCF7935 (ID40)
+PCF7935(T16)::PCF7935 (T16)
+PCF7936(ID46 VIRGEM)::PCF7936 (ID46 Virgem)
+PCF7936(T19)/PCF7937::PCF7936 (T19)/PCF7937
+PCF7936::PCF7936
+PCF7936A::PCF7936A
+PCF7937E NCF2951E/PCF7941::PCF7937E NCF2951E/PCF7941
+PCF7937E NCF2951E::PCF7937E NCF2951E
+PCF7937E/HITAG 2/ID46::PCF7937E/HITAG2/ID46
+PCF7937E/NCF2951E(46)::PCF7937E/NCF2951E (46)
+PCF7937E/NCF2951E::PCF7937E/NCF2951E
+PCF7937E::PCF7937E
+PCF7937EA::PCF7937EA
+PCF7938::PCF7938
+PCF7938XA::PCF7938XA
+PCF7941 G1/G4::PCF7941 G1/G4
+PCF7941::PCF7941
+PCF7945::PCF7945
+PCF7946/PCF7947::PCF7946/PCF7947
+PCF7946::PCF7946
+PCF7947::PCF7947
+PCF7952 HITAG 2/ID46::PCF7952 HITAG 2/ID46
+PCF7952/HITAG AES::PCF7952/HITAG AES
+PCF7952/PCF7952E::PCF7952/PCF7952E
+PCF7952::PCF7952
+PCF7952A/HIAG AES PCF7953M/HIAG3 PCF7952XTT::PCF7952A/HIAG AES PCF7953M/HIAG3 PCF7952XTT
+PCF7952A/HIAG AES PCF7953M::PCF7952A/HIAG AES PCF7953M
+PCF7952A/PCF7953M::PCF7952A/PCF7953M
+PCF7952A::PCF7952A
+PCF7952E::PCF7952E
+PCF7952X::PCF7952X
+PCF7953::PCF7953
+PCF7953M/HIAG AES NCF29A1M::PCF7953M/HIAG AES NCF29A1M
+PCF7953M/HITAG AES/4A CHIP::PCF7953M/HITAG AES/4A Chip
+PCF7953M::PCF7953M
+PCF7961M::PCF7961m
+PHILIPS 42 CHIP/PHILIPS 4W CHIP::Philips 42 Chip/Philips 4W Chip
+PHILIPS 42 CHIP::Philips 42 Chip
+PHILIPS 44 CHIP/MEGAMOS 48 CHIP::Philips 44 Chip/Megamos 48 Chip
+PHILIPS 44 CHIP::Philips 44 Chip
+PHILIPS 4W CHIP::Chip Philips 4W
+PINCODE REQUIRED::Απαιτείται ο Pincode
+PINCODE SOURCE::Πηγή πύργου
+PLEASE INQUIRE THROUGH AFTER-SALES::Παρακαλώ ρωτήστε μέσω των πωλήσεων
+PRE-CODE KEY::Πλήκτρο προ-κώδικα
+PROGRAM REMOTES::Τηλεχειριστήρια προγράμματος
+PROXIMITY BLADE BLADE::Λεπίδα λεπίδας εγγύτητας
+PROXIMITY BLADE::Λεπίδα εγγύτητας
+PROXIMITY CARD::Χαρτοφυλάκιο
+PROXIMITY KEY HEAD REMOTE SMART KEY::Απομακρυσμένη έξυπνη κλειδί κλειδιού εγγύτητας
+PROXIMITY KEY KEY HEAD REMOTE::Απομακρυσμένη κεφαλή κλειδιού εγγύτητας
+PROXIMITY KEY NON-REMOTE KEY::Κλειδί εγγύτητας κλειδί μη-remote
+PROXIMITY KEY REMOTE FLIP KEY::Κλειδί κλειδί εγγύτητας κλειδί Flip
+PROXIMITY KEY/KEY HEAD REMOTE::Απομακρυσμένη κεφαλή κλειδιού/κλειδί
+PROXIMITY KEY::Κλειδί εγγύτητας
+PROXIMITY PROXIMITY PROXIMITY::Εγγύτητα εγγύτητας
+PROXIMITY SMART KEY::Smart Key εγγύτητας
+PROXIMITY::ΕΓΓΥΤΗΤΑ
+REMOTE FILP KEY::Απομακρυσμένο πλήκτρο FILP
+REMOTE FLIP KEY  KEY HEAD REMOTE::Απομακρυσμένο απομακρυσμένο κεφάλαιο κλειδιού flip key
+REMOTE FLIP KEY /PROXIMITY KEY::Απομακρυσμένο κλειδί Flip /εγγύτητο
+REMOTE FLIP KEY NON-REMOTE KEY::Απομακρυσμένο κλειδί flip non-remote κλειδί
+REMOTE FLIP KEY PROXIMITY KEY::Απομακρυσμένο κλειδί κλειδί flip
+REMOTE FLIP KEY/PROXIMITY KEY::Απομακρυσμένο κλειδί Flip/εγγύτητο
+REMOTE FLIP KEY::Απομακρυσμένο κλειδί flip
+REMOTE FREQUENCY::Απομακρυσμένη συχνότητα
+REMOTE KEY NON-REMOTE KEY::Απομακρυσμένο κλειδί κλειδί μη επαναπροσδιορισμού
+REN-KB2A::Ren-kb2a
+RIGHT SIDE OF STEERING COLUMN::Δεξιά πλευρά της στήλης
+SEMI-SMART KEY BLADE KEY (SEMI)SMART KEY::Semi-Smart Key Blade Key (Semi) Smart Key
+SEMI-SMART KEY BLADE KEY::Semi-Smart Key Blade Key
+SEMI-SMART KEY KEY HEAD REMOTE (SEMI)SMART KEY::Semi-Smart Key Head Remote (Semi) Smart Key
+SEMI-SMART KEY KEY HEAD REMOTE::Ημι-έξυπνο πλήκτρο κλειδί κλειδιού απομακρυσμένη
+SEMI-SMART KEY::Ημι-έξυπνο κλειδί
+SIP22/TBC::SIP22/TBC
+SLOT::Θυρίδα
+SMART CARD::Εξυπνη κάρτα
+SMART KEY CARD SLOT POSITION::Θέση υποδοχής κάρτας έξυπνων κλειδιών
+SMART KEY PROXIMITY SMART KEY::Smart Key Smart Key
+SMART KEY PROXIMITY::Έξυπνη εγγύτητα
+SMART KEY SMART KEY SMART KEY::Smart Key Smart Key Smart Key
+SMART KEY: 4 KEYS::Smart Key: 4 πλήκτρα
+SMART KEY:4 KEYS::Smart Key: 4 πλήκτρα
+SMART KEY::Έξυπνο κλειδί
+SPARE SLOT OF CENTER CONSOLE STORAGE BOX::Εφεδρική υποδοχή κεντρικού κιβωτίου αποθήκευσης κονσόλας
+STANDBY POSITION OF CENTER ARMREST OF CENTER CONSOLE::Θέση αναμονής του κεντρικού υποβραχιόνου της κεντρικής κονσόλας
+STANDBY SLOT OF CENTER CONSOLE::Κονσόλα κεντρικής κονσόλας
+START/STOP BUTTON::Κουμπί εκκίνησης/διακοπής
+STEERING COLUMN::Στήλη διεύθυνσης
+STEERING WHEEL BOTTOM LEFT SMART CARD SLOT::Το τιμόνι κάτω αριστερά έξυπνη καρτέλα υποδοχή
+T5::Τ5
+TBC::TBC
+TEXAS CRYPTO/128-BIT AES ID75 8A::Texas Crypto/128-bit AES ID75 8A
+TEXAS ID4D 63 128BIT::Texas id4d 63 128bit
+THE ARM REST BOX::Το κουτί ανάπαυσης του βραχίονα
+THE ARMREST BOX::Το κουτί ανάπαυσης του βραχίονα
+THE BOTTLE RACK::Το ράφι μπουκαλιών
+THE GLOVE BOX::Το γάντι
+THE KNOB TYPE 2015 YEARS AGO 46 CHIP TOUCH-TONE 2015 YEARS LATER 47 CHIP::Ο τύπος κουμπιού 2015 χρόνια πριν από 46 chip touch tour-tone 2015 χρόνια αργότερα 47 chip
+THE MIDDLE OF THE TRAY IN FRONT OF THE SHIFT LEVER::Η μέση του δίσκου μπροστά από το μοχλό βάρδιας
+THE NO. 1 POSITION ON SIDE A OF THE IGNITION IS ONE BLOCK AWAY::Η θέση 1 στην πλευρά Α της ανάφλεξης είναι ένα τετράγωνο μακριά
+THE SLOT POSITION IS UNDER THE SHIFT KNOB(WITH THE KEY IDENTIFICATION MARK)::Η θέση της υποδοχής βρίσκεται κάτω από το κουμπί μετατόπισης (με το σημάδι ταυτότητας κλειδιού)
+THE SPECIAL CHIP::Το ειδικό τσιπ
+TI 4D60(80 BIT)::TI 4D60 (80 bit)
+TI 4D61 (80-BIT)::TI 4D61 (80-bit)
+TI 4D61(80-BIT)::TI 4D61 (80-bit)
+TI 4D67::TI 4D67
+TI 4D72::TI 4D72
+TIRIS RF430 (8A)::TIRIS RF430 (8Α)
+TOUCH-TONE SMART CARD::Έξυπνη κάρτα Touch-Tone
+TOYOTA-H::Toyota-H
+TOYOTO-H::Toyoto-H
+TRANSPONDER TYPE::Τύπος αναμεταδότη
+UNDER THE CENTER CONSOLE CUP HOLDER::Κάτω από τον κάτοχο του κυπέλλου κονσόλας
+VA2::VA2
+WORKING KEY REQUIRED::Απαιτείται κλειδί εργασίας
+YES 2 PIECES DIFFERENCE (BUTTON OF KEY)::Ναι 2 Διαφορά τεμαχίων (κουμπί του κλειδιού)
+YES 3 SLICES SHORT::Ναι 3 φέτες σύντομες
+YES::Ναί
+不差片::Χωρίς τμήματα που λείπουν
+专用46芯片::Αφιερωμένα 46 μάρκες
+专用4A芯片::Αφιερωμένο τσιπ 4A
+专用74芯片::Ειδικό 74 τσιπ
+专用圆棍型::Ειδικός τύπος στρογγυλού ραβδιού
+专用圆棍钥匙::Ειδικό κλειδί στρογγυλού ραβδιού
+专用小钥匙::Ειδικό μικρό κλειδί
+专用智能卡小钥匙::Ειδική έξυπνη κάρτα μικρό κλειδί
+专用智能卡（思域智能卡都是专用）::Αφιερωμένη έξυπνη κάρτα (Civic Smart Cards είναι αφιερωμένες)
+专用芯片::Αφιερωμένο τσιπ
+小钥匙46芯片 智能卡不带芯片::Μικρό κλειδί 46 τσιπ έξυπνη κάρτα χωρίς τσιπ
+小钥匙56 NUMBER::Κωδικός κλειδιού 56
+小钥匙无芯片 智能卡46芯片::Μικρή Κάρτα Smart Keyless Chip 46
+小钥匙无芯片 智能卡47芯片::Μικρή Κάρτα Smart Keyless Chip 47 Chip
+小钥匙无芯片 智能卡专用4A芯片::Μικρό κλειδί χωρίς τσιπ 4A για έξυπνη κάρτα
+小钥匙无芯片::Μικρό τσιπ χωρίς κλειδί
+差一片::Λείπει ένα τσιπ
+差一片（钥匙尖上）::Ένα προς ένα (στην άκρη του κλειδιού)
+扶手箱内::扶手箱 内
+无 433::Κανένα 433
+是 差2片::2 φέτες
+是 差2片（钥匙根部） 智能卡车型不差片::Είναι 2 φέτες (βασικές ρίζες) Τα έξυπνα μοντέλα φορτηγών δεν είναι κακά
+是 差2片（钥匙根部）::Ναι 2 Διαφορά τεμαχίων (κουμπί του κλειδιού)
+是 差3片 头上2片根部1片::Υπάρχουν 2 κεφάλια και 2 ρίζες και 1 δισκίο.
+是 差3片::3 κομμάτια
+是 点火8片 门锁7片::Ναι, ανάφλεξη 8 κομμάτια, κλειδαριά πόρτας 7 κομμάτια
+水杯架内::Μέσα στον κάτοχο του κυπέλλου
+水杯架或扶手箱内::Στον κάτοχο του κυπέλλου ή στο κιβώτιο των υποβραχιών
+水杯架正前方，点烟器旁边::Ακριβώς μπροστά από τον κάτοχο του κυπέλλου νερού, δίπλα στον αναπτήρα τσιγάρων
+点火1号 2号位差片::Ανάφλεξη Νο 1 Αρ. 2 ταινία διαφοράς bit
+点火A面1号位差一片::Η θέση 1 στην πλευρά Α της ανάφλεξης είναι ένα τετράγωνο μακριά
+点烟器下方::Κάτω από το τσιγάρο αναπτήρα
+点烟器右边的卡槽::Η υποδοχή κάρτας στη δεξιά πλευρά του αναπτήρα τσιγάρων
+点烟器旁边::Δίπλα στον αναπτήρα τσιγάρων
+电阻::Αντίσταση
+直板智能钥匙::Ευθεία έξυπνο κλειδί
+老款15 NUMBER 新款13 NUMBER::Για το παλιό μοντέλο, κωδικός 15. Για το νέο μοντέλο, κωδικός 13.
+老款15 NUMBER 新款31 NUMBER::Για το παλιό μοντέλο, κωδικός 15. Για το νέο μοντέλο, κωδικός 31.
+老款54 NUMBER，07年后58 NUMBER::Για το παλιό μοντέλο, κωδικός 54. Για μοντέλα μετά το 2007, κωδικός 58.
+老款69 NUMBER 新款13 NUMBER::Για το παλιό μοντέλο, κωδικός 69. Για το νέο μοντέλο, κωδικός 13.
+老款无芯片::Για το παλιό μοντέλο, Chipless
+设备读取密码::Κωδικός πρόσβασης ανάγνωσης συσκευής
+请通过售后查询::Ελέγξτε μετά από
+请通过第三方平台查询::Ελέγξτε την πλατφόρμα τρίτου μέρους

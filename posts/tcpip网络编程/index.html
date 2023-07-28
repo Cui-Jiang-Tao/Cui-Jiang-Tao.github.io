@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
     <meta name="robots" content="noodp" />
-    <title>TCP/IP网络编程 - 学习记录</title><meta name="author" content="cjt">
+    <title>TCP/IP网络编程 - Notes</title><meta name="author" content="cjt">
 <meta name="author-link" content="">
 <meta name="description" content="1. 理解网络编程和套接字 1.1 套接字概念 在TCP/IP协议中，“IP地址&#43;TCP或UDP端口号”唯一标识网络通讯中的一个进程。“IP地址&#43;端口号”" /><meta name="keywords" content='c/c&#43;&#43;' /><meta itemprop="name" content="TCP/IP网络编程">
 <meta itemprop="description" content="1. 理解网络编程和套接字 1.1 套接字概念 在TCP/IP协议中，“IP地址&#43;TCP或UDP端口号”唯一标识网络通讯中的一个进程。“IP地址&#43;端口号”"><meta itemprop="datePublished" content="2022-10-09T00:00:00+00:00" />
@@ -41,10 +41,10 @@
       },"description": ""
   }
   </script></head>
-  <body data-header-desktop="fixed" data-header-mobile="auto"><script>(window.localStorage?.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('data-theme', 'dark');</script><div class="wrapper"><header class="desktop animate__faster" id="header-desktop">
+  <body data-header-desktop="fixed" data-header-mobile="auto"><script>(window.localStorage?.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('data-theme', 'dark');</script><div class="wrapper" data-page-style="wide"><header class="desktop animate__faster" id="header-desktop">
   <div class="header-wrapper">
     <div class="header-title">
-      <a href="/" title="学习记录"><span class="header-title-pre"><i class='far fa-kiss-wink-heart fa-fw' aria-hidden='true'></i></span><span id="typeit-header-desktop" class="typeit"></span></a><span class="header-subtitle"></span></div>
+      <a href="/" title="Notes"><span class="header-title-pre"><i class='far fa-kiss-wink-heart fa-fw' aria-hidden='true'></i></span><span id="typeit-header-desktop" class="typeit"></span></a><span class="header-subtitle"></span></div>
     <nav>
       <ul class="menu"><li class="menu-item">
               <a
@@ -66,15 +66,14 @@
                 
               ><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> 标签</a></li><li class="menu-item delimiter"></li><li class="menu-item theme-switch" title="Switch Theme">
           <i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i>
-        </li>
-      </ul>
+        </li></ul>
     </nav>
   </div>
 </header><header class="mobile animate__faster" id="header-mobile">
   <div class="header-container">
     <div class="header-wrapper">
       <div class="header-title">
-        <a href="/" title="学习记录"><span class="header-title-pre"><i class='far fa-kiss-wink-heart fa-fw' aria-hidden='true'></i></span><span id="typeit-header-title-mobile" class="typeit"></span></a><span class="header-subtitle"></span></div>
+        <a href="/" title="Notes"><span class="header-title-pre"><i class='far fa-kiss-wink-heart fa-fw' aria-hidden='true'></i></span><span id="typeit-header-title-mobile" class="typeit"></span></a><span class="header-subtitle"></span></div>
       <div class="menu-toggle" id="menu-toggle-mobile">
         <span></span><span></span><span></span>
       </div>
@@ -101,31 +100,24 @@
                   href="/tags/"
                   
                   
-                ><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> 标签</a></li><li class="menu-item theme-switch" title="Switch Theme">
-          <i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i>
-        </li></ul>
+                ><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> 标签</a></li><li class="menu-item menu-system">
+          <span class="menu-system-item theme-switch" title="Switch Theme"><i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i></span></li>
+      </ul>
     </nav>
   </div>
-</header><main class="container" data-page-style="wide"><aside class="toc" id="toc-auto"><h2 class="toc-title">Contents&nbsp;<i class="toc-icon fa-solid fa-angle-down fa-fw" aria-hidden="true"></i></h2>
+</header><main class="container"><aside class="toc" id="toc-auto"><h2 class="toc-title">Contents&nbsp;<i class="toc-icon fa-solid fa-angle-down fa-fw" aria-hidden="true"></i></h2>
       <div class="toc-content" id="toc-content-auto"></div></aside>
 
   <aside class="aside-custom">
     </aside>
 
   <article class="page single">
-    <div class="header"><h1 class="single-title animate__animated animate__flipInX">
-        <span>TCP/IP网络编程</span>
+    <div class="header"><h1 class="single-title animate__animated animate__flipInX"><span>TCP/IP网络编程</span>
       </h1></div><div class="post-meta">
-      <div class="post-meta-line"><span class="post-author"><span class="author"><img
-    class="lazyload avatar"
-    src="/svg/loading.min.svg"
-    data-src="https://www.gravatar.com/avatar/736cc0685dbd22dd674add9c481fc755?s=32&amp;d="
-    data-srcset="https://www.gravatar.com/avatar/736cc0685dbd22dd674add9c481fc755?s=32&amp;d=, https://www.gravatar.com/avatar/736cc0685dbd22dd674add9c481fc755?s=32&amp;d= 1.5x, https://www.gravatar.com/avatar/736cc0685dbd22dd674add9c481fc755?s=32&amp;d= 2x"
-    data-sizes="auto"
-    alt="cjt"
-    title="cjt"/>&nbsp;cjt</span></span>
+      <div class="post-meta-line"><span class="post-author"><span class="author"><i class="fa-solid fa-user-circle" aria-hidden="true"></i>
+      cjt</span></span>
           <span class="post-category">included in <a href="/categories/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 网络编程</a></span></div>
-      <div class="post-meta-line"><span title=2022-10-09&#32;00:00:00><i class="fa-regular fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-10-09">2022-10-09</time></span>&nbsp;<span><i class="fa-solid fa-pencil-alt fa-fw" aria-hidden="true"></i> 23574 words</span>&nbsp;<span><i class="fa-regular fa-clock fa-fw" aria-hidden="true"></i> 48 minutes</span>&nbsp;</div>
+      <div class="post-meta-line"><span title="published on 2022-10-09 00:00:00"><i class="fa-regular fa-calendar-alt fa-fw me-1" aria-hidden="true"></i><time datetime="2022-10-09">2022-10-09</time></span>&nbsp;<span title="Updated on 2022-10-09 00:00:00"><i class="fa-regular fa-edit fa-fw me-1" aria-hidden="true"></i><time datetime="2022-10-09">2022-10-09</time></span>&nbsp;<span><i class="fa-solid fa-pencil-alt fa-fw me-1" aria-hidden="true"></i>23574 words</span>&nbsp;<span><i class="fa-regular fa-clock fa-fw me-1" aria-hidden="true"></i>48 minutes</span>&nbsp;</div>
     </div><div class="details toc" id="toc-static" data-kept="false">
         <div class="details-summary toc-title">
           <span>Contents</span>
@@ -227,14 +219,7 @@
       </div><div class="content" id="content"><h2 id="1-理解网络编程和套接字">1. 理解网络编程和套接字</h2>
 <h3 id="11-套接字概念">1.1 套接字概念</h3>
 <p>  在TCP/IP协议中，“IP地址+TCP或UDP端口号”唯一标识网络通讯中的一个进程。“IP地址+端口号”就对应一个socket。欲建立连接的两个进程各自有一个socket来标识，那么这两个socket组成的socket pair就唯一标识一个连接。因此可以用Socket来描述网络连接的一对一关系。套接字通信原理如下图所示：</p>
-<p><img
-    class="lazyload"
-    src="/svg/loading.min.svg"
-    data-src="../../imgs/socket/0.1.png"
-    data-srcset="../../imgs/socket/0.1.png, ../../imgs/socket/0.1.png 1.5x, ../../imgs/socket/0.1.png 2x"
-    data-sizes="auto"
-    alt="套接字通信原理图"
-    title="套接字通信原理图"/></p>
+<p><img loading="lazy" src="../../imgs/socket/0.1.png" srcset="../../imgs/socket/0.1.png, ../../imgs/socket/0.1.png 1.5x, ../../imgs/socket/0.1.png 2x" sizes="auto" data-title="套接字通信原理图" data-alt="套接字通信原理图" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/></p>
 <p>  在网络通信中，套接字一定是成对出现的。一端的发送缓冲区对应另一端的接收缓冲区。我们使用同一个文件描述符索发送缓冲区和接收缓冲区。</p>
 <h2 id="2-网络编程和套接字">2 网络编程和套接字</h2>
 <p>  IP是Internet Protocol(网络协议)的简写，是为了收发网络数据而分配给计算机的值。端口号并非赋予计算机的值，而是为了区分程序中创建的套接字而分配给套接字的序号。</p>
@@ -389,14 +374,7 @@
 <p>所谓的&quot;接收连接&quot;并不意味着服务器端调用accept函数，其实是服务器端把连接请求信息记录到等待队列。因此connect函数返回后并不立即进行数据交换。</p>
 </blockquote>
 <p>基于TCP的服务端/客户端函数调用关系：</p>
-<p><img
-    class="lazyload"
-    src="/svg/loading.min.svg"
-    data-src="../../imgs/socket/4.10.png"
-    data-srcset="../../imgs/socket/4.10.png, ../../imgs/socket/4.10.png 1.5x, ../../imgs/socket/4.10.png 2x"
-    data-sizes="auto"
-    alt="函数调用关系"
-    title="函数调用关系"/></p>
+<p><img loading="lazy" src="../../imgs/socket/4.10.png" srcset="../../imgs/socket/4.10.png, ../../imgs/socket/4.10.png 1.5x, ../../imgs/socket/4.10.png 2x" sizes="auto" data-title="函数调用关系" data-alt="函数调用关系" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/></p>
 <h3 id="26-编写hello-world程序">2.6 编写Hello world程序</h3>
 <p>hello_client.c</p>
 <div class="highlight"><div class="chroma">
@@ -1940,14 +1918,7 @@
 <blockquote>
 <p>调用close函数将向对方传递EOF。</p>
 </blockquote>
-<p><img
-    class="lazyload"
-    src="/svg/loading.min.svg"
-    data-src="../../imgs/socket/3.3.png"
-    data-srcset="../../imgs/socket/3.3.png, ../../imgs/socket/3.3.png 1.5x, ../../imgs/socket/3.3.png 2x"
-    data-sizes="auto"
-    alt="套接字通信原理图"
-    title="套接字通信原理图"/></p>
+<p><img loading="lazy" src="../../imgs/socket/3.3.png" srcset="../../imgs/socket/3.3.png, ../../imgs/socket/3.3.png 1.5x, ../../imgs/socket/3.3.png 2x" sizes="auto" data-title="套接字通信原理图" data-alt="套接字通信原理图" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/></p>
 <p>op_client.c</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -2290,14 +2261,7 @@
 </div>
 </div><h3 id="54-tcp原理">5.4 TCP原理</h3>
 <p>  TCP套接字的数据收发无边界。实际上，write函数调用后并非立即传输数据，read函数调用后也非马上接收数据。更准确地说，write函数调用瞬间，数据将移至输出缓冲；read函数调用瞬间，从输入缓冲读取数据。</p>
-<p><img
-    class="lazyload"
-    src="/svg/loading.min.svg"
-    data-src="../../imgs/socket/5.2.png"
-    data-srcset="../../imgs/socket/5.2.png, ../../imgs/socket/5.2.png 1.5x, ../../imgs/socket/5.2.png 2x"
-    data-sizes="auto"
-    alt="TCP套接字的I/O缓冲"
-    title="TCP套接字的I/O缓冲"/></p>
+<p><img loading="lazy" src="../../imgs/socket/5.2.png" srcset="../../imgs/socket/5.2.png, ../../imgs/socket/5.2.png 1.5x, ../../imgs/socket/5.2.png 2x" sizes="auto" data-title="TCP套接字的I/O缓冲" data-alt="TCP套接字的I/O缓冲" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/></p>
 <p>调用write函数时，数据将移动到输出缓冲，在适当的时候(不管是分别传送还是一次性传送)传向对方的输入缓冲。这时对方将调用read函数从输入缓冲读取数据。这些I/O缓冲特性可整理如下：</p>
 <ul>
 <li>I/O缓冲在每个TCP套接字中单独存在。</li>
@@ -2311,14 +2275,7 @@
 <h3 id="71-套接字和流stream">7.1 套接字和流(Stream)</h3>
 <p>  两台主机通过套接字建立连接后进入可交换数据的状态，又称“流形成的状态”。也就是把建立套接字后可交换数据的状态看作一种流。</p>
 <p>  此处的流可以比作水流。水朝着一个方向流动，同样，在套接字的流中，数据也只能向一个方向移动。因此，为了进行双向通信，需要2个流。如下图所示：</p>
-<p><img
-    class="lazyload"
-    src="/svg/loading.min.svg"
-    data-src="../../imgs/socket/7.2.png"
-    data-srcset="../../imgs/socket/7.2.png, ../../imgs/socket/7.2.png 1.5x, ../../imgs/socket/7.2.png 2x"
-    data-sizes="auto"
-    alt="套接字中生成的两个流"
-    title="套接字中生成的两个流"/></p>
+<p><img loading="lazy" src="../../imgs/socket/7.2.png" srcset="../../imgs/socket/7.2.png, ../../imgs/socket/7.2.png 1.5x, ../../imgs/socket/7.2.png 2x" sizes="auto" data-title="套接字中生成的两个流" data-alt="套接字中生成的两个流" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/></p>
 <p>  一旦两台主机间建立了套接字连接，每个主机就会拥有单独的输入流和输出流。当然，其中一个主机的输入流与另一主机的输出流相连，而输出流则与另一主机的输入流相连。</p>
 <h3 id="72-shutdown函数">7.2 shutdown函数</h3>
 <div class="highlight"><div class="chroma">
@@ -2648,14 +2605,7 @@
 <li>父进程：fork函数返回子进程ID。</li>
 <li>子进程：fork函数返回0。</li>
 </ul>
-<p><img
-    class="lazyload"
-    src="/svg/loading.min.svg"
-    data-src="../../imgs/socket/10.1.png"
-    data-srcset="../../imgs/socket/10.1.png, ../../imgs/socket/10.1.png 1.5x, ../../imgs/socket/10.1.png 2x"
-    data-sizes="auto"
-    alt="fork函数的调用"
-    title="fork函数的调用"/></p>
+<p><img loading="lazy" src="../../imgs/socket/10.1.png" srcset="../../imgs/socket/10.1.png, ../../imgs/socket/10.1.png 1.5x, ../../imgs/socket/10.1.png 2x" sizes="auto" data-title="fork函数的调用" data-alt="fork函数的调用" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/></p>
 <p>fork.c</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -2918,25 +2868,11 @@
 </ul>
 <h3 id="121-select函数">12.1 select函数</h3>
 <p>select函数的调用过程：</p>
-<p>  <img
-    class="lazyload"
-    src="/svg/loading.min.svg"
-    data-src="../../imgs/socket/12.5.png"
-    data-srcset="../../imgs/socket/12.5.png, ../../imgs/socket/12.5.png 1.5x, ../../imgs/socket/12.5.png 2x"
-    data-sizes="auto"
-    alt="select函数的调用过程"
-    title="select函数的调用过程"/></p>
+<p>  <img loading="lazy" src="../../imgs/socket/12.5.png" srcset="../../imgs/socket/12.5.png, ../../imgs/socket/12.5.png 1.5x, ../../imgs/socket/12.5.png 2x" sizes="auto" data-title="select函数的调用过程" data-alt="select函数的调用过程" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/></p>
 <p><strong>设置文件描述符</strong></p>
 <p>  利用select函数可以同时监视多个文件描述符。当然，监视文件描述符可以视为监视套接字。首先需要将要监视的文件描述符集中到一起，按照监视项(接收、传输、异常)进行区分，将上述3种监视项分成3类。</p>
 <p>  使用fd_set数组变量执行此项操作，数组是存有0和1的位数组。</p>
-<p>    <img
-    class="lazyload"
-    src="/svg/loading.min.svg"
-    data-src="../../imgs/socket/12.6.png"
-    data-srcset="../../imgs/socket/12.6.png, ../../imgs/socket/12.6.png 1.5x, ../../imgs/socket/12.6.png 2x"
-    data-sizes="auto"
-    alt="fd_set结构体"
-    title="fd_set结构体"/></p>
+<p>    <img loading="lazy" src="../../imgs/socket/12.6.png" srcset="../../imgs/socket/12.6.png, ../../imgs/socket/12.6.png 1.5x, ../../imgs/socket/12.6.png 2x" sizes="auto" data-title="fd_set结构体" data-alt="fd_set结构体" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/></p>
 <p>最左端的位表示文件描述符0(所在位置)。如果该位设置为1，则表示该文件描述符是监视对象。上图中，文件描述符1和3就是要监控的对象。</p>
 <p>在fd_set变量中注册或更改值的操作都是由下列宏完成的：</p>
 <ul>
@@ -2945,14 +2881,7 @@
 <li>FD_CLR(int fd, fd_set *fdset)：从参数fdset指向的变量中清除文件描述符fd的信息。</li>
 <li>FD_ISSET(int fd, fd_set *fdset)若参数fdset指向的变量中包含文件描述符fd的信息，则返回&quot;真&quot;。</li>
 </ul>
-<p>  <img
-    class="lazyload"
-    src="/svg/loading.min.svg"
-    data-src="../../imgs/socket/12.7.png"
-    data-srcset="../../imgs/socket/12.7.png, ../../imgs/socket/12.7.png 1.5x, ../../imgs/socket/12.7.png 2x"
-    data-sizes="auto"
-    alt="fd_set相关函数的功能"
-    title="fd_set相关函数的功能"/></p>
+<p>  <img loading="lazy" src="../../imgs/socket/12.7.png" srcset="../../imgs/socket/12.7.png, ../../imgs/socket/12.7.png 1.5x, ../../imgs/socket/12.7.png 2x" sizes="auto" data-title="fd_set相关函数的功能" data-alt="fd_set相关函数的功能" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/></p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -3445,14 +3374,7 @@
 <h2 id="14-多播与广播">14. 多播与广播</h2>
 <h2 id="15-套接字和标准io">15. 套接字和标准I/O</h2>
 <p>  使用标准I/O函数时会得到额外的缓冲支持。创建套接字时，操作系统将生成用于套接字的缓冲。此缓冲在执行TCP协议时发挥着非常重要的作用。若此时使用标准I/O函数，将得到额外的另一缓冲的支持。</p>
-<p>  <img
-    class="lazyload"
-    src="/svg/loading.min.svg"
-    data-src="../../imgs/socket/15.1.png"
-    data-srcset="../../imgs/socket/15.1.png, ../../imgs/socket/15.1.png 1.5x, ../../imgs/socket/15.1.png 2x"
-    data-sizes="auto"
-    alt="缓冲的关系"
-    title="缓冲的关系"/></p>
+<p>  <img loading="lazy" src="../../imgs/socket/15.1.png" srcset="../../imgs/socket/15.1.png, ../../imgs/socket/15.1.png 1.5x, ../../imgs/socket/15.1.png 2x" sizes="auto" data-title="缓冲的关系" data-alt="缓冲的关系" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/></p>
 <p>  如上图，使用标准I/O函数传输数据时，经过2个缓冲。设置缓冲的主要目的是为了提高性能，但套接字中的缓冲主要是为了实现TCP协议而设立的。例如，TCP传输中丢失数据时将再次传递，而再次发生数据则保存在套接字的输出缓冲中。与之相反，使用标准I/O函数缓冲的主要目的是为了提高性能。</p>
 <h3 id="151-标准io函数">15.1 标准I/O函数</h3>
 <p>创建套接字时返回文件描述符，而为了使用标准I/O函数，只能将其转换为FILE结构体指针。</p>
@@ -4069,24 +3991,10 @@
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p>  通过上述代码可以知道，调用fclose函数完全终止了套接字，而不是半关闭。</p>
-<p><img
-    class="lazyload"
-    src="/svg/loading.min.svg"
-    data-src="../../imgs/socket/16.1.png"
-    data-srcset="../../imgs/socket/16.1.png, ../../imgs/socket/16.1.png 1.5x, ../../imgs/socket/16.1.png 2x"
-    data-sizes="auto"
-    alt="FILE指针的关系"
-    title="FILE指针的关系"/></p>
+<p><img loading="lazy" src="../../imgs/socket/16.1.png" srcset="../../imgs/socket/16.1.png, ../../imgs/socket/16.1.png 1.5x, ../../imgs/socket/16.1.png 2x" sizes="auto" data-title="FILE指针的关系" data-alt="FILE指针的关系" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/></p>
 <p>  上述示例sep_serv.c中的读模式FILE指针和写模式FILE指针都是基于同一个文件描述符创建的。因此，针对任意一个FILE指针调用fclose函数时都会关闭文件描述符，也就是终止套接字。</p>
 <p>  可以通过复制创建另外一个文件描述符，然后利用各自的文件描述符生成读模式和写模式的FILE指针。如此套接字和文件描述符之间具有关系：<strong>销毁所有文件描述符后才能销毁套接字。</strong></p>
-<p><img
-    class="lazyload"
-    src="/svg/loading.min.svg"
-    data-src="../../imgs/socket/16.2.png"
-    data-srcset="../../imgs/socket/16.2.png, ../../imgs/socket/16.2.png 1.5x, ../../imgs/socket/16.2.png 2x"
-    data-sizes="auto"
-    alt="半关闭模式"
-    title="半关闭模式"/></p>
+<p><img loading="lazy" src="../../imgs/socket/16.2.png" srcset="../../imgs/socket/16.2.png, ../../imgs/socket/16.2.png 1.5x, ../../imgs/socket/16.2.png 2x" sizes="auto" data-title="半关闭模式" data-alt="半关闭模式" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/></p>
 <p>下面给出文件描述符的复制方法，通过下列2个函数之一完成：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -6575,14 +6483,7 @@
 </div>
 </div><h2 id="19-制作http服务器端">19. 制作HTTP服务器端</h2>
 <p><strong>请求消息的结构：</strong></p>
-<p><img
-    class="lazyload"
-    src="/svg/loading.min.svg"
-    data-src="../../imgs/socket/24.2.png"
-    data-srcset="../../imgs/socket/24.2.png, ../../imgs/socket/24.2.png 1.5x, ../../imgs/socket/24.2.png 2x"
-    data-sizes="auto"
-    alt="请求消息的结构"
-    title="请求消息的结构"/></p>
+<p><img loading="lazy" src="../../imgs/socket/24.2.png" srcset="../../imgs/socket/24.2.png, ../../imgs/socket/24.2.png 1.5x, ../../imgs/socket/24.2.png 2x" sizes="auto" data-title="请求消息的结构" data-alt="请求消息的结构" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/></p>
 <p>请求信息：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -6625,14 +6526,7 @@
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p><strong>响应消息的结构：</strong></p>
-<p><img
-    class="lazyload"
-    src="/svg/loading.min.svg"
-    data-src="../../imgs/socket/24.3.png"
-    data-srcset="../../imgs/socket/24.3.png, ../../imgs/socket/24.3.png 1.5x, ../../imgs/socket/24.3.png 2x"
-    data-sizes="auto"
-    alt="响应消息的结构"
-    title="响应消息的结构"/></p>
+<p><img loading="lazy" src="../../imgs/socket/24.3.png" srcset="../../imgs/socket/24.3.png, ../../imgs/socket/24.3.png 1.5x, ../../imgs/socket/24.3.png 2x" sizes="auto" data-title="响应消息的结构" data-alt="响应消息的结构" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/></p>
 <p>响应信息：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -7011,7 +6905,7 @@
   <div class="post-info">
     <div class="post-info-line">
       <div class="post-info-mod">
-        <span title=2022-10-09&#32;00:00:00>Updated on 2022-10-09&nbsp;</span>
+        <span title="Updated on 2022-10-09 00:00:00">Updated on 2022-10-09&nbsp;</span>
       </div><div class="post-info-license">
           <span><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span>
         </div></div>
@@ -7043,5 +6937,5 @@
         </div></div><div id="mask"></div><noscript>
     <div class="noscript-warning">Theme FixIt works best with JavaScript enabled.</div>
   </noscript>
-</div><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script src="/lib/lazysizes/lazysizes.min.js" async defer></script><script src="/lib/sharer/sharer.min.js" async defer></script><script src="/lib/typeit/index.umd.js" defer></script><script src="/lib/katex/katex.min.js" defer></script><script src="/lib/katex/auto-render.min.js" defer></script><script src="/lib/katex/copy-tex.min.js" defer></script><script src="/lib/katex/mhchem.min.js" defer></script><script src="/lib/cookieconsent/cookieconsent.min.js" defer></script><script>window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":-1},"comment":{"enable":false},"cookieconsent":{"content":{"dismiss":"Got it!","link":"Learn more","message":"This website uses Cookies to improve your experience."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"data":{"typeit-header-desktop":"Home","typeit-header-title-mobile":"Home"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"typeit-header-desktop":["typeit-header-desktop"],"typeit-header-title-mobile":["typeit-header-title-mobile"]},"duration":-1,"speed":100}};</script><script src="/js/theme.min.js" defer></script></body>
+</div><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script src="/lib/sharer/sharer.min.js" async defer></script><script src="/lib/typeit/index.umd.js" defer></script><script src="/lib/katex/katex.min.js" defer></script><script src="/lib/katex/auto-render.min.js" defer></script><script src="/lib/katex/copy-tex.min.js" defer></script><script src="/lib/katex/mhchem.min.js" defer></script><script src="/lib/cookieconsent/cookieconsent.min.js" defer></script><script>window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":-1},"comment":{"enable":false},"cookieconsent":{"content":{"dismiss":"Got it!","link":"Learn more","message":"This website uses Cookies to improve your experience."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"data":{"typeit-header-desktop":"Home","typeit-header-title-mobile":"Home"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"typeit-header-desktop":["typeit-header-desktop"],"typeit-header-title-mobile":["typeit-header-title-mobile"]},"duration":-1,"loop":false,"speed":100}};</script><script src="/js/theme.min.js" defer></script></body>
 </html>

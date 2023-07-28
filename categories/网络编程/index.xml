@@ -1,8 +1,8 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
   <channel>
-    <title>网络编程 - Category - 学习记录</title>
+    <title>网络编程 - Category - Notes</title>
     <link>https://cui-jiang-tao.github.io/categories/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/</link>
-    <description>网络编程 - Category - 学习记录</description>
+    <description>网络编程 - Category - Notes</description>
     <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>cjt953899262@gmail.com (cjt)</managingEditor>
       <webMaster>cjt953899262@gmail.com (cjt)</webMaster><lastBuildDate>Sun, 09 Oct 2022 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://cui-jiang-tao.github.io/categories/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/" rel="self" type="application/rss+xml" /><item>
   <title>TCP/IP网络编程</title>

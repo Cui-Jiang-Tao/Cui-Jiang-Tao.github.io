@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
     <meta name="robots" content="noodp" />
-    <title>muduo网络库源码学习 - 学习记录</title><meta name="author" content="cjt">
+    <title>muduo网络库源码学习 - Notes</title><meta name="author" content="cjt">
 <meta name="author-link" content="">
 <meta name="description" content="源码参考：Muduo 第二部分：Muduo网络库 10. 初探EventLoop 10.1 什么都不做的EventLoop 一个EventLoop就是一个事件循环" /><meta name="keywords" content='muduo' /><meta itemprop="name" content="muduo网络库源码学习">
 <meta itemprop="description" content="源码参考：Muduo 第二部分：Muduo网络库 10. 初探EventLoop 10.1 什么都不做的EventLoop 一个EventLoop就是一个事件循环"><meta itemprop="datePublished" content="2022-12-06T00:00:00+00:00" />
@@ -41,10 +41,10 @@
       },"description": ""
   }
   </script></head>
-  <body data-header-desktop="fixed" data-header-mobile="auto"><script>(window.localStorage?.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('data-theme', 'dark');</script><div class="wrapper"><header class="desktop animate__faster" id="header-desktop">
+  <body data-header-desktop="fixed" data-header-mobile="auto"><script>(window.localStorage?.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('data-theme', 'dark');</script><div class="wrapper" data-page-style="wide"><header class="desktop animate__faster" id="header-desktop">
   <div class="header-wrapper">
     <div class="header-title">
-      <a href="/" title="学习记录"><span class="header-title-pre"><i class='far fa-kiss-wink-heart fa-fw' aria-hidden='true'></i></span><span id="typeit-header-desktop" class="typeit"></span></a><span class="header-subtitle"></span></div>
+      <a href="/" title="Notes"><span class="header-title-pre"><i class='far fa-kiss-wink-heart fa-fw' aria-hidden='true'></i></span><span id="typeit-header-desktop" class="typeit"></span></a><span class="header-subtitle"></span></div>
     <nav>
       <ul class="menu"><li class="menu-item">
               <a
@@ -66,15 +66,14 @@
                 
               ><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> 标签</a></li><li class="menu-item delimiter"></li><li class="menu-item theme-switch" title="Switch Theme">
           <i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i>
-        </li>
-      </ul>
+        </li></ul>
     </nav>
   </div>
 </header><header class="mobile animate__faster" id="header-mobile">
   <div class="header-container">
     <div class="header-wrapper">
       <div class="header-title">
-        <a href="/" title="学习记录"><span class="header-title-pre"><i class='far fa-kiss-wink-heart fa-fw' aria-hidden='true'></i></span><span id="typeit-header-title-mobile" class="typeit"></span></a><span class="header-subtitle"></span></div>
+        <a href="/" title="Notes"><span class="header-title-pre"><i class='far fa-kiss-wink-heart fa-fw' aria-hidden='true'></i></span><span id="typeit-header-title-mobile" class="typeit"></span></a><span class="header-subtitle"></span></div>
       <div class="menu-toggle" id="menu-toggle-mobile">
         <span></span><span></span><span></span>
       </div>
@@ -101,31 +100,24 @@
                   href="/tags/"
                   
                   
-                ><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> 标签</a></li><li class="menu-item theme-switch" title="Switch Theme">
-          <i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i>
-        </li></ul>
+                ><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> 标签</a></li><li class="menu-item menu-system">
+          <span class="menu-system-item theme-switch" title="Switch Theme"><i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i></span></li>
+      </ul>
     </nav>
   </div>
-</header><main class="container" data-page-style="wide"><aside class="toc" id="toc-auto"><h2 class="toc-title">Contents&nbsp;<i class="toc-icon fa-solid fa-angle-down fa-fw" aria-hidden="true"></i></h2>
+</header><main class="container"><aside class="toc" id="toc-auto"><h2 class="toc-title">Contents&nbsp;<i class="toc-icon fa-solid fa-angle-down fa-fw" aria-hidden="true"></i></h2>
       <div class="toc-content" id="toc-content-auto"></div></aside>
 
   <aside class="aside-custom">
     </aside>
 
   <article class="page single">
-    <div class="header"><h1 class="single-title animate__animated animate__flipInX">
-        <span>muduo网络库源码学习</span>
+    <div class="header"><h1 class="single-title animate__animated animate__flipInX"><span>muduo网络库源码学习</span>
       </h1></div><div class="post-meta">
-      <div class="post-meta-line"><span class="post-author"><span class="author"><img
-    class="lazyload avatar"
-    src="/svg/loading.min.svg"
-    data-src="https://www.gravatar.com/avatar/736cc0685dbd22dd674add9c481fc755?s=32&amp;d="
-    data-srcset="https://www.gravatar.com/avatar/736cc0685dbd22dd674add9c481fc755?s=32&amp;d=, https://www.gravatar.com/avatar/736cc0685dbd22dd674add9c481fc755?s=32&amp;d= 1.5x, https://www.gravatar.com/avatar/736cc0685dbd22dd674add9c481fc755?s=32&amp;d= 2x"
-    data-sizes="auto"
-    alt="cjt"
-    title="cjt"/>&nbsp;cjt</span></span>
+      <div class="post-meta-line"><span class="post-author"><span class="author"><i class="fa-solid fa-user-circle" aria-hidden="true"></i>
+      cjt</span></span>
           <span class="post-category">included in <a href="/categories/c/c++/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> c/c++</a></span></div>
-      <div class="post-meta-line"><span title=2022-12-06&#32;00:00:00><i class="fa-regular fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-12-06">2022-12-06</time></span>&nbsp;<span><i class="fa-solid fa-pencil-alt fa-fw" aria-hidden="true"></i> 52133 words</span>&nbsp;<span><i class="fa-regular fa-clock fa-fw" aria-hidden="true"></i> 105 minutes</span>&nbsp;</div>
+      <div class="post-meta-line"><span title="published on 2022-12-06 00:00:00"><i class="fa-regular fa-calendar-alt fa-fw me-1" aria-hidden="true"></i><time datetime="2022-12-06">2022-12-06</time></span>&nbsp;<span title="Updated on 2022-12-18 00:00:00"><i class="fa-regular fa-edit fa-fw me-1" aria-hidden="true"></i><time datetime="2022-12-18">2022-12-18</time></span>&nbsp;<span><i class="fa-solid fa-pencil-alt fa-fw me-1" aria-hidden="true"></i>52133 words</span>&nbsp;<span><i class="fa-regular fa-clock fa-fw me-1" aria-hidden="true"></i>105 minutes</span>&nbsp;</div>
     </div><div class="details toc" id="toc-static" data-kept="false">
         <div class="details-summary toc-title">
           <span>Contents</span>
@@ -3031,41 +3023,13 @@
 </div>
 </div><h2 id="15-muduo-事件监听总结">15. muduo 事件监听总结</h2>
 <h3 id="151-channel及其文件描述符如何加入到poller中">15.1 Channel及其文件描述符如何加入到Poller中</h3>
-<p><img
-    class="lazyload"
-    src="/svg/loading.min.svg"
-    data-src="../../imgs/muduo/net_1.jpg"
-    data-srcset="../../imgs/muduo/net_1.jpg, ../../imgs/muduo/net_1.jpg 1.5x, ../../imgs/muduo/net_1.jpg 2x"
-    data-sizes="auto"
-    alt="../../imgs/muduo/net_1.jpg"
-    title="../../imgs/muduo/net_1.jpg"/></p>
+<p><img loading="lazy" src="../../imgs/muduo/net_1.jpg" srcset="../../imgs/muduo/net_1.jpg, ../../imgs/muduo/net_1.jpg 1.5x, ../../imgs/muduo/net_1.jpg 2x" sizes="auto" data-title="../../imgs/muduo/net_1.jpg" data-alt="../../imgs/muduo/net_1.jpg" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/></p>
 <h3 id="152-eventloop如何获取活跃的channel并处理相关事件">15.2 EventLoop如何获取活跃的Channel并处理相关事件</h3>
-<p><img
-    class="lazyload"
-    src="/svg/loading.min.svg"
-    data-src="../../imgs/muduo/net_2.jpg"
-    data-srcset="../../imgs/muduo/net_2.jpg, ../../imgs/muduo/net_2.jpg 1.5x, ../../imgs/muduo/net_2.jpg 2x"
-    data-sizes="auto"
-    alt="../../imgs/muduo/net_2.jpg"
-    title="../../imgs/muduo/net_2.jpg"/></p>
+<p><img loading="lazy" src="../../imgs/muduo/net_2.jpg" srcset="../../imgs/muduo/net_2.jpg, ../../imgs/muduo/net_2.jpg 1.5x, ../../imgs/muduo/net_2.jpg 2x" sizes="auto" data-title="../../imgs/muduo/net_2.jpg" data-alt="../../imgs/muduo/net_2.jpg" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/></p>
 <h3 id="153-eventloop如何处理定时器">15.3 EventLoop如何处理定时器</h3>
-<p><img
-    class="lazyload"
-    src="/svg/loading.min.svg"
-    data-src="../../imgs/muduo/net_3.jpg"
-    data-srcset="../../imgs/muduo/net_3.jpg, ../../imgs/muduo/net_3.jpg 1.5x, ../../imgs/muduo/net_3.jpg 2x"
-    data-sizes="auto"
-    alt="../../imgs/muduo/net_3.jpg"
-    title="../../imgs/muduo/net_3.jpg"/></p>
+<p><img loading="lazy" src="../../imgs/muduo/net_3.jpg" srcset="../../imgs/muduo/net_3.jpg, ../../imgs/muduo/net_3.jpg 1.5x, ../../imgs/muduo/net_3.jpg 2x" sizes="auto" data-title="../../imgs/muduo/net_3.jpg" data-alt="../../imgs/muduo/net_3.jpg" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/></p>
 <h3 id="154-eventloop与跨线程调用函数">15.4 EventLoop与跨线程调用函数</h3>
-<p><img
-    class="lazyload"
-    src="/svg/loading.min.svg"
-    data-src="../../imgs/muduo/net_4.jpg"
-    data-srcset="../../imgs/muduo/net_4.jpg, ../../imgs/muduo/net_4.jpg 1.5x, ../../imgs/muduo/net_4.jpg 2x"
-    data-sizes="auto"
-    alt="../../imgs/muduo/net_4.jpg"
-    title="../../imgs/muduo/net_4.jpg"/></p>
+<p><img loading="lazy" src="../../imgs/muduo/net_4.jpg" srcset="../../imgs/muduo/net_4.jpg, ../../imgs/muduo/net_4.jpg 1.5x, ../../imgs/muduo/net_4.jpg 2x" sizes="auto" data-title="../../imgs/muduo/net_4.jpg" data-alt="../../imgs/muduo/net_4.jpg" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/></p>
 <ul>
 <li>调用queueInLoop的线程不是当前IO线程需要唤醒</li>
 <li>或者调用queueInLoop的线程是当前IO线程，并且此时正在调用pending functor，需要唤醒</li>
@@ -4531,14 +4495,7 @@
 <p>Buffer类其实是封装了一个用户缓冲区，以及向这个缓冲区写数据读数据等一系列控制方法。</p>
 <h3 id="191-设计思想">19.1 设计思想</h3>
 <p>这个缓冲区类的实现值得参考和借鉴，以前我们写的只支持一次性全部读出和写入，而这个Buffer类可以读一点，写一点，内部逻辑稳定。这个Buffer类是vector（方便动态扩容），对外表现出std::queue的特性，它的内部原理大概就是下图这样子的，用两个游标（readerIndex_和writerIndex_）标记可读缓冲区的起始位置和空闲空间的起始位置。</p>
-<p><img
-    class="lazyload"
-    src="/svg/loading.min.svg"
-    data-src="../../imgs/muduo/Buffer_index.jpg"
-    data-srcset="../../imgs/muduo/Buffer_index.jpg, ../../imgs/muduo/Buffer_index.jpg 1.5x, ../../imgs/muduo/Buffer_index.jpg 2x"
-    data-sizes="auto"
-    alt="Buffer游标"
-    title="Buffer游标"/></p>
+<p><img loading="lazy" src="../../imgs/muduo/Buffer_index.jpg" srcset="../../imgs/muduo/Buffer_index.jpg, ../../imgs/muduo/Buffer_index.jpg 1.5x, ../../imgs/muduo/Buffer_index.jpg 2x" sizes="auto" data-title="Buffer游标" data-alt="Buffer游标" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/></p>
 <p>其中需要关注的就是，随着写入数据和读入数据，蓝色的空闲空间会越来越少，prependable空间会越来越大，当什么时候空用空间耗尽了，就会向步骤4一样，把所有数据拷贝前移，重新调整。另外当整个缓冲区的prependable空间和蓝色的空闲空间都无法装下新来的数据时，那就会调用vector的resize，实现扩容机制。</p>
 <h3 id="192-几个重要的成员函数">19.2 几个重要的成员函数</h3>
 <div class="highlight"><div class="chroma">
@@ -5536,14 +5493,7 @@
 </div>
 </div><p>使用该函数来断开连接。</p>
 <h3 id="218-tcpconnection生存期管理">21.8 TcpConnection生存期管理</h3>
-<p><img
-    class="lazyload"
-    src="/svg/loading.min.svg"
-    data-src="../../imgs/large_concurrency/TcpServer&amp;TcpConnection_close.png"
-    data-srcset="../../imgs/large_concurrency/TcpServer&amp;TcpConnection_close.png, ../../imgs/large_concurrency/TcpServer&amp;TcpConnection_close.png 1.5x, ../../imgs/large_concurrency/TcpServer&amp;TcpConnection_close.png 2x"
-    data-sizes="auto"
-    alt="连接关闭时序图"
-    title="连接关闭时序图"/></p>
+<p><img loading="lazy" src="../../imgs/large_concurrency/TcpServer&amp;TcpConnection_close.png" srcset="../../imgs/large_concurrency/TcpServer&amp;TcpConnection_close.png, ../../imgs/large_concurrency/TcpServer&amp;TcpConnection_close.png 1.5x, ../../imgs/large_concurrency/TcpServer&amp;TcpConnection_close.png 2x" sizes="auto" data-title="连接关闭时序图" data-alt="连接关闭时序图" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/></p>
 <p>第5步，在TcpSever中removeConnection 移除掉TcpConnection, 正常应该在移除后销毁掉TcpConnection，但是不能销毁，如果现在销毁了TcpConnection的Channel对象也就跟着销毁了，而这时调用Channel的handleEvent() 函数，就会出现Core Dump，所以说TcpConnection 的生命期应该长于Channel对象。</p>
 <p>当连接到来，创建一个TcpConnection对象，立刻用share_ptr 来管理，引用计数为1，</p>
 <p>在Channel中维护一个weak_ptr(tie_)，将这个share_ptr 对象赋值给tie_，引用计数仍为1，</p>
@@ -5551,14 +5501,7 @@
 <p>第6步TcpServer 中erase 后引用计数变为1，第七步queueInLoop 加入bind 引用计数变为2，handleEvent 执行完引用计数减1变为1，bind执行完后引用计数变为0，自动销毁。</p>
 <h2 id="22-tcpserver">22. TcpServer</h2>
 <p>TcpServer中融合了前面讲过的几乎所有东西，通过TcpServer 提供了三个成员函数来注册三个回调函数，连接成功和断开用了同一个回调函数。</p>
-<p><img
-    class="lazyload"
-    src="/svg/loading.min.svg"
-    data-src="../../imgs/muduo/TcpServer.png"
-    data-srcset="../../imgs/muduo/TcpServer.png, ../../imgs/muduo/TcpServer.png 1.5x, ../../imgs/muduo/TcpServer.png 2x"
-    data-sizes="auto"
-    alt="TcpServer"
-    title="TcpServer"/></p>
+<p><img loading="lazy" src="../../imgs/muduo/TcpServer.png" srcset="../../imgs/muduo/TcpServer.png, ../../imgs/muduo/TcpServer.png 1.5x, ../../imgs/muduo/TcpServer.png 2x" sizes="auto" data-title="TcpServer" data-alt="TcpServer" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/></p>
 <h3 id="221-io-线程">22.1 I/O 线程</h3>
 <p>TcpServer 正如其名，是一个服务器，而且是一个可以支持多线程Reactor的服务器，所以该服务器必须要有诸多IO线程：</p>
 <div class="highlight"><div class="chroma">
@@ -6568,25 +6511,11 @@
 <li>消息发送完毕：这算半个。对于低流量的服务，可不必关心这个事件;这里的发送完毕是指数据写入操作系统缓冲区，将由TCP协议栈负责数据的发送与重传，不代表对方已经接收到数据。</li>
 </ul>
 <p>一个套接字有两个缓冲区，一个接收缓冲区一个发送缓冲区，当一个套接字到来的时候先被内核缓冲区接收。</p>
-<p><img
-    class="lazyload"
-    src="/svg/loading.min.svg"
-    data-src="../../imgs/muduo/buf.png"
-    data-srcset="../../imgs/muduo/buf.png, ../../imgs/muduo/buf.png 1.5x, ../../imgs/muduo/buf.png 2x"
-    data-sizes="auto"
-    alt="缓冲区"
-    title="缓冲区"/></p>
+<p><img loading="lazy" src="../../imgs/muduo/buf.png" srcset="../../imgs/muduo/buf.png, ../../imgs/muduo/buf.png 1.5x, ../../imgs/muduo/buf.png 2x" sizes="auto" data-title="缓冲区" data-alt="缓冲区" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/></p>
 <p>当网络库事件循环中的可读事件触发，会将数据从内核缓冲区移动到应用缓冲区中。并且网络库会回调函数，如：OnMessage。由于TCP接收到的数据可能是宕包，OnMessage这个函数会根据协议判断这个数据包是否是完整的数据包，如果不是完整的数据OnMessage立刻返回，直到内核当中又有数据接收，进行下一次循环操作；如果读到完整的数据，将进行常规处理(read-&gt;decode-&gt;compute-&gt;encode-&gt;write-&gt;进行下一次事件循环)。</p>
 <p>调用write(buf,..)函数：如果数据全部填充到了内核缓冲区，网络库回调一个函数，如：OnWriteComplete函数。如果内核缓冲区的不足以容纳buf数据，就会将buf部分的数据放入进来，不足以容纳的数据存放到应用层的发送缓冲区当中。内核的发送缓冲区的数据发送完成后会触发可写事件，继续下一次的事件循环。</p>
 <h3 id="251-连接建立">25.1 连接建立</h3>
-<p><img
-    class="lazyload"
-    src="/svg/loading.min.svg"
-    data-src="../../imgs/muduo/Connection.jpg"
-    data-srcset="../../imgs/muduo/Connection.jpg, ../../imgs/muduo/Connection.jpg 1.5x, ../../imgs/muduo/Connection.jpg 2x"
-    data-sizes="auto"
-    alt="连接建立的代码逻辑"
-    title="连接建立的代码逻辑"/></p>
+<p><img loading="lazy" src="../../imgs/muduo/Connection.jpg" srcset="../../imgs/muduo/Connection.jpg, ../../imgs/muduo/Connection.jpg 1.5x, ../../imgs/muduo/Connection.jpg 2x" sizes="auto" data-title="连接建立的代码逻辑" data-alt="连接建立的代码逻辑" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/></p>
 <ol>
 <li>当我们创建一个TcpServer对象，构造函数将实例化了一个Acceptor对象，并往这个Acceptor对象注册了一个回调函数TcpServer::newConnection()。</li>
 <li>Acceptor的构造函数会实例化一个Channel对象，即acceptChannel_，该Channel对象封装了服务器监听套接字文件描述符（尚未注册到main EventLoop的事件监听器上）。</li>
@@ -6598,23 +6527,9 @@
 <li>TcpServer::newConnection()函数的主要功能就是将建立好的连接进行封装（封装成TcpConnection对象），并使用轮询的方式选择一个sub EventLoop，并调用TcpConnection::connectEstablished()将TcpConnection::channel_注册到刚刚选择的sub EventLoop上。</li>
 </ol>
 <h3 id="252-消息到达">25.2 消息到达</h3>
-<p><img
-    class="lazyload"
-    src="/svg/loading.min.svg"
-    data-src="../../imgs/muduo/TcpConnection.jpg"
-    data-srcset="../../imgs/muduo/TcpConnection.jpg, ../../imgs/muduo/TcpConnection.jpg 1.5x, ../../imgs/muduo/TcpConnection.jpg 2x"
-    data-sizes="auto"
-    alt="TcpConnection对象"
-    title="TcpConnection对象"/></p>
+<p><img loading="lazy" src="../../imgs/muduo/TcpConnection.jpg" srcset="../../imgs/muduo/TcpConnection.jpg, ../../imgs/muduo/TcpConnection.jpg 1.5x, ../../imgs/muduo/TcpConnection.jpg 2x" sizes="auto" data-title="TcpConnection对象" data-alt="TcpConnection对象" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/></p>
 <p>在main EventLoop中接受新连接请求之后，将这条Tcp连接封装成TcpConnection对象。其主要封装了连接套接字的fd(socket_)、连接套接字的channel_等。在TcpConnection的构造函数中会将TcpConnection::handleRead()、TcpConnection::handleWrite()、TcpConnection::handleClose()、TcpConnection::handleError()这个四个方法注册进这个channel_内。当TcpConnection对象建立完毕之后，main EventLoop的Acceptor会将这个TcpConnection对象中的channel_注册到某一个SubEventLoop中。</p>
-<p><img
-    class="lazyload"
-    src="/svg/loading.min.svg"
-    data-src="../../imgs/muduo/Message.jpg"
-    data-srcset="../../imgs/muduo/Message.jpg, ../../imgs/muduo/Message.jpg 1.5x, ../../imgs/muduo/Message.jpg 2x"
-    data-sizes="auto"
-    alt="消息读取逻辑"
-    title="消息读取逻辑"/></p>
+<p><img loading="lazy" src="../../imgs/muduo/Message.jpg" srcset="../../imgs/muduo/Message.jpg, ../../imgs/muduo/Message.jpg 1.5x, ../../imgs/muduo/Message.jpg 2x" sizes="auto" data-title="消息读取逻辑" data-alt="消息读取逻辑" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/></p>
 <p>如上图所示，SubEventLoop中的EventLoop::loop()函数内部会循环的执行上图中的步骤1和步骤2。</p>
 <ul>
 <li>步骤1就是调用Poller::poll()方法获取事件监听结果，这个事件监听结果是一个Channel集合，每一个Channel封装着一个fd及fd感兴趣的事件和事件监听器监听到该fd实际发生的事件。</li>
@@ -6633,14 +6548,7 @@
 <p>连接断开分为：主动断开(close、shutdown)和被动断开(read返回0)。</p>
 <h4 id="2541-被动断开">25.4.1 被动断开</h4>
 <p>服务端TcpConnection::handleRead()中read返回0感知到客户端把连接断开了。TcpConnection::handleRead()函数内部调用了Linux的函数readv()，当readv()返回0的时候，服务端就知道客户端断开连接了。然后就接着调用TcpConnection::handleClose()。</p>
-<p><img
-    class="lazyload"
-    src="/svg/loading.min.svg"
-    data-src="../../imgs/muduo/passive_disconnect.jpg"
-    data-srcset="../../imgs/muduo/passive_disconnect.jpg, ../../imgs/muduo/passive_disconnect.jpg 1.5x, ../../imgs/muduo/passive_disconnect.jpg 2x"
-    data-sizes="auto"
-    alt="被动断开"
-    title="被动断开"/></p>
+<p><img loading="lazy" src="../../imgs/muduo/passive_disconnect.jpg" srcset="../../imgs/muduo/passive_disconnect.jpg, ../../imgs/muduo/passive_disconnect.jpg 1.5x, ../../imgs/muduo/passive_disconnect.jpg 2x" sizes="auto" data-title="被动断开" data-alt="被动断开" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/></p>
 <ol>
 <li>在执行TcpConnection::handleClose()的时候，该函数还是在sub EventLoop线程中运行的，接着调用closeCallback_(const TcpConnectionPtr &amp;connPtr)回调函数，该函数保存的其实是TcpServer::removeConnection()函数。</li>
 <li>TcpServer::removeConnection()函数调用了removeConnectionInLoop()函数，该函数的运行是在main EventLoop线程中执行的。</li>
@@ -6655,14 +6563,7 @@
 <h4 id="2542-主动断开">25.4.2 主动断开</h4>
 <p>当服务器主动关闭时，调用TcpServer::~TcpServer()析构函数。</p>
 <p>在创建TcpConnection对象时，Acceptor都要将这个对象分发给一个sub EventLoop来管理。这个TcpConnection对象的一切函数执行都要在其管理的sub EventLoop线程中运行。再一次贯彻One Loop Per Thread的设计模式。比如要想彻底删除一个TcpConnection对象，就必须要调用这个对象的connecDestroyed()方法，<strong>这个方法执行完后才能释放这个对象的堆内存</strong>。每个TcpConnection对象的connectDestroyed()方法都必须在这个TcpConnection对象所属的SubEventLoop绑定的线程中执行。</p>
-<p><img
-    class="lazyload"
-    src="/svg/loading.min.svg"
-    data-src="../../imgs/muduo/Destruction_TcpConnection.jpg"
-    data-srcset="../../imgs/muduo/Destruction_TcpConnection.jpg, ../../imgs/muduo/Destruction_TcpConnection.jpg 1.5x, ../../imgs/muduo/Destruction_TcpConnection.jpg 2x"
-    data-sizes="auto"
-    alt="析构TcpConnection"
-    title="析构TcpConnection"/></p>
+<p><img loading="lazy" src="../../imgs/muduo/Destruction_TcpConnection.jpg" srcset="../../imgs/muduo/Destruction_TcpConnection.jpg, ../../imgs/muduo/Destruction_TcpConnection.jpg 1.5x, ../../imgs/muduo/Destruction_TcpConnection.jpg 2x" sizes="auto" data-title="析构TcpConnection" data-alt="析构TcpConnection" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/></p>
 <p>不断循环的让这个TcpConnection对象所属的SubEventLoop线程执行TcpConnection::connectDestroyed()函数，同时在MainEventLoop的TcpServer::~TcpServer()函数中调用item.second.reset()释放保管TcpConnection对象的共享智能指针，以达到释放TcpConnection对象的堆内存空间的目的。</p>
 <p>TcpConnection::connectDestroyed()函数的执行以及这个TcpConnection对象的堆内存释放操作不在同一个线程中运行，所以要考虑怎么保证一个TcpConnectino对象的堆内存释放操作是在TcpConnection::connectDestroyed()调用完后。这个析构函数巧妙利用了共享智能指针的特点，当没有共享智能指针指向这个TcpConnection对象时（引用计数为0），这个TcpConnection对象就会被析构删除（堆内存释放）。</p>
 <p>TcpServer::~TcpServer()中的代码逻辑：</p>
@@ -6754,32 +6655,11 @@
 <h2 id="26-阶段性总结">26. 阶段性总结</h2>
 <p><code>multiple reactors + threadpool (one loop per thread + threadpool)</code>：Reactor 最核心的事件就是事件分发机制，即将IO multiplexing 拿到的IO事件分发给各个文件描述符(fd)的事件处理函数(handle)。</p>
 <p>EventLoop起到一个驱动循环的功能，Poller负责从事件监听器上获取监听结果。而Channel类则在其中起到了将fd及其相关属性封装的作用，将fd及其感兴趣事件和发生的事件以及不同事件对应的回调函数封装在一起，这样在各个模块中传递更加方便。</p>
-<p><img
-    class="lazyload"
-    src="/svg/loading.min.svg"
-    data-src="../../imgs/muduo/Multi-Reactor.jpg"
-    data-srcset="../../imgs/muduo/Multi-Reactor.jpg, ../../imgs/muduo/Multi-Reactor.jpg 1.5x, ../../imgs/muduo/Multi-Reactor.jpg 2x"
-    data-sizes="auto"
-    alt="Muduo"
-    title="Muduo"/></p>
+<p><img loading="lazy" src="../../imgs/muduo/Multi-Reactor.jpg" srcset="../../imgs/muduo/Multi-Reactor.jpg, ../../imgs/muduo/Multi-Reactor.jpg 1.5x, ../../imgs/muduo/Multi-Reactor.jpg 2x" sizes="auto" data-title="Muduo" data-alt="Muduo" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/></p>
 <p>Muduo库是基于Reactor模式实现的TCP网络编程库。Multi-Reactor模型如下所示：</p>
-<p><img
-    class="lazyload"
-    src="/svg/loading.min.svg"
-    data-src="../../imgs/muduo/Multi-Reactor.png"
-    data-srcset="../../imgs/muduo/Multi-Reactor.png, ../../imgs/muduo/Multi-Reactor.png 1.5x, ../../imgs/muduo/Multi-Reactor.png 2x"
-    data-sizes="auto"
-    alt="Muduo"
-    title="Muduo"/></p>
+<p><img loading="lazy" src="../../imgs/muduo/Multi-Reactor.png" srcset="../../imgs/muduo/Multi-Reactor.png, ../../imgs/muduo/Multi-Reactor.png 1.5x, ../../imgs/muduo/Multi-Reactor.png 2x" sizes="auto" data-title="Muduo" data-alt="Muduo" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/></p>
 <p>一张图总结服务/客户端调用关系：</p>
-<p><img
-    class="lazyload"
-    src="/svg/loading.min.svg"
-    data-src="../../imgs/muduo/muduo.jpg"
-    data-srcset="../../imgs/muduo/muduo.jpg, ../../imgs/muduo/muduo.jpg 1.5x, ../../imgs/muduo/muduo.jpg 2x"
-    data-sizes="auto"
-    alt="Muduo"
-    title="Muduo"/></p>
+<p><img loading="lazy" src="../../imgs/muduo/muduo.jpg" srcset="../../imgs/muduo/muduo.jpg, ../../imgs/muduo/muduo.jpg 1.5x, ../../imgs/muduo/muduo.jpg 2x" sizes="auto" data-title="Muduo" data-alt="Muduo" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/></p>
 <blockquote>
 <p>白色部分是外部类，对外可见的。灰色部分是内部类，对外不可见。黑色尖头是组合关系，负责生命周期。白色是聚合关系不负责生命周期。</p>
 </blockquote>
@@ -7889,7 +7769,7 @@
   <div class="post-info">
     <div class="post-info-line">
       <div class="post-info-mod">
-        <span title=2022-12-18&#32;00:00:00>Updated on 2022-12-18&nbsp;</span>
+        <span title="Updated on 2022-12-18 00:00:00">Updated on 2022-12-18&nbsp;</span>
       </div><div class="post-info-license">
           <span><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span>
         </div></div>
@@ -7921,5 +7801,5 @@
         </div></div><div id="mask"></div><noscript>
     <div class="noscript-warning">Theme FixIt works best with JavaScript enabled.</div>
   </noscript>
-</div><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script src="/lib/lazysizes/lazysizes.min.js" async defer></script><script src="/lib/sharer/sharer.min.js" async defer></script><script src="/lib/typeit/index.umd.js" defer></script><script src="/lib/katex/katex.min.js" defer></script><script src="/lib/katex/auto-render.min.js" defer></script><script src="/lib/katex/copy-tex.min.js" defer></script><script src="/lib/katex/mhchem.min.js" defer></script><script src="/lib/cookieconsent/cookieconsent.min.js" defer></script><script>window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":-1},"comment":{"enable":false},"cookieconsent":{"content":{"dismiss":"Got it!","link":"Learn more","message":"This website uses Cookies to improve your experience."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"data":{"typeit-header-desktop":"Home","typeit-header-title-mobile":"Home"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"typeit-header-desktop":["typeit-header-desktop"],"typeit-header-title-mobile":["typeit-header-title-mobile"]},"duration":-1,"speed":100}};</script><script src="/js/theme.min.js" defer></script></body>
+</div><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script src="/lib/sharer/sharer.min.js" async defer></script><script src="/lib/typeit/index.umd.js" defer></script><script src="/lib/katex/katex.min.js" defer></script><script src="/lib/katex/auto-render.min.js" defer></script><script src="/lib/katex/copy-tex.min.js" defer></script><script src="/lib/katex/mhchem.min.js" defer></script><script src="/lib/cookieconsent/cookieconsent.min.js" defer></script><script>window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":-1},"comment":{"enable":false},"cookieconsent":{"content":{"dismiss":"Got it!","link":"Learn more","message":"This website uses Cookies to improve your experience."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"data":{"typeit-header-desktop":"Home","typeit-header-title-mobile":"Home"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"typeit-header-desktop":["typeit-header-desktop"],"typeit-header-title-mobile":["typeit-header-title-mobile"]},"duration":-1,"loop":false,"speed":100}};</script><script src="/js/theme.min.js" defer></script></body>
 </html>

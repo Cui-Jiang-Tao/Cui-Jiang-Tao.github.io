@@ -1,0 +1,16 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+  <channel>
+    <title>Music - Tag - Notes</title>
+    <link>https://cui-jiang-tao.github.io/tags/music/</link>
+    <description>Music - Tag - Notes</description>
+    <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>cjt953899262@gmail.com (cjt)</managingEditor>
+      <webMaster>cjt953899262@gmail.com (cjt)</webMaster><lastBuildDate>Fri, 09 Jun 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://cui-jiang-tao.github.io/tags/music/" rel="self" type="application/rss+xml" /><item>
+  <title>音乐小工具</title>
+  <link>https://cui-jiang-tao.github.io/posts/music/music_tool/</link>
+  <pubDate>Fri, 09 Jun 2023 00:00:00 &#43;0000</pubDate>
+  <author>cjt</author>
+  <guid>https://cui-jiang-tao.github.io/posts/music/music_tool/</guid>
+  <description><![CDATA[删除重复文件： 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 import os import hashlib def get_file_hash(file_path): &#34;&#34;&#34; 计算文]]></description>
+</item>
+</channel>
+</rss>

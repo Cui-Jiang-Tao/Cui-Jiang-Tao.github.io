@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+  <head>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+    <meta name="robots" content="noodp" />
+    <title>160个CrackMe之001 - Notes</title><meta name="author" content="cjt">
+<meta name="author-link" content="">
+<meta name="description" content="1. 程序分析 想要破解一个程序，必须先了解这个程序。所以，在破解过程中，对最初程序的分析很重要，它可以帮助我们理解作者的目的和意图，特别是对于注" /><meta name="keywords" content='破解' /><meta itemprop="name" content="160个CrackMe之001">
+<meta itemprop="description" content="1. 程序分析 想要破解一个程序，必须先了解这个程序。所以，在破解过程中，对最初程序的分析很重要，它可以帮助我们理解作者的目的和意图，特别是对于注"><meta itemprop="datePublished" content="2023-07-28T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2023-07-28T00:00:00+00:00" />
+<meta itemprop="wordCount" content="2930">
+<meta itemprop="keywords" content="破解," /><meta property="og:title" content="160个CrackMe之001" />
+<meta property="og:description" content="1. 程序分析 想要破解一个程序，必须先了解这个程序。所以，在破解过程中，对最初程序的分析很重要，它可以帮助我们理解作者的目的和意图，特别是对于注" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://cui-jiang-tao.github.io/posts/160_crackme/001/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-07-28T00:00:00+00:00" />
+<meta property="article:modified_time" content="2023-07-28T00:00:00+00:00" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="160个CrackMe之001"/>
+<meta name="twitter:description" content="1. 程序分析 想要破解一个程序，必须先了解这个程序。所以，在破解过程中，对最初程序的分析很重要，它可以帮助我们理解作者的目的和意图，特别是对于注"/>
+<meta name="application-name" content="FixIt">
+<meta name="apple-mobile-web-app-title" content="FixIt"><meta name="theme-color" data-light="#f8f8f8" data-dark="#252627" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" href="https://cui-jiang-tao.github.io/posts/160_crackme/001/" /><link rel="prev" href="https://cui-jiang-tao.github.io/posts/python/python%E6%A0%B8%E5%BF%83%E7%BC%96%E7%A8%8B/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "BlogPosting",
+    "headline": "160个CrackMe之001",
+    "inLanguage": "zh-CN",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https:\/\/cui-jiang-tao.github.io\/posts\/160_crackme\/001\/"
+    },"genre": "posts","keywords": "破解","wordcount":  2930 ,
+    "url": "https:\/\/cui-jiang-tao.github.io\/posts\/160_crackme\/001\/","datePublished": "2023-07-28T00:00:00+00:00","dateModified": "2023-07-28T00:00:00+00:00","publisher": {
+      "@type": "Organization",
+      "name": ""},"author": {
+        "@type": "Person",
+        "name": "cjt"
+      },"description": ""
+  }
+  </script></head>
+  <body data-header-desktop="fixed" data-header-mobile="auto"><script>(window.localStorage?.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('data-theme', 'dark');</script><div class="wrapper" data-page-style="wide"><header class="desktop animate__faster" id="header-desktop">
+  <div class="header-wrapper">
+    <div class="header-title">
+      <a href="/" title="Notes"><span class="header-title-pre"><i class='far fa-kiss-wink-heart fa-fw' aria-hidden='true'></i></span><span id="typeit-header-desktop" class="typeit"></span></a><span class="header-subtitle"></span></div>
+    <nav>
+      <ul class="menu"><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/posts/"
+                
+                
+              ><i class="fa-solid fa-archive fa-fw fa-sm" aria-hidden="true"></i> 文章</a></li><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/categories/"
+                
+                
+              ><i class="fa-solid fa-th fa-fw fa-sm" aria-hidden="true"></i> 分类</a></li><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/tags/"
+                
+                
+              ><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> 标签</a></li><li class="menu-item delimiter"></li><li class="menu-item theme-switch" title="Switch Theme">
+          <i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i>
+        </li></ul>
+    </nav>
+  </div>
+</header><header class="mobile animate__faster" id="header-mobile">
+  <div class="header-container">
+    <div class="header-wrapper">
+      <div class="header-title">
+        <a href="/" title="Notes"><span class="header-title-pre"><i class='far fa-kiss-wink-heart fa-fw' aria-hidden='true'></i></span><span id="typeit-header-title-mobile" class="typeit"></span></a><span class="header-subtitle"></span></div>
+      <div class="menu-toggle" id="menu-toggle-mobile">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+    <nav>
+      <ul class="menu" id="menu-mobile"><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/posts/"
+                  
+                  
+                ><i class="fa-solid fa-archive fa-fw fa-sm" aria-hidden="true"></i> 文章</a></li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/categories/"
+                  
+                  
+                ><i class="fa-solid fa-th fa-fw fa-sm" aria-hidden="true"></i> 分类</a></li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/tags/"
+                  
+                  
+                ><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> 标签</a></li><li class="menu-item menu-system">
+          <span class="menu-system-item theme-switch" title="Switch Theme"><i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i></span></li>
+      </ul>
+    </nav>
+  </div>
+</header><main class="container"><aside class="toc" id="toc-auto"><h2 class="toc-title">Contents&nbsp;<i class="toc-icon fa-solid fa-angle-down fa-fw" aria-hidden="true"></i></h2>
+      <div class="toc-content" id="toc-content-auto"></div></aside>
+
+  <aside class="aside-custom">
+    </aside>
+
+  <article class="page single">
+    <div class="header"><h1 class="single-title animate__animated animate__flipInX"><span>160个CrackMe之001</span>
+      </h1></div><div class="post-meta">
+      <div class="post-meta-line"><span class="post-author"><span class="author"><i class="fa-solid fa-user-circle" aria-hidden="true"></i>
+      cjt</span></span>
+          <span class="post-category">included in <a href="/categories/%E9%80%86%E5%90%91/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 逆向</a></span></div>
+      <div class="post-meta-line"><span title="published on 2023-07-28 00:00:00"><i class="fa-regular fa-calendar-alt fa-fw me-1" aria-hidden="true"></i><time datetime="2023-07-28">2023-07-28</time></span>&nbsp;<span title="Updated on 2023-07-28 00:00:00"><i class="fa-regular fa-edit fa-fw me-1" aria-hidden="true"></i><time datetime="2023-07-28">2023-07-28</time></span>&nbsp;<span><i class="fa-solid fa-pencil-alt fa-fw me-1" aria-hidden="true"></i>2930 words</span>&nbsp;<span><i class="fa-regular fa-clock fa-fw me-1" aria-hidden="true"></i>6 minutes</span>&nbsp;</div>
+    </div><div class="details toc" id="toc-static" data-kept="false">
+        <div class="details-summary toc-title">
+          <span>Contents</span>
+          <span><i class="details-icon fa-solid fa-angle-right" aria-hidden="true"></i></span>
+        </div>
+        <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#1-程序分析">1. 程序分析</a></li>
+    <li><a href="#2-提示框">2. 提示框</a></li>
+    <li><a href="#3-序列号生成">3. 序列号生成</a></li>
+    <li><a href="#4-第二个单独的序列号">4. 第二个单独的序列号</a></li>
+  </ul>
+</nav></div>
+      </div><div class="content" id="content"><h2 id="1-程序分析">1. 程序分析</h2>
+<p>想要破解一个程序，必须先了解这个程序。所以，在破解过程中，对最初程序的分析很重要，它可以帮助我们理解作者的目的和意图，特别是对于注册码的处理细节，从而方便我们反向跟踪和推导。</p>
+<h2 id="2-提示框">2. 提示框</h2>
+<p>将Acid burn.exe拖拽到od中，F9运行，显示如下界面，</p>
+<p><img loading="lazy" src="../../../imgs/160_CrackMe/001/image-20230728134203479.png" srcset="../../../imgs/160_CrackMe/001/image-20230728134203479.png, ../../../imgs/160_CrackMe/001/image-20230728134203479.png 1.5x, ../../../imgs/160_CrackMe/001/image-20230728134203479.png 2x" sizes="auto" data-title="&amp;ldquo;image-20230728134203479&amp;rdquo;" data-alt="&amp;ldquo;image-20230728134203479&amp;rdquo;" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/></p>
+<p>我们可以把这个提示框直接弄掉，通过搜索字符直接定位：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="err">0042</span><span class="nf">F786</span>   <span class="p">.</span>  <span class="no">B9</span> <span class="no">A0F74200</span>   <span class="no">mov</span> <span class="no">ecx</span><span class="p">,</span><span class="no">Acid_bur.0042F7A0</span>                <span class="c1">;  hello you have to kill me!
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="err">0042</span><span class="nf">F78B</span>   <span class="p">.</span>  <span class="no">BA</span> <span class="no">BCF74200</span>   <span class="no">mov</span> <span class="no">edx</span><span class="p">,</span><span class="no">Acid_bur.0042F7BC</span>                <span class="c1">;  Welcome to this Newbies Crackme made by ACiD BuRN [CracKerWoRlD]
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="err">0042</span><span class="nf">F790</span>   <span class="p">.</span>  <span class="no">A1</span> <span class="mi">480</span><span class="no">A4300</span>   <span class="no">mov</span> <span class="no">eax</span><span class="p">,</span><span class="no">dword</span> <span class="no">ptr</span> <span class="no">ds</span><span class="p">:[</span><span class="mi">0x430A48</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="err">0042</span><span class="nf">F795</span>   <span class="p">.</span>  <span class="mi">8</span><span class="no">B00</span>          <span class="no">mov</span> <span class="no">eax</span><span class="p">,</span><span class="no">dword</span> <span class="no">ptr</span> <span class="no">ds</span><span class="p">:[</span><span class="no">eax</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="err">0042</span><span class="nf">F797</span>   <span class="p">.</span>  <span class="no">E8</span> <span class="no">D4A9FFFF</span>   <span class="no">call</span> <span class="no">Acid_bur.0042A170</span>
+</span></span><span class="line"><span class="cl"><span class="err">0042</span><span class="nf">F79C</span>   <span class="p">.</span>  <span class="no">C3</span>            <span class="no">retn</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>在地址0042F79C处断点，F8返回到它的调用函数的内容:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="err">0042560</span><span class="nf">F</span>   <span class="p">.</span><span class="err">^\</span><span class="no">E9</span> <span class="mi">00</span><span class="no">DBFDFF</span>   <span class="no">jmp</span> <span class="no">Acid_bur.00403114</span>
+</span></span><span class="line"><span class="cl"><span class="err">00425614</span>   <span class="err">.^</span> <span class="nf">EB</span> <span class="no">EE</span>         <span class="no">jmp</span> <span class="no">short</span> <span class="no">Acid_bur.00425604</span>
+</span></span><span class="line"><span class="cl"><span class="err">00425616</span>   <span class="err">&gt;</span>  <span class="err">33</span><span class="nf">C0</span>          <span class="no">xor</span> <span class="no">eax</span><span class="p">,</span><span class="no">eax</span>
+</span></span><span class="line"><span class="cl"><span class="err">00425618</span>   <span class="err">.</span>  <span class="err">55</span>            <span class="nf">push</span> <span class="no">ebp</span>
+</span></span><span class="line"><span class="cl"><span class="err">00425619</span>   <span class="err">.</span>  <span class="err">68</span> <span class="err">4</span><span class="nf">D564200</span>   <span class="no">push</span> <span class="no">Acid_bur.0042564D</span>
+</span></span><span class="line"><span class="cl"><span class="err">0042561</span><span class="nf">E</span>   <span class="p">.</span>  <span class="mi">64</span><span class="p">:</span><span class="no">FF30</span>       <span class="no">push</span> <span class="no">dword</span> <span class="no">ptr</span> <span class="no">fs</span><span class="p">:[</span><span class="no">eax</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="err">00425621</span>   <span class="err">.</span>  <span class="err">64:8920</span>       <span class="nf">mov</span> <span class="no">dword</span> <span class="no">ptr</span> <span class="no">fs</span><span class="p">:[</span><span class="no">eax</span><span class="p">],</span><span class="no">esp</span>
+</span></span><span class="line"><span class="cl"><span class="err">00425624</span>   <span class="err">.</span>  <span class="err">8</span><span class="nf">B45</span> <span class="no">FC</span>       <span class="no">mov</span> <span class="no">eax</span><span class="p">,</span><span class="no">dword</span> <span class="no">ptr</span> <span class="no">ss</span><span class="p">:[</span><span class="no">ebp-0x4</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="err">00425627</span>   <span class="err">.</span>  <span class="err">66:83</span><span class="nf">B8</span> <span class="no">CE010</span><span class="err">&gt;</span><span class="no">cmp</span> <span class="no">word</span> <span class="no">ptr</span> <span class="no">ds</span><span class="p">:[</span><span class="no">eax</span><span class="err">+</span><span class="mi">0x1CE</span><span class="p">],</span><span class="mi">0x0</span>
+</span></span><span class="line"><span class="cl"><span class="err">0042562</span><span class="nf">F</span>   <span class="p">.</span>  <span class="mi">74</span> <span class="mi">12</span>         <span class="no">je</span> <span class="no">short</span> <span class="no">Acid_bur.00425643</span>               <span class="c1">;  这里的跳转很可疑
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="err">00425631</span>   <span class="err">.</span>  <span class="err">8</span><span class="nf">B5D</span> <span class="no">FC</span>       <span class="no">mov</span> <span class="no">ebx</span><span class="p">,</span><span class="no">dword</span> <span class="no">ptr</span> <span class="no">ss</span><span class="p">:[</span><span class="no">ebp-0x4</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="err">00425634</span>   <span class="err">.</span>  <span class="err">8</span><span class="nf">B55</span> <span class="no">FC</span>       <span class="no">mov</span> <span class="no">edx</span><span class="p">,</span><span class="no">dword</span> <span class="no">ptr</span> <span class="no">ss</span><span class="p">:[</span><span class="no">ebp-0x4</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="err">00425637</span>   <span class="err">.</span>  <span class="err">8</span><span class="nf">B83</span> <span class="no">D0010000</span> <span class="no">mov</span> <span class="no">eax</span><span class="p">,</span><span class="no">dword</span> <span class="no">ptr</span> <span class="no">ds</span><span class="p">:[</span><span class="no">ebx</span><span class="err">+</span><span class="mi">0x1D0</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="err">0042563</span><span class="nf">D</span>   <span class="p">.</span>  <span class="no">FF93</span> <span class="no">CC010000</span> <span class="no">call</span> <span class="no">dword</span> <span class="no">ptr</span> <span class="no">ds</span><span class="p">:[</span><span class="no">ebx</span><span class="err">+</span><span class="mi">0x1CC</span><span class="p">]</span>            <span class="c1">;  刚刚的弹框调用函数
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="err">00425643</span>   <span class="err">&gt;</span>  <span class="err">33</span><span class="nf">C0</span>          <span class="no">xor</span> <span class="no">eax</span><span class="p">,</span><span class="no">eax</span>								 <span class="c1">;  执行到这了
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="err">00425645</span>   <span class="err">.</span>  <span class="err">5</span><span class="nf">A</span>            <span class="no">pop</span> <span class="no">edx</span>                                  <span class="c1">;  0012FE5C
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="err">00425646</span>   <span class="err">.</span>  <span class="err">59</span>            <span class="nf">pop</span> <span class="no">ecx</span>                                  <span class="c1">;  0012FE5C
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="err">00425647</span>   <span class="err">.</span>  <span class="err">59</span>            <span class="nf">pop</span> <span class="no">ecx</span>                                  <span class="c1">;  0012FE5C
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="err">00425648</span>   <span class="err">.</span>  <span class="err">64:8910</span>       <span class="nf">mov</span> <span class="no">dword</span> <span class="no">ptr</span> <span class="no">fs</span><span class="p">:[</span><span class="no">eax</span><span class="p">],</span><span class="no">edx</span>               <span class="c1">;  ntdll.KiFastSystemCallRet
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>将那个可疑的跳转修改一下，跳过提示框的调用：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="err">0042562</span><span class="nf">F</span>     <span class="err">/</span><span class="no">EB</span> <span class="mi">12</span>         <span class="no">jmp</span> <span class="no">short</span> <span class="no">Acid_bur.00425643</span>              <span class="c1">;  这里的跳转很可疑 =&gt; 修改为jmp
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="err">00425631</span>   <span class="err">.</span> <span class="err">|8</span><span class="nf">B5D</span> <span class="no">FC</span>       <span class="no">mov</span> <span class="no">ebx</span><span class="p">,</span><span class="no">dword</span> <span class="no">ptr</span> <span class="no">ss</span><span class="p">:[</span><span class="no">ebp-0x4</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="err">00425634</span>   <span class="err">.</span> <span class="err">|8</span><span class="nf">B55</span> <span class="no">FC</span>       <span class="no">mov</span> <span class="no">edx</span><span class="p">,</span><span class="no">dword</span> <span class="no">ptr</span> <span class="no">ss</span><span class="p">:[</span><span class="no">ebp-0x4</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="err">00425637</span>   <span class="err">.</span> <span class="err">|8</span><span class="nf">B83</span> <span class="no">D0010000</span> <span class="no">mov</span> <span class="no">eax</span><span class="p">,</span><span class="no">dword</span> <span class="no">ptr</span> <span class="no">ds</span><span class="p">:[</span><span class="no">ebx</span><span class="err">+</span><span class="mi">0x1D0</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="err">0042563</span><span class="nf">D</span>   <span class="p">.</span> <span class="err">|</span><span class="no">FF93</span> <span class="no">CC010000</span> <span class="no">call</span> <span class="no">dword</span> <span class="no">ptr</span> <span class="no">ds</span><span class="p">:[</span><span class="no">ebx</span><span class="err">+</span><span class="mi">0x1CC</span><span class="p">]</span>            <span class="c1">;  刚刚的提示框
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="err">00425643</span>   <span class="err">&gt;</span> <span class="err">\33</span><span class="nf">C0</span>          <span class="no">xor</span> <span class="no">eax</span><span class="p">,</span><span class="no">eax</span>
+</span></span><span class="line"><span class="cl"><span class="err">00425645</span>   <span class="err">.</span>  <span class="err">5</span><span class="nf">A</span>            <span class="no">pop</span> <span class="no">edx</span>                                  <span class="c1">;  0012FE5C
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="err">00425646</span>   <span class="err">.</span>  <span class="err">59</span>            <span class="nf">pop</span> <span class="no">ecx</span>                                  <span class="c1">;  0012FE5C
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="err">00425647</span>   <span class="err">.</span>  <span class="err">59</span>            <span class="nf">pop</span> <span class="no">ecx</span>                                  <span class="c1">;  0012FE5C
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>至此，将修改的程序保存，再打开保存的程序发现提示框已经消失了。</p>
+<h2 id="3-序列号生成">3. 序列号生成</h2>
+<p>重新开始，可以发现软件分为了两个部分，一个是Serial/Name，需要输入用户名和注册码才能通过，另外一个Serial只需要输入一个注册码一类的东西。</p>
+<p><img loading="lazy" src="../../../imgs/160_CrackMe/001/image-20230728160539667.png" srcset="../../../imgs/160_CrackMe/001/image-20230728160539667.png, ../../../imgs/160_CrackMe/001/image-20230728160539667.png 1.5x, ../../../imgs/160_CrackMe/001/image-20230728160539667.png 2x" sizes="auto" data-title="image-20230728160539667" data-alt="image-20230728160539667" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/></p>
+<p>选择Serial/Name，输入一个用户名和序列号：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-txt" data-lang="txt"><span class="line"><span class="cl">Name:112233
+</span></span><span class="line"><span class="cl">Serial:44556677
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>点击<code>Check it Baby! </code>它会弹出一个对话框提示： <code>Sorry， The Serial is incorrect !</code></p>
+<p>再换几个随意试试，发现就这一种情况。说明在校验注册码之后发现如果错误了就直接弹窗，我们只要找到弹出对话框的地方，向上跟踪，就可以找出判断是否正确的地方了，jmp或者Nop就算爆破了。</p>
+<p>我们随意输入一个用户名和序列号（伪码）：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-txt" data-lang="txt"><span class="line"><span class="cl">Name:112233
+</span></span><span class="line"><span class="cl">Serial:44556677
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>点击<code>Check it Baby! </code>它会弹出一个对话框提示： <code>Sorry， The Serial is incorrect !</code></p>
+<p>此时不要点击确定按钮，返回OD暂停(F12),点击堆栈-K小图标(Ctrl+K) ,如下图：</p>
+<p><img loading="lazy" src="../../../imgs/160_CrackMe/001/image-20230728161241445.png" srcset="../../../imgs/160_CrackMe/001/image-20230728161241445.png, ../../../imgs/160_CrackMe/001/image-20230728161241445.png 1.5x, ../../../imgs/160_CrackMe/001/image-20230728161241445.png 2x" sizes="auto" data-title="image-20230728161241445" data-alt="image-20230728161241445" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/></p>
+<p>点击显示调用，看看调用的地方，发现里面是多层调用，<code>Ctr + F9</code> 、<code>F8</code> 抵达上多层调用的地方：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">  1
+</span><span class="lnt">  2
+</span><span class="lnt">  3
+</span><span class="lnt">  4
+</span><span class="lnt">  5
+</span><span class="lnt">  6
+</span><span class="lnt">  7
+</span><span class="lnt">  8
+</span><span class="lnt">  9
+</span><span class="lnt"> 10
+</span><span class="lnt"> 11
+</span><span class="lnt"> 12
+</span><span class="lnt"> 13
+</span><span class="lnt"> 14
+</span><span class="lnt"> 15
+</span><span class="lnt"> 16
+</span><span class="lnt"> 17
+</span><span class="lnt"> 18
+</span><span class="lnt"> 19
+</span><span class="lnt"> 20
+</span><span class="lnt"> 21
+</span><span class="lnt"> 22
+</span><span class="lnt"> 23
+</span><span class="lnt"> 24
+</span><span class="lnt"> 25
+</span><span class="lnt"> 26
+</span><span class="lnt"> 27
+</span><span class="lnt"> 28
+</span><span class="lnt"> 29
+</span><span class="lnt"> 30
+</span><span class="lnt"> 31
+</span><span class="lnt"> 32
+</span><span class="lnt"> 33
+</span><span class="lnt"> 34
+</span><span class="lnt"> 35
+</span><span class="lnt"> 36
+</span><span class="lnt"> 37
+</span><span class="lnt"> 38
+</span><span class="lnt"> 39
+</span><span class="lnt"> 40
+</span><span class="lnt"> 41
+</span><span class="lnt"> 42
+</span><span class="lnt"> 43
+</span><span class="lnt"> 44
+</span><span class="lnt"> 45
+</span><span class="lnt"> 46
+</span><span class="lnt"> 47
+</span><span class="lnt"> 48
+</span><span class="lnt"> 49
+</span><span class="lnt"> 50
+</span><span class="lnt"> 51
+</span><span class="lnt"> 52
+</span><span class="lnt"> 53
+</span><span class="lnt"> 54
+</span><span class="lnt"> 55
+</span><span class="lnt"> 56
+</span><span class="lnt"> 57
+</span><span class="lnt"> 58
+</span><span class="lnt"> 59
+</span><span class="lnt"> 60
+</span><span class="lnt"> 61
+</span><span class="lnt"> 62
+</span><span class="lnt"> 63
+</span><span class="lnt"> 64
+</span><span class="lnt"> 65
+</span><span class="lnt"> 66
+</span><span class="lnt"> 67
+</span><span class="lnt"> 68
+</span><span class="lnt"> 69
+</span><span class="lnt"> 70
+</span><span class="lnt"> 71
+</span><span class="lnt"> 72
+</span><span class="lnt"> 73
+</span><span class="lnt"> 74
+</span><span class="lnt"> 75
+</span><span class="lnt"> 76
+</span><span class="lnt"> 77
+</span><span class="lnt"> 78
+</span><span class="lnt"> 79
+</span><span class="lnt"> 80
+</span><span class="lnt"> 81
+</span><span class="lnt"> 82
+</span><span class="lnt"> 83
+</span><span class="lnt"> 84
+</span><span class="lnt"> 85
+</span><span class="lnt"> 86
+</span><span class="lnt"> 87
+</span><span class="lnt"> 88
+</span><span class="lnt"> 89
+</span><span class="lnt"> 90
+</span><span class="lnt"> 91
+</span><span class="lnt"> 92
+</span><span class="lnt"> 93
+</span><span class="lnt"> 94
+</span><span class="lnt"> 95
+</span><span class="lnt"> 96
+</span><span class="lnt"> 97
+</span><span class="lnt"> 98
+</span><span class="lnt"> 99
+</span><span class="lnt">100
+</span><span class="lnt">101
+</span><span class="lnt">102
+</span><span class="lnt">103
+</span><span class="lnt">104
+</span><span class="lnt">105
+</span><span class="lnt">106
+</span><span class="lnt">107
+</span><span class="lnt">108
+</span><span class="lnt">109
+</span><span class="lnt">110
+</span><span class="lnt">111
+</span><span class="lnt">112
+</span><span class="lnt">113
+</span><span class="lnt">114
+</span><span class="lnt">115
+</span><span class="lnt">116
+</span><span class="lnt">117
+</span><span class="lnt">118
+</span><span class="lnt">119
+</span><span class="lnt">120
+</span><span class="lnt">121
+</span><span class="lnt">122
+</span><span class="lnt">123
+</span><span class="lnt">124
+</span><span class="lnt">125
+</span><span class="lnt">126
+</span><span class="lnt">127
+</span><span class="lnt">128
+</span><span class="lnt">129
+</span><span class="lnt">130
+</span><span class="lnt">131
+</span><span class="lnt">132
+</span><span class="lnt">133
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="err">0042</span><span class="nf">F998</span>  <span class="err">/</span><span class="p">.</span>  <span class="mi">55</span>            <span class="no">push</span> <span class="no">ebp</span>
+</span></span><span class="line"><span class="cl"><span class="err">0042</span><span class="nf">F999</span>  <span class="err">|</span><span class="p">.</span>  <span class="mi">8</span><span class="no">BEC</span>          <span class="no">mov</span> <span class="no">ebp</span><span class="p">,</span><span class="no">esp</span>
+</span></span><span class="line"><span class="cl"><span class="err">0042</span><span class="nf">F99B</span>  <span class="err">|</span><span class="p">.</span>  <span class="mi">33</span><span class="no">C9</span>          <span class="no">xor</span> <span class="no">ecx</span><span class="p">,</span><span class="no">ecx</span>                              <span class="c1">;  user32.77D1882A
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="err">0042</span><span class="nf">F99D</span>  <span class="err">|</span><span class="p">.</span>  <span class="mi">51</span>            <span class="no">push</span> <span class="no">ecx</span>                                 <span class="c1">;  user32.77D1882A
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="err">0042</span><span class="nf">F99E</span>  <span class="err">|</span><span class="p">.</span>  <span class="mi">51</span>            <span class="no">push</span> <span class="no">ecx</span>                                 <span class="c1">;  user32.77D1882A
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="err">0042</span><span class="nf">F99F</span>  <span class="err">|</span><span class="p">.</span>  <span class="mi">51</span>            <span class="no">push</span> <span class="no">ecx</span>                                 <span class="c1">;  user32.77D1882A
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="err">0042</span><span class="nf">F9A0</span>  <span class="err">|</span><span class="p">.</span>  <span class="mi">51</span>            <span class="no">push</span> <span class="no">ecx</span>                                 <span class="c1">;  user32.77D1882A
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="err">0042</span><span class="nf">F9A1</span>  <span class="err">|</span><span class="p">.</span>  <span class="mi">51</span>            <span class="no">push</span> <span class="no">ecx</span>                                 <span class="c1">;  user32.77D1882A
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="err">0042</span><span class="nf">F9A2</span>  <span class="err">|</span><span class="p">.</span>  <span class="mi">51</span>            <span class="no">push</span> <span class="no">ecx</span>                                 <span class="c1">;  user32.77D1882A
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="err">0042</span><span class="nf">F9A3</span>  <span class="err">|</span><span class="p">.</span>  <span class="mi">53</span>            <span class="no">push</span> <span class="no">ebx</span>
+</span></span><span class="line"><span class="cl"><span class="err">0042</span><span class="nf">F9A4</span>  <span class="err">|</span><span class="p">.</span>  <span class="mi">56</span>            <span class="no">push</span> <span class="no">esi</span>
+</span></span><span class="line"><span class="cl"><span class="err">0042</span><span class="nf">F9A5</span>  <span class="err">|</span><span class="p">.</span>  <span class="mi">8</span><span class="no">BD8</span>          <span class="no">mov</span> <span class="no">ebx</span><span class="p">,</span><span class="no">eax</span>
+</span></span><span class="line"><span class="cl"><span class="err">0042</span><span class="nf">F9A7</span>  <span class="err">|</span><span class="p">.</span>  <span class="mi">33</span><span class="no">C0</span>          <span class="no">xor</span> <span class="no">eax</span><span class="p">,</span><span class="no">eax</span>
+</span></span><span class="line"><span class="cl"><span class="err">0042</span><span class="nf">F9A9</span>  <span class="err">|</span><span class="p">.</span>  <span class="mi">55</span>            <span class="no">push</span> <span class="no">ebp</span>
+</span></span><span class="line"><span class="cl"><span class="err">0042</span><span class="nf">F9AA</span>  <span class="err">|</span><span class="p">.</span>  <span class="mi">68</span> <span class="mi">67</span><span class="no">FB4200</span>   <span class="no">push</span> <span class="no">Acid_bur.0042FB67</span>
+</span></span><span class="line"><span class="cl"><span class="err">0042</span><span class="nf">F9AF</span>  <span class="err">|</span><span class="p">.</span>  <span class="mi">64</span><span class="p">:</span><span class="no">FF30</span>       <span class="no">push</span> <span class="no">dword</span> <span class="no">ptr</span> <span class="no">fs</span><span class="p">:[</span><span class="no">eax</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="err">0042</span><span class="nf">F9B2</span>  <span class="err">|</span><span class="p">.</span>  <span class="mi">64</span><span class="p">:</span><span class="mi">8920</span>       <span class="no">mov</span> <span class="no">dword</span> <span class="no">ptr</span> <span class="no">fs</span><span class="p">:[</span><span class="no">eax</span><span class="p">],</span><span class="no">esp</span>
+</span></span><span class="line"><span class="cl"><span class="err">0042</span><span class="nf">F9B5</span>  <span class="err">|</span><span class="p">.</span>  <span class="no">C705</span> <span class="mi">50174300</span><span class="err">&gt;</span><span class="no">mov</span> <span class="no">dword</span> <span class="no">ptr</span> <span class="no">ds</span><span class="p">:[</span><span class="mi">0x431750</span><span class="p">],</span><span class="mi">0x29</span>
+</span></span><span class="line"><span class="cl"><span class="err">0042</span><span class="nf">F9BF</span>  <span class="err">|</span><span class="p">.</span>  <span class="mi">8</span><span class="no">D55</span> <span class="no">F0</span>       <span class="no">lea</span> <span class="no">edx</span><span class="p">,[</span><span class="no">local.4</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="err">0042</span><span class="nf">F9C2</span>  <span class="err">|</span><span class="p">.</span>  <span class="mi">8</span><span class="no">B83</span> <span class="no">DC010000</span> <span class="no">mov</span> <span class="no">eax</span><span class="p">,</span><span class="no">dword</span> <span class="no">ptr</span> <span class="no">ds</span><span class="p">:[</span><span class="no">ebx</span><span class="err">+</span><span class="mi">0x1DC</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="err">0042</span><span class="nf">F9C8</span>  <span class="err">|</span><span class="p">.</span>  <span class="no">E8</span> <span class="mi">8</span><span class="no">BB0FEFF</span>   <span class="no">call</span> <span class="no">Acid_bur.0041AA58</span>
+</span></span><span class="line"><span class="cl"><span class="err">0042</span><span class="nf">F9CD</span>  <span class="err">|</span><span class="p">.</span>  <span class="mi">8</span><span class="no">B45</span> <span class="no">F0</span>       <span class="no">mov</span> <span class="no">eax</span><span class="p">,[</span><span class="no">local.4</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="err">0042</span><span class="nf">F9D0</span>  <span class="err">|</span><span class="p">.</span>  <span class="no">E8</span> <span class="no">DB40FDFF</span>   <span class="no">call</span> <span class="no">Acid_bur.00403AB0</span>
+</span></span><span class="line"><span class="cl"><span class="err">0042</span><span class="nf">F9D5</span>  <span class="err">|</span><span class="p">.</span>  <span class="no">A3</span> <span class="mi">6</span><span class="no">C174300</span>   <span class="no">mov</span> <span class="no">dword</span> <span class="no">ptr</span> <span class="no">ds</span><span class="p">:[</span><span class="mi">0x43176C</span><span class="p">],</span><span class="no">eax</span>
+</span></span><span class="line"><span class="cl"><span class="err">0042</span><span class="nf">F9DA</span>  <span class="err">|</span><span class="p">.</span>  <span class="mi">8</span><span class="no">D55</span> <span class="no">F0</span>       <span class="no">lea</span> <span class="no">edx</span><span class="p">,[</span><span class="no">local.4</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="err">0042</span><span class="nf">F9DD</span>  <span class="err">|</span><span class="p">.</span>  <span class="mi">8</span><span class="no">B83</span> <span class="no">DC010000</span> <span class="no">mov</span> <span class="no">eax</span><span class="p">,</span><span class="no">dword</span> <span class="no">ptr</span> <span class="no">ds</span><span class="p">:[</span><span class="no">ebx</span><span class="err">+</span><span class="mi">0x1DC</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="err">0042</span><span class="nf">F9E3</span>  <span class="err">|</span><span class="p">.</span>  <span class="no">E8</span> <span class="mi">70</span><span class="no">B0FEFF</span>   <span class="no">call</span> <span class="no">Acid_bur.0041AA58</span>
+</span></span><span class="line"><span class="cl"><span class="err">0042</span><span class="nf">F9E8</span>  <span class="err">|</span><span class="p">.</span>  <span class="mi">8</span><span class="no">B45</span> <span class="no">F0</span>       <span class="no">mov</span> <span class="no">eax</span><span class="p">,[</span><span class="no">local.4</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="err">0042</span><span class="nf">F9EB</span>  <span class="err">|</span><span class="p">.</span>  <span class="mi">0</span><span class="no">FB600</span>        <span class="no">movzx</span> <span class="no">eax</span><span class="p">,</span><span class="no">byte</span> <span class="no">ptr</span> <span class="no">ds</span><span class="p">:[</span><span class="no">eax</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="err">0042</span><span class="nf">F9EE</span>  <span class="err">|</span><span class="p">.</span>  <span class="mi">8</span><span class="no">BF0</span>          <span class="no">mov</span> <span class="no">esi</span><span class="p">,</span><span class="no">eax</span>
+</span></span><span class="line"><span class="cl"><span class="err">0042</span><span class="nf">F9F0</span>  <span class="err">|</span><span class="p">.</span>  <span class="no">C1E6</span> <span class="mi">03</span>       <span class="no">shl</span> <span class="no">esi</span><span class="p">,</span><span class="mi">0x3</span>
+</span></span><span class="line"><span class="cl"><span class="err">0042</span><span class="nf">F9F3</span>  <span class="err">|</span><span class="p">.</span>  <span class="mi">2</span><span class="no">BF0</span>          <span class="no">sub</span> <span class="no">esi</span><span class="p">,</span><span class="no">eax</span>
+</span></span><span class="line"><span class="cl"><span class="err">0042</span><span class="nf">F9F5</span>  <span class="err">|</span><span class="p">.</span>  <span class="mi">8</span><span class="no">D55</span> <span class="no">EC</span>       <span class="no">lea</span> <span class="no">edx</span><span class="p">,[</span><span class="no">local.5</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="err">0042</span><span class="nf">F9F8</span>  <span class="err">|</span><span class="p">.</span>  <span class="mi">8</span><span class="no">B83</span> <span class="no">DC010000</span> <span class="no">mov</span> <span class="no">eax</span><span class="p">,</span><span class="no">dword</span> <span class="no">ptr</span> <span class="no">ds</span><span class="p">:[</span><span class="no">ebx</span><span class="err">+</span><span class="mi">0x1DC</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="err">0042</span><span class="nf">F9FE</span>  <span class="err">|</span><span class="p">.</span>  <span class="no">E8</span> <span class="mi">55</span><span class="no">B0FEFF</span>   <span class="no">call</span> <span class="no">Acid_bur.0041AA58</span>
+</span></span><span class="line"><span class="cl"><span class="err">0042</span><span class="nf">FA03</span>  <span class="err">|</span><span class="p">.</span>  <span class="mi">8</span><span class="no">B45</span> <span class="no">EC</span>       <span class="no">mov</span> <span class="no">eax</span><span class="p">,[</span><span class="no">local.5</span><span class="p">]</span>                        <span class="c1">;  Acid_bur.0042467E
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="err">0042</span><span class="nf">FA06</span>  <span class="err">|</span><span class="p">.</span>  <span class="mi">0</span><span class="no">FB640</span> <span class="mi">01</span>     <span class="no">movzx</span> <span class="no">eax</span><span class="p">,</span><span class="no">byte</span> <span class="no">ptr</span> <span class="no">ds</span><span class="p">:[</span><span class="no">eax</span><span class="err">+</span><span class="mi">0x1</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="err">0042</span><span class="nf">FA0A</span>  <span class="err">|</span><span class="p">.</span>  <span class="no">C1E0</span> <span class="mi">04</span>       <span class="no">shl</span> <span class="no">eax</span><span class="p">,</span><span class="mi">0x4</span>
+</span></span><span class="line"><span class="cl"><span class="err">0042</span><span class="nf">FA0D</span>  <span class="err">|</span><span class="p">.</span>  <span class="mi">03</span><span class="no">F0</span>          <span class="no">add</span> <span class="no">esi</span><span class="p">,</span><span class="no">eax</span>
+</span></span><span class="line"><span class="cl"><span class="err">0042</span><span class="nf">FA0F</span>  <span class="err">|</span><span class="p">.</span>  <span class="mi">8935</span> <span class="mi">54174300</span> <span class="no">mov</span> <span class="no">dword</span> <span class="no">ptr</span> <span class="no">ds</span><span class="p">:[</span><span class="mi">0x431754</span><span class="p">],</span><span class="no">esi</span>
+</span></span><span class="line"><span class="cl"><span class="err">0042</span><span class="nf">FA15</span>  <span class="err">|</span><span class="p">.</span>  <span class="mi">8</span><span class="no">D55</span> <span class="no">F0</span>       <span class="no">lea</span> <span class="no">edx</span><span class="p">,[</span><span class="no">local.4</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="err">0042</span><span class="nf">FA18</span>  <span class="err">|</span><span class="p">.</span>  <span class="mi">8</span><span class="no">B83</span> <span class="no">DC010000</span> <span class="no">mov</span> <span class="no">eax</span><span class="p">,</span><span class="no">dword</span> <span class="no">ptr</span> <span class="no">ds</span><span class="p">:[</span><span class="no">ebx</span><span class="err">+</span><span class="mi">0x1DC</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="err">0042</span><span class="nf">FA1E</span>  <span class="err">|</span><span class="p">.</span>  <span class="no">E8</span> <span class="mi">35</span><span class="no">B0FEFF</span>   <span class="no">call</span> <span class="no">Acid_bur.0041AA58</span>
+</span></span><span class="line"><span class="cl"><span class="err">0042</span><span class="nf">FA23</span>  <span class="err">|</span><span class="p">.</span>  <span class="mi">8</span><span class="no">B45</span> <span class="no">F0</span>       <span class="no">mov</span> <span class="no">eax</span><span class="p">,[</span><span class="no">local.4</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="err">0042</span><span class="nf">FA26</span>  <span class="err">|</span><span class="p">.</span>  <span class="mi">0</span><span class="no">FB640</span> <span class="mi">03</span>     <span class="no">movzx</span> <span class="no">eax</span><span class="p">,</span><span class="no">byte</span> <span class="no">ptr</span> <span class="no">ds</span><span class="p">:[</span><span class="no">eax</span><span class="err">+</span><span class="mi">0x3</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="err">0042</span><span class="nf">FA2A</span>  <span class="err">|</span><span class="p">.</span>  <span class="mi">6</span><span class="no">BF0</span> <span class="mi">0</span><span class="no">B</span>       <span class="no">imul</span> <span class="no">esi</span><span class="p">,</span><span class="no">eax</span><span class="p">,</span><span class="mi">0xB</span>
+</span></span><span class="line"><span class="cl"><span class="err">0042</span><span class="nf">FA2D</span>  <span class="err">|</span><span class="p">.</span>  <span class="mi">8</span><span class="no">D55</span> <span class="no">EC</span>       <span class="no">lea</span> <span class="no">edx</span><span class="p">,[</span><span class="no">local.5</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="err">0042</span><span class="nf">FA30</span>  <span class="err">|</span><span class="p">.</span>  <span class="mi">8</span><span class="no">B83</span> <span class="no">DC010000</span> <span class="no">mov</span> <span class="no">eax</span><span class="p">,</span><span class="no">dword</span> <span class="no">ptr</span> <span class="no">ds</span><span class="p">:[</span><span class="no">ebx</span><span class="err">+</span><span class="mi">0x1DC</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="err">0042</span><span class="nf">FA36</span>  <span class="err">|</span><span class="p">.</span>  <span class="no">E8</span> <span class="mi">1</span><span class="no">DB0FEFF</span>   <span class="no">call</span> <span class="no">Acid_bur.0041AA58</span>
+</span></span><span class="line"><span class="cl"><span class="err">0042</span><span class="nf">FA3B</span>  <span class="err">|</span><span class="p">.</span>  <span class="mi">8</span><span class="no">B45</span> <span class="no">EC</span>       <span class="no">mov</span> <span class="no">eax</span><span class="p">,[</span><span class="no">local.5</span><span class="p">]</span>                        <span class="c1">;  112233
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="err">0042</span><span class="nf">FA3E</span>  <span class="err">|</span><span class="p">.</span>  <span class="mi">0</span><span class="no">FB640</span> <span class="mi">02</span>     <span class="no">movzx</span> <span class="no">eax</span><span class="p">,</span><span class="no">byte</span> <span class="no">ptr</span> <span class="no">ds</span><span class="p">:[</span><span class="no">eax</span><span class="err">+</span><span class="mi">0x2</span><span class="p">]</span>          <span class="c1">;  取用户名的第三个字符
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="err">0042</span><span class="nf">FA42</span>  <span class="err">|</span><span class="p">.</span>  <span class="mi">6</span><span class="no">BC0</span> <span class="mi">0</span><span class="no">E</span>       <span class="no">imul</span> <span class="no">eax</span><span class="p">,</span><span class="no">eax</span><span class="p">,</span><span class="mi">0xE</span>                         <span class="c1">;  eax = 0x32 * 0xE == 2BC
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="err">0042</span><span class="nf">FA45</span>  <span class="err">|</span><span class="p">.</span>  <span class="mi">03</span><span class="no">F0</span>          <span class="no">add</span> <span class="no">esi</span><span class="p">,</span><span class="no">eax</span>
+</span></span><span class="line"><span class="cl"><span class="err">0042</span><span class="nf">FA47</span>  <span class="err">|</span><span class="p">.</span>  <span class="mi">8935</span> <span class="mi">58174300</span> <span class="no">mov</span> <span class="no">dword</span> <span class="no">ptr</span> <span class="no">ds</span><span class="p">:[</span><span class="mi">0x431758</span><span class="p">],</span><span class="no">esi</span>
+</span></span><span class="line"><span class="cl"><span class="err">0042</span><span class="nf">FA4D</span>  <span class="err">|</span><span class="p">.</span>  <span class="no">A1</span> <span class="mi">6</span><span class="no">C174300</span>   <span class="no">mov</span> <span class="no">eax</span><span class="p">,</span><span class="no">dword</span> <span class="no">ptr</span> <span class="no">ds</span><span class="p">:[</span><span class="mi">0x43176C</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="err">0042</span><span class="nf">FA52</span>  <span class="err">|</span><span class="p">.</span>  <span class="no">E8</span> <span class="no">D96EFDFF</span>   <span class="no">call</span> <span class="no">Acid_bur.00406930</span>                   <span class="c1">;  确定tag/serial 是否合格
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="err">0042</span><span class="nf">FA57</span>  <span class="err">|</span><span class="p">.</span>  <span class="mi">83</span><span class="no">F8</span> <span class="mi">04</span>       <span class="no">cmp</span> <span class="no">eax</span><span class="p">,</span><span class="mi">0x4</span>
+</span></span><span class="line"><span class="cl"><span class="err">0042</span><span class="nf">FA5A</span>      <span class="mi">7</span><span class="no">D</span> <span class="mi">1</span><span class="no">D</span>         <span class="no">jge</span> <span class="no">short</span> <span class="no">Acid_bur.0042FA79</span>
+</span></span><span class="line"><span class="cl"><span class="err">0042</span><span class="nf">FA5C</span>  <span class="err">|</span><span class="p">.</span>  <span class="mi">6</span><span class="no">A</span> <span class="mi">00</span>         <span class="no">push</span> <span class="mi">0x0</span>
+</span></span><span class="line"><span class="cl"><span class="err">0042</span><span class="nf">FA5E</span>  <span class="err">|</span><span class="p">.</span>  <span class="no">B9</span> <span class="mi">74</span><span class="no">FB4200</span>   <span class="no">mov</span> <span class="no">ecx</span><span class="p">,</span><span class="no">Acid_bur.0042FB74</span>                <span class="c1">;  ASCII 54,&#34;ry Again!&#34;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="err">0042</span><span class="nf">FA63</span>  <span class="err">|</span><span class="p">.</span>  <span class="no">BA</span> <span class="mi">80</span><span class="no">FB4200</span>   <span class="no">mov</span> <span class="no">edx</span><span class="p">,</span><span class="no">Acid_bur.0042FB80</span>                <span class="c1">;  ASCII 53,&#34;orry , The serial is incorect !&#34;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="err">0042</span><span class="nf">FA68</span>  <span class="err">|</span><span class="p">.</span>  <span class="no">A1</span> <span class="mi">480</span><span class="no">A4300</span>   <span class="no">mov</span> <span class="no">eax</span><span class="p">,</span><span class="no">dword</span> <span class="no">ptr</span> <span class="no">ds</span><span class="p">:[</span><span class="mi">0x430A48</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="err">0042</span><span class="nf">FA6D</span>  <span class="err">|</span><span class="p">.</span>  <span class="mi">8</span><span class="no">B00</span>          <span class="no">mov</span> <span class="no">eax</span><span class="p">,</span><span class="no">dword</span> <span class="no">ptr</span> <span class="no">ds</span><span class="p">:[</span><span class="no">eax</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="err">0042</span><span class="nf">FA6F</span>  <span class="err">|</span><span class="p">.</span>  <span class="no">E8</span> <span class="no">FCA6FFFF</span>   <span class="no">call</span> <span class="no">Acid_bur.0042A170</span>					 <span class="c1">;  弹出错误提示
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="err">0042</span><span class="nf">FA74</span>  <span class="err">|</span><span class="p">.</span>  <span class="no">E9</span> <span class="no">BE000000</span>   <span class="no">jmp</span> <span class="no">Acid_bur.0042FB37</span>
+</span></span><span class="line"><span class="cl"><span class="err">0042</span><span class="nf">FA79</span>  <span class="err">|&gt;</span>  <span class="mi">8</span><span class="no">D55</span> <span class="no">F0</span>       <span class="no">lea</span> <span class="no">edx</span><span class="p">,[</span><span class="no">local.4</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="err">0042</span><span class="nf">FA7C</span>  <span class="err">|</span><span class="p">.</span>  <span class="mi">8</span><span class="no">B83</span> <span class="no">DC010000</span> <span class="no">mov</span> <span class="no">eax</span><span class="p">,</span><span class="no">dword</span> <span class="no">ptr</span> <span class="no">ds</span><span class="p">:[</span><span class="no">ebx</span><span class="err">+</span><span class="mi">0x1DC</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="err">0042</span><span class="nf">FA82</span>  <span class="err">|</span><span class="p">.</span>  <span class="no">E8</span> <span class="no">D1AFFEFF</span>   <span class="no">call</span> <span class="no">Acid_bur.0041AA58</span>
+</span></span><span class="line"><span class="cl"><span class="err">0042</span><span class="nf">FA87</span>  <span class="err">|</span><span class="p">.</span>  <span class="mi">8</span><span class="no">B45</span> <span class="no">F0</span>       <span class="no">mov</span> <span class="no">eax</span><span class="p">,[</span><span class="no">local.4</span><span class="p">]</span>                        <span class="c1">;  112233
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="err">0042</span><span class="nf">FA8A</span>  <span class="err">|</span><span class="p">.</span>  <span class="mi">0</span><span class="no">FB600</span>        <span class="no">movzx</span> <span class="no">eax</span><span class="p">,</span><span class="no">byte</span> <span class="no">ptr</span> <span class="no">ds</span><span class="p">:[</span><span class="no">eax</span><span class="p">]</span>              <span class="c1">;  取首字符：0x31
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="err">0042</span><span class="nf">FA8D</span>  <span class="err">|</span><span class="p">.</span>  <span class="no">F72D</span> <span class="mi">50174300</span> <span class="no">imul</span> <span class="no">dword</span> <span class="no">ptr</span> <span class="no">ds</span><span class="p">:[</span><span class="mi">0x431750</span><span class="p">]</span>             <span class="c1">;  eax = 0x31 * 0x29 == 0x7D9
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="err">0042</span><span class="nf">FA93</span>  <span class="err">|</span><span class="p">.</span>  <span class="no">A3</span> <span class="mi">50174300</span>   <span class="no">mov</span> <span class="no">dword</span> <span class="no">ptr</span> <span class="no">ds</span><span class="p">:[</span><span class="mi">0x431750</span><span class="p">],</span><span class="no">eax</span>
+</span></span><span class="line"><span class="cl"><span class="err">0042</span><span class="nf">FA98</span>  <span class="err">|</span><span class="p">.</span>  <span class="no">A1</span> <span class="mi">50174300</span>   <span class="no">mov</span> <span class="no">eax</span><span class="p">,</span><span class="no">dword</span> <span class="no">ptr</span> <span class="no">ds</span><span class="p">:[</span><span class="mi">0x431750</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="err">0042</span><span class="nf">FA9D</span>  <span class="err">|</span><span class="p">.</span>  <span class="mi">0105</span> <span class="mi">50174300</span> <span class="no">add</span> <span class="no">dword</span> <span class="no">ptr</span> <span class="no">ds</span><span class="p">:[</span><span class="mi">0x431750</span><span class="p">],</span><span class="no">eax</span>
+</span></span><span class="line"><span class="cl"><span class="err">0042</span><span class="nf">FAA3</span>  <span class="err">|</span><span class="p">.</span>  <span class="mi">8</span><span class="no">D45</span> <span class="no">FC</span>       <span class="no">lea</span> <span class="no">eax</span><span class="p">,[</span><span class="no">local.1</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="err">0042</span><span class="nf">FAA6</span>  <span class="err">|</span><span class="p">.</span>  <span class="no">BA</span> <span class="no">ACFB4200</span>   <span class="no">mov</span> <span class="no">edx</span><span class="p">,</span><span class="no">Acid_bur.0042FBAC</span>                <span class="c1">;  CW
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="err">0042</span><span class="nf">FAAB</span>  <span class="err">|</span><span class="p">.</span>  <span class="no">E8</span> <span class="mi">583</span><span class="no">CFDFF</span>   <span class="no">call</span> <span class="no">Acid_bur.00403708</span>
+</span></span><span class="line"><span class="cl"><span class="err">0042</span><span class="nf">FAB0</span>  <span class="err">|</span><span class="p">.</span>  <span class="mi">8</span><span class="no">D45</span> <span class="no">F8</span>       <span class="no">lea</span> <span class="no">eax</span><span class="p">,[</span><span class="no">local.2</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="err">0042</span><span class="nf">FAB3</span>  <span class="err">|</span><span class="p">.</span>  <span class="no">BA</span> <span class="no">B8FB4200</span>   <span class="no">mov</span> <span class="no">edx</span><span class="p">,</span><span class="no">Acid_bur.0042FBB8</span>
+</span></span><span class="line"><span class="cl"><span class="err">0042</span><span class="nf">FAB8</span>  <span class="err">|</span><span class="p">.</span>  <span class="no">E8</span> <span class="mi">4</span><span class="no">B3CFDFF</span>   <span class="no">call</span> <span class="no">Acid_bur.00403708</span>
+</span></span><span class="line"><span class="cl"><span class="err">0042</span><span class="nf">FABD</span>  <span class="err">|</span><span class="p">.</span>  <span class="no">FF75</span> <span class="no">FC</span>       <span class="no">push</span> <span class="p">[</span><span class="no">local.1</span><span class="p">]</span>                           <span class="c1">;  CW
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="err">0042</span><span class="nf">FAC0</span>  <span class="err">|</span><span class="p">.</span>  <span class="mi">68</span> <span class="no">C8FB4200</span>   <span class="no">push</span> <span class="no">Acid_bur.0042FBC8</span>                   <span class="c1">;  UNICODE &#34;-&#34;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="err">0042</span><span class="nf">FAC5</span>  <span class="err">|</span><span class="p">.</span>  <span class="mi">8</span><span class="no">D55</span> <span class="no">E8</span>       <span class="no">lea</span> <span class="no">edx</span><span class="p">,[</span><span class="no">local.6</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="err">0042</span><span class="nf">FAC8</span>  <span class="err">|</span><span class="p">.</span>  <span class="no">A1</span> <span class="mi">50174300</span>   <span class="no">mov</span> <span class="no">eax</span><span class="p">,</span><span class="no">dword</span> <span class="no">ptr</span> <span class="no">ds</span><span class="p">:[</span><span class="mi">0x431750</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="err">0042</span><span class="nf">FACD</span>  <span class="err">|</span><span class="p">.</span>  <span class="no">E8</span> <span class="mi">466</span><span class="no">CFDFF</span>   <span class="no">call</span> <span class="no">Acid_bur.00406718</span>                   <span class="c1">;  将16进制转换为十进制字符串:0xFB2 =&gt; 4018
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="err">0042</span><span class="nf">FAD2</span>  <span class="err">|</span><span class="p">.</span>  <span class="no">FF75</span> <span class="no">E8</span>       <span class="no">push</span> <span class="p">[</span><span class="no">local.6</span><span class="p">]</span>                           <span class="c1">;  4018
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="err">0042</span><span class="nf">FAD5</span>  <span class="err">|</span><span class="p">.</span>  <span class="mi">68</span> <span class="no">C8FB4200</span>   <span class="no">push</span> <span class="no">Acid_bur.0042FBC8</span>                   <span class="c1">;  UNICODE &#34;-&#34;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="err">0042</span><span class="nf">FADA</span>  <span class="err">|</span><span class="p">.</span>  <span class="no">FF75</span> <span class="no">F8</span>       <span class="no">push</span> <span class="p">[</span><span class="no">local.2</span><span class="p">]</span>                           <span class="c1">;  CRACKED
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="err">0042</span><span class="nf">FADD</span>  <span class="err">|</span><span class="p">.</span>  <span class="mi">8</span><span class="no">D45</span> <span class="no">F4</span>       <span class="no">lea</span> <span class="no">eax</span><span class="p">,[</span><span class="no">local.3</span><span class="p">]</span>                        <span class="c1">;  返回值
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="err">0042</span><span class="nf">FAE0</span>  <span class="err">|</span><span class="p">.</span>  <span class="no">BA</span> <span class="mi">05000000</span>   <span class="no">mov</span> <span class="no">edx</span><span class="p">,</span><span class="mi">0x5</span>
+</span></span><span class="line"><span class="cl"><span class="err">0042</span><span class="nf">FAE5</span>  <span class="err">|</span><span class="p">.</span>  <span class="no">E8</span> <span class="no">C23EFDFF</span>   <span class="no">call</span> <span class="no">Acid_bur.004039AC</span>
+</span></span><span class="line"><span class="cl"><span class="err">0042</span><span class="nf">FAEA</span>  <span class="err">|</span><span class="p">.</span>  <span class="mi">8</span><span class="no">D55</span> <span class="no">F0</span>       <span class="no">lea</span> <span class="no">edx</span><span class="p">,[</span><span class="no">local.4</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="err">0042</span><span class="nf">FAED</span>  <span class="err">|</span><span class="p">.</span>  <span class="mi">8</span><span class="no">B83</span> <span class="no">E0010000</span> <span class="no">mov</span> <span class="no">eax</span><span class="p">,</span><span class="no">dword</span> <span class="no">ptr</span> <span class="no">ds</span><span class="p">:[</span><span class="no">ebx</span><span class="err">+</span><span class="mi">0x1E0</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="err">0042</span><span class="nf">FAF3</span>  <span class="err">|</span><span class="p">.</span>  <span class="no">E8</span> <span class="mi">60</span><span class="no">AFFEFF</span>   <span class="no">call</span> <span class="no">Acid_bur.0041AA58</span>
+</span></span><span class="line"><span class="cl"><span class="err">0042</span><span class="nf">FAF8</span>  <span class="err">|</span><span class="p">.</span>  <span class="mi">8</span><span class="no">B55</span> <span class="no">F0</span>       <span class="no">mov</span> <span class="no">edx</span><span class="p">,[</span><span class="no">local.4</span><span class="p">]</span>                        <span class="c1">;  44556677
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="err">0042</span><span class="nf">FAFB</span>  <span class="err">|</span><span class="p">.</span>  <span class="mi">8</span><span class="no">B45</span> <span class="no">F4</span>       <span class="no">mov</span> <span class="no">eax</span><span class="p">,[</span><span class="no">local.3</span><span class="p">]</span>                        <span class="c1">;  CW-4018-CRACKED
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="err">0042</span><span class="nf">FAFE</span>  <span class="err">|</span><span class="p">.</span>  <span class="no">E8</span> <span class="no">F93EFDFF</span>   <span class="no">call</span> <span class="no">Acid_bur.004039FC</span>                   <span class="c1">;  比较两个字符串是否相等
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="err">0042</span><span class="nf">FB03</span>      <span class="mi">75</span> <span class="mi">1</span><span class="no">A</span>         <span class="no">jnz</span> <span class="no">short</span> <span class="no">Acid_bur.0042FB1F</span>              <span class="c1">;  关键的跳转
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="err">0042</span><span class="nf">FB05</span>  <span class="err">|</span><span class="p">.</span>  <span class="mi">6</span><span class="no">A</span> <span class="mi">00</span>         <span class="no">push</span> <span class="mi">0x0</span>
+</span></span><span class="line"><span class="cl"><span class="err">0042</span><span class="nf">FB07</span>  <span class="err">|</span><span class="p">.</span>  <span class="no">B9</span> <span class="no">CCFB4200</span>   <span class="no">mov</span> <span class="no">ecx</span><span class="p">,</span><span class="no">Acid_bur.0042FBCC</span>
+</span></span><span class="line"><span class="cl"><span class="err">0042</span><span class="nf">FB0C</span>  <span class="err">|</span><span class="p">.</span>  <span class="no">BA</span> <span class="no">D8FB4200</span>   <span class="no">mov</span> <span class="no">edx</span><span class="p">,</span><span class="no">Acid_bur.0042FBD8</span>
+</span></span><span class="line"><span class="cl"><span class="err">0042</span><span class="nf">FB11</span>  <span class="err">|</span><span class="p">.</span>  <span class="no">A1</span> <span class="mi">480</span><span class="no">A4300</span>   <span class="no">mov</span> <span class="no">eax</span><span class="p">,</span><span class="no">dword</span> <span class="no">ptr</span> <span class="no">ds</span><span class="p">:[</span><span class="mi">0x430A48</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="err">0042</span><span class="nf">FB16</span>  <span class="err">|</span><span class="p">.</span>  <span class="mi">8</span><span class="no">B00</span>          <span class="no">mov</span> <span class="no">eax</span><span class="p">,</span><span class="no">dword</span> <span class="no">ptr</span> <span class="no">ds</span><span class="p">:[</span><span class="no">eax</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="err">0042</span><span class="nf">FB18</span>  <span class="err">|</span><span class="p">.</span>  <span class="no">E8</span> <span class="mi">53</span><span class="no">A6FFFF</span>   <span class="no">call</span> <span class="no">Acid_bur.0042A170</span>
+</span></span><span class="line"><span class="cl"><span class="err">0042</span><span class="nf">FB1D</span>  <span class="err">|</span><span class="p">.</span>  <span class="no">EB</span> <span class="mi">18</span>         <span class="no">jmp</span> <span class="no">short</span> <span class="no">Acid_bur.0042FB37</span>
+</span></span><span class="line"><span class="cl"><span class="err">0042</span><span class="nf">FB1F</span>  <span class="err">|&gt;</span>  <span class="mi">6</span><span class="no">A</span> <span class="mi">00</span>         <span class="no">push</span> <span class="mi">0x0</span>
+</span></span><span class="line"><span class="cl"><span class="err">0042</span><span class="nf">FB21</span>  <span class="err">|</span><span class="p">.</span>  <span class="no">B9</span> <span class="mi">74</span><span class="no">FB4200</span>   <span class="no">mov</span> <span class="no">ecx</span><span class="p">,</span><span class="no">Acid_bur.0042FB74</span>                <span class="c1">;  ASCII 54,&#34;ry Again!&#34;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="err">0042</span><span class="nf">FB26</span>  <span class="err">|</span><span class="p">.</span>  <span class="no">BA</span> <span class="mi">80</span><span class="no">FB4200</span>   <span class="no">mov</span> <span class="no">edx</span><span class="p">,</span><span class="no">Acid_bur.0042FB80</span>                <span class="c1">;  ASCII 53,&#34;orry , The serial is incorect !&#34;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="err">0042</span><span class="nf">FB2B</span>  <span class="err">|</span><span class="p">.</span>  <span class="no">A1</span> <span class="mi">480</span><span class="no">A4300</span>   <span class="no">mov</span> <span class="no">eax</span><span class="p">,</span><span class="no">dword</span> <span class="no">ptr</span> <span class="no">ds</span><span class="p">:[</span><span class="mi">0x430A48</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="err">0042</span><span class="nf">FB30</span>  <span class="err">|</span><span class="p">.</span>  <span class="mi">8</span><span class="no">B00</span>          <span class="no">mov</span> <span class="no">eax</span><span class="p">,</span><span class="no">dword</span> <span class="no">ptr</span> <span class="no">ds</span><span class="p">:[</span><span class="no">eax</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="err">0042</span><span class="nf">FB32</span>  <span class="err">|</span><span class="p">.</span>  <span class="no">E8</span> <span class="mi">39</span><span class="no">A6FFFF</span>   <span class="no">call</span> <span class="no">Acid_bur.0042A170</span>                   <span class="c1">;  弹出错误提示
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="err">0042</span><span class="nf">FB37</span>  <span class="err">|&gt;</span>  <span class="mi">33</span><span class="no">C0</span>          <span class="no">xor</span> <span class="no">eax</span><span class="p">,</span><span class="no">eax</span>
+</span></span><span class="line"><span class="cl"><span class="err">0042</span><span class="nf">FB39</span>  <span class="err">|</span><span class="p">.</span>  <span class="mi">5</span><span class="no">A</span>            <span class="no">pop</span> <span class="no">edx</span>                                  <span class="c1">;  0012F990
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="err">0042</span><span class="nf">FB3A</span>  <span class="err">|</span><span class="p">.</span>  <span class="mi">59</span>            <span class="no">pop</span> <span class="no">ecx</span>                                  <span class="c1">;  0012F990
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="err">0042</span><span class="nf">FB3B</span>  <span class="err">|</span><span class="p">.</span>  <span class="mi">59</span>            <span class="no">pop</span> <span class="no">ecx</span>                                  <span class="c1">;  0012F990
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="err">0042</span><span class="nf">FB3C</span>  <span class="err">|</span><span class="p">.</span>  <span class="mi">64</span><span class="p">:</span><span class="mi">8910</span>       <span class="no">mov</span> <span class="no">dword</span> <span class="no">ptr</span> <span class="no">fs</span><span class="p">:[</span><span class="no">eax</span><span class="p">],</span><span class="no">edx</span>
+</span></span><span class="line"><span class="cl"><span class="err">0042</span><span class="nf">FB3F</span>  <span class="err">|</span><span class="p">.</span>  <span class="mi">68</span> <span class="mi">6</span><span class="no">EFB4200</span>   <span class="no">push</span> <span class="no">Acid_bur.0042FB6E</span>
+</span></span><span class="line"><span class="cl"><span class="err">0042</span><span class="nf">FB44</span>  <span class="err">|&gt;</span>  <span class="mi">8</span><span class="no">D45</span> <span class="no">E8</span>       <span class="no">lea</span> <span class="no">eax</span><span class="p">,[</span><span class="no">local.6</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="err">0042</span><span class="nf">FB47</span>  <span class="err">|</span><span class="p">.</span>  <span class="no">E8</span> <span class="mi">243</span><span class="no">BFDFF</span>   <span class="no">call</span> <span class="no">Acid_bur.00403670</span>
+</span></span><span class="line"><span class="cl"><span class="err">0042</span><span class="nf">FB4C</span>  <span class="err">|</span><span class="p">.</span>  <span class="mi">8</span><span class="no">D45</span> <span class="no">EC</span>       <span class="no">lea</span> <span class="no">eax</span><span class="p">,[</span><span class="no">local.5</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="err">0042</span><span class="nf">FB4F</span>  <span class="err">|</span><span class="p">.</span>  <span class="no">BA</span> <span class="mi">02000000</span>   <span class="no">mov</span> <span class="no">edx</span><span class="p">,</span><span class="mi">0x2</span>
+</span></span><span class="line"><span class="cl"><span class="err">0042</span><span class="nf">FB54</span>  <span class="err">|</span><span class="p">.</span>  <span class="no">E8</span> <span class="mi">3</span><span class="no">B3BFDFF</span>   <span class="no">call</span> <span class="no">Acid_bur.00403694</span>
+</span></span><span class="line"><span class="cl"><span class="err">0042</span><span class="nf">FB59</span>  <span class="err">|</span><span class="p">.</span>  <span class="mi">8</span><span class="no">D45</span> <span class="no">F4</span>       <span class="no">lea</span> <span class="no">eax</span><span class="p">,[</span><span class="no">local.3</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="err">0042</span><span class="nf">FB5C</span>  <span class="err">|</span><span class="p">.</span>  <span class="no">BA</span> <span class="mi">03000000</span>   <span class="no">mov</span> <span class="no">edx</span><span class="p">,</span><span class="mi">0x3</span>
+</span></span><span class="line"><span class="cl"><span class="err">0042</span><span class="nf">FB61</span>  <span class="err">|</span><span class="p">.</span>  <span class="no">E8</span> <span class="mi">2</span><span class="no">E3BFDFF</span>   <span class="no">call</span> <span class="no">Acid_bur.00403694</span>
+</span></span><span class="line"><span class="cl"><span class="err">0042</span><span class="nf">FB66</span>  <span class="err">\</span><span class="p">.</span>  <span class="no">C3</span>            <span class="no">retn</span>
+</span></span><span class="line"><span class="cl"><span class="err">0042</span><span class="nf">FB67</span>   <span class="p">.</span><span class="err">^</span> <span class="no">E9</span> <span class="no">A835FDFF</span>   <span class="no">jmp</span> <span class="no">Acid_bur.00403114</span>
+</span></span><span class="line"><span class="cl"><span class="err">0042</span><span class="nf">FB6C</span>   <span class="p">.</span><span class="err">^</span> <span class="no">EB</span> <span class="no">D6</span>         <span class="no">jmp</span> <span class="no">short</span> <span class="no">Acid_bur.0042FB44</span>
+</span></span><span class="line"><span class="cl"><span class="err">0042</span><span class="nf">FB6E</span>   <span class="p">.</span>  <span class="mi">5</span><span class="no">E</span>            <span class="no">pop</span> <span class="no">esi</span>                                  <span class="c1">;  0012F990
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="err">0042</span><span class="nf">FB6F</span>   <span class="p">.</span>  <span class="mi">5</span><span class="no">B</span>            <span class="no">pop</span> <span class="no">ebx</span>                                  <span class="c1">;  0012F990
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="err">0042</span><span class="nf">FB70</span>   <span class="p">.</span>  <span class="mi">8</span><span class="no">BE5</span>          <span class="no">mov</span> <span class="no">esp</span><span class="p">,</span><span class="no">ebp</span>
+</span></span><span class="line"><span class="cl"><span class="err">0042</span><span class="nf">FB72</span>   <span class="p">.</span>  <span class="mi">5</span><span class="no">D</span>            <span class="no">pop</span> <span class="no">ebp</span>                                  <span class="c1">;  0012F990
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="err">0042</span><span class="nf">FB73</span>   <span class="p">.</span>  <span class="no">C3</span>            <span class="no">retn</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>在函数入口：0042F998 进行断点调试分析，得出：<strong>取用户名第一个字母的ASNI的数字，如112233中第一个字符1对应数字0x31，然后用它乘以0x29，结果再自增一倍(即x2)，将得到的数字转为10进制的字符串，在前加上”CW-”,后加上”-CRACKED”，就组成了用户名对应的注册码。</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span>
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">str_</span> <span class="o">=</span> <span class="s">&#34;112233&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">cnt</span> <span class="o">=</span> <span class="n">str_</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="mh">0x29</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="n">cnt</span> <span class="o">+=</span> <span class="n">cnt</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="n">printf</span><span class="p">(</span><span class="s">&#34;Serial: CW-%4d-CRACKED</span><span class="se">\r\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">cnt</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="4-第二个单独的序列号">4. 第二个单独的序列号</h2>
+<p>第二个单独Serial，和前面一样找到最开始调用窗口的地方：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span><span class="lnt">64
+</span><span class="lnt">65
+</span><span class="lnt">66
+</span><span class="lnt">67
+</span><span class="lnt">68
+</span><span class="lnt">69
+</span><span class="lnt">70
+</span><span class="lnt">71
+</span><span class="lnt">72
+</span><span class="lnt">73
+</span><span class="lnt">74
+</span><span class="lnt">75
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="err">0042</span><span class="nf">F454</span>   <span class="p">.</span>  <span class="mi">53</span>            <span class="no">push</span> <span class="no">ebx</span>
+</span></span><span class="line"><span class="cl"><span class="err">0042</span><span class="nf">F455</span>   <span class="p">.</span>  <span class="mi">8</span><span class="no">BD8</span>          <span class="no">mov</span> <span class="no">ebx</span><span class="p">,</span><span class="no">eax</span>                              <span class="c1">;  Acid_bur.0042F4BC
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="err">0042</span><span class="nf">F457</span>   <span class="p">.</span>  <span class="no">A1</span> <span class="mi">7</span><span class="no">C094300</span>   <span class="no">mov</span> <span class="no">eax</span><span class="p">,</span><span class="no">dword</span> <span class="no">ptr</span> <span class="no">ds</span><span class="p">:[</span><span class="mi">0x43097C</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="err">0042</span><span class="nf">F45C</span>   <span class="p">.</span>  <span class="mi">8</span><span class="no">B00</span>          <span class="no">mov</span> <span class="no">eax</span><span class="p">,</span><span class="no">dword</span> <span class="no">ptr</span> <span class="no">ds</span><span class="p">:[</span><span class="no">eax</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="err">0042</span><span class="nf">F45E</span>   <span class="p">.</span>  <span class="no">B2</span> <span class="mi">01</span>         <span class="no">mov</span> <span class="no">dl</span><span class="p">,</span><span class="mi">0x1</span>
+</span></span><span class="line"><span class="cl"><span class="err">0042</span><span class="nf">F460</span>   <span class="p">.</span>  <span class="no">E8</span> <span class="mi">7</span><span class="no">B6BFFFF</span>   <span class="no">call</span> <span class="no">Acid_bur.00425FE0</span>
+</span></span><span class="line"><span class="cl"><span class="err">0042</span><span class="nf">F465</span>   <span class="p">.</span>  <span class="mi">8</span><span class="no">BC3</span>          <span class="no">mov</span> <span class="no">eax</span><span class="p">,</span><span class="no">ebx</span>
+</span></span><span class="line"><span class="cl"><span class="err">0042</span><span class="nf">F467</span>   <span class="p">.</span>  <span class="no">E8</span> <span class="mi">048</span><span class="no">FFFFF</span>   <span class="no">call</span> <span class="no">Acid_bur.00428370</span>
+</span></span><span class="line"><span class="cl"><span class="err">0042</span><span class="nf">F46C</span>   <span class="p">.</span>  <span class="mi">5</span><span class="no">B</span>            <span class="no">pop</span> <span class="no">ebx</span>                                  <span class="c1">;  00AD0F60
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="err">0042</span><span class="nf">F46D</span>   <span class="p">.</span>  <span class="no">C3</span>            <span class="no">retn</span>
+</span></span><span class="line"><span class="cl"><span class="err">0042</span><span class="nf">F46E</span>      <span class="mi">8</span><span class="no">BC0</span>          <span class="no">mov</span> <span class="no">eax</span><span class="p">,</span><span class="no">eax</span>                              <span class="c1">;  Acid_bur.0042F4BC
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="err">0042</span><span class="nf">F470</span>  <span class="err">/</span><span class="p">.</span>  <span class="mi">55</span>            <span class="no">push</span> <span class="no">ebp</span>
+</span></span><span class="line"><span class="cl"><span class="err">0042</span><span class="nf">F471</span>  <span class="err">|</span><span class="p">.</span>  <span class="mi">8</span><span class="no">BEC</span>          <span class="no">mov</span> <span class="no">ebp</span><span class="p">,</span><span class="no">esp</span>
+</span></span><span class="line"><span class="cl"><span class="err">0042</span><span class="nf">F473</span>  <span class="err">|</span><span class="p">.</span>  <span class="mi">33</span><span class="no">C9</span>          <span class="no">xor</span> <span class="no">ecx</span><span class="p">,</span><span class="no">ecx</span>
+</span></span><span class="line"><span class="cl"><span class="err">0042</span><span class="nf">F475</span>  <span class="err">|</span><span class="p">.</span>  <span class="mi">51</span>            <span class="no">push</span> <span class="no">ecx</span>
+</span></span><span class="line"><span class="cl"><span class="err">0042</span><span class="nf">F476</span>  <span class="err">|</span><span class="p">.</span>  <span class="mi">51</span>            <span class="no">push</span> <span class="no">ecx</span>
+</span></span><span class="line"><span class="cl"><span class="err">0042</span><span class="nf">F477</span>  <span class="err">|</span><span class="p">.</span>  <span class="mi">51</span>            <span class="no">push</span> <span class="no">ecx</span>
+</span></span><span class="line"><span class="cl"><span class="err">0042</span><span class="nf">F478</span>  <span class="err">|</span><span class="p">.</span>  <span class="mi">51</span>            <span class="no">push</span> <span class="no">ecx</span>
+</span></span><span class="line"><span class="cl"><span class="err">0042</span><span class="nf">F479</span>  <span class="err">|</span><span class="p">.</span>  <span class="mi">53</span>            <span class="no">push</span> <span class="no">ebx</span>
+</span></span><span class="line"><span class="cl"><span class="err">0042</span><span class="nf">F47A</span>  <span class="err">|</span><span class="p">.</span>  <span class="mi">8</span><span class="no">BD8</span>          <span class="no">mov</span> <span class="no">ebx</span><span class="p">,</span><span class="no">eax</span>                              <span class="c1">;  Acid_bur.0042F4BC
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="err">0042</span><span class="nf">F47C</span>  <span class="err">|</span><span class="p">.</span>  <span class="mi">33</span><span class="no">C0</span>          <span class="no">xor</span> <span class="no">eax</span><span class="p">,</span><span class="no">eax</span>                              <span class="c1">;  Acid_bur.0042F4BC
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="err">0042</span><span class="nf">F47E</span>  <span class="err">|</span><span class="p">.</span>  <span class="mi">55</span>            <span class="no">push</span> <span class="no">ebp</span>
+</span></span><span class="line"><span class="cl"><span class="err">0042</span><span class="nf">F47F</span>  <span class="err">|</span><span class="p">.</span>  <span class="mi">68</span> <span class="mi">2</span><span class="no">CF54200</span>   <span class="no">push</span> <span class="no">Acid_bur.0042F52C</span>
+</span></span><span class="line"><span class="cl"><span class="err">0042</span><span class="nf">F484</span>  <span class="err">|</span><span class="p">.</span>  <span class="mi">64</span><span class="p">:</span><span class="no">FF30</span>       <span class="no">push</span> <span class="no">dword</span> <span class="no">ptr</span> <span class="no">fs</span><span class="p">:[</span><span class="no">eax</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="err">0042</span><span class="nf">F487</span>  <span class="err">|</span><span class="p">.</span>  <span class="mi">64</span><span class="p">:</span><span class="mi">8920</span>       <span class="no">mov</span> <span class="no">dword</span> <span class="no">ptr</span> <span class="no">fs</span><span class="p">:[</span><span class="no">eax</span><span class="p">],</span><span class="no">esp</span>
+</span></span><span class="line"><span class="cl"><span class="err">0042</span><span class="nf">F48A</span>  <span class="err">|</span><span class="p">.</span>  <span class="mi">8</span><span class="no">D45</span> <span class="no">FC</span>       <span class="no">lea</span> <span class="no">eax</span><span class="p">,[</span><span class="no">local.1</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="err">0042</span><span class="nf">F48D</span>  <span class="err">|</span><span class="p">.</span>  <span class="no">BA</span> <span class="mi">40</span><span class="no">F54200</span>   <span class="no">mov</span> <span class="no">edx</span><span class="p">,</span><span class="no">Acid_bur.0042F540</span>                <span class="c1">;  Hello
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="err">0042</span><span class="nf">F492</span>  <span class="err">|</span><span class="p">.</span>  <span class="no">E8</span> <span class="mi">7142</span><span class="no">FDFF</span>   <span class="no">call</span> <span class="no">Acid_bur.00403708</span>
+</span></span><span class="line"><span class="cl"><span class="err">0042</span><span class="nf">F497</span>  <span class="err">|</span><span class="p">.</span>  <span class="mi">8</span><span class="no">D45</span> <span class="no">F8</span>       <span class="no">lea</span> <span class="no">eax</span><span class="p">,[</span><span class="no">local.2</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="err">0042</span><span class="nf">F49A</span>  <span class="err">|</span><span class="p">.</span>  <span class="no">BA</span> <span class="mi">50</span><span class="no">F54200</span>   <span class="no">mov</span> <span class="no">edx</span><span class="p">,</span><span class="no">Acid_bur.0042F550</span>                <span class="c1">;  Dude!
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="err">0042</span><span class="nf">F49F</span>  <span class="err">|</span><span class="p">.</span>  <span class="no">E8</span> <span class="mi">6442</span><span class="no">FDFF</span>   <span class="no">call</span> <span class="no">Acid_bur.00403708</span>
+</span></span><span class="line"><span class="cl"><span class="err">0042</span><span class="nf">F4A4</span>  <span class="err">|</span><span class="p">.</span>  <span class="no">FF75</span> <span class="no">FC</span>       <span class="no">push</span> <span class="p">[</span><span class="no">local.1</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="err">0042</span><span class="nf">F4A7</span>  <span class="err">|</span><span class="p">.</span>  <span class="mi">68</span> <span class="mi">60</span><span class="no">F54200</span>   <span class="no">push</span> <span class="no">Acid_bur.0042F560</span>
+</span></span><span class="line"><span class="cl"><span class="err">0042</span><span class="nf">F4AC</span>  <span class="err">|</span><span class="p">.</span>  <span class="no">FF75</span> <span class="no">F8</span>       <span class="no">push</span> <span class="p">[</span><span class="no">local.2</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="err">0042</span><span class="nf">F4AF</span>  <span class="err">|</span><span class="p">.</span>  <span class="mi">8</span><span class="no">D45</span> <span class="no">F4</span>       <span class="no">lea</span> <span class="no">eax</span><span class="p">,[</span><span class="no">local.3</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="err">0042</span><span class="nf">F4B2</span>  <span class="err">|</span><span class="p">.</span>  <span class="no">BA</span> <span class="mi">03000000</span>   <span class="no">mov</span> <span class="no">edx</span><span class="p">,</span><span class="mi">0x3</span>
+</span></span><span class="line"><span class="cl"><span class="err">0042</span><span class="nf">F4B7</span>  <span class="err">|</span><span class="p">.</span>  <span class="no">E8</span> <span class="no">F044FDFF</span>   <span class="no">call</span> <span class="no">Acid_bur.004039AC</span>
+</span></span><span class="line"><span class="cl"><span class="err">0042</span><span class="nf">F4BC</span>  <span class="err">|</span><span class="p">.</span>  <span class="mi">8</span><span class="no">D55</span> <span class="no">F0</span>       <span class="no">lea</span> <span class="no">edx</span><span class="p">,[</span><span class="no">local.4</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="err">0042</span><span class="nf">F4BF</span>  <span class="err">|</span><span class="p">.</span>  <span class="mi">8</span><span class="no">B83</span> <span class="no">E0010000</span> <span class="no">mov</span> <span class="no">eax</span><span class="p">,</span><span class="no">dword</span> <span class="no">ptr</span> <span class="no">ds</span><span class="p">:[</span><span class="no">ebx</span><span class="err">+</span><span class="mi">0x1E0</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="err">0042</span><span class="nf">F4C5</span>  <span class="err">|</span><span class="p">.</span>  <span class="no">E8</span> <span class="mi">8</span><span class="no">EB5FEFF</span>   <span class="no">call</span> <span class="no">Acid_bur.0041AA58</span>
+</span></span><span class="line"><span class="cl"><span class="err">0042</span><span class="nf">F4CA</span>  <span class="err">|</span><span class="p">.</span>  <span class="mi">8</span><span class="no">B45</span> <span class="no">F0</span>       <span class="no">mov</span> <span class="no">eax</span><span class="p">,[</span><span class="no">local.4</span><span class="p">]</span>                        <span class="c1">;  输入的用户名：112233
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="err">0042</span><span class="nf">F4CD</span>  <span class="err">|</span><span class="p">.</span>  <span class="mi">8</span><span class="no">B55</span> <span class="no">F4</span>       <span class="no">mov</span> <span class="no">edx</span><span class="p">,[</span><span class="no">local.3</span><span class="p">]</span>                        <span class="c1">;  Hello Dude!
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="err">0042</span><span class="nf">F4D0</span>  <span class="err">|</span><span class="p">.</span>  <span class="no">E8</span> <span class="mi">2745</span><span class="no">FDFF</span>   <span class="no">call</span> <span class="no">Acid_bur.004039FC</span>                   <span class="c1">;  字符串比较
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="err">0042</span><span class="nf">F4D5</span>  <span class="err">|</span><span class="p">.</span>  <span class="mi">75</span> <span class="mi">1</span><span class="no">A</span>         <span class="no">jnz</span> <span class="no">short</span> <span class="no">Acid_bur.0042F4F1</span>              <span class="c1">;  关键的跳转
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="err">0042</span><span class="nf">F4D7</span>  <span class="err">|</span><span class="p">.</span>  <span class="mi">6</span><span class="no">A</span> <span class="mi">00</span>         <span class="no">push</span> <span class="mi">0x0</span>
+</span></span><span class="line"><span class="cl"><span class="err">0042</span><span class="nf">F4D9</span>  <span class="err">|</span><span class="p">.</span>  <span class="no">B9</span> <span class="mi">64</span><span class="no">F54200</span>   <span class="no">mov</span> <span class="no">ecx</span><span class="p">,</span><span class="no">Acid_bur.0042F564</span>                <span class="c1">;  Congratz!
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="err">0042</span><span class="nf">F4DE</span>  <span class="err">|</span><span class="p">.</span>  <span class="no">BA</span> <span class="mi">70</span><span class="no">F54200</span>   <span class="no">mov</span> <span class="no">edx</span><span class="p">,</span><span class="no">Acid_bur.0042F570</span>                <span class="c1">;  God Job dude !! =)
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="err">0042</span><span class="nf">F4E3</span>  <span class="err">|</span><span class="p">.</span>  <span class="no">A1</span> <span class="mi">480</span><span class="no">A4300</span>   <span class="no">mov</span> <span class="no">eax</span><span class="p">,</span><span class="no">dword</span> <span class="no">ptr</span> <span class="no">ds</span><span class="p">:[</span><span class="mi">0x430A48</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="err">0042</span><span class="nf">F4E8</span>  <span class="err">|</span><span class="p">.</span>  <span class="mi">8</span><span class="no">B00</span>          <span class="no">mov</span> <span class="no">eax</span><span class="p">,</span><span class="no">dword</span> <span class="no">ptr</span> <span class="no">ds</span><span class="p">:[</span><span class="no">eax</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="err">0042</span><span class="nf">F4EA</span>  <span class="err">|</span><span class="p">.</span>  <span class="no">E8</span> <span class="mi">81</span><span class="no">ACFFFF</span>   <span class="no">call</span> <span class="no">Acid_bur.0042A170</span>					 <span class="c1">;  成功的调用
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="err">0042</span><span class="nf">F4EF</span>  <span class="err">|</span><span class="p">.</span>  <span class="no">EB</span> <span class="mi">18</span>         <span class="no">jmp</span> <span class="no">short</span> <span class="no">Acid_bur.0042F509</span>
+</span></span><span class="line"><span class="cl"><span class="err">0042</span><span class="nf">F4F1</span>  <span class="err">|&gt;</span>  <span class="mi">6</span><span class="no">A</span> <span class="mi">00</span>         <span class="no">push</span> <span class="mi">0x0</span>
+</span></span><span class="line"><span class="cl"><span class="err">0042</span><span class="nf">F4F3</span>  <span class="err">|</span><span class="p">.</span>  <span class="no">B9</span> <span class="mi">84</span><span class="no">F54200</span>   <span class="no">mov</span> <span class="no">ecx</span><span class="p">,</span><span class="no">Acid_bur.0042F584</span>                <span class="c1">;  Failed!
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="err">0042</span><span class="nf">F4F8</span>  <span class="err">|</span><span class="p">.</span>  <span class="no">BA</span> <span class="mi">8</span><span class="no">CF54200</span>   <span class="no">mov</span> <span class="no">edx</span><span class="p">,</span><span class="no">Acid_bur.0042F58C</span>                <span class="c1">;  Try Again!!
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="err">0042</span><span class="nf">F4FD</span>  <span class="err">|</span><span class="p">.</span>  <span class="no">A1</span> <span class="mi">480</span><span class="no">A4300</span>   <span class="no">mov</span> <span class="no">eax</span><span class="p">,</span><span class="no">dword</span> <span class="no">ptr</span> <span class="no">ds</span><span class="p">:[</span><span class="mi">0x430A48</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="err">0042</span><span class="nf">F502</span>  <span class="err">|</span><span class="p">.</span>  <span class="mi">8</span><span class="no">B00</span>          <span class="no">mov</span> <span class="no">eax</span><span class="p">,</span><span class="no">dword</span> <span class="no">ptr</span> <span class="no">ds</span><span class="p">:[</span><span class="no">eax</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="err">0042</span><span class="nf">F504</span>  <span class="err">|</span><span class="p">.</span>  <span class="no">E8</span> <span class="mi">67</span><span class="no">ACFFFF</span>   <span class="no">call</span> <span class="no">Acid_bur.0042A170</span>                   <span class="c1">;  错误提示的调用
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="err">0042</span><span class="nf">F509</span>  <span class="err">|&gt;</span>  <span class="mi">33</span><span class="no">C0</span>          <span class="no">xor</span> <span class="no">eax</span><span class="p">,</span><span class="no">eax</span>                              <span class="c1">;  Acid_bur.0042F4BC
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="err">0042</span><span class="nf">F50B</span>  <span class="err">|</span><span class="p">.</span>  <span class="mi">5</span><span class="no">A</span>            <span class="no">pop</span> <span class="no">edx</span>                                  <span class="c1">;  00AD0F60
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="err">0042</span><span class="nf">F50C</span>  <span class="err">|</span><span class="p">.</span>  <span class="mi">59</span>            <span class="no">pop</span> <span class="no">ecx</span>                                  <span class="c1">;  00AD0F60
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="err">0042</span><span class="nf">F50D</span>  <span class="err">|</span><span class="p">.</span>  <span class="mi">59</span>            <span class="no">pop</span> <span class="no">ecx</span>                                  <span class="c1">;  00AD0F60
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="err">0042</span><span class="nf">F50E</span>  <span class="err">|</span><span class="p">.</span>  <span class="mi">64</span><span class="p">:</span><span class="mi">8910</span>       <span class="no">mov</span> <span class="no">dword</span> <span class="no">ptr</span> <span class="no">fs</span><span class="p">:[</span><span class="no">eax</span><span class="p">],</span><span class="no">edx</span>
+</span></span><span class="line"><span class="cl"><span class="err">0042</span><span class="nf">F511</span>  <span class="err">|</span><span class="p">.</span>  <span class="mi">68</span> <span class="mi">33</span><span class="no">F54200</span>   <span class="no">push</span> <span class="no">Acid_bur.0042F533</span>
+</span></span><span class="line"><span class="cl"><span class="err">0042</span><span class="nf">F516</span>  <span class="err">|&gt;</span>  <span class="mi">8</span><span class="no">D45</span> <span class="no">F0</span>       <span class="no">lea</span> <span class="no">eax</span><span class="p">,[</span><span class="no">local.4</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="err">0042</span><span class="nf">F519</span>  <span class="err">|</span><span class="p">.</span>  <span class="no">E8</span> <span class="mi">5241</span><span class="no">FDFF</span>   <span class="no">call</span> <span class="no">Acid_bur.00403670</span>
+</span></span><span class="line"><span class="cl"><span class="err">0042</span><span class="nf">F51E</span>  <span class="err">|</span><span class="p">.</span>  <span class="mi">8</span><span class="no">D45</span> <span class="no">F4</span>       <span class="no">lea</span> <span class="no">eax</span><span class="p">,[</span><span class="no">local.3</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="err">0042</span><span class="nf">F521</span>  <span class="err">|</span><span class="p">.</span>  <span class="no">BA</span> <span class="mi">03000000</span>   <span class="no">mov</span> <span class="no">edx</span><span class="p">,</span><span class="mi">0x3</span>
+</span></span><span class="line"><span class="cl"><span class="err">0042</span><span class="nf">F526</span>  <span class="err">|</span><span class="p">.</span>  <span class="no">E8</span> <span class="mi">6941</span><span class="no">FDFF</span>   <span class="no">call</span> <span class="no">Acid_bur.00403694</span>
+</span></span><span class="line"><span class="cl"><span class="err">0042</span><span class="nf">F52B</span>  <span class="err">\</span><span class="p">.</span>  <span class="no">C3</span>            <span class="no">retn</span>
+</span></span><span class="line"><span class="cl"><span class="err">0042</span><span class="nf">F52C</span>   <span class="p">.</span><span class="err">^</span> <span class="no">E9</span> <span class="no">E33BFDFF</span>   <span class="no">jmp</span> <span class="no">Acid_bur.00403114</span>
+</span></span><span class="line"><span class="cl"><span class="err">0042</span><span class="nf">F531</span>   <span class="p">.</span><span class="err">^</span> <span class="no">EB</span> <span class="no">E3</span>         <span class="no">jmp</span> <span class="no">short</span> <span class="no">Acid_bur.0042F516</span>
+</span></span><span class="line"><span class="cl"><span class="err">0042</span><span class="nf">F533</span>   <span class="p">.</span>  <span class="mi">5</span><span class="no">B</span>            <span class="no">pop</span> <span class="no">ebx</span>                                  <span class="c1">;  00AD0F60
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="err">0042</span><span class="nf">F534</span>   <span class="p">.</span>  <span class="mi">8</span><span class="no">BE5</span>          <span class="no">mov</span> <span class="no">esp</span><span class="p">,</span><span class="no">ebp</span>
+</span></span><span class="line"><span class="cl"><span class="err">0042</span><span class="nf">F536</span>   <span class="p">.</span>  <span class="mi">5</span><span class="no">D</span>            <span class="no">pop</span> <span class="no">ebp</span>                                  <span class="c1">;  00AD0F60
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="err">0042</span><span class="nf">F537</span>   <span class="p">.</span>  <span class="no">C3</span>            <span class="no">retn</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>分析发现，序列号是固定的：<code>Hello Dude!</code></p>
+</div><div class="post-footer" id="post-footer">
+  <div class="post-info">
+    <div class="post-info-line">
+      <div class="post-info-mod">
+        <span title="Updated on 2023-07-28 00:00:00">Updated on 2023-07-28&nbsp;</span>
+      </div><div class="post-info-license">
+          <span><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span>
+        </div></div>
+    <div class="post-info-line">
+      <div class="post-info-md"></div>
+      <div class="post-info-share">
+        <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://cui-jiang-tao.github.io/posts/160_crackme/001/" data-title="160个CrackMe之001" data-hashtags="破解"><i class="fa-brands fa-twitter fa-fw" aria-hidden="true"></i></a>
+  <a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://cui-jiang-tao.github.io/posts/160_crackme/001/" data-hashtag="破解"><i class="fa-brands fa-facebook-square fa-fw" aria-hidden="true"></i></a>
+  <a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="https://cui-jiang-tao.github.io/posts/160_crackme/001/" data-title="160个CrackMe之001"><i class="fa-brands fa-weibo fa-fw" aria-hidden="true"></i></a>
+  </span>
+      </div>
+    </div>
+  </div>
+
+  <div class="post-info-more">
+    <section class="post-tags"><i class="fa-solid fa-tags fa-fw me-1" aria-hidden="true"></i><a href='/tags/%E7%A0%B4%E8%A7%A3/' class="post-tag">破解</a></section>
+    <section>
+      <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+    </section>
+  </div>
+
+  <div class="post-nav"><a href="/posts/python/python%E6%A0%B8%E5%BF%83%E7%BC%96%E7%A8%8B/" class="post-nav-item" rel="prev" title="Python核心编程"><i class="fa-solid fa-angle-left fa-fw" aria-hidden="true"></i>Python核心编程</a></div>
+</div>
+</article></main><footer class="footer">
+    <div class="footer-container"><div class="footer-line copyright" itemscope itemtype="http://schema.org/CreativeWork"><i class="fa-regular fa-copyright fa-fw" aria-hidden="true"></i>
+            <span itemprop="copyrightYear">2022 - 2023</span><span class="license footer-divider"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div><div class="footer-line statistics"></div></div>
+  </footer></div><div class="widgets"><div class="fixed-buttons animate__faster d-none"><div class="fixed-button back-to-top" role="button" aria-label="Back to Top"><i class="fa-solid fa-arrow-up fa-fw" aria-hidden="true"></i><span class="variant-numeric d-none">0%</span>
+        </div></div><div id="mask"></div><noscript>
+    <div class="noscript-warning">Theme FixIt works best with JavaScript enabled.</div>
+  </noscript>
+</div><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script src="/lib/sharer/sharer.min.js" async defer></script><script src="/lib/typeit/index.umd.js" defer></script><script src="/lib/katex/katex.min.js" defer></script><script src="/lib/katex/auto-render.min.js" defer></script><script src="/lib/katex/copy-tex.min.js" defer></script><script src="/lib/katex/mhchem.min.js" defer></script><script src="/lib/cookieconsent/cookieconsent.min.js" defer></script><script>window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":-1},"comment":{"enable":false},"cookieconsent":{"content":{"dismiss":"Got it!","link":"Learn more","message":"This website uses Cookies to improve your experience."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"data":{"typeit-header-desktop":"Home","typeit-header-title-mobile":"Home"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"typeit-header-desktop":["typeit-header-desktop"],"typeit-header-title-mobile":["typeit-header-title-mobile"]},"duration":-1,"loop":false,"speed":100}};</script><script src="/js/theme.min.js" defer></script></body>
+</html>

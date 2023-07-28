@@ -1,0 +1,756 @@
+(SEMI)SMART KEY::(Semi) clave inteligente
+-2001(13/48 CHIP FREQUENCY:315/433)-2003(13 CHIP FREQUENCY:313)2003-2008(48 CHIP FREQUENCY:433)2008-2011(46 CHIP FREQUENCY 433/313.8)2010-2014(46 CHIP FREQUENCY:433)2014-(47 CHIP FREQUENCY:433)::-2001 (13/48 Frecuencia de chips: 315/433) -2003 (13 Frecuencia de chips: 313) 2003-2008 (48 Frecuencia de chips: 433) 2008-2011 (46 Frecuencia de chip 433/313.8) 2010-2014 (46 Chip Frequency: 433) 2014- (47 Frecuencia de chip: 433)
+-2001(48 CHIP FREQUENCY:433)::-2001 (48 Frecuencia de chip: 433)
+-2002(13 CHIP FREQUENCY:433)::-2002 (13 Frecuencia de chip: 433)
+-2005(13 CHIP FREQUENCY:307.9)::-2005 (13 Frecuencia de chip: 307.9)
+-2005(13/48 CHIP FREQUENCY:315/433)2006-2008(8E CHIP FREQUENCY:433)2009-2015(46 CHIP FREQUENCY:433)::-2005 (13/48 Frecuencia de chips: 315/433) 2006-2008 (8e Frecuencia de chips: 433) 2009-2015 (46 Frecuencia de chips: 433)
+-2006(47/48,315)2006-2009(8E,433)2011-2013(46,313)2009-2014(46,433)::-2006 (47/48,315) 2006-2009 (8e, 433) 2011-2013 (46,313) 2009-2014 (46,433)
+-2008(48 CHIP FREQUENCY:315)-2014(46 CHIP FREQUENCY:433)2014-(47 CHIP FREQUENCY:433)::-2008 (48 Frecuencia de chip: 315) -2014 (46 Frecuencia de chip: 433) 2014- (47 Frecuencia de chip: 433)
+-2008(48 CHIP FREQUENCY:315)::-2008 (48 Frecuencia de chip: 315)
+-2016(46 CHIP FREQUENCY:433)2016(HITAG 3 FREQUENCY:433)::-2016 (46 Frecuencia de chip: 433) 2016 (Hitag 3 Frecuencia: 433)
+01 NUMBER::Código 01
+01/51 NUMBER::Código 01/51
+02 NUMBER::Código 02
+02/56 NUMBER::Código 02/56
+02/69::3/69
+04 NUMBER::Código 04
+05 NUMBER::Código 05
+06 NUMBER::Código 06
+07 NUMBER::Código 07
+07年前48芯片；07-2010年无芯片::48 chips antes de 2007;07-2010 sin papas fritas
+07年前4C芯片，07年后67/68芯片::Chips 4C antes de 2007, 67/68 chips después de 2007
+09 NUMBER::Código 09
+09年前无芯片::No hay chip antes de 2009
+0X00,0X00,0X36,0XEE::0x00,0x00,0x36,0xee
+101 NUMBER::Código 101
+10::10
+128 BIT('H'KEY)::128 bit ('H'Key)
+13 NUMBER::Código 13
+13/48::13/48
+135 NUMBER::Código 135
+13::13
+145 NUMBER::Código 145
+15 NUMBER::Código 15
+15年前无芯片::Sin chips hace 15 años
+16 NUMBER::Código 16
+17 NUMBER或83 NUMBER::Código 17 o Código 83
+1993-2001(13 CHIP FREQUENCY:433)2004-2007(48 CHIP FREQUENCY:433)::1993-2001 (13 Frecuencia de chips: 433) 2004-2007 (48 Frecuencia de chips: 433)
+1994-1999(13,313)-2004(13,313)2004-2008(48,433)2009-(46,433)::1994-1999 (13,313) -2004 (13,313) 2004-2008 (48,433) 2009- (46,433)
+1994-2000(13 CHIP FREQUENCY:433)::1994-2000 (13 frecuencia de chips: 433)
+1995-1999: ID73 1999-2005: ID46::1995-1999: ID73 1999-2005: ID46
+1996-1999:ID33,2000-2001:ID45,2002-2004:ID46::1996-1999: ID33,2000-2001: ID45,2002-2004: ID46
+1996-2000(13/48 CHIP FREQUENCY:315/433)2000-2005(13 CHIP FREQUENCY:313)2006-2013(46 CHIP FREQUENCY:313/433)2015-(47 CHIP FREQUENCY:433)::1996-2000 (13/48 Frecuencia de chips: 315/433) 2000-2005 (13 Frecuencia de chips: 313) 2006-2013 (46 Frecuencia de chips: 313/433) 2015- (47 Frecuencia de chips: 433)
+1996-2000(13/48 CHIP FREQUENCY:315/433)2000-2005(13 CHIP FREQUENCY:313)2006-2013(46 CHIP FREQUENCY:433)2015-(47 CHIP FREQUENCY:433)::1996-2000 (13/48 Frecuencia de chips: 315/433) 2000-2005 (13 Frecuencia de chips: 313) 2006-2013 (46 Frecuencia de chips: 433) 2015- (47 Frecuencia de chips: 433)
+1996-2004 (13 CHIP FREQUENCY: 307.9)::1996-2004 (13 frecuencia de chips: 307.9)
+1996-2004(13 CHIP FREQUENCY:307.9)2005-2012(46 CHIP FREQUENCY:311.9)::1996-2004 (13 Frecuencia de chips: 307.9) 2005-2012 (46 Frecuencia de chips: 311.9)
+1996-2004(13 CHIP FREQUENCY:307.9)::1996-2004 (13 frecuencia de chips: 307.9)
+1996-2006(13/48 CHIP FREQUENCY:315/433)2006-2008(8E CHIP FREQUENCY:433)2008-2013(46 CHIP FREQUENCY:313)::1996-2006 (13/48 Frecuencia de chips: 315/433) 2006-2008 (8e Frecuencia de chips: 433) 2008-2013 (46 Frecuencia de chips: 313)
+1998-2000:ID33,2001-2008:ID46::1998-2000: ID33,2001-2008: ID46
+1998-2002(13,313)2003-2006(48,315/433)2006-2008(8E,433)2009-2013(46,433)2014-2017(47,433)::1998-2002 (13,313) 2003-2006 (48,315/433) 2006-2008 (8E, 433) 2009-2013 (46,433) 2014-2017 (47,433)
+1998-2003(13 CHIP FREQUENCY:433/307)::1998-2003 (13 frecuencia de chips: 433/307)
+1999-2003(13 CHIP FREQUENCY:307.9)2004-2006(46 CHIP FREQUENCY:313.85)2009-2014(46 CHIP FREQUENCY:313.85)::1999-2003 (13 Frecuencia de chips: 307.9) 2004-2006 (46 Frecuencia de chips: 313.85) 2009-2014 (46 Frecuencia de chips: 313.85)
+1999-2003(13 CHIP FREQUENCY:307.9)::1999-2003 (13 frecuencia de chips: 307.9)
+1999-2003(48 CHIP FREQUENCY:433)2004-2005(48 CHIP FREQUENCY:433)2006-2010(46 CHIP FREQUENCY:313)::1999-2003 (48 Frecuencia de chips: 433) 2004-2005 (48 Frecuencia de chips: 433) 2006-2010 (46 Frecuencia de chips: 313)
+1999:10 2000-2001:5::1999: 10 2000-2001: 5
+1::1
+2 OR 4(2007) 8(2008-09)::2 o 4 (2007) 8 (2008-09)
+2 SLICES::2 rebanadas
+2000-2006(13 CHIP FREQUENCY:307.9)2010-2014(46 CHIP FREQUENCY:313.8)::2000-2006 (13 Frecuencia de chips: 307.9) 2010-2014 (46 Frecuencia de chips: 313.8)
+2000-2006(48 CHIP FREQUENCY:433)2014-2018(47 CHIP FREQUENCY:313)::2000-2006 (48 Frecuencia de chips: 433) 2014-2018 (47 Frecuencia de chips: 313)
+2001-2002(48 CHIP FREQUENCY:433)2003-2007(48 CHIP FREQUENCY:433)::2001-2002 (48 Frecuencia de chips: 433) 2003-2007 (48 Frecuencia de chips: 433)
+2001-2005 (13 CHIP FREQUENCY: 307.9)::2001-2005 (13 frecuencia de chips: 307.9)
+2001-2005(13 CHIP FREQUENCY:307.9)::2001-2005 (13 frecuencia de chips: 307.9)
+2001-2006(13 CHIP FREQUENCY:307.9)2007-2013(46 CHIP FREQUENCY:313.8)2014-2017(47 CHIP FRFREQUENCY:3-924)::2001-2006 (13 Frecuencia de chips: 307.9) 2007-2013 (46 Frecuencia de chips: 313.8) 2014-2017 (47 Chip Frfrequency: 3-924)
+2001-2006(13 CHIP FREQUENCY:307.9)2007-2013(46 CHIP FREQUENCY:313.85)::2001-2006 (13 frecuencia de chips: 307.9) 2007-2013 (46 Frecuencia de chips: 313.85)
+2002-2006 (13 CHIP FREQUENCY: 307.9)::2002-2006 (13 frecuencia de chips: 307.9)
+2002-2006(13 CHIP FREQUENCY:307.9)::2002-2006 (13 frecuencia de chips: 307.9)
+2003-2005(48 CHIP FREQUENCY:433)2006-2007(8E CHIP FREQUENCY:433)::2003-2005 (48 Frecuencia de chips: 433) 2006-2007 (8e Frecuencia de chips: 433)
+2003-2006(13 CHIP FREQUENCY:313)2007-2012(46 CHIP FREQUENCY:313)::2003-2006 (13 Frecuencia de chips: 313) 2007-2012 (46 Frecuencia de chips: 313)
+2003-2007(46 CHIP FREQUENCY:433)2009-2015(46 CHIP FREQUENCY:313.8)2016-2018(HITAG 3 FREQUENCY:433)::2003-2007 (46 Frecuencia de chips: 433) 2009-2015 (46 Frecuencia de chips: 313.8) 2016-2018 (Hitag 3 Frecuencia: 433)
+2004-2007(48 CHIP FREQUENCY:433)2007-2009(8E CHIP FREQUENCY:433)::2004-2007 (48 Frecuencia de chips: 433) 2007-2009 (8e Frecuencia de chips: 433)
+2004-2008(46 CHIP FREQUENCY:313.85)::2004-2008 (46 Frecuencia de chips: 313.85)
+2004-2009 (46 CHIP FREQUENCY: 313.8)::2004-2009 (46 Frecuencia de chips: 313.8)
+2004-2009 (48 CHIP FREQUENCY: 433)::2004-2009 (48 Frecuencia de chips: 433)
+2004-2009(46 CHIP FREQUENCY:313.8)::2004-2009 (46 Frecuencia de chips: 313.8)
+2004-2009(48 CHIP FREQUENCY:433)::2004-2009 (48 Frecuencia de chips: 433)
+2004-2009(48 MEGAMOS 433) 2005-2008(PCF7936A 433)::2004-2009 (48 megamos 433) 2005-2008 (PCF7936A 433)
+2004-2014 (46 CHIP FREQUENCY: 313.85)::2004-2014 (46 Frecuencia de chips: 313.85)
+2004-2014(46 CHIP FREQUENCY:313.85)::2004-2014 (46 Frecuencia de chips: 313.85)
+2005-2009(8E CHIP FREQUENCY:433)::2005-2009 (8E Frecuencia de chip: 433)
+2006-(8E CHIP FREQUENCY: 433)::2006- (8e Frecuencia de chip: 433)
+2006-(8E CHIP FREQUENCY:433)::2006- (8e Frecuencia de chip: 433)
+2006-2011(46 CHIP FREQUENCY:313.85)::2006-2011 (46 Frecuencia de chips: 313.85)
+2006-2014(46 CHIP FREQUENCY:313)::2006-2014 (46 Frecuencia de chips: 313)
+2007-2009:4D63 2010-2016:49::2007-2009: 4D63 2010-2016: 49
+2007-2012(46 CHIP FREQUENCY:313.85)::2007-2012 (46 Frecuencia de chips: 313.85)
+2008-2010 (46 CHIP FREQUENCY: 433)::2008-2010 (46 Frecuencia de chips: 433)
+2008-2010(46 CHIP FREQUENCY:433)::2008-2010 (46 Frecuencia de chips: 433)
+2008年前4D63芯片 2008年后4D60芯片::Por 2008 4D63 Chip 4d60 Chip después de 2008
+2009-2013(46 CHIP FREQUENCY:433)::2009-2013 (46 Frecuencia de chips: 433)
+2009-2014(46 CHIP FREQUENCY:313.85)::2009-2014 (46 Frecuencia de chips: 313.85)
+2009-2014(46 CHIP FREQUENCY:433)::2009-2014 (46 Frecuencia de chips: 433)
+2009-2015(46 CHIP FREQUENCY:433)::2009-2015 (46 Frecuencia de chips: 433)
+2009年前差片 2009年后不差片::Películas malas antes de 2009 no son malas películas después de 2009
+2010-(46 CHIP FREQUENCY: 313.8)::2010- (46 Frecuencia de chips: 313.8)
+2010-(46 CHIP FREQUENCY:313.8)::2010- (46 Frecuencia de chips: 313.8)
+2010-2013(46 CHIP FREQUENCY:313)2013-2016(47 CHIP FREQUENCY:313)::2010-2013 (46 Frecuencia de chips: 313) 2013-2016 (47 Frecuencia de chips: 313)
+2010-2013(46 CHIP FREQUENCY:313)::2010-2013 (46 Frecuencia de chips: 313)
+2010-2014(46 CHIP FREQUENCY:313.85)::2010-2014 (46 Frecuencia de chips: 313.85)
+2010-2014(46 CHIP FREQUENCY:433)::2010-2014 (46 Frecuencia de chips: 433)
+2011-2013(46 CHIP FREQUENCY:313)::2011-2013 (46 Frecuencia de chips: 313)
+2013-(46 CHIP FREQUENCY: 433)::2013- (46 Frecuencia de chips: 433)
+2013-(46 CHIP FREQUENCY:313.85)::2013- (46 Frecuencia de chips: 313.85)
+2013-(46 CHIP FREQUENCY:433)::2013- (46 Frecuencia de chips: 433)
+2013-(47 CHIP FREQUENCY:433)::2013- (47 Frecuencia de chip: 433)
+2013-2016 (47 CHIP FREQUENCY: 313)::2013-2016 (47 Frecuencia de chips: 313)
+2013-2016(47 CHIP FREQUENCY:313)::2013-2016 (47 Frecuencia de chips: 313)
+2013年前31 NUMBER 2013年后13 NUMBER::Para los modelos antes de 2013, Código 31. Para los modelos después de 2013, Código 13.
+2014 YEARS AGO 46 CHIP 2014 YEARS LATER 47 CHIP::2014 hace años 46 chip 2014 años después 47 chip
+2014-(47 CHIP FREQUENCY: 433)::2014- (47 Frecuencia de chip: 433)
+2014-(47 CHIP FREQUENCY:433)::2014- (47 Frecuencia de chip: 433)
+2014-2017(47,433)2018-(4A,433)::2014-2017 (47,433) 2018- (4a, 433)
+2015 YEARS AGO 46 CHIP 2015 YEARS LATER 47 CHIP::2015 hace años 46 chip 2015 años después 47 chip
+2015-(47 CHIP FREQUENCY:433)::2015- (47 Frecuencia de chip: 433)
+2015-2018(47 CHIP FREQUENCY:433)::2015-2018 (47 Frecuencia de chips: 433)
+2015年前差两片 2015年后不差片::Antes de 2015, había dos malas películas, y después de 2015, no había malas películas
+2016 (HITAG 3 FREQUENCY: 433)::2016 (Hitag 3 Frecuencia: 433)
+2016(47 CHIP FREQUENCY:313)::2016 (47 Frecuencia de chips: 313)
+2016(HITAG 3 FREQUENCY:433)::2016 (Hitag 3 Frecuencia: 433)
+2016-2018(HITAG 3 FREQUENCY:433)::2016-2018 (frecuencia de Hitag 3: 433)
+2017-2019(47 CHIP FREQUENCY:433)::2017-2019 (47 Frecuencia de chips: 433)
+2017年前无芯片::No hay chip antes de 2017
+2018(47 CHIP FREQUENCY:433)::2018 (47 Frecuencia de chips: 433)
+2019-(47 CHIP FREQUENCY:433)::2019- (47 Frecuencia de chip: 433)
+22 NUMBER::Código 22
+24 NUMBER::Código 24
+24/38 NUMBER::Código 24/38
+25 NUMBER::Código 25
+26 NUMBER::Código 26
+27 NUMBER::Código 27
+29 NUMBER::Código 29
+2::2
+30 NUMBER::Código 30
+30/51::30/51
+304::304
+308::308
+31 NUMBER::Código 31
+312::312
+313::313
+314/433::314/433
+314::314
+315 433::315 433
+315/315.5::315/315.5
+315/430::315/430
+315/433/434::315/433/434
+315/433/868/902::315/433/868/902
+315/433/868::315/433/868
+315/433/902::315/433/902
+315/433::315/433
+315/868/902::315/868/902
+315/902::315/902
+315::315
+315、433::315、433
+32 NUMBER::Código 32
+33 NUMBER::Código 33
+33/41::33/41
+33/46::33/46
+33/50 NO.::33/50 No.
+33/60::33/60
+33/PCF7930::33/PCF7930
+33::33
+34 NUMBER::Código 34
+37 NUMBER::Código 37
+38 NUMBER::Código 38
+38::38
+39 NUMBER::Código 39
+39::39
+3::3
+4 (2007) 8 (2008-2009)::4 (2007) 8 (2008-2009)
+4 MASTER KEYS 2 SLAVE KEYS::4 teclas maestras 2 teclas de esclavos
+4(2006-2007) 8(2008-2010)::4 (2006-2007) 8 (2008-2010)
+40 NUMBER::Código 40
+40/46::40/46
+40::40
+41::41
+41芯片::Para el código 41, chip.
+430::430
+433/315::433/315
+433/868/902::433/868/902
+433/868::433/868
+433/902::433/902
+433::433
+434::434
+43::43
+44 NUMBER::Código 44
+44/46::44/46
+44/48::44/48
+447::447
+44::44
+45::45
+46 (PCF7936)::46 (PCF7936)
+46 (PCF7941)::46 (PCF7941)
+46 (PCF7945)::46 (PCF7945)
+46 8A::46 8a
+46 CHIP 47 CHIP::46 chip 47 chip
+46 CHIP PCF7952A::46 chip pcf7952a
+46 CHIP::46 chips
+46 CHIPS::46 chips
+46 NO CHIP::46 sin chip
+46 PCF7936 ID60-6F::46 PCF7936 ID60-6F
+46 PCF7936/4D-ID65 HITAG 3(PCF7938)/HITAG AES PCF7952A::46 PCF7936/4D-ID65 HITAG 3 (PCF7938)/HITAG AES PCF7952A
+46 PCF7936::46 PCF7936
+46(2011-2014) 47(2014-2018)::46 (2011-2014) 47 (2014-2018)
+46(PCF7936)::46 (PCF7936)
+46(PCF7941)::46 (PCF7941)
+46(PCF7945A)::46 (PCF7945A)
+46(PCF7952)::46 (PCF7952)
+46(PCF7952A)::46 (PCF7952A)
+46(PCF7953A)::46 (PCF7953A)
+46+::46+
+46-PCF7936::46-PCF7936
+46.PCF7936/46 T14.TP12::46.PCF7936/46 T14.TP12
+46/46+::46/46+
+46/47/4A::Bs/h./cha
+46/47::B
+46/48::FS/48
+46/4A::Bsh/cha
+46/4D/60::FS/PD/60
+46/4D60 80-BIT::FS/4D60 80 empresas
+46/4D::BS/HD
+46/60::BS/60
+46/64::BS/SH,
+46/8A::BS/8A
+46/HI-TAG3 PRO::BSH/H-TAGZ PRO
+46/HITAG AES CYPTO 3::FS/HITAG AES CYPTO 3
+46/HITAG AES::46/hitag aes
+46/NO CHIP::46/sin chip
+46/PCF7936::46/PCF7936
+46/PCF7937E::46/PCF7937E
+46/PCF7941::46/PCF7941
+46/PCF7945::46/PCF7945
+46/PCF7952::46/PCF7952
+46::46
+47 (HITAG 3)::47 (Hitag 3)
+47 4A::47 4a
+47 CHIP 8A CHIP::47 chip 8a chip
+47 CHIP FREQUENCY: 433::47 Frecuencia de chips: 433
+47 CHIP FREQUENCY:433::47 Frecuencia de chips: 433
+47 CHIP HITAG 3 NCF2951X::47 Chip HITAG 3 NCF2951X
+47 CHIP::47 chips
+47 CHIPS::47 chips
+47/4A CHIP::Hos/chip
+47/4A::Cual/cha
+47/8A::Hola/8a
+47::Dónde
+48 CHIP::48 chip
+48/46::48/BS
+48/4A::48/cha
+48::48
+49 CHIP::Papas fritas
+49 CHIPS::49 chips
+49(PCF7953P)::HIA (PF7953P)
+49::Brincar
+4::H
+4A CHIP::Chip
+4A::Cap
+4C CHIP::Chip
+4C/4D/8A::CC/HD/8A
+4C/4D67::Chic
+4C/4D68::CC/4D68
+4C/60::CC/60
+4C::Chic
+4D 70 DST80芯片::Chip HD 70 DST80
+4D 70芯片::HD 70 chips
+4D DST40/DST80::HD40/DST80
+4D DST40::HD DS40
+4D DST80::HD DS80
+4D+DST80 ID83::HD+DST80 ID83
+4D-60 80-BIT::HD-60 80 empresas
+4D-60 80BIT::HD-60 80BT
+4D-60::HD-60
+4D-63 80 BIT::Hd-trama de 80 bits
+4D-63-80BIT::HD-SS-80BIB
+4D-67/68/70::HD-Hard/68/70
+4D-67::Capucha
+4D-72-G::HD-72-G
+4D-74 (128-BIT)/8A::4D-74 (128 bits)/8a
+4D-74(128-BIT)/8A::HD-HCC (128 empresas)/8a
+4D-74(128-BIT)::4D-74 (128 bits)
+4D-ID62::4D-ID62
+4D-ID70::4D -D70
+4D-TMS37126 (9F)::4D-TMS37126 (9f)
+4D-TMS37126(9F)::HD-TMS37126 (YAF)
+4D/46::HD/B
+4D/60::HD/60
+4D/72G/8A::HD/72G/8A
+4D60 (80 BIT)::4D60 (80 bit)
+4D60 40-BIT::4D60 40-negocio
+4D60 80-BIT::4D60 80 bits
+4D60(80 BIT)::4D60 (80 bits)
+4D60/4D70::4D60/4D70
+4D60::4D60
+4D60X80::4D6080
+4D61/46::4D61/BS
+4D61::4D61
+4D62::4D62
+4D63-80BIT::4D63-80 bits
+4D63::4D63
+4D64::4D64
+4D65::4D65
+4D67 80-BIT::4D67 80 bits
+4D67/4D68/8A::4D67/4D68/8A
+4D67/4D68::4D67/4D68
+4D67/68::4D67/68
+4D67/8A::4D67/8a
+4D67::4D67
+4D68::4d68
+4D69::4D69
+4D70 80-BIT::4D70 80 bits
+4D70::4D70
+4D72 80-BIT::4D72 80 bits
+4D82::4D82
+4D83/TEXAS ID-4D-63-128BIT::4D83/Texas ID-4D-63-128bit
+4D::4d
+4W::4W
+5 MASTER KEYS 3 SLAVE KEYS::5 teclas maestras 3 teclas de esclavos
+5 NUMBER::Código 5
+50 NUMBER::Código 50
+51 NUMBER::Código 51
+51::51
+52 NUMBER::Código 52
+53 NUMBER::Código 53
+54 NUMBER::Código 54
+55 NUMBER::Código 55
+56 NUMBER::Código 56
+56胚号的差一片 02胚号的不差片::56 Los embriones tienen menos de una pieza, y 02 embriones no son malos
+57 NUMBER::Código 57
+58 NUMBER::Código 58
+59 NUMBER::Código 59
+5::5
+60/62/H CHIP::Chip de 60/62/h
+60/62::60/62
+60/63::60/63
+60/70/48/8E::60/70/48/8E
+60/70::60/70
+60::60
+61 NUMBER::Código 61
+62::62
+63 40-BIT::63 40 bits
+63/83::63/83
+63::63
+64::64
+65 NUMBER::Código 65
+65/46::65/46
+65/66::65/66
+65::Sesenta y cinco
+66 NUMBER::Código 66
+66/46::66/46
+67 G-KEY::67 G-Key
+67 NUMBER::Código 67
+67/31::67/31
+67/68::67/68
+67::67
+68::68
+69 NUMBER::Código 69
+6::6
+6A::6A
+6E*80::6e*80
+6E-80 BIT::6e-80 bits
+6E-80::6E-80
+7 MASTER KEYS  3 SLAVE KEYS  5 MASTER KEYS  3 SLAVE KEYS::7 teclas maestras 3 teclas esclavas 5 teclas maestras 3 llaves esclavas
+7 MASTER KEYS 3 SLAVE KEYS 5 MASTER KEYS 3 SLAVE KEYS::7 teclas maestras 3 teclas esclavas 5 teclas maestras 3 llaves esclavas
+7 MASTER KEYS 3 SLAVE KEYS::7 teclas maestras 3 teclas de esclavos
+70 CHIP::70 chip
+70/46::70/46
+70/4D60::70/4d60
+70/8A::70/8a
+70::70
+70芯片::70 chips
+71 NUMBER::Código 71
+71::71
+71芯片::71 chip
+72G/8A::72g/8a
+72G::72G
+73/44::73/44
+73::73
+74::74
+75 NUMBER::Código 75
+76 NUMBER::Código 76
+78 NUMBER::Código 78
+7935::7935
+7::7
+80 NUMBER::Código 80
+82G/H CHIP::Chip de 82 g/h
+82G::82G
+83 NUMBER::Código 83
+83/17::83/17
+83::83
+868::868
+87 NUMBER::Código 87
+87/13::87/13
+87::87
+8::8
+8A CHIP::8a chip
+8A TRPWS21/TIRIS RF430(8A)::8A TRPWS21/TIRIS RF430 (8A)
+8A/47::8a/47
+8A/4A::8a/4a
+8A::8A
+8C::8c
+8E::8E
+ACCESS TO READ IMMOBILIZER PASSWORD FUNCTION::Acceso a la función de contraseña del inmovilizador de lectura
+AES ID74(DST 128)::AES ID74 (DST 128)
+ARE THE DOOR LOCK AND IANITATION FAULTY::¿Están defectuosos la cerradura de la puerta y el encendido?
+ARE THE DOOR LOCK AND IANITION FAULTY::¿Están defectuosos la cerradura de la puerta y el encendido?
+ARE THE DOOR LOCK AND IGNITION FAULTY::¿Están defectuosos la cerradura de la puerta y el encendido?
+ATMEL AES::Atmel AES
+ATML::ATML
+BLADE BLADE BLADE PROXIMITY PROXIMITY::Blade Blade Blade Proximity Proximity
+BLADE BLADE BLADE::Cuchilla de cuchilla
+BLADE BLADE PROXIMITY::Proximidad de la cuchilla
+BLADE BLADE::Cuchilla
+BLADE FLIP REMOTE KEY::Llave remota de Blade Flip
+BLADE KEY FLIP REMOTE KEY::Tecla de cuchilla Flip Remote Key
+BLADE KEY HEAD REMOTE PROXIMITY::Cabezal de llave de cuchilla proximidad remota
+BLADE KEY HEAD REMOTE::Blade Key Head Remote
+BLADE KEY KEY HEAD REMOTE SMART KEY::Llave de la cuchilla Cabezal remoto Smart Key
+BLADE KEY KEY HEAD REMOTE::Cabezal de llave de cuchilla Remoto
+BLADE KEY NON-REMOTE KEY::Llave de cuchilla no remota llave
+BLADE KEY REMOTE FLIP KEY KEY HEAD REMOTE::Llave de cuchilla remota llave de tecla de llave remota
+BLADE KEY/KEY HEAD REMOTE/PROXIMITY KEY::Llave de cuchilla/llave remota/tecla de proximidad
+BLADE KEY/REMOTE FILP KEY::Tecla de cuchilla/tecla FILP remota
+BLADE KEY: 4 KEYS SMART KEY: 4 KEYS::Clave de la cuchilla: 4 teclas Clave inteligente: 4 teclas
+BLADE KEY: 4 KEYS::Clave de cuchilla: 4 teclas
+BLADE KEY:4 KEYS SMART KEY:4 KEYS::Clave de la cuchilla: 4 teclas Clave inteligente: 4 teclas
+BLADE KEY:4 KEYS::Clave de cuchilla: 4 teclas
+BLADE KEY::Llave de cuchilla
+BLADE NON-REMOTE KEY::Clave no remota de cuchilla
+BLADE PROXIMITY PROXIMITY::Proximidad de la cuchilla proximidad
+BLADE PROXIMITY::Proximidad de la cuchilla
+BLADE::Cuchilla
+BLADED::Bañado
+CENTER CONSOLE KEY SPARE SLOT::Ranura de repuesto de la llave de la consola central
+CENTER CONSOLE STORAGE BOX::Caja de almacenamiento de consola central
+CODE 04::Código 04
+CODE 13::Código 13
+CODE 22::Código 22
+CODE 65::Código 65
+CODE 69::Código 69
+CODE 71::Código 71
+CODE 87::Código 87
+DEDICATED SMART CARD::Tarjeta inteligente dedicada
+DEVICE READ PASSWORD::Dispositivo Leer contraseña
+DST AES::DST AES
+DST ID6F-60 46 CHIP::DST ID6F-60 46 Chip
+DST-AES::DST-AES
+DST128 46 CHIP::DST128 46 chip
+DST128 ID7A('H'KEY)::DST128 ID7A ('H'Key)
+DST128::DST128
+DST40 ID63::DST40 ID63
+DST40 ID6F-60/63::DST40 ID6F-60/63
+DST40 ID6F-60::DST40 ID6F-60
+DST40 ID6F-63::DST40 ID6F-63
+DST40 ID6F-67::DST40 ID6F-67
+DST80 ID6E-63::DST80 ID6E-63
+DST80 ID6F-60::DST80 ID6F-60
+DST80 ID6F-63::DST80 ID6F-63
+DST80 ID71::DST80 ID71
+ELECTRONIC 47 CHIP::Chip de 47 años
+FIVE MECHANICAL KEYS FOUR PROXIMITY KEYS::Cinco teclas mecánicas cuatro teclas de proximidad
+FLIP REMOTE KEY KEY HEAD REMOTE FLIP REMOTE KEY::Flip Clave remota Cabezal Remote Flip Clave remota
+FLIP REMOTE KEY KEY HEAD REMOTE::Flip Remote Head Remote
+FLIP REMOTE KEY::Flip Clave remota
+FLIP REMOTE/SMART (NO ELECTRIC SLIDING DOOR) FLIP REMOTE/SMART (ELECTRIC SLIDING DOOR)::Flip Remote/Smart (sin puerta corredera eléctrica) Flip Remote/Smart (puerta corredera eléctrica)
+FLIP REMOTE/SMART::Flip Remote/Smart
+FOBIK KEY::Llave de fobik
+FOBIK SLOT::Ranura para fobik
+G CHIP/H CHIP::Chip g/h chip
+G CHIP::G chip
+H CHIP::H chip
+H-CHIP::H-chip
+HI-TAG EXTENDED::Hi-Tag extendido
+HIAG AES NCF29A1M::HIAG AES NCF29A1M
+HIAG AES PCF7953M/HIAG3 PCF7952XTT::HIAG AES PCF7953M/HIAG3 PCF7952XTT
+HIAG AES PCF7953M::HIAG AES PCF7953M
+HIAG3 PCF7952XTT/HIAG3 AES PCF7953M::HIAG3 PCF7952XTT/HIAG3 AES PCF7953M
+HIAG3 PCF7952XTT/PCF7936::HIAG3 PCF7952XTT/PCF7936
+HIAG3 PCF7952XTT::HIAG3 PCF7952XTT
+HITA AES::Hita Aes
+HITAG 2-PCF7936::HITAG 2-PCF7936
+HITAG 3::Hitag 3
+HITAG AES 4A/ID51::HITAG AES 4A/ID51
+HITAG AES NCF29A1M::HITAG AES NCF29A1M
+HITAG AES PCF7939MA::HITAG AES PCF7939MA
+HITAG AES PCF7953M::HITAG AES PCF7953M
+HITAG AES/4A::Hitag aes/4a
+HITAG AES/NCF29AX HITAG AES/NCF29A1M::HITAG AES/NCF29AX HITAG AES/NCF29A1M
+HITAG AES::Hitag aes
+HITAG PRO::Hitag Pro
+HITAG VAG CHIP::Chip de hitag
+HITAG-PRO(ID49)::Hitag-Pro (ID49)
+HITAG2 CHIP/MEGAMOS 48 CHIP::Chip hitag2/megamos 48 chip
+HITAG2 CHIP::Chip de hitag2
+HITAG3 NCF2952X::Hitag3 ncf2952x
+HITAG3::Hitag3
+HU100::HU100
+HU133R::HU133R
+HU46::HU46
+HU83/TBC::HU83/TBC
+HU83::HU83
+HYQ14ACX::Hyq14acx
+ID 46/PCF7941::ID 46/PCF7941
+ID33::ID33
+ID40-PCF7935/HITAG 3::ID40-PCF7935/HITAG 3
+ID40-PCF7935::ID40-PCF7935
+ID40::ID40
+ID44::ID44
+ID46 - PCF7941 G4::ID46-PCF7941G4
+ID46 - PCF7946::ID46 - PCF7946
+ID46 - PCF7947::ID46 - PCF7947
+ID46 EXT-PCF7937::ID46 Ext-PCF7937
+ID46 PCF7936::ID46 PCF7936
+ID46 PCF7936AA::ID46 PCF7936AA
+ID46 PCF7952::ID46 PCF7952
+ID46-PCF7936::ID46-PCF7936
+ID46-PCF7939E/HITAG2 ID46 PCF7937E::ID46-PCF7939E/HITAG2 ID46 PCF7937E
+ID46-PCF7946/TBC::ID46-PCF7946/TBC
+ID46/HITAG 3::ID46/HITAG 3
+ID46/PCF 7941::ID46/PCF 7941
+ID46::ID46
+ID47,GITAG3,ID49::ID47, GITAG3, ID49
+ID47::ID47
+ID48 MEGAMOS AES::ID48 megamos aes
+ID48::ID48
+ID4C/60/61::ID4C/60/61
+ID4C/ID60/ID63::ID4C/ID60/ID63
+ID4C::ID4C
+ID4C\60\61::ID4C \ 60 \ 61
+ID60-6F::ID60-6F
+ID64::ID64
+ID6E-17('G')::ID6E-17 ('G')
+ID6F-60::ID6F-60
+ID6F-63-80BIT::ID6F-63-80 bits
+ID70::ID70
+ID8C::ID8C
+IS THE TRANSPONDER COPYABLE::¿El transpondedor es copiado?
+IT IS 2 SLICES (KEY ROOTS) SMART TRUCK MODELS ARE NOT BAD::Es 2 rebanadas (raíces clave) Los modelos de camiones inteligentes no son malos
+KEY HEAD REMOTE (SEMI)SMART KEY::Llave de llave remota (semi) clave inteligente
+KEY HEAD REMOTE BLADE KEY::Llave de la llave del cabezal de la hoja remota
+KEY HEAD REMOTE BLADE::Hoja remota del cabezal de llave
+KEY HEAD REMOTE FLIP REMOTE KEY BLADE KEY::Cabezal de tecla Remota Flip Clave de tecla Remote Blade
+KEY HEAD REMOTE FLIP REMOTE KEY::Cabeza de tecla Remota Flip Clave remota
+KEY HEAD REMOTE KEY HEAD REMOTE::Cabezal de llave Remoto de llave remota
+KEY HEAD REMOTE NON-REMOTE KEY::Cabezal de llave Remota no remota clave
+KEY HEAD REMOTE PROXIMITY::Proximidad remota del cabezal clave
+KEY HEAD REMOTE REMOTE FLIP KEY::Cabezal de llave Remota Remote Flip Key
+KEY HEAD REMOTE SMART KEY SMART KEY::Cabeza de tecla Remota inteligente tecla inteligente
+KEY HEAD REMOTE SMART KEY::Cabeza de tecla Llave inteligente remota
+KEY HEAD REMOTE/FLIP REMOTE KEY::Cabeza de tecla Remota/llave remota Flip
+KEY HEAD REMOTE/PROXIMITY KEY::Llave remota/clave de proximidad
+KEY HEAD REMOTE/REMOTE FILP KEY::Cabeza de tecla Remota/Clave FILP remota
+KEY HEAD REMOTE/REMOTE FLIP KEY::Cabezal de llave Remota/llave de flip remoto
+KEY HEAD REMOTE::Llave remota
+KEY SENSING AREA IN BOX BEHIND CUP HOLDER::Área de detección de llave en la caja detrás del portavasos
+KEY SENSING POSITION::Posición de detección de llave
+KEY SLOT::Ranura
+KEY SPARE SLOT IN FRONT OF CENTER CONSOLE STORAGE BOX::Ranura de repuesto clave frente a la caja de almacenamiento de la consola central
+KEY TYPE::Tipo de llave
+KONB-STYLE SMART CARD::Tarjeta inteligente de estilo Konb
+LS THE TRANSPONDER COPYABLE::¿El transpondedor es copiado?
+MAXIMUM NUMBER OF KEYS::Número máximo de claves
+MEGAMOS 13::Megamos 13
+MEGAMOS 48 CHIP::Megamos 48 chip
+MEGAMOS 8E CHIP::Megamos 8e chip
+MEGAMOS AES CHIP::Megamos AES Chip
+MEGAMOS AES::Megamos aes
+MEGAMOS ID48(EMULATOR)::Megamos ID48 (emulador)
+N/A::N / A
+NCF2951E/HITAG 2/7937E::NCF2951E/HITAG 2/7937E
+NO CHIP 46::Sin chip 46
+NO CHIP/46::Sin chip/46
+NO CHIP/DST 4D ID65::Sin chip/DST 4D ID65
+NO CHIP::Ningún chip
+NO MISSING PARTS::No hay piezas faltantes
+NO::No
+NON-REMOTE KEY BLADE KEY::Llave de llave no remota
+NON-REMOTE KEY KEY HEAD REMOTE::Cabezal de teclas no remoto remoto
+NON-REMOTE KEY PROXIMITY SMART KEY::Clave de proximidad no remota clave inteligente
+NON-REMOTE KEY SMART KEY::Clave no remota clave inteligente
+NON-REMOTE KEY/KEY HEAD REMOTE/PROXIMITY KEY::Clave de llave no remota/Cabezal remoto/proximidad
+NON-REMOTE KEY/PROXIMITY KEY::Clave no remota/clave de proximidad
+NON-REMOTE KEY/REMOTE FLIP KEY::Tecla no remota/llave de flip remoto
+NON-REMOTE KEY::Llave no remota
+NONE 433::Ninguno 433
+NONE-REMOTE KEY REMOTE FLIP KEY::Tecla no remota llave de flip remoto
+NONE-REMOTE KEY/NONE-REMOTE KEY::Clave no remota/Clave no remota
+NONE-REMOTE KEY::Clave no remota
+NOT BAD FILM::No hay piezas faltantes
+NOT BAD::Nada mal
+NUMBER OF KEY BLANK::Número de llave en blanco
+NXP AES 128 BIT::NXP AES 128 bits
+OEM PROX::Oem prox
+OEM PROXIMITY KEY::Clave de proximidad OEM
+ORDINARY 46 CHIP::Chip ordinario 46
+ORDINARY 48 CHIP::Chip ordinario 48
+PCF7935(ID40)::PCF7935 (ID40)
+PCF7935(T16)::PCF7935 (T16)
+PCF7936(ID46 VIRGEM)::PCF7936 (ID46 Virgem)
+PCF7936(T19)/PCF7937::PCF7936 (T19)/PCF7937
+PCF7936::PCF7936
+PCF7936A::PCF7936A
+PCF7937E NCF2951E/PCF7941::PCF7937E NCF2951E/PCF7941
+PCF7937E NCF2951E::PCF7937E NCF2951E
+PCF7937E/HITAG 2/ID46::PCF7937E/HITAG2/ID46
+PCF7937E/NCF2951E(46)::PCF7937E/NCF2951E (46)
+PCF7937E/NCF2951E::PCF7937E/NCF2951E
+PCF7937E::PCF7937E
+PCF7937EA::PCF7937EA
+PCF7938::PCF7938
+PCF7938XA::PCF7938XA
+PCF7941 G1/G4::PCF7941 G1/G4
+PCF7941::PCF7941
+PCF7945::PCF7945
+PCF7946/PCF7947::PCF7946/PCF7947
+PCF7946::PCF7946
+PCF7947::PCF7947
+PCF7952 HITAG 2/ID46::PCF7952 HITAG 2/ID46
+PCF7952/HITAG AES::PCF7952/HITAG AES
+PCF7952/PCF7952E::PCF7952/PCF7952E
+PCF7952::PCF7952
+PCF7952A/HIAG AES PCF7953M/HIAG3 PCF7952XTT::PCF7952A/HIAG AES PCF7953M/HIAG3 PCF7952XTTTT
+PCF7952A/HIAG AES PCF7953M::PCF7952A/HIAG AES PCF7953M
+PCF7952A/PCF7953M::PCF7952A/PCF7953M
+PCF7952A::PCF7952A
+PCF7952E::PCF7952E
+PCF7952X::PCF7952X
+PCF7953::PCF7953
+PCF7953M/HIAG AES NCF29A1M::PCF7953M/HIAG AES NCF29A1M
+PCF7953M/HITAG AES/4A CHIP::PCF7953M/HITAG AES/4A
+PCF7953M::PCF7953M
+PCF7961M::PCF7961M
+PHILIPS 42 CHIP/PHILIPS 4W CHIP::Philips 42 Chip/Philips 4W Chip
+PHILIPS 42 CHIP::Philips 42 Chip
+PHILIPS 44 CHIP/MEGAMOS 48 CHIP::Philips 44 chip/megamos 48 chip
+PHILIPS 44 CHIP::Philips 44 Chip
+PHILIPS 4W CHIP::Philips 4W Chip
+PINCODE REQUIRED::Pincode requerido
+PINCODE SOURCE::Fuente de pinchazo
+PLEASE INQUIRE THROUGH AFTER-SALES::Por favor consulte por la venta posterior
+PRE-CODE KEY::Clave previa al código
+PROGRAM REMOTES::Programa de controles remotos
+PROXIMITY BLADE BLADE::Cuchilla de proximidad
+PROXIMITY BLADE::Cuchilla de proximidad
+PROXIMITY CARD::TARJETA DE PROXIMIDAD
+PROXIMITY KEY HEAD REMOTE SMART KEY::Cabezal de proximidad Clave inteligente remota
+PROXIMITY KEY KEY HEAD REMOTE::Cabezal de llave de proximidad remoto
+PROXIMITY KEY NON-REMOTE KEY::Clave de proximidad Clave no remota
+PROXIMITY KEY REMOTE FLIP KEY::Llave de proximidad llave de flip remoto
+PROXIMITY KEY/KEY HEAD REMOTE::Llave de proximidad/cabezal de llave remoto
+PROXIMITY KEY::Llave de proximidad
+PROXIMITY PROXIMITY PROXIMITY::Proximidad proximidad
+PROXIMITY SMART KEY::Clave de proximidad inteligente
+PROXIMITY::PROXIMIDAD
+REMOTE FILP KEY::Clave de FILP remota
+REMOTE FLIP KEY  KEY HEAD REMOTE::Cabezal de tecla de flip remota Remoto
+REMOTE FLIP KEY /PROXIMITY KEY::Tecla de flip /proximidad remota
+REMOTE FLIP KEY NON-REMOTE KEY::Llave de flip remota llave no remota
+REMOTE FLIP KEY PROXIMITY KEY::Llave de proximidad de llave remota
+REMOTE FLIP KEY/PROXIMITY KEY::Tecla de flip/proximidad remota
+REMOTE FLIP KEY::Llave de flip remota
+REMOTE FREQUENCY::Frecuencia remota
+REMOTE KEY NON-REMOTE KEY::Tecla remota no remota clave
+REN-KB2A::Ren-KB2A
+RIGHT SIDE OF STEERING COLUMN::Lado derecho de la columna de dirección
+SEMI-SMART KEY BLADE KEY (SEMI)SMART KEY::Tecla de llave semi-smart (semi) clave inteligente
+SEMI-SMART KEY BLADE KEY::Llave de llave semi inteligente
+SEMI-SMART KEY KEY HEAD REMOTE (SEMI)SMART KEY::Clave de llave semi-smart remota (semi) clave inteligente
+SEMI-SMART KEY KEY HEAD REMOTE::Cabezal de llave semi-inteligente remoto
+SEMI-SMART KEY::Llave semi-inteligente
+SIP22/TBC::SIP22/TBC
+SLOT::Ranura
+SMART CARD::Tarjeta electrónica
+SMART KEY CARD SLOT POSITION::Posición de ranura para tarjetas de teclas inteligentes
+SMART KEY PROXIMITY SMART KEY::Clave inteligente proximidad clave inteligente
+SMART KEY PROXIMITY::Proximidad de clave inteligente
+SMART KEY SMART KEY SMART KEY::Clave inteligente clave inteligente clave inteligente
+SMART KEY: 4 KEYS::Clave inteligente: 4 claves
+SMART KEY:4 KEYS::Clave inteligente: 4 claves
+SMART KEY::Llave inteligente
+SPARE SLOT OF CENTER CONSOLE STORAGE BOX::Ranura de repuesto de caja de almacenamiento de consola central
+STANDBY POSITION OF CENTER ARMREST OF CENTER CONSOLE::Posición de espera del reposabrazos central de la consola central
+STANDBY SLOT OF CENTER CONSOLE::Ranura en espera de la consola central
+START/STOP BUTTON::Botón Inicio/Detener
+STEERING COLUMN::Columna de dirección
+STEERING WHEEL BOTTOM LEFT SMART CARD SLOT::Reloj del volante inferior izquierda ranura de tarjeta inteligente
+T5::T5
+TBC::TBC
+TEXAS CRYPTO/128-BIT AES ID75 8A::Texas Crypto/AES ID75 de 128 bits 8a
+TEXAS ID4D 63 128BIT::Texas ID4D 63 128bit
+THE ARM REST BOX::La caja de descanso del brazo
+THE ARMREST BOX::La caja de descanso del brazo
+THE BOTTLE RACK::El estante de la botella
+THE GLOVE BOX::La guantera
+THE KNOB TYPE 2015 YEARS AGO 46 CHIP TOUCH-TONE 2015 YEARS LATER 47 CHIP::El tipo de perilla 2015 hace años 46 chip-tone touch 2015 años después 47 chip
+THE MIDDLE OF THE TRAY IN FRONT OF THE SHIFT LEVER::El medio de la bandeja frente a la palanca de cambios
+THE NO. 1 POSITION ON SIDE A OF THE IGNITION IS ONE BLOCK AWAY::La posición No. 1 en el lado A del encendido está a un bloque de distancia
+THE SLOT POSITION IS UNDER THE SHIFT KNOB(WITH THE KEY IDENTIFICATION MARK)::La posición de la ranura está debajo de la perilla de cambio (con la marca de identificación de clave)
+THE SPECIAL CHIP::El chip especial
+TI 4D60(80 BIT)::Ti 4D60 (80 bit)
+TI 4D61 (80-BIT)::TI 4D61 (80 bits)
+TI 4D61(80-BIT)::TI 4D61 (80 bits)
+TI 4D67::TI 4D67
+TI 4D72::TI 4D72
+TIRIS RF430 (8A)::Tiris RF430 (8a)
+TOUCH-TONE SMART CARD::Tarjeta inteligente de tono táctil
+TOYOTA-H::Toyota-H
+TOYOTO-H::Toyoto-H
+TRANSPONDER TYPE::Tipo de transpondedor
+UNDER THE CENTER CONSOLE CUP HOLDER::Bajo el portavasos de la consola central
+VA2::VA2
+WORKING KEY REQUIRED::Se requiere la clave de trabajo
+YES 2 PIECES DIFFERENCE (BUTTON OF KEY)::Sí, diferencia de 2 piezas (botón de llave)
+YES 3 SLICES SHORT::Sí, 3 rebanadas cortas
+YES::Sí
+不差片::No hay piezas faltantes
+专用46芯片::46 chips dedicados
+专用4A芯片::Chip 4a dedicado
+专用74芯片::CHIP ESPECIAL 74
+专用圆棍型::Tipo especial de palo redondo
+专用圆棍钥匙::Llave de ronda especial especial
+专用小钥匙::Clave pequeña especial
+专用智能卡小钥匙::Tarjeta inteligente especial pequeña llave
+专用智能卡（思域智能卡都是专用）::Tarjeta inteligente dedicada (las tarjetas inteligentes cívicas están dedicadas)
+专用芯片::Chip dedicado
+小钥匙46芯片 智能卡不带芯片::Tarjeta inteligente de chip de llave pequeña 46 sin chip
+小钥匙56 NUMBER::Código clave 56
+小钥匙无芯片 智能卡46芯片::Chip de chip sin llave sin llave 46 chip
+小钥匙无芯片 智能卡47芯片::Chip de chip sin llave sin llave 47 chip
+小钥匙无芯片 智能卡专用4A芯片::Pequeña llave sin chip 4a chip para tarjeta inteligente
+小钥匙无芯片::Pequeño chip sin llave
+差一片::Falta un chip
+差一片（钥匙尖上）::Uno por uno (en la punta de la llave)
+扶手箱内::扶手箱 内
+无 433::Ninguno 433
+是 差2片::2 rebanadas
+是 差2片（钥匙根部） 智能卡车型不差片::Es 2 rebanadas (raíces clave) Los modelos de camiones inteligentes no son malos
+是 差2片（钥匙根部）::Sí, diferencia de 2 piezas (botón de llave)
+是 差3片 头上2片根部1片::Hay 2 cabezas y 2 raíces y 1 tableta.
+是 差3片::3 piezas
+是 点火8片 门锁7片::Sí, encendido 8 piezas, bloqueo de la puerta 7 piezas
+水杯架内::Dentro del portavasos
+水杯架或扶手箱内::En el portavasos o la caja del reposabrazos
+水杯架正前方，点烟器旁边::Justo en frente del portavasos, al lado del encendedor de cigarrillos
+点火1号 2号位差片::Ignition No. 1 No. 2 Película de diferencia de bits
+点火A面1号位差一片::La posición No. 1 en el lado A del encendido está a un bloque de distancia
+点烟器下方::Abajo de cigarrillo
+点烟器右边的卡槽::La ranura de la tarjeta en el lado derecho del encendedor de cigarrillos
+点烟器旁边::Al lado del encendedor
+电阻::Resistencia
+直板智能钥匙::Llave inteligente recta
+老款15 NUMBER 新款13 NUMBER::Para el modelo anterior, código 15. Para el nuevo modelo, código 13.
+老款15 NUMBER 新款31 NUMBER::Para el modelo anterior, código 15. Para el nuevo modelo, código 31.
+老款54 NUMBER，07年后58 NUMBER::Para el modelo anterior, Código 54. Para los modelos después de 2007, Código 58.
+老款69 NUMBER 新款13 NUMBER::Para el modelo anterior, Código 69. Para el nuevo modelo, Código 13.
+老款无芯片::Para el modelo antiguo, sin chips
+设备读取密码::Contraseña de lectura del dispositivo
+请通过售后查询::Consulte después de -sales
+请通过第三方平台查询::Por favor, consulte a través de la plataforma de terceros

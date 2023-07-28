@@ -1,15 +1,47 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
   <channel>
-    <title>Tags - Tag - 学习记录</title>
+    <title>Tags - Tag - Notes</title>
     <link>https://cui-jiang-tao.github.io/tags/</link>
-    <description>Tags - Tag - 学习记录</description>
+    <description>Tags - Tag - Notes</description>
     <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>cjt953899262@gmail.com (cjt)</managingEditor>
-      <webMaster>cjt953899262@gmail.com (cjt)</webMaster><lastBuildDate>Thu, 30 Mar 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://cui-jiang-tao.github.io/tags/" rel="self" type="application/rss+xml" /><item>
+      <webMaster>cjt953899262@gmail.com (cjt)</webMaster><lastBuildDate>Fri, 28 Jul 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://cui-jiang-tao.github.io/tags/" rel="self" type="application/rss+xml" /><item>
+  <title>破解</title>
+  <link>https://cui-jiang-tao.github.io/tags/%E7%A0%B4%E8%A7%A3/</link>
+  <pubDate>Fri, 28 Jul 2023 00:00:00 &#43;0000</pubDate>
+  <author>cjt</author>
+  <guid>https://cui-jiang-tao.github.io/tags/%E7%A0%B4%E8%A7%A3/</guid>
+  <description><![CDATA[]]></description>
+</item>
+<item>
+  <title>Python</title>
+  <link>https://cui-jiang-tao.github.io/tags/python/</link>
+  <pubDate>Mon, 17 Jul 2023 00:00:00 &#43;0000</pubDate>
+  <author>cjt</author>
+  <guid>https://cui-jiang-tao.github.io/tags/python/</guid>
+  <description><![CDATA[]]></description>
+</item>
+<item>
+  <title>Python小工具</title>
+  <link>https://cui-jiang-tao.github.io/tags/python%E5%B0%8F%E5%B7%A5%E5%85%B7/</link>
+  <pubDate>Tue, 27 Jun 2023 00:00:00 &#43;0000</pubDate>
+  <author>cjt</author>
+  <guid>https://cui-jiang-tao.github.io/tags/python%E5%B0%8F%E5%B7%A5%E5%85%B7/</guid>
+  <description><![CDATA[]]></description>
+</item>
+<item>
   <title>Python入门</title>
   <link>https://cui-jiang-tao.github.io/tags/python%E5%85%A5%E9%97%A8/</link>
-  <pubDate>Thu, 30 Mar 2023 00:00:00 &#43;0000</pubDate>
+  <pubDate>Tue, 13 Jun 2023 00:00:00 &#43;0000</pubDate>
   <author>cjt</author>
   <guid>https://cui-jiang-tao.github.io/tags/python%E5%85%A5%E9%97%A8/</guid>
+  <description><![CDATA[]]></description>
+</item>
+<item>
+  <title>Music</title>
+  <link>https://cui-jiang-tao.github.io/tags/music/</link>
+  <pubDate>Fri, 09 Jun 2023 00:00:00 &#43;0000</pubDate>
+  <author>cjt</author>
+  <guid>https://cui-jiang-tao.github.io/tags/music/</guid>
   <description><![CDATA[]]></description>
 </item>
 <item>
@@ -37,14 +69,6 @@
   <description><![CDATA[]]></description>
 </item>
 <item>
-  <title>汇编</title>
-  <link>https://cui-jiang-tao.github.io/tags/%E6%B1%87%E7%BC%96/</link>
-  <pubDate>Tue, 07 Feb 2023 00:00:00 &#43;0000</pubDate>
-  <author>cjt</author>
-  <guid>https://cui-jiang-tao.github.io/tags/%E6%B1%87%E7%BC%96/</guid>
-  <description><![CDATA[]]></description>
-</item>
-<item>
   <title>Bash</title>
   <link>https://cui-jiang-tao.github.io/tags/bash/</link>
   <pubDate>Sun, 15 Jan 2023 00:00:00 &#43;0000</pubDate>
@@ -58,30 +82,6 @@
   <pubDate>Fri, 30 Dec 2022 00:00:00 &#43;0000</pubDate>
   <author>cjt</author>
   <guid>https://cui-jiang-tao.github.io/tags/cmake/</guid>
-  <description><![CDATA[]]></description>
-</item>
-<item>
-  <title>makefile</title>
-  <link>https://cui-jiang-tao.github.io/tags/makefile/</link>
-  <pubDate>Thu, 29 Dec 2022 00:00:00 &#43;0000</pubDate>
-  <author>cjt</author>
-  <guid>https://cui-jiang-tao.github.io/tags/makefile/</guid>
-  <description><![CDATA[]]></description>
-</item>
-<item>
-  <title>muduo</title>
-  <link>https://cui-jiang-tao.github.io/tags/muduo/</link>
-  <pubDate>Fri, 16 Dec 2022 00:00:00 &#43;0000</pubDate>
-  <author>cjt</author>
-  <guid>https://cui-jiang-tao.github.io/tags/muduo/</guid>
-  <description><![CDATA[]]></description>
-</item>
-<item>
-  <title>Linux</title>
-  <link>https://cui-jiang-tao.github.io/tags/linux/</link>
-  <pubDate>Wed, 14 Dec 2022 00:00:00 &#43;0000</pubDate>
-  <author>cjt</author>
-  <guid>https://cui-jiang-tao.github.io/tags/linux/</guid>
   <description><![CDATA[]]></description>
 </item>
 </channel>

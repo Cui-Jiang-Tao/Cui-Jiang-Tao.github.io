@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
     <meta name="robots" content="noodp" />
-    <title>大并发服务器开发 - 学习记录</title><meta name="author" content="cjt">
+    <title>大并发服务器开发 - Notes</title><meta name="author" content="cjt">
 <meta name="author-link" content="">
 <meta name="description" content="前言 服务器设计的目的 高性能 高可用 故障转移(failover) 伸缩性 library和framework： 库中类相对比较独立，我们编写应用的时候" /><meta name="keywords" content='muduo' /><meta itemprop="name" content="大并发服务器开发">
 <meta itemprop="description" content="前言 服务器设计的目的 高性能 高可用 故障转移(failover) 伸缩性 library和framework： 库中类相对比较独立，我们编写应用的时候"><meta itemprop="datePublished" content="2022-10-31T00:00:00+00:00" />
@@ -41,10 +41,10 @@
       },"description": ""
   }
   </script></head>
-  <body data-header-desktop="fixed" data-header-mobile="auto"><script>(window.localStorage?.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('data-theme', 'dark');</script><div class="wrapper"><header class="desktop animate__faster" id="header-desktop">
+  <body data-header-desktop="fixed" data-header-mobile="auto"><script>(window.localStorage?.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('data-theme', 'dark');</script><div class="wrapper" data-page-style="wide"><header class="desktop animate__faster" id="header-desktop">
   <div class="header-wrapper">
     <div class="header-title">
-      <a href="/" title="学习记录"><span class="header-title-pre"><i class='far fa-kiss-wink-heart fa-fw' aria-hidden='true'></i></span><span id="typeit-header-desktop" class="typeit"></span></a><span class="header-subtitle"></span></div>
+      <a href="/" title="Notes"><span class="header-title-pre"><i class='far fa-kiss-wink-heart fa-fw' aria-hidden='true'></i></span><span id="typeit-header-desktop" class="typeit"></span></a><span class="header-subtitle"></span></div>
     <nav>
       <ul class="menu"><li class="menu-item">
               <a
@@ -66,15 +66,14 @@
                 
               ><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> 标签</a></li><li class="menu-item delimiter"></li><li class="menu-item theme-switch" title="Switch Theme">
           <i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i>
-        </li>
-      </ul>
+        </li></ul>
     </nav>
   </div>
 </header><header class="mobile animate__faster" id="header-mobile">
   <div class="header-container">
     <div class="header-wrapper">
       <div class="header-title">
-        <a href="/" title="学习记录"><span class="header-title-pre"><i class='far fa-kiss-wink-heart fa-fw' aria-hidden='true'></i></span><span id="typeit-header-title-mobile" class="typeit"></span></a><span class="header-subtitle"></span></div>
+        <a href="/" title="Notes"><span class="header-title-pre"><i class='far fa-kiss-wink-heart fa-fw' aria-hidden='true'></i></span><span id="typeit-header-title-mobile" class="typeit"></span></a><span class="header-subtitle"></span></div>
       <div class="menu-toggle" id="menu-toggle-mobile">
         <span></span><span></span><span></span>
       </div>
@@ -101,31 +100,24 @@
                   href="/tags/"
                   
                   
-                ><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> 标签</a></li><li class="menu-item theme-switch" title="Switch Theme">
-          <i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i>
-        </li></ul>
+                ><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> 标签</a></li><li class="menu-item menu-system">
+          <span class="menu-system-item theme-switch" title="Switch Theme"><i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i></span></li>
+      </ul>
     </nav>
   </div>
-</header><main class="container" data-page-style="wide"><aside class="toc" id="toc-auto"><h2 class="toc-title">Contents&nbsp;<i class="toc-icon fa-solid fa-angle-down fa-fw" aria-hidden="true"></i></h2>
+</header><main class="container"><aside class="toc" id="toc-auto"><h2 class="toc-title">Contents&nbsp;<i class="toc-icon fa-solid fa-angle-down fa-fw" aria-hidden="true"></i></h2>
       <div class="toc-content" id="toc-content-auto"></div></aside>
 
   <aside class="aside-custom">
     </aside>
 
   <article class="page single">
-    <div class="header"><h1 class="single-title animate__animated animate__flipInX">
-        <span>大并发服务器开发</span>
+    <div class="header"><h1 class="single-title animate__animated animate__flipInX"><span>大并发服务器开发</span>
       </h1></div><div class="post-meta">
-      <div class="post-meta-line"><span class="post-author"><span class="author"><img
-    class="lazyload avatar"
-    src="/svg/loading.min.svg"
-    data-src="https://www.gravatar.com/avatar/736cc0685dbd22dd674add9c481fc755?s=32&amp;d="
-    data-srcset="https://www.gravatar.com/avatar/736cc0685dbd22dd674add9c481fc755?s=32&amp;d=, https://www.gravatar.com/avatar/736cc0685dbd22dd674add9c481fc755?s=32&amp;d= 1.5x, https://www.gravatar.com/avatar/736cc0685dbd22dd674add9c481fc755?s=32&amp;d= 2x"
-    data-sizes="auto"
-    alt="cjt"
-    title="cjt"/>&nbsp;cjt</span></span>
+      <div class="post-meta-line"><span class="post-author"><span class="author"><i class="fa-solid fa-user-circle" aria-hidden="true"></i>
+      cjt</span></span>
           <span class="post-category">included in <a href="/categories/c/c++/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> c/c++</a></span></div>
-      <div class="post-meta-line"><span title=2022-10-31&#32;00:00:00><i class="fa-regular fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-10-31">2022-10-31</time></span>&nbsp;<span><i class="fa-solid fa-pencil-alt fa-fw" aria-hidden="true"></i> 26962 words</span>&nbsp;<span><i class="fa-regular fa-clock fa-fw" aria-hidden="true"></i> 54 minutes</span>&nbsp;</div>
+      <div class="post-meta-line"><span title="published on 2022-10-31 00:00:00"><i class="fa-regular fa-calendar-alt fa-fw me-1" aria-hidden="true"></i><time datetime="2022-10-31">2022-10-31</time></span>&nbsp;<span title="Updated on 2022-11-08 00:00:00"><i class="fa-regular fa-edit fa-fw me-1" aria-hidden="true"></i><time datetime="2022-11-08">2022-11-08</time></span>&nbsp;<span><i class="fa-solid fa-pencil-alt fa-fw me-1" aria-hidden="true"></i>26962 words</span>&nbsp;<span><i class="fa-regular fa-clock fa-fw me-1" aria-hidden="true"></i>54 minutes</span>&nbsp;</div>
     </div><div class="details toc" id="toc-static" data-kept="false">
         <div class="details-summary toc-title">
           <span>Contents</span>
@@ -1592,14 +1584,7 @@
 <li>FATAL：指出每个严重的错误事件将会导致应用程序的退出。</li>
 </ul>
 <p><strong>Logger使用时序图：</strong></p>
-<p><img
-    class="lazyload"
-    src="/svg/loading.min.svg"
-    data-src="../../imgs/large_concurrency/Logger.png"
-    data-srcset="../../imgs/large_concurrency/Logger.png, ../../imgs/large_concurrency/Logger.png 1.5x, ../../imgs/large_concurrency/Logger.png 2x"
-    data-sizes="auto"
-    alt="Logger使用时序图："
-    title="Logger使用时序图："/></p>
+<p><img loading="lazy" src="../../imgs/large_concurrency/Logger.png" srcset="../../imgs/large_concurrency/Logger.png, ../../imgs/large_concurrency/Logger.png 1.5x, ../../imgs/large_concurrency/Logger.png 2x" sizes="auto" data-title="Logger使用时序图：" data-alt="Logger使用时序图：" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/></p>
 <blockquote>
 <p>Logger =&gt; Impl =&gt; LogStream =&gt; operator&laquo; FixedBuffer =&gt; g_output =&gt; g_flush(FATAL级别时调用，也就是说日志的打印不是实时的)</p>
 </blockquote>
@@ -1659,14 +1644,7 @@
 <p>  Reactor 最核心的事件就是事件分发机制，即将IO multiplexing 拿到的IO事件分发给各个文件描述符(fd)的事件处理函数(handle);</p>
 <p><code>multiple reactors + threadpool (one loop per thread + threadpool)</code></p>
 <p>Muduo网络库的类图：</p>
-<p><img
-    class="lazyload"
-    src="/svg/loading.min.svg"
-    data-src="../../imgs/large_concurrency/muduo.png"
-    data-srcset="../../imgs/large_concurrency/muduo.png, ../../imgs/large_concurrency/muduo.png 1.5x, ../../imgs/large_concurrency/muduo.png 2x"
-    data-sizes="auto"
-    alt="Muduo网络库类图"
-    title="Muduo网络库类图"/></p>
+<p><img loading="lazy" src="../../imgs/large_concurrency/muduo.png" srcset="../../imgs/large_concurrency/muduo.png, ../../imgs/large_concurrency/muduo.png 1.5x, ../../imgs/large_concurrency/muduo.png 2x" sizes="auto" data-title="Muduo网络库类图" data-alt="Muduo网络库类图" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/></p>
 <p>  白色部分是外部类，对外可见的。灰色部分是内部类，对外不可见。黑色尖头是组合关系，负责生命周期。白色是聚合关系不负责生命周期。</p>
 <ul>
 <li>EventLoop是对事件的抽象。</li>
@@ -1687,14 +1665,7 @@ Channel对象不拥有fd(文件描述符)，也就是说当Channel对象销毁�
 <p>  TcpServer和Acceptor是组合关系，TcpServer控制着Acceptor的生命周期。</p>
 <p>  TcpClient和Connector是组合关系，TcpClient控制着Connector的生命周期。</p>
 <p>  TcpServer与TcpConnection是聚合关系，一个TcpServer包含多个TcpConnection，但不控制TcpConnection的生命周期。</p>
-<p><img
-    class="lazyload"
-    src="/svg/loading.min.svg"
-    data-src="../../imgs/large_concurrency/reactor.png"
-    data-srcset="../../imgs/large_concurrency/reactor.png, ../../imgs/large_concurrency/reactor.png 1.5x, ../../imgs/large_concurrency/reactor.png 2x"
-    data-sizes="auto"
-    alt="Reactor简单时序图"
-    title="Reactor简单时序图"/></p>
+<p><img loading="lazy" src="../../imgs/large_concurrency/reactor.png" srcset="../../imgs/large_concurrency/reactor.png, ../../imgs/large_concurrency/reactor.png 1.5x, ../../imgs/large_concurrency/reactor.png 2x" sizes="auto" data-title="Reactor简单时序图" data-alt="Reactor简单时序图" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/></p>
 <h3 id="182-eventloop类">18.2 EventLoop类</h3>
 <p><strong>EventLoop概述：</strong></p>
 <p>  Poller是封装了和事件监听有关的方法和成员，调用一次Poller::poll方法它就能给你返回事件监听器的监听结果(发生事件的fd及其发生的事件)。作为一个网络服务器，需要有持续监听、持续获取监听结果、持续处理监听结果对应的事件的能力，也就是我们需要循环的去调用Poller:poll方法获取实际发生事件的Channel集合，然后调用这些Channel里面保管的不同类型事件的处理函数(调用Channel::HandlerEvent方法)。</p>
@@ -2096,14 +2067,7 @@ Channel对象不拥有fd(文件描述符)，也就是说当Channel对象销毁�
 </div><blockquote>
 <p>以Entry作为key时，存在Timestamp对象是相同的，只需保证pair的first(Timestamp)或second(Timer)其中一个不相等就可以。</p>
 </blockquote>
-<p><img
-    class="lazyload"
-    src="/svg/loading.min.svg"
-    data-src="../../imgs/large_concurrency/TimerQueue.png"
-    data-srcset="../../imgs/large_concurrency/TimerQueue.png, ../../imgs/large_concurrency/TimerQueue.png 1.5x, ../../imgs/large_concurrency/TimerQueue.png 2x"
-    data-sizes="auto"
-    alt="TimerQueue回调时序图"
-    title="TimerQueue回调时序图"/></p>
+<p><img loading="lazy" src="../../imgs/large_concurrency/TimerQueue.png" srcset="../../imgs/large_concurrency/TimerQueue.png, ../../imgs/large_concurrency/TimerQueue.png 1.5x, ../../imgs/large_concurrency/TimerQueue.png 2x" sizes="auto" data-title="TimerQueue回调时序图" data-alt="TimerQueue回调时序图" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/></p>
 <h3 id="186-lower_bound-和-upper_bound">18.6 <code>lower_bound()</code> 和 <code>upper_bound()</code></h3>
 <p>参考：<a href="https://cc321.ltd/2021/07/25/C-lower-bound-%E4%B8%8Eupper-bound%E5%87%BD%E6%95%B0%E7%9A%84%E4%BD%BF%E7%94%A8/"target="_blank" rel="external nofollow noopener noreferrer">C++ lower_bound 与upper_bound函数的使用</a></p>
 <p>lower_bound在set中用法：二分查找一个有序数列，返回第一个大于等于x的数，如果没找到，返回末尾的迭代器位置。</p>
@@ -2674,23 +2638,9 @@ Channel对象不拥有fd(文件描述符)，也就是说当Channel对象销毁�
 <li>TcpServer还包含了一个TcpConnection列表</li>
 <li>TcpConnection与Acceptor类似，有两个重要的数据成员，Socket与Channel</li>
 </ul>
-<p><img
-    class="lazyload"
-    src="/svg/loading.min.svg"
-    data-src="../../imgs/large_concurrency/TcpServer&amp;TcpConnection.png"
-    data-srcset="../../imgs/large_concurrency/TcpServer&amp;TcpConnection.png, ../../imgs/large_concurrency/TcpServer&amp;TcpConnection.png 1.5x, ../../imgs/large_concurrency/TcpServer&amp;TcpConnection.png 2x"
-    data-sizes="auto"
-    alt="TcpServer&amp;amp;TcpConnection时序图"
-    title="TcpServer&amp;amp;TcpConnection时序图"/></p>
+<p><img loading="lazy" src="../../imgs/large_concurrency/TcpServer&amp;TcpConnection.png" srcset="../../imgs/large_concurrency/TcpServer&amp;TcpConnection.png, ../../imgs/large_concurrency/TcpServer&amp;TcpConnection.png 1.5x, ../../imgs/large_concurrency/TcpServer&amp;TcpConnection.png 2x" sizes="auto" data-title="TcpServer&amp;amp;TcpConnection时序图" data-alt="TcpServer&amp;amp;TcpConnection时序图" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/></p>
 <h3 id="tcpconnection生存期管理">TcpConnection生存期管理</h3>
-<p><img
-    class="lazyload"
-    src="/svg/loading.min.svg"
-    data-src="../../imgs/large_concurrency/TcpServer&amp;TcpConnection_close.png"
-    data-srcset="../../imgs/large_concurrency/TcpServer&amp;TcpConnection_close.png, ../../imgs/large_concurrency/TcpServer&amp;TcpConnection_close.png 1.5x, ../../imgs/large_concurrency/TcpServer&amp;TcpConnection_close.png 2x"
-    data-sizes="auto"
-    alt="连接关闭时序图"
-    title="连接关闭时序图"/></p>
+<p><img loading="lazy" src="../../imgs/large_concurrency/TcpServer&amp;TcpConnection_close.png" srcset="../../imgs/large_concurrency/TcpServer&amp;TcpConnection_close.png, ../../imgs/large_concurrency/TcpServer&amp;TcpConnection_close.png 1.5x, ../../imgs/large_concurrency/TcpServer&amp;TcpConnection_close.png 2x" sizes="auto" data-title="连接关闭时序图" data-alt="连接关闭时序图" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/></p>
 <p>第5步，在TcpSever中removeConnection 移除掉TcpConnection, 正常应该在移除后销毁掉TcpConnection，但是不能销毁，如果现在销毁了TcpConnection的Channel对象也就跟着销毁了，而这时调用Channel的handleEvent() 函数，就会出现Core Dump，所以说TcpConnection 的生命期应该长于Channel对象。</p>
 <p>当连接到来，创建一个TcpConnection对象，立刻用share_ptr 来管理，引用计数为1，</p>
 <p>在Channel中维护一个weak_ptr(tie_)，将这个share_ptr 对象赋值给tie_，引用计数仍为1，</p>
@@ -2701,14 +2651,7 @@ Channel对象不拥有fd(文件描述符)，也就是说当Channel对象销毁�
 <ul>
 <li>IO线程池的功能是开启若干个IO线程，并让这些IO线程处于事件循环的状态</li>
 </ul>
-<p><img
-    class="lazyload"
-    src="/svg/loading.min.svg"
-    data-src="../../imgs/large_concurrency/multiple_reactors.png"
-    data-srcset="../../imgs/large_concurrency/multiple_reactors.png, ../../imgs/large_concurrency/multiple_reactors.png 1.5x, ../../imgs/large_concurrency/multiple_reactors.png 2x"
-    data-sizes="auto"
-    alt="multiple reactors"
-    title="multiple reactors"/></p>
+<p><img loading="lazy" src="../../imgs/large_concurrency/multiple_reactors.png" srcset="../../imgs/large_concurrency/multiple_reactors.png, ../../imgs/large_concurrency/multiple_reactors.png 1.5x, ../../imgs/large_concurrency/multiple_reactors.png 2x" sizes="auto" data-title="multiple reactors" data-alt="multiple reactors" style="background: url(/svg/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;this.alt=this.dataset.alt;for(const a of ['style','data-title','data-alt','onerror','onload']){this.removeAttribute(a);}"/></p>
 <h2 id="buffer类">Buffer类</h2>
 <p><strong>为什么需要有应用层缓冲区？</strong></p>
 <p>  muduo网络库使用IO复用，并且文件描述符使用非阻塞模式，如果使用阻塞模式那么read、write就会阻塞在这些系统调用之上，这样一来即使其他文件描述符的IO到来也不能立刻去处理，也就不能最大限度的使用IO线程。</p>
@@ -2755,7 +2698,7 @@ Muduo Buffer 的设计考虑了常见的网络编程需求，我试图在易用�
   <div class="post-info">
     <div class="post-info-line">
       <div class="post-info-mod">
-        <span title=2022-11-08&#32;00:00:00>Updated on 2022-11-08&nbsp;</span>
+        <span title="Updated on 2022-11-08 00:00:00">Updated on 2022-11-08&nbsp;</span>
       </div><div class="post-info-license">
           <span><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span>
         </div></div>
@@ -2787,5 +2730,5 @@ Muduo Buffer 的设计考虑了常见的网络编程需求，我试图在易用�
         </div></div><div id="mask"></div><noscript>
     <div class="noscript-warning">Theme FixIt works best with JavaScript enabled.</div>
   </noscript>
-</div><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script src="/lib/lazysizes/lazysizes.min.js" async defer></script><script src="/lib/sharer/sharer.min.js" async defer></script><script src="/lib/typeit/index.umd.js" defer></script><script src="/lib/katex/katex.min.js" defer></script><script src="/lib/katex/auto-render.min.js" defer></script><script src="/lib/katex/copy-tex.min.js" defer></script><script src="/lib/katex/mhchem.min.js" defer></script><script src="/lib/cookieconsent/cookieconsent.min.js" defer></script><script>window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":-1},"comment":{"enable":false},"cookieconsent":{"content":{"dismiss":"Got it!","link":"Learn more","message":"This website uses Cookies to improve your experience."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"data":{"typeit-header-desktop":"Home","typeit-header-title-mobile":"Home"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"typeit-header-desktop":["typeit-header-desktop"],"typeit-header-title-mobile":["typeit-header-title-mobile"]},"duration":-1,"speed":100}};</script><script src="/js/theme.min.js" defer></script></body>
+</div><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script src="/lib/sharer/sharer.min.js" async defer></script><script src="/lib/typeit/index.umd.js" defer></script><script src="/lib/katex/katex.min.js" defer></script><script src="/lib/katex/auto-render.min.js" defer></script><script src="/lib/katex/copy-tex.min.js" defer></script><script src="/lib/katex/mhchem.min.js" defer></script><script src="/lib/cookieconsent/cookieconsent.min.js" defer></script><script>window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":-1},"comment":{"enable":false},"cookieconsent":{"content":{"dismiss":"Got it!","link":"Learn more","message":"This website uses Cookies to improve your experience."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"data":{"typeit-header-desktop":"Home","typeit-header-title-mobile":"Home"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"typeit-header-desktop":["typeit-header-desktop"],"typeit-header-title-mobile":["typeit-header-title-mobile"]},"duration":-1,"loop":false,"speed":100}};</script><script src="/js/theme.min.js" defer></script></body>
 </html>
