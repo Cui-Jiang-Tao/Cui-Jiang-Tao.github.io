@@ -4,7 +4,39 @@
     <link>https://cui-jiang-tao.github.io/categories/%E9%80%86%E5%90%91/</link>
     <description>逆向 - Category - Notes</description>
     <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>cjt953899262@gmail.com (cjt)</managingEditor>
-      <webMaster>cjt953899262@gmail.com (cjt)</webMaster><lastBuildDate>Fri, 28 Jul 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://cui-jiang-tao.github.io/categories/%E9%80%86%E5%90%91/" rel="self" type="application/rss+xml" /><item>
+      <webMaster>cjt953899262@gmail.com (cjt)</webMaster><lastBuildDate>Sun, 30 Jul 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://cui-jiang-tao.github.io/categories/%E9%80%86%E5%90%91/" rel="self" type="application/rss+xml" /><item>
+  <title>160个CrackMe之004</title>
+  <link>https://cui-jiang-tao.github.io/posts/160_crackme/004/</link>
+  <pubDate>Sun, 30 Jul 2023 00:00:00 &#43;0000</pubDate>
+  <author>cjt</author>
+  <guid>https://cui-jiang-tao.github.io/posts/160_crackme/004/</guid>
+  <description><![CDATA[先中文搜索，发现可疑字符串：&ldquo;恭喜恭喜！注册成功&rdquo;，双击进入到达使用字符串的地方。 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17]]></description>
+</item>
+<item>
+  <title>160个CrackMe之008</title>
+  <link>https://cui-jiang-tao.github.io/posts/160_crackme/008/</link>
+  <pubDate>Sun, 30 Jul 2023 00:00:00 &#43;0000</pubDate>
+  <author>cjt</author>
+  <guid>https://cui-jiang-tao.github.io/posts/160_crackme/008/</guid>
+  <description><![CDATA[加载程序，界面有一个输入框Key，按钮OK，输入&quot;1234&quot;，再点击Ok。弹出一个错误提示框，直接字符串搜索： 1 2 3 4 5]]></description>
+</item>
+<item>
+  <title>160个CrackMe之002</title>
+  <link>https://cui-jiang-tao.github.io/posts/160_crackme/002/</link>
+  <pubDate>Sat, 29 Jul 2023 00:00:00 &#43;0000</pubDate>
+  <author>cjt</author>
+  <guid>https://cui-jiang-tao.github.io/posts/160_crackme/002/</guid>
+  <description><![CDATA[还是和前面一样首先了解一下这个程序，随意输入Name/Serial，会弹出一个错误框。 选择Serial/Name，输入一个用户名和序列号： 1]]></description>
+</item>
+<item>
+  <title>160个CrackMe之003</title>
+  <link>https://cui-jiang-tao.github.io/posts/160_crackme/003/</link>
+  <pubDate>Sat, 29 Jul 2023 00:00:00 &#43;0000</pubDate>
+  <author>cjt</author>
+  <guid>https://cui-jiang-tao.github.io/posts/160_crackme/003/</guid>
+  <description><![CDATA[我们随意输入一个用户名和序列号（伪码）： 1 2 Name:3333 Serial:44445555 此时不要点击确定按钮，返回OD暂停(F12),点击堆栈-K小图标(Ctrl+K) ,如下图： 1]]></description>
+</item>
+<item>
   <title>160个CrackMe之001</title>
   <link>https://cui-jiang-tao.github.io/posts/160_crackme/001/</link>
   <pubDate>Fri, 28 Jul 2023 00:00:00 &#43;0000</pubDate>

@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+  <head>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+    <meta name="robots" content="noodp" />
+    <title>160个CrackMe之002 - Notes</title><meta name="author" content="cjt">
+<meta name="author-link" content="">
+<meta name="description" content="还是和前面一样首先了解一下这个程序，随意输入Name/Serial，会弹出一个错误框。 选择Serial/Name，输入一个用户名和序列号： 1" /><meta name="keywords" content='破解' /><meta itemprop="name" content="160个CrackMe之002">
+<meta itemprop="description" content="还是和前面一样首先了解一下这个程序，随意输入Name/Serial，会弹出一个错误框。 选择Serial/Name，输入一个用户名和序列号： 1"><meta itemprop="datePublished" content="2023-07-29T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2023-07-29T00:00:00+00:00" />
+<meta itemprop="wordCount" content="2721">
+<meta itemprop="keywords" content="破解," /><meta property="og:title" content="160个CrackMe之002" />
+<meta property="og:description" content="还是和前面一样首先了解一下这个程序，随意输入Name/Serial，会弹出一个错误框。 选择Serial/Name，输入一个用户名和序列号： 1" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://cui-jiang-tao.github.io/posts/160_crackme/002/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-07-29T00:00:00+00:00" />
+<meta property="article:modified_time" content="2023-07-29T00:00:00+00:00" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="160个CrackMe之002"/>
+<meta name="twitter:description" content="还是和前面一样首先了解一下这个程序，随意输入Name/Serial，会弹出一个错误框。 选择Serial/Name，输入一个用户名和序列号： 1"/>
+<meta name="application-name" content="FixIt">
+<meta name="apple-mobile-web-app-title" content="FixIt"><meta name="theme-color" data-light="#f8f8f8" data-dark="#252627" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" href="https://cui-jiang-tao.github.io/posts/160_crackme/002/" /><link rel="prev" href="https://cui-jiang-tao.github.io/posts/160_crackme/003/" /><link rel="next" href="https://cui-jiang-tao.github.io/posts/160_crackme/008/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "BlogPosting",
+    "headline": "160个CrackMe之002",
+    "inLanguage": "zh-CN",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https:\/\/cui-jiang-tao.github.io\/posts\/160_crackme\/002\/"
+    },"genre": "posts","keywords": "破解","wordcount":  2721 ,
+    "url": "https:\/\/cui-jiang-tao.github.io\/posts\/160_crackme\/002\/","datePublished": "2023-07-29T00:00:00+00:00","dateModified": "2023-07-29T00:00:00+00:00","publisher": {
+      "@type": "Organization",
+      "name": ""},"author": {
+        "@type": "Person",
+        "name": "cjt"
+      },"description": ""
+  }
+  </script></head>
+  <body data-header-desktop="fixed" data-header-mobile="auto"><script>(window.localStorage?.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('data-theme', 'dark');</script><div class="wrapper" data-page-style="wide"><header class="desktop animate__faster" id="header-desktop">
+  <div class="header-wrapper">
+    <div class="header-title">
+      <a href="/" title="Notes"><span class="header-title-pre"><i class='far fa-kiss-wink-heart fa-fw' aria-hidden='true'></i></span><span id="typeit-header-desktop" class="typeit"></span></a><span class="header-subtitle"></span></div>
+    <nav>
+      <ul class="menu"><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/posts/"
+                
+                
+              ><i class="fa-solid fa-archive fa-fw fa-sm" aria-hidden="true"></i> 文章</a></li><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/categories/"
+                
+                
+              ><i class="fa-solid fa-th fa-fw fa-sm" aria-hidden="true"></i> 分类</a></li><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/tags/"
+                
+                
+              ><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> 标签</a></li><li class="menu-item delimiter"></li><li class="menu-item theme-switch" title="Switch Theme">
+          <i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i>
+        </li></ul>
+    </nav>
+  </div>
+</header><header class="mobile animate__faster" id="header-mobile">
+  <div class="header-container">
+    <div class="header-wrapper">
+      <div class="header-title">
+        <a href="/" title="Notes"><span class="header-title-pre"><i class='far fa-kiss-wink-heart fa-fw' aria-hidden='true'></i></span><span id="typeit-header-title-mobile" class="typeit"></span></a><span class="header-subtitle"></span></div>
+      <div class="menu-toggle" id="menu-toggle-mobile">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+    <nav>
+      <ul class="menu" id="menu-mobile"><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/posts/"
+                  
+                  
+                ><i class="fa-solid fa-archive fa-fw fa-sm" aria-hidden="true"></i> 文章</a></li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/categories/"
+                  
+                  
+                ><i class="fa-solid fa-th fa-fw fa-sm" aria-hidden="true"></i> 分类</a></li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/tags/"
+                  
+                  
+                ><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> 标签</a></li><li class="menu-item menu-system">
+          <span class="menu-system-item theme-switch" title="Switch Theme"><i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i></span></li>
+      </ul>
+    </nav>
+  </div>
+</header><main class="container"><aside class="toc" id="toc-auto"></aside>
+
+  <aside class="aside-custom">
+    </aside>
+
+  <article class="page single">
+    <div class="header"><h1 class="single-title animate__animated animate__flipInX"><span>160个CrackMe之002</span>
+      </h1></div><div class="post-meta">
+      <div class="post-meta-line"><span class="post-author"><span class="author"><i class="fa-solid fa-user-circle" aria-hidden="true"></i>
+      cjt</span></span>
+          <span class="post-category">included in <a href="/categories/%E9%80%86%E5%90%91/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 逆向</a></span></div>
+      <div class="post-meta-line"><span title="published on 2023-07-29 00:00:00"><i class="fa-regular fa-calendar-alt fa-fw me-1" aria-hidden="true"></i><time datetime="2023-07-29">2023-07-29</time></span>&nbsp;<span title="Updated on 2023-07-29 00:00:00"><i class="fa-regular fa-edit fa-fw me-1" aria-hidden="true"></i><time datetime="2023-07-29">2023-07-29</time></span>&nbsp;<span><i class="fa-solid fa-pencil-alt fa-fw me-1" aria-hidden="true"></i>2721 words</span>&nbsp;<span><i class="fa-regular fa-clock fa-fw me-1" aria-hidden="true"></i>6 minutes</span>&nbsp;</div>
+    </div><div class="content" id="content"><p>还是和前面一样首先了解一下这个程序，随意输入Name/Serial，会弹出一个错误框。</p>
+<p>选择Serial/Name，输入一个用户名和序列号：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-txt" data-lang="txt"><span class="line"><span class="cl">Name:111222
+</span></span><span class="line"><span class="cl">Serial:333444
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>点击ok，会弹出一个错误框。此时不要点击确定按钮，返回OD暂停(F12),点击堆栈-K小图标(Ctrl+K) ,如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cmd" data-lang="cmd"><span class="line"><span class="cl">调用堆栈：     主线程
+</span></span><span class="line"><span class="cl">地址       堆栈       函数过程 / 参数                       调用来自                      结构
+</span></span><span class="line"><span class="cl">0012EDB0   77D19418   包含ntdll.KiFastSystemCallRet           user32.77D19416               0012EDE4
+</span></span><span class="line"><span class="cl">0012EDB4   77D2770A   user32.WaitMessage                    user32.77D27705               0012EDE4
+</span></span><span class="line"><span class="cl">0012EDE8   77D249C4   user32.77D2757B                       user32.77D249BF               0012EDE4
+</span></span><span class="line"><span class="cl">0012EE10   77D3A956   user32.77D2490E                       user32.77D3A951               0012EE0C
+</span></span><span class="line"><span class="cl">0012F0D0   77D3A2BC   user32.SoftModalMessageBox            user32.77D3A2B7               0012F0CC
+</span></span><span class="line"><span class="cl">0012F220   77D3A10B   user32.77D3A147                       user32.77D3A106               0012F21C
+</span></span><span class="line"><span class="cl">0012F28C   740CEE19   user32.MessageBoxIndirectA            msvbvm50.740CEE13             0012F288
+</span></span><span class="line"><span class="cl">0012F290   0012F298     pMsgBoxParams = 0012F298
+</span></span><span class="line"><span class="cl">0012F2C4   740CEC81   包含msvbvm50.740CEE19                   msvbvm50.740CEC7E             0012F2C0
+</span></span><span class="line"><span class="cl">0012F2E8   740CEFAF   msvbvm50.740CEB58                     msvbvm50.740CEFAA             0012F2E4
+</span></span><span class="line"><span class="cl">0012F318   740C6394   msvbvm50.740CEF19                     msvbvm50.740C638F             0012F314
+</span></span><span class="line"><span class="cl">0012F384   740F414D   msvbvm50.740C60F3                     msvbvm50.740F4148             0012F380
+</span></span><span class="line"><span class="cl">0012F3F8   00402622   msvbvm50.rtcMsgBox                    Afkayas_.0040261C             0012F3F4
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><code>rtcMsgBox()</code> 函数，这是VB 的消息框函数。这里就是弹出错误消息的函数。看看是那里调用它：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">  1
+</span><span class="lnt">  2
+</span><span class="lnt">  3
+</span><span class="lnt">  4
+</span><span class="lnt">  5
+</span><span class="lnt">  6
+</span><span class="lnt">  7
+</span><span class="lnt">  8
+</span><span class="lnt">  9
+</span><span class="lnt"> 10
+</span><span class="lnt"> 11
+</span><span class="lnt"> 12
+</span><span class="lnt"> 13
+</span><span class="lnt"> 14
+</span><span class="lnt"> 15
+</span><span class="lnt"> 16
+</span><span class="lnt"> 17
+</span><span class="lnt"> 18
+</span><span class="lnt"> 19
+</span><span class="lnt"> 20
+</span><span class="lnt"> 21
+</span><span class="lnt"> 22
+</span><span class="lnt"> 23
+</span><span class="lnt"> 24
+</span><span class="lnt"> 25
+</span><span class="lnt"> 26
+</span><span class="lnt"> 27
+</span><span class="lnt"> 28
+</span><span class="lnt"> 29
+</span><span class="lnt"> 30
+</span><span class="lnt"> 31
+</span><span class="lnt"> 32
+</span><span class="lnt"> 33
+</span><span class="lnt"> 34
+</span><span class="lnt"> 35
+</span><span class="lnt"> 36
+</span><span class="lnt"> 37
+</span><span class="lnt"> 38
+</span><span class="lnt"> 39
+</span><span class="lnt"> 40
+</span><span class="lnt"> 41
+</span><span class="lnt"> 42
+</span><span class="lnt"> 43
+</span><span class="lnt"> 44
+</span><span class="lnt"> 45
+</span><span class="lnt"> 46
+</span><span class="lnt"> 47
+</span><span class="lnt"> 48
+</span><span class="lnt"> 49
+</span><span class="lnt"> 50
+</span><span class="lnt"> 51
+</span><span class="lnt"> 52
+</span><span class="lnt"> 53
+</span><span class="lnt"> 54
+</span><span class="lnt"> 55
+</span><span class="lnt"> 56
+</span><span class="lnt"> 57
+</span><span class="lnt"> 58
+</span><span class="lnt"> 59
+</span><span class="lnt"> 60
+</span><span class="lnt"> 61
+</span><span class="lnt"> 62
+</span><span class="lnt"> 63
+</span><span class="lnt"> 64
+</span><span class="lnt"> 65
+</span><span class="lnt"> 66
+</span><span class="lnt"> 67
+</span><span class="lnt"> 68
+</span><span class="lnt"> 69
+</span><span class="lnt"> 70
+</span><span class="lnt"> 71
+</span><span class="lnt"> 72
+</span><span class="lnt"> 73
+</span><span class="lnt"> 74
+</span><span class="lnt"> 75
+</span><span class="lnt"> 76
+</span><span class="lnt"> 77
+</span><span class="lnt"> 78
+</span><span class="lnt"> 79
+</span><span class="lnt"> 80
+</span><span class="lnt"> 81
+</span><span class="lnt"> 82
+</span><span class="lnt"> 83
+</span><span class="lnt"> 84
+</span><span class="lnt"> 85
+</span><span class="lnt"> 86
+</span><span class="lnt"> 87
+</span><span class="lnt"> 88
+</span><span class="lnt"> 89
+</span><span class="lnt"> 90
+</span><span class="lnt"> 91
+</span><span class="lnt"> 92
+</span><span class="lnt"> 93
+</span><span class="lnt"> 94
+</span><span class="lnt"> 95
+</span><span class="lnt"> 96
+</span><span class="lnt"> 97
+</span><span class="lnt"> 98
+</span><span class="lnt"> 99
+</span><span class="lnt">100
+</span><span class="lnt">101
+</span><span class="lnt">102
+</span><span class="lnt">103
+</span><span class="lnt">104
+</span><span class="lnt">105
+</span><span class="lnt">106
+</span><span class="lnt">107
+</span><span class="lnt">108
+</span><span class="lnt">109
+</span><span class="lnt">110
+</span><span class="lnt">111
+</span><span class="lnt">112
+</span><span class="lnt">113
+</span><span class="lnt">114
+</span><span class="lnt">115
+</span><span class="lnt">116
+</span><span class="lnt">117
+</span><span class="lnt">118
+</span><span class="lnt">119
+</span><span class="lnt">120
+</span><span class="lnt">121
+</span><span class="lnt">122
+</span><span class="lnt">123
+</span><span class="lnt">124
+</span><span class="lnt">125
+</span><span class="lnt">126
+</span><span class="lnt">127
+</span><span class="lnt">128
+</span><span class="lnt">129
+</span><span class="lnt">130
+</span><span class="lnt">131
+</span><span class="lnt">132
+</span><span class="lnt">133
+</span><span class="lnt">134
+</span><span class="lnt">135
+</span><span class="lnt">136
+</span><span class="lnt">137
+</span><span class="lnt">138
+</span><span class="lnt">139
+</span><span class="lnt">140
+</span><span class="lnt">141
+</span><span class="lnt">142
+</span><span class="lnt">143
+</span><span class="lnt">144
+</span><span class="lnt">145
+</span><span class="lnt">146
+</span><span class="lnt">147
+</span><span class="lnt">148
+</span><span class="lnt">149
+</span><span class="lnt">150
+</span><span class="lnt">151
+</span><span class="lnt">152
+</span><span class="lnt">153
+</span><span class="lnt">154
+</span><span class="lnt">155
+</span><span class="lnt">156
+</span><span class="lnt">157
+</span><span class="lnt">158
+</span><span class="lnt">159
+</span><span class="lnt">160
+</span><span class="lnt">161
+</span><span class="lnt">162
+</span><span class="lnt">163
+</span><span class="lnt">164
+</span><span class="lnt">165
+</span><span class="lnt">166
+</span><span class="lnt">167
+</span><span class="lnt">168
+</span><span class="lnt">169
+</span><span class="lnt">170
+</span><span class="lnt">171
+</span><span class="lnt">172
+</span><span class="lnt">173
+</span><span class="lnt">174
+</span><span class="lnt">175
+</span><span class="lnt">176
+</span><span class="lnt">177
+</span><span class="lnt">178
+</span><span class="lnt">179
+</span><span class="lnt">180
+</span><span class="lnt">181
+</span><span class="lnt">182
+</span><span class="lnt">183
+</span><span class="lnt">184
+</span><span class="lnt">185
+</span><span class="lnt">186
+</span><span class="lnt">187
+</span><span class="lnt">188
+</span><span class="lnt">189
+</span><span class="lnt">190
+</span><span class="lnt">191
+</span><span class="lnt">192
+</span><span class="lnt">193
+</span><span class="lnt">194
+</span><span class="lnt">195
+</span><span class="lnt">196
+</span><span class="lnt">197
+</span><span class="lnt">198
+</span><span class="lnt">199
+</span><span class="lnt">200
+</span><span class="lnt">201
+</span><span class="lnt">202
+</span><span class="lnt">203
+</span><span class="lnt">204
+</span><span class="lnt">205
+</span><span class="lnt">206
+</span><span class="lnt">207
+</span><span class="lnt">208
+</span><span class="lnt">209
+</span><span class="lnt">210
+</span><span class="lnt">211
+</span><span class="lnt">212
+</span><span class="lnt">213
+</span><span class="lnt">214
+</span><span class="lnt">215
+</span><span class="lnt">216
+</span><span class="lnt">217
+</span><span class="lnt">218
+</span><span class="lnt">219
+</span><span class="lnt">220
+</span><span class="lnt">221
+</span><span class="lnt">222
+</span><span class="lnt">223
+</span><span class="lnt">224
+</span><span class="lnt">225
+</span><span class="lnt">226
+</span><span class="lnt">227
+</span><span class="lnt">228
+</span><span class="lnt">229
+</span><span class="lnt">230
+</span><span class="lnt">231
+</span><span class="lnt">232
+</span><span class="lnt">233
+</span><span class="lnt">234
+</span><span class="lnt">235
+</span><span class="lnt">236
+</span><span class="lnt">237
+</span><span class="lnt">238
+</span><span class="lnt">239
+</span><span class="lnt">240
+</span><span class="lnt">241
+</span><span class="lnt">242
+</span><span class="lnt">243
+</span><span class="lnt">244
+</span><span class="lnt">245
+</span><span class="lnt">246
+</span><span class="lnt">247
+</span><span class="lnt">248
+</span><span class="lnt">249
+</span><span class="lnt">250
+</span><span class="lnt">251
+</span><span class="lnt">252
+</span><span class="lnt">253
+</span><span class="lnt">254
+</span><span class="lnt">255
+</span><span class="lnt">256
+</span><span class="lnt">257
+</span><span class="lnt">258
+</span><span class="lnt">259
+</span><span class="lnt">260
+</span><span class="lnt">261
+</span><span class="lnt">262
+</span><span class="lnt">263
+</span><span class="lnt">264
+</span><span class="lnt">265
+</span><span class="lnt">266
+</span><span class="lnt">267
+</span><span class="lnt">268
+</span><span class="lnt">269
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="err">00402310</span>   <span class="err">&gt;</span> <span class="err">\55</span>            <span class="nf">push</span> <span class="no">ebp</span>
+</span></span><span class="line"><span class="cl"><span class="err">00402311</span>   <span class="err">.</span>  <span class="err">8</span><span class="nf">BEC</span>          <span class="no">mov</span> <span class="no">ebp</span><span class="p">,</span><span class="no">esp</span>
+</span></span><span class="line"><span class="cl"><span class="err">00402313</span>   <span class="err">.</span>  <span class="err">83</span><span class="nf">EC</span> <span class="mi">0</span><span class="no">C</span>       <span class="no">sub</span> <span class="no">esp</span><span class="p">,</span><span class="mi">0xC</span>
+</span></span><span class="line"><span class="cl"><span class="err">00402316</span>   <span class="err">.</span>  <span class="err">68</span> <span class="err">26104000</span>   <span class="nf">push</span> <span class="err">&lt;</span><span class="no">jmp.</span><span class="err">&amp;</span><span class="no">MSVBVM50.__vbaExceptHandler</span><span class="err">&gt;</span>             <span class="c1">;  SE 处理程序安装
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="err">0040231</span><span class="nf">B</span>   <span class="p">.</span>  <span class="mi">64</span><span class="p">:</span><span class="no">A1</span> <span class="mi">0000000</span><span class="err">&gt;</span><span class="no">mov</span> <span class="no">eax</span><span class="p">,</span><span class="no">dword</span> <span class="no">ptr</span> <span class="no">fs</span><span class="p">:[</span><span class="mi">0</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="err">00402321</span>   <span class="err">.</span>  <span class="err">50</span>            <span class="nf">push</span> <span class="no">eax</span>
+</span></span><span class="line"><span class="cl"><span class="err">00402322</span>   <span class="err">.</span>  <span class="err">64:8925</span> <span class="err">00000&gt;</span><span class="nf">mov</span> <span class="no">dword</span> <span class="no">ptr</span> <span class="no">fs</span><span class="p">:[</span><span class="mi">0</span><span class="p">],</span><span class="no">esp</span>
+</span></span><span class="line"><span class="cl"><span class="err">00402329</span>   <span class="err">.</span>  <span class="err">81</span><span class="nf">EC</span> <span class="no">B0000000</span> <span class="no">sub</span> <span class="no">esp</span><span class="p">,</span><span class="mi">0xB0</span>
+</span></span><span class="line"><span class="cl"><span class="err">0040232</span><span class="nf">F</span>   <span class="p">.</span>  <span class="mi">53</span>            <span class="no">push</span> <span class="no">ebx</span>
+</span></span><span class="line"><span class="cl"><span class="err">00402330</span>   <span class="err">.</span>  <span class="err">56</span>            <span class="nf">push</span> <span class="no">esi</span>
+</span></span><span class="line"><span class="cl"><span class="err">00402331</span>   <span class="err">.</span>  <span class="err">8</span><span class="nf">B75</span> <span class="mi">08</span>       <span class="no">mov</span> <span class="no">esi</span><span class="p">,</span><span class="no">dword</span> <span class="no">ptr</span> <span class="no">ss</span><span class="p">:[</span><span class="no">ebp</span><span class="err">+</span><span class="mi">0x8</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="err">00402334</span>   <span class="err">.</span>  <span class="err">57</span>            <span class="nf">push</span> <span class="no">edi</span>
+</span></span><span class="line"><span class="cl"><span class="err">00402335</span>   <span class="err">.</span>  <span class="err">8</span><span class="nf">BC6</span>          <span class="no">mov</span> <span class="no">eax</span><span class="p">,</span><span class="no">esi</span>
+</span></span><span class="line"><span class="cl"><span class="err">00402337</span>   <span class="err">.</span>  <span class="err">83</span><span class="nf">E6</span> <span class="no">FE</span>       <span class="no">and</span> <span class="no">esi</span><span class="p">,-</span><span class="mi">0x2</span>
+</span></span><span class="line"><span class="cl"><span class="err">0040233</span><span class="nf">A</span>   <span class="p">.</span>  <span class="mi">8965</span> <span class="no">F4</span>       <span class="no">mov</span> <span class="no">dword</span> <span class="no">ptr</span> <span class="no">ss</span><span class="p">:[</span><span class="no">ebp-0xC</span><span class="p">],</span><span class="no">esp</span>
+</span></span><span class="line"><span class="cl"><span class="err">0040233</span><span class="nf">D</span>   <span class="p">.</span>  <span class="mi">83</span><span class="no">E0</span> <span class="mi">01</span>       <span class="no">and</span> <span class="no">eax</span><span class="p">,</span><span class="mi">0x1</span>
+</span></span><span class="line"><span class="cl"><span class="err">00402340</span>   <span class="err">.</span>  <span class="err">8</span><span class="nf">B1E</span>          <span class="no">mov</span> <span class="no">ebx</span><span class="p">,</span><span class="no">dword</span> <span class="no">ptr</span> <span class="no">ds</span><span class="p">:[</span><span class="no">esi</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="err">00402342</span>   <span class="err">.</span>  <span class="nf">C745</span> <span class="no">F8</span> <span class="mi">08104</span><span class="err">&gt;</span><span class="no">mov</span> <span class="no">dword</span> <span class="no">ptr</span> <span class="no">ss</span><span class="p">:[</span><span class="no">ebp-0x8</span><span class="p">],</span><span class="no">Afkayas_.00401008</span>
+</span></span><span class="line"><span class="cl"><span class="err">00402349</span>   <span class="err">.</span>  <span class="err">56</span>            <span class="nf">push</span> <span class="no">esi</span>
+</span></span><span class="line"><span class="cl"><span class="err">0040234</span><span class="nf">A</span>   <span class="p">.</span>  <span class="mi">8945</span> <span class="no">FC</span>       <span class="no">mov</span> <span class="no">dword</span> <span class="no">ptr</span> <span class="no">ss</span><span class="p">:[</span><span class="no">ebp-0x4</span><span class="p">],</span><span class="no">eax</span>
+</span></span><span class="line"><span class="cl"><span class="err">0040234</span><span class="nf">D</span>   <span class="p">.</span>  <span class="mi">8975</span> <span class="mi">08</span>       <span class="no">mov</span> <span class="no">dword</span> <span class="no">ptr</span> <span class="no">ss</span><span class="p">:[</span><span class="no">ebp</span><span class="err">+</span><span class="mi">0x8</span><span class="p">],</span><span class="no">esi</span>
+</span></span><span class="line"><span class="cl"><span class="err">00402350</span>   <span class="err">.</span>  <span class="nf">FF53</span> <span class="mi">04</span>       <span class="no">call</span> <span class="no">dword</span> <span class="no">ptr</span> <span class="no">ds</span><span class="p">:[</span><span class="no">ebx</span><span class="err">+</span><span class="mi">0x4</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="err">00402353</span>   <span class="err">.</span>  <span class="err">8</span><span class="nf">B83</span> <span class="mi">10030000</span> <span class="no">mov</span> <span class="no">eax</span><span class="p">,</span><span class="no">dword</span> <span class="no">ptr</span> <span class="no">ds</span><span class="p">:[</span><span class="no">ebx</span><span class="err">+</span><span class="mi">0x310</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="err">00402359</span>   <span class="err">.</span>  <span class="err">33</span><span class="nf">FF</span>          <span class="no">xor</span> <span class="no">edi</span><span class="p">,</span><span class="no">edi</span>
+</span></span><span class="line"><span class="cl"><span class="err">0040235</span><span class="nf">B</span>   <span class="p">.</span>  <span class="mi">56</span>            <span class="no">push</span> <span class="no">esi</span>
+</span></span><span class="line"><span class="cl"><span class="err">0040235</span><span class="nf">C</span>   <span class="p">.</span>  <span class="mi">897</span><span class="no">D</span> <span class="no">E8</span>       <span class="no">mov</span> <span class="no">dword</span> <span class="no">ptr</span> <span class="no">ss</span><span class="p">:[</span><span class="no">ebp-0x18</span><span class="p">],</span><span class="no">edi</span>
+</span></span><span class="line"><span class="cl"><span class="err">0040235</span><span class="nf">F</span>   <span class="p">.</span>  <span class="mi">897</span><span class="no">D</span> <span class="no">E4</span>       <span class="no">mov</span> <span class="no">dword</span> <span class="no">ptr</span> <span class="no">ss</span><span class="p">:[</span><span class="no">ebp-0x1C</span><span class="p">],</span><span class="no">edi</span>
+</span></span><span class="line"><span class="cl"><span class="err">00402362</span>   <span class="err">.</span>  <span class="err">897</span><span class="nf">D</span> <span class="no">E0</span>       <span class="no">mov</span> <span class="no">dword</span> <span class="no">ptr</span> <span class="no">ss</span><span class="p">:[</span><span class="no">ebp-0x20</span><span class="p">],</span><span class="no">edi</span>
+</span></span><span class="line"><span class="cl"><span class="err">00402365</span>   <span class="err">.</span>  <span class="err">897</span><span class="nf">D</span> <span class="no">DC</span>       <span class="no">mov</span> <span class="no">dword</span> <span class="no">ptr</span> <span class="no">ss</span><span class="p">:[</span><span class="no">ebp-0x24</span><span class="p">],</span><span class="no">edi</span>
+</span></span><span class="line"><span class="cl"><span class="err">00402368</span>   <span class="err">.</span>  <span class="err">897</span><span class="nf">D</span> <span class="no">D8</span>       <span class="no">mov</span> <span class="no">dword</span> <span class="no">ptr</span> <span class="no">ss</span><span class="p">:[</span><span class="no">ebp-0x28</span><span class="p">],</span><span class="no">edi</span>
+</span></span><span class="line"><span class="cl"><span class="err">0040236</span><span class="nf">B</span>   <span class="p">.</span>  <span class="mi">897</span><span class="no">D</span> <span class="no">D4</span>       <span class="no">mov</span> <span class="no">dword</span> <span class="no">ptr</span> <span class="no">ss</span><span class="p">:[</span><span class="no">ebp-0x2C</span><span class="p">],</span><span class="no">edi</span>
+</span></span><span class="line"><span class="cl"><span class="err">0040236</span><span class="nf">E</span>   <span class="p">.</span>  <span class="mi">897</span><span class="no">D</span> <span class="no">C4</span>       <span class="no">mov</span> <span class="no">dword</span> <span class="no">ptr</span> <span class="no">ss</span><span class="p">:[</span><span class="no">ebp-0x3C</span><span class="p">],</span><span class="no">edi</span>
+</span></span><span class="line"><span class="cl"><span class="err">00402371</span>   <span class="err">.</span>  <span class="err">897</span><span class="nf">D</span> <span class="no">B4</span>       <span class="no">mov</span> <span class="no">dword</span> <span class="no">ptr</span> <span class="no">ss</span><span class="p">:[</span><span class="no">ebp-0x4C</span><span class="p">],</span><span class="no">edi</span>
+</span></span><span class="line"><span class="cl"><span class="err">00402374</span>   <span class="err">.</span>  <span class="err">897</span><span class="nf">D</span> <span class="no">A4</span>       <span class="no">mov</span> <span class="no">dword</span> <span class="no">ptr</span> <span class="no">ss</span><span class="p">:[</span><span class="no">ebp-0x5C</span><span class="p">],</span><span class="no">edi</span>
+</span></span><span class="line"><span class="cl"><span class="err">00402377</span>   <span class="err">.</span>  <span class="err">897</span><span class="nf">D</span> <span class="mi">94</span>       <span class="no">mov</span> <span class="no">dword</span> <span class="no">ptr</span> <span class="no">ss</span><span class="p">:[</span><span class="no">ebp-0x6C</span><span class="p">],</span><span class="no">edi</span>
+</span></span><span class="line"><span class="cl"><span class="err">0040237</span><span class="nf">A</span>   <span class="p">.</span>  <span class="mi">8985</span> <span class="mi">40</span><span class="no">FFFFFF</span> <span class="no">mov</span> <span class="no">dword</span> <span class="no">ptr</span> <span class="no">ss</span><span class="p">:[</span><span class="no">ebp-0xC0</span><span class="p">],</span><span class="no">eax</span>
+</span></span><span class="line"><span class="cl"><span class="err">00402380</span>   <span class="err">.</span>  <span class="nf">FFD0</span>          <span class="no">call</span> <span class="no">eax</span>
+</span></span><span class="line"><span class="cl"><span class="err">00402382</span>   <span class="err">.</span>  <span class="err">8</span><span class="nf">D4D</span> <span class="no">D4</span>       <span class="no">lea</span> <span class="no">ecx</span><span class="p">,</span><span class="no">dword</span> <span class="no">ptr</span> <span class="no">ss</span><span class="p">:[</span><span class="no">ebp-0x2C</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="err">00402385</span>   <span class="err">.</span>  <span class="err">50</span>            <span class="nf">push</span> <span class="no">eax</span>
+</span></span><span class="line"><span class="cl"><span class="err">00402386</span>   <span class="err">.</span>  <span class="err">51</span>            <span class="nf">push</span> <span class="no">ecx</span>
+</span></span><span class="line"><span class="cl"><span class="err">00402387</span>   <span class="err">.</span>  <span class="nf">FF15</span> <span class="mi">0</span><span class="no">C414000</span> <span class="no">call</span> <span class="no">dword</span> <span class="no">ptr</span> <span class="no">ds</span><span class="p">:[</span><span class="err">&lt;&amp;</span><span class="no">MSVBVM50.__vbaObjSet</span><span class="err">&gt;</span><span class="p">]</span>         <span class="c1">;  msvbvm50.__vbaObjSet
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="err">0040238</span><span class="nf">D</span>   <span class="p">.</span>  <span class="mi">8</span><span class="no">B9B</span> <span class="mi">00030000</span> <span class="no">mov</span> <span class="no">ebx</span><span class="p">,</span><span class="no">dword</span> <span class="no">ptr</span> <span class="no">ds</span><span class="p">:[</span><span class="no">ebx</span><span class="err">+</span><span class="mi">0x300</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="err">00402393</span>   <span class="err">.</span>  <span class="err">56</span>            <span class="nf">push</span> <span class="no">esi</span>
+</span></span><span class="line"><span class="cl"><span class="err">00402394</span>   <span class="err">.</span>  <span class="err">8985</span> <span class="err">50</span><span class="nf">FFFFFF</span> <span class="no">mov</span> <span class="no">dword</span> <span class="no">ptr</span> <span class="no">ss</span><span class="p">:[</span><span class="no">ebp-0xB0</span><span class="p">],</span><span class="no">eax</span>
+</span></span><span class="line"><span class="cl"><span class="err">0040239</span><span class="nf">A</span>   <span class="p">.</span>  <span class="mi">899</span><span class="no">D</span> <span class="mi">3</span><span class="no">CFFFFFF</span> <span class="no">mov</span> <span class="no">dword</span> <span class="no">ptr</span> <span class="no">ss</span><span class="p">:[</span><span class="no">ebp-0xC4</span><span class="p">],</span><span class="no">ebx</span>
+</span></span><span class="line"><span class="cl"><span class="err">004023</span><span class="nf">A0</span>   <span class="p">.</span>  <span class="no">FFD3</span>          <span class="no">call</span> <span class="no">ebx</span>
+</span></span><span class="line"><span class="cl"><span class="err">004023</span><span class="nf">A2</span>   <span class="p">.</span>  <span class="mi">8</span><span class="no">D55</span> <span class="no">DC</span>       <span class="no">lea</span> <span class="no">edx</span><span class="p">,</span><span class="no">dword</span> <span class="no">ptr</span> <span class="no">ss</span><span class="p">:[</span><span class="no">ebp-0x24</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="err">004023</span><span class="nf">A5</span>   <span class="p">.</span>  <span class="mi">50</span>            <span class="no">push</span> <span class="no">eax</span>
+</span></span><span class="line"><span class="cl"><span class="err">004023</span><span class="nf">A6</span>   <span class="p">.</span>  <span class="mi">52</span>            <span class="no">push</span> <span class="no">edx</span>
+</span></span><span class="line"><span class="cl"><span class="err">004023</span><span class="nf">A7</span>   <span class="p">.</span>  <span class="no">FF15</span> <span class="mi">0</span><span class="no">C414000</span> <span class="no">call</span> <span class="no">dword</span> <span class="no">ptr</span> <span class="no">ds</span><span class="p">:[</span><span class="err">&lt;&amp;</span><span class="no">MSVBVM50.__vbaObjSet</span><span class="err">&gt;</span><span class="p">]</span>         <span class="c1">;  msvbvm50.__vbaObjSet
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="err">004023</span><span class="nf">AD</span>   <span class="p">.</span>  <span class="mi">8</span><span class="no">BD8</span>          <span class="no">mov</span> <span class="no">ebx</span><span class="p">,</span><span class="no">eax</span>
+</span></span><span class="line"><span class="cl"><span class="err">004023</span><span class="nf">AF</span>   <span class="p">.</span>  <span class="mi">8</span><span class="no">D4D</span> <span class="no">E8</span>       <span class="no">lea</span> <span class="no">ecx</span><span class="p">,</span><span class="no">dword</span> <span class="no">ptr</span> <span class="no">ss</span><span class="p">:[</span><span class="no">ebp-0x18</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="err">004023</span><span class="nf">B2</span>   <span class="p">.</span>  <span class="mi">51</span>            <span class="no">push</span> <span class="no">ecx</span>
+</span></span><span class="line"><span class="cl"><span class="err">004023</span><span class="nf">B3</span>   <span class="p">.</span>  <span class="mi">53</span>            <span class="no">push</span> <span class="no">ebx</span>
+</span></span><span class="line"><span class="cl"><span class="err">004023</span><span class="nf">B4</span>   <span class="p">.</span>  <span class="mi">8</span><span class="no">B03</span>          <span class="no">mov</span> <span class="no">eax</span><span class="p">,</span><span class="no">dword</span> <span class="no">ptr</span> <span class="no">ds</span><span class="p">:[</span><span class="no">ebx</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="err">004023</span><span class="nf">B6</span>   <span class="p">.</span>  <span class="no">FF90</span> <span class="no">A0000000</span> <span class="no">call</span> <span class="no">dword</span> <span class="no">ptr</span> <span class="no">ds</span><span class="p">:[</span><span class="no">eax</span><span class="err">+</span><span class="mi">0xA0</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="err">004023</span><span class="nf">BC</span>   <span class="p">.</span>  <span class="mi">3</span><span class="no">BC7</span>          <span class="no">cmp</span> <span class="no">eax</span><span class="p">,</span><span class="no">edi</span>
+</span></span><span class="line"><span class="cl"><span class="err">004023</span><span class="nf">BE</span>   <span class="p">.</span>  <span class="mi">7</span><span class="no">D</span> <span class="mi">12</span>         <span class="no">jge</span> <span class="no">short</span> <span class="no">Afkayas_.004023D2</span>
+</span></span><span class="line"><span class="cl"><span class="err">004023</span><span class="nf">C0</span>   <span class="p">.</span>  <span class="mi">68</span> <span class="no">A0000000</span>   <span class="no">push</span> <span class="mi">0xA0</span>
+</span></span><span class="line"><span class="cl"><span class="err">004023</span><span class="nf">C5</span>   <span class="p">.</span>  <span class="mi">68</span> <span class="mi">5</span><span class="no">C1B4000</span>   <span class="no">push</span> <span class="no">Afkayas_.00401B5C</span>
+</span></span><span class="line"><span class="cl"><span class="err">004023</span><span class="nf">CA</span>   <span class="p">.</span>  <span class="mi">53</span>            <span class="no">push</span> <span class="no">ebx</span>
+</span></span><span class="line"><span class="cl"><span class="err">004023</span><span class="nf">CB</span>   <span class="p">.</span>  <span class="mi">50</span>            <span class="no">push</span> <span class="no">eax</span>
+</span></span><span class="line"><span class="cl"><span class="err">004023</span><span class="nf">CC</span>   <span class="p">.</span>  <span class="no">FF15</span> <span class="mi">04414000</span> <span class="no">call</span> <span class="no">dword</span> <span class="no">ptr</span> <span class="no">ds</span><span class="p">:[</span><span class="err">&lt;&amp;</span><span class="no">MSVBVM50.__vbaHresultCheckObj</span><span class="err">&gt;&gt;</span><span class="c1">;  msvbvm50.__vbaHresultCheckObj
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="err">004023</span><span class="nf">D2</span>   <span class="err">&gt;</span>  <span class="mi">56</span>            <span class="no">push</span> <span class="no">esi</span>
+</span></span><span class="line"><span class="cl"><span class="err">004023</span><span class="nf">D3</span>   <span class="p">.</span>  <span class="no">FF95</span> <span class="mi">3</span><span class="no">CFFFFFF</span> <span class="no">call</span> <span class="no">dword</span> <span class="no">ptr</span> <span class="no">ss</span><span class="p">:[</span><span class="no">ebp-0xC4</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="err">004023</span><span class="nf">D9</span>   <span class="p">.</span>  <span class="mi">8</span><span class="no">D55</span> <span class="no">D8</span>       <span class="no">lea</span> <span class="no">edx</span><span class="p">,</span><span class="no">dword</span> <span class="no">ptr</span> <span class="no">ss</span><span class="p">:[</span><span class="no">ebp-0x28</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="err">004023</span><span class="nf">DC</span>   <span class="p">.</span>  <span class="mi">50</span>            <span class="no">push</span> <span class="no">eax</span>
+</span></span><span class="line"><span class="cl"><span class="err">004023</span><span class="nf">DD</span>   <span class="p">.</span>  <span class="mi">52</span>            <span class="no">push</span> <span class="no">edx</span>
+</span></span><span class="line"><span class="cl"><span class="err">004023</span><span class="nf">DE</span>   <span class="p">.</span>  <span class="no">FF15</span> <span class="mi">0</span><span class="no">C414000</span> <span class="no">call</span> <span class="no">dword</span> <span class="no">ptr</span> <span class="no">ds</span><span class="p">:[</span><span class="err">&lt;&amp;</span><span class="no">MSVBVM50.__vbaObjSet</span><span class="err">&gt;</span><span class="p">]</span>         <span class="c1">;  msvbvm50.__vbaObjSet
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="err">004023</span><span class="nf">E4</span>   <span class="p">.</span>  <span class="mi">8</span><span class="no">BD8</span>          <span class="no">mov</span> <span class="no">ebx</span><span class="p">,</span><span class="no">eax</span>
+</span></span><span class="line"><span class="cl"><span class="err">004023</span><span class="nf">E6</span>   <span class="p">.</span>  <span class="mi">8</span><span class="no">D4D</span> <span class="no">E4</span>       <span class="no">lea</span> <span class="no">ecx</span><span class="p">,</span><span class="no">dword</span> <span class="no">ptr</span> <span class="no">ss</span><span class="p">:[</span><span class="no">ebp-0x1C</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="err">004023</span><span class="nf">E9</span>   <span class="p">.</span>  <span class="mi">51</span>            <span class="no">push</span> <span class="no">ecx</span>
+</span></span><span class="line"><span class="cl"><span class="err">004023</span><span class="nf">EA</span>   <span class="p">.</span>  <span class="mi">53</span>            <span class="no">push</span> <span class="no">ebx</span>
+</span></span><span class="line"><span class="cl"><span class="err">004023</span><span class="nf">EB</span>   <span class="p">.</span>  <span class="mi">8</span><span class="no">B03</span>          <span class="no">mov</span> <span class="no">eax</span><span class="p">,</span><span class="no">dword</span> <span class="no">ptr</span> <span class="no">ds</span><span class="p">:[</span><span class="no">ebx</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="err">004023</span><span class="nf">ED</span>   <span class="p">.</span>  <span class="no">FF90</span> <span class="no">A0000000</span> <span class="no">call</span> <span class="no">dword</span> <span class="no">ptr</span> <span class="no">ds</span><span class="p">:[</span><span class="no">eax</span><span class="err">+</span><span class="mi">0xA0</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="err">004023</span><span class="nf">F3</span>   <span class="p">.</span>  <span class="mi">3</span><span class="no">BC7</span>          <span class="no">cmp</span> <span class="no">eax</span><span class="p">,</span><span class="no">edi</span>
+</span></span><span class="line"><span class="cl"><span class="err">004023</span><span class="nf">F5</span>   <span class="p">.</span>  <span class="mi">7</span><span class="no">D</span> <span class="mi">12</span>         <span class="no">jge</span> <span class="no">short</span> <span class="no">Afkayas_.00402409</span>
+</span></span><span class="line"><span class="cl"><span class="err">004023</span><span class="nf">F7</span>   <span class="p">.</span>  <span class="mi">68</span> <span class="no">A0000000</span>   <span class="no">push</span> <span class="mi">0xA0</span>
+</span></span><span class="line"><span class="cl"><span class="err">004023</span><span class="nf">FC</span>   <span class="p">.</span>  <span class="mi">68</span> <span class="mi">5</span><span class="no">C1B4000</span>   <span class="no">push</span> <span class="no">Afkayas_.00401B5C</span>
+</span></span><span class="line"><span class="cl"><span class="err">00402401</span>   <span class="err">.</span>  <span class="err">53</span>            <span class="nf">push</span> <span class="no">ebx</span>
+</span></span><span class="line"><span class="cl"><span class="err">00402402</span>   <span class="err">.</span>  <span class="err">50</span>            <span class="nf">push</span> <span class="no">eax</span>
+</span></span><span class="line"><span class="cl"><span class="err">00402403</span>   <span class="err">.</span>  <span class="nf">FF15</span> <span class="mi">04414000</span> <span class="no">call</span> <span class="no">dword</span> <span class="no">ptr</span> <span class="no">ds</span><span class="p">:[</span><span class="err">&lt;&amp;</span><span class="no">MSVBVM50.__vbaHresultCheckObj</span><span class="err">&gt;&gt;</span><span class="c1">;  msvbvm50.__vbaHresultCheckObj
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="err">00402409</span>   <span class="err">&gt;</span>  <span class="err">8</span><span class="nf">B95</span> <span class="mi">50</span><span class="no">FFFFFF</span> <span class="no">mov</span> <span class="no">edx</span><span class="p">,</span><span class="no">dword</span> <span class="no">ptr</span> <span class="no">ss</span><span class="p">:[</span><span class="no">ebp-0xB0</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="err">0040240</span><span class="nf">F</span>   <span class="p">.</span>  <span class="mi">8</span><span class="no">B45</span> <span class="no">E4</span>       <span class="no">mov</span> <span class="no">eax</span><span class="p">,</span><span class="no">dword</span> <span class="no">ptr</span> <span class="no">ss</span><span class="p">:[</span><span class="no">ebp-0x1C</span><span class="p">]</span>                     <span class="c1">;  用户名：111222
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="err">00402412</span>   <span class="err">.</span>  <span class="err">50</span>            <span class="nf">push</span> <span class="no">eax</span>                                            <span class="c1">; /用户名：111222
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="err">00402413</span>   <span class="err">.</span>  <span class="err">8</span><span class="nf">B1A</span>          <span class="no">mov</span> <span class="no">ebx</span><span class="p">,</span><span class="no">dword</span> <span class="no">ptr</span> <span class="no">ds</span><span class="p">:[</span><span class="no">edx</span><span class="p">]</span>                          <span class="c1">; |
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="err">00402415</span>   <span class="err">.</span>  <span class="nf">FF15</span> <span class="no">E4404000</span> <span class="no">call</span> <span class="no">dword</span> <span class="no">ptr</span> <span class="no">ds</span><span class="p">:[</span><span class="err">&lt;&amp;</span><span class="no">MSVBVM50.__vbaLenBstr</span><span class="err">&gt;</span><span class="p">]</span>        <span class="c1">; \__vbaLenBstr
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="err">0040241</span><span class="nf">B</span>   <span class="p">.</span>  <span class="mi">8</span><span class="no">BF8</span>          <span class="no">mov</span> <span class="no">edi</span><span class="p">,</span><span class="no">eax</span>                                         <span class="c1">;  用户名长度：0x6
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="err">0040241</span><span class="nf">D</span>   <span class="p">.</span>  <span class="mi">8</span><span class="no">B4D</span> <span class="no">E8</span>       <span class="no">mov</span> <span class="no">ecx</span><span class="p">,</span><span class="no">dword</span> <span class="no">ptr</span> <span class="no">ss</span><span class="p">:[</span><span class="no">ebp-0x18</span><span class="p">]</span>                     <span class="c1">;  ecx保存的是用户名的地址
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="err">00402420</span>   <span class="err">.</span>  <span class="err">69</span><span class="nf">FF</span> <span class="no">FB7C0100</span> <span class="no">imul</span> <span class="no">edi</span><span class="p">,</span><span class="no">edi</span><span class="p">,</span><span class="mi">0x17CFB</span>                                <span class="c1">;  edi = 用户名长度 * 0x17CFB == 0x8EDE2
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="err">00402426</span>   <span class="err">.</span>  <span class="err">51</span>            <span class="nf">push</span> <span class="no">ecx</span>                                            <span class="c1">; /String = 00000001 ???
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="err">00402427</span>   <span class="err">.</span>  <span class="err">0</span><span class="nf">F80</span> <span class="mi">91020000</span> <span class="no">jo</span> <span class="no">Afkayas_.004026BE</span>                                <span class="c1">; |
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="err">0040242</span><span class="nf">D</span>   <span class="p">.</span>  <span class="no">FF15</span> <span class="no">F8404000</span> <span class="no">call</span> <span class="no">dword</span> <span class="no">ptr</span> <span class="no">ds</span><span class="p">:[</span><span class="err">&lt;&amp;</span><span class="no">MSVBVM50.</span><span class="c1">#rtcAnsiValueBstr_516&gt;; \rtcAnsiValueBstr
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="err">00402433</span>   <span class="err">.</span>  <span class="err">0</span><span class="nf">FBFD0</span>        <span class="no">movsx</span> <span class="no">edx</span><span class="p">,</span><span class="no">ax</span>                                        <span class="c1">;  取得用户名的第一个字节：0x31
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="err">00402436</span>   <span class="err">.</span>  <span class="err">03</span><span class="nf">FA</span>          <span class="no">add</span> <span class="no">edi</span><span class="p">,</span><span class="no">edx</span>                                         <span class="c1">;  0x8EDE2 + 0x31 = 0x8EE13
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="err">00402438</span>   <span class="err">.</span>  <span class="err">0</span><span class="nf">F80</span> <span class="mi">80020000</span> <span class="no">jo</span> <span class="no">Afkayas_.004026BE</span>
+</span></span><span class="line"><span class="cl"><span class="err">0040243</span><span class="nf">E</span>   <span class="p">.</span>  <span class="mi">57</span>            <span class="no">push</span> <span class="no">edi</span>
+</span></span><span class="line"><span class="cl"><span class="err">0040243</span><span class="nf">F</span>   <span class="p">.</span>  <span class="no">FF15</span> <span class="no">E0404000</span> <span class="no">call</span> <span class="no">dword</span> <span class="no">ptr</span> <span class="no">ds</span><span class="p">:[</span><span class="err">&lt;&amp;</span><span class="no">MSVBVM50.__vbaStrI4</span><span class="err">&gt;</span><span class="p">]</span>          <span class="c1">;  将无符号数转为10进制字符串
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="err">00402445</span>   <span class="err">.</span>  <span class="err">8</span><span class="nf">BD0</span>          <span class="no">mov</span> <span class="no">edx</span><span class="p">,</span><span class="no">eax</span>                                         <span class="c1">;  edx = &#34;585235&#34;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="err">00402447</span>   <span class="err">.</span>  <span class="err">8</span><span class="nf">D4D</span> <span class="no">E0</span>       <span class="no">lea</span> <span class="no">ecx</span><span class="p">,</span><span class="no">dword</span> <span class="no">ptr</span> <span class="no">ss</span><span class="p">:[</span><span class="no">ebp-0x20</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="err">0040244</span><span class="nf">A</span>   <span class="p">.</span>  <span class="no">FF15</span> <span class="mi">70414000</span> <span class="no">call</span> <span class="no">dword</span> <span class="no">ptr</span> <span class="no">ds</span><span class="p">:[</span><span class="err">&lt;&amp;</span><span class="no">MSVBVM50.__vbaStrMove</span><span class="err">&gt;</span><span class="p">]</span>        <span class="c1">;  msvbvm50.__vbaStrMove
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="err">00402450</span>   <span class="err">.</span>  <span class="err">8</span><span class="nf">BBD</span> <span class="mi">50</span><span class="no">FFFFFF</span> <span class="no">mov</span> <span class="no">edi</span><span class="p">,</span><span class="no">dword</span> <span class="no">ptr</span> <span class="no">ss</span><span class="p">:[</span><span class="no">ebp-0xB0</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="err">00402456</span>   <span class="err">.</span>  <span class="err">50</span>            <span class="nf">push</span> <span class="no">eax</span>
+</span></span><span class="line"><span class="cl"><span class="err">00402457</span>   <span class="err">.</span>  <span class="err">57</span>            <span class="nf">push</span> <span class="no">edi</span>
+</span></span><span class="line"><span class="cl"><span class="err">00402458</span>   <span class="err">.</span>  <span class="nf">FF93</span> <span class="no">A4000000</span> <span class="no">call</span> <span class="no">dword</span> <span class="no">ptr</span> <span class="no">ds</span><span class="p">:[</span><span class="no">ebx</span><span class="err">+</span><span class="mi">0xA4</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="err">0040245</span><span class="nf">E</span>   <span class="p">.</span>  <span class="mi">85</span><span class="no">C0</span>          <span class="no">test</span> <span class="no">eax</span><span class="p">,</span><span class="no">eax</span>
+</span></span><span class="line"><span class="cl"><span class="err">00402460</span>   <span class="err">.</span>  <span class="err">7</span><span class="nf">D</span> <span class="mi">12</span>         <span class="no">jge</span> <span class="no">short</span> <span class="no">Afkayas_.00402474</span>
+</span></span><span class="line"><span class="cl"><span class="err">00402462</span>   <span class="err">.</span>  <span class="err">68</span> <span class="nf">A4000000</span>   <span class="no">push</span> <span class="mi">0xA4</span>
+</span></span><span class="line"><span class="cl"><span class="err">00402467</span>   <span class="err">.</span>  <span class="err">68</span> <span class="err">5</span><span class="nf">C1B4000</span>   <span class="no">push</span> <span class="no">Afkayas_.00401B5C</span>
+</span></span><span class="line"><span class="cl"><span class="err">0040246</span><span class="nf">C</span>   <span class="p">.</span>  <span class="mi">57</span>            <span class="no">push</span> <span class="no">edi</span>
+</span></span><span class="line"><span class="cl"><span class="err">0040246</span><span class="nf">D</span>   <span class="p">.</span>  <span class="mi">50</span>            <span class="no">push</span> <span class="no">eax</span>
+</span></span><span class="line"><span class="cl"><span class="err">0040246</span><span class="nf">E</span>   <span class="p">.</span>  <span class="no">FF15</span> <span class="mi">04414000</span> <span class="no">call</span> <span class="no">dword</span> <span class="no">ptr</span> <span class="no">ds</span><span class="p">:[</span><span class="err">&lt;&amp;</span><span class="no">MSVBVM50.__vbaHresultCheckObj</span><span class="err">&gt;&gt;</span><span class="c1">;  msvbvm50.__vbaHresultCheckObj
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="err">00402474</span>   <span class="err">&gt;</span>  <span class="err">8</span><span class="nf">D45</span> <span class="no">E0</span>       <span class="no">lea</span> <span class="no">eax</span><span class="p">,</span><span class="no">dword</span> <span class="no">ptr</span> <span class="no">ss</span><span class="p">:[</span><span class="no">ebp-0x20</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="err">00402477</span>   <span class="err">.</span>  <span class="err">8</span><span class="nf">D4D</span> <span class="no">E4</span>       <span class="no">lea</span> <span class="no">ecx</span><span class="p">,</span><span class="no">dword</span> <span class="no">ptr</span> <span class="no">ss</span><span class="p">:[</span><span class="no">ebp-0x1C</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="err">0040247</span><span class="nf">A</span>   <span class="p">.</span>  <span class="mi">50</span>            <span class="no">push</span> <span class="no">eax</span>
+</span></span><span class="line"><span class="cl"><span class="err">0040247</span><span class="nf">B</span>   <span class="p">.</span>  <span class="mi">8</span><span class="no">D55</span> <span class="no">E8</span>       <span class="no">lea</span> <span class="no">edx</span><span class="p">,</span><span class="no">dword</span> <span class="no">ptr</span> <span class="no">ss</span><span class="p">:[</span><span class="no">ebp-0x18</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="err">0040247</span><span class="nf">E</span>   <span class="p">.</span>  <span class="mi">51</span>            <span class="no">push</span> <span class="no">ecx</span>
+</span></span><span class="line"><span class="cl"><span class="err">0040247</span><span class="nf">F</span>   <span class="p">.</span>  <span class="mi">52</span>            <span class="no">push</span> <span class="no">edx</span>
+</span></span><span class="line"><span class="cl"><span class="err">00402480</span>   <span class="err">.</span>  <span class="err">6</span><span class="nf">A</span> <span class="mi">03</span>         <span class="no">push</span> <span class="mi">0x3</span>
+</span></span><span class="line"><span class="cl"><span class="err">00402482</span>   <span class="err">.</span>  <span class="nf">FF15</span> <span class="mi">5</span><span class="no">C414000</span> <span class="no">call</span> <span class="no">dword</span> <span class="no">ptr</span> <span class="no">ds</span><span class="p">:[</span><span class="err">&lt;&amp;</span><span class="no">MSVBVM50.__vbaFreeStrList</span><span class="err">&gt;</span><span class="p">]</span>    <span class="c1">;  msvbvm50.__vbaFreeStrList
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="err">00402488</span>   <span class="err">.</span>  <span class="err">83</span><span class="nf">C4</span> <span class="mi">10</span>       <span class="no">add</span> <span class="no">esp</span><span class="p">,</span><span class="mi">0x10</span>
+</span></span><span class="line"><span class="cl"><span class="err">0040248</span><span class="nf">B</span>   <span class="p">.</span>  <span class="mi">8</span><span class="no">D45</span> <span class="no">D4</span>       <span class="no">lea</span> <span class="no">eax</span><span class="p">,</span><span class="no">dword</span> <span class="no">ptr</span> <span class="no">ss</span><span class="p">:[</span><span class="no">ebp-0x2C</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="err">0040248</span><span class="nf">E</span>   <span class="p">.</span>  <span class="mi">8</span><span class="no">D4D</span> <span class="no">D8</span>       <span class="no">lea</span> <span class="no">ecx</span><span class="p">,</span><span class="no">dword</span> <span class="no">ptr</span> <span class="no">ss</span><span class="p">:[</span><span class="no">ebp-0x28</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="err">00402491</span>   <span class="err">.</span>  <span class="err">8</span><span class="nf">D55</span> <span class="no">DC</span>       <span class="no">lea</span> <span class="no">edx</span><span class="p">,</span><span class="no">dword</span> <span class="no">ptr</span> <span class="no">ss</span><span class="p">:[</span><span class="no">ebp-0x24</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="err">00402494</span>   <span class="err">.</span>  <span class="err">50</span>            <span class="nf">push</span> <span class="no">eax</span>
+</span></span><span class="line"><span class="cl"><span class="err">00402495</span>   <span class="err">.</span>  <span class="err">51</span>            <span class="nf">push</span> <span class="no">ecx</span>
+</span></span><span class="line"><span class="cl"><span class="err">00402496</span>   <span class="err">.</span>  <span class="err">52</span>            <span class="nf">push</span> <span class="no">edx</span>
+</span></span><span class="line"><span class="cl"><span class="err">00402497</span>   <span class="err">.</span>  <span class="err">6</span><span class="nf">A</span> <span class="mi">03</span>         <span class="no">push</span> <span class="mi">0x3</span>
+</span></span><span class="line"><span class="cl"><span class="err">00402499</span>   <span class="err">.</span>  <span class="nf">FF15</span> <span class="no">F4404000</span> <span class="no">call</span> <span class="no">dword</span> <span class="no">ptr</span> <span class="no">ds</span><span class="p">:[</span><span class="err">&lt;&amp;</span><span class="no">MSVBVM50.__vbaFreeObjList</span><span class="err">&gt;</span><span class="p">]</span>    <span class="c1">;  msvbvm50.__vbaFreeObjList
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="err">0040249</span><span class="nf">F</span>   <span class="p">.</span>  <span class="mi">8</span><span class="no">B06</span>          <span class="no">mov</span> <span class="no">eax</span><span class="p">,</span><span class="no">dword</span> <span class="no">ptr</span> <span class="no">ds</span><span class="p">:[</span><span class="no">esi</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="err">004024</span><span class="nf">A1</span>   <span class="p">.</span>  <span class="mi">83</span><span class="no">C4</span> <span class="mi">10</span>       <span class="no">add</span> <span class="no">esp</span><span class="p">,</span><span class="mi">0x10</span>
+</span></span><span class="line"><span class="cl"><span class="err">004024</span><span class="nf">A4</span>   <span class="p">.</span>  <span class="mi">56</span>            <span class="no">push</span> <span class="no">esi</span>
+</span></span><span class="line"><span class="cl"><span class="err">004024</span><span class="nf">A5</span>   <span class="p">.</span>  <span class="no">FF90</span> <span class="mi">04030000</span> <span class="no">call</span> <span class="no">dword</span> <span class="no">ptr</span> <span class="no">ds</span><span class="p">:[</span><span class="no">eax</span><span class="err">+</span><span class="mi">0x304</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="err">004024</span><span class="nf">AB</span>   <span class="p">.</span>  <span class="mi">8</span><span class="no">B1D</span> <span class="mi">0</span><span class="no">C414000</span> <span class="no">mov</span> <span class="no">ebx</span><span class="p">,</span><span class="no">dword</span> <span class="no">ptr</span> <span class="no">ds</span><span class="p">:[</span><span class="err">&lt;&amp;</span><span class="no">MSVBVM50.__vbaObjSet</span><span class="err">&gt;</span><span class="p">]</span>      <span class="c1">;  msvbvm50.__vbaObjSet
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="err">004024</span><span class="nf">B1</span>   <span class="p">.</span>  <span class="mi">50</span>            <span class="no">push</span> <span class="no">eax</span>
+</span></span><span class="line"><span class="cl"><span class="err">004024</span><span class="nf">B2</span>   <span class="p">.</span>  <span class="mi">8</span><span class="no">D45</span> <span class="no">DC</span>       <span class="no">lea</span> <span class="no">eax</span><span class="p">,</span><span class="no">dword</span> <span class="no">ptr</span> <span class="no">ss</span><span class="p">:[</span><span class="no">ebp-0x24</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="err">004024</span><span class="nf">B5</span>   <span class="p">.</span>  <span class="mi">50</span>            <span class="no">push</span> <span class="no">eax</span>
+</span></span><span class="line"><span class="cl"><span class="err">004024</span><span class="nf">B6</span>   <span class="p">.</span>  <span class="no">FFD3</span>          <span class="no">call</span> <span class="no">ebx</span>                                            <span class="c1">;  &lt;&amp;MSVBVM50.__vbaObjSet&gt;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="err">004024</span><span class="nf">B8</span>   <span class="p">.</span>  <span class="mi">8</span><span class="no">BF8</span>          <span class="no">mov</span> <span class="no">edi</span><span class="p">,</span><span class="no">eax</span>
+</span></span><span class="line"><span class="cl"><span class="err">004024</span><span class="nf">BA</span>   <span class="p">.</span>  <span class="mi">8</span><span class="no">D55</span> <span class="no">E8</span>       <span class="no">lea</span> <span class="no">edx</span><span class="p">,</span><span class="no">dword</span> <span class="no">ptr</span> <span class="no">ss</span><span class="p">:[</span><span class="no">ebp-0x18</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="err">004024</span><span class="nf">BD</span>   <span class="p">.</span>  <span class="mi">52</span>            <span class="no">push</span> <span class="no">edx</span>
+</span></span><span class="line"><span class="cl"><span class="err">004024</span><span class="nf">BE</span>   <span class="p">.</span>  <span class="mi">57</span>            <span class="no">push</span> <span class="no">edi</span>
+</span></span><span class="line"><span class="cl"><span class="err">004024</span><span class="nf">BF</span>   <span class="p">.</span>  <span class="mi">8</span><span class="no">B0F</span>          <span class="no">mov</span> <span class="no">ecx</span><span class="p">,</span><span class="no">dword</span> <span class="no">ptr</span> <span class="no">ds</span><span class="p">:[</span><span class="no">edi</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="err">004024</span><span class="nf">C1</span>   <span class="p">.</span>  <span class="no">FF91</span> <span class="no">A0000000</span> <span class="no">call</span> <span class="no">dword</span> <span class="no">ptr</span> <span class="no">ds</span><span class="p">:[</span><span class="no">ecx</span><span class="err">+</span><span class="mi">0xA0</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="err">004024</span><span class="nf">C7</span>   <span class="p">.</span>  <span class="mi">85</span><span class="no">C0</span>          <span class="no">test</span> <span class="no">eax</span><span class="p">,</span><span class="no">eax</span>
+</span></span><span class="line"><span class="cl"><span class="err">004024</span><span class="nf">C9</span>   <span class="p">.</span>  <span class="mi">7</span><span class="no">D</span> <span class="mi">12</span>         <span class="no">jge</span> <span class="no">short</span> <span class="no">Afkayas_.004024DD</span>
+</span></span><span class="line"><span class="cl"><span class="err">004024</span><span class="nf">CB</span>   <span class="p">.</span>  <span class="mi">68</span> <span class="no">A0000000</span>   <span class="no">push</span> <span class="mi">0xA0</span>
+</span></span><span class="line"><span class="cl"><span class="err">004024</span><span class="nf">D0</span>   <span class="p">.</span>  <span class="mi">68</span> <span class="mi">5</span><span class="no">C1B4000</span>   <span class="no">push</span> <span class="no">Afkayas_.00401B5C</span>
+</span></span><span class="line"><span class="cl"><span class="err">004024</span><span class="nf">D5</span>   <span class="p">.</span>  <span class="mi">57</span>            <span class="no">push</span> <span class="no">edi</span>
+</span></span><span class="line"><span class="cl"><span class="err">004024</span><span class="nf">D6</span>   <span class="p">.</span>  <span class="mi">50</span>            <span class="no">push</span> <span class="no">eax</span>
+</span></span><span class="line"><span class="cl"><span class="err">004024</span><span class="nf">D7</span>   <span class="p">.</span>  <span class="no">FF15</span> <span class="mi">04414000</span> <span class="no">call</span> <span class="no">dword</span> <span class="no">ptr</span> <span class="no">ds</span><span class="p">:[</span><span class="err">&lt;&amp;</span><span class="no">MSVBVM50.__vbaHresultCheckObj</span><span class="err">&gt;&gt;</span><span class="c1">;  msvbvm50.__vbaHresultCheckObj
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="err">004024</span><span class="nf">DD</span>   <span class="err">&gt;</span>  <span class="mi">56</span>            <span class="no">push</span> <span class="no">esi</span>
+</span></span><span class="line"><span class="cl"><span class="err">004024</span><span class="nf">DE</span>   <span class="p">.</span>  <span class="no">FF95</span> <span class="mi">40</span><span class="no">FFFFFF</span> <span class="no">call</span> <span class="no">dword</span> <span class="no">ptr</span> <span class="no">ss</span><span class="p">:[</span><span class="no">ebp-0xC0</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="err">004024</span><span class="nf">E4</span>   <span class="p">.</span>  <span class="mi">50</span>            <span class="no">push</span> <span class="no">eax</span>
+</span></span><span class="line"><span class="cl"><span class="err">004024</span><span class="nf">E5</span>   <span class="p">.</span>  <span class="mi">8</span><span class="no">D45</span> <span class="no">D8</span>       <span class="no">lea</span> <span class="no">eax</span><span class="p">,</span><span class="no">dword</span> <span class="no">ptr</span> <span class="no">ss</span><span class="p">:[</span><span class="no">ebp-0x28</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="err">004024</span><span class="nf">E8</span>   <span class="p">.</span>  <span class="mi">50</span>            <span class="no">push</span> <span class="no">eax</span>
+</span></span><span class="line"><span class="cl"><span class="err">004024</span><span class="nf">E9</span>   <span class="p">.</span>  <span class="no">FFD3</span>          <span class="no">call</span> <span class="no">ebx</span>
+</span></span><span class="line"><span class="cl"><span class="err">004024</span><span class="nf">EB</span>   <span class="p">.</span>  <span class="mi">8</span><span class="no">BF0</span>          <span class="no">mov</span> <span class="no">esi</span><span class="p">,</span><span class="no">eax</span>
+</span></span><span class="line"><span class="cl"><span class="err">004024</span><span class="nf">ED</span>   <span class="p">.</span>  <span class="mi">8</span><span class="no">D55</span> <span class="no">E4</span>       <span class="no">lea</span> <span class="no">edx</span><span class="p">,</span><span class="no">dword</span> <span class="no">ptr</span> <span class="no">ss</span><span class="p">:[</span><span class="no">ebp-0x1C</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="err">004024</span><span class="nf">F0</span>   <span class="p">.</span>  <span class="mi">52</span>            <span class="no">push</span> <span class="no">edx</span>
+</span></span><span class="line"><span class="cl"><span class="err">004024</span><span class="nf">F1</span>   <span class="p">.</span>  <span class="mi">56</span>            <span class="no">push</span> <span class="no">esi</span>
+</span></span><span class="line"><span class="cl"><span class="err">004024</span><span class="nf">F2</span>   <span class="p">.</span>  <span class="mi">8</span><span class="no">B0E</span>          <span class="no">mov</span> <span class="no">ecx</span><span class="p">,</span><span class="no">dword</span> <span class="no">ptr</span> <span class="no">ds</span><span class="p">:[</span><span class="no">esi</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="err">004024</span><span class="nf">F4</span>   <span class="p">.</span>  <span class="no">FF91</span> <span class="no">A0000000</span> <span class="no">call</span> <span class="no">dword</span> <span class="no">ptr</span> <span class="no">ds</span><span class="p">:[</span><span class="no">ecx</span><span class="err">+</span><span class="mi">0xA0</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="err">004024</span><span class="nf">FA</span>   <span class="p">.</span>  <span class="mi">85</span><span class="no">C0</span>          <span class="no">test</span> <span class="no">eax</span><span class="p">,</span><span class="no">eax</span>
+</span></span><span class="line"><span class="cl"><span class="err">004024</span><span class="nf">FC</span>   <span class="p">.</span>  <span class="mi">7</span><span class="no">D</span> <span class="mi">12</span>         <span class="no">jge</span> <span class="no">short</span> <span class="no">Afkayas_.00402510</span>
+</span></span><span class="line"><span class="cl"><span class="err">004024</span><span class="nf">FE</span>   <span class="p">.</span>  <span class="mi">68</span> <span class="no">A0000000</span>   <span class="no">push</span> <span class="mi">0xA0</span>
+</span></span><span class="line"><span class="cl"><span class="err">00402503</span>   <span class="err">.</span>  <span class="err">68</span> <span class="err">5</span><span class="nf">C1B4000</span>   <span class="no">push</span> <span class="no">Afkayas_.00401B5C</span>
+</span></span><span class="line"><span class="cl"><span class="err">00402508</span>   <span class="err">.</span>  <span class="err">56</span>            <span class="nf">push</span> <span class="no">esi</span>
+</span></span><span class="line"><span class="cl"><span class="err">00402509</span>   <span class="err">.</span>  <span class="err">50</span>            <span class="nf">push</span> <span class="no">eax</span>
+</span></span><span class="line"><span class="cl"><span class="err">0040250</span><span class="nf">A</span>   <span class="p">.</span>  <span class="no">FF15</span> <span class="mi">04414000</span> <span class="no">call</span> <span class="no">dword</span> <span class="no">ptr</span> <span class="no">ds</span><span class="p">:[</span><span class="err">&lt;&amp;</span><span class="no">MSVBVM50.__vbaHresultCheckObj</span><span class="err">&gt;&gt;</span><span class="c1">;  msvbvm50.__vbaHresultCheckObj
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="err">00402510</span>   <span class="err">&gt;</span>  <span class="err">8</span><span class="nf">B45</span> <span class="no">E8</span>       <span class="no">mov</span> <span class="no">eax</span><span class="p">,</span><span class="no">dword</span> <span class="no">ptr</span> <span class="no">ss</span><span class="p">:[</span><span class="no">ebp-0x18</span><span class="p">]</span>                     <span class="c1">;  输入的序列号：333444
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="err">00402513</span>   <span class="err">.</span>  <span class="err">8</span><span class="nf">B4D</span> <span class="no">E4</span>       <span class="no">mov</span> <span class="no">ecx</span><span class="p">,</span><span class="no">dword</span> <span class="no">ptr</span> <span class="no">ss</span><span class="p">:[</span><span class="no">ebp-0x1C</span><span class="p">]</span>                     <span class="c1">;  根据用户名计算的序列号：585235
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="err">00402516</span>   <span class="err">.</span>  <span class="err">8</span><span class="nf">B3D</span> <span class="mi">00414000</span> <span class="no">mov</span> <span class="no">edi</span><span class="p">,</span><span class="no">dword</span> <span class="no">ptr</span> <span class="no">ds</span><span class="p">:[</span><span class="err">&lt;&amp;</span><span class="no">MSVBVM50.__vbaStrCat</span><span class="err">&gt;</span><span class="p">]</span>      <span class="c1">;  msvbvm50.__vbaStrCat
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="err">0040251</span><span class="nf">C</span>   <span class="p">.</span>  <span class="mi">50</span>            <span class="no">push</span> <span class="no">eax</span>
+</span></span><span class="line"><span class="cl"><span class="err">0040251</span><span class="nf">D</span>   <span class="p">.</span>  <span class="mi">68</span> <span class="mi">701</span><span class="no">B4000</span>   <span class="no">push</span> <span class="no">Afkayas_.00401B70</span>                              <span class="c1">;  UNICODE &#34;AKA-&#34;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="err">00402522</span>   <span class="err">.</span>  <span class="err">51</span>            <span class="nf">push</span> <span class="no">ecx</span>                                            <span class="c1">; /String = 00000001 ???
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="err">00402523</span>   <span class="err">.</span>  <span class="nf">FFD7</span>          <span class="no">call</span> <span class="no">edi</span>                                            <span class="c1">; \__vbaStrCat
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="err">00402525</span>   <span class="err">.</span>  <span class="err">8</span><span class="nf">B1D</span> <span class="mi">70414000</span> <span class="no">mov</span> <span class="no">ebx</span><span class="p">,</span><span class="no">dword</span> <span class="no">ptr</span> <span class="no">ds</span><span class="p">:[</span><span class="err">&lt;&amp;</span><span class="no">MSVBVM50.__vbaStrMove</span><span class="err">&gt;</span><span class="p">]</span>     <span class="c1">;  msvbvm50.__vbaStrMove
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="err">0040252</span><span class="nf">B</span>   <span class="p">.</span>  <span class="mi">8</span><span class="no">BD0</span>          <span class="no">mov</span> <span class="no">edx</span><span class="p">,</span><span class="no">eax</span>                                         <span class="c1">;  拼接字符串：AKA-585235
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="err">0040252</span><span class="nf">D</span>   <span class="p">.</span>  <span class="mi">8</span><span class="no">D4D</span> <span class="no">E0</span>       <span class="no">lea</span> <span class="no">ecx</span><span class="p">,</span><span class="no">dword</span> <span class="no">ptr</span> <span class="no">ss</span><span class="p">:[</span><span class="no">ebp-0x20</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="err">00402530</span>   <span class="err">.</span>  <span class="nf">FFD3</span>          <span class="no">call</span> <span class="no">ebx</span>                                            <span class="c1">;  &lt;&amp;MSVBVM50.__vbaStrMove&gt;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="err">00402532</span>   <span class="err">.</span>  <span class="err">50</span>            <span class="nf">push</span> <span class="no">eax</span>
+</span></span><span class="line"><span class="cl"><span class="err">00402533</span>   <span class="err">.</span>  <span class="nf">FF15</span> <span class="mi">28414000</span> <span class="no">call</span> <span class="no">dword</span> <span class="no">ptr</span> <span class="no">ds</span><span class="p">:[</span><span class="err">&lt;&amp;</span><span class="no">MSVBVM50.__vbaStrCmp</span><span class="err">&gt;</span><span class="p">]</span>         <span class="c1">;  msvbvm50.__vbaStrCmp
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="err">00402539</span>   <span class="err">.</span>  <span class="err">8</span><span class="nf">BF0</span>          <span class="no">mov</span> <span class="no">esi</span><span class="p">,</span><span class="no">eax</span>
+</span></span><span class="line"><span class="cl"><span class="err">0040253</span><span class="nf">B</span>   <span class="p">.</span>  <span class="mi">8</span><span class="no">D55</span> <span class="no">E0</span>       <span class="no">lea</span> <span class="no">edx</span><span class="p">,</span><span class="no">dword</span> <span class="no">ptr</span> <span class="no">ss</span><span class="p">:[</span><span class="no">ebp-0x20</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="err">0040253</span><span class="nf">E</span>   <span class="p">.</span>  <span class="no">F7DE</span>          <span class="no">neg</span> <span class="no">esi</span>
+</span></span><span class="line"><span class="cl"><span class="err">00402540</span>   <span class="err">.</span>  <span class="err">8</span><span class="nf">D45</span> <span class="no">E8</span>       <span class="no">lea</span> <span class="no">eax</span><span class="p">,</span><span class="no">dword</span> <span class="no">ptr</span> <span class="no">ss</span><span class="p">:[</span><span class="no">ebp-0x18</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="err">00402543</span>   <span class="err">.</span>  <span class="err">52</span>            <span class="nf">push</span> <span class="no">edx</span>
+</span></span><span class="line"><span class="cl"><span class="err">00402544</span>   <span class="err">.</span>  <span class="err">1</span><span class="nf">BF6</span>          <span class="no">sbb</span> <span class="no">esi</span><span class="p">,</span><span class="no">esi</span>
+</span></span><span class="line"><span class="cl"><span class="err">00402546</span>   <span class="err">.</span>  <span class="err">8</span><span class="nf">D4D</span> <span class="no">E4</span>       <span class="no">lea</span> <span class="no">ecx</span><span class="p">,</span><span class="no">dword</span> <span class="no">ptr</span> <span class="no">ss</span><span class="p">:[</span><span class="no">ebp-0x1C</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="err">00402549</span>   <span class="err">.</span>  <span class="err">50</span>            <span class="nf">push</span> <span class="no">eax</span>
+</span></span><span class="line"><span class="cl"><span class="err">0040254</span><span class="nf">A</span>   <span class="p">.</span>  <span class="mi">46</span>            <span class="no">inc</span> <span class="no">esi</span>
+</span></span><span class="line"><span class="cl"><span class="err">0040254</span><span class="nf">B</span>   <span class="p">.</span>  <span class="mi">51</span>            <span class="no">push</span> <span class="no">ecx</span>
+</span></span><span class="line"><span class="cl"><span class="err">0040254</span><span class="nf">C</span>   <span class="p">.</span>  <span class="mi">6</span><span class="no">A</span> <span class="mi">03</span>         <span class="no">push</span> <span class="mi">0x3</span>
+</span></span><span class="line"><span class="cl"><span class="err">0040254</span><span class="nf">E</span>   <span class="p">.</span>  <span class="no">F7DE</span>          <span class="no">neg</span> <span class="no">esi</span>
+</span></span><span class="line"><span class="cl"><span class="err">00402550</span>   <span class="err">.</span>  <span class="nf">FF15</span> <span class="mi">5</span><span class="no">C414000</span> <span class="no">call</span> <span class="no">dword</span> <span class="no">ptr</span> <span class="no">ds</span><span class="p">:[</span><span class="err">&lt;&amp;</span><span class="no">MSVBVM50.__vbaFreeStrList</span><span class="err">&gt;</span><span class="p">]</span>    <span class="c1">;  msvbvm50.__vbaFreeStrList
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="err">00402556</span>   <span class="err">.</span>  <span class="err">83</span><span class="nf">C4</span> <span class="mi">10</span>       <span class="no">add</span> <span class="no">esp</span><span class="p">,</span><span class="mi">0x10</span>
+</span></span><span class="line"><span class="cl"><span class="err">00402559</span>   <span class="err">.</span>  <span class="err">8</span><span class="nf">D55</span> <span class="no">D8</span>       <span class="no">lea</span> <span class="no">edx</span><span class="p">,</span><span class="no">dword</span> <span class="no">ptr</span> <span class="no">ss</span><span class="p">:[</span><span class="no">ebp-0x28</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="err">0040255</span><span class="nf">C</span>   <span class="p">.</span>  <span class="mi">8</span><span class="no">D45</span> <span class="no">DC</span>       <span class="no">lea</span> <span class="no">eax</span><span class="p">,</span><span class="no">dword</span> <span class="no">ptr</span> <span class="no">ss</span><span class="p">:[</span><span class="no">ebp-0x24</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="err">0040255</span><span class="nf">F</span>   <span class="p">.</span>  <span class="mi">52</span>            <span class="no">push</span> <span class="no">edx</span>
+</span></span><span class="line"><span class="cl"><span class="err">00402560</span>   <span class="err">.</span>  <span class="err">50</span>            <span class="nf">push</span> <span class="no">eax</span>
+</span></span><span class="line"><span class="cl"><span class="err">00402561</span>   <span class="err">.</span>  <span class="err">6</span><span class="nf">A</span> <span class="mi">02</span>         <span class="no">push</span> <span class="mi">0x2</span>
+</span></span><span class="line"><span class="cl"><span class="err">00402563</span>   <span class="err">.</span>  <span class="nf">FF15</span> <span class="no">F4404000</span> <span class="no">call</span> <span class="no">dword</span> <span class="no">ptr</span> <span class="no">ds</span><span class="p">:[</span><span class="err">&lt;&amp;</span><span class="no">MSVBVM50.__vbaFreeObjList</span><span class="err">&gt;</span><span class="p">]</span>    <span class="c1">;  msvbvm50.__vbaFreeObjList
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="err">00402569</span>   <span class="err">.</span>  <span class="err">83</span><span class="nf">C4</span> <span class="mi">0</span><span class="no">C</span>       <span class="no">add</span> <span class="no">esp</span><span class="p">,</span><span class="mi">0xC</span>
+</span></span><span class="line"><span class="cl"><span class="err">0040256</span><span class="nf">C</span>   <span class="p">.</span>  <span class="no">B9</span> <span class="mi">04000280</span>   <span class="no">mov</span> <span class="no">ecx</span><span class="p">,</span><span class="mi">0x80020004</span>
+</span></span><span class="line"><span class="cl"><span class="err">00402571</span>   <span class="err">.</span>  <span class="nf">B8</span> <span class="mi">0</span><span class="no">A000000</span>   <span class="no">mov</span> <span class="no">eax</span><span class="p">,</span><span class="mi">0xA</span>
+</span></span><span class="line"><span class="cl"><span class="err">00402576</span>   <span class="err">.</span>  <span class="err">894</span><span class="nf">D</span> <span class="mi">9</span><span class="no">C</span>       <span class="no">mov</span> <span class="no">dword</span> <span class="no">ptr</span> <span class="no">ss</span><span class="p">:[</span><span class="no">ebp-0x64</span><span class="p">],</span><span class="no">ecx</span>
+</span></span><span class="line"><span class="cl"><span class="err">00402579</span>   <span class="err">.</span>  <span class="err">66:85</span><span class="nf">F6</span>       <span class="no">test</span> <span class="no">si</span><span class="p">,</span><span class="no">si</span>
+</span></span><span class="line"><span class="cl"><span class="err">0040257</span><span class="nf">C</span>   <span class="p">.</span>  <span class="mi">8945</span> <span class="mi">94</span>       <span class="no">mov</span> <span class="no">dword</span> <span class="no">ptr</span> <span class="no">ss</span><span class="p">:[</span><span class="no">ebp-0x6C</span><span class="p">],</span><span class="no">eax</span>
+</span></span><span class="line"><span class="cl"><span class="err">0040257</span><span class="nf">F</span>   <span class="p">.</span>  <span class="mi">894</span><span class="no">D</span> <span class="no">AC</span>       <span class="no">mov</span> <span class="no">dword</span> <span class="no">ptr</span> <span class="no">ss</span><span class="p">:[</span><span class="no">ebp-0x54</span><span class="p">],</span><span class="no">ecx</span>
+</span></span><span class="line"><span class="cl"><span class="err">00402582</span>   <span class="err">.</span>  <span class="err">8945</span> <span class="nf">A4</span>       <span class="no">mov</span> <span class="no">dword</span> <span class="no">ptr</span> <span class="no">ss</span><span class="p">:[</span><span class="no">ebp-0x5C</span><span class="p">],</span><span class="no">eax</span>
+</span></span><span class="line"><span class="cl"><span class="err">00402585</span>   <span class="err">.</span>  <span class="err">894</span><span class="nf">D</span> <span class="no">BC</span>       <span class="no">mov</span> <span class="no">dword</span> <span class="no">ptr</span> <span class="no">ss</span><span class="p">:[</span><span class="no">ebp-0x44</span><span class="p">],</span><span class="no">ecx</span>
+</span></span><span class="line"><span class="cl"><span class="err">00402588</span>   <span class="err">.</span>  <span class="err">8945</span> <span class="nf">B4</span>       <span class="no">mov</span> <span class="no">dword</span> <span class="no">ptr</span> <span class="no">ss</span><span class="p">:[</span><span class="no">ebp-0x4C</span><span class="p">],</span><span class="no">eax</span>
+</span></span><span class="line"><span class="cl"><span class="err">0040258</span><span class="nf">B</span>      <span class="mi">74</span> <span class="mi">58</span>         <span class="no">je</span> <span class="no">short</span> <span class="no">Afkayas_.004025E5</span>                          <span class="c1">;  关键的跳转
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="err">0040258</span><span class="nf">D</span>   <span class="p">.</span>  <span class="mi">68</span> <span class="mi">801</span><span class="no">B4000</span>   <span class="no">push</span> <span class="no">Afkayas_.00401B80</span>                              <span class="c1">;  UNICODE &#34;You Get It&#34;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="err">00402592</span>   <span class="err">.</span>  <span class="err">68</span> <span class="err">9</span><span class="nf">C1B4000</span>   <span class="no">push</span> <span class="no">Afkayas_.00401B9C</span>                              <span class="c1">;  ASCII &#34;\r&#34;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="err">00402597</span>   <span class="err">.</span>  <span class="nf">FFD7</span>          <span class="no">call</span> <span class="no">edi</span>
+</span></span><span class="line"><span class="cl"><span class="err">00402599</span>   <span class="err">.</span>  <span class="err">8</span><span class="nf">BD0</span>          <span class="no">mov</span> <span class="no">edx</span><span class="p">,</span><span class="no">eax</span>
+</span></span><span class="line"><span class="cl"><span class="err">0040259</span><span class="nf">B</span>   <span class="p">.</span>  <span class="mi">8</span><span class="no">D4D</span> <span class="no">E8</span>       <span class="no">lea</span> <span class="no">ecx</span><span class="p">,</span><span class="no">dword</span> <span class="no">ptr</span> <span class="no">ss</span><span class="p">:[</span><span class="no">ebp-0x18</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="err">0040259</span><span class="nf">E</span>   <span class="p">.</span>  <span class="no">FFD3</span>          <span class="no">call</span> <span class="no">ebx</span>
+</span></span><span class="line"><span class="cl"><span class="err">004025</span><span class="nf">A0</span>   <span class="p">.</span>  <span class="mi">50</span>            <span class="no">push</span> <span class="no">eax</span>
+</span></span><span class="line"><span class="cl"><span class="err">004025</span><span class="nf">A1</span>   <span class="p">.</span>  <span class="mi">68</span> <span class="no">A81B4000</span>   <span class="no">push</span> <span class="no">Afkayas_.00401BA8</span>                              <span class="c1">;  UNICODE &#34;KeyGen It Now&#34;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="err">004025</span><span class="nf">A6</span>   <span class="p">.</span>  <span class="no">FFD7</span>          <span class="no">call</span> <span class="no">edi</span>
+</span></span><span class="line"><span class="cl"><span class="err">004025</span><span class="nf">A8</span>   <span class="p">.</span>  <span class="mi">8</span><span class="no">D4D</span> <span class="mi">94</span>       <span class="no">lea</span> <span class="no">ecx</span><span class="p">,</span><span class="no">dword</span> <span class="no">ptr</span> <span class="no">ss</span><span class="p">:[</span><span class="no">ebp-0x6C</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="err">004025</span><span class="nf">AB</span>   <span class="p">.</span>  <span class="mi">8945</span> <span class="no">CC</span>       <span class="no">mov</span> <span class="no">dword</span> <span class="no">ptr</span> <span class="no">ss</span><span class="p">:[</span><span class="no">ebp-0x34</span><span class="p">],</span><span class="no">eax</span>
+</span></span><span class="line"><span class="cl"><span class="err">004025</span><span class="nf">AE</span>   <span class="p">.</span>  <span class="mi">8</span><span class="no">D55</span> <span class="no">A4</span>       <span class="no">lea</span> <span class="no">edx</span><span class="p">,</span><span class="no">dword</span> <span class="no">ptr</span> <span class="no">ss</span><span class="p">:[</span><span class="no">ebp-0x5C</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="err">004025</span><span class="nf">B1</span>   <span class="p">.</span>  <span class="mi">51</span>            <span class="no">push</span> <span class="no">ecx</span>
+</span></span><span class="line"><span class="cl"><span class="err">004025</span><span class="nf">B2</span>   <span class="p">.</span>  <span class="mi">8</span><span class="no">D45</span> <span class="no">B4</span>       <span class="no">lea</span> <span class="no">eax</span><span class="p">,</span><span class="no">dword</span> <span class="no">ptr</span> <span class="no">ss</span><span class="p">:[</span><span class="no">ebp-0x4C</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="err">004025</span><span class="nf">B5</span>   <span class="p">.</span>  <span class="mi">52</span>            <span class="no">push</span> <span class="no">edx</span>
+</span></span><span class="line"><span class="cl"><span class="err">004025</span><span class="nf">B6</span>   <span class="p">.</span>  <span class="mi">50</span>            <span class="no">push</span> <span class="no">eax</span>
+</span></span><span class="line"><span class="cl"><span class="err">004025</span><span class="nf">B7</span>   <span class="p">.</span>  <span class="mi">8</span><span class="no">D4D</span> <span class="no">C4</span>       <span class="no">lea</span> <span class="no">ecx</span><span class="p">,</span><span class="no">dword</span> <span class="no">ptr</span> <span class="no">ss</span><span class="p">:[</span><span class="no">ebp-0x3C</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="err">004025</span><span class="nf">BA</span>   <span class="p">.</span>  <span class="mi">6</span><span class="no">A</span> <span class="mi">00</span>         <span class="no">push</span> <span class="mi">0x0</span>
+</span></span><span class="line"><span class="cl"><span class="err">004025</span><span class="nf">BC</span>   <span class="p">.</span>  <span class="mi">51</span>            <span class="no">push</span> <span class="no">ecx</span>
+</span></span><span class="line"><span class="cl"><span class="err">004025</span><span class="nf">BD</span>   <span class="p">.</span>  <span class="no">C745</span> <span class="no">C4</span> <span class="mi">08000</span><span class="err">&gt;</span><span class="no">mov</span> <span class="no">dword</span> <span class="no">ptr</span> <span class="no">ss</span><span class="p">:[</span><span class="no">ebp-0x3C</span><span class="p">],</span><span class="mi">0x8</span>
+</span></span><span class="line"><span class="cl"><span class="err">004025</span><span class="nf">C4</span>   <span class="p">.</span>  <span class="no">FF15</span> <span class="mi">10414000</span> <span class="no">call</span> <span class="no">dword</span> <span class="no">ptr</span> <span class="no">ds</span><span class="p">:[</span><span class="err">&lt;&amp;</span><span class="no">MSVBVM50.</span><span class="c1">#rtcMsgBox_595&gt;]      ;  msvbvm50.rtcMsgBox
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="err">004025</span><span class="nf">CA</span>   <span class="p">.</span>  <span class="mi">8</span><span class="no">D4D</span> <span class="no">E8</span>       <span class="no">lea</span> <span class="no">ecx</span><span class="p">,</span><span class="no">dword</span> <span class="no">ptr</span> <span class="no">ss</span><span class="p">:[</span><span class="no">ebp-0x18</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="err">004025</span><span class="nf">CD</span>   <span class="p">.</span>  <span class="no">FF15</span> <span class="mi">80414000</span> <span class="no">call</span> <span class="no">dword</span> <span class="no">ptr</span> <span class="no">ds</span><span class="p">:[</span><span class="err">&lt;&amp;</span><span class="no">MSVBVM50.__vbaFreeStr</span><span class="err">&gt;</span><span class="p">]</span>        <span class="c1">;  msvbvm50.__vbaFreeStr
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="err">004025</span><span class="nf">D3</span>   <span class="p">.</span>  <span class="mi">8</span><span class="no">D55</span> <span class="mi">94</span>       <span class="no">lea</span> <span class="no">edx</span><span class="p">,</span><span class="no">dword</span> <span class="no">ptr</span> <span class="no">ss</span><span class="p">:[</span><span class="no">ebp-0x6C</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="err">004025</span><span class="nf">D6</span>   <span class="p">.</span>  <span class="mi">8</span><span class="no">D45</span> <span class="no">A4</span>       <span class="no">lea</span> <span class="no">eax</span><span class="p">,</span><span class="no">dword</span> <span class="no">ptr</span> <span class="no">ss</span><span class="p">:[</span><span class="no">ebp-0x5C</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="err">004025</span><span class="nf">D9</span>   <span class="p">.</span>  <span class="mi">52</span>            <span class="no">push</span> <span class="no">edx</span>
+</span></span><span class="line"><span class="cl"><span class="err">004025</span><span class="nf">DA</span>   <span class="p">.</span>  <span class="mi">8</span><span class="no">D4D</span> <span class="no">B4</span>       <span class="no">lea</span> <span class="no">ecx</span><span class="p">,</span><span class="no">dword</span> <span class="no">ptr</span> <span class="no">ss</span><span class="p">:[</span><span class="no">ebp-0x4C</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="err">004025</span><span class="nf">DD</span>   <span class="p">.</span>  <span class="mi">50</span>            <span class="no">push</span> <span class="no">eax</span>
+</span></span><span class="line"><span class="cl"><span class="err">004025</span><span class="nf">DE</span>   <span class="p">.</span>  <span class="mi">8</span><span class="no">D55</span> <span class="no">C4</span>       <span class="no">lea</span> <span class="no">edx</span><span class="p">,</span><span class="no">dword</span> <span class="no">ptr</span> <span class="no">ss</span><span class="p">:[</span><span class="no">ebp-0x3C</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="err">004025</span><span class="nf">E1</span>   <span class="p">.</span>  <span class="mi">51</span>            <span class="no">push</span> <span class="no">ecx</span>
+</span></span><span class="line"><span class="cl"><span class="err">004025</span><span class="nf">E2</span>   <span class="p">.</span>  <span class="mi">52</span>            <span class="no">push</span> <span class="no">edx</span>
+</span></span><span class="line"><span class="cl"><span class="err">004025</span><span class="nf">E3</span>   <span class="p">.</span>  <span class="no">EB</span> <span class="mi">56</span>         <span class="no">jmp</span> <span class="no">short</span> <span class="no">Afkayas_.0040263B</span>
+</span></span><span class="line"><span class="cl"><span class="err">004025</span><span class="nf">E5</span>   <span class="err">&gt;</span>  <span class="mi">68</span> <span class="no">C81B4000</span>   <span class="no">push</span> <span class="no">Afkayas_.00401BC8</span>                              <span class="c1">;  UNICODE &#34;You Get Wrong&#34;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="err">004025</span><span class="nf">EA</span>   <span class="p">.</span>  <span class="mi">68</span> <span class="mi">9</span><span class="no">C1B4000</span>   <span class="no">push</span> <span class="no">Afkayas_.00401B9C</span>                              <span class="c1">;  ASCII &#34;\r&#34;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="err">004025</span><span class="nf">EF</span>   <span class="p">.</span>  <span class="no">FFD7</span>          <span class="no">call</span> <span class="no">edi</span>
+</span></span><span class="line"><span class="cl"><span class="err">004025</span><span class="nf">F1</span>   <span class="p">.</span>  <span class="mi">8</span><span class="no">BD0</span>          <span class="no">mov</span> <span class="no">edx</span><span class="p">,</span><span class="no">eax</span>
+</span></span><span class="line"><span class="cl"><span class="err">004025</span><span class="nf">F3</span>   <span class="p">.</span>  <span class="mi">8</span><span class="no">D4D</span> <span class="no">E8</span>       <span class="no">lea</span> <span class="no">ecx</span><span class="p">,</span><span class="no">dword</span> <span class="no">ptr</span> <span class="no">ss</span><span class="p">:[</span><span class="no">ebp-0x18</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="err">004025</span><span class="nf">F6</span>   <span class="p">.</span>  <span class="no">FFD3</span>          <span class="no">call</span> <span class="no">ebx</span>
+</span></span><span class="line"><span class="cl"><span class="err">004025</span><span class="nf">F8</span>   <span class="p">.</span>  <span class="mi">50</span>            <span class="no">push</span> <span class="no">eax</span>
+</span></span><span class="line"><span class="cl"><span class="err">004025</span><span class="nf">F9</span>   <span class="p">.</span>  <span class="mi">68</span> <span class="no">E81B4000</span>   <span class="no">push</span> <span class="no">Afkayas_.00401BE8</span>                              <span class="c1">;  UNICODE &#34;Try Again&#34;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="err">004025</span><span class="nf">FE</span>   <span class="p">.</span>  <span class="no">FFD7</span>          <span class="no">call</span> <span class="no">edi</span>
+</span></span><span class="line"><span class="cl"><span class="err">00402600</span>   <span class="err">.</span>  <span class="err">8945</span> <span class="nf">CC</span>       <span class="no">mov</span> <span class="no">dword</span> <span class="no">ptr</span> <span class="no">ss</span><span class="p">:[</span><span class="no">ebp-0x34</span><span class="p">],</span><span class="no">eax</span>
+</span></span><span class="line"><span class="cl"><span class="err">00402603</span>   <span class="err">.</span>  <span class="err">8</span><span class="nf">D45</span> <span class="mi">94</span>       <span class="no">lea</span> <span class="no">eax</span><span class="p">,</span><span class="no">dword</span> <span class="no">ptr</span> <span class="no">ss</span><span class="p">:[</span><span class="no">ebp-0x6C</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="err">00402606</span>   <span class="err">.</span>  <span class="err">8</span><span class="nf">D4D</span> <span class="no">A4</span>       <span class="no">lea</span> <span class="no">ecx</span><span class="p">,</span><span class="no">dword</span> <span class="no">ptr</span> <span class="no">ss</span><span class="p">:[</span><span class="no">ebp-0x5C</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="err">00402609</span>   <span class="err">.</span>  <span class="err">50</span>            <span class="nf">push</span> <span class="no">eax</span>
+</span></span><span class="line"><span class="cl"><span class="err">0040260</span><span class="nf">A</span>   <span class="p">.</span>  <span class="mi">8</span><span class="no">D55</span> <span class="no">B4</span>       <span class="no">lea</span> <span class="no">edx</span><span class="p">,</span><span class="no">dword</span> <span class="no">ptr</span> <span class="no">ss</span><span class="p">:[</span><span class="no">ebp-0x4C</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="err">0040260</span><span class="nf">D</span>   <span class="p">.</span>  <span class="mi">51</span>            <span class="no">push</span> <span class="no">ecx</span>
+</span></span><span class="line"><span class="cl"><span class="err">0040260</span><span class="nf">E</span>   <span class="p">.</span>  <span class="mi">52</span>            <span class="no">push</span> <span class="no">edx</span>
+</span></span><span class="line"><span class="cl"><span class="err">0040260</span><span class="nf">F</span>   <span class="p">.</span>  <span class="mi">8</span><span class="no">D45</span> <span class="no">C4</span>       <span class="no">lea</span> <span class="no">eax</span><span class="p">,</span><span class="no">dword</span> <span class="no">ptr</span> <span class="no">ss</span><span class="p">:[</span><span class="no">ebp-0x3C</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="err">00402612</span>   <span class="err">.</span>  <span class="err">6</span><span class="nf">A</span> <span class="mi">00</span>         <span class="no">push</span> <span class="mi">0x0</span>
+</span></span><span class="line"><span class="cl"><span class="err">00402614</span>   <span class="err">.</span>  <span class="err">50</span>            <span class="nf">push</span> <span class="no">eax</span>
+</span></span><span class="line"><span class="cl"><span class="err">00402615</span>   <span class="err">.</span>  <span class="nf">C745</span> <span class="no">C4</span> <span class="mi">08000</span><span class="err">&gt;</span><span class="no">mov</span> <span class="no">dword</span> <span class="no">ptr</span> <span class="no">ss</span><span class="p">:[</span><span class="no">ebp-0x3C</span><span class="p">],</span><span class="mi">0x8</span>
+</span></span><span class="line"><span class="cl"><span class="err">0040261</span><span class="nf">C</span>   <span class="p">.</span>  <span class="no">FF15</span> <span class="mi">10414000</span> <span class="no">call</span> <span class="no">dword</span> <span class="no">ptr</span> <span class="no">ds</span><span class="p">:[</span><span class="err">&lt;&amp;</span><span class="no">MSVBVM50.</span><span class="c1">#rtcMsgBox_595&gt;]      ;  错误提示消息框
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="err">00402622</span>   <span class="err">.</span>  <span class="err">8</span><span class="nf">D4D</span> <span class="no">E8</span>       <span class="no">lea</span> <span class="no">ecx</span><span class="p">,</span><span class="no">dword</span> <span class="no">ptr</span> <span class="no">ss</span><span class="p">:[</span><span class="no">ebp-0x18</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="err">00402625</span>   <span class="err">.</span>  <span class="nf">FF15</span> <span class="mi">80414000</span> <span class="no">call</span> <span class="no">dword</span> <span class="no">ptr</span> <span class="no">ds</span><span class="p">:[</span><span class="err">&lt;&amp;</span><span class="no">MSVBVM50.__vbaFreeStr</span><span class="err">&gt;</span><span class="p">]</span>        <span class="c1">;  msvbvm50.__vbaFreeStr
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>分析得出：先取出注册码的长度len, 然后取出注册码第一个字符的ANSI值cName, 让后计算len*0x17CFB+cName,将计算的值转换为10进制文本，前面加上”AKA-”组成最后的注册码。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span>
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">str_</span> <span class="o">=</span> <span class="s">&#34;111222&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">len_</span> <span class="o">=</span> <span class="n">strlen</span><span class="p">(</span><span class="n">str_</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">	<span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">cnt</span> <span class="o">=</span> <span class="n">len_</span> <span class="o">*</span> <span class="mh">0x17CFB</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="n">cnt</span> <span class="o">+=</span> <span class="n">str_</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="n">printf</span><span class="p">(</span><span class="s">&#34;Serial: AKA-%d</span><span class="se">\r\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">cnt</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></div><div class="post-footer" id="post-footer">
+  <div class="post-info">
+    <div class="post-info-line">
+      <div class="post-info-mod">
+        <span title="Updated on 2023-07-29 00:00:00">Updated on 2023-07-29&nbsp;</span>
+      </div><div class="post-info-license">
+          <span><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span>
+        </div></div>
+    <div class="post-info-line">
+      <div class="post-info-md"></div>
+      <div class="post-info-share">
+        <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://cui-jiang-tao.github.io/posts/160_crackme/002/" data-title="160个CrackMe之002" data-hashtags="破解"><i class="fa-brands fa-twitter fa-fw" aria-hidden="true"></i></a>
+  <a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://cui-jiang-tao.github.io/posts/160_crackme/002/" data-hashtag="破解"><i class="fa-brands fa-facebook-square fa-fw" aria-hidden="true"></i></a>
+  <a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="https://cui-jiang-tao.github.io/posts/160_crackme/002/" data-title="160个CrackMe之002"><i class="fa-brands fa-weibo fa-fw" aria-hidden="true"></i></a>
+  </span>
+      </div>
+    </div>
+  </div>
+
+  <div class="post-info-more">
+    <section class="post-tags"><i class="fa-solid fa-tags fa-fw me-1" aria-hidden="true"></i><a href='/tags/%E7%A0%B4%E8%A7%A3/' class="post-tag">破解</a></section>
+    <section>
+      <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+    </section>
+  </div>
+
+  <div class="post-nav"><a href="/posts/160_crackme/003/" class="post-nav-item" rel="prev" title="160个CrackMe之003"><i class="fa-solid fa-angle-left fa-fw" aria-hidden="true"></i>160个CrackMe之003</a>
+      <a href="/posts/160_crackme/008/" class="post-nav-item" rel="next" title="160个CrackMe之008">160个CrackMe之008<i class="fa-solid fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+</article></main><footer class="footer">
+    <div class="footer-container"><div class="footer-line copyright" itemscope itemtype="http://schema.org/CreativeWork"><i class="fa-regular fa-copyright fa-fw" aria-hidden="true"></i>
+            <span itemprop="copyrightYear">2022 - 2023</span><span class="license footer-divider"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div><div class="footer-line statistics"></div></div>
+  </footer></div><div class="widgets"><div class="fixed-buttons animate__faster d-none"><div class="fixed-button back-to-top" role="button" aria-label="Back to Top"><i class="fa-solid fa-arrow-up fa-fw" aria-hidden="true"></i><span class="variant-numeric d-none">0%</span>
+        </div></div><div id="mask"></div><noscript>
+    <div class="noscript-warning">Theme FixIt works best with JavaScript enabled.</div>
+  </noscript>
+</div><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script src="/lib/sharer/sharer.min.js" async defer></script><script src="/lib/typeit/index.umd.js" defer></script><script src="/lib/katex/katex.min.js" defer></script><script src="/lib/katex/auto-render.min.js" defer></script><script src="/lib/katex/copy-tex.min.js" defer></script><script src="/lib/katex/mhchem.min.js" defer></script><script src="/lib/cookieconsent/cookieconsent.min.js" defer></script><script>window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":-1},"comment":{"enable":false},"cookieconsent":{"content":{"dismiss":"Got it!","link":"Learn more","message":"This website uses Cookies to improve your experience."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"data":{"typeit-header-desktop":"Home","typeit-header-title-mobile":"Home"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"typeit-header-desktop":["typeit-header-desktop"],"typeit-header-title-mobile":["typeit-header-title-mobile"]},"duration":-1,"loop":false,"speed":100}};</script><script src="/js/theme.min.js" defer></script></body>
+</html>
