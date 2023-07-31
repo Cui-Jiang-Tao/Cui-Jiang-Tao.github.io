@@ -4,20 +4,12 @@
     <link>https://cui-jiang-tao.github.io/tags/</link>
     <description>Tags - Tag - Notes</description>
     <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>cjt953899262@gmail.com (cjt)</managingEditor>
-      <webMaster>cjt953899262@gmail.com (cjt)</webMaster><lastBuildDate>Sun, 30 Jul 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://cui-jiang-tao.github.io/tags/" rel="self" type="application/rss+xml" /><item>
+      <webMaster>cjt953899262@gmail.com (cjt)</webMaster><lastBuildDate>Mon, 31 Jul 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://cui-jiang-tao.github.io/tags/" rel="self" type="application/rss+xml" /><item>
   <title>破解</title>
   <link>https://cui-jiang-tao.github.io/tags/%E7%A0%B4%E8%A7%A3/</link>
-  <pubDate>Sun, 30 Jul 2023 00:00:00 &#43;0000</pubDate>
+  <pubDate>Mon, 31 Jul 2023 00:00:00 &#43;0000</pubDate>
   <author>cjt</author>
   <guid>https://cui-jiang-tao.github.io/tags/%E7%A0%B4%E8%A7%A3/</guid>
-  <description><![CDATA[]]></description>
-</item>
-<item>
-  <title>Python</title>
-  <link>https://cui-jiang-tao.github.io/tags/python/</link>
-  <pubDate>Mon, 17 Jul 2023 00:00:00 &#43;0000</pubDate>
-  <author>cjt</author>
-  <guid>https://cui-jiang-tao.github.io/tags/python/</guid>
   <description><![CDATA[]]></description>
 </item>
 <item>
@@ -82,6 +74,14 @@
   <pubDate>Fri, 30 Dec 2022 00:00:00 &#43;0000</pubDate>
   <author>cjt</author>
   <guid>https://cui-jiang-tao.github.io/tags/cmake/</guid>
+  <description><![CDATA[]]></description>
+</item>
+<item>
+  <title>makefile</title>
+  <link>https://cui-jiang-tao.github.io/tags/makefile/</link>
+  <pubDate>Thu, 29 Dec 2022 00:00:00 &#43;0000</pubDate>
+  <author>cjt</author>
+  <guid>https://cui-jiang-tao.github.io/tags/makefile/</guid>
   <description><![CDATA[]]></description>
 </item>
 </channel>

@@ -4,15 +4,7 @@
     <link>https://cui-jiang-tao.github.io/categories/python/</link>
     <description>Python - Category - Notes</description>
     <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>cjt953899262@gmail.com (cjt)</managingEditor>
-      <webMaster>cjt953899262@gmail.com (cjt)</webMaster><lastBuildDate>Mon, 17 Jul 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://cui-jiang-tao.github.io/categories/python/" rel="self" type="application/rss+xml" /><item>
-  <title>Python核心编程</title>
-  <link>https://cui-jiang-tao.github.io/posts/python/python%E6%A0%B8%E5%BF%83%E7%BC%96%E7%A8%8B/</link>
-  <pubDate>Mon, 17 Jul 2023 00:00:00 &#43;0000</pubDate>
-  <author>cjt</author>
-  <guid>https://cui-jiang-tao.github.io/posts/python/python%E6%A0%B8%E5%BF%83%E7%BC%96%E7%A8%8B/</guid>
-  <description><![CDATA[1. 正则表达式 正则表达式为高级的文本模式匹配、抽取、与/或文本形式的搜索和替换功能提供了基础。简单地说，正则表达式（简称为 regex）是一些由]]></description>
-</item>
-<item>
+      <webMaster>cjt953899262@gmail.com (cjt)</webMaster><lastBuildDate>Tue, 27 Jun 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://cui-jiang-tao.github.io/categories/python/" rel="self" type="application/rss+xml" /><item>
   <title>Python小工具</title>
   <link>https://cui-jiang-tao.github.io/posts/tools/python%E5%B0%8F%E5%B7%A5%E5%85%B7/</link>
   <pubDate>Tue, 27 Jun 2023 00:00:00 &#43;0000</pubDate>
