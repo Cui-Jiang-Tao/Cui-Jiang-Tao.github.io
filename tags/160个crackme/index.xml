@@ -1,10 +1,10 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
   <channel>
-    <title>逆向 - Category - Notes</title>
-    <link>https://cui-jiang-tao.github.io/categories/%E9%80%86%E5%90%91/</link>
-    <description>逆向 - Category - Notes</description>
+    <title>160个CrackMe - Tag - Notes</title>
+    <link>https://cui-jiang-tao.github.io/tags/160%E4%B8%AAcrackme/</link>
+    <description>160个CrackMe - Tag - Notes</description>
     <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>cjt953899262@gmail.com (cjt)</managingEditor>
-      <webMaster>cjt953899262@gmail.com (cjt)</webMaster><lastBuildDate>Tue, 01 Aug 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://cui-jiang-tao.github.io/categories/%E9%80%86%E5%90%91/" rel="self" type="application/rss+xml" /><item>
+      <webMaster>cjt953899262@gmail.com (cjt)</webMaster><lastBuildDate>Tue, 01 Aug 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://cui-jiang-tao.github.io/tags/160%E4%B8%AAcrackme/" rel="self" type="application/rss+xml" /><item>
   <title>160个CrackMe之020</title>
   <link>https://cui-jiang-tao.github.io/posts/160_crackme/020/</link>
   <pubDate>Tue, 01 Aug 2023 00:00:00 &#43;0000</pubDate>

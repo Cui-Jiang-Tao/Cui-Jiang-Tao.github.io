@@ -10,7 +10,7 @@
 <meta name="description" content="标志位 在汇编语言中，标志位是用于标识CPU执行指令时出现的一些状态信息的标志。常见的标志位包括： 零标志位（ZF）：当指令执行的结果为零时，该" /><meta name="keywords" content='c/c&#43;&#43;' /><meta itemprop="name" content="常见的汇编指令">
 <meta itemprop="description" content="标志位 在汇编语言中，标志位是用于标识CPU执行指令时出现的一些状态信息的标志。常见的标志位包括： 零标志位（ZF）：当指令执行的结果为零时，该"><meta itemprop="datePublished" content="2023-03-20T00:00:00+00:00" />
 <meta itemprop="dateModified" content="2023-03-20T00:00:00+00:00" />
-<meta itemprop="wordCount" content="18616">
+<meta itemprop="wordCount" content="19537">
 <meta itemprop="keywords" content="c/c&#43;&#43;," /><meta property="og:title" content="常见的汇编指令" />
 <meta property="og:description" content="标志位 在汇编语言中，标志位是用于标识CPU执行指令时出现的一些状态信息的标志。常见的标志位包括： 零标志位（ZF）：当指令执行的结果为零时，该" />
 <meta property="og:type" content="article" />
@@ -32,7 +32,7 @@
     "mainEntityOfPage": {
       "@type": "WebPage",
       "@id": "https:\/\/cui-jiang-tao.github.io\/posts\/x86%E5%B8%B8%E8%A7%81%E6%B1%87%E7%BC%96%E6%8C%87%E4%BB%A4\/"
-    },"genre": "posts","keywords": "c\/c\u002b\u002b","wordcount":  18616 ,
+    },"genre": "posts","keywords": "c\/c\u002b\u002b","wordcount":  19537 ,
     "url": "https:\/\/cui-jiang-tao.github.io\/posts\/x86%E5%B8%B8%E8%A7%81%E6%B1%87%E7%BC%96%E6%8C%87%E4%BB%A4\/","datePublished": "2023-03-20T00:00:00+00:00","dateModified": "2023-03-20T00:00:00+00:00","publisher": {
       "@type": "Organization",
       "name": ""},"author": {
@@ -117,7 +117,7 @@
       <div class="post-meta-line"><span class="post-author"><span class="author"><i class="fa-solid fa-user-circle" aria-hidden="true"></i>
       cjt</span></span>
           <span class="post-category">included in <a href="/categories/%E9%80%86%E5%90%91/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 逆向</a></span></div>
-      <div class="post-meta-line"><span title="published on 2023-03-20 00:00:00"><i class="fa-regular fa-calendar-alt fa-fw me-1" aria-hidden="true"></i><time datetime="2023-03-20">2023-03-20</time></span>&nbsp;<span title="Updated on 2023-03-20 00:00:00"><i class="fa-regular fa-edit fa-fw me-1" aria-hidden="true"></i><time datetime="2023-03-20">2023-03-20</time></span>&nbsp;<span><i class="fa-solid fa-pencil-alt fa-fw me-1" aria-hidden="true"></i>18616 words</span>&nbsp;<span><i class="fa-regular fa-clock fa-fw me-1" aria-hidden="true"></i>38 minutes</span>&nbsp;</div>
+      <div class="post-meta-line"><span title="published on 2023-03-20 00:00:00"><i class="fa-regular fa-calendar-alt fa-fw me-1" aria-hidden="true"></i><time datetime="2023-03-20">2023-03-20</time></span>&nbsp;<span title="Updated on 2023-03-20 00:00:00"><i class="fa-regular fa-edit fa-fw me-1" aria-hidden="true"></i><time datetime="2023-03-20">2023-03-20</time></span>&nbsp;<span><i class="fa-solid fa-pencil-alt fa-fw me-1" aria-hidden="true"></i>19537 words</span>&nbsp;<span><i class="fa-regular fa-clock fa-fw me-1" aria-hidden="true"></i>39 minutes</span>&nbsp;</div>
     </div><div class="details toc" id="toc-static" data-kept="false">
         <div class="details-summary toc-title">
           <span>Contents</span>
@@ -180,6 +180,8 @@
         <li><a href="#xorps---xmm0-xmm0"><code>xorps   xmm0, xmm0</code></a></li>
         <li><a href="#movups--xmmword-ptr-ebpbuffer1-xmm0"><code>movups  xmmword ptr [ebp+buffer+1], xmm0</code></a></li>
         <li><a href="#rep-movsd"><code>rep movsd</code></a></li>
+        <li><a href="#cdq"><code>cdq</code></a></li>
+        <li><a href="#adc"><code>adc</code></a></li>
       </ul>
     </li>
     <li><a href="#特殊的一些指令或函数">特殊的一些指令或函数</a>
@@ -910,6 +912,84 @@ JNS Label    ; 如果AX为非负数，则跳转到Label处
 <li>MOVSD：这是一个x86/x64指令，用于将一个双字(32位)宽的值从源操作数指向的内存地址复制到目标操作数指向的内存地址中，并更新指针以指向下一个位置。</li>
 </ul>
 <p>因此，该代码的含义是将源操作数指向的存储区域中的双字(32位)块复制到以EDI寄存器指向的目标操作数指向的存储区域中，并更新指针以指向下一个位置，重复执行ECX次数。Movsd指令是重复执行的，因此在该指令之前必须将源操作数指针(ESI)、目标操作数指针(EDI)和重复次数(ECX)传递给CPU。此外，该指令是有副作用的，即会更新ESI和EDI指针，因此在使用之前应该确保源操作数和目标操作数指针指向的内存区域是合法的，并且确保该指令不会破坏程序的其他部分。需要根据上下文和程序的目的来理解代码的具体含义。</p>
+<h3 id="cdq"><code>cdq</code></h3>
+<p>在x86汇编中， <code>cdq</code> 指令用于将32位有符号整数扩展为64位有符号整数。它的作用是将存储在 <code>EDX:EAX</code> 寄存器对中的32位有符号数扩展为64位有符号数，其中 <code>EDX</code> 寄存器存储高32位， <code>EAX</code> 寄存器存储低32位。
+以下是一个示例代码，演示了如何使用 <code>cdq</code> 指令：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">assembly</span>
+</span></span><span class="line"><span class="cl"><span class="nf">section</span> <span class="no">.data</span>
+</span></span><span class="line"><span class="cl">   <span class="nf">num</span> <span class="no">dd</span> <span class="p">-</span><span class="mi">12345678</span>  <span class="c1">; 32位有符号整数
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">section</span> <span class="no">.text</span>
+</span></span><span class="line"><span class="cl">   <span class="nf">global</span> <span class="no">_start</span>
+</span></span><span class="line"><span class="cl"><span class="nl">_start:</span>
+</span></span><span class="line"><span class="cl">   <span class="nf">mov</span> <span class="no">eax</span><span class="p">,</span> <span class="no">dword</span> <span class="p">[</span><span class="no">num</span><span class="p">]</span>  <span class="c1">; 将32位整数加载到EAX寄存器
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>   <span class="nf">cdq</span>                   <span class="c1">; 扩展EAX到EDX:EAX
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="c1">; 现在，EDX存储高32位，EAX存储低32位
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>   <span class="c1">; 可以在这里使用这些寄存器进行计算或其他操作
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="c1">; 退出程序
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>   <span class="nf">mov</span> <span class="no">eax</span><span class="p">,</span> <span class="mi">1</span>            <span class="c1">; 系统调用号1表示退出程序
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>   <span class="nf">xor</span> <span class="no">ebx</span><span class="p">,</span> <span class="no">ebx</span>          <span class="c1">; 返回值为0
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>   <span class="nf">int</span> <span class="mi">0x80</span>              <span class="c1">; 调用系统调用
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>在上面的示例中，我们将一个32位有符号整数(-12345678)加载到 <code>EAX</code> 寄存器中。然后，我们使用 <code>cdq</code> 指令将其扩展为64位有符号整数，其中高32位存储在 <code>EDX</code> 寄存器中，低32位存储在 <code>EAX</code> 寄存器中。你可以在 <code>cdq</code> 之后使用这些寄存器进行计算或其他操作。
+请注意，这个示例是使用x86汇编语言编写的，具体的语法和指令可能会因不同的汇编器或编译器而有所变化。</p>
+<h3 id="adc"><code>adc</code></h3>
+<p>汇编指令  <code>adc edx, dword ptr ss:[esp+0x4]</code>  是用于执行带进位的加法操作。它将从栈顶偏移地址加上一个32位双字（dword）值，并将结果与 <code>EDX</code> 寄存器中的值相加，同时考虑进位标志（carry flag）。
+下面是一个示例代码，演示了如何使用 <code>adc</code> 指令：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">assembly</span>
+</span></span><span class="line"><span class="cl"><span class="nf">section</span> <span class="no">.text</span>
+</span></span><span class="line"><span class="cl">   <span class="nf">global</span> <span class="no">_start</span>
+</span></span><span class="line"><span class="cl"><span class="nl">_start:</span>
+</span></span><span class="line"><span class="cl">   <span class="nf">mov</span> <span class="no">eax</span><span class="p">,</span> <span class="mi">10</span>                <span class="c1">; 将10加载到EAX寄存器
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>   <span class="nf">mov</span> <span class="no">edx</span><span class="p">,</span> <span class="mi">20</span>                <span class="c1">; 将20加载到EDX寄存器
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>   <span class="nf">add</span> <span class="no">eax</span><span class="p">,</span> <span class="no">dword</span> <span class="p">[</span><span class="no">esp</span><span class="err">+</span><span class="mi">0x4</span><span class="p">]</span>   <span class="c1">; 将栈顶偏移地址处的32位值加到EAX寄存器
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>   <span class="nf">adc</span> <span class="no">edx</span><span class="p">,</span> <span class="no">dword</span> <span class="p">[</span><span class="no">esp</span><span class="err">+</span><span class="mi">0x4</span><span class="p">]</span>   <span class="c1">; 将栈顶偏移地址处的32位值加到EDX寄存器，并考虑进位
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>   <span class="c1">; 现在，EAX和EDX分别存储了相加结果的低32位和高32位
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>   <span class="c1">; 可以在这里使用这些寄存器进行进一步的计算或其他操作
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>   <span class="c1">; 退出程序
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>   <span class="nf">mov</span> <span class="no">eax</span><span class="p">,</span> <span class="mi">1</span>                 <span class="c1">; 系统调用号1表示退出程序
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>   <span class="nf">xor</span> <span class="no">ebx</span><span class="p">,</span> <span class="no">ebx</span>               <span class="c1">; 返回值为0
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>   <span class="nf">int</span> <span class="mi">0x80</span>                   <span class="c1">; 调用系统调用
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>在上面的示例中，我们将10加载到 <code>EAX</code> 寄存器，将20加载到 <code>EDX</code> 寄存器。然后，我们使用 <code>adc</code> 指令将栈顶偏移地址处的32位值加到 <code>EDX</code> 寄存器，并考虑进位。同时，我们将栈顶偏移地址处的32位值加到 <code>EAX</code> 寄存器，不考虑进位。最后， <code>EAX</code> 和 <code>EDX</code> 分别存储了相加结果的低32位和高32位。
+请注意，这个示例是使用x86汇编语言编写的，具体的语法和指令可能会因不同的汇编器或编译器而有所变化。</p>
 <h2 id="特殊的一些指令或函数">特殊的一些指令或函数</h2>
 <h3 id="align-10h"><code>align 10h</code></h3>
 <p>这段汇编代码的含义是：将当前位置调整为16字节对齐。</p>

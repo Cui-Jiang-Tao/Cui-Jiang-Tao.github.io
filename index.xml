@@ -4,9 +4,41 @@
     <link>https://cui-jiang-tao.github.io/</link>
     <description>Notes</description>
     <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>cjt953899262@gmail.com (cjt)</managingEditor>
-      <webMaster>cjt953899262@gmail.com (cjt)</webMaster><lastBuildDate>Mon, 31 Jul 2023 00:00:00 &#43;0000</lastBuildDate>
+      <webMaster>cjt953899262@gmail.com (cjt)</webMaster><lastBuildDate>Tue, 01 Aug 2023 00:00:00 &#43;0000</lastBuildDate>
       <atom:link href="https://cui-jiang-tao.github.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
+  <title>160个CrackMe之020</title>
+  <link>https://cui-jiang-tao.github.io/posts/160_crackme/020/</link>
+  <pubDate>Tue, 01 Aug 2023 00:00:00 &#43;0000</pubDate>
+  <author>cjt</author>
+  <guid>https://cui-jiang-tao.github.io/posts/160_crackme/020/</guid>
+  <description><![CDATA[PEID查壳：WWPack32 1.x -&gt; Piotr Warezak 手工脱壳，单步跟踪。找到一个跳转比较大的，基本这里就是程序入口： 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19]]></description>
+</item>
+<item>
+  <title>160个CrackMe之025</title>
+  <link>https://cui-jiang-tao.github.io/posts/160_crackme/025/</link>
+  <pubDate>Tue, 01 Aug 2023 00:00:00 &#43;0000</pubDate>
+  <author>cjt</author>
+  <guid>https://cui-jiang-tao.github.io/posts/160_crackme/025/</guid>
+  <description><![CDATA[进入程序主界面，有5秒的倒计时，之后continue按钮激活，点击进入，输入：1234，弹出错误框，此时不要点击确定按钮，返回OD暂停(F1]]></description>
+</item>
+<item>
+  <title>160个CrackMe之027</title>
+  <link>https://cui-jiang-tao.github.io/posts/160_crackme/027/</link>
+  <pubDate>Tue, 01 Aug 2023 00:00:00 &#43;0000</pubDate>
+  <author>cjt</author>
+  <guid>https://cui-jiang-tao.github.io/posts/160_crackme/027/</guid>
+  <description><![CDATA[进入程序主界面，点击Check for CD按钮, 信息框提示 You lost。直接字符串定位： 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30]]></description>
+</item>
+<item>
+  <title>160个CrackMe之028</title>
+  <link>https://cui-jiang-tao.github.io/posts/160_crackme/028/</link>
+  <pubDate>Tue, 01 Aug 2023 00:00:00 &#43;0000</pubDate>
+  <author>cjt</author>
+  <guid>https://cui-jiang-tao.github.io/posts/160_crackme/028/</guid>
+  <description><![CDATA[打开主程序，Name输入：012345，Serial输入：678900，弹出错误提示，根据字符串定位： 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19]]></description>
+</item>
+<item>
   <title>160个CrackMe之013</title>
   <link>https://cui-jiang-tao.github.io/posts/160_crackme/013/</link>
   <pubDate>Mon, 31 Jul 2023 00:00:00 &#43;0000</pubDate>
@@ -53,38 +85,6 @@
   <author>cjt</author>
   <guid>https://cui-jiang-tao.github.io/posts/160_crackme/002/</guid>
   <description><![CDATA[还是和前面一样首先了解一下这个程序，随意输入Name/Serial，会弹出一个错误框。 选择Serial/Name，输入一个用户名和序列号： 1]]></description>
-</item>
-<item>
-  <title>160个CrackMe之003</title>
-  <link>https://cui-jiang-tao.github.io/posts/160_crackme/003/</link>
-  <pubDate>Sat, 29 Jul 2023 00:00:00 &#43;0000</pubDate>
-  <author>cjt</author>
-  <guid>https://cui-jiang-tao.github.io/posts/160_crackme/003/</guid>
-  <description><![CDATA[我们随意输入一个用户名和序列号（伪码）： 1 2 Name:3333 Serial:44445555 此时不要点击确定按钮，返回OD暂停(F12),点击堆栈-K小图标(Ctrl+K) ,如下图： 1]]></description>
-</item>
-<item>
-  <title>160个CrackMe之001</title>
-  <link>https://cui-jiang-tao.github.io/posts/160_crackme/001/</link>
-  <pubDate>Fri, 28 Jul 2023 00:00:00 &#43;0000</pubDate>
-  <author>cjt</author>
-  <guid>https://cui-jiang-tao.github.io/posts/160_crackme/001/</guid>
-  <description><![CDATA[1. 程序分析 想要破解一个程序，必须先了解这个程序。所以，在破解过程中，对最初程序的分析很重要，它可以帮助我们理解作者的目的和意图，特别是对于注]]></description>
-</item>
-<item>
-  <title>Python小工具</title>
-  <link>https://cui-jiang-tao.github.io/posts/tools/python%E5%B0%8F%E5%B7%A5%E5%85%B7/</link>
-  <pubDate>Tue, 27 Jun 2023 00:00:00 &#43;0000</pubDate>
-  <author>cjt</author>
-  <guid>https://cui-jiang-tao.github.io/posts/tools/python%E5%B0%8F%E5%B7%A5%E5%85%B7/</guid>
-  <description><![CDATA[谷歌多语言翻译 环境配置 1 2 3 pip uninstall googletrans==4.0.0-rc1 pip install googletrans==3.1.0a0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 from googletrans import Translator translator = Translator() data = &#39;国家&#39; print(translator.translate(data, &#34;zh-CN&#34;).text)]]></description>
-</item>
-<item>
-  <title>Python入门学习</title>
-  <link>https://cui-jiang-tao.github.io/posts/python%E5%85%A5%E9%97%A8%E5%AD%A6%E4%B9%A0/</link>
-  <pubDate>Tue, 13 Jun 2023 00:00:00 &#43;0000</pubDate>
-  <author>cjt</author>
-  <guid>https://cui-jiang-tao.github.io/posts/python%E5%85%A5%E9%97%A8%E5%AD%A6%E4%B9%A0/</guid>
-  <description><![CDATA[1. Python 基础 1.1 数据类型和变量 字符串是以单引号&rsquo;或双引号&quot;括起来的任意文本。 如果字符串里面有很多字符都需要转义，就需要加很多]]></description>
 </item>
 </channel>
 </rss>
