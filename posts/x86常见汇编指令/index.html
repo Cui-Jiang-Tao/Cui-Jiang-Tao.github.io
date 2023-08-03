@@ -10,7 +10,7 @@
 <meta name="description" content="标志位 在汇编语言中，标志位是用于标识CPU执行指令时出现的一些状态信息的标志。常见的标志位包括： 零标志位（ZF）：当指令执行的结果为零时，该" /><meta name="keywords" content='c/c&#43;&#43;' /><meta itemprop="name" content="常见的汇编指令">
 <meta itemprop="description" content="标志位 在汇编语言中，标志位是用于标识CPU执行指令时出现的一些状态信息的标志。常见的标志位包括： 零标志位（ZF）：当指令执行的结果为零时，该"><meta itemprop="datePublished" content="2023-03-20T00:00:00+00:00" />
 <meta itemprop="dateModified" content="2023-03-20T00:00:00+00:00" />
-<meta itemprop="wordCount" content="19537">
+<meta itemprop="wordCount" content="19845">
 <meta itemprop="keywords" content="c/c&#43;&#43;," /><meta property="og:title" content="常见的汇编指令" />
 <meta property="og:description" content="标志位 在汇编语言中，标志位是用于标识CPU执行指令时出现的一些状态信息的标志。常见的标志位包括： 零标志位（ZF）：当指令执行的结果为零时，该" />
 <meta property="og:type" content="article" />
@@ -32,7 +32,7 @@
     "mainEntityOfPage": {
       "@type": "WebPage",
       "@id": "https:\/\/cui-jiang-tao.github.io\/posts\/x86%E5%B8%B8%E8%A7%81%E6%B1%87%E7%BC%96%E6%8C%87%E4%BB%A4\/"
-    },"genre": "posts","keywords": "c\/c\u002b\u002b","wordcount":  19537 ,
+    },"genre": "posts","keywords": "c\/c\u002b\u002b","wordcount":  19845 ,
     "url": "https:\/\/cui-jiang-tao.github.io\/posts\/x86%E5%B8%B8%E8%A7%81%E6%B1%87%E7%BC%96%E6%8C%87%E4%BB%A4\/","datePublished": "2023-03-20T00:00:00+00:00","dateModified": "2023-03-20T00:00:00+00:00","publisher": {
       "@type": "Organization",
       "name": ""},"author": {
@@ -117,7 +117,7 @@
       <div class="post-meta-line"><span class="post-author"><span class="author"><i class="fa-solid fa-user-circle" aria-hidden="true"></i>
       cjt</span></span>
           <span class="post-category">included in <a href="/categories/%E9%80%86%E5%90%91/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 逆向</a></span></div>
-      <div class="post-meta-line"><span title="published on 2023-03-20 00:00:00"><i class="fa-regular fa-calendar-alt fa-fw me-1" aria-hidden="true"></i><time datetime="2023-03-20">2023-03-20</time></span>&nbsp;<span title="Updated on 2023-03-20 00:00:00"><i class="fa-regular fa-edit fa-fw me-1" aria-hidden="true"></i><time datetime="2023-03-20">2023-03-20</time></span>&nbsp;<span><i class="fa-solid fa-pencil-alt fa-fw me-1" aria-hidden="true"></i>19537 words</span>&nbsp;<span><i class="fa-regular fa-clock fa-fw me-1" aria-hidden="true"></i>39 minutes</span>&nbsp;</div>
+      <div class="post-meta-line"><span title="published on 2023-03-20 00:00:00"><i class="fa-regular fa-calendar-alt fa-fw me-1" aria-hidden="true"></i><time datetime="2023-03-20">2023-03-20</time></span>&nbsp;<span title="Updated on 2023-03-20 00:00:00"><i class="fa-regular fa-edit fa-fw me-1" aria-hidden="true"></i><time datetime="2023-03-20">2023-03-20</time></span>&nbsp;<span><i class="fa-solid fa-pencil-alt fa-fw me-1" aria-hidden="true"></i>19845 words</span>&nbsp;<span><i class="fa-regular fa-clock fa-fw me-1" aria-hidden="true"></i>40 minutes</span>&nbsp;</div>
     </div><div class="details toc" id="toc-static" data-kept="false">
         <div class="details-summary toc-title">
           <span>Contents</span>
@@ -473,6 +473,26 @@ JNS Label    ; 如果AX为非负数，则跳转到Label处
 </div>
 </div><p>上述代码首先将AX寄存器的值置为最小的有符号数，然后将AX减去1，如果结果下溢，则跳转到Label处执行相应的代码。如果结果未下溢，则继续执行下一条指令。</p>
 <p>JB指令还可以与其他条件转移指令结合使用，如JNB（Jump if Not Below）等，实现更加灵活的条件分支。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">cmp</span> <span class="no">al</span><span class="p">,</span><span class="mi">0x41</span>
+</span></span><span class="line"><span class="cl"><span class="nf">jb</span> <span class="no">short</span> <span class="no">Cruehead.004013AC</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>这是x86汇编语言的指令代码。让我们逐步解释每一部分：</p>
+<ol>
+<li>
+<p><code>cmp al, 0x41</code>: 这条指令比较寄存器AL（低8位）的值与立即数0x41（十进制65）的值。具体来说，它会将AL的值减去0x41，并设置标志位来指示结果。</p>
+</li>
+<li>
+<p><code>jb short Cruehead.004013AC</code>: 这是一个条件跳转指令，其含义为“如果上一条cmp指令中AL的值小于0x41，则跳转到标号Cruehead.004013AC处继续执行”。在这里，<code>jb</code>代表&quot;Jump if below&quot;，即“如果低于，则跳转”。</p>
+</li>
+</ol>
+<p>因此，这段汇编代码的含义是：如果AL的值小于0x41（65），则跳转到标号Cruehead.004013AC处继续执行相应的代码。如果AL的值大于等于0x41，则继续执行后续指令。</p>
 <h3 id="jnb">JNB</h3>
 <p>JNB是汇编中的条件转移指令，其含义为“Jump if Not Below”，即如果不发生下溢，则跳转到指定地址。</p>
 <p>JNB指令用于检查有符号数的减法操作是否不发生下溢，通常用于有符号数的比较和条件分支。在执行JNB指令时，首先判断下溢标志位的值是否为0，如果为0，则跳转到指定地址；如果为1，则继续执行下一条指令。</p>

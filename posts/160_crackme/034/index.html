@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+  <head>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+    <meta name="robots" content="noodp" />
+    <title>160个CrackMe之034 - Notes</title><meta name="author" content="cjt">
+<meta name="author-link" content="">
+<meta name="description" content="MASM32 / TASM32编写，无壳，是一个Keyfile验证方式，界面打开窗口空白，file菜单只有一个exit，help菜单也只有一个About说" /><meta name="keywords" content='160个CrackMe' /><meta itemprop="name" content="160个CrackMe之034">
+<meta itemprop="description" content="MASM32 / TASM32编写，无壳，是一个Keyfile验证方式，界面打开窗口空白，file菜单只有一个exit，help菜单也只有一个About说"><meta itemprop="datePublished" content="2023-08-03T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2023-08-03T00:00:00+00:00" />
+<meta itemprop="wordCount" content="1762">
+<meta itemprop="keywords" content="160个CrackMe," /><meta property="og:title" content="160个CrackMe之034" />
+<meta property="og:description" content="MASM32 / TASM32编写，无壳，是一个Keyfile验证方式，界面打开窗口空白，file菜单只有一个exit，help菜单也只有一个About说" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://cui-jiang-tao.github.io/posts/160_crackme/034/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-08-03T00:00:00+00:00" />
+<meta property="article:modified_time" content="2023-08-03T00:00:00+00:00" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="160个CrackMe之034"/>
+<meta name="twitter:description" content="MASM32 / TASM32编写，无壳，是一个Keyfile验证方式，界面打开窗口空白，file菜单只有一个exit，help菜单也只有一个About说"/>
+<meta name="application-name" content="FixIt">
+<meta name="apple-mobile-web-app-title" content="FixIt"><meta name="theme-color" data-light="#f8f8f8" data-dark="#252627" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" href="https://cui-jiang-tao.github.io/posts/160_crackme/034/" /><link rel="prev" href="https://cui-jiang-tao.github.io/posts/160_crackme/029/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "BlogPosting",
+    "headline": "160个CrackMe之034",
+    "inLanguage": "zh-CN",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https:\/\/cui-jiang-tao.github.io\/posts\/160_crackme\/034\/"
+    },"genre": "posts","keywords": "160个CrackMe","wordcount":  1762 ,
+    "url": "https:\/\/cui-jiang-tao.github.io\/posts\/160_crackme\/034\/","datePublished": "2023-08-03T00:00:00+00:00","dateModified": "2023-08-03T00:00:00+00:00","publisher": {
+      "@type": "Organization",
+      "name": ""},"author": {
+        "@type": "Person",
+        "name": "cjt"
+      },"description": ""
+  }
+  </script></head>
+  <body data-header-desktop="fixed" data-header-mobile="auto"><script>(window.localStorage?.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('data-theme', 'dark');</script><div class="wrapper" data-page-style="wide"><header class="desktop animate__faster" id="header-desktop">
+  <div class="header-wrapper">
+    <div class="header-title">
+      <a href="/" title="Notes"><span class="header-title-pre"><i class='far fa-kiss-wink-heart fa-fw' aria-hidden='true'></i></span><span id="typeit-header-desktop" class="typeit"></span></a><span class="header-subtitle"></span></div>
+    <nav>
+      <ul class="menu"><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/posts/"
+                
+                
+              ><i class="fa-solid fa-archive fa-fw fa-sm" aria-hidden="true"></i> 文章</a></li><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/categories/"
+                
+                
+              ><i class="fa-solid fa-th fa-fw fa-sm" aria-hidden="true"></i> 分类</a></li><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/tags/"
+                
+                
+              ><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> 标签</a></li><li class="menu-item delimiter"></li><li class="menu-item theme-switch" title="Switch Theme">
+          <i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i>
+        </li></ul>
+    </nav>
+  </div>
+</header><header class="mobile animate__faster" id="header-mobile">
+  <div class="header-container">
+    <div class="header-wrapper">
+      <div class="header-title">
+        <a href="/" title="Notes"><span class="header-title-pre"><i class='far fa-kiss-wink-heart fa-fw' aria-hidden='true'></i></span><span id="typeit-header-title-mobile" class="typeit"></span></a><span class="header-subtitle"></span></div>
+      <div class="menu-toggle" id="menu-toggle-mobile">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+    <nav>
+      <ul class="menu" id="menu-mobile"><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/posts/"
+                  
+                  
+                ><i class="fa-solid fa-archive fa-fw fa-sm" aria-hidden="true"></i> 文章</a></li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/categories/"
+                  
+                  
+                ><i class="fa-solid fa-th fa-fw fa-sm" aria-hidden="true"></i> 分类</a></li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/tags/"
+                  
+                  
+                ><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> 标签</a></li><li class="menu-item menu-system">
+          <span class="menu-system-item theme-switch" title="Switch Theme"><i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i></span></li>
+      </ul>
+    </nav>
+  </div>
+</header><main class="container"><aside class="toc" id="toc-auto"></aside>
+
+  <aside class="aside-custom">
+    </aside>
+
+  <article class="page single">
+    <div class="header"><h1 class="single-title animate__animated animate__flipInX"><span>160个CrackMe之034</span>
+      </h1></div><div class="post-meta">
+      <div class="post-meta-line"><span class="post-author"><span class="author"><i class="fa-solid fa-user-circle" aria-hidden="true"></i>
+      cjt</span></span>
+          <span class="post-category">included in <a href="/categories/%E9%80%86%E5%90%91/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 逆向</a></span></div>
+      <div class="post-meta-line"><span title="published on 2023-08-03 00:00:00"><i class="fa-regular fa-calendar-alt fa-fw me-1" aria-hidden="true"></i><time datetime="2023-08-03">2023-08-03</time></span>&nbsp;<span title="Updated on 2023-08-03 00:00:00"><i class="fa-regular fa-edit fa-fw me-1" aria-hidden="true"></i><time datetime="2023-08-03">2023-08-03</time></span>&nbsp;<span><i class="fa-solid fa-pencil-alt fa-fw me-1" aria-hidden="true"></i>1762 words</span>&nbsp;<span><i class="fa-regular fa-clock fa-fw me-1" aria-hidden="true"></i>4 minutes</span>&nbsp;</div>
+    </div><div class="content" id="content"><p>MASM32 / TASM32编写，无壳，是一个<strong>Keyfile验证方式</strong>，界面打开窗口空白，file菜单只有一个exit，help菜单也只有一个About说明。</p>
+<p>crackme标注的验证方式是Keyfile，所以直接搜索字符串，可以搜索到“CRACKME3.KEY”，明显的Key文件，同时还有&quot;Good work cracker!&ldquo;及&quot;Crackedby: Now try the next crackme!&ldquo;字符串，估计是成功后标志。直接双击“CRACKME3.KEY”来到代码处：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="err">00401016</span>  <span class="err">|.</span>  <span class="err">6</span><span class="nf">A</span> <span class="mi">00</span>         <span class="no">push</span> <span class="mi">0x0</span>                                  <span class="c1">; /hTemplateFile = NULL
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="err">00401018</span>  <span class="err">|.</span>  <span class="err">68</span> <span class="err">80000000</span>   <span class="nf">push</span> <span class="mi">0x80</span>                                 <span class="c1">; |Attributes = NORMAL
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="err">0040101</span><span class="nf">D</span>  <span class="err">|</span><span class="p">.</span>  <span class="mi">6</span><span class="no">A</span> <span class="mi">03</span>         <span class="no">push</span> <span class="mi">0x3</span>                                  <span class="c1">; |Mode = OPEN_EXISTING
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="err">0040101</span><span class="nf">F</span>  <span class="err">|</span><span class="p">.</span>  <span class="mi">6</span><span class="no">A</span> <span class="mi">00</span>         <span class="no">push</span> <span class="mi">0x0</span>                                  <span class="c1">; |pSecurity = NULL
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="err">00401021</span>  <span class="err">|.</span>  <span class="err">6</span><span class="nf">A</span> <span class="mi">03</span>         <span class="no">push</span> <span class="mi">0x3</span>                                  <span class="c1">; |ShareMode = FILE_SHARE_READ|FILE_SHARE_WRITE
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="err">00401023</span>  <span class="err">|.</span>  <span class="err">68</span> <span class="err">000000</span><span class="nf">C0</span>   <span class="no">push</span> <span class="mi">0xC0000000</span>                           <span class="c1">; |Access = GENERIC_READ|GENERIC_WRITE
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="err">00401028</span>  <span class="err">|.</span>  <span class="err">68</span> <span class="nf">D7204000</span>   <span class="no">push</span> <span class="no">Cruehead.004020D7</span>                    <span class="c1">; |CRACKME3.KEY
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="err">0040102</span><span class="nf">D</span>  <span class="err">|</span><span class="p">.</span>  <span class="no">E8</span> <span class="mi">76040000</span>   <span class="no">call</span> <span class="err">&lt;</span><span class="no">jmp.</span><span class="err">&amp;</span><span class="no">KERNEL32.CreateFileA</span><span class="err">&gt;</span>          <span class="c1">; \CreateFileA
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="err">00401032</span>  <span class="err">|.</span>  <span class="err">83</span><span class="nf">F8</span> <span class="no">FF</span>       <span class="no">cmp</span> <span class="no">eax</span><span class="p">,-</span><span class="mi">0x1</span>
+</span></span><span class="line"><span class="cl"><span class="err">00401035</span>  <span class="err">|.</span>  <span class="err">75</span> <span class="err">0</span><span class="nf">C</span>         <span class="no">jnz</span> <span class="no">short</span> <span class="no">Cruehead.00401043</span>
+</span></span><span class="line"><span class="cl"><span class="err">00401037</span>  <span class="err">|&gt;</span>  <span class="err">68</span> <span class="err">0</span><span class="nf">E214000</span>   <span class="no">push</span> <span class="no">Cruehead.0040210E</span>                    <span class="c1">;  CrackMe v3.0
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="err">0040103</span><span class="nf">C</span>  <span class="err">|</span><span class="p">.</span>  <span class="no">E8</span> <span class="no">B4020000</span>   <span class="no">call</span> <span class="no">Cruehead.004012F5</span>
+</span></span><span class="line"><span class="cl"><span class="err">00401041</span>  <span class="err">|.</span>  <span class="nf">EB</span> <span class="mi">6</span><span class="no">B</span>         <span class="no">jmp</span> <span class="no">short</span> <span class="no">Cruehead.004010AE</span>               <span class="c1">;  打开文件失败的jmp
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="err">00401043</span>  <span class="err">|&gt;</span>  <span class="nf">A3</span> <span class="no">F5204000</span>   <span class="no">mov</span> <span class="no">dword</span> <span class="no">ptr</span> <span class="no">ds</span><span class="p">:[</span><span class="mi">0x4020F5</span><span class="p">],</span><span class="no">eax</span>
+</span></span><span class="line"><span class="cl"><span class="err">00401048</span>  <span class="err">|.</span>  <span class="nf">B8</span> <span class="mi">12000000</span>   <span class="no">mov</span> <span class="no">eax</span><span class="p">,</span><span class="mi">0x12</span>                              <span class="c1">;  读取文件的最大字节数
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="err">0040104</span><span class="nf">D</span>  <span class="err">|</span><span class="p">.</span>  <span class="no">BB</span> <span class="mi">08204000</span>   <span class="no">mov</span> <span class="no">ebx</span><span class="p">,</span><span class="no">Cruehead.00402008</span>
+</span></span><span class="line"><span class="cl"><span class="err">00401052</span>  <span class="err">|.</span>  <span class="err">6</span><span class="nf">A</span> <span class="mi">00</span>         <span class="no">push</span> <span class="mi">0x0</span>                                  <span class="c1">; /pOverlapped = NULL
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="err">00401054</span>  <span class="err">|.</span>  <span class="err">68</span> <span class="nf">A0214000</span>   <span class="no">push</span> <span class="no">Cruehead.004021A0</span>                    <span class="c1">; |pBytesRead = Cruehead.004021A0
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="err">00401059</span>  <span class="err">|.</span>  <span class="err">50</span>            <span class="nf">push</span> <span class="no">eax</span>                                  <span class="c1">; |BytesToRead = 0x0
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="err">0040105</span><span class="nf">A</span>  <span class="err">|</span><span class="p">.</span>  <span class="mi">53</span>            <span class="no">push</span> <span class="no">ebx</span>                                  <span class="c1">; |Buffer = 7FFDC000
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="err">0040105</span><span class="nf">B</span>  <span class="err">|</span><span class="p">.</span>  <span class="no">FF35</span> <span class="no">F5204000</span> <span class="no">push</span> <span class="no">dword</span> <span class="no">ptr</span> <span class="no">ds</span><span class="p">:[</span><span class="mi">0x4020F5</span><span class="p">]</span>              <span class="c1">; |hFile = NULL
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="err">00401061</span>  <span class="err">|.</span>  <span class="nf">E8</span> <span class="mi">30040000</span>   <span class="no">call</span> <span class="err">&lt;</span><span class="no">jmp.</span><span class="err">&amp;</span><span class="no">KERNEL32.ReadFile</span><span class="err">&gt;</span>             <span class="c1">; \ReadFile
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="err">00401066</span>  <span class="err">|.</span>  <span class="err">833</span><span class="nf">D</span> <span class="no">A0214000</span><span class="err">&gt;</span><span class="no">cmp</span> <span class="no">dword</span> <span class="no">ptr</span> <span class="no">ds</span><span class="p">:[</span><span class="mi">0x4021A0</span><span class="p">],</span><span class="mi">0x12</span>          <span class="c1">;  读到的文件字节数
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="err">0040106</span><span class="nf">D</span>  <span class="err">|</span><span class="p">.</span><span class="err">^</span> <span class="mi">75</span> <span class="no">C8</span>         <span class="no">jnz</span> <span class="no">short</span> <span class="no">Cruehead.00401037</span>               <span class="c1">;  要求大小为0x12字节
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="err">0040106</span><span class="nf">F</span>  <span class="err">|</span><span class="p">.</span>  <span class="mi">68</span> <span class="mi">08204000</span>   <span class="no">push</span> <span class="no">Cruehead.00402008</span>
+</span></span><span class="line"><span class="cl"><span class="err">00401074</span>  <span class="err">|.</span>  <span class="nf">E8</span> <span class="mi">98020000</span>   <span class="no">call</span> <span class="no">Cruehead.00401311</span>
+</span></span><span class="line"><span class="cl"><span class="err">00401079</span>  <span class="err">|.</span>  <span class="err">8135</span> <span class="nf">F9204000</span><span class="err">&gt;</span><span class="no">xor</span> <span class="no">dword</span> <span class="no">ptr</span> <span class="no">ds</span><span class="p">:[</span><span class="mi">0x4020F9</span><span class="p">],</span><span class="mi">0x12345678</span>
+</span></span><span class="line"><span class="cl"><span class="err">00401083</span>  <span class="err">|.</span>  <span class="err">83</span><span class="nf">C4</span> <span class="mi">04</span>       <span class="no">add</span> <span class="no">esp</span><span class="p">,</span><span class="mi">0x4</span>
+</span></span><span class="line"><span class="cl"><span class="err">00401086</span>  <span class="err">|.</span>  <span class="err">68</span> <span class="err">08204000</span>   <span class="nf">push</span> <span class="no">Cruehead.00402008</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>分析此块汇编代码：</p>
+<ol>
+<li>CreateFileA参数<code>Mode = OPEN_EXISTING == 0x0</code>，也就是打开已存在的文件，若文件不存在，函数返回-1，是用来验证Key文件是否存在的。</li>
+<li>ReadFile函数读取文件内容，参数<code>pBytesRead = Cruehead.004021A0是</code>读取文件返回的字节数，接下来一句代码<code>cmp dword ptr ds:[0x4021A0],0x12</code>，如果读取的字节数不等于0x12(18)个，则跳至失败处。</li>
+</ol>
+<p>于是我们在CrackMe目录下新建一个文件<code>CRACKME3.KEY</code>，并写入不少于18个字节的数据，内容如下。再次载入程序，在ReadFile后代码进行跟踪。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">00000000h: 01 02 03 04 05 06 07 08 09 0A 0B 0C 0D 0E 0D 0E ; ................
+</span></span><span class="line"><span class="cl">00000010h: 0F 10 11                                        ; ...                                  ; 4..
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span><span class="lnt">64
+</span><span class="lnt">65
+</span><span class="lnt">66
+</span><span class="lnt">67
+</span><span class="lnt">68
+</span><span class="lnt">69
+</span><span class="lnt">70
+</span><span class="lnt">71
+</span><span class="lnt">72
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="err">00401000</span> <span class="err">&gt;/</span><span class="nf">$</span>  <span class="mi">6</span><span class="no">A</span> <span class="mi">00</span>         <span class="no">push</span> <span class="mi">0x0</span>                                  <span class="c1">; /pModule = NULL
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="err">00401002</span>  <span class="err">|.</span>  <span class="nf">E8</span> <span class="mi">7</span><span class="no">D040000</span>   <span class="no">call</span> <span class="err">&lt;</span><span class="no">jmp.</span><span class="err">&amp;</span><span class="no">KERNEL32.GetModuleHandleA</span><span class="err">&gt;</span>     <span class="c1">; \GetModuleHandleA
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="err">00401007</span>  <span class="err">|.</span>  <span class="nf">A3</span> <span class="no">E9204000</span>   <span class="no">mov</span> <span class="no">dword</span> <span class="no">ptr</span> <span class="no">ds</span><span class="p">:[</span><span class="mi">0x4020E9</span><span class="p">],</span><span class="no">eax</span>
+</span></span><span class="line"><span class="cl"><span class="err">0040100</span><span class="nf">C</span>  <span class="err">|</span><span class="p">.</span>  <span class="no">C705</span> <span class="no">F9204000</span><span class="err">&gt;</span><span class="no">mov</span> <span class="no">dword</span> <span class="no">ptr</span> <span class="no">ds</span><span class="p">:[</span><span class="mi">0x4020F9</span><span class="p">],</span><span class="mi">0x0</span>           <span class="c1">;  设置为0
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="err">00401016</span>  <span class="err">|.</span>  <span class="err">6</span><span class="nf">A</span> <span class="mi">00</span>         <span class="no">push</span> <span class="mi">0x0</span>                                  <span class="c1">; /hTemplateFile = NULL
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="err">00401018</span>  <span class="err">|.</span>  <span class="err">68</span> <span class="err">80000000</span>   <span class="nf">push</span> <span class="mi">0x80</span>                                 <span class="c1">; |Attributes = NORMAL
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="err">0040101</span><span class="nf">D</span>  <span class="err">|</span><span class="p">.</span>  <span class="mi">6</span><span class="no">A</span> <span class="mi">03</span>         <span class="no">push</span> <span class="mi">0x3</span>                                  <span class="c1">; |Mode = OPEN_EXISTING
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="err">0040101</span><span class="nf">F</span>  <span class="err">|</span><span class="p">.</span>  <span class="mi">6</span><span class="no">A</span> <span class="mi">00</span>         <span class="no">push</span> <span class="mi">0x0</span>                                  <span class="c1">; |pSecurity = NULL
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="err">00401021</span>  <span class="err">|.</span>  <span class="err">6</span><span class="nf">A</span> <span class="mi">03</span>         <span class="no">push</span> <span class="mi">0x3</span>                                  <span class="c1">; |ShareMode = FILE_SHARE_READ|FILE_SHARE_WRITE
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="err">00401023</span>  <span class="err">|.</span>  <span class="err">68</span> <span class="err">000000</span><span class="nf">C0</span>   <span class="no">push</span> <span class="mi">0xC0000000</span>                           <span class="c1">; |Access = GENERIC_READ|GENERIC_WRITE
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="err">00401028</span>  <span class="err">|.</span>  <span class="err">68</span> <span class="nf">D7204000</span>   <span class="no">push</span> <span class="no">Cruehead.004020D7</span>                    <span class="c1">; |CRACKME3.KEY
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="err">0040102</span><span class="nf">D</span>  <span class="err">|</span><span class="p">.</span>  <span class="no">E8</span> <span class="mi">76040000</span>   <span class="no">call</span> <span class="err">&lt;</span><span class="no">jmp.</span><span class="err">&amp;</span><span class="no">KERNEL32.CreateFileA</span><span class="err">&gt;</span>          <span class="c1">; \CreateFileA
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="err">00401032</span>  <span class="err">|.</span>  <span class="err">83</span><span class="nf">F8</span> <span class="no">FF</span>       <span class="no">cmp</span> <span class="no">eax</span><span class="p">,-</span><span class="mi">0x1</span>
+</span></span><span class="line"><span class="cl"><span class="err">00401035</span>  <span class="err">|.</span>  <span class="err">75</span> <span class="err">0</span><span class="nf">C</span>         <span class="no">jnz</span> <span class="no">short</span> <span class="no">Cruehead.00401043</span>
+</span></span><span class="line"><span class="cl"><span class="err">00401037</span>  <span class="err">|&gt;</span>  <span class="err">68</span> <span class="err">0</span><span class="nf">E214000</span>   <span class="no">push</span> <span class="no">Cruehead.0040210E</span>                    <span class="c1">;  CrackMe v3.0
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="err">0040103</span><span class="nf">C</span>  <span class="err">|</span><span class="p">.</span>  <span class="no">E8</span> <span class="no">B4020000</span>   <span class="no">call</span> <span class="no">Cruehead.004012F5</span>
+</span></span><span class="line"><span class="cl"><span class="err">00401041</span>  <span class="err">|.</span>  <span class="nf">EB</span> <span class="mi">6</span><span class="no">B</span>         <span class="no">jmp</span> <span class="no">short</span> <span class="no">Cruehead.004010AE</span>               <span class="c1">;  打开文件失败的jmp
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="err">00401043</span>  <span class="err">|&gt;</span>  <span class="nf">A3</span> <span class="no">F5204000</span>   <span class="no">mov</span> <span class="no">dword</span> <span class="no">ptr</span> <span class="no">ds</span><span class="p">:[</span><span class="mi">0x4020F5</span><span class="p">],</span><span class="no">eax</span>
+</span></span><span class="line"><span class="cl"><span class="err">00401048</span>  <span class="err">|.</span>  <span class="nf">B8</span> <span class="mi">12000000</span>   <span class="no">mov</span> <span class="no">eax</span><span class="p">,</span><span class="mi">0x12</span>                              <span class="c1">;  读取文件的最大字节数
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="err">0040104</span><span class="nf">D</span>  <span class="err">|</span><span class="p">.</span>  <span class="no">BB</span> <span class="mi">08204000</span>   <span class="no">mov</span> <span class="no">ebx</span><span class="p">,</span><span class="no">Cruehead.00402008</span>
+</span></span><span class="line"><span class="cl"><span class="err">00401052</span>  <span class="err">|.</span>  <span class="err">6</span><span class="nf">A</span> <span class="mi">00</span>         <span class="no">push</span> <span class="mi">0x0</span>                                  <span class="c1">; /pOverlapped = NULL
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="err">00401054</span>  <span class="err">|.</span>  <span class="err">68</span> <span class="nf">A0214000</span>   <span class="no">push</span> <span class="no">Cruehead.004021A0</span>                    <span class="c1">; |pBytesRead = Cruehead.004021A0
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="err">00401059</span>  <span class="err">|.</span>  <span class="err">50</span>            <span class="nf">push</span> <span class="no">eax</span>                                  <span class="c1">; |BytesToRead = 0x0
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="err">0040105</span><span class="nf">A</span>  <span class="err">|</span><span class="p">.</span>  <span class="mi">53</span>            <span class="no">push</span> <span class="no">ebx</span>                                  <span class="c1">; |Buffer = NULL
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="err">0040105</span><span class="nf">B</span>  <span class="err">|</span><span class="p">.</span>  <span class="no">FF35</span> <span class="no">F5204000</span> <span class="no">push</span> <span class="no">dword</span> <span class="no">ptr</span> <span class="no">ds</span><span class="p">:[</span><span class="mi">0x4020F5</span><span class="p">]</span>              <span class="c1">; |hFile = 00000044 (window)
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="err">00401061</span>  <span class="err">|.</span>  <span class="nf">E8</span> <span class="mi">30040000</span>   <span class="no">call</span> <span class="err">&lt;</span><span class="no">jmp.</span><span class="err">&amp;</span><span class="no">KERNEL32.ReadFile</span><span class="err">&gt;</span>             <span class="c1">; \ReadFile
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="err">00401066</span>  <span class="err">|.</span>  <span class="err">833</span><span class="nf">D</span> <span class="no">A0214000</span><span class="err">&gt;</span><span class="no">cmp</span> <span class="no">dword</span> <span class="no">ptr</span> <span class="no">ds</span><span class="p">:[</span><span class="mi">0x4021A0</span><span class="p">],</span><span class="mi">0x12</span>          <span class="c1">;  读到的文件字节数
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="err">0040106</span><span class="nf">D</span>  <span class="err">|</span><span class="p">.</span><span class="err">^</span> <span class="mi">75</span> <span class="no">C8</span>         <span class="no">jnz</span> <span class="no">short</span> <span class="no">Cruehead.00401037</span>               <span class="c1">;  要求大小为0x12字节
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="err">0040106</span><span class="nf">F</span>  <span class="err">|</span><span class="p">.</span>  <span class="mi">68</span> <span class="mi">08204000</span>   <span class="no">push</span> <span class="no">Cruehead.00402008</span>                    <span class="c1">;  读到的数据
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="err">00401074</span>  <span class="err">|.</span>  <span class="nf">E8</span> <span class="mi">98020000</span>   <span class="no">call</span> <span class="no">Cruehead.00401311</span>                    <span class="c1">;  数据计算
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="err">00401079</span>  <span class="err">|.</span>  <span class="err">8135</span> <span class="nf">F9204000</span><span class="err">&gt;</span><span class="no">xor</span> <span class="no">dword</span> <span class="no">ptr</span> <span class="no">ds</span><span class="p">:[</span><span class="mi">0x4020F9</span><span class="p">],</span><span class="mi">0x12345678</span>
+</span></span><span class="line"><span class="cl"><span class="err">00401083</span>  <span class="err">|.</span>  <span class="err">83</span><span class="nf">C4</span> <span class="mi">04</span>       <span class="no">add</span> <span class="no">esp</span><span class="p">,</span><span class="mi">0x4</span>
+</span></span><span class="line"><span class="cl"><span class="err">00401086</span>  <span class="err">|.</span>  <span class="err">68</span> <span class="err">08204000</span>   <span class="nf">push</span> <span class="no">Cruehead.00402008</span>                    <span class="c1">;  计算的数据
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="err">0040108</span><span class="nf">B</span>  <span class="err">|</span><span class="p">.</span>  <span class="no">E8</span> <span class="no">AC020000</span>   <span class="no">call</span> <span class="no">Cruehead.0040133C</span>                    <span class="c1">;  再计算：0xE ~ 0x12的4字节 =》 0x100F0E0D
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="err">00401090</span>  <span class="err">|.</span>  <span class="err">83</span><span class="nf">C4</span> <span class="mi">04</span>       <span class="no">add</span> <span class="no">esp</span><span class="p">,</span><span class="mi">0x4</span>
+</span></span><span class="line"><span class="cl"><span class="err">00401093</span>  <span class="err">|.</span>  <span class="err">3</span><span class="nf">B05</span> <span class="no">F9204000</span> <span class="no">cmp</span> <span class="no">eax</span><span class="p">,</span><span class="no">dword</span> <span class="no">ptr</span> <span class="no">ds</span><span class="p">:[</span><span class="mi">0x4020F9</span><span class="p">]</span>           <span class="c1">;  进行数值比较
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="err">00401099</span>  <span class="err">|.</span>  <span class="err">0</span><span class="nf">f94c0</span>        <span class="no">sete</span> <span class="no">al</span>
+</span></span><span class="line"><span class="cl"><span class="err">0040109</span><span class="nf">C</span>  <span class="err">|</span><span class="p">.</span>  <span class="mi">50</span>            <span class="no">push</span> <span class="no">eax</span>
+</span></span><span class="line"><span class="cl"><span class="err">0040109</span><span class="nf">D</span>  <span class="err">|</span><span class="p">.</span>  <span class="mi">84</span><span class="no">C0</span>          <span class="no">test</span> <span class="no">al</span><span class="p">,</span><span class="no">al</span>
+</span></span><span class="line"><span class="cl"><span class="err">0040109</span><span class="nf">F</span>  <span class="err">|</span><span class="p">.</span><span class="err">^</span> <span class="mi">74</span> <span class="mi">96</span>         <span class="no">je</span> <span class="no">short</span> <span class="no">Cruehead.00401037</span>
+</span></span><span class="line"><span class="cl"><span class="err">004010</span><span class="nf">A1</span>  <span class="err">|</span><span class="p">.</span>  <span class="mi">68</span> <span class="mi">0</span><span class="no">E214000</span>   <span class="no">push</span> <span class="no">Cruehead.0040210E</span>                    <span class="c1">;  CrackMe v3.0
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="err">004010</span><span class="nf">A6</span>  <span class="err">|</span><span class="p">.</span>  <span class="no">E8</span> <span class="mi">9</span><span class="no">B020000</span>   <span class="no">call</span> <span class="no">Cruehead.00401346</span>
+</span></span><span class="line"><span class="cl"><span class="err">004010</span><span class="nf">AB</span>  <span class="err">|</span><span class="p">.</span>  <span class="mi">83</span><span class="no">C4</span> <span class="mi">04</span>       <span class="no">add</span> <span class="no">esp</span><span class="p">,</span><span class="mi">0x4</span>
+</span></span><span class="line"><span class="cl"><span class="err">004010</span><span class="nf">AE</span>  <span class="err">|&gt;</span>  <span class="mi">6</span><span class="no">A</span> <span class="mi">00</span>         <span class="no">push</span> <span class="mi">0x0</span>                                  <span class="c1">; /Title = NULL
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="err">004010</span><span class="nf">B0</span>  <span class="err">|</span><span class="p">.</span>  <span class="mi">68</span> <span class="mi">28214000</span>   <span class="no">push</span> <span class="no">Cruehead.00402128</span>                    <span class="c1">; |No need to disasm the code!
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="err">004010</span><span class="nf">B5</span>  <span class="err">|</span><span class="p">.</span>  <span class="no">E8</span> <span class="mi">9</span><span class="no">A030000</span>   <span class="no">call</span> <span class="err">&lt;</span><span class="no">jmp.</span><span class="err">&amp;</span><span class="no">USER32.FindWindowA</span><span class="err">&gt;</span>            <span class="c1">; \FindWindowA
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="err">004010</span><span class="nf">BA</span>  <span class="err">|</span><span class="p">.</span>  <span class="mi">0</span><span class="no">BC0</span>          <span class="no">or</span> <span class="no">eax</span><span class="p">,</span><span class="no">eax</span>
+</span></span><span class="line"><span class="cl"><span class="err">004010</span><span class="nf">BC</span>  <span class="err">|</span><span class="p">.</span>  <span class="mi">74</span> <span class="mi">01</span>         <span class="no">je</span> <span class="no">short</span> <span class="no">Cruehead.004010BF</span>
+</span></span><span class="line"><span class="cl"><span class="err">004010</span><span class="nf">BE</span>  <span class="err">|</span><span class="p">.</span>  <span class="no">C3</span>            <span class="no">retn</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="err">00401311</span>  <span class="err">/</span><span class="nf">$</span>  <span class="mi">33</span><span class="no">C9</span>          <span class="no">xor</span> <span class="no">ecx</span><span class="p">,</span><span class="no">ecx</span>                               <span class="c1">;  ecx = 0
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="err">00401313</span>  <span class="err">|.</span>  <span class="err">33</span><span class="nf">C0</span>          <span class="no">xor</span> <span class="no">eax</span><span class="p">,</span><span class="no">eax</span>                               <span class="c1">;  eax = 0
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="err">00401315</span>  <span class="err">|.</span>  <span class="err">8</span><span class="nf">B7424</span> <span class="mi">04</span>     <span class="no">mov</span> <span class="no">esi</span><span class="p">,</span><span class="no">dword</span> <span class="no">ptr</span> <span class="no">ss</span><span class="p">:[</span><span class="no">esp</span><span class="err">+</span><span class="mi">0x4</span><span class="p">]</span>            <span class="c1">;  数据
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="err">00401319</span>  <span class="err">|.</span>  <span class="nf">B3</span> <span class="mi">41</span>         <span class="no">mov</span> <span class="no">bl</span><span class="p">,</span><span class="mi">0x41</span>
+</span></span><span class="line"><span class="cl"><span class="err">0040131</span><span class="nf">B</span>  <span class="err">|&gt;</span>  <span class="mi">8</span><span class="no">A06</span>          <span class="err">/</span><span class="no">mov</span> <span class="no">al</span><span class="p">,</span><span class="no">byte</span> <span class="no">ptr</span> <span class="no">ds</span><span class="p">:[</span><span class="no">esi</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="err">0040131</span><span class="nf">D</span>  <span class="err">|</span><span class="p">.</span>  <span class="mi">32</span><span class="no">C3</span>          <span class="err">|</span><span class="no">xor</span> <span class="no">al</span><span class="p">,</span><span class="no">bl</span>
+</span></span><span class="line"><span class="cl"><span class="err">0040131</span><span class="nf">F</span>  <span class="err">|</span><span class="p">.</span>  <span class="mi">8806</span>          <span class="err">|</span><span class="no">mov</span> <span class="no">byte</span> <span class="no">ptr</span> <span class="no">ds</span><span class="p">:[</span><span class="no">esi</span><span class="p">],</span><span class="no">al</span>
+</span></span><span class="line"><span class="cl"><span class="err">00401321</span>  <span class="err">|.</span>  <span class="err">46</span>            <span class="err">|</span><span class="nf">inc</span> <span class="no">esi</span>
+</span></span><span class="line"><span class="cl"><span class="err">00401322</span>  <span class="err">|.</span>  <span class="nf">FEC3</span>          <span class="err">|</span><span class="no">inc</span> <span class="no">bl</span>
+</span></span><span class="line"><span class="cl"><span class="err">00401324</span>  <span class="err">|.</span>  <span class="err">0105</span> <span class="nf">F9204000</span> <span class="err">|</span><span class="no">add</span> <span class="no">dword</span> <span class="no">ptr</span> <span class="no">ds</span><span class="p">:[</span><span class="mi">0x4020F9</span><span class="p">],</span><span class="no">eax</span>
+</span></span><span class="line"><span class="cl"><span class="err">0040132</span><span class="nf">A</span>  <span class="err">|</span><span class="p">.</span>  <span class="mi">3</span><span class="no">C</span> <span class="mi">00</span>         <span class="err">|</span><span class="no">cmp</span> <span class="no">al</span><span class="p">,</span><span class="mi">0x0</span>
+</span></span><span class="line"><span class="cl"><span class="err">0040132</span><span class="nf">C</span>  <span class="err">|</span><span class="p">.</span>  <span class="mi">74</span> <span class="mi">07</span>         <span class="err">|</span><span class="no">je</span> <span class="no">short</span> <span class="no">Cruehead.00401335</span>
+</span></span><span class="line"><span class="cl"><span class="err">0040132</span><span class="nf">E</span>  <span class="err">|</span><span class="p">.</span>  <span class="no">FEC1</span>          <span class="err">|</span><span class="no">inc</span> <span class="no">cl</span>
+</span></span><span class="line"><span class="cl"><span class="err">00401330</span>  <span class="err">|.</span>  <span class="err">80</span><span class="nf">FB</span> <span class="mi">4</span><span class="no">F</span>       <span class="err">|</span><span class="no">cmp</span> <span class="no">bl</span><span class="p">,</span><span class="mi">0x4F</span>
+</span></span><span class="line"><span class="cl"><span class="err">00401333</span>  <span class="err">|.^</span> <span class="err">75</span> <span class="nf">E6</span>         <span class="err">\</span><span class="no">jnz</span> <span class="no">short</span> <span class="no">Cruehead.0040131B</span>
+</span></span><span class="line"><span class="cl"><span class="err">00401335</span>  <span class="err">|&gt;</span>  <span class="err">890</span><span class="nf">D</span> <span class="mi">49214000</span> <span class="no">mov</span> <span class="no">dword</span> <span class="no">ptr</span> <span class="no">ds</span><span class="p">:[</span><span class="mi">0x402149</span><span class="p">],</span><span class="no">ecx</span>
+</span></span><span class="line"><span class="cl"><span class="err">0040133</span><span class="nf">B</span>  <span class="err">\</span><span class="p">.</span>  <span class="no">C3</span>            <span class="no">retn</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="err">0040133</span><span class="nf">C</span>  <span class="err">/</span><span class="no">$</span>  <span class="mi">8</span><span class="no">B7424</span> <span class="mi">04</span>     <span class="no">mov</span> <span class="no">esi</span><span class="p">,</span><span class="no">dword</span> <span class="no">ptr</span> <span class="no">ss</span><span class="p">:[</span><span class="no">esp</span><span class="err">+</span><span class="mi">0x4</span><span class="p">]</span>            <span class="c1">;  计算的数据
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="err">00401340</span>  <span class="err">|.</span>  <span class="err">83</span><span class="nf">C6</span> <span class="mi">0</span><span class="no">E</span>       <span class="no">add</span> <span class="no">esi</span><span class="p">,</span><span class="mi">0xE</span>
+</span></span><span class="line"><span class="cl"><span class="err">00401343</span>  <span class="err">|.</span>  <span class="err">8</span><span class="nf">B06</span>          <span class="no">mov</span> <span class="no">eax</span><span class="p">,</span><span class="no">dword</span> <span class="no">ptr</span> <span class="no">ds</span><span class="p">:[</span><span class="no">esi</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="err">00401345</span>  <span class="err">\.</span>  <span class="nf">C3</span>            <span class="no">retn</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>通过分析得出将文件的0~11字节进行计算，结果与12~17的数值进行比较，相等及成功！</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span>
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">ecx</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">nuber</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">data</span><span class="p">[</span><span class="mi">18</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span> <span class="mh">0x01</span><span class="p">,</span> <span class="mh">0x02</span><span class="p">,</span> <span class="mh">0x03</span><span class="p">,</span> <span class="mh">0x04</span><span class="p">,</span> <span class="mh">0x05</span><span class="p">,</span> <span class="mh">0x06</span><span class="p">,</span> <span class="mh">0x07</span><span class="p">,</span> <span class="mh">0x08</span><span class="p">,</span> <span class="mh">0x09</span><span class="p">,</span> <span class="mh">0x0A</span><span class="p">,</span> <span class="mh">0x0B</span><span class="p">,</span> <span class="mh">0x0C</span><span class="p">,</span> <span class="mh">0x0D</span><span class="p">,</span> <span class="mh">0x0E</span><span class="p">,</span> <span class="mh">0x0D</span><span class="p">,</span> <span class="mh">0x0E</span><span class="p">,</span> <span class="mh">0x0F</span><span class="p">,</span> <span class="mh">0x10</span><span class="p">};</span>
+</span></span><span class="line"><span class="cl">	<span class="kt">unsigned</span> <span class="kt">char</span><span class="o">*</span> <span class="n">ptr_data</span> <span class="o">=</span> <span class="n">data</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">bl</span> <span class="o">=</span> <span class="mh">0x41</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="k">while</span> <span class="p">(</span><span class="nb">true</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		
+</span></span><span class="line"><span class="cl">		<span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">al</span> <span class="o">=</span> <span class="o">*</span><span class="n">ptr_data</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">		<span class="n">al</span> <span class="o">^=</span> <span class="n">bl</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">		<span class="o">*</span><span class="n">ptr_data</span> <span class="o">=</span> <span class="n">al</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">		<span class="n">ptr_data</span><span class="o">++</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">		<span class="n">bl</span><span class="o">++</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">		<span class="n">nuber</span> <span class="o">+=</span> <span class="n">al</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">		<span class="k">if</span> <span class="p">(</span><span class="n">al</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">			<span class="k">break</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">		<span class="p">}</span>
+</span></span><span class="line"><span class="cl">		<span class="n">ecx</span><span class="o">++</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">		<span class="k">if</span> <span class="p">(</span><span class="n">bl</span> <span class="o">==</span> <span class="mh">0x4f</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">			<span class="k">break</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">		<span class="p">}</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl">	
+</span></span><span class="line"><span class="cl">	<span class="n">nuber</span> <span class="o">^=</span> <span class="mh">0x12345678</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	
+</span></span><span class="line"><span class="cl">	<span class="n">ptr_data</span> <span class="o">=</span> <span class="n">data</span> <span class="o">+</span> <span class="mh">0xE</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">key</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="n">memcpy</span><span class="p">((</span><span class="kt">void</span><span class="o">*</span><span class="p">)</span><span class="o">&amp;</span><span class="n">key</span><span class="p">,</span> <span class="p">(</span><span class="kt">void</span><span class="o">*</span><span class="p">)</span><span class="n">ptr_data</span><span class="p">,</span> <span class="mi">4</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>更改文件内容如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">00000000h: 01 02 03 04 05 06 07 08 09 0A 0B 0C 0D 0E F8 55 ; ..............鳸
+</span></span><span class="line"><span class="cl">00000010h: 34 12 11                                        ; 4..
+</span></span></code></pre></td></tr></table>
+</div>
+</div></div><div class="post-footer" id="post-footer">
+  <div class="post-info">
+    <div class="post-info-line">
+      <div class="post-info-mod">
+        <span title="Updated on 2023-08-03 00:00:00">Updated on 2023-08-03&nbsp;</span>
+      </div><div class="post-info-license">
+          <span><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span>
+        </div></div>
+    <div class="post-info-line">
+      <div class="post-info-md"></div>
+      <div class="post-info-share">
+        <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://cui-jiang-tao.github.io/posts/160_crackme/034/" data-title="160个CrackMe之034" data-hashtags="160个CrackMe"><i class="fa-brands fa-twitter fa-fw" aria-hidden="true"></i></a>
+  <a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://cui-jiang-tao.github.io/posts/160_crackme/034/" data-hashtag="160个CrackMe"><i class="fa-brands fa-facebook-square fa-fw" aria-hidden="true"></i></a>
+  <a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="https://cui-jiang-tao.github.io/posts/160_crackme/034/" data-title="160个CrackMe之034"><i class="fa-brands fa-weibo fa-fw" aria-hidden="true"></i></a>
+  </span>
+      </div>
+    </div>
+  </div>
+
+  <div class="post-info-more">
+    <section class="post-tags"><i class="fa-solid fa-tags fa-fw me-1" aria-hidden="true"></i><a href='/tags/160%E4%B8%AAcrackme/' class="post-tag">160个CrackMe</a></section>
+    <section>
+      <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+    </section>
+  </div>
+
+  <div class="post-nav"><a href="/posts/160_crackme/029/" class="post-nav-item" rel="prev" title="160个CrackMe之029"><i class="fa-solid fa-angle-left fa-fw" aria-hidden="true"></i>160个CrackMe之029</a></div>
+</div>
+</article></main><footer class="footer">
+    <div class="footer-container"><div class="footer-line copyright" itemscope itemtype="http://schema.org/CreativeWork"><i class="fa-regular fa-copyright fa-fw" aria-hidden="true"></i>
+            <span itemprop="copyrightYear">2022 - 2023</span><span class="license footer-divider"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div><div class="footer-line statistics"></div></div>
+  </footer></div><div class="widgets"><div class="fixed-buttons animate__faster d-none"><div class="fixed-button back-to-top" role="button" aria-label="Back to Top"><i class="fa-solid fa-arrow-up fa-fw" aria-hidden="true"></i><span class="variant-numeric d-none">0%</span>
+        </div></div><div id="mask"></div><noscript>
+    <div class="noscript-warning">Theme FixIt works best with JavaScript enabled.</div>
+  </noscript>
+</div><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script src="/lib/sharer/sharer.min.js" async defer></script><script src="/lib/typeit/index.umd.js" defer></script><script src="/lib/katex/katex.min.js" defer></script><script src="/lib/katex/auto-render.min.js" defer></script><script src="/lib/katex/copy-tex.min.js" defer></script><script src="/lib/katex/mhchem.min.js" defer></script><script src="/lib/cookieconsent/cookieconsent.min.js" defer></script><script>window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":-1},"comment":{"enable":false},"cookieconsent":{"content":{"dismiss":"Got it!","link":"Learn more","message":"This website uses Cookies to improve your experience."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"data":{"typeit-header-desktop":"Home","typeit-header-title-mobile":"Home"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"typeit-header-desktop":["typeit-header-desktop"],"typeit-header-title-mobile":["typeit-header-title-mobile"]},"duration":-1,"loop":false,"speed":100}};</script><script src="/js/theme.min.js" defer></script></body>
+</html>
