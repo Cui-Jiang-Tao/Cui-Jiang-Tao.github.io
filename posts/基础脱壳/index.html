@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+  <head>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+    <meta name="robots" content="noodp" />
+    <title>基础脱壳 - Notes</title><meta name="author" content="cjt">
+<meta name="author-link" content="">
+<meta name="description" content="0. 前言 0.1 脱壳的常见概念 壳：是一种对应用程序加密压缩处理的技术 一般对可执行文件加壳的目的： 软件加壳，保护数据、防止破解 外挂加壳，保护数据、防止" /><meta name="keywords" content='脱壳' /><meta itemprop="name" content="基础脱壳">
+<meta itemprop="description" content="0. 前言 0.1 脱壳的常见概念 壳：是一种对应用程序加密压缩处理的技术 一般对可执行文件加壳的目的： 软件加壳，保护数据、防止破解 外挂加壳，保护数据、防止"><meta itemprop="datePublished" content="2023-08-16T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2023-08-16T00:00:00+00:00" />
+<meta itemprop="wordCount" content="2211">
+<meta itemprop="keywords" content="脱壳," /><meta property="og:title" content="基础脱壳" />
+<meta property="og:description" content="0. 前言 0.1 脱壳的常见概念 壳：是一种对应用程序加密压缩处理的技术 一般对可执行文件加壳的目的： 软件加壳，保护数据、防止破解 外挂加壳，保护数据、防止" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://cui-jiang-tao.github.io/posts/%E5%9F%BA%E7%A1%80%E8%84%B1%E5%A3%B3/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-08-16T00:00:00+00:00" />
+<meta property="article:modified_time" content="2023-08-16T00:00:00+00:00" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="基础脱壳"/>
+<meta name="twitter:description" content="0. 前言 0.1 脱壳的常见概念 壳：是一种对应用程序加密压缩处理的技术 一般对可执行文件加壳的目的： 软件加壳，保护数据、防止破解 外挂加壳，保护数据、防止"/>
+<meta name="application-name" content="FixIt">
+<meta name="apple-mobile-web-app-title" content="FixIt"><meta name="theme-color" data-light="#f8f8f8" data-dark="#252627" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" href="https://cui-jiang-tao.github.io/posts/%E5%9F%BA%E7%A1%80%E8%84%B1%E5%A3%B3/" /><link rel="prev" href="https://cui-jiang-tao.github.io/posts/160_crackme/035/" /><link rel="next" href="https://cui-jiang-tao.github.io/posts/sql/mysql/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "BlogPosting",
+    "headline": "基础脱壳",
+    "inLanguage": "zh-CN",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https:\/\/cui-jiang-tao.github.io\/posts\/%E5%9F%BA%E7%A1%80%E8%84%B1%E5%A3%B3\/"
+    },"genre": "posts","keywords": "脱壳","wordcount":  2211 ,
+    "url": "https:\/\/cui-jiang-tao.github.io\/posts\/%E5%9F%BA%E7%A1%80%E8%84%B1%E5%A3%B3\/","datePublished": "2023-08-16T00:00:00+00:00","dateModified": "2023-08-16T00:00:00+00:00","publisher": {
+      "@type": "Organization",
+      "name": ""},"author": {
+        "@type": "Person",
+        "name": "cjt"
+      },"description": ""
+  }
+  </script></head>
+  <body data-header-desktop="fixed" data-header-mobile="auto"><script>(window.localStorage?.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('data-theme', 'dark');</script><div class="wrapper" data-page-style="wide"><header class="desktop animate__faster" id="header-desktop">
+  <div class="header-wrapper">
+    <div class="header-title">
+      <a href="/" title="Notes"><span class="header-title-pre"><i class='far fa-kiss-wink-heart fa-fw' aria-hidden='true'></i></span><span id="typeit-header-desktop" class="typeit"></span></a><span class="header-subtitle"></span></div>
+    <nav>
+      <ul class="menu"><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/posts/"
+                
+                
+              ><i class="fa-solid fa-archive fa-fw fa-sm" aria-hidden="true"></i> 文章</a></li><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/categories/"
+                
+                
+              ><i class="fa-solid fa-th fa-fw fa-sm" aria-hidden="true"></i> 分类</a></li><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/tags/"
+                
+                
+              ><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> 标签</a></li><li class="menu-item delimiter"></li><li class="menu-item theme-switch" title="Switch Theme">
+          <i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i>
+        </li></ul>
+    </nav>
+  </div>
+</header><header class="mobile animate__faster" id="header-mobile">
+  <div class="header-container">
+    <div class="header-wrapper">
+      <div class="header-title">
+        <a href="/" title="Notes"><span class="header-title-pre"><i class='far fa-kiss-wink-heart fa-fw' aria-hidden='true'></i></span><span id="typeit-header-title-mobile" class="typeit"></span></a><span class="header-subtitle"></span></div>
+      <div class="menu-toggle" id="menu-toggle-mobile">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+    <nav>
+      <ul class="menu" id="menu-mobile"><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/posts/"
+                  
+                  
+                ><i class="fa-solid fa-archive fa-fw fa-sm" aria-hidden="true"></i> 文章</a></li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/categories/"
+                  
+                  
+                ><i class="fa-solid fa-th fa-fw fa-sm" aria-hidden="true"></i> 分类</a></li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/tags/"
+                  
+                  
+                ><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> 标签</a></li><li class="menu-item menu-system">
+          <span class="menu-system-item theme-switch" title="Switch Theme"><i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i></span></li>
+      </ul>
+    </nav>
+  </div>
+</header><main class="container"><aside class="toc" id="toc-auto"><h2 class="toc-title">Contents&nbsp;<i class="toc-icon fa-solid fa-angle-down fa-fw" aria-hidden="true"></i></h2>
+      <div class="toc-content" id="toc-content-auto"></div></aside>
+
+  <aside class="aside-custom">
+    </aside>
+
+  <article class="page single">
+    <div class="header"><h1 class="single-title animate__animated animate__flipInX"><span>基础脱壳</span>
+      </h1></div><div class="post-meta">
+      <div class="post-meta-line"><span class="post-author"><span class="author"><i class="fa-solid fa-user-circle" aria-hidden="true"></i>
+      cjt</span></span>
+          <span class="post-category">included in <a href="/categories/%E9%80%86%E5%90%91/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 逆向</a></span></div>
+      <div class="post-meta-line"><span title="published on 2023-08-16 00:00:00"><i class="fa-regular fa-calendar-alt fa-fw me-1" aria-hidden="true"></i><time datetime="2023-08-16">2023-08-16</time></span>&nbsp;<span title="Updated on 2023-08-16 00:00:00"><i class="fa-regular fa-edit fa-fw me-1" aria-hidden="true"></i><time datetime="2023-08-16">2023-08-16</time></span>&nbsp;<span><i class="fa-solid fa-pencil-alt fa-fw me-1" aria-hidden="true"></i>2211 words</span>&nbsp;<span><i class="fa-regular fa-clock fa-fw me-1" aria-hidden="true"></i>5 minutes</span>&nbsp;</div>
+    </div><div class="details toc" id="toc-static" data-kept="false">
+        <div class="details-summary toc-title">
+          <span>Contents</span>
+          <span><i class="details-icon fa-solid fa-angle-right" aria-hidden="true"></i></span>
+        </div>
+        <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#0-前言">0. 前言</a>
+      <ul>
+        <li><a href="#01-脱壳的常见概念">0.1 脱壳的常见概念</a></li>
+        <li><a href="#02-脱壳的方法">0.2 脱壳的方法</a></li>
+      </ul>
+    </li>
+    <li><a href="#1-手脱upx壳">1. 手脱UPX壳</a></li>
+    <li><a href="#2-手脱aspack壳">2. 手脱ASPACK壳</a></li>
+    <li><a href="#3-手脱nspack壳北斗">3. 手脱Nspack壳(北斗)</a></li>
+    <li><a href="#4-手脱fsg壳">4. 手脱FSG壳</a></li>
+  </ul>
+</nav></div>
+      </div><div class="content" id="content"><h2 id="0-前言">0. 前言</h2>
+<h3 id="01-脱壳的常见概念">0.1 脱壳的常见概念</h3>
+<p><strong>壳：是一种对应用程序加密压缩处理的技术</strong></p>
+<p>一般对可执行文件加壳的目的：</p>
+<ol>
+<li>软件加壳，保护数据、防止破解</li>
+<li>外挂加壳，保护数据、防止破解</li>
+<li>病毒加壳，防止被查杀。</li>
+</ol>
+<p>常见的壳分为<em>压缩壳</em>和<em>加密壳</em>两种，upx属于压缩壳。</p>
+<ul>
+<li>脱壳：表示通过反汇编将壳去掉的过程。</li>
+<li>OEP: 程序最开始执行的地方。</li>
+<li>原始OEP: 程序加了壳后，壳是先运行的，所以OEP是壳程序的入口点，而原始OEP就是程序原来的入口点。</li>
+<li>dump内存：将内存中的数据或代码转储（dump）到本地。</li>
+<li>IAT：导入地址表，windows下可执行文件中文件格式中的一个字段，描述的是导入信息函数地址，在文件中是一个RVA数组，在内存中是一个函数地址数组。</li>
+<li>修复IAT: 在脱壳后，不管是加密壳还是压缩壳，都有一个从内存dump到本地存储并保存为文件，而IAT在文件中是一个RVA数组，在内存中是一个函数地址数组，我们就需要将从内存dump出来的IAT从函数地址数组转换成RVA数组，这样程序才能修复。</li>
+<li>脱壳的环境：这个单独出来说，主要原因就是不同的系统脱壳时遇到的问题可能是不一样的，因为脱壳时要修改IAT，而不同系统中同一个模块的API导出的顺序是不一样的，所以修复时一般都会出现点问题。因此，我建议脱壳的环境应该是在32位系统的虚拟机中，以下的所有操作应该在32位系统的虚拟机中操作，64位系统下可能会出现意想不到的问题。</li>
+<li>pushad: 将所有的32位通用寄存器压入堆栈 ESP-32 。</li>
+<li>popad: 将所有的32位通用寄存器出栈 ESP+32。</li>
+</ul>
+<h3 id="02-脱壳的方法">0.2 脱壳的方法</h3>
+<ul>
+<li>单步跟踪：一步一步分析每一条汇编指令，吃透每一行汇编背后所代表的意思，将壳代码读懂，从而找到原始OEP然后脱壳。这种方法是最锻炼人的，也是最难的。 说白了就是一点点的调试，需要深厚的汇编功底和耐心。</li>
+<li>平衡堆栈(又称ESP定律,技巧法)：一般加壳的程序，都是先运行壳，然后再内存中还原程序，然后跳转到原始OEP,开始执行原程序代码。既然先运行壳，那就必然进入壳程序然后再退出壳程序，期间要遵守堆栈平衡（进入前和退出后的栈指针是相同的），也就是说壳退出后，必然会操作堆栈指针为进入之前的堆栈指针。在进入壳程序时，就可以在堆栈设置访问断点，让程序跑起来，当程序暂停的时候，就是壳程序即将执行完的时候，然后再其附近单步跟踪就可以找到原始OEP了。 这种方法比较适用于upx这种只对代码和数据压缩了的壳，如果还对代码加密了，那么就不是太好找了。加密的话就需要结合单步跟踪法。</li>
+</ul>
+<p>不管是哪种脱壳方法，都需要遵循脱壳三步法，脱壳三步法分为以下三步：</p>
+<ol>
+<li>寻找原始OEP: 这一步骤的主要作用就是要确定原始程序代码到底在哪里，能找到原始程序的代码，说明壳代码执行完了，我们只有找到原始OEP才能进行下一步的动作。</li>
+<li>dump内存到文件: 当我们找到原始OEP，调试运行到原始OEP时，只要代码被还原，我们就可以在这个地方进行dump内存，将内存中被还原的代码和数据抓取下来，重新保存成一个文件，这样脱完壳时，我们就可以用静态分析工具分析程序了。</li>
+<li>修复文件: 这一步主要就是修复IAT，对从内存中转储到本地的文件进行修复。</li>
+</ol>
+<h2 id="1-手脱upx壳">1. 手脱UPX壳</h2>
+<p>UPX壳：</p>
+<ol>
+<li>经过UPX压缩的win32/pe文件，包含三个区段：UPX0, UPX1, .rsrc或UPX0, UPX1, UPX2(原文件本身无资源时)。UPX0：在文件中没有内容，它的”Virtual size”加上UPX1的构成了原文件全部区段需要的内存空间，相当于区段合并。</li>
+<li>UPX1：起始位置为需解压缩的源数据，目标地址为UPX0基址。紧接着源数据块是”UPX stub”，即壳代码。一个典型的pushad/popad结构，所以人们常用”ESP定律”来脱UPX。</li>
+<li>rsrc/UPX2：在原文件有资源时，含有原资源段的完整头部和极少部分资源数据(类型为ICON、GROUP_ICON、VERSION和MANIFEST)，以保证explorer.exe能正常显示图标、版本信息。还有就是UPX自己的Imports内容，导出表的库名和函数名(如果有的话)。</li>
+</ol>
+<p>就是因为UPX是一个典型的pushad/popad结构，又要遵守堆栈平衡，即pushad之前的ESP需要跟popad之后的ESP相同，所以当我们看到UPX壳进入pushad后，对堆栈添加访问断点，当壳即将及执行结束即执行到popad要去还原堆栈时，必然会触发断点暂停下来，然后单步调试往下走，原始OEP就在附近了。</p>
+<blockquote>
+<p>工具：PEID和OD</p>
+</blockquote>
+<p>方法1：单步跟踪</p>
+<p>方法2：ESP定律法</p>
+<pre><code>在关键指令的下一处，esp的内容设置硬件断点(word或者dword)
+</code></pre>
+<p>方法3：2次内存镜像法</p>
+<pre><code>第一次，程序的第一个`.rsrc`区段；第二次，程序的第一个`UPX0`区段。
+</code></pre>
+<blockquote>
+<p>程序把res段解密之后，code段肯定也就解压完成了</p>
+</blockquote>
+<p>方法4：一步直达法</p>
+<pre><code>适用于绝大多数upx、ASPACK壳。有进栈就有出出栈，找到出栈的命令：popad等
+</code></pre>
+<h2 id="2-手脱aspack壳">2. 手脱ASPACK壳</h2>
+<p>6种方法脱</p>
+<p>方法1：单步跟踪</p>
+<p>方法2：ESP定律</p>
+<p>方法3：一步直达</p>
+<p>方法4：2次内存镜像</p>
+<p>方法5：模拟跟踪</p>
+<ul>
+<li>找到：SFX,imports,relocations</li>
+<li>tc eip&lt;xxxxxx(找到的地址)</li>
+</ul>
+<p>方法6：SFX</p>
+<pre><code>选项=》调试设置=》SFX=》块方式跟踪  =&gt; 重新加载
+</code></pre>
+<h2 id="3-手脱nspack壳北斗">3. 手脱Nspack壳(北斗)</h2>
+<p>方法1：单步跟踪</p>
+<p>方法2：ESP定律法</p>
+<p>方法3：内存镜像</p>
+<pre><code>直接在code处下断点，再单步调试
+</code></pre>
+<p>方法4：模拟跟踪</p>
+<p>方法5：直接下断点<code>at GetVersion</code></p>
+<blockquote>
+<p>适用于北斗3.0之前的壳</p>
+</blockquote>
+<h2 id="4-手脱fsg壳">4. 手脱FSG壳</h2>
+</div><div class="post-footer" id="post-footer">
+  <div class="post-info">
+    <div class="post-info-line">
+      <div class="post-info-mod">
+        <span title="Updated on 2023-08-16 00:00:00">Updated on 2023-08-16&nbsp;</span>
+      </div><div class="post-info-license">
+          <span><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span>
+        </div></div>
+    <div class="post-info-line">
+      <div class="post-info-md"></div>
+      <div class="post-info-share">
+        <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://cui-jiang-tao.github.io/posts/%E5%9F%BA%E7%A1%80%E8%84%B1%E5%A3%B3/" data-title="基础脱壳" data-hashtags="脱壳"><i class="fa-brands fa-twitter fa-fw" aria-hidden="true"></i></a>
+  <a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://cui-jiang-tao.github.io/posts/%E5%9F%BA%E7%A1%80%E8%84%B1%E5%A3%B3/" data-hashtag="脱壳"><i class="fa-brands fa-facebook-square fa-fw" aria-hidden="true"></i></a>
+  <a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="https://cui-jiang-tao.github.io/posts/%E5%9F%BA%E7%A1%80%E8%84%B1%E5%A3%B3/" data-title="基础脱壳"><i class="fa-brands fa-weibo fa-fw" aria-hidden="true"></i></a>
+  </span>
+      </div>
+    </div>
+  </div>
+
+  <div class="post-info-more">
+    <section class="post-tags"><i class="fa-solid fa-tags fa-fw me-1" aria-hidden="true"></i><a href='/tags/%E8%84%B1%E5%A3%B3/' class="post-tag">脱壳</a></section>
+    <section>
+      <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+    </section>
+  </div>
+
+  <div class="post-nav"><a href="/posts/160_crackme/035/" class="post-nav-item" rel="prev" title="160个CrackMe之035"><i class="fa-solid fa-angle-left fa-fw" aria-hidden="true"></i>160个CrackMe之035</a>
+      <a href="/posts/sql/mysql/" class="post-nav-item" rel="next" title="sql语句练习--mysql">sql语句练习--mysql<i class="fa-solid fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+</article></main><footer class="footer">
+    <div class="footer-container"><div class="footer-line copyright" itemscope itemtype="http://schema.org/CreativeWork"><i class="fa-regular fa-copyright fa-fw" aria-hidden="true"></i>
+            <span itemprop="copyrightYear">2022 - 2023</span><span class="license footer-divider"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div><div class="footer-line statistics"></div></div>
+  </footer></div><div class="widgets"><div class="fixed-buttons animate__faster d-none"><div class="fixed-button back-to-top" role="button" aria-label="Back to Top"><i class="fa-solid fa-arrow-up fa-fw" aria-hidden="true"></i><span class="variant-numeric d-none">0%</span>
+        </div></div><div id="mask"></div><noscript>
+    <div class="noscript-warning">Theme FixIt works best with JavaScript enabled.</div>
+  </noscript>
+</div><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script src="/lib/sharer/sharer.min.js" async defer></script><script src="/lib/typeit/index.umd.js" defer></script><script src="/lib/katex/katex.min.js" defer></script><script src="/lib/katex/auto-render.min.js" defer></script><script src="/lib/katex/copy-tex.min.js" defer></script><script src="/lib/katex/mhchem.min.js" defer></script><script src="/lib/cookieconsent/cookieconsent.min.js" defer></script><script>window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":-1},"comment":{"enable":false},"cookieconsent":{"content":{"dismiss":"Got it!","link":"Learn more","message":"This website uses Cookies to improve your experience."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"data":{"typeit-header-desktop":"Home","typeit-header-title-mobile":"Home"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"typeit-header-desktop":["typeit-header-desktop"],"typeit-header-title-mobile":["typeit-header-title-mobile"]},"duration":-1,"loop":false,"speed":100}};</script><script src="/js/theme.min.js" defer></script></body>
+</html>

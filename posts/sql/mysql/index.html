@@ -1,0 +1,1232 @@
+<!DOCTYPE html>
+<html itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+  <head>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+    <meta name="robots" content="noodp" />
+    <title>sql语句练习--mysql - Notes</title><meta name="author" content="cjt">
+<meta name="author-link" content="">
+<meta name="description" content="0. 开始 exam数据库的创建和使用： 1 2 3 4 DROP DATABASE exam; /* 删除exam数据库 */ CREATE DATABASE exam; /* 创建exam数据库 */ USE exam; /* 使用exam数据库 */ 表的创建： 1 2 3" /><meta name="keywords" content='sql' /><meta itemprop="name" content="sql语句练习--mysql">
+<meta itemprop="description" content="0. 开始 exam数据库的创建和使用： 1 2 3 4 DROP DATABASE exam; /* 删除exam数据库 */ CREATE DATABASE exam; /* 创建exam数据库 */ USE exam; /* 使用exam数据库 */ 表的创建： 1 2 3"><meta itemprop="datePublished" content="2023-10-10T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2023-10-10T00:00:00+00:00" />
+<meta itemprop="wordCount" content="7410">
+<meta itemprop="keywords" content="sql," /><meta property="og:title" content="sql语句练习--mysql" />
+<meta property="og:description" content="0. 开始 exam数据库的创建和使用： 1 2 3 4 DROP DATABASE exam; /* 删除exam数据库 */ CREATE DATABASE exam; /* 创建exam数据库 */ USE exam; /* 使用exam数据库 */ 表的创建： 1 2 3" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://cui-jiang-tao.github.io/posts/sql/mysql/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-10-10T00:00:00+00:00" />
+<meta property="article:modified_time" content="2023-10-10T00:00:00+00:00" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="sql语句练习--mysql"/>
+<meta name="twitter:description" content="0. 开始 exam数据库的创建和使用： 1 2 3 4 DROP DATABASE exam; /* 删除exam数据库 */ CREATE DATABASE exam; /* 创建exam数据库 */ USE exam; /* 使用exam数据库 */ 表的创建： 1 2 3"/>
+<meta name="application-name" content="FixIt">
+<meta name="apple-mobile-web-app-title" content="FixIt"><meta name="theme-color" data-light="#f8f8f8" data-dark="#252627" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" href="https://cui-jiang-tao.github.io/posts/sql/mysql/" /><link rel="prev" href="https://cui-jiang-tao.github.io/posts/%E5%9F%BA%E7%A1%80%E8%84%B1%E5%A3%B3/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "BlogPosting",
+    "headline": "sql语句练习--mysql",
+    "inLanguage": "zh-CN",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https:\/\/cui-jiang-tao.github.io\/posts\/sql\/mysql\/"
+    },"genre": "posts","keywords": "sql","wordcount":  7410 ,
+    "url": "https:\/\/cui-jiang-tao.github.io\/posts\/sql\/mysql\/","datePublished": "2023-10-10T00:00:00+00:00","dateModified": "2023-10-10T00:00:00+00:00","publisher": {
+      "@type": "Organization",
+      "name": ""},"author": {
+        "@type": "Person",
+        "name": "cjt"
+      },"description": ""
+  }
+  </script></head>
+  <body data-header-desktop="fixed" data-header-mobile="auto"><script>(window.localStorage?.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('data-theme', 'dark');</script><div class="wrapper" data-page-style="wide"><header class="desktop animate__faster" id="header-desktop">
+  <div class="header-wrapper">
+    <div class="header-title">
+      <a href="/" title="Notes"><span class="header-title-pre"><i class='far fa-kiss-wink-heart fa-fw' aria-hidden='true'></i></span><span id="typeit-header-desktop" class="typeit"></span></a><span class="header-subtitle"></span></div>
+    <nav>
+      <ul class="menu"><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/posts/"
+                
+                
+              ><i class="fa-solid fa-archive fa-fw fa-sm" aria-hidden="true"></i> 文章</a></li><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/categories/"
+                
+                
+              ><i class="fa-solid fa-th fa-fw fa-sm" aria-hidden="true"></i> 分类</a></li><li class="menu-item">
+              <a
+                class="menu-link"
+                href="/tags/"
+                
+                
+              ><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> 标签</a></li><li class="menu-item delimiter"></li><li class="menu-item theme-switch" title="Switch Theme">
+          <i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i>
+        </li></ul>
+    </nav>
+  </div>
+</header><header class="mobile animate__faster" id="header-mobile">
+  <div class="header-container">
+    <div class="header-wrapper">
+      <div class="header-title">
+        <a href="/" title="Notes"><span class="header-title-pre"><i class='far fa-kiss-wink-heart fa-fw' aria-hidden='true'></i></span><span id="typeit-header-title-mobile" class="typeit"></span></a><span class="header-subtitle"></span></div>
+      <div class="menu-toggle" id="menu-toggle-mobile">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+    <nav>
+      <ul class="menu" id="menu-mobile"><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/posts/"
+                  
+                  
+                ><i class="fa-solid fa-archive fa-fw fa-sm" aria-hidden="true"></i> 文章</a></li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/categories/"
+                  
+                  
+                ><i class="fa-solid fa-th fa-fw fa-sm" aria-hidden="true"></i> 分类</a></li><li
+              class="menu-item"
+            ><a
+                  class="menu-link"
+                  href="/tags/"
+                  
+                  
+                ><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> 标签</a></li><li class="menu-item menu-system">
+          <span class="menu-system-item theme-switch" title="Switch Theme"><i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i></span></li>
+      </ul>
+    </nav>
+  </div>
+</header><main class="container"><aside class="toc" id="toc-auto"><h2 class="toc-title">Contents&nbsp;<i class="toc-icon fa-solid fa-angle-down fa-fw" aria-hidden="true"></i></h2>
+      <div class="toc-content" id="toc-content-auto"></div></aside>
+
+  <aside class="aside-custom">
+    </aside>
+
+  <article class="page single">
+    <div class="header"><h1 class="single-title animate__animated animate__flipInX"><span>sql语句练习--mysql</span>
+      </h1></div><div class="post-meta">
+      <div class="post-meta-line"><span class="post-author"><span class="author"><i class="fa-solid fa-user-circle" aria-hidden="true"></i>
+      cjt</span></span>
+          <span class="post-category">included in <a href="/categories/sql/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> sql</a></span></div>
+      <div class="post-meta-line"><span title="published on 2023-10-10 00:00:00"><i class="fa-regular fa-calendar-alt fa-fw me-1" aria-hidden="true"></i><time datetime="2023-10-10">2023-10-10</time></span>&nbsp;<span title="Updated on 2023-10-10 00:00:00"><i class="fa-regular fa-edit fa-fw me-1" aria-hidden="true"></i><time datetime="2023-10-10">2023-10-10</time></span>&nbsp;<span><i class="fa-solid fa-pencil-alt fa-fw me-1" aria-hidden="true"></i>7410 words</span>&nbsp;<span><i class="fa-regular fa-clock fa-fw me-1" aria-hidden="true"></i>15 minutes</span>&nbsp;</div>
+    </div><div class="details toc" id="toc-static" data-kept="false">
+        <div class="details-summary toc-title">
+          <span>Contents</span>
+          <span><i class="details-icon fa-solid fa-angle-right" aria-hidden="true"></i></span>
+        </div>
+        <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#0-开始">0. 开始</a></li>
+    <li><a href="#1-练习">1. 练习</a>
+      <ul>
+        <li><a href="#11-dql练习">1.1 DQL练习</a></li>
+        <li><a href="#12-子查询">1.2 子查询</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+      </div><div class="content" id="content"><h2 id="0-开始">0. 开始</h2>
+<p>exam数据库的创建和使用：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">DROP</span><span class="w"> </span><span class="k">DATABASE</span><span class="w"> </span><span class="n">exam</span><span class="p">;</span><span class="w">     </span><span class="cm">/* 删除exam数据库 */</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">CREATE</span><span class="w"> </span><span class="k">DATABASE</span><span class="w"> </span><span class="n">exam</span><span class="p">;</span><span class="w">   </span><span class="cm">/* 创建exam数据库 */</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">USE</span><span class="w"> </span><span class="n">exam</span><span class="p">;</span><span class="w">               </span><span class="cm">/* 使用exam数据库 */</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>表的创建：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="cm">/*创建部门表*/</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">dept</span><span class="p">(</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="n">deptno</span><span class="w">		</span><span class="nb">INT</span><span class="w"> 	</span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="n">dname</span><span class="w">		</span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">50</span><span class="p">),</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="n">loc</span><span class="w"> 		</span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="cm">/*创建雇员表*/</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">emp</span><span class="p">(</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="n">empno</span><span class="w">		</span><span class="nb">INT</span><span class="w"> 	</span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="n">ename</span><span class="w">		</span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">50</span><span class="p">),</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="n">job</span><span class="w">		</span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">50</span><span class="p">),</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="n">mgr</span><span class="w">		</span><span class="nb">INT</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="n">hiredate</span><span class="w">	</span><span class="nb">DATE</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="n">sal</span><span class="w">		</span><span class="nb">DECIMAL</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="n">COMM</span><span class="w"> 		</span><span class="nb">DECIMAL</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="n">deptno</span><span class="w">		</span><span class="nb">INT</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="k">CONSTRAINT</span><span class="w"> </span><span class="n">fk_emp</span><span class="w"> </span><span class="k">FOREIGN</span><span class="w"> </span><span class="k">KEY</span><span class="p">(</span><span class="n">mgr</span><span class="p">)</span><span class="w"> </span><span class="k">REFERENCES</span><span class="w"> </span><span class="n">emp</span><span class="p">(</span><span class="n">empno</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="cm">/*创建工资等级表*/</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">salgrade</span><span class="p">(</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="n">grade</span><span class="w">		</span><span class="nb">INT</span><span class="w"> 	</span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="n">losal</span><span class="w">		</span><span class="nb">INT</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="n">hisal</span><span class="w">		</span><span class="nb">INT</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="cm">/*创建学生表*/</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">stu</span><span class="p">(</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="n">sid</span><span class="w">		</span><span class="nb">INT</span><span class="w"> 	</span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="n">sname</span><span class="w">		</span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">50</span><span class="p">),</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="n">age</span><span class="w">		</span><span class="nb">INT</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="n">gander</span><span class="w">		</span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">10</span><span class="p">),</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="n">province</span><span class="w">	</span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">50</span><span class="p">),</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="n">tuition</span><span class="w">		</span><span class="nb">INT</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">);</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>表数据的插入：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span><span class="lnt">64
+</span><span class="lnt">65
+</span><span class="lnt">66
+</span><span class="lnt">67
+</span><span class="lnt">68
+</span><span class="lnt">69
+</span><span class="lnt">70
+</span><span class="lnt">71
+</span><span class="lnt">72
+</span><span class="lnt">73
+</span><span class="lnt">74
+</span><span class="lnt">75
+</span><span class="lnt">76
+</span><span class="lnt">77
+</span><span class="lnt">78
+</span><span class="lnt">79
+</span><span class="lnt">80
+</span><span class="lnt">81
+</span><span class="lnt">82
+</span><span class="lnt">83
+</span><span class="lnt">84
+</span><span class="lnt">85
+</span><span class="lnt">86
+</span><span class="lnt">87
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="cm">/*插入dept表数据*/</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">dept</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;教研部&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;北京&#39;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">dept</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;学工部&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;上海&#39;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">dept</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="mi">30</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;销售部&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;广州&#39;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">dept</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="mi">40</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;财务部&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;武汉&#39;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="cm">/*插入emp表数据*/</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">emp</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="mi">1009</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;曾阿牛&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;董事长&#39;</span><span class="p">,</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;2001-11-17&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">50000</span><span class="p">,</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">emp</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="mi">1004</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;刘备&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;经理&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">1009</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;2001-04-02&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">29750</span><span class="p">,</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span><span class="w"> </span><span class="mi">20</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">emp</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="mi">1006</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;关羽&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;经理&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">1009</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;2001-05-01&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">28500</span><span class="p">,</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span><span class="w"> </span><span class="mi">30</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">emp</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="mi">1007</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;张飞&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;经理&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">1009</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;2001-09-01&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">24500</span><span class="p">,</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">emp</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="mi">1008</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;诸葛亮&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;分析师&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">1004</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;2007-04-19&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">30000</span><span class="p">,</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span><span class="w"> </span><span class="mi">20</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">emp</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="mi">1013</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;庞统&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;分析师&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">1004</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;2001-12-03&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">30000</span><span class="p">,</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span><span class="w"> </span><span class="mi">20</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">emp</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="mi">1002</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;黛绮丝&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;销售员&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">1006</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;2001-02-20&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">16000</span><span class="p">,</span><span class="w"> </span><span class="mi">3000</span><span class="p">,</span><span class="w"> </span><span class="mi">30</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">emp</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="mi">1003</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;殷天正&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;销售员&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">1006</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;2001-02-22&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">12500</span><span class="p">,</span><span class="w"> </span><span class="mi">5000</span><span class="p">,</span><span class="w"> </span><span class="mi">30</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">emp</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="mi">1005</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;谢逊&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;销售员&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">1006</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;2001-09-28&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">12500</span><span class="p">,</span><span class="w"> </span><span class="mi">14000</span><span class="p">,</span><span class="w"> </span><span class="mi">30</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">emp</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="mi">1010</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;韦一笑&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;销售员&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">1006</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;2001-09-08&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">15000</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">30</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">emp</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="mi">1012</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;程普&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;文员&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">1006</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;2001-12-03&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">9500</span><span class="p">,</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span><span class="w"> </span><span class="mi">30</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">emp</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="mi">1014</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;黄盖&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;文员&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">1007</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;2002-01-23&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">13000</span><span class="p">,</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">emp</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="mi">1011</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;周泰&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;文员&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">1008</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;2007-05-23&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">11000</span><span class="p">,</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span><span class="w"> </span><span class="mi">20</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">emp</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="mi">1001</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;甘宁&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;文员&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">1013</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;2000-12-17&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">8000</span><span class="p">,</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span><span class="w"> </span><span class="mi">20</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="cm">/*插入salgrade表数据*/</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">salgrade</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">7000</span><span class="p">,</span><span class="w"> </span><span class="mi">12000</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">salgrade</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">12010</span><span class="p">,</span><span class="w"> </span><span class="mi">14000</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">salgrade</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">14010</span><span class="p">,</span><span class="w"> </span><span class="mi">20000</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">salgrade</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">20010</span><span class="p">,</span><span class="w"> </span><span class="mi">30000</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">salgrade</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mi">30010</span><span class="p">,</span><span class="w"> </span><span class="mi">99990</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="cm">/*插入stu表数据*/</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="o">`</span><span class="n">stu</span><span class="o">`</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;1&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;王永&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;23&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;男&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;北京&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;1500&#39;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="o">`</span><span class="n">stu</span><span class="o">`</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;2&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;张雷&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;25&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;男&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;辽宁&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;2500&#39;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="o">`</span><span class="n">stu</span><span class="o">`</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;3&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;李强&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;22&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;男&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;北京&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;3500&#39;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="o">`</span><span class="n">stu</span><span class="o">`</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;4&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;宋永合&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;25&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;男&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;北京&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;1500&#39;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="o">`</span><span class="n">stu</span><span class="o">`</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;5&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;叙美丽&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;23&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;女&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;北京&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;1000&#39;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="o">`</span><span class="n">stu</span><span class="o">`</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;6&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;陈宁&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;22&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;女&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;山东&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;2500&#39;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="o">`</span><span class="n">stu</span><span class="o">`</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;7&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;王丽&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;21&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;女&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;北京&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;1600&#39;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="o">`</span><span class="n">stu</span><span class="o">`</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;8&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;李永&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;23&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;男&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;北京&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;3500&#39;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="o">`</span><span class="n">stu</span><span class="o">`</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;9&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;张玲&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;23&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;女&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;广州&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;2500&#39;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="o">`</span><span class="n">stu</span><span class="o">`</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;10&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;啊历&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;18&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;男&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;山西&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;3500&#39;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="o">`</span><span class="n">stu</span><span class="o">`</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;11&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;王刚&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;23&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;男&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;湖北&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;4500&#39;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="o">`</span><span class="n">stu</span><span class="o">`</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;12&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;陈永&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;24&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;男&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;北京&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;1500&#39;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="o">`</span><span class="n">stu</span><span class="o">`</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;13&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;李雷&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;24&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;男&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;辽宁&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;2500&#39;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="o">`</span><span class="n">stu</span><span class="o">`</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;14&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;李沿&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;22&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;男&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;北京&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;3500&#39;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="o">`</span><span class="n">stu</span><span class="o">`</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;15&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;王小明&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;25&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;男&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;北京&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;1500&#39;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="o">`</span><span class="n">stu</span><span class="o">`</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;16&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;王小丽&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;23&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;女&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;北京&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;1000&#39;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="o">`</span><span class="n">stu</span><span class="o">`</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;17&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;唐宁&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;22&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;女&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;山东&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;2500&#39;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="o">`</span><span class="n">stu</span><span class="o">`</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;18&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;唐丽&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;21&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;女&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;北京&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;1600&#39;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="o">`</span><span class="n">stu</span><span class="o">`</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;19&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;啊永&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;23&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;男&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;北京&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;3500&#39;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="o">`</span><span class="n">stu</span><span class="o">`</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;20&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;唐玲&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;23&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;女&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;广州&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;2500&#39;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="o">`</span><span class="n">stu</span><span class="o">`</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;21&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;叙刚&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;18&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;男&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;山西&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;3500&#39;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="o">`</span><span class="n">stu</span><span class="o">`</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;22&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;王累&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;23&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;男&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;湖北&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;4500&#39;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="o">`</span><span class="n">stu</span><span class="o">`</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;23&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;赵安&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;23&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;男&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;北京&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;1500&#39;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="o">`</span><span class="n">stu</span><span class="o">`</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;24&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;关雷&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;25&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;男&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;辽宁&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;2500&#39;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="o">`</span><span class="n">stu</span><span class="o">`</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;25&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;李字&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;22&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;男&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;北京&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;3500&#39;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="o">`</span><span class="n">stu</span><span class="o">`</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;26&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;叙安国&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;25&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;男&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;北京&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;1500&#39;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="o">`</span><span class="n">stu</span><span class="o">`</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;27&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;陈浩难&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;23&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;女&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;北京&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;1000&#39;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="o">`</span><span class="n">stu</span><span class="o">`</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;28&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;陈明&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;22&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;女&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;山东&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;2500&#39;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="o">`</span><span class="n">stu</span><span class="o">`</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;29&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;孙丽&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;21&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;女&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;北京&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;1600&#39;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="o">`</span><span class="n">stu</span><span class="o">`</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;30&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;李治国&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;23&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;男&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;北京&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;3500&#39;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="o">`</span><span class="n">stu</span><span class="o">`</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;31&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;张娜&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;23&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;女&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;广州&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;2500&#39;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="o">`</span><span class="n">stu</span><span class="o">`</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;32&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;安强&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;18&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;男&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;山西&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;3500&#39;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="o">`</span><span class="n">stu</span><span class="o">`</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;33&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;王欢&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;23&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;男&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;湖北&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;4500&#39;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="o">`</span><span class="n">stu</span><span class="o">`</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;34&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;周天乐&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;23&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;男&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;北京&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;1500&#39;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="o">`</span><span class="n">stu</span><span class="o">`</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;35&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;关雷&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;25&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;男&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;辽宁&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;2500&#39;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="o">`</span><span class="n">stu</span><span class="o">`</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;36&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;吴强&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;22&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;男&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;北京&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;3500&#39;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="o">`</span><span class="n">stu</span><span class="o">`</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;37&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;吴合国&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;25&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;男&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;北京&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;1500&#39;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="o">`</span><span class="n">stu</span><span class="o">`</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;38&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;正小和&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;23&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;女&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;北京&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;1000&#39;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="o">`</span><span class="n">stu</span><span class="o">`</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;39&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;吴丽&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;22&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;女&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;山东&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;2500&#39;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="o">`</span><span class="n">stu</span><span class="o">`</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;40&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;冯含&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;21&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;女&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;北京&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;1600&#39;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="o">`</span><span class="n">stu</span><span class="o">`</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;41&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;陈冬&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;23&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;男&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;北京&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;3500&#39;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="o">`</span><span class="n">stu</span><span class="o">`</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;42&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;关玲&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;23&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;女&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;广州&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;2500&#39;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="o">`</span><span class="n">stu</span><span class="o">`</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;43&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;包利&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;18&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;男&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;山西&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;3500&#39;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="o">`</span><span class="n">stu</span><span class="o">`</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;44&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;威刚&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;23&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;男&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;湖北&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;4500&#39;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="o">`</span><span class="n">stu</span><span class="o">`</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;45&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;李永&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;23&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;男&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;北京&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;1500&#39;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="o">`</span><span class="n">stu</span><span class="o">`</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;46&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;张关雷&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;25&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;男&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;辽宁&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;2500&#39;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="o">`</span><span class="n">stu</span><span class="o">`</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;47&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;送小强&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;22&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;男&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;北京&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;3500&#39;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="o">`</span><span class="n">stu</span><span class="o">`</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;48&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;关动林&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;25&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;男&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;北京&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;1500&#39;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="o">`</span><span class="n">stu</span><span class="o">`</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;49&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;苏小哑&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;23&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;女&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;北京&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;1000&#39;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="o">`</span><span class="n">stu</span><span class="o">`</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;50&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;赵宁&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;22&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;女&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;山东&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;2500&#39;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="o">`</span><span class="n">stu</span><span class="o">`</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;51&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;陈丽&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;21&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;女&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;北京&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;1600&#39;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="o">`</span><span class="n">stu</span><span class="o">`</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;52&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;钱小刚&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;23&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;男&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;北京&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;3500&#39;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="o">`</span><span class="n">stu</span><span class="o">`</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;53&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;艾林&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;23&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;女&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;广州&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;2500&#39;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="o">`</span><span class="n">stu</span><span class="o">`</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;54&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;郭林&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;18&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;男&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;山西&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;3500&#39;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="o">`</span><span class="n">stu</span><span class="o">`</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;55&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;周制强&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;23&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;男&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;湖北&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;4500&#39;</span><span class="p">);</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>查看表：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">select</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">emp</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">select</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">dept</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">select</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">salgrade</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">select</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">stu</span><span class="p">;</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="1-练习">1. 练习</h2>
+<h3 id="11-dql练习">1.1 DQL练习</h3>
+<ol>
+<li>
+<p>查询出部门编号为30的所有员工</p>
+<ul>
+<li>列：没有说明要查询的列，所以查询所有列</li>
+<li>表：只一张表，emp</li>
+<li>条件：部门编号为30，即deptno=30</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">emp</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">deptno</span><span class="o">=</span><span class="mi">30</span><span class="p">;</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>所有销售员的姓名、编号和部门编号</p>
+<ul>
+<li>列：姓名ename、编号empno、部门编号deptno</li>
+<li>表：emp</li>
+<li>条件：所有销售员，即job=&lsquo;销售员&rsquo;</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="n">ename</span><span class="p">,</span><span class="n">empno</span><span class="p">,</span><span class="n">deptno</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">emp</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">job</span><span class="o">=</span><span class="s1">&#39;销售员&#39;</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>找出奖金高于工资的员工</p>
+<ul>
+<li>列：所有列</li>
+<li>表：emp</li>
+<li>条件：奖金&gt;工资，即comm&gt;sal</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">emp</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">comm</span><span class="o">&gt;</span><span class="n">sal</span><span class="p">;</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>找出奖金高于工资60%的员工</p>
+<ul>
+<li>列：所有列</li>
+<li>表：emp</li>
+<li>条件：奖金&gt;工资<em>0.6，即comm&gt;sal</em>0.6</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">emp</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">comm</span><span class="o">&gt;</span><span class="n">sal</span><span class="o">*</span><span class="mi">0</span><span class="p">.</span><span class="mi">6</span><span class="p">;</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>找出部门编号为10中所有经理，和部门编号为20中所有销售员的详细资料</p>
+<ul>
+<li>列：所有列</li>
+<li>表：emp</li>
+<li>条件：部门编号=10并且job为经理，和部门编号=20并且job为销售员</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">emp</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="p">(</span><span class="n">deptno</span><span class="o">=</span><span class="mi">10</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">job</span><span class="o">=</span><span class="s1">&#39;经理&#39;</span><span class="p">)</span><span class="w"> </span><span class="k">OR</span><span class="w"> </span><span class="p">(</span><span class="n">deptno</span><span class="o">=</span><span class="mi">20</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">job</span><span class="o">=</span><span class="s1">&#39;销售员&#39;</span><span class="p">);</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>找出部门编号为10中所有经理，部门编号为20中所有销售员，还有即不是经理又不是销售员但其工资大或等于20000的所有员工详细资料</p>
+<ul>
+<li>列：所有列</li>
+<li>表：emp</li>
+<li>条件：deptno=10 and job=&lsquo;经理&rsquo;, depnto=20 and job=&lsquo;销售员&rsquo;, job not in (&lsquo;销售员&rsquo;,&lsquo;经理&rsquo;) and sal&gt;=20000</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">emp</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">WHERE</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">(</span><span class="n">deptno</span><span class="o">=</span><span class="mi">10</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">job</span><span class="o">=</span><span class="s1">&#39;经理&#39;</span><span class="p">)</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">OR</span><span class="w"> </span><span class="p">(</span><span class="n">deptno</span><span class="o">=</span><span class="mi">20</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">job</span><span class="o">=</span><span class="s1">&#39;销售员&#39;</span><span class="p">)</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">OR</span><span class="w"> </span><span class="n">job</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">IN</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;经理&#39;</span><span class="p">,</span><span class="s1">&#39;销售员&#39;</span><span class="p">)</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">sal</span><span class="o">&gt;=</span><span class="mi">20000</span><span class="p">;</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>有奖金的工种</p>
+<ul>
+<li>列：工作(不能重复出现)</li>
+<li>表：emp</li>
+<li>条件：comm is not null</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="k">DISTINCT</span><span class="w"> </span><span class="n">job</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">emp</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">comm</span><span class="w"> </span><span class="k">IS</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">;</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>无奖金或奖金低于1000的员工</p>
+<ul>
+<li>列：所有列</li>
+<li>表：emp</li>
+<li>条件：comm is null 或者 comm &lt; 1000</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">emp</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">comm</span><span class="w"> </span><span class="k">IS</span><span class="w"> </span><span class="k">NULL</span><span class="w"> </span><span class="k">OR</span><span class="w"> </span><span class="n">comm</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">1000</span><span class="p">;</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>查询名字由三个字组成的员工</p>
+<ul>
+<li>列：所有</li>
+<li>表：emp</li>
+<li>条件：ename like &lsquo;___&rsquo;</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">emp</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">ename</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="s1">&#39;___&#39;</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>查询2000年入职的员工</p>
+<ul>
+<li>列：所有</li>
+<li>表：emp</li>
+<li>条件：hiredate like &lsquo;2000%&rsquo;</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">emp</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">hiredate</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="s1">&#39;2000%&#39;</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">emp</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="k">YEAR</span><span class="p">(</span><span class="n">hiredate</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;2000&#39;</span><span class="p">;</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>查询所有员工详细信息，用编号升序排序</p>
+<ul>
+<li>列：所有</li>
+<li>表：emp</li>
+<li>条件：无</li>
+<li>排序：empno asc</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">emp</span><span class="w"> </span><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">empno</span><span class="w"> </span><span class="k">ASC</span><span class="p">;</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>查询所有员工详细信息，用工资降序排序，如果工资相同使用入职日期升序排序</p>
+<ul>
+<li>列：所有</li>
+<li>表：emp</li>
+<li>条件：无</li>
+<li>排序：sal desc, hiredate asc</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">emp</span><span class="w"> </span><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">sal</span><span class="w"> </span><span class="k">DESC</span><span class="p">,</span><span class="w"> </span><span class="n">hiredate</span><span class="w"> </span><span class="k">ASC</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>查询每个部门的平均工资</p>
+<ul>
+<li>列：部门编号、平均工资(平均工资就是分组信息)</li>
+<li>表：emp</li>
+<li>条件：无</li>
+<li>分组：每个部门，即使用部门分组，平均工资，使用avg()函数</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="n">deptno</span><span class="p">,</span><span class="w"> </span><span class="k">AVG</span><span class="p">(</span><span class="n">sal</span><span class="p">)</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">emp</span><span class="w"> </span><span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">deptno</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">SELECT</span><span class="w"> </span><span class="n">d</span><span class="p">.</span><span class="n">dname</span><span class="p">,</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="s1">&#39;平均工资&#39;</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">dept</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">d</span><span class="p">,</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">(</span><span class="k">SELECT</span><span class="w"> </span><span class="n">deptno</span><span class="p">,</span><span class="w"> </span><span class="k">AVG</span><span class="p">(</span><span class="n">sal</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">emp</span><span class="w"> </span><span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">deptno</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">e</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">WHERE</span><span class="w"> </span><span class="n">d</span><span class="p">.</span><span class="n">deptno</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">deptno</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">SELECT</span><span class="w"> </span><span class="n">dname</span><span class="p">,</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">avg_sal</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">dept</span><span class="w"> </span><span class="k">INNER</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">(</span><span class="k">SELECT</span><span class="w"> </span><span class="n">deptno</span><span class="p">,</span><span class="w"> </span><span class="k">AVG</span><span class="p">(</span><span class="n">sal</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">avg_sal</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">emp</span><span class="w"> </span><span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">deptno</span><span class="p">)</span><span class="k">AS</span><span class="w"> </span><span class="n">e</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">ON</span><span class="w"> </span><span class="n">dept</span><span class="p">.</span><span class="n">deptno</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">deptno</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">SELECT</span><span class="w"> </span><span class="n">d</span><span class="p">.</span><span class="o">`</span><span class="n">dname</span><span class="o">`</span><span class="p">,</span><span class="w"> </span><span class="k">AVG</span><span class="p">(</span><span class="n">e</span><span class="p">.</span><span class="o">`</span><span class="n">sal</span><span class="o">`</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="s1">&#39;平均工资&#39;</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">dept</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">d</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="k">RIGHT</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">emp</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">e</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="k">ON</span><span class="w"> </span><span class="n">d</span><span class="p">.</span><span class="o">`</span><span class="n">deptno</span><span class="o">`=</span><span class="n">e</span><span class="p">.</span><span class="o">`</span><span class="n">deptno</span><span class="o">`</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">d</span><span class="p">.</span><span class="n">deptno</span><span class="p">;</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>求出每个部门的雇员数量</p>
+<ul>
+<li>列：部门编号、人员数量（人员数量即记录数，这是分组信息）</li>
+<li>表：emp</li>
+<li>条件：无</li>
+<li>分组：每个部门是分组信息，人员数量，使用count()函数</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="n">deptno</span><span class="p">,</span><span class="w"> </span><span class="k">COUNT</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">emp</span><span class="w"> </span><span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">deptno</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">SELECT</span><span class="w"> </span><span class="n">deptno</span><span class="p">,</span><span class="w"> </span><span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">emp</span><span class="w"> </span><span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">deptno</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">SELECT</span><span class="w"> </span><span class="n">d</span><span class="p">.</span><span class="n">dname</span><span class="p">,</span><span class="w"> </span><span class="n">_count</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="s1">&#39;数量&#39;</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">dept</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">d</span><span class="p">,</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">(</span><span class="k">SELECT</span><span class="w"> </span><span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">_count</span><span class="p">,</span><span class="w"> </span><span class="n">deptno</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">emp</span><span class="w"> </span><span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">deptno</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">e</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">WHERE</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">deptno</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">d</span><span class="p">.</span><span class="n">deptno</span><span class="p">;</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">SELECT</span><span class="w"> </span><span class="n">dname</span><span class="p">,</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">ct</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">dept</span><span class="w"> </span><span class="k">INNER</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">(</span><span class="k">SELECT</span><span class="w"> </span><span class="n">deptno</span><span class="p">,</span><span class="w"> </span><span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">ct</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">emp</span><span class="w"> </span><span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">deptno</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">e</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">WHERE</span><span class="w"> </span><span class="n">dept</span><span class="p">.</span><span class="n">deptno</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">deptno</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">SELECT</span><span class="w"> </span><span class="n">d</span><span class="p">.</span><span class="o">`</span><span class="n">dname</span><span class="o">`</span><span class="p">,</span><span class="w"> </span><span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">dept</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">d</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="k">RIGHT</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">emp</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">e</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="k">ON</span><span class="w"> </span><span class="n">d</span><span class="p">.</span><span class="o">`</span><span class="n">deptno</span><span class="o">`=</span><span class="n">e</span><span class="p">.</span><span class="o">`</span><span class="n">deptno</span><span class="o">`</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">d</span><span class="p">.</span><span class="o">`</span><span class="n">deptno</span><span class="o">`</span><span class="p">;</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>查询每种工作的最高工资、最低工资、人数</p>
+<ul>
+<li>列：部门、最高工资、最低工资、人数（其中最高工资、最低工资、人数，都是分组信息）</li>
+<li>表：emp</li>
+<li>条件：无</li>
+<li>分组：每种工资是分组信息，最高工资使用max(sal)，最低工资使用min(sal)，人数使用count(*)</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="n">job</span><span class="p">,</span><span class="w"> </span><span class="k">MAX</span><span class="p">(</span><span class="n">sal</span><span class="p">),</span><span class="w"> </span><span class="k">MIN</span><span class="p">(</span><span class="n">sal</span><span class="p">),</span><span class="w"> </span><span class="k">COUNT</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">emp</span><span class="w"> </span><span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">job</span><span class="p">;</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>显示非销售人员工作名称以及从事同一工作雇员的月工资的总和，并且要满足从事同一工作的雇员的月工资合计大于50000，输出结果按月工资的合计升序排列</p>
+<ul>
+<li>列：工作名称、工资和(分组信息)</li>
+<li>表：emp</li>
+<li>条件：无</li>
+<li>分组：从事同一工作的工资和，即使用job分组</li>
+<li>分组条件：工资合计&gt;50000，这是分组条件，而不是where条件</li>
+<li>排序：工资合计排序，即sum(sal) asc</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="n">job</span><span class="p">,</span><span class="k">SUM</span><span class="p">(</span><span class="n">sal</span><span class="p">)</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">emp</span><span class="w"> </span><span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">job</span><span class="w"> </span><span class="k">HAVING</span><span class="w"> </span><span class="k">SUM</span><span class="p">(</span><span class="n">sal</span><span class="p">)</span><span class="o">&gt;</span><span class="mi">50000</span><span class="w"> </span><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="k">SUM</span><span class="p">(</span><span class="n">sal</span><span class="p">)</span><span class="w"> </span><span class="k">ASC</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">select</span><span class="w"> </span><span class="n">job</span><span class="p">,</span><span class="w"> </span><span class="k">sum</span><span class="p">(</span><span class="n">sal</span><span class="p">)</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">emp</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">job</span><span class="w"> </span><span class="k">not</span><span class="w"> </span><span class="k">in</span><span class="p">(</span><span class="s1">&#39;销售员&#39;</span><span class="p">)</span><span class="w"> </span><span class="k">group</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">job</span><span class="w"> </span><span class="k">having</span><span class="w"> </span><span class="k">sum</span><span class="p">(</span><span class="n">sal</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">50000</span><span class="w"> </span><span class="k">order</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="k">sum</span><span class="p">(</span><span class="n">sal</span><span class="p">)</span><span class="w"> </span><span class="k">asc</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">select</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">job</span><span class="p">,</span><span class="w"> </span><span class="n">_sum</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="s1">&#39;sum&#39;</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">emp</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">join</span><span class="w"> </span><span class="p">(</span><span class="k">select</span><span class="w"> </span><span class="k">sum</span><span class="p">(</span><span class="n">sal</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">_sum</span><span class="p">,</span><span class="w"> </span><span class="n">job</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">emp</span><span class="w"> </span><span class="k">group</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">job</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">e</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">on</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">job</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">emp</span><span class="p">.</span><span class="n">job</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">where</span><span class="w"> </span><span class="n">_sum</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">50000</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="n">emp</span><span class="p">.</span><span class="n">job</span><span class="o">!=</span><span class="s1">&#39;销售员&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">job</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">order</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">sal</span><span class="w"> </span><span class="k">asc</span><span class="p">;</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+</ol>
+<h3 id="12-子查询">1.2 子查询</h3>
+<ol>
+<li>
+<p>查出至少有一个员工的部门。显示部门编号、部门名称、部门位置、部门人数</p>
+<ul>
+<li>列：部门编号、部门名称、部门位置、部门人数(分组)</li>
+<li>列：dept、emp(部门人数没有员工表不行)</li>
+<li>条件：没有</li>
+<li>分组条件：人数&gt;1</li>
+</ul>
+<blockquote>
+<p>部门编号、部门名称、部门位置在dept表中都有，只有部门人数需要使用emp表，使用deptno来分组得到。
+我们让dept和（emp的分组查询），这两张表进行连接查询</p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">z</span><span class="p">.</span><span class="o">*</span><span class="p">,</span><span class="n">d</span><span class="p">.</span><span class="n">dname</span><span class="p">,</span><span class="n">d</span><span class="p">.</span><span class="n">loc</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">FROM</span><span class="w"> </span><span class="n">dept</span><span class="w"> </span><span class="n">d</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="k">SELECT</span><span class="w"> </span><span class="n">deptno</span><span class="p">,</span><span class="w"> </span><span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="n">cnt</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">emp</span><span class="w"> </span><span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">deptno</span><span class="p">)</span><span class="w"> </span><span class="n">z</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">WHERE</span><span class="w"> </span><span class="n">z</span><span class="p">.</span><span class="n">deptno</span><span class="o">=</span><span class="n">d</span><span class="p">.</span><span class="n">deptno</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">SELECT</span><span class="w"> </span><span class="n">d</span><span class="p">.</span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="n">cnt</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="p">(</span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">cnt</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">emp</span><span class="w"> </span><span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">deptno</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">e</span><span class="p">,</span><span class="w"> </span><span class="n">dept</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">d</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">WHERE</span><span class="w"> </span><span class="n">d</span><span class="p">.</span><span class="n">deptno</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">deptno</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">SELECT</span><span class="w"> </span><span class="n">d</span><span class="p">.</span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="n">_count</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">dept</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">d</span><span class="w"> </span><span class="k">INNER</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="p">(</span><span class="k">SELECT</span><span class="w"> </span><span class="n">deptno</span><span class="p">,</span><span class="w"> </span><span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">_count</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">emp</span><span class="w"> </span><span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">deptno</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">e</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">ON</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">deptno</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">d</span><span class="p">.</span><span class="n">deptno</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">SELECT</span><span class="w"> </span><span class="n">d</span><span class="p">.</span><span class="n">deptno</span><span class="p">,</span><span class="w"> </span><span class="n">d</span><span class="p">.</span><span class="n">dname</span><span class="p">,</span><span class="w"> </span><span class="n">d</span><span class="p">.</span><span class="n">loc</span><span class="p">,</span><span class="w"> </span><span class="n">_count</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">FROM</span><span class="w"> </span><span class="n">dept</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">d</span><span class="w"> </span><span class="k">JOIN</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">(</span><span class="k">SELECT</span><span class="w"> </span><span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">_count</span><span class="p">,</span><span class="w"> </span><span class="n">deptno</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">emp</span><span class="w"> </span><span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">deptno</span><span class="w"> </span><span class="k">HAVING</span><span class="w"> </span><span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">e</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">ON</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">deptno</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">d</span><span class="p">.</span><span class="n">deptno</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">SELECT</span><span class="w"> </span><span class="n">d</span><span class="p">.</span><span class="n">deptno</span><span class="p">,</span><span class="w"> </span><span class="n">d</span><span class="p">.</span><span class="n">dname</span><span class="p">,</span><span class="w"> </span><span class="n">d</span><span class="p">.</span><span class="n">loc</span><span class="p">,</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">cnt</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">dept</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">d</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">INNER</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="p">(</span><span class="k">SELECT</span><span class="w"> </span><span class="n">deptno</span><span class="p">,</span><span class="w"> </span><span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">cnt</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">emp</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="w">		</span><span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">deptno</span><span class="w"> 	
+</span></span></span><span class="line"><span class="cl"><span class="w">		</span><span class="k">HAVING</span><span class="w"> </span><span class="k">COUNT</span><span class="p">(</span><span class="n">deptno</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">e</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">ON</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">deptno</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">d</span><span class="p">.</span><span class="n">deptno</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">SELECT</span><span class="w"> </span><span class="n">d</span><span class="p">.</span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="k">COUNT</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">dept</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">d</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="k">RIGHT</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">emp</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">e</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="k">ON</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="o">`</span><span class="n">deptno</span><span class="o">`=</span><span class="n">d</span><span class="p">.</span><span class="o">`</span><span class="n">deptno</span><span class="o">`</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="o">`</span><span class="n">deptno</span><span class="o">`</span><span class="p">;</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>列出薪金比关羽高的所有员工</p>
+<ul>
+<li>列：所有</li>
+<li>表：emp</li>
+<li>条件：sal&gt;关羽的sal，其中关羽的sal需要子查询</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">FROM</span><span class="w"> </span><span class="n">emp</span><span class="w"> </span><span class="n">e</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">WHERE</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">sal</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="p">(</span><span class="k">SELECT</span><span class="w"> </span><span class="n">sal</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">emp</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">ename</span><span class="o">=</span><span class="s1">&#39;关羽&#39;</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">emp</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">WHERE</span><span class="w"> </span><span class="n">sal</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="p">(</span><span class="k">SELECT</span><span class="w"> </span><span class="n">sal</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">emp</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">ename</span><span class="o">=</span><span class="s1">&#39;关羽&#39;</span><span class="p">);</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p><strong>列出所有员工的姓名及其直接上级的姓名</strong></p>
+<ul>
+<li>列：员工名、领导名</li>
+<li>表：emp、emp</li>
+<li>条件：领导.empno=员工.mgr</li>
+</ul>
+<blockquote>
+<p>emp表中存在自身关联，即empno和mgr的关系。
+我们需要让emp和emp表连接查询。因为要求是查询所有员工的姓名，所以不能用内连接，因为曾阿牛是BOSS，没有上级，内连接是查询不到它的。</p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">ename</span><span class="p">,</span><span class="w"> </span><span class="n">IFNULL</span><span class="p">(</span><span class="n">m</span><span class="p">.</span><span class="n">ename</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;BOSS&#39;</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="s1">&#39;lead&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">FROM</span><span class="w"> </span><span class="n">emp</span><span class="w"> </span><span class="n">e</span><span class="w"> </span><span class="k">LEFT</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">emp</span><span class="w"> </span><span class="n">m</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">ON</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">mgr</span><span class="o">=</span><span class="n">m</span><span class="p">.</span><span class="n">empno</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">SELECT</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">ename</span><span class="p">,</span><span class="w"> </span><span class="n">IFNULL</span><span class="p">(</span><span class="n">m</span><span class="p">.</span><span class="n">ename</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;BOSS&#39;</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="s1">&#39;lead&#39;</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">emp</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">e</span><span class="w"> </span><span class="k">LEFT</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">emp</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">m</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">ON</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="o">`</span><span class="n">mgr</span><span class="o">`</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">m</span><span class="p">.</span><span class="o">`</span><span class="n">empno</span><span class="o">`</span><span class="w"> 
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>列出受雇日期早于直接上级的所有员工的编号、姓名、部门名称</p>
+<ul>
+<li>列：编号、姓名、部门名称</li>
+<li>表：emp、dept</li>
+<li>条件：hiredate &lt; 领导.hiredate</li>
+</ul>
+<blockquote>
+<p>emp表需要查。部门名称在dept表中，所以也需要查。领导的hiredate需要查，这说明需要两个emp和一个dept连接查询即三个表连接查询</p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">empno</span><span class="p">,</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">ename</span><span class="p">,</span><span class="w"> </span><span class="n">d</span><span class="p">.</span><span class="n">dname</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">FROM</span><span class="w"> </span><span class="n">emp</span><span class="w"> </span><span class="n">e</span><span class="w"> </span><span class="k">LEFT</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">emp</span><span class="w"> </span><span class="n">m</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">ON</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">mgr</span><span class="o">=</span><span class="n">m</span><span class="p">.</span><span class="n">empno</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">LEFT</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">dept</span><span class="w"> </span><span class="n">d</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">deptno</span><span class="o">=</span><span class="n">d</span><span class="p">.</span><span class="n">deptno</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">WHERE</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">hiredate</span><span class="o">&lt;</span><span class="n">m</span><span class="p">.</span><span class="n">hiredate</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">--- 错误的
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">SELECT</span><span class="w"> </span><span class="n">e1</span><span class="p">.</span><span class="n">empno</span><span class="p">,</span><span class="w"> </span><span class="n">e1</span><span class="p">.</span><span class="n">ename</span><span class="p">,</span><span class="w"> </span><span class="n">d</span><span class="p">.</span><span class="n">dname</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">FROM</span><span class="w"> </span><span class="n">emp</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">e1</span><span class="w"> </span><span class="k">LEFT</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">emp</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">e2</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="k">ON</span><span class="w"> </span><span class="n">e1</span><span class="p">.</span><span class="n">mgr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">e2</span><span class="p">.</span><span class="n">empno</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">e1</span><span class="p">.</span><span class="n">hiredate</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">e2</span><span class="p">.</span><span class="n">hiredate</span><span class="w">	</span><span class="c1">--on 之后的and条件 无效
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">LEFT</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">dept</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">d</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="k">ON</span><span class="w"> </span><span class="n">e1</span><span class="p">.</span><span class="n">deptno</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">d</span><span class="p">.</span><span class="n">deptno</span><span class="p">;</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>列出部门名称和这些部门的员工信息，同时列出那些没有员工的部门</p>
+<ul>
+<li>列：员工表所有列、部门名称</li>
+<li>表：emp, dept</li>
+<li>要求列出没有员工的部门，这说明需要以部门表为主表使用外连接</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="n">d</span><span class="p">.</span><span class="n">dname</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">FROM</span><span class="w"> </span><span class="n">emp</span><span class="w"> </span><span class="n">e</span><span class="w"> </span><span class="k">RIGHT</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">dept</span><span class="w"> </span><span class="n">d</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">ON</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">deptno</span><span class="o">=</span><span class="n">d</span><span class="p">.</span><span class="n">deptno</span><span class="p">;</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>列出所有文员的姓名及其部门名称，部门的人数</p>
+<ul>
+<li>列：姓名、部门名称、部门人数</li>
+<li>表：emp emp dept</li>
+<li>条件：job=文员</li>
+<li>分组：emp以deptno得到部门人数</li>
+<li>连接：emp连接emp分组，再连接dept</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">job</span><span class="p">,</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">ename</span><span class="p">,</span><span class="w"> </span><span class="n">d</span><span class="p">.</span><span class="n">dname</span><span class="p">,</span><span class="w"> </span><span class="n">z</span><span class="p">.</span><span class="n">cnt</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">FROM</span><span class="w"> </span><span class="n">emp</span><span class="w"> </span><span class="n">e</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="k">SELECT</span><span class="w"> </span><span class="n">deptno</span><span class="p">,</span><span class="w"> </span><span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="n">cnt</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">emp</span><span class="w"> </span><span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">deptno</span><span class="p">)</span><span class="w"> </span><span class="n">z</span><span class="p">,</span><span class="w"> </span><span class="n">dept</span><span class="w"> </span><span class="n">d</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">WHERE</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">job</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;文员&#39;</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">deptno</span><span class="o">=</span><span class="n">d</span><span class="p">.</span><span class="n">deptno</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">z</span><span class="p">.</span><span class="n">deptno</span><span class="o">=</span><span class="n">d</span><span class="p">.</span><span class="n">deptno</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">SELECT</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">job</span><span class="p">,</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">ename</span><span class="p">,</span><span class="w"> </span><span class="n">d</span><span class="p">.</span><span class="n">dname</span><span class="p">,</span><span class="w"> </span><span class="n">cnt</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">FROM</span><span class="w"> </span><span class="n">emp</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">e</span><span class="w"> </span><span class="k">LEFT</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">dept</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">d</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="k">ON</span><span class="w"> </span><span class="n">d</span><span class="p">.</span><span class="n">deptno</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">deptno</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">LEFT</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="p">(</span><span class="k">SELECT</span><span class="w"> </span><span class="n">deptno</span><span class="p">,</span><span class="w"> </span><span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">cnt</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">emp</span><span class="w"> </span><span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">deptno</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">e2</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="k">ON</span><span class="w"> </span><span class="n">e2</span><span class="p">.</span><span class="n">deptno</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">deptno</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">WHERE</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">job</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;文员&#39;</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">SELECT</span><span class="w"> </span><span class="n">d</span><span class="p">.</span><span class="n">dname</span><span class="p">,</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">ename</span><span class="p">,</span><span class="w"> </span><span class="k">c</span><span class="p">.</span><span class="n">cnt</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">dept</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">d</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">RIGHT</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="p">(</span><span class="k">SELECT</span><span class="w"> </span><span class="n">deptno</span><span class="p">,</span><span class="w"> </span><span class="k">COUNT</span><span class="p">(</span><span class="n">deptno</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">cnt</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">emp</span><span class="w"> </span><span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">deptno</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="k">c</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">ON</span><span class="w"> </span><span class="n">d</span><span class="p">.</span><span class="n">deptno</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">c</span><span class="p">.</span><span class="n">deptno</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">LEFT</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="p">(</span><span class="k">SELECT</span><span class="w"> </span><span class="n">deptno</span><span class="p">,</span><span class="w"> </span><span class="n">ename</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">emp</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">job</span><span class="o">=</span><span class="s1">&#39;文员&#39;</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">e</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">ON</span><span class="w"> </span><span class="n">d</span><span class="p">.</span><span class="o">`</span><span class="n">deptno</span><span class="o">`</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">deptno</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">SELECT</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">job</span><span class="p">,</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">ename</span><span class="p">,</span><span class="w"> </span><span class="n">_count</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">emp</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">e</span><span class="w"> </span><span class="k">INNER</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">dept</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">d</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">ON</span><span class="w"> </span><span class="n">d</span><span class="p">.</span><span class="o">`</span><span class="n">deptno</span><span class="o">`=</span><span class="n">e</span><span class="p">.</span><span class="o">`</span><span class="n">deptno</span><span class="o">`</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">RIGHT</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="p">(</span><span class="k">SELECT</span><span class="w"> </span><span class="n">deptno</span><span class="p">,</span><span class="w"> </span><span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">_count</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">emp</span><span class="w"> </span><span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">deptno</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">m</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">ON</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="o">`</span><span class="n">deptno</span><span class="o">`</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">m</span><span class="p">.</span><span class="n">deptno</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">WHERE</span><span class="w"> </span><span class="n">job</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;文员&#39;</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>列出最低薪金大于15000的各种工作及从事此工作的员工人数</p>
+<ul>
+<li>列：工作，该工作人数</li>
+<li>表：emp</li>
+<li>分组：使用job分组</li>
+<li>分组条件：min(sal)&gt;15000</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="n">job</span><span class="p">,</span><span class="w"> </span><span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">FROM</span><span class="w"> </span><span class="n">emp</span><span class="w"> </span><span class="n">e</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">job</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">HAVING</span><span class="w"> </span><span class="k">MIN</span><span class="p">(</span><span class="n">sal</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">15000</span><span class="p">;</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>列出在销售部工作的员工的姓名，假定不知道销售部的部门编号</p>
+<ul>
+<li>列：姓名</li>
+<li>表：emp, dept</li>
+<li>条件：所在部门名称为销售部，这需要通过部门名称查询为部门编号，作为条件</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">ename</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">FROM</span><span class="w"> </span><span class="n">emp</span><span class="w"> </span><span class="n">e</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">WHERE</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">deptno</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="k">SELECT</span><span class="w"> </span><span class="n">deptno</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">dept</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">dname</span><span class="o">=</span><span class="s1">&#39;销售部&#39;</span><span class="p">);</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p><strong>列出薪金高于公司平均薪金的所有员工信息，所在部门名称，上级领导，工资等级</strong></p>
+<ul>
+<li>列：员工所有信息(员工表)，部门名称(部门表)，上级领导(员工表)，工资等级(等级表)</li>
+<li>表：emp, dept, emp, salgrade</li>
+<li>条件：sal&gt;平均工资，子查询</li>
+<li>所有员工，说明需要左外</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="n">d</span><span class="p">.</span><span class="n">dname</span><span class="p">,</span><span class="w"> </span><span class="n">m</span><span class="p">.</span><span class="n">ename</span><span class="p">,</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">grade</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">FROM</span><span class="w"> </span><span class="n">emp</span><span class="w"> </span><span class="n">e</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">NATURAL</span><span class="w"> </span><span class="k">LEFT</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">dept</span><span class="w"> </span><span class="n">d</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">LEFT</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">emp</span><span class="w"> </span><span class="n">m</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">m</span><span class="p">.</span><span class="n">empno</span><span class="o">=</span><span class="n">e</span><span class="p">.</span><span class="n">mgr</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">LEFT</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">salgrade</span><span class="w"> </span><span class="n">s</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">sal</span><span class="w"> </span><span class="k">BETWEEN</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">losal</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">hisal</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">WHERE</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">sal</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="p">(</span><span class="k">SELECT</span><span class="w"> </span><span class="k">AVG</span><span class="p">(</span><span class="n">sal</span><span class="p">)</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">emp</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">select</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="n">d</span><span class="p">.</span><span class="n">dname</span><span class="p">,</span><span class="w"> </span><span class="n">m</span><span class="p">.</span><span class="n">ename</span><span class="p">,</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">grade</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">from</span><span class="w"> </span><span class="n">emp</span><span class="w">  </span><span class="k">as</span><span class="w"> </span><span class="n">e</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="k">left</span><span class="w"> </span><span class="k">join</span><span class="w"> </span><span class="n">dept</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">d</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">deptno</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">d</span><span class="p">.</span><span class="n">deptno</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="k">left</span><span class="w"> </span><span class="k">join</span><span class="w"> </span><span class="n">emp</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">m</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">mgr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">m</span><span class="p">.</span><span class="n">empno</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="k">left</span><span class="w"> </span><span class="k">join</span><span class="w"> </span><span class="n">salgrade</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">s</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">sal</span><span class="w"> </span><span class="k">between</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">losal</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">hisal</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">where</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">sal</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="p">(</span><span class="k">select</span><span class="w"> </span><span class="k">avg</span><span class="p">(</span><span class="n">sal</span><span class="p">)</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">emp</span><span class="p">);</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+</ol>
+<blockquote>
+<p>注意：聚合函数只会显示一行</p>
+</blockquote>
+<ol start="10">
+<li>
+<p>列出与庞统从事相同工作的所有员工及部门名称</p>
+<ul>
+<li>列：员工表所有列，部门表名称</li>
+<li>表：emp, dept</li>
+<li>条件：job=庞统的工作，需要子查询，与部门表连接得到部门名称</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="n">d</span><span class="p">.</span><span class="n">dname</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">FROM</span><span class="w"> </span><span class="n">emp</span><span class="w"> </span><span class="n">e</span><span class="p">,</span><span class="w"> </span><span class="n">dept</span><span class="w"> </span><span class="n">d</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">WHERE</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">deptno</span><span class="o">=</span><span class="n">d</span><span class="p">.</span><span class="n">deptno</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">job</span><span class="o">=</span><span class="p">(</span><span class="k">SELECT</span><span class="w"> </span><span class="n">job</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">emp</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">ename</span><span class="o">=</span><span class="s1">&#39;庞统&#39;</span><span class="p">);</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>列出薪金高于在部门30工作的所有员工的薪金的员工姓名和薪金、部门名称</p>
+<ul>
+<li>列：姓名、薪金、部门名称(需要连接查询)</li>
+<li>表：emp, dept</li>
+<li>条件：sal &gt; all(30部门薪金)，需要子查询</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">ename</span><span class="p">,</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">sal</span><span class="p">,</span><span class="w"> </span><span class="n">d</span><span class="p">.</span><span class="n">dname</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">FROM</span><span class="w"> </span><span class="n">emp</span><span class="w"> </span><span class="n">e</span><span class="p">,</span><span class="w"> </span><span class="n">dept</span><span class="w"> </span><span class="n">d</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">WHERE</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">deptno</span><span class="o">=</span><span class="n">d</span><span class="p">.</span><span class="n">deptno</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">sal</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="k">ALL</span><span class="p">(</span><span class="k">SELECT</span><span class="w"> </span><span class="n">sal</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">emp</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">deptno</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">select</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">ename</span><span class="p">,</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">sal</span><span class="p">,</span><span class="w"> </span><span class="n">d</span><span class="p">.</span><span class="n">dname</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">from</span><span class="w"> </span><span class="n">emp</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">e</span><span class="w"> </span><span class="k">left</span><span class="w"> </span><span class="k">join</span><span class="w"> </span><span class="n">dept</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">d</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="k">on</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">deptno</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">d</span><span class="p">.</span><span class="n">deptno</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">where</span><span class="w"> </span><span class="n">sal</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="p">(</span><span class="k">select</span><span class="w"> </span><span class="k">max</span><span class="p">(</span><span class="n">sal</span><span class="p">)</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">emp</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">deptno</span><span class="o">=</span><span class="mi">30</span><span class="p">);</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>列出在每个部门工作的员工数量、平均工资</p>
+<ul>
+<li>列：部门名称, 部门员工数，部门平均工资</li>
+<li>表：emp, dept</li>
+<li>分组：deptno</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="n">d</span><span class="p">.</span><span class="n">dname</span><span class="p">,</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">cnt</span><span class="p">,</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">avgsal</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">FROM</span><span class="w"> </span><span class="p">(</span><span class="k">SELECT</span><span class="w"> </span><span class="n">deptno</span><span class="p">,</span><span class="w"> </span><span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="n">cnt</span><span class="p">,</span><span class="w"> </span><span class="k">AVG</span><span class="p">(</span><span class="n">sal</span><span class="p">)</span><span class="w"> </span><span class="n">avgsal</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">emp</span><span class="w"> </span><span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">deptno</span><span class="p">)</span><span class="w"> </span><span class="n">e</span><span class="p">,</span><span class="w"> </span><span class="n">dept</span><span class="w"> </span><span class="n">d</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">WHERE</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">deptno</span><span class="o">=</span><span class="n">d</span><span class="p">.</span><span class="n">deptno</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">SELECT</span><span class="w"> </span><span class="n">d</span><span class="p">.</span><span class="n">dname</span><span class="p">,</span><span class="w"> </span><span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">),</span><span class="w"> </span><span class="k">AVG</span><span class="p">(</span><span class="n">sal</span><span class="p">)</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">emp</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">e</span><span class="w"> </span><span class="k">INNER</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">dept</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">d</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">ON</span><span class="w"> </span><span class="n">d</span><span class="p">.</span><span class="o">`</span><span class="n">deptno</span><span class="o">`=</span><span class="n">e</span><span class="p">.</span><span class="o">`</span><span class="n">deptno</span><span class="o">`</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">deptno</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+</ol>
+</div><div class="post-footer" id="post-footer">
+  <div class="post-info">
+    <div class="post-info-line">
+      <div class="post-info-mod">
+        <span title="Updated on 2023-10-10 00:00:00">Updated on 2023-10-10&nbsp;</span>
+      </div><div class="post-info-license">
+          <span><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span>
+        </div></div>
+    <div class="post-info-line">
+      <div class="post-info-md"></div>
+      <div class="post-info-share">
+        <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://cui-jiang-tao.github.io/posts/sql/mysql/" data-title="sql语句练习--mysql" data-hashtags="sql"><i class="fa-brands fa-twitter fa-fw" aria-hidden="true"></i></a>
+  <a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://cui-jiang-tao.github.io/posts/sql/mysql/" data-hashtag="sql"><i class="fa-brands fa-facebook-square fa-fw" aria-hidden="true"></i></a>
+  <a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="https://cui-jiang-tao.github.io/posts/sql/mysql/" data-title="sql语句练习--mysql"><i class="fa-brands fa-weibo fa-fw" aria-hidden="true"></i></a>
+  </span>
+      </div>
+    </div>
+  </div>
+
+  <div class="post-info-more">
+    <section class="post-tags"><i class="fa-solid fa-tags fa-fw me-1" aria-hidden="true"></i><a href='/tags/sql/' class="post-tag">sql</a></section>
+    <section>
+      <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+    </section>
+  </div>
+
+  <div class="post-nav"><a href="/posts/%E5%9F%BA%E7%A1%80%E8%84%B1%E5%A3%B3/" class="post-nav-item" rel="prev" title="基础脱壳"><i class="fa-solid fa-angle-left fa-fw" aria-hidden="true"></i>基础脱壳</a></div>
+</div>
+</article></main><footer class="footer">
+    <div class="footer-container"><div class="footer-line copyright" itemscope itemtype="http://schema.org/CreativeWork"><i class="fa-regular fa-copyright fa-fw" aria-hidden="true"></i>
+            <span itemprop="copyrightYear">2022 - 2023</span><span class="license footer-divider"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div><div class="footer-line statistics"></div></div>
+  </footer></div><div class="widgets"><div class="fixed-buttons animate__faster d-none"><div class="fixed-button back-to-top" role="button" aria-label="Back to Top"><i class="fa-solid fa-arrow-up fa-fw" aria-hidden="true"></i><span class="variant-numeric d-none">0%</span>
+        </div></div><div id="mask"></div><noscript>
+    <div class="noscript-warning">Theme FixIt works best with JavaScript enabled.</div>
+  </noscript>
+</div><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script src="/lib/sharer/sharer.min.js" async defer></script><script src="/lib/typeit/index.umd.js" defer></script><script src="/lib/katex/katex.min.js" defer></script><script src="/lib/katex/auto-render.min.js" defer></script><script src="/lib/katex/copy-tex.min.js" defer></script><script src="/lib/katex/mhchem.min.js" defer></script><script src="/lib/cookieconsent/cookieconsent.min.js" defer></script><script>window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":-1},"comment":{"enable":false},"cookieconsent":{"content":{"dismiss":"Got it!","link":"Learn more","message":"This website uses Cookies to improve your experience."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"data":{"typeit-header-desktop":"Home","typeit-header-title-mobile":"Home"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"typeit-header-desktop":["typeit-header-desktop"],"typeit-header-title-mobile":["typeit-header-title-mobile"]},"duration":-1,"loop":false,"speed":100}};</script><script src="/js/theme.min.js" defer></script></body>
+</html>

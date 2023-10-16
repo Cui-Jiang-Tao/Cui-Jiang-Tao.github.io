@@ -1,0 +1,16 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+  <channel>
+    <title>脱壳 - Tag - Notes</title>
+    <link>https://cui-jiang-tao.github.io/tags/%E8%84%B1%E5%A3%B3/</link>
+    <description>脱壳 - Tag - Notes</description>
+    <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>cjt953899262@gmail.com (cjt)</managingEditor>
+      <webMaster>cjt953899262@gmail.com (cjt)</webMaster><lastBuildDate>Wed, 16 Aug 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://cui-jiang-tao.github.io/tags/%E8%84%B1%E5%A3%B3/" rel="self" type="application/rss+xml" /><item>
+  <title>基础脱壳</title>
+  <link>https://cui-jiang-tao.github.io/posts/%E5%9F%BA%E7%A1%80%E8%84%B1%E5%A3%B3/</link>
+  <pubDate>Wed, 16 Aug 2023 00:00:00 &#43;0000</pubDate>
+  <author>cjt</author>
+  <guid>https://cui-jiang-tao.github.io/posts/%E5%9F%BA%E7%A1%80%E8%84%B1%E5%A3%B3/</guid>
+  <description><![CDATA[0. 前言 0.1 脱壳的常见概念 壳：是一种对应用程序加密压缩处理的技术 一般对可执行文件加壳的目的： 软件加壳，保护数据、防止破解 外挂加壳，保护数据、防止]]></description>
+</item>
+</channel>
+</rss>

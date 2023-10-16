@@ -9,14 +9,14 @@
 <meta name="author-link" content="">
 <meta name="description" content="1. 开始 iostream库包含两个基础类型istream和ostream，分别表示输入流和输出流。一个流就是一个字符序列，是从IO设备读出或写" /><meta name="keywords" content='c&#43;&#43; primer' /><meta itemprop="name" content="c&#43;&#43; primer 5th 要点记录">
 <meta itemprop="description" content="1. 开始 iostream库包含两个基础类型istream和ostream，分别表示输入流和输出流。一个流就是一个字符序列，是从IO设备读出或写"><meta itemprop="datePublished" content="2022-11-27T00:00:00+00:00" />
-<meta itemprop="dateModified" content="2022-12-04T00:00:00+00:00" />
-<meta itemprop="wordCount" content="33218">
+<meta itemprop="dateModified" content="2023-09-21T00:00:00+00:00" />
+<meta itemprop="wordCount" content="52072">
 <meta itemprop="keywords" content="c&#43;&#43; primer," /><meta property="og:title" content="c&#43;&#43; primer 5th 要点记录" />
 <meta property="og:description" content="1. 开始 iostream库包含两个基础类型istream和ostream，分别表示输入流和输出流。一个流就是一个字符序列，是从IO设备读出或写" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://cui-jiang-tao.github.io/posts/c&#43;&#43;_primer_5th/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2022-11-27T00:00:00+00:00" />
-<meta property="article:modified_time" content="2022-12-04T00:00:00+00:00" />
+<meta property="article:modified_time" content="2023-09-21T00:00:00+00:00" />
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="c&#43;&#43; primer 5th 要点记录"/>
 <meta name="twitter:description" content="1. 开始 iostream库包含两个基础类型istream和ostream，分别表示输入流和输出流。一个流就是一个字符序列，是从IO设备读出或写"/>
@@ -32,8 +32,8 @@
     "mainEntityOfPage": {
       "@type": "WebPage",
       "@id": "https:\/\/cui-jiang-tao.github.io\/posts\/c\u002b\u002b_primer_5th\/"
-    },"genre": "posts","keywords": "c\u002b\u002b primer","wordcount":  33218 ,
-    "url": "https:\/\/cui-jiang-tao.github.io\/posts\/c\u002b\u002b_primer_5th\/","datePublished": "2022-11-27T00:00:00+00:00","dateModified": "2022-12-04T00:00:00+00:00","publisher": {
+    },"genre": "posts","keywords": "c\u002b\u002b primer","wordcount":  52072 ,
+    "url": "https:\/\/cui-jiang-tao.github.io\/posts\/c\u002b\u002b_primer_5th\/","datePublished": "2022-11-27T00:00:00+00:00","dateModified": "2023-09-21T00:00:00+00:00","publisher": {
       "@type": "Organization",
       "name": ""},"author": {
         "@type": "Person",
@@ -117,7 +117,7 @@
       <div class="post-meta-line"><span class="post-author"><span class="author"><i class="fa-solid fa-user-circle" aria-hidden="true"></i>
       cjt</span></span>
           <span class="post-category">included in <a href="/categories/c/c++/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> c/c++</a></span></div>
-      <div class="post-meta-line"><span title="published on 2022-11-27 00:00:00"><i class="fa-regular fa-calendar-alt fa-fw me-1" aria-hidden="true"></i><time datetime="2022-11-27">2022-11-27</time></span>&nbsp;<span title="Updated on 2022-12-04 00:00:00"><i class="fa-regular fa-edit fa-fw me-1" aria-hidden="true"></i><time datetime="2022-12-04">2022-12-04</time></span>&nbsp;<span><i class="fa-solid fa-pencil-alt fa-fw me-1" aria-hidden="true"></i>33218 words</span>&nbsp;<span><i class="fa-regular fa-clock fa-fw me-1" aria-hidden="true"></i>67 minutes</span>&nbsp;</div>
+      <div class="post-meta-line"><span title="published on 2022-11-27 00:00:00"><i class="fa-regular fa-calendar-alt fa-fw me-1" aria-hidden="true"></i><time datetime="2022-11-27">2022-11-27</time></span>&nbsp;<span title="Updated on 2023-09-21 00:00:00"><i class="fa-regular fa-edit fa-fw me-1" aria-hidden="true"></i><time datetime="2023-09-21">2023-09-21</time></span>&nbsp;<span><i class="fa-solid fa-pencil-alt fa-fw me-1" aria-hidden="true"></i>52072 words</span>&nbsp;<span><i class="fa-regular fa-clock fa-fw me-1" aria-hidden="true"></i>104 minutes</span>&nbsp;</div>
     </div><div class="details toc" id="toc-static" data-kept="false">
         <div class="details-summary toc-title">
           <span>Contents</span>
@@ -175,7 +175,44 @@
   </ul>
 
   <ul>
-    <li><a href="#8-io库">8. IO库</a></li>
+    <li><a href="#8-io库">8. IO库</a>
+      <ul>
+        <li><a href="#81-io类">8.1 IO类</a></li>
+      </ul>
+    </li>
+    <li><a href="#9-顺序容器">9. 顺序容器</a>
+      <ul>
+        <li><a href="#91-顺序容器概述">9.1 顺序容器概述</a></li>
+        <li><a href="#92-容器库概览">9.2 容器库概览</a></li>
+      </ul>
+    </li>
+  </ul>
+
+  <ul>
+    <li><a href="#13-拷贝控制">13. 拷贝控制</a>
+      <ul>
+        <li><a href="#131-拷贝赋值与销毁">13.1 拷贝、赋值与销毁</a>
+          <ul>
+            <li><a href="#1311-拷贝构造函数">13.1.1 拷贝构造函数</a></li>
+            <li><a href="#1312-拷贝赋值运算符">13.1.2 拷贝赋值运算符</a></li>
+            <li><a href="#1313-析构函数">13.1.3 析构函数</a></li>
+            <li><a href="#1314-三五法则">13.1.4 三五法则</a></li>
+            <li><a href="#1315使用default">13.1.5　使用=default</a></li>
+            <li><a href="#1316阻止拷贝">13.1.6　阻止拷贝</a></li>
+          </ul>
+        </li>
+        <li><a href="#132拷贝控制和资源管理">13.2　拷贝控制和资源管理</a>
+          <ul>
+            <li><a href="#1321行为像值的类">13.2.1　行为像值的类</a></li>
+            <li><a href="#1322定义行为像指针的类">13.2.2　定义行为像指针的类</a></li>
+          </ul>
+        </li>
+        <li><a href="#133-交换操作">13.3 交换操作</a></li>
+        <li><a href="#134-拷贝控制示例">13.4 拷贝控制示例</a></li>
+        <li><a href="#135动态内存管理类">13.5　动态内存管理类</a></li>
+        <li><a href="#136对象移动">13.6　对象移动</a></li>
+      </ul>
+    </li>
   </ul>
 </nav></div>
       </div><div class="content" id="content"><h2 id="1-开始">1. 开始</h2>
@@ -298,7 +335,7 @@
 <li>绝大多数类都支持无需显式初始化而定义对象，这样的类提供了一个合适的默认值，使用默认构造函数来初始化。例如，string 类规定如果没有指定初值则生成一个空串。</li>
 <li>但有一些类要求每个对象都显式初始化，此时如果创建了一个该类的对象而未对其做明确的初始化操作，将引发错误。</li>
 </ul>
-<p>如果是自定义的（或自动生成的）不执行任何操作的默认构造函数，那么适用与内置数据类型相同的规则来初始化成员变量；且如果成员变量是类类型，则会调用相应的默认构造函数对其进行初始化。</p>
+<p>如果是自定义的(或自动生成的)不执行任何操作的默认构造函数，那么适用与内置数据类型相同的规则来初始化成员变量；且如果成员变量是类类型，则会调用相应的默认构造函数对其进行初始化。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
@@ -371,7 +408,7 @@
 <li>类内初始化，成员之间的顺序是隐式的，会有些便利。如果使用初始化列表，它是有顺序之分的，顺序不对，编译器会警告。</li>
 <li>对于简单的类或结构，没有构造函数的，可以直接用类内初始化在成员声明的同时直接初始化，方便。</li>
 </ol>
-<p>  对于一些类类型的成员初始化要小心，如果成员之间有依赖关系，这时使用初始化列表显式的指明这些成员的构造（初始化）顺序是比较稳妥的。</p>
+<p>  对于一些类类型的成员初始化要小心，如果成员之间有依赖关系，这时使用初始化列表显式的指明这些成员的构造(初始化)顺序是比较稳妥的。</p>
 <p>  <strong>如果成员已经使用了类内初始化，但在构造函数的初始化列表又列出来，编译器以后者优先，类内初始化会被忽略</strong>。<em><strong>如果某些成员使用不同构造函数时，会有不同的默认值，这种情况就要用初始化列表</strong></em>。同时，其它成员依然可以使用类内初始化。</p>
 <p>  类内初始化绝对不是解决什么内置类型默认初始化时未定义问题。<strong>面向对象编程一个很重要的原则，程序员有责任要保证对象产生出来，它的每个成员都必须是初始化的，这是设计问题以及基本意识，无论是使用哪种方法初始化</strong>。</p>
 <blockquote>
@@ -411,7 +448,7 @@
 <li>过去的程序还会用到一个名为NULL的预处理变量(preprocessor variable)来给指针赋值，这个变量在头文件cstdlib中定义，它的值就是0。</li>
 </ol>
 <p>  预处理器是运行于编译过程之前的一段程序，预处理变量它由预处理器负责管理，因此我们可以直接使用预处理变量。当用到一个预处理变量时，预处理器会自动地将它替换为实际值，因此用NULL初始化指针和用0初始化指针是一样的。<strong>在新标准下，现在的C++程序最好使用nullptr，同时尽量避免使用NULL。</strong></p>
-<p>  void＊是一种特殊的指针类型，可用于存放任意对象的地址。一个void＊指针存放着一个地址，这一点和其他指针类似。不同的是，我们对该地址中到底是个什么类型的对象并不了解。概括说来，以void＊的视角来看内存空间也就仅仅是内存空间，没办法访问内存空间中所存的对象。</p>
+<p>  void<em>是一种特殊的指针类型，可用于存放任意对象的地址。一个void</em>指针存放着一个地址，这一点和其他指针类似。不同的是，我们对该地址中到底是个什么类型的对象并不了解。概括说来，以void*的视角来看内存空间也就仅仅是内存空间，没办法访问内存空间中所存的对象。</p>
 <p>  涉及指针或引用的声明，一般有两种写法。第一种把修饰符和变量标识符写在一起：这种形式着重强调变量具有的复合类型。第二种把修饰符和类型名写在一起，并且每条语句只定义一个变量：这种形式着重强调本次声明定义了一种复合类型。</p>
 <p>着重强调变量具有的复合类型：</p>
 <div class="highlight"><div class="chroma">
@@ -472,7 +509,7 @@
 <p>  可以把引用绑定到const对象上，就像绑定到其他对象上一样，我们称之为对常量的引用(reference to const)。与普通引用不同的是，对常量的引用不能被用作修改它所绑定的对象。</p>
 <p>  只有const引用才能绑定一个临时量。所谓临时量对象就是当编译器需要一个空间来暂存表达式的求值结果时临时创建的一个未命名的对象。C++程序员们常常把临时量对象简称为临时量。</p>
 <p><strong>const指针：</strong></p>
-<p>  指针是对象而引用不是，因此就像其他对象类型一样，允许把指针本身定为常量。常量指针(const pointer)必须初始化，而且一旦初始化完成，则它的值(也就是存放在指针中的那个地址)就不能再改变了。把＊放在const关键字之前用以说明指针是一个常量，这样的书写形式隐含着一层意味，即不变的是指针本身的值而非指向的那个值。</p>
+<p>  指针是对象而引用不是，因此就像其他对象类型一样，允许把指针本身定为常量。常量指针(const pointer)必须初始化，而且一旦初始化完成，则它的值(也就是存放在指针中的那个地址)就不能再改变了。把*放在const关键字之前用以说明指针是一个常量，这样的书写形式隐含着一层意味，即不变的是指针本身的值而非指向的那个值。</p>
 <p><strong>顶层const和底层const：</strong></p>
 <p>  如前所述，指针本身是一个对象，它又可以指向另外一个对象。因此，指针本身是不是常量以及指针所指的是不是一个常量就是两个相互独立的问题。<strong>用名词顶层const(top-level const)表示指针本身是个常量，而用名词底层const(low-level const)表示指针所指的对象是一个常量。</strong></p>
 <p>  更一般的，顶层const可以表示任意的对象是常量，这一点对任何数据类型都适用，如算术类型、类、指针等。底层const则与指针和引用等复合类型的基本类型部分有关。比较特殊的是，指针类型既可以是顶层const也可以是底层const，这一点和其他类型相比区别明显：</p>
@@ -489,7 +526,7 @@
 <pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="o">*</span><span class="k">const</span> <span class="n">p1</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">i</span><span class="p">;</span>         <span class="c1">//不能改变p1的值，这是一个顶层const
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">const</span> <span class="kt">int</span> <span class="n">ci</span> <span class="o">=</span> <span class="mi">42</span><span class="p">;</span>          <span class="c1">//不能改变ci的值，这是一个顶层const
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">const</span> <span class="kt">int</span> <span class="o">*</span><span class="n">p2</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">ci</span><span class="p">;</span>        <span class="c1">//不能改变p2的值，这是一个顶层const
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">const</span> <span class="kt">int</span> <span class="o">*</span><span class="n">p2</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">ci</span><span class="p">;</span>        <span class="c1">//不能改变p2所指向的值，这是一个底层const
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">const</span> <span class="kt">int</span> <span class="o">*</span><span class="k">const</span> <span class="n">p3</span> <span class="o">=</span> <span class="n">p2</span><span class="p">;</span>   <span class="c1">//靠右的const是顶层const，靠左的是底层const
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">const</span> <span class="kt">int</span> <span class="o">&amp;</span><span class="n">r</span> <span class="o">=</span> <span class="n">ci</span><span class="p">;</span>          <span class="c1">//用于声明引用的const都是底层const    
 </span></span></span></code></pre></td></tr></table>
@@ -575,7 +612,7 @@
 </span></span></span></code></pre></td></tr></table>
 </div>
 </div><p><strong>指针、常量和类型别名：</strong></p>
-<p>  <strong>如果某个类型别名指代的是复合类型或常量，那么把它用到声明语句里就会产生意想不到的后果</strong>。例如下面的声明语句用到了类型pstring，它实际上是类型char＊的别名：</p>
+<p>  <strong>如果某个类型别名指代的是复合类型或常量，那么把它用到声明语句里就会产生意想不到的后果</strong>。例如下面的声明语句用到了类型pstring，它实际上是类型char*的别名：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -598,7 +635,7 @@
 <pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">cstr</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>   <span class="c1">//是对const pstring cstr的错误理解
 </span></span></span></code></pre></td></tr></table>
 </div>
-</div><p>  再强调一遍：这种理解是错误的。声明语句中用到pstring时，其基本数据类型是指针。可是用char＊重写了声明语句后，数据类型就变成了char，＊成为了声明符的一部分。这样改写的结果是，const char成了基本数据类型。前后两种声明含义截然不同，前者声明了一个指向char的常量指针，改写后的形式则声明了一个指向const char的指针。</p>
+</div><p>  再强调一遍：这种理解是错误的。声明语句中用到pstring时，其基本数据类型是指针。可是用char*重写了声明语句后，数据类型就变成了char，*成为了声明符的一部分。这样改写的结果是，const char成了基本数据类型。前后两种声明含义截然不同，前者声明了一个指向char的常量指针，改写后的形式则声明了一个指向const char的指针。</p>
 <p><strong>auto类型说明符：</strong></p>
 <p>  编程时常常需要把表达式的值赋给变量，这就要求在声明变量的时候清楚地知道表达式的类型。然而要做到这一点并非那么容易，有时甚至根本做不到。为了解决这个问题，C++11新标准引入了auto类型说明符，用它就能让编译器替我们去分析表达式所属的类型。和原来那些只对应一种特定类型的说明符(比如double)不同，auto让编译器通过初始值来推算变量的类型。</p>
 <ul>
@@ -976,7 +1013,7 @@
 </span></span><span class="line"><span class="cl"><span class="kt">char</span> <span class="o">*</span><span class="n">str</span> <span class="o">=</span> <span class="n">s</span><span class="p">.</span><span class="n">c_str</span><span class="p">();</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p>  c_str函数的返回值是一个C风格的字符串。也就是说，函数的返回结果是一个指针，该指针指向一个以空字符结束的字符数组，而这个数组所存的数据恰好与那个string对象的一样。结果指针的类型是const char＊，从而确保我们不会改变字符数组的内容。</p>
+</div><p>  c_str函数的返回值是一个C风格的字符串。也就是说，函数的返回结果是一个指针，该指针指向一个以空字符结束的字符数组，而这个数组所存的数据恰好与那个string对象的一样。结果指针的类型是const char*，从而确保我们不会改变字符数组的内容。</p>
 <p>  我们无法保证c_str函数返回的数组一直有效，事实上，如果后续的操作改变了s的值就可能让之前返回的数组失去效用。如果执行完c_str()函数后程序想一直都能使用其返回的数组，最好将该数组重新拷贝一份。</p>
 <p><strong>使用数组初始化vector对象：</strong></p>
 <div class="highlight"><div class="chroma">
@@ -1030,7 +1067,7 @@
 <pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="n">string</span> <span class="nf">str</span><span class="p">(</span><span class="n">pc</span><span class="p">);</span>     <span class="c1">//错误
 </span></span></span></code></pre></td></tr></table>
 </div>
-</div><p>  使用reinterpret_cast是非常危险的，用pc初始化str的例子很好地证明了这一点。其中的关键问题是类型改变了，但编译器没有给出任何警告或者错误的提示信息。当我们用一个int的地址初始化pc时，由于显式地声称这种转换合法，所以编译器不会发出任何警告或错误信息。接下来再使用pc时就会认定它的值是char＊类型，编译器没法知道它实际存放的是指向int的指针。最终的结果就是，在上面的例子中虽然用pc初始化str没什么实际意义，甚至还可能引发更糟糕的后果，但仅从语法上而言这种操作无可指摘。查找这类问题的原因非常困难，如果将ip强制转换成pc的语句和用pc初始化string对象的语句分属不同文件就更是如此。</p>
+</div><p>  使用reinterpret_cast是非常危险的，用pc初始化str的例子很好地证明了这一点。其中的关键问题是类型改变了，但编译器没有给出任何警告或者错误的提示信息。当我们用一个int的地址初始化pc时，由于显式地声称这种转换合法，所以编译器不会发出任何警告或错误信息。接下来再使用pc时就会认定它的值是char*类型，编译器没法知道它实际存放的是指向int的指针。最终的结果就是，在上面的例子中虽然用pc初始化str没什么实际意义，甚至还可能引发更糟糕的后果，但仅从语法上而言这种操作无可指摘。查找这类问题的原因非常困难，如果将ip强制转换成pc的语句和用pc初始化string对象的语句分属不同文件就更是如此。</p>
 <blockquote>
 <p>reinterpret_cast本质上依赖于机器。要想安全地使用reinterpret_cast必须对涉及的类型和编译器实现转换的过程都非常了解。</p>
 </blockquote>
@@ -1120,7 +1157,7 @@
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kt">void</span> <span class="n">print</span><span class="p">(</span><span class="k">const</span> <span class="kt">int</span><span class="p">[</span><span class="mi">10</span><span class="p">])</span>       <span class="c1">//这里的维度表示我们期望数组含有多少元素，实际不一定
 </span></span></span></code></pre></td></tr></table>
 </div>
-</div><p>  尽管表现形式不同，但上面的三个函数是等价的：每个函数的唯一形参都是const int＊类型的。当编译器处理对print函数的调用时，只检查传入的参数是否是const int＊类型。</p>
+</div><p>  尽管表现形式不同，但上面的三个函数是等价的：每个函数的唯一形参都是const int<em>类型的。当编译器处理对print函数的调用时，只检查传入的参数是否是const int</em>类型。</p>
 <p><strong>使用标记指定数组长度：</strong></p>
 <ul>
 <li>使用标准库规范：</li>
@@ -1383,12 +1420,12 @@
 </div><p>可以按照以下的顺序来逐层理解该声明的含义：</p>
 <ul>
 <li>func(int i)表示调用func函数时需要一个int类型的实参。</li>
-<li>(＊func(int i))意味着我们可以对函数调用的结果执行解引用操作。</li>
-<li>(＊func(int i))[10]表示解引用func的调用将得到一个大小是10的数组。</li>
-<li>int (＊func(int i))[10]表示数组中的元素是int类型。</li>
+<li>(*func(int i))意味着我们可以对函数调用的结果执行解引用操作。</li>
+<li>(*func(int i))[10]表示解引用func的调用将得到一个大小是10的数组。</li>
+<li>int (*func(int i))[10]表示数组中的元素是int类型。</li>
 </ul>
 <p><strong>使用尾置返回类型：</strong></p>
-<p>  在C++11新标准中可以使用尾置返回类型（trailing return type）。任何函数的定义都能使用尾置返回，但是这种形式对于返回类型比较复杂的函数最有效，比如返回类型是数组的指针或者数组的引用。尾置返回类型跟在形参列表后面并以一个-&gt;符号开头。为了表示函数真正的返回类型跟在形参列表之后，我们在本应该出现返回类型的地方放置一个auto：</p>
+<p>  在C++11新标准中可以使用尾置返回类型(trailing return type)。任何函数的定义都能使用尾置返回，但是这种形式对于返回类型比较复杂的函数最有效，比如返回类型是数组的指针或者数组的引用。尾置返回类型跟在形参列表后面并以一个-&gt;符号开头。为了表示函数真正的返回类型跟在形参列表之后，我们在本应该出现返回类型的地方放置一个auto：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -1422,7 +1459,7 @@
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">}</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p>  arrPtr使用关键字decltype表示它的返回类型是个指针，并且该指针所指的对象与odd的类型一致。因为odd是数组，所以arrPtr返回一个指向含有5个整数的数组的指针。有一个地方需要注意：decltype并不负责把数组类型转换成对应的指针，所以decltype的结果是个数组，要想表示arrPtr返回指针还必须在函数声明时加一个＊符号。</p>
+</div><p>  arrPtr使用关键字decltype表示它的返回类型是个指针，并且该指针所指的对象与odd的类型一致。因为odd是数组，所以arrPtr返回一个指向含有5个整数的数组的指针。有一个地方需要注意：decltype并不负责把数组类型转换成对应的指针，所以decltype的结果是个数组，要想表示arrPtr返回指针还必须在函数声明时加一个*符号。</p>
 <h3 id="64-函数重载">6.4 函数重载</h3>
 <p><strong>重载和const形参：</strong></p>
 <p>  顶层const不影响传入函数的对象。一个拥有顶层const的形参无法和另一个没有顶层const的形参区分开来：</p>
@@ -1464,7 +1501,7 @@
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">Record</span> <span class="nf">lookup</span><span class="p">(</span><span class="k">const</span> <span class="n">Account</span><span class="o">*</span><span class="p">);</span>  <span class="c1">// 新函数，作用于指向常量的指针
 </span></span></span></code></pre></td></tr></table>
 </div>
-</div><p>  在上面的例子中，编译器可以通过实参是否是常量来推断应该调用哪个函数。因为const不能转换成其他类型，所以我们只能把const对象（或指向const的指针）传递给const形参。相反的，因为非常量可以转换成const，所以上面的4个函数都能作用于非常量对象或者指向非常量对象的指针。不过，当我们传递一个非常量对象或者指向非常量对象的指针时，编译器会优先选用非常量版本的函数。</p>
+</div><p>  在上面的例子中，编译器可以通过实参是否是常量来推断应该调用哪个函数。因为const不能转换成其他类型，所以我们只能把const对象(或指向const的指针)传递给const形参。相反的，因为非常量可以转换成const，所以上面的4个函数都能作用于非常量对象或者指向非常量对象的指针。不过，当我们传递一个非常量对象或者指向非常量对象的指针时，编译器会优先选用非常量版本的函数。</p>
 <p><strong>何时不应该重载函数：</strong></p>
 <p>  尽管函数重载能在一定程度上减轻我们为函数起名字、记名字的负担，但是最好只重载那些确实非常相似的操作。有些情况下，给函数起不同的名字能使得程序更易理解。举个例子，下面是几个负责移动屏幕光标的函数：</p>
 <div class="highlight"><div class="chroma">
@@ -1541,12 +1578,12 @@
 </div>
 </div><p>  在这个版本的函数中，首先将它的实参强制转换成对const的引用，然后调用了shorterString函数的const版本。const版本返回对const string的引用，这个引用事实上绑定在了某个初始的非常量实参上。因此，我们可以再将其转换回一个普通的string&amp;，这显然是安全的。</p>
 <p><strong>调用重载的函数：</strong></p>
-<p>  定义了一组重载函数后，我们需要以合理的实参调用它们。<strong>函数匹配</strong>（function matching）是指一个过程，在这个过程中我们把函数调用与一组重载函数中的某一个关联起来，函数匹配也叫做<strong>重载确定</strong>（overload resolution）。编译器首先将调用的实参与重载集合中每一个函数的形参进行比较，然后根据比较的结果决定到底调用哪个函数。</p>
+<p>  定义了一组重载函数后，我们需要以合理的实参调用它们。<strong>函数匹配</strong>(function matching)是指一个过程，在这个过程中我们把函数调用与一组重载函数中的某一个关联起来，函数匹配也叫做<strong>重载确定</strong>(overload resolution)。编译器首先将调用的实参与重载集合中每一个函数的形参进行比较，然后根据比较的结果决定到底调用哪个函数。</p>
 <p>现在我们需要掌握的是，当调用重载函数时有三种可能的结果：</p>
 <ul>
-<li>编译器找到一个与<strong>实参最佳匹配</strong>（best match）的函数，并生成调用该函数的代码。</li>
-<li>找不到任何一个函数与调用的实参匹配，此时编译器发出<strong>无匹配</strong>（no match）的错误信息。</li>
-<li>有多于一个函数可以匹配，但是每一个都不是明显的最佳选择。此时也将发生错误，称为<strong>二义性调用</strong>（ambiguous call）。</li>
+<li>编译器找到一个与<strong>实参最佳匹配</strong>(best match)的函数，并生成调用该函数的代码。</li>
+<li>找不到任何一个函数与调用的实参匹配，此时编译器发出<strong>无匹配</strong>(no match)的错误信息。</li>
+<li>有多于一个函数可以匹配，但是每一个都不是明显的最佳选择。此时也将发生错误，称为<strong>二义性调用</strong>(ambiguous call)。</li>
 </ul>
 <p><strong>重载与作用域：</strong></p>
 <p>  如果我们在内层作用域中声明名字，它将隐藏外层作用域中声明的同名实体。在不同的作用域中无法重载函数名。</p>
@@ -1556,7 +1593,7 @@
 </blockquote>
 <h3 id="65-特殊用途语言特性">6.5 特殊用途语言特性</h3>
 <p><strong>默认实参：</strong></p>
-<p>  某些函数有这样一种形参，在函数的很多次调用中它们都被赋予一个相同的值，此时，我们把这个反复出现的值称为函数的默认实参（default argument）。调用含有默认实参的函数时，可以包含该实参，也可以省略该实参。</p>
+<p>  某些函数有这样一种形参，在函数的很多次调用中它们都被赋予一个相同的值，此时，我们把这个反复出现的值称为函数的默认实参(default argument)。调用含有默认实参的函数时，可以包含该实参，也可以省略该实参。</p>
 <p><strong>默认实参声明：</strong></p>
 <p>  对于函数的声明来说，通常的习惯是将其放在头文件中，并且一个函数只声明一次，但是多次声明同一个函数也是合法的。不过有一点需要注意，在给定的作用域中一个形参只能被赋予一次默认实参。换句话说，函数的后续声明只能为之前那些没有默认值的形参添加默认实参，而且该形参右侧的所有形参必须都有默认值。假如给定：</p>
 <div class="highlight"><div class="chroma">
@@ -1591,18 +1628,18 @@
 <p>通常，应该在函数声明中指定默认实参，并将该声明放在合适的头文件中。</p>
 </blockquote>
 <p><strong>内联函数和constexpr函数：</strong></p>
-<p>  <strong>内联函数可避免函数调用的开销</strong>。将函数指定为内联函数（inline），通常就是将它在每个调用点上“内联地”展开。</p>
+<p>  <strong>内联函数可避免函数调用的开销</strong>。将函数指定为内联函数(inline)，通常就是将它在每个调用点上“内联地”展开。</p>
 <blockquote>
 <p>内联说明只是向编译器发出的一个请求，编译器可以选择忽略这个请求。</p>
 </blockquote>
 <p><strong>constexpr函数：</strong></p>
-<p>  constexpr函数（constexpr function）是指能用于常量表达式的函数。定义constexpr函数的方法与其他函数类似，不过要遵循几项约定：函数的返回类型及所有形参的类型都得是字面值类型，而且函数体中必须有且只有一条return语句。</p>
+<p>  constexpr函数(constexpr function)是指能用于常量表达式的函数。定义constexpr函数的方法与其他函数类似，不过要遵循几项约定：函数的返回类型及所有形参的类型都得是字面值类型，而且函数体中必须有且只有一条return语句。</p>
 <p>  执行该初始化任务时，编译器把对constexpr函数的调用替换成其结果值。为了能在编译过程中随时展开，<strong>constexpr函数被隐式地指定为内联函数</strong>。</p>
 <p>我们允许constexpr函数的返回值并非一个常量 ？？？？？？？？？？？？？？？？</p>
 <p><strong>把内联函数和constexpr函数放在头文件内：</strong></p>
 <p>  <strong>和其他函数不一样，内联函数和constexpr函数可以在程序中多次定义</strong>。毕竟，编译器要想展开函数仅有函数声明是不够的，还需要函数的定义。不过，对于某个给定的内联函数或者constexpr函数来说，它的多个定义必须完全一致。基于这个原因，内联函数和constexpr函数通常定义在头文件中。</p>
 <p><strong>assert预处理宏：</strong></p>
-<p>  assert是一种预处理宏（preprocessor marco）。所谓预处理宏其实是一个预处理变量，它的行为有点类似于内联函数。assert宏定义在cassert头文件中。assert宏常用于检查“不能发生”的条件。</p>
+<p>  assert是一种预处理宏(preprocessor marco)。所谓预处理宏其实是一个预处理变量，它的行为有点类似于内联函数。assert宏定义在cassert头文件中。assert宏常用于检查“不能发生”的条件。</p>
 <p><strong>NDEBUG预处理变量：</strong></p>
 <p>  assert的行为依赖于一个名为NDEBUG的预处理变量的状态。如果定义了NDEBUG，则assert什么也不做。默认状态下没有定义NDEBUG，此时assert将执行运行时检查。</p>
 <p>  定义NDEBUG能避免检查各种条件所需的运行时开销，当然此时根本就不会执行运行时检查。因此，assert应该仅用于验证那些确实不可能发生的事情。我们可以把assert当成调试程序的一种辅助手段，但是不能用它替代真正的运行时逻辑检查，也不能替代程序本身应该包含的错误检查。</p>
@@ -1650,7 +1687,7 @@
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kt">bool</span> <span class="p">(</span><span class="o">*</span><span class="n">pf</span><span class="p">)(</span><span class="k">const</span> <span class="n">string</span> <span class="o">&amp;</span><span class="p">,</span> <span class="k">const</span> <span class="n">string</span> <span class="o">&amp;</span><span class="p">);</span> <span class="c1">//未初始化
 </span></span></span></code></pre></td></tr></table>
 </div>
-</div><p>  从我们声明的名字开始观察，pf前面有个＊，因此pf是指针；右侧是形参列表，表示pf指向的是函数；再观察左侧，发现函数的返回类型是布尔值。因此，pf就是一个指向函数的指针，其中该函数的参数是两个const string的引用，返回值是bool类型。</p>
+</div><p>  从我们声明的名字开始观察，pf前面有个*，因此pf是指针；右侧是形参列表，表示pf指向的是函数；再观察左侧，发现函数的返回类型是布尔值。因此，pf就是一个指向函数的指针，其中该函数的参数是两个const string的引用，返回值是bool类型。</p>
 <p>  pf两端的括号必不可少。如果不写这对括号，则pf是一个返回值为bool指针的函数：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -1731,7 +1768,7 @@
 <p>定义在类内部的函数是隐式的inline函数。</p>
 </blockquote>
 <p><strong>引入const成员函数：</strong></p>
-<p>  默认情况下，this的类型是指向类类型非常量版本的常量指针(顶层const)。C++语言的做法是允许把const关键字放在成员函数的参数列表之后，此时，紧跟在参数列表后面的const表示this是一个指向常量的指针。像这样使用const的成员函数被称作常量成员函数（const member function）。</p>
+<p>  默认情况下，this的类型是指向类类型非常量版本的常量指针(顶层const)。C++语言的做法是允许把const关键字放在成员函数的参数列表之后，此时，紧跟在参数列表后面的const表示this是一个指向常量的指针。像这样使用const的成员函数被称作常量成员函数(const member function)。</p>
 <p><strong>在类的外部定义成员函数：</strong></p>
 <p>  像其他函数一样，当我们在类的外部定义成员函数时，成员函数的定义必须与它的声明匹配。也就是说，返回类型、参数列表和函数名都得与类内部的声明保持一致。如果成员被声明成常量成员函数，那么它的定义也必须在参数列表后明确指定const属性。同时，类外部定义的成员的名字必须包含它所属的类名：</p>
 <div class="highlight"><div class="chroma">
@@ -1747,16 +1784,16 @@
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p><strong>定义类相关的非成员函数：</strong></p>
-<p>  我们定义非成员函数的方式与定义其他函数一样，通常把函数的声明和定义分离开来。如果函数在概念上属于类但是不定义在类中，则它一般应与类声明（而非定义）在同一个头文件内。在这种方式下，用户使用接口的任何部分都只需要引入一个文件。</p>
+<p>  我们定义非成员函数的方式与定义其他函数一样，通常把函数的声明和定义分离开来。如果函数在概念上属于类但是不定义在类中，则它一般应与类声明(而非定义)在同一个头文件内。在这种方式下，用户使用接口的任何部分都只需要引入一个文件。</p>
 <blockquote>
 <p>一般来说，如果非成员函数是类接口的组成部分，则这些函数的声明应该与类在同一个头文件内。</p>
 </blockquote>
 <p><strong>构造函数：</strong></p>
-<p>  每个类都分别定义了它的对象被初始化的方式，类通过一个或几个特殊的成员函数来控制其对象的初始化过程，这些函数叫做构造函数（constructor）。构造函数的任务是初始化类对象的数据成员，无论何时只要类的对象被创建，就会执行构造函数。</p>
-<p>  构造函数的名字和类名相同。和其他函数不一样的是，构造函数没有返回类型；除此之外类似于其他的函数，构造函数也有一个（可能为空的）参数列表和一个（可能为空的）函数体。类可以包含多个构造函数，和其他重载函数差不多，不同的构造函数之间必须在参数数量或参数类型上有所区别。</p>
+<p>  每个类都分别定义了它的对象被初始化的方式，类通过一个或几个特殊的成员函数来控制其对象的初始化过程，这些函数叫做构造函数(constructor)。构造函数的任务是初始化类对象的数据成员，无论何时只要类的对象被创建，就会执行构造函数。</p>
+<p>  构造函数的名字和类名相同。和其他函数不一样的是，构造函数没有返回类型；除此之外类似于其他的函数，构造函数也有一个(可能为空的)参数列表和一个(可能为空的)函数体。类可以包含多个构造函数，和其他重载函数差不多，不同的构造函数之间必须在参数数量或参数类型上有所区别。</p>
 <p>  <strong>不同于其他成员函数，构造函数不能被声明成const的</strong>。当我们创建类的一个const对象时，直到构造函数完成初始化过程，对象才能真正取得其“常量”属性。因此，构造函数在const对象的构造过程中可以向其写值。</p>
 <p><strong>合成的默认构造函数：</strong></p>
-<p>  编译器创建的构造函数又被称为合成的默认构造函数（synthesized default constructor）。对于大多数类来说，这个合成的默认构造函数将按照如下规则初始化类的数据成员：</p>
+<p>  编译器创建的构造函数又被称为合成的默认构造函数(synthesized default constructor)。对于大多数类来说，这个合成的默认构造函数将按照如下规则初始化类的数据成员：</p>
 <ul>
 <li>如果存在类内的初始值，用它来初始化成员。</li>
 <li>否则，默认初始化该成员。</li>
@@ -1770,7 +1807,7 @@
 </blockquote>
 </li>
 <li>
-<p>第二个原因是对于某些类来说，合成的默认构造函数可能执行错误的操作。回忆我们之前介绍过的，如果定义在块中的内置类型或复合类型（比如数组和指针）的对象被默认初始化，则它们的值将是未定义的。该准则同样适用于默认初始化的内置类型成员。因此，含有内置类型或复合类型成员的类应该在类的内部初始化这些成员，或者定义一个自己的默认构造函数。否则，用户在创建类的对象时就可能得到未定义的值。</p>
+<p>第二个原因是对于某些类来说，合成的默认构造函数可能执行错误的操作。回忆我们之前介绍过的，如果定义在块中的内置类型或复合类型(比如数组和指针)的对象被默认初始化，则它们的值将是未定义的。该准则同样适用于默认初始化的内置类型成员。因此，含有内置类型或复合类型成员的类应该在类的内部初始化这些成员，或者定义一个自己的默认构造函数。否则，用户在创建类的对象时就可能得到未定义的值。</p>
 <blockquote>
 <p>如果类包含有内置类型或者复合类型的成员，则只有当这些成员全都被赋予了类内的初始值时，这个类才适合于使用合成的默认构造函数。</p>
 </blockquote>
@@ -1790,17 +1827,17 @@
 <pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="n">Sales_data</span><span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">s</span><span class="p">)</span> <span class="o">:</span> <span class="n">bookNo</span><span class="p">(</span><span class="n">s</span><span class="p">){</span> <span class="p">};</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p>  这两个定义中出现了新的部分，即冒号以及冒号和花括号之间的代码，其中花括号定义了（空的）函数体。我们把新出现的部分称为构造函数初始值列表（constructor initialize list），它负责为新创建的对象的一个或几个数据成员赋初值。构造函数初始值是成员名字的一个列表，每个名字后面紧跟括号括起来的（或者在花括号内的）成员初始值。不同成员的初始化通过逗号分隔开来。</p>
+</div><p>  这两个定义中出现了新的部分，即冒号以及冒号和花括号之间的代码，其中花括号定义了(空的)函数体。我们把新出现的部分称为构造函数初始值列表(constructor initialize list)，它负责为新创建的对象的一个或几个数据成员赋初值。构造函数初始值是成员名字的一个列表，每个名字后面紧跟括号括起来的(或者在花括号内的)成员初始值。不同成员的初始化通过逗号分隔开来。</p>
 <h3 id="72-访问控制与封装">7.2 访问控制与封装</h3>
-<p>在C++语言中，我们使用访问说明符（access specifiers）加强类的封装性：</p>
+<p>在C++语言中，我们使用访问说明符(access specifiers)加强类的封装性：</p>
 <ul>
 <li>定义在public说明符之后的成员在整个程序内可被访问，public成员定义类的接口。</li>
-<li>定义在private说明符之后的成员可以被类的成员函数访问，但是不能被使用该类的代码访问，private部分封装了（即隐藏了）类的实现细节。</li>
+<li>定义在private说明符之后的成员可以被类的成员函数访问，但是不能被使用该类的代码访问，private部分封装了(即隐藏了)类的实现细节。</li>
 </ul>
 <p><strong>使用class或struct关键字：</strong></p>
 <p>  唯一的一点区别是，struct和class的默认访问权限不太一样。如果我们使用struct关键字，则定义在第一个访问说明符之前的成员是public的；相反，如果我们使用class关键字，则这些成员是private的。</p>
 <p><strong>友元：</strong></p>
-<p>  类可以允许其他类或者函数访问它的非公有成员，方法是令其他类或者函数成为它的友元（friend）。如果类想把一个函数作为它的友元，只需要增加一条以friend关键字开始的函数声明语句即可：</p>
+<p>  类可以允许其他类或者函数访问它的非公有成员，方法是令其他类或者函数成为它的友元(friend)。如果类想把一个函数作为它的友元，只需要增加一条以friend关键字开始的函数声明语句即可：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
@@ -1843,7 +1880,7 @@
 </blockquote>
 <p><strong>友元的声明：</strong></p>
 <p>  <strong>友元的声明仅仅指定了访问的权限，而非一个通常意义上的函数声明</strong>。如果我们希望类的用户能够调用某个友元函数，那么我们就必须在友元声明之外再专门对函数进行一次声明。</p>
-<p>  <strong>为了使友元对类的用户可见，我们通常把友元的声明与类本身放置在同一个头文件中（类的外部）</strong>。因此，我们的Sales_data头文件应该为read、print和add提供独立的声明（除了类内部的友元声明之外）。</p>
+<p>  <strong>为了使友元对类的用户可见，我们通常把友元的声明与类本身放置在同一个头文件中(类的外部)</strong>。因此，我们的Sales_data头文件应该为read、print和add提供独立的声明(除了类内部的友元声明之外)。</p>
 <h3 id="73-类的其他特性">7.3 类的其他特性</h3>
 <p><strong>定义一个类型成员：</strong></p>
 <p>  除了定义数据和函数成员之外，类还可以自定义某种类型在类中的别名。由类定义的类型名字和其他成员一样存在访问限制，可以是public或者private中的一种：</p>
@@ -1906,7 +1943,7 @@
 <p>和我们在头文件中定义inline函数的原因一样，inline成员函数也应该与相应的类定义在同一个头文件中。</p>
 </blockquote>
 <p><strong>可变数据成员：</strong></p>
-<p>  一个可变数据成员（mutable data member）永远不会是const，即使它是const对象的成员。因此，一个const成员函数可以改变一个可变成员的值。</p>
+<p>  一个可变数据成员(mutable data member)永远不会是const，即使它是const对象的成员。因此，一个const成员函数可以改变一个可变成员的值。</p>
 <p><strong>类数据成员的初始值：</strong></p>
 <p>  在定义好Screen类之后，我们将继续定义一个窗口管理类并用它表示显示器上的一组Screen。这个类将包含一个Screen类型的vector，每个元素表示一个特定的Screen。默认情况下，我们希望Window_mgr类开始时总是拥有一个默认初始化的Screen。在C++11新标准中，最好的方式就是把这个默认值声明成一个类内初始值：</p>
 <div class="highlight"><div class="chroma">
@@ -1927,12 +1964,12 @@
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p>  如我们之前所知的，类内初始值必须使用=的初始化形式（初始化Screen的数据成员时所用的）或者花括号括起来的直接初始化形式（初始化screens所用的）。</p>
+</div><p>  如我们之前所知的，类内初始值必须使用=的初始化形式(初始化Screen的数据成员时所用的)或者花括号括起来的直接初始化形式(初始化screens所用的)。</p>
 <blockquote>
 <p>当我们提供一个类内初始值时，必须以符号=或者花括号表示。</p>
 </blockquote>
-<p><strong>从const成员函数返回＊this：</strong></p>
-<p>  一个const成员函数如果以引用的形式返回＊this，那么它的返回类型将是常量引用。</p>
+<p><strong>从const成员函数返回*this：</strong></p>
+<p>  一个const成员函数如果以引用的形式返回*this，那么它的返回类型将是常量引用。</p>
 <p><strong>基于const的重载：</strong></p>
 <p>  <strong>通过区分成员函数是否是const的，我们可以对其进行重载</strong>。具体说来，因为非常量版本的函数对于常量对象是不可用的，所以我们只能在一个常量对象上调用const成员函数。另一方面，虽然可以在非常量对象上调用常量版本或非常量版本，但显然此时非常量版本是一个更好的匹配。</p>
 <p><strong>类类型：</strong></p>
@@ -1947,10 +1984,10 @@
 <pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Screen</span><span class="p">;</span>       <span class="c1">// Screen类的声明
 </span></span></span></code></pre></td></tr></table>
 </div>
-</div><p>  这种声明有时被称作前向声明（forward declaration），它向程序中引入了名字Screen并且指明Screen是一种类类型。对于类型Screen来说，在它声明之后定义之前是一个不完全类型（incomplete type），也就是说，此时我们已知Screen是一个类类型，但是不清楚它到底包含哪些成员。</p>
-<p>  不完全类型只能在非常有限的情景下使用：<strong>可以定义指向这种类型的指针或引用，也可以声明（但是不能定义）以不完全类型作为参数或者返回类型的函数。</strong></p>
+</div><p>  这种声明有时被称作前向声明(forward declaration)，它向程序中引入了名字Screen并且指明Screen是一种类类型。对于类型Screen来说，在它声明之后定义之前是一个不完全类型(incomplete type)，也就是说，此时我们已知Screen是一个类类型，但是不清楚它到底包含哪些成员。</p>
+<p>  不完全类型只能在非常有限的情景下使用：<strong>可以定义指向这种类型的指针或引用，也可以声明(但是不能定义)以不完全类型作为参数或者返回类型的函数。</strong></p>
 <p>  对于一个类来说，在我们创建它的对象之前该类必须被定义过，而不能仅仅被声明。否则，编译器就无法了解这样的对象需要多少存储空间。类似的，类也必须首先被定义，然后才能用引用或者指针访问其成员。毕竟，如果类尚未定义，编译器也就不清楚该类到底有哪些成员。</p>
-<p>  直到类被定义之后数据成员才能被声明成这种类类型。换句话说，<strong>我们必须首先完成类的定义，然后编译器才能知道存储该数据成员需要多少空间</strong>。因为只有当类全部完成后类才算被定义，所以一个类的成员类型不能是该类自己。然而，一旦一个类的名字出现后，它就被认为是声明过了（但尚未定义），因此类允许包含指向它自身类型的引用或指针：</p>
+<p>  直到类被定义之后数据成员才能被声明成这种类类型。换句话说，<strong>我们必须首先完成类的定义，然后编译器才能知道存储该数据成员需要多少空间</strong>。因为只有当类全部完成后类才算被定义，所以一个类的成员类型不能是该类自己。然而，一旦一个类的名字出现后，它就被认为是声明过了(但尚未定义)，因此类允许包含指向它自身类型的引用或指针：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -1968,7 +2005,7 @@
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p><strong>友元再探：</strong></p>
-<p>  类还可以把其他的类定义成友元，也可以把其他类（之前已定义过的）的成员函数定义成友元。此外，<strong>友元函数能定义在类的内部，这样的函数是隐式内联的</strong>。</p>
+<p>  类还可以把其他的类定义成友元，也可以把其他类(之前已定义过的)的成员函数定义成友元。此外，<strong>友元函数能定义在类的内部，这样的函数是隐式内联的</strong>。</p>
 <p><strong>类之间的友元关系：</strong></p>
 <p>  如果一个类指定了友元类，则友元类的成员函数可以访问此类包括非公有成员在内的所有成员。<strong>必须要注意的一点是，友元关系不存在传递性</strong>。</p>
 <blockquote>
@@ -2155,7 +2192,7 @@
 <p><strong>默认实参和构造函数:</strong></p>
 <p>  如果一个构造函数为所有参数都提供了默认实参，则它实际上也定义了默认构造函数。</p>
 <p><strong>委托构造函数：</strong></p>
-<p>  C++11新标准扩展了构造函数初始值的功能，使得我们可以定义所谓的委托构造函数（delegating constructor）。一个委托构造函数使用它所属类的其他构造函数执行它自己的初始化过程，或者说它把它自己的一些（或者全部）职责委托给了其他构造函数。</p>
+<p>  C++11新标准扩展了构造函数初始值的功能，使得我们可以定义所谓的委托构造函数(delegating constructor)。一个委托构造函数使用它所属类的其他构造函数执行它自己的初始化过程，或者说它把它自己的一些(或者全部)职责委托给了其他构造函数。</p>
 <p>  和其他构造函数一样，一个委托构造函数也有一个成员初始值的列表和一个函数体。在委托构造函数内，成员初始值列表只有一个唯一的入口，就是类名本身。和其他成员初始值一样，类名后面紧跟圆括号括起来的参数列表，参数列表必须与类中另外一个构造函数匹配。</p>
 <p>举个例子，我们使用委托构造函数重写Sales_data类，重写后的形式如下所示：</p>
 <div class="highlight"><div class="chroma">
@@ -2212,7 +2249,7 @@
 <ul>
 <li>在数组初始化的过程中如果我们提供的初始值数量少于数组的大小时。</li>
 <li>当我们不使用初始值定义一个局部静态变量时。</li>
-<li>当我们通过书写形如T（ ）的表达式显式地请求值初始化时，其中T是类型名（vector的一个构造函数只接受一个实参用于说明vector大小，它就是使用一个这种形式的实参来对它的元素初始化器进行值初始化）。</li>
+<li>当我们通过书写形如T( )的表达式显式地请求值初始化时，其中T是类型名(vector的一个构造函数只接受一个实参用于说明vector大小，它就是使用一个这种形式的实参来对它的元素初始化器进行值初始化)。</li>
 </ul>
 <p><strong>隐式的类类型转换：</strong></p>
 <p>  编译器只会自动地执行一步类型转换。</p>
@@ -2277,7 +2314,7 @@
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p>  <strong>关键字explicit只对一个实参的构造函数有效</strong>。需要多个实参的构造函数不能用于执行隐式转换，所以无须将这些构造函数指定为explicit的。只能在类内声明构造函数时使用explicit关键字，在类外部定义时不应重复。</p>
-<p>  <strong>explicit构造函数只能用于直接初始化</strong>。发生隐式转换的一种情况是当我们执行拷贝形式的初始化时（使用=）。此时，我们只能使用直接初始化而不能使用explicit构造函数：</p>
+<p>  <strong>explicit构造函数只能用于直接初始化</strong>。发生隐式转换的一种情况是当我们执行拷贝形式的初始化时(使用=)。此时，我们只能使用直接初始化而不能使用explicit构造函数：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -2292,7 +2329,7 @@
 <p>当我们用explicit关键字声明构造函数时，它将只能以直接初始化的形式使用。而且，编译器将不会在自动转换过程中使用该构造函数。</p>
 </blockquote>
 <p><strong>聚合类：</strong></p>
-<p>  聚合类（aggregate class）使得用户可以直接访问其成员，并且具有特殊的初始化语法形式。当一个类满足如下条件时，我们说它是聚合的：</p>
+<p>  聚合类(aggregate class)使得用户可以直接访问其成员，并且具有特殊的初始化语法形式。当一个类满足如下条件时，我们说它是聚合的：</p>
 <ul>
 <li>所有成员都是public的。</li>
 <li>没有定义任何构造函数。</li>
@@ -2367,11 +2404,1421 @@
 </div>
 </div><h1 id="第部分-c标准库">第Ⅱ部分 C++标准库</h1>
 <h2 id="8-io库">8. IO库</h2>
+<h3 id="81-io类">8.1 IO类</h3>
+<p><strong>定义在三个独立的头文件中：iostream定义了用于读写流的基本类型，fstream定义了读写命名文件的类型，sstream定义了读写内存string对象的类型</strong>。</p>
+<h2 id="9-顺序容器">9. 顺序容器</h2>
+<p>一个容器就是一些特定类型对象的集合。顺序容器(sequential container)为程序员提供了控制元素存储和访问顺序的能力。这种顺序不依赖于元素的值，而是与元素加入容器时的位置相对应。</p>
+<h3 id="91-顺序容器概述">9.1 顺序容器概述</h3>
+<ul>
+<li>vector：可变大小数组。支持快速随机访问。在尾部之外的位置插入或删除元素可能很慢</li>
+<li>deque：双端队列。支持快速随机访问。在头尾位置插入/删除速度很快</li>
+<li>list：双向链表。只支持双向顺序访问。在list 中任何位置进行插入/删除操作速度都很快</li>
+<li>forward_list：单向链表。只支持单向顺序访问。在链表任何位置进行插入/删除操作速度都很快</li>
+<li>array：固定大小数组。支持快速随机访问。不能添加或删除元素</li>
+<li>string：与vector 相似的容器，但专门用于保存字符。随机访问快。在尾部插入/副除速度快</li>
+</ul>
+<p>这些容器在以下方面都有不同的性能折中：</p>
+<ul>
+<li>向容器添加或从容器中删除元素的代价</li>
+<li>非顺序访问容器中元素的代价</li>
+</ul>
+<p>string和vector将元素保存在连续的内存空间中。由于元素是连续存储的，由元素的下标来计算其地址是非常快速的。但是，在这两种容器的中间位置添加或删除元素就会非常耗时：在一次插入或删除操作后，需要移动插入/删除位置之后的所有元素，来保持连续存储。而且，添加一个元素有时可能还需要分配额外的存储空间。在这种情况下，每个元素都必须移动到新的存储空间中。</p>
+<p>list和forward_list两个容器的设计目的是令容器任何位置的添加和删除操作都很快速。作为代价，这两个容器不支持元素的随机访问：为了访问一个元素，我们只能遍历整个容器。而且，与vector、deque和array相比，这两个容器的额外内存开销也很大。</p>
+<p>deque是一个更为复杂的数据结构。与string和vector类似，deque支持快速的随机访问。与string和vector一样，在deque的中间位置添加或删除元素的代价(可能)很高。但是，在deque的两端添加或删除元素都是很快的，与list或forward_list添加删除元素的速度相当。</p>
+<p>forward_list和array是新C++标准增加的类型。与内置数组相比，array是一种更安全、更容易使用的数组类型。与内置数组类似，array对象的大小是固定的。因此，array不支持添加和删除元素以及改变容器大小的操作。<strong>forward_list的设计目标是达到与最好的手写的单向链表数据结构相当的性能</strong>。因此，forward_list没有size操作，因为保存或计算其大小就会比手写链表多出额外的开销。对其他容器而言，size保证是一个快速的常量时间的操作。</p>
+<h3 id="92-容器库概览">9.2 容器库概览</h3>
+<p>一般来说，每个容器都定义在一个头文件中，文件名与类型名相同。即，deque定义在头文件deque中，list定义在头文件list中，以此类推。</p>
+<p>容器均定义为模板类：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="n">list</span><span class="o">&lt;</span><span class="n">Sales_data</span><span class="o">&gt;</span> <span class="n">lss</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="n">deque</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span> <span class="n">dqs</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="n">vector</span><span class="o">&lt;</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">string</span><span class="o">&gt;&gt;</span> <span class="n">lines</span><span class="p">;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><blockquote>
+<p>较旧的编译器可能需要在两个尖括号之间键入空格，列如：<code>vector&lt;vector&lt;string&gt; &gt;</code></p>
+</blockquote>
+<p><strong>与容器一样，迭代器有着公共的接口：如果一个迭代器提供某个操作，那么所有提供相同操作的迭代器对这个操作的实现方式都是相同的</strong>。例如，标准容器类型上的所有迭代器都允许我们访问容器中的元素，而所有迭代器都是通过解引用运算符来实现这个操作的。类似的，标准库容器的所有迭代器都定义了递增运算符，从当前元素移动到下一个元素。</p>
+<p>一个迭代器范围(iterator range)由一对迭代器表示，两个迭代器分别指向同一个容器中的元素或者是尾元素之后的位置(one past the last element)。</p>
+<p>这种元素范围被称为左闭合区间(left-inclusive interval)，其标准数学描述为：<code>[begin, end)</code></p>
+<p>表示范围自begin开始，于end之前结束。迭代器begin和end必须指向相同的容器。end可以与begin指向相同的位置，但不能指向begin之前的位置。</p>
+<p>当将一个容器初始化为另一个容器的拷贝时，两个容器的容器类型和元素类型都必须相同：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="n">std</span><span class="o">::</span><span class="n">list</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span> <span class="n">authors</span> <span class="o">=</span> <span class="p">{</span> <span class="s">&#34;Milton&#34;</span><span class="p">,</span> <span class="s">&#34;Shakespeare&#34;</span><span class="p">,</span> <span class="s">&#34;Austen&#34;</span> <span class="p">};</span>
+</span></span><span class="line"><span class="cl"><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="k">const</span> <span class="kt">char</span><span class="o">*&gt;</span> <span class="n">articles</span> <span class="o">=</span> <span class="p">{</span> <span class="s">&#34;a&#34;</span><span class="p">,</span> <span class="s">&#34;an&#34;</span><span class="p">,</span> <span class="s">&#34;the&#34;</span> <span class="p">};</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">std</span><span class="o">::</span><span class="n">list</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span> <span class="n">list2</span><span class="p">(</span><span class="n">authors</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// std::deque&lt;std::string&gt; authList(authors);	// 错误：容器类型不匹配
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">std</span><span class="o">::</span><span class="n">deque</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span> <span class="n">authList</span><span class="p">(</span><span class="n">authors</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">authors</span><span class="p">.</span><span class="n">end</span><span class="p">());</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// std::vector&lt;std::string&gt; words(articles);		// 错误：容器类型必须匹配
+</span></span></span><span class="line"><span class="cl"><span class="c1">// 正确：可以将const char*元素转换为string
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">std</span><span class="o">::</span><span class="n">forward_list</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span> <span class="n">words</span><span class="p">(</span><span class="n">articles</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">articles</span><span class="p">.</span><span class="n">end</span><span class="p">());</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>与内置数组一样，标准库array的大小也是类型的一部分。当定义一个array时，除了指定元素类型，还要指定容器大小：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="n">std</span><span class="o">::</span><span class="n">array</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span> <span class="mi">42</span><span class="o">&gt;</span>			<span class="c1">// 类型为：保存42个int的数组
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">std</span><span class="o">::</span><span class="n">array</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">,</span> <span class="mi">10</span><span class="o">&gt;</span>	<span class="c1">// 类型为：保存10个string的数组
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>array大小固定的特性也影响了它所定义的构造函数的行为。与其他容器不同，一个默认构造的array是非空的：它包含了与其大小一样多的元素。这些元素都被默认初始化，就像一个内置数组中的元素那样。如果我们对array进行列表初始化，初始值的数目必须等于或小于array的大小。如果初始值数目小于array的大小，则它们被用来初始化array中靠前的元素，所有剩余元素都会进行值初始化。在这两种情况下，如果元素类型是一个类类型，那么该类必须有一个默认构造函数，以使值初始化能够进行：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="n">std</span><span class="o">::</span><span class="n">array</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span> <span class="mi">10</span><span class="o">&gt;</span> <span class="n">ial</span><span class="p">;</span>	<span class="c1">// 10个默认初始化的int
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">std</span><span class="o">::</span><span class="n">array</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span> <span class="mi">10</span><span class="o">&gt;</span> <span class="n">ia2</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">};</span>	<span class="c1">// 列表初始化
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">std</span><span class="o">::</span><span class="n">array</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span> <span class="mi">10</span><span class="o">&gt;</span> <span class="n">ia3</span> <span class="o">=</span> <span class="p">{</span><span class="mi">42</span><span class="p">};</span>	<span class="c1">// ia3[0]为42，剩余元素为0
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>值得注意的是，虽然我们不能对内置数组类型进行拷贝或对象赋值操作，但array并无此限制：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="kt">int</span> <span class="n">digs</span><span class="p">[</span><span class="mi">10</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">}</span><span class="err">；</span>
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="n">cpy</span><span class="p">[</span><span class="mi">10</span><span class="p">]</span> <span class="o">=</span> <span class="n">digs</span><span class="p">;</span>	<span class="c1">// 错误：内置数组不支持拷贝或赋值
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="n">std</span><span class="o">::</span><span class="n">array</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span> <span class="mi">10</span><span class="o">&gt;</span> <span class="n">digits</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">}</span><span class="err">；</span>
+</span></span><span class="line"><span class="cl"><span class="n">std</span><span class="o">::</span><span class="n">array</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span> <span class="mi">10</span><span class="o">&gt;</span> <span class="n">copy</span> <span class="o">=</span> <span class="n">digits</span><span class="p">;</span>	<span class="c1">// 正确：只要数组类型匹配及合法
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>与其他容器一样，array也要求初始值的类型必须与要创建的容器类型相同。<strong>此外，array还要求元素类型和大小也都一样，因为大小是array类型的一部分</strong>。</p>
+<p>与内置数组不同，标准库array类型允许赋值。赋值号左右两边的运算对象必须具有相同的类型：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="n">std</span><span class="o">::</span><span class="n">array</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span> <span class="mi">10</span><span class="o">&gt;</span> <span class="n">a1</span> <span class="o">=</span> <span class="p">{</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span> <span class="p">};</span>
+</span></span><span class="line"><span class="cl"><span class="n">std</span><span class="o">::</span><span class="n">array</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span> <span class="mi">10</span><span class="o">&gt;</span> <span class="n">a2</span> <span class="o">=</span> <span class="p">{</span> <span class="mi">0</span> <span class="p">};</span>	<span class="c1">// 所有元素均为0
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">a1</span> <span class="o">=</span> <span class="n">a2</span><span class="p">;</span>	<span class="c1">// 替换a1中的元素
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">a2</span> <span class="o">=</span> <span class="p">{</span> <span class="mi">0</span> <span class="p">};</span>	<span class="c1">// 错误：不能将一个花括号列表赋予数组
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>由于右边运算对象的大小可能与左边运算对象的大小不同，因此array类型不支持assign，也不允许用花括号包围的值列表进行赋值。</p>
+<p><strong>使用assign(仅顺序容器)</strong>。赋值运算符要求左边和右边的运算对象具有相同的类型。它将右边运算对象中所有元素拷贝到左边运算对象中。顺序容器(array除外)还定义了一个名为assign的成员，允许我们从一个不同但相容的类型赋值，或者从容器的一个子序列赋值。assign操作用参数所指定的元素(的拷贝)替换左边容器中的所有元素。</p>
+<p>例如，我们可以用assgin实现将一个vector中的一段char *值赋予一个list中的string：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="n">std</span><span class="o">::</span><span class="n">list</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span> <span class="n">names</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="k">const</span> <span class="kt">char</span><span class="o">*&gt;</span> <span class="n">oldstyle</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="n">names</span> <span class="o">=</span> <span class="n">oldstyle</span><span class="p">;</span>	<span class="c1">// 错误：容器类型不匹配
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="c1">// 正确：可以将const char*转换为string
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">names</span><span class="p">.</span><span class="n">assign</span><span class="p">(</span><span class="n">oldstyle</span><span class="p">.</span><span class="n">cbegin</span><span class="p">(),</span> <span class="n">oldstyle</span><span class="p">.</span><span class="n">cend</span><span class="p">());</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><blockquote>
+<p>由于其旧元素被替换，因此传递给assign的迭代器不能指向调用assign的容器。</p>
+</blockquote>
+<p>assign的第二个版本接受一个整型值和一个元素值。它用指定数目且具有相同给定值的元素替换容器中原有的元素：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="c1">// 等价于slist1.clear();
+</span></span></span><span class="line"><span class="cl"><span class="c1">// 后跟slist1.insert(slist1.begin(), 10, &#34;Hiya!&#34;);
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">std</span><span class="o">::</span><span class="n">list</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span> <span class="n">slist1</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>	<span class="c1">// 1个元素，为空的string
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">slist1</span><span class="p">.</span><span class="n">assign</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="s">&#34;Hiya!&#34;</span><span class="p">);</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><strong>使用swap</strong>：</p>
+<p>swap操作交换两个相同类型容器的内容。调用swap之后，两个容器中的元素将会交换：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span> <span class="n">svec1</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span>	<span class="c1">// 10个元素的vector
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span> <span class="n">svec2</span><span class="p">(</span><span class="mi">24</span><span class="p">);</span>	<span class="c1">// 10个元素的vector
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">std</span><span class="o">::</span><span class="n">swap</span><span class="p">(</span><span class="n">svec1</span><span class="p">,</span> <span class="n">svec2</span><span class="p">);</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>除array外，交换两个容器内容的操作保证会很快——元素本身并未交换，swap只是交换了两个容器的内部数据结构。</p>
+<blockquote>
+<p>除array外，swap不对任何元素进行拷贝、删除或插入操作，因此可以保证在常数时间内完成。</p>
+</blockquote>
+<p>元素不会被移动的事实意味着，除string外，指向容器的迭代器、引用和指针在swap操作之后都不会失效。它们仍指向swap操作之前所指向的那些元素。但是，在swap之后，这些元素已经属于不同的容器了。例如，假定iter在swap之前指向svec1[3]的string，那么在swap之后它指向svec2[3]的元素。<strong>与其他容器不同，对一个string调用swap会导致迭代器、引用和指针失效</strong>。</p>
+<p>与其他容器不同，swap两个array会真正交换它们的元素。因此，交换两个array所需的时间与array中元素的数目成正比。因此，对于array，在swap操作之后，指针、引用和迭代器所绑定的元素保持不变，但元素值已经与另一个array中对应元素的值进行了交换。</p>
+<p>在新标准库中，容器既提供成员函数版本的swap，也提供非成员版本的swap。而早期标准库版本只提供成员函数版本的swap。非成员版本的swap在泛型编程中是非常重要的。<strong>统一使用非成员版本的swap是一个好习惯</strong>。</p>
+<p><strong>容器大小操作</strong>：</p>
+<p>每个容器类型都支持相等运算符（==和！=）；除了无序关联容器外的所有容器都支持关系运算符（&gt;、&gt;=、&lt;、&lt;=）。关系运算符左右两边的运算对象必须是相同类型的容器，且必须保存相同类型的元素。</p>
+<p>比较两个容器实际上是进行元素的逐对比较：</p>
+<ul>
+<li>如果两个容器具有相同大小且所有元素都两两对应相等，则这两个容器相等；否则两个容器不等。</li>
+<li>如果两个容器大小不同，但较小容器中每个元素都等于较大容器中的对应元素，则较小容器小于较大容器。</li>
+<li>如果两个容器都不是另一个容器的前缀子序列，则它们的比较结果取决于第一个不相等的元素的比较结果。</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">v1</span> <span class="o">=</span> <span class="p">{</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">12</span> <span class="p">};</span>
+</span></span><span class="line"><span class="cl"><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">v2</span> <span class="o">=</span> <span class="p">{</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">9</span> <span class="p">};</span>
+</span></span><span class="line"><span class="cl"><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">v3</span> <span class="o">=</span> <span class="p">{</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span> <span class="p">};</span>
+</span></span><span class="line"><span class="cl"><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">v4</span> <span class="o">=</span> <span class="p">{</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">12</span> <span class="p">};</span>
+</span></span><span class="line"><span class="cl"><span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="p">(</span><span class="n">v1</span> <span class="o">&lt;</span> <span class="n">v2</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>	<span class="c1">// true
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="p">(</span><span class="n">v1</span> <span class="o">&lt;</span> <span class="n">v3</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>	<span class="c1">// false
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="p">(</span><span class="n">v1</span> <span class="o">==</span> <span class="n">v4</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>	<span class="c1">// true
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="p">(</span><span class="n">v1</span> <span class="o">==</span> <span class="n">v2</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>	<span class="c1">// false
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><blockquote>
+<p>容器的相等运算符实际上是使用元素的==运算符实现比较的，而其他关系运算符是使用元素的&lt;运算符。如果元素类型不支持所需运算符，那么保存这种元素的容器就不能使用相应的关系运算。</p>
+</blockquote>
+<p><strong>关键概念：容器元素是拷贝</strong></p>
+<ul>
+<li>当我们用一个对象来初始化容器时，或将一个对象插入到容器中时，实际上放入到容器中的是对象值的一个拷贝，而不是对象本身。就像我们将一个对象传递给非引用参数一样，容器中的元素与提供值的对象之间没有任何关联。随后对容器中元素的任何改变都不会影响到原始对象，反之亦然。</li>
+</ul>
+<p><strong>使用insert的返回值</strong>：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="n">std</span><span class="o">::</span><span class="n">list</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span> <span class="n">lst</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">auto</span> <span class="n">iter</span> <span class="o">=</span> <span class="n">lst</span><span class="p">.</span><span class="n">begin</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl"><span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">word</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">while</span> <span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">cin</span> <span class="o">&gt;&gt;</span> <span class="n">word</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="n">iter</span> <span class="o">=</span> <span class="n">lst</span><span class="p">.</span><span class="n">insert</span><span class="p">(</span><span class="n">iter</span><span class="p">,</span> <span class="n">word</span><span class="p">);</span>	<span class="c1">// 等价于调用push_front
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>在循环之前，我们将iter初始化为lst.begin（）。第一次调用insert会将我们刚刚读入的string插入到iter所指向的元素之前的位置。insert返回的迭代器恰好指向这个新元素。我们将此迭代器赋予iter并重复循环，读取下一个单词。只要继续有单词读入，每步while循环就会将一个新元素插入到iter之前，并将iter改变为新加入元素的位置。此元素为（新的）首元素。因此，每步循环将一个新元素插入到list首元素之前的位置。</p>
+<p><strong>使用emplace操作</strong>：</p>
+<p>新标准引入了三个新成员——emplace_front、emplace和emplace_back，这些操作构造而不是拷贝元素。这些操作分别对应push_front、insert和push_back，允许我们将元素放置在容器头部、一个指定位置之前或容器尾部。</p>
+<p>当调用push或insert成员函数时，我们将元素类型的对象传递给它们，这些对象被拷贝到容器中。而当我们调用一个emplace成员函数时，则是将参数传递给元素类型的构造函数。emplace成员使用这些参数在容器管理的内存空间中直接构造元素。例如，假定c保存Sales_data元素：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="c1">// 在c的末尾构造一个Sales_data对象
+</span></span></span><span class="line"><span class="cl"><span class="c1">// 使用三个参数的Sales_data构造函数
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">c</span><span class="p">.</span><span class="n">emplace_back</span><span class="p">(</span><span class="s">&#34;978-0590353403&#34;</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mf">15.99</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// 错误：没有接受三个参数的push_back版本
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">c</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="s">&#34;978-0590353403&#34;</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mf">15.99</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// 正确：创建一个临时的Sales_data对象传递给push_back
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">c</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">Sales_data</span><span class="p">(</span><span class="s">&#34;978-0590353403&#34;</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mf">15.99</span><span class="p">))</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>其中对emplace_back的调用和第二个push_back调用都会创建新的Sales_data对象。在调用emplace_back时，会在容器管理的内存空间中直接创建对象。而调用push_back则会创建一个局部临时对象，并将其压入容器中。</p>
+<p>emplace函数的参数根据元素类型而变化，参数必须与元素类型的构造函数相匹配：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="c1">// iter指向c中一个元素，其中保存了Sales_data元素
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">c</span><span class="p">.</span><span class="n">emplace_back</span><span class="p">();</span>	<span class="c1">// 使用Sales_data的默认构造函数
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">c</span><span class="p">.</span><span class="n">emplace_back</span><span class="p">(</span><span class="n">iter</span><span class="p">,</span> <span class="s">&#34;999-9999999&#34;</span><span class="p">);</span>	<span class="c1">// 使用Sales_data(string)
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="c1">// 使用Sales_data的接受一个ISBN、一个count和一个price的构造函数
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">c</span><span class="p">.</span><span class="n">emplace_front</span><span class="p">(</span><span class="s">&#34;978-0590353403&#34;</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mf">15.99</span><span class="p">);</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>emplace函数在容器中直接构造元素。传递给emplace函数的参数必须与元素类型的构造函数相匹配。</p>
+<h1 id="第部分-c标准库-1">第Ⅲ部分 C++标准库</h1>
+<h2 id="13-拷贝控制">13. 拷贝控制</h2>
+<h3 id="131-拷贝赋值与销毁">13.1 拷贝、赋值与销毁</h3>
+<h4 id="1311-拷贝构造函数">13.1.1 拷贝构造函数</h4>
+<p><strong>如果一个构造函数的第一个参数是自身类类型的引用，且任何额外参数都有默认值，则此构造函数是拷贝构造函数</strong>。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Foo</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl"><span class="k">public</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">	<span class="n">Foo</span><span class="p">();</span>				<span class="c1">// 默认构造函数
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="n">Foo</span><span class="p">(</span><span class="k">const</span> <span class="n">Foo</span><span class="o">&amp;</span><span class="p">);</span>	<span class="c1">// 拷贝构造函数
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">};</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><strong>拷贝构造函数的第一个参数必须是一个引用类型</strong>。虽然我们可以定义一个接受非const引用的拷贝构造函数，但此参数几乎总是一个const的引用。拷贝构造函数在几种情况下都会被隐式地使用。因此，拷贝构造函数通常不应该是explicit的。</p>
+<p><strong>合成拷贝构造函数：</strong></p>
+<p>如果我们没有为一个类定义拷贝构造函数，编译器会为我们定义一个。<strong>与合成默认构造函数不同，即使我们定义了其他构造函数，编译器也会为我们合成一个拷贝构造函数</strong>。</p>
+<p>一般情况，合成的拷贝构造函数会将其参数的成员逐个拷贝到正在创建的对象中。编译器从给定对象中依次将每个非static成员拷贝到正在创建的对象中。<strong>每个成员的类型决定了它如何拷贝：对类类型的成员，会使用其拷贝构造函数来拷贝；内置类型的成员则直接拷贝</strong>。虽然我们不能直接拷贝一个数组，但合成拷贝构造函数会逐元素地拷贝一个数组类型的成员。如果数组元素是类类型，则使用元素的拷贝构造函数来进行拷贝。</p>
+<p><strong>拷贝初始化：</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">dots</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="sc">&#39; &#39;</span><span class="p">);</span>					<span class="c1">// 直接初始化
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">s</span><span class="p">(</span><span class="n">dots</span><span class="p">);</span>						<span class="c1">// 直接初始化
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">s2</span> <span class="o">=</span> <span class="n">dots</span><span class="p">;</span>						<span class="c1">// 拷贝初始化
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">null_book</span> <span class="o">=</span> <span class="s">&#34;9-999-9999-9&#34;</span><span class="p">;</span>		<span class="c1">// 拷贝初始化，会转换到string类型，进行拷贝初始化
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">nines</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="sc">&#39;9&#39;</span><span class="p">);</span>	<span class="c1">// 拷贝初始化
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>当使用直接初始化时，我们实际上是要求编译器使用普通的函数匹配来选择与我们提供的参数最匹配的构造函数。当我们使用拷贝初始化(copy initialization)时，我们要求编译器将右侧运算对象拷贝到正在创建的对象中，如果需要的话还要进行类型转换。</p>
+<p>拷贝初始化不仅在我们用=定义变量时会发生，在下列情况下也会发生：</p>
+<ul>
+<li>函数传参：将一个对象作为实参传递给一个非引用类型的形参</li>
+<li>函数返回：从一个返回类型为非引用类型的函数返回一个对象</li>
+<li>列表初始化：用花括号列表初始化一个数组中的元素或一个聚合类中的成员</li>
+</ul>
+<p>某些类类型还会对它们所分配的对象使用拷贝初始化。例如，当我们初始化标准库容器或是调用其insert或push成员时，容器会对其元素进行拷贝初始化。与之相对，<strong>用emplace成员创建的元素都进行直接初始化</strong>。</p>
+<p><strong>参数和返回值：</strong></p>
+<p>在函数调用过程中，具有非引用类型的参数要进行拷贝初始化。类似的，当一个函数具有非引用的返回类型时，返回值会被用来初始化调用方的结果。<strong>拷贝构造函数被用来初始化非引用类类型参数，这一特性解释了为什么拷贝构造函数自己的参数必须是引用类型。如果其参数不是引用类型，则调用永远也不会成功——为了调用拷贝构造函数，我们必须拷贝它的实参，但为了拷贝实参，我们又需要调用拷贝构造函数，如此无限循环</strong>。</p>
+<p><strong>拷贝初始化的限制：</strong></p>
+<p>如果我们使用的初始化值要求通过一个explicit的构造函数来进行类型转换，那么使用拷贝初始化还是直接初始化就不是无关紧要的了：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">v1</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span>	<span class="c1">// 正确，直接初始化
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">v2</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>	<span class="c1">// 错误，接受大小参数的构造函数explicit的
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">f</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">);</span>	<span class="c1">// f的参数进行拷贝初始化
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">f</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span>						<span class="c1">// 错误，不能用一个explicit的构造函数拷贝一个实参
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">f</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">10</span><span class="p">));</span>	<span class="c1">// 正确，从一个int直接构造一个临时vector
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>直接初始化v1是合法的，但看起来与之等价的拷贝初始化v2则是错误的，因为vector的接受单一大小参数的构造函数是explicit的。出于同样的原因，当传递一个实参或从函数返回一个值时，我们不能隐式使用一个explicit构造函数。如果我们希望使用一个explicit构造函数，就必须显式地使用，像此代码中最后一行那样。</p>
+<p><strong>编译器可以绕过拷贝构造函数：</strong></p>
+<p>在拷贝初始化过程中，编译器可以(但不是必须)跳过拷贝/移动构造函数，直接创建对象。即，编译器被允许将下面的代码：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">null_book</span> <span class="o">=</span> <span class="s">&#34;9-999-9999-9&#34;</span><span class="p">;</span>		<span class="c1">// 拷贝初始化，会转换到string类型，进行拷贝初始化
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>改为：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">null_book</span><span class="p">(</span><span class="s">&#34;9-999-9999-9&#34;</span><span class="p">);</span>		<span class="c1">// 直接初始化，编译器略过了拷贝构造函数
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>但是，即使编译器略过了拷贝/移动构造函数，但在这个程序点上，拷贝/移动构造函数必须是存在且可访问的(例如，不能是private的)。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;string&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;vector&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span>
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">MyString</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl"><span class="k">public</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">	<span class="n">MyString</span><span class="p">(</span><span class="kt">int</span> <span class="n">n</span><span class="p">,</span> <span class="kt">char</span> <span class="n">c</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="k">this</span><span class="o">-&gt;</span><span class="n">str_</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">c</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">		<span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;直接初始化&#34;</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="n">MyString</span><span class="p">(</span><span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">str</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="k">this</span><span class="o">-&gt;</span><span class="n">str_</span> <span class="o">=</span> <span class="n">str</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">		<span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;直接初始化&#34;</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="n">MyString</span><span class="p">(</span><span class="k">const</span> <span class="n">MyString</span><span class="o">&amp;</span> <span class="n">myString</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="k">this</span><span class="o">-&gt;</span><span class="n">str_</span> <span class="o">=</span> <span class="n">myString</span><span class="p">.</span><span class="n">str_</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">		<span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;拷贝初始化&#34;</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">private</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">	<span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">str_</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="n">MyString</span> <span class="n">str1</span><span class="p">(</span><span class="n">MyString</span><span class="p">(</span><span class="s">&#34;1111&#34;</span><span class="p">));</span>	<span class="c1">// 直接初始化
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="n">MyString</span> <span class="n">str2</span> <span class="o">=</span> <span class="n">MyString</span><span class="p">(</span><span class="s">&#34;22222&#34;</span><span class="p">);</span>	<span class="c1">// 直接初始化，(优化关了)
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="n">MyString</span> <span class="n">str2_</span> <span class="o">=</span> <span class="n">str2</span><span class="p">;</span>				<span class="c1">// 拷贝初始化
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="n">MyString</span> <span class="n">str3</span><span class="p">(</span><span class="s">&#34;333&#34;</span><span class="p">);</span>				<span class="c1">// 直接初始化
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="n">MyString</span> <span class="n">str4</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="sc">&#39;4&#39;</span><span class="p">);</span>				<span class="c1">// 直接初始化
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl">	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="1312-拷贝赋值运算符">13.1.2 拷贝赋值运算符</h4>
+<p>与类控制其对象如何初始化一样，类也可以控制其对象如何赋值：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="n">Sales_data</span> <span class="n">trans</span><span class="p">,</span> <span class="n">accum</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="n">trans</span> <span class="o">=</span> <span class="n">accum</span><span class="p">;</span>  <span class="c1">// 使用Sales_data的拷贝赋值运算符
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>与拷贝构造函数一样，如果类未定义自己的拷贝赋值运算符，编译器会为它合成一个。</p>
+<p><strong>重载运算符：</strong></p>
+<p>重载运算符本质上是函数，其名字由operator关键字后接表示要定义的运算符的符号组成。因此，赋值运算符就是一个名为operator=的函数。类似于任何其他函数，运算符函数也有一个返回类型和一个参数列表。</p>
+<p>重载运算符的参数表示运算符的运算对象。某些运算符，包括赋值运算符，必须定义为成员函数。如果一个运算符是一个成员函数，其左侧运算对象就绑定到隐式的this参数。对于一个二元运算符，例如赋值运算符，其右侧运算对象作为显式参数传递。</p>
+<p>拷贝赋值运算符接受一个与其所在类相同类型的参数：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Foo</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl"><span class="k">public</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">	<span class="n">Foo</span><span class="o">&amp;</span> <span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="k">const</span> <span class="n">Foo</span><span class="o">&amp;</span><span class="p">);</span>	<span class="c1">// 赋值运算符
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">};</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>为了与内置类型的赋值保持一致，赋值运算符通常返回一个指向其左侧运算对象的引用。另外值得注意的是，标准库通常要求保存在容器中的类型要具有赋值运算符，且其返回值是左侧运算对象的引用。</p>
+<blockquote>
+<p>赋值运算符通常应该返回一个指向其左侧运算对象的引用。</p>
+</blockquote>
+<p><strong>合成拷贝赋值运算符：</strong></p>
+<p>与处理拷贝构造函数一样，如果一个类未定义自己的拷贝赋值运算符，编译器会为它生成一个合成拷贝赋值运算符(synthesizedcopy-assignment operator)。类似拷贝构造函数，对于某些类，合成拷贝赋值运算符用来禁止该类型对象的赋值。如果拷贝赋值运算符并非出于此目的，它会将右侧运算对象的每个非static成员赋予左侧运算对象的对应成员，这一工作是通过成员类型的拷贝赋值运算符来完成的。对于数组类型的成员，逐个赋值数组元素。合成拷贝赋值运算符返回一个指向其左侧运算对象的引用。</p>
+<p>作为一个例子，下面的代码等价于Sales_data的合成拷贝赋值运算符：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Sales_data</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl"><span class="k">public</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">	<span class="n">Sales_data</span><span class="o">&amp;</span> <span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="k">const</span> <span class="n">Sales_data</span><span class="o">&amp;</span><span class="p">);</span>	<span class="c1">// 赋值运算符
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="k">private</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">	<span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">bookNo</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="kt">int</span> <span class="n">units_sold</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="kt">double</span> <span class="n">revenue</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// 等价于合成拷贝赋值运算符 
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">Sales_data</span><span class="o">&amp;</span> <span class="n">Sales_data</span><span class="o">::</span><span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="k">const</span> <span class="n">Sales_data</span><span class="o">&amp;</span> <span class="n">rhs</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="k">this</span><span class="o">-&gt;</span><span class="n">bookNo</span> <span class="o">=</span> <span class="n">rhs</span><span class="p">.</span><span class="n">bookNo</span><span class="p">;</span>			<span class="c1">// 调用std::string::operator=
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="k">this</span><span class="o">-&gt;</span><span class="n">units_sold</span> <span class="o">=</span> <span class="n">rhs</span><span class="p">.</span><span class="n">units_sold</span><span class="p">;</span>	<span class="c1">// 使用内置int赋值
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="k">this</span><span class="o">-&gt;</span><span class="n">revenue</span> <span class="o">=</span> <span class="n">rhs</span><span class="p">.</span><span class="n">revenue</span><span class="p">;</span>		<span class="c1">// 使用内置都变了赋值
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl">	<span class="k">return</span> <span class="o">*</span><span class="k">this</span><span class="p">;</span>						<span class="c1">// 返回一个此对象的引用
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="1313-析构函数">13.1.3 析构函数</h4>
+<p>析构函数执行与构造函数相反的操作：构造函数初始化对象的非static数据成员，还可能做一些其他工作；析构函数释放对象使用的资源，并销毁对象的非static数据成员。</p>
+<p>析构函数是类的一个成员函数，名字由波浪号接类名构成。它没有返回值，也不接受参数：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Foo</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl"><span class="k">public</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">	<span class="o">~</span><span class="n">Foo</span><span class="p">();</span>	<span class="c1">// 析构函数
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">};</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>由于析构函数不接受参数，因此它不能被重载。对一个给定类，只会有唯一一个析构函数。</p>
+<p><strong>析构函数完成什么工作：</strong></p>
+<p>如同构造函数有一个初始化部分和一个函数体，析构函数也有一个函数体和一个析构部分。在一个构造函数中，成员的初始化是在函数体执行之前完成的，且按照它们在类中出现的顺序进行初始化。在一个析构函数中，首先执行函数体，然后销毁成员。成员按初始化顺序的逆序销毁。</p>
+<p>在对象最后一次使用之后，析构函数的函数体可执行类设计者希望执行的任何收尾工作。通常，析构函数释放对象在生存期分配的所有资源。</p>
+<p>在一个析构函数中，不存在类似构造函数中初始化列表的东西来控制成员如何销毁，析构部分是隐式的。成员销毁时发生什么完全依赖于成员的类型。销毁类类型的成员需要执行成员自己的析构函数。内置类型没有析构函数，因此销毁内置类型成员什么也不需要做。</p>
+<blockquote>
+<p>隐式销毁一个内置指针类型的成员不会delete它所指向的对象。</p>
+</blockquote>
+<p>与普通指针不同，智能指针是类类型，所以具有析构函数。因此，与普通指针不同，智能指针成员在析构阶段会被自动销毁。</p>
+<p><strong>什么时候会调用析构函数：</strong></p>
+<p>无论何时一个对象被销毁，就会自动调用其析构函数：</p>
+<ul>
+<li>变量在离开其作用域时被销毁。</li>
+<li>当一个对象被销毁时，其成员被销毁。</li>
+<li>容器(无论是标准库容器还是数组)被销毁时，其元素被销毁。</li>
+<li>对于动态分配的对象，当对指向它的指针应用delete运算符时被销毁。</li>
+<li>对于临时对象，当创建它的完整表达式结束时被销毁。</li>
+</ul>
+<p>由于析构函数自动运行，我们的程序可以按需要分配资源，而(通常)无须担心何时释放这些资源。例如，下面代码片段定义了四个Sales_data对象：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="c1">// 新的作用域
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="c1">// p和p2指向动态分配的对象
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>		<span class="n">Sales_data</span><span class="o">*</span> <span class="n">p</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Sales_data</span><span class="p">;</span>				<span class="c1">// p是一个内置指针
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>		<span class="k">auto</span> <span class="n">p2</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">make_shared</span><span class="o">&lt;</span><span class="n">Sales_data</span><span class="o">&gt;</span><span class="p">();</span>	<span class="c1">// p2是一个shared_ptr
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>		<span class="n">Sales_data</span> <span class="nf">item</span><span class="p">(</span><span class="o">*</span><span class="n">p</span><span class="p">);</span>			<span class="c1">// 拷贝构造函数将*p拷贝到item 
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>		<span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">Sales_data</span><span class="o">&gt;</span> <span class="n">vec</span><span class="p">;</span>	<span class="c1">// 局部对象
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>		<span class="n">vec</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="o">*</span><span class="n">p2</span><span class="p">);</span>				<span class="c1">// 拷贝p2指向的对象
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>		<span class="kt">double</span> <span class="n">p</span><span class="p">;</span>						<span class="c1">// 对p指向的对象执行析构构造函数
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="p">}</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// 退出局部作用域；对item、p2和vec调用析构函数
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// 销毁p2会递减其引用计数；如果引用计数变为0，对象析构、
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// 销毁vec会销毁它的元素
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>当程序块结束时，vec、p2和item都离开了作用域，意味着在这些对象上分别会执行vector、shared_ptr和Sales_data的析构函数。vector的析构函数会销毁我们添加到vec的元素。shared_ptr的析构函数会递减p2指向的对象的引用计数。在本例中，引用计数会变为0，因此shared_ptr的析构函数会delete p2分配的Sales_data对象。</p>
+<blockquote>
+<p>当指向一个对象的引用或指针离开作用域时，析构函数不会执行。</p>
+</blockquote>
+<p><strong>合成析构函数：</strong></p>
+<p>当一个类未定义自己的析构函数时，编译器会为它定义一个合成析构函数(synthesizeddestructor)。类似拷贝构造函数和拷贝赋值运算符，对于某些类，合成析构函数被用来阻止该类型的对象被销毁。如果不是这种情况，合成析构函数的函数体就为空。</p>
+<p>例如，下面的代码片段等价于Sales_data的合成析构函数：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Sales_data</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl"><span class="k">public</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// 成员会被自动销毁，除此之外不需要做其他事情
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="o">~</span><span class="n">Sales_data</span><span class="p">()</span> <span class="p">{};</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>认识到析构函数体自身并不直接销毁成员是非常重要的。成员是在析构函数体之后隐含的析构阶段中被销毁的。在整个对象销毁过程中，析构函数体是作为成员销毁步骤之外的另一部分而进行的。</p>
+<h4 id="1314-三五法则">13.1.4 三五法则</h4>
+<p>如前所述，有三个基本操作可以控制类的拷贝操作：拷贝构造函数、拷贝赋值运算符和析构函数。而且，在新标准下，一个类还可以定义一个移动构造函数和一个移动赋值运算符。</p>
+<p>C++语言并不要求我们定义所有这些操作：可以只定义其中一个或两个，而不必定义所有。但是，这些操作通常应该被看作一个整体。通常，只需要其中一个操作，而不需要定义所有操作的情况是很少见的。</p>
+<p><strong>需要析构函数的类也需要拷贝和赋值操作：</strong></p>
+<p>当我们决定一个类是否要定义它自己版本的拷贝控制成员时，一个基本原则是首先确定这个类是否需要一个析构函数。通常，对析构函数的需求要比对拷贝构造函数或赋值运算符的需求更为明显。<strong>如果这个类需要一个析构函数，我们几乎可以肯定它也需要一个拷贝构造函数和一个拷贝赋值运算符</strong>。</p>
+<p><strong>需要拷贝操作的类也需要赋值操作，反之亦然：</strong></p>
+<p>虽然很多类需要定义所有(或是不需要定义任何)拷贝控制成员，但某些类所要完成的工作，只需要拷贝或赋值操作，不需要析构函数。</p>
+<p>作为一个例子，考虑一个类为每个对象分配一个独有的、唯一的序号。这个类需要一个拷贝构造函数为每个新创建的对象生成一个新的、独一无二的序号。除此之外，这个拷贝构造函数从给定对象拷贝所有其他数据成员。这个类还需要自定义拷贝赋值运算符来避免将序号赋予目的对象。但是，这个类不需要自定义析构函数。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Studen</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl"><span class="k">public</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// 直接初始化
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="n">Studen</span><span class="p">(</span><span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">id</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="k">this</span><span class="o">-&gt;</span><span class="n">id</span> <span class="o">=</span> <span class="n">id</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="c1">// 拷贝构造函数
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="n">Studen</span><span class="p">(</span><span class="k">const</span> <span class="n">Studen</span><span class="o">&amp;</span> <span class="n">student</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="k">this</span><span class="o">-&gt;</span><span class="n">id</span> <span class="o">=</span> <span class="n">student</span><span class="p">.</span><span class="n">id</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="c1">// 拷贝赋值操作
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="n">Studen</span><span class="o">&amp;</span> <span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="k">const</span> <span class="n">Studen</span><span class="o">&amp;</span> <span class="n">student</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="k">this</span><span class="o">-&gt;</span><span class="n">id</span> <span class="o">=</span> <span class="n">student</span><span class="p">.</span><span class="n">id</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">		<span class="k">return</span> <span class="o">*</span><span class="k">this</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">private</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">	<span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">id</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>这个例子引出了第二个基本原则：如果一个类需要一个拷贝构造函数，几乎可以肯定它也需要一个拷贝赋值运算符。反之亦然——如果一个类需要一个拷贝赋值运算符，几乎可以肯定它也需要一个拷贝构造函数。然而，无论是需要拷贝构造函数还是需要拷贝赋值运算符都不必然意味着也需要析构函数。</p>
+<h4 id="1315使用default">13.1.5　使用=default</h4>
+<p>我们可以通过将拷贝控制成员定义为=default来显式地要求编译器生成合成的版本：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Sales_data</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl"><span class="k">public</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// 拷贝控制成员，使用default
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="n">Sales_data</span><span class="p">()</span> <span class="o">=</span> <span class="k">default</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="n">Sales_data</span><span class="p">(</span><span class="k">const</span> <span class="n">Sales_data</span><span class="o">&amp;</span><span class="p">)</span> <span class="o">=</span> <span class="k">default</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="n">Sales_data</span><span class="o">&amp;</span> <span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="k">const</span> <span class="n">Sales_data</span><span class="o">&amp;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">	<span class="o">~</span><span class="n">Sales_data</span><span class="p">()</span> <span class="o">=</span> <span class="k">default</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">Sales_data</span><span class="o">&amp;</span> <span class="n">Sales_data</span><span class="o">::</span><span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="k">const</span> <span class="n">Sales_data</span><span class="o">&amp;</span><span class="p">)</span> <span class="o">=</span> <span class="k">default</span><span class="p">;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>当我们在类内用=default修饰成员的声明时，合成的函数将隐式地声明为内联的(就像任何其他类内声明的成员函数一样)。如果我们不希望合成的成员是内联函数，应该只对成员的类外定义使用=default，就像对拷贝赋值运算符所做的那样。</p>
+<blockquote>
+<p>我们只能对具有合成版本的成员函数使用=default(即，默认构造函数或拷贝控制成员)。</p>
+</blockquote>
+<h4 id="1316阻止拷贝">13.1.6　阻止拷贝</h4>
+<p>大多数类应该定义默认构造函数、拷贝构造函数和拷贝赋值运算符，无论是隐式地还是显式地。虽然大多数类应该定义(而且通常也的确定义了)拷贝构造函数和拷贝赋值运算符，但对某些类来说，这些操作没有合理的意义。在此情况下，定义类时必须采用某种机制阻止拷贝或赋值。例如，iostream类阻止了拷贝，以避免多个对象写入或读取相同的IO缓冲。</p>
+<p><strong>定义删除的函数：</strong></p>
+<p>在新标准下，我们可以通过将拷贝构造函数和拷贝赋值运算符定义为删除的函数(deleted function)来阻止拷贝。删除的函数是这样一种函数：我们虽然声明了它们，但不能以任何方式使用它们。在函数的参数列表后面加上=delete来指出我们希望将它定义为删除的：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">NoCopy</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="n">NoCopy</span><span class="p">()</span> <span class="o">=</span> <span class="k">default</span><span class="p">;</span>							<span class="c1">// 使用合成的默认构造函数
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="n">NoCopy</span><span class="p">(</span><span class="k">const</span> <span class="n">NoCopy</span><span class="o">&amp;</span><span class="p">)</span> <span class="o">=</span> <span class="k">delete</span><span class="p">;</span>				<span class="c1">// 阻止拷贝
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="n">NoCopy</span><span class="o">&amp;</span> <span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="k">const</span> <span class="n">NoCopy</span><span class="o">&amp;</span><span class="p">)</span> <span class="o">=</span> <span class="k">delete</span><span class="p">;</span>	<span class="c1">// 阻止赋值
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="o">~</span><span class="n">NoCopy</span><span class="p">()</span> <span class="o">=</span> <span class="k">default</span><span class="p">;</span>						<span class="c1">// 使用合成的析构函数
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">};</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>=delete通知编译器(以及我们代码的读者)，我们不希望定义这些成员。</p>
+<p><strong>与=default不同，=delete必须出现在函数第一次声明的时候</strong>，这个差异与这些声明的含义在逻辑上是吻合的。一个默认的成员只影响为这个成员而生成的代码，因此=default直到编译器生成代码时才需要。而另一方面，编译器需要知道一个函数是删除的，以便禁止试图使用它的操作。</p>
+<p><strong>与=default的另一个不同之处是，我们可以对任何函数指定=delete(我们只能对编译器可以合成的默认构造函数或拷贝控制成员使用=default)</strong>。虽然删除函数的主要用途是禁止拷贝控制成员，但当我们希望引导函数匹配过程时，删除函数有时也是有用的。</p>
+<p><strong>析构函数不能是删除的成员：</strong></p>
+<p>值得注意的是，我们不能删除析构函数。如果析构函数被删除，就无法销毁此类型的对象了。对于一个删除了析构函数的类型，编译器将不允许定义该类型的变量或创建该类的临时对象。而且，如果一个类有某个成员的类型删除了析构函数，我们也不能定义该类的变量或临时对象。因为如果一个成员的析构函数是删除的，则该成员无法被销毁。而如果一个成员无法被销毁，则对象整体也就无法被销毁了。</p>
+<p>对于删除了析构函数的类型，虽然我们不能定义这种类型的变量或成员，但可以动态分配这种类型的对象。但是，不能释放这些对象。对于析构函数已删除的类型，不能定义该类型的变量或释放指向该类型动态分配对象的指针。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="k">struct</span> <span class="nc">NoDtor</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="n">NoDtor</span><span class="p">()</span> <span class="o">=</span> <span class="k">default</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="o">~</span><span class="n">NoDtor</span><span class="p">()</span> <span class="o">=</span> <span class="k">delete</span><span class="p">;</span>	<span class="c1">// 不能销毁NoDtor对象
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">};</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">NoDtor</span> <span class="n">nd</span><span class="p">;</span>				<span class="c1">// 错误，NoDtor的析构函数是删除的
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">NoDtor</span><span class="o">*</span> <span class="n">p</span> <span class="o">=</span> <span class="k">new</span> <span class="n">NoDtor</span><span class="p">;</span>	<span class="c1">// 正确，但无法删除NoDtor对象
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">delete</span> <span class="n">p</span><span class="p">;</span>				<span class="c1">// 错误，NoDtor的析构函数是删除的
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p><strong>合成的拷贝控制成员可能是删除的：</strong></p>
+<p>如前所述，如果我们未定义拷贝控制成员，编译器会为我们定义合成的版本。类似的，如果一个类未定义构造函数，编译器会为其合成一个默认构造函数。对某些类来说，编译器将这些合成的成员定义为删除的函数：</p>
+<ul>
+<li>如果类的某个成员的析构函数是删除的或不可访问的(例如，是private的)，则类的合成析构函数被定义为删除的。</li>
+<li>如果类的某个成员的拷贝构造函数是删除的或不可访问的，则类的合成拷贝构造函数被定义为删除的。如果类的某个成员的析构函数是删除的或不可访问的，则类合成的拷贝构造函数也被定义为删除的。</li>
+<li>如果类的某个成员的拷贝赋值运算符是删除的或不可访问的，或是类有一个const的或引用成员，则类的合成拷贝赋值运算符被定义为删除的。</li>
+<li>如果类的某个成员的析构函数是删除的或不可访问的，或是类有一个引用成员，它没有类内初始化器，或是类有一个const成员，它没有类内初始化器且其类型未显式定义默认构造函数，则该类的默认构造函数被定义为删除的。</li>
+</ul>
+<p>本质上，这些规则的含义是：<strong>如果一个类有数据成员不能默认构造、拷贝、复制或销毁，则对应的成员函数将被定义为删除的。</strong></p>
+<p>一个成员有删除的或不可访问的析构函数会导致合成的默认和拷贝构造函数被定义为删除的，这看起来可能有些奇怪。其原因是，如果没有这条规则，我们可能会创建出无法销毁的对象。</p>
+<p><strong>对于具有引用成员或无法默认构造的const成员的类，编译器不会为其合成默认构造函数，这应该不奇怪</strong>。同样不出人意料的规则是：如果一个类有const成员，则它不能使用合成的拷贝赋值运算符。毕竟，此运算符试图赋值所有成员，而将一个新值赋予一个const对象是不可能的。</p>
+<p>虽然我们可以将一个新值赋予一个引用成员，但这样做改变的是引用指向的对象的值，而不是引用本身。如果为这样的类合成拷贝赋值运算符，则赋值后，左侧运算对象仍然指向与赋值前一样的对象，而不会与右侧运算对象指向相同的对象。由于这种行为看起来并不是我们所期望的，因此对于有引用成员的类，合成拷贝赋值运算符被定义为删除的。</p>
+<blockquote>
+<p>本质上，当不可能拷贝、赋值或销毁类的成员时，类的合成拷贝控制成员就被定义为删除的。</p>
+</blockquote>
+<p><strong>private拷贝控制：</strong></p>
+<p>在新标准发布之前，类是通过将其拷贝构造函数和拷贝赋值运算符声明为private的来阻止拷贝。</p>
+<p>由于析构函数是public的，用户可以定义类型的对象。但是，由于拷贝构造函数和拷贝赋值运算符是private的，用户代码将不能拷贝这个类型的对象。但是，友元和成员函数仍旧可以拷贝对象。为了阻止友元和成员函数进行拷贝，我们将这些拷贝控制成员声明为private的，但并不定义它们。</p>
+<p>声明但不定义一个成员函数是合法的，对此只有一个例外，我们将在15.2.1节中介绍。试图访问一个未定义的成员将导致一个链接时错误。通过声明(但不定义)private的拷贝构造函数，我们可以预先阻止任何拷贝该类型对象的企图：试图拷贝对象的用户代码将在编译阶段被标记为错误；成员函数或友元函数中的拷贝操作将会导致链接时错误。</p>
+<blockquote>
+<p>希望阻止拷贝的类应该使用=delete来定义它们自己的拷贝构造函数和拷贝赋值运算符，而不应该将它们声明为private的。</p>
+</blockquote>
+<h3 id="132拷贝控制和资源管理">13.2　拷贝控制和资源管理</h3>
+<p>通常，管理类外资源的类必须定义拷贝控制成员。一旦一个类需要析构函数，那么它几乎肯定也需要一个拷贝构造函数和一个拷贝赋值运算符。</p>
+<p>为了定义这些成员，我们首先必须确定此类型对象的拷贝语义。一般来说，有两种选择：可以定义拷贝操作，使类的行为看起来像一个值或者像一个指针。</p>
+<p><strong>类的行为像一个值，意味着它应该也有自己的状态</strong>。当我们拷贝一个像值的对象时，副本和原对象是完全独立的。改变副本不会对原对象有任何影响，反之亦然。</p>
+<p><strong>行为像指针的类则共享状态</strong>。当我们拷贝一个这种类的对象时，副本和原对象使用相同的底层数据。改变副本也会改变原对象，反之亦然。</p>
+<p>在我们使用过的标准库类中，标准库容器和string类的行为像一个值。而不出意外的，shared_ptr类提供类似指针的行为，IO类型和unique_ptr不允许拷贝或赋值，因此它们的行为既不像值也不像指针。</p>
+<h4 id="1321行为像值的类">13.2.1　行为像值的类</h4>
+<p>为了提供类值的行为，对于类管理的资源，每个对象都应该拥有一份自己的拷贝。这意味着对于ps指向的string，每个HasPtr对象都必须有自己的拷贝。为了实现类值行为，HasPtr需要：</p>
+<ul>
+<li>定义一个拷贝构造函数，完成string的拷贝，而不是拷贝指针</li>
+<li>定义一个析构函数来释放string</li>
+<li>定义一个拷贝赋值运算符来释放对象当前的string，并从右侧运算对象拷贝string</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">HasPtr</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl"><span class="k">public</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// 构造函数
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="n">HasPtr</span><span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span> <span class="n">s</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">())</span> <span class="o">:</span>
+</span></span><span class="line"><span class="cl">		<span class="n">ps</span><span class="p">(</span><span class="k">new</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">(</span><span class="n">s</span><span class="p">)),</span> <span class="n">i</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">// 拷贝构造
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="n">HasPtr</span><span class="p">(</span><span class="k">const</span> <span class="n">HasPtr</span><span class="o">&amp;</span> <span class="n">p</span><span class="p">)</span> <span class="o">:</span>
+</span></span><span class="line"><span class="cl">		<span class="n">ps</span><span class="p">(</span><span class="k">new</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">(</span><span class="o">*</span><span class="n">p</span><span class="p">.</span><span class="n">ps</span><span class="p">)),</span> <span class="n">i</span><span class="p">(</span><span class="n">p</span><span class="p">.</span><span class="n">i</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">// 赋值拷贝
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="n">HasPtr</span><span class="o">&amp;</span> <span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="k">const</span> <span class="n">HasPtr</span><span class="o">&amp;</span> <span class="n">p</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">// 析构
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="o">~</span><span class="n">HasPtr</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="k">delete</span> <span class="n">ps</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">private</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">	<span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">*</span> <span class="n">ps</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="kt">int</span> <span class="n">i</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><strong>赋值运算符通常组合了析构函数和构造函数的操作</strong>。类似析构函数，赋值操作会销毁左侧运算对象的资源。类似拷贝构造函数，赋值操作会从右侧运算对象拷贝数据。但是，非常重要的一点是，这些操作是以正确的顺序执行的，即使将一个对象赋予它自身，也保证正确。而且，如果可能，我们编写的赋值运算符还应该是异常安全的——当异常发生时能将左侧运算对象置于一个有意义的状态。</p>
+<p>在本例中，通过先拷贝右侧运算对象，我们可以处理自赋值情况，并能保证在异常发生时代码也是安全的。在完成拷贝后，我们释放左侧运算对象的资源，并更新指针指向新分配的string：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="n">HasPtr</span><span class="o">&amp;</span> <span class="n">HasPtr</span><span class="o">::</span><span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="k">const</span> <span class="n">HasPtr</span><span class="o">&amp;</span> <span class="n">rhs</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// 拷贝底层的string
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="k">auto</span> <span class="n">newp</span> <span class="o">=</span> <span class="k">new</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">(</span><span class="o">*</span><span class="n">rhs</span><span class="p">.</span><span class="n">ps</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">	<span class="k">delete</span> <span class="k">this</span><span class="o">-&gt;</span><span class="n">ps</span><span class="p">;</span>	<span class="c1">// 释放旧内存
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="k">this</span><span class="o">-&gt;</span><span class="n">ps</span> <span class="o">=</span> <span class="n">newp</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="k">this</span><span class="o">-&gt;</span><span class="n">i</span> <span class="o">=</span> <span class="n">rhs</span><span class="p">.</span><span class="n">i</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="k">return</span> <span class="o">*</span><span class="k">this</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><strong>关键概念：赋值运算符</strong></p>
+<p>当你编写赋值运算符时，有两点需要记住：</p>
+<ul>
+<li>如果将一个对象赋予它自身，赋值运算符必须能正确工作。</li>
+<li>大多数赋值运算符组合了析构函数和拷贝构造函数的工作。</li>
+</ul>
+<p>当你编写一个赋值运算符时，一个好的模式是先将右侧运算对象拷贝到一个局部临时对象中。当拷贝完成后，销毁左侧运算对象的现有成员就是安全的了。一旦左侧运算对象的资源被销毁，就只剩下将数据从临时对象拷贝到左侧运算对象的成员中了。</p>
+<blockquote>
+<p>对于一个赋值运算符来说，正确工作是非常重要的，即使是将一个对象赋予它自身，也要能正确工作。一个好的方法是在销毁左侧运算对象资源之前拷贝右侧运算对象。</p>
+</blockquote>
+<h4 id="1322定义行为像指针的类">13.2.2　定义行为像指针的类</h4>
+<p>对于行为类似指针的类，我们需要为其定义拷贝构造函数和拷贝赋值运算符，来拷贝指针成员本身而不是它指向的string。我们的类仍然需要自己的析构函数来释放接受string参数的构造函数分配的内存。但是，在本例中，析构函数不能单方面地释放关联的string。只有当最后一个指向string的HasPtr销毁时，它才可以释放string。</p>
+<p>令一个类展现类似指针的行为的最好方法是使用shared_ptr来管理类中的资源。拷贝(或赋值)一个shared_ptr会拷贝(赋值)shared_ptr所指向的指针。shared_ptr类自己记录有多少用户共享它所指向的对象。当没有用户使用对象时，shared_ptr类负责释放资源。</p>
+<p>但是，有时我们希望直接管理资源。在这种情况下，使用引用计数(reference count)就很有用了。为了说明引用计数如何工作，我们将重新定义HasPtr，令其行为像指针一样，但我们不使用shared_ptr，而是设计自己的引用计数。</p>
+<p>引用计数的工作方式如下：</p>
+<ul>
+<li>除了初始化对象外，每个构造函数(拷贝构造函数除外)还要创建一个引用计数，用来记录有多少对象与正在创建的对象共享状态。当我们创建一个对象时，只有一个对象共享状态，因此将计数器初始化为1。</li>
+<li>拷贝构造函数不分配新的计数器，而是拷贝给定对象的数据成员，包括计数器。拷贝构造函数递增共享的计数器，指出给定对象的状态又被一个新用户所共享。</li>
+<li>析构函数递减计数器，指出共享状态的用户少了一个。如果计数器变为0，则析构函数释放状态。</li>
+<li>拷贝赋值运算符递增右侧运算对象的计数器，递减左侧运算对象的计数器。如果左侧运算对象的计数器变为0，意味着它的共享状态没有用户了，拷贝赋值运算符就必须销毁状态。</li>
+</ul>
+<p>唯一的难题是确定在哪里存放引用计数。计数器不能直接作为HasPtr对象的成员。下面的例子说明了原因：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="n">HasPtr</span> <span class="nf">p1</span><span class="p">(</span><span class="s">&#34;Hiya!&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="n">HasPtr</span> <span class="nf">p2</span><span class="p">(</span><span class="n">p1</span><span class="p">);</span>	<span class="c1">// p1和p2指向相同的string
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">HasPtr</span> <span class="nf">p3</span><span class="p">(</span><span class="n">p1</span><span class="p">);</span>	<span class="c1">// p1、p2和p3指向相同的string
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>如果引用计数保存在每个对象中，当创建p3时我们应该如何正确更新它呢？可以递增p1中的计数器并将其拷贝到p3中，但如何更新p2中的计数器呢？</p>
+<p>解决此问题的一种方法是将计数器保存在动态内存中。当创建一个对象时，我们也分配一个新的计数器。当拷贝或赋值对象时，我们拷贝指向计数器的指针。使用这种方法，副本和原对象都会指向相同的计数器。</p>
+<p>当拷贝或赋值一个HasPtr对象时，我们希望副本和原对象都指向相同的string。即，当拷贝一个HasPtr时，我们将拷贝ps本身，而不是ps指向的string。当我们进行拷贝时，还会递增该string关联的计数器。</p>
+<p>(我们在类内定义的)拷贝构造函数拷贝给定HasPtr的所有三个数据成员。这个构造函数还递增use成员，指出ps和p.ps指向的string又有了一个新的用户。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">HasPtr</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl"><span class="k">public</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">	<span class="k">friend</span> <span class="kt">void</span> <span class="n">swap</span><span class="p">(</span><span class="n">HasPtr</span><span class="o">&amp;</span><span class="p">,</span> <span class="n">HasPtr</span><span class="o">&amp;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="c1">// 构造函数
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="n">HasPtr</span><span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span> <span class="n">s</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">())</span> <span class="o">:</span>
+</span></span><span class="line"><span class="cl">		<span class="n">ps</span><span class="p">(</span><span class="k">new</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">(</span><span class="n">s</span><span class="p">)),</span> <span class="n">i</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="n">use</span><span class="p">(</span><span class="k">new</span> <span class="n">std</span><span class="o">::</span><span class="n">size_t</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="c1">// 拷贝构造
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="n">HasPtr</span><span class="p">(</span><span class="k">const</span> <span class="n">HasPtr</span><span class="o">&amp;</span> <span class="n">p</span><span class="p">)</span> <span class="o">:</span>
+</span></span><span class="line"><span class="cl">		<span class="n">ps</span><span class="p">(</span><span class="k">new</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">(</span><span class="o">*</span><span class="n">p</span><span class="p">.</span><span class="n">ps</span><span class="p">)),</span> <span class="n">i</span><span class="p">(</span><span class="n">p</span><span class="p">.</span><span class="n">i</span><span class="p">),</span> <span class="n">use</span><span class="p">(</span><span class="n">p</span><span class="p">.</span><span class="n">use</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="o">++*</span><span class="n">use</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="c1">// 赋值拷贝
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="n">HasPtr</span><span class="o">&amp;</span> <span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="k">const</span> <span class="n">HasPtr</span><span class="o">&amp;</span> <span class="n">p</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="c1">// 析构
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="o">~</span><span class="n">HasPtr</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="k">delete</span> <span class="n">ps</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">private</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">	<span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">*</span> <span class="n">ps</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="kt">int</span> <span class="n">i</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="n">std</span><span class="o">::</span><span class="n">size_t</span><span class="o">*</span> <span class="n">use</span><span class="p">;</span>	<span class="c1">// 用来记录有多少个对象共享*ps的成员
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">};</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>析构函数不能无条件地delete ps——可能还有其他对象指向这块内存。析构函数应该递减引用计数，指出共享string的对象少了一个。如果计数器变为0，则析构函数释放ps和use指向的内存：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="n">HasPtr</span><span class="o">::~</span><span class="n">HasPtr</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="k">if</span> <span class="p">(</span><span class="o">--*</span><span class="k">this</span><span class="o">-&gt;</span><span class="n">use</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="k">delete</span> <span class="k">this</span><span class="o">-&gt;</span><span class="n">use</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">		<span class="k">delete</span> <span class="k">this</span><span class="o">-&gt;</span><span class="n">ps</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>拷贝赋值运算符与往常一样执行类似拷贝构造函数和析构函数的工作。即，它必须递增右侧运算对象的引用计数(即，拷贝构造函数的工作)，并递减左侧运算对象的引用计数，在必要时释放使用的内存(即，析构函数的工作)。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="n">HasPtr</span><span class="o">&amp;</span> <span class="n">HasPtr</span><span class="o">::</span><span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="k">const</span> <span class="n">HasPtr</span><span class="o">&amp;</span> <span class="n">rhs</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="o">++*</span> <span class="n">rhs</span><span class="p">.</span><span class="n">use</span><span class="p">;</span>	<span class="c1">// 增加右侧对象的引用计数
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// 递减本对象的引用计数
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="k">if</span> <span class="p">(</span><span class="o">--*</span><span class="k">this</span><span class="o">-&gt;</span><span class="n">use</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="c1">// 本对象已经没有其他用户了
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>		<span class="k">delete</span> <span class="k">this</span><span class="o">-&gt;</span><span class="n">ps</span><span class="p">;</span>	
+</span></span><span class="line"><span class="cl">		<span class="k">delete</span> <span class="k">this</span><span class="o">-&gt;</span><span class="n">use</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="c1">// 拷贝rhs的数据
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="k">this</span><span class="o">-&gt;</span><span class="n">ps</span> <span class="o">=</span> <span class="n">rhs</span><span class="p">.</span><span class="n">ps</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="k">this</span><span class="o">-&gt;</span><span class="n">i</span> <span class="o">=</span> <span class="n">rhs</span><span class="p">.</span><span class="n">i</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="k">this</span><span class="o">-&gt;</span><span class="n">use</span> <span class="o">=</span> <span class="n">rhs</span><span class="p">.</span><span class="n">use</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="k">return</span> <span class="o">*</span><span class="k">this</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="133-交换操作">13.3 交换操作</h3>
+<p>除了定义拷贝控制成员，管理资源的类通常还定义一个名为swap的函数。对于那些与重排元素顺序的算法一起使用的类，定义swap是非常重要的。这类算法在需要交换两个元素时会调用swap。如果一个类定义了自己的swap，那么算法将使用类自定义版本。否则，算法将使用标准库定义的swap。</p>
+<p>可以在我们的类上定义一个自己版本的swap来重载swap的默认行为。swap的典型实现如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">HasPtr</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl"><span class="k">public</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">	<span class="k">friend</span> <span class="kt">void</span> <span class="n">swap</span><span class="p">(</span><span class="n">HasPtr</span><span class="o">&amp;</span><span class="p">,</span> <span class="n">HasPtr</span><span class="o">&amp;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="c1">// 其他成员等定义
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="k">private</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">	<span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">*</span> <span class="n">ps</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="kt">int</span> <span class="n">i</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kr">inline</span> 
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">swap</span><span class="p">(</span><span class="n">HasPtr</span><span class="o">&amp;</span> <span class="n">lhs</span><span class="p">,</span> <span class="n">HasPtr</span><span class="o">&amp;</span> <span class="n">rhs</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="k">using</span> <span class="n">std</span><span class="o">::</span><span class="n">swap</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="n">swap</span><span class="p">(</span><span class="n">lhs</span><span class="p">.</span><span class="n">ps</span><span class="p">,</span> <span class="n">rhs</span><span class="p">.</span><span class="n">ps</span><span class="p">);</span>	<span class="c1">// 指针交换
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="n">swap</span><span class="p">(</span><span class="n">lhs</span><span class="p">.</span><span class="n">i</span><span class="p">,</span> <span class="n">rhs</span><span class="p">.</span><span class="n">i</span><span class="p">);</span>		<span class="c1">// int 成员交换
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>我们首先将swap定义为friend，以便能访问HasPtr的(private的)数据成员。由于swap的存在就是为了优化代码，我们将其声明为inline函数。swap的函数体对给定对象的每个数据成员调用swap。我们首先swap绑定到rhs和lhs的对象的指针成员，然后是int成员。</p>
+<blockquote>
+<p>与拷贝控制成员不同，swap并不是必要的。但是，对于分配了资源的类，定义swap可能是一种很重要的优化手段。</p>
+</blockquote>
+<p><strong>swap函数应该调用swap，而不是std::swap：</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">swap</span><span class="p">(</span><span class="n">Foo</span><span class="o">&amp;</span> <span class="n">lhs</span><span class="p">,</span> <span class="n">Foo</span><span class="o">&amp;</span> <span class="n">rhs</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="k">using</span> <span class="n">std</span><span class="o">::</span><span class="n">swap</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="n">swap</span><span class="p">(</span><span class="n">lhs</span><span class="p">.</span><span class="n">h</span><span class="p">,</span> <span class="n">rhs</span><span class="p">.</span><span class="n">h</span><span class="p">);</span>	<span class="c1">// 使用HasPtr版本的swap
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// 交换类型Foo的其他成员
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>每个swap调用应该都是未加限定的。即，每个调用都应该是swap，而不是std::swap。如果存在类型特定的swap版本，其匹配程度会优于std中定义的版本。因此，如果存在类型特定的swap版本，swap调用会与之匹配。如果不存在类型特定的版本，则会使用std中的版本(假<strong>定作用域中有using声明</strong>)。</p>
+<blockquote>
+<p>非常仔细的读者可能会奇怪为什么swap函数中的using声明没有隐藏HasPtr版本swap的声明。我们将在后面解释为什么这段代码能正常工作。</p>
+</blockquote>
+<p><strong>定义swap的类通常用swap来定义它们的赋值运算符</strong>。这些运算符使用了一种名为拷贝并交换(copy and swap)的技术。这种技术将左侧运算对象与右侧运算对象的一个副本进行交换：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="c1">// 注意rhs是按值传递的，意味着HasPtr的拷贝构造函数将右侧运算对象中的string拷贝到rhs
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">HasPtr</span><span class="o">&amp;</span> <span class="n">HasPtr</span><span class="o">::</span><span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="n">HasPtr</span> <span class="n">rhs</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// 交换左侧运算对象和局部变量rhs的内容
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="n">swap</span><span class="p">(</span><span class="o">*</span><span class="k">this</span><span class="p">,</span> <span class="n">rhs</span><span class="p">);</span>	<span class="c1">// rhs现在执行本对象曾经使用的内存
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="k">return</span> <span class="o">*</span><span class="k">this</span><span class="p">;</span>		<span class="c1">// rhs被销毁，从而delete了rhs中的指针
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>在这个版本的赋值运算符中，参数并不是一个引用，我们将右侧运算对象以传值方式传递给了赋值运算符。因此，rhs是右侧运算对象的一个副本。参数传递时拷贝HasPtr的操作会分配该对象的string的一个新副本。</p>
+<p>在赋值运算符的函数体中，我们调用swap来交换rhs和<code>*this</code>中的数据成员。这个调用将左侧运算对象中原来保存的指针存入rhs中，并将rhs中原来的指针存入<code>*this</code>中。因此，在swap调用之后，<code>*this</code>中的指针成员将指向新分配的string——右侧运算对象中string的一个副本。当赋值运算符结束时，rhs被销毁，HasPtr的析构函数将执行。此析构函数delete rhs现在指向的内存，即，释放掉左侧运算对象中原来的内存。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">HasPtr</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl"><span class="k">public</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">	<span class="k">friend</span> <span class="kt">void</span> <span class="n">swap</span><span class="p">(</span><span class="n">HasPtr</span><span class="o">&amp;</span><span class="p">,</span> <span class="n">HasPtr</span><span class="o">&amp;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="c1">// 构造函数
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="n">HasPtr</span><span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span> <span class="n">s</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">())</span> <span class="o">:</span>
+</span></span><span class="line"><span class="cl">		<span class="n">ps</span><span class="p">(</span><span class="k">new</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">(</span><span class="n">s</span><span class="p">)),</span> <span class="n">i</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="n">use</span><span class="p">(</span><span class="k">new</span> <span class="n">std</span><span class="o">::</span><span class="n">size_t</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="c1">// 拷贝构造
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="n">HasPtr</span><span class="p">(</span><span class="k">const</span> <span class="n">HasPtr</span><span class="o">&amp;</span> <span class="n">p</span><span class="p">)</span> <span class="o">:</span>
+</span></span><span class="line"><span class="cl">		<span class="n">ps</span><span class="p">(</span><span class="k">new</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">(</span><span class="o">*</span><span class="n">p</span><span class="p">.</span><span class="n">ps</span><span class="p">)),</span> <span class="n">i</span><span class="p">(</span><span class="n">p</span><span class="p">.</span><span class="n">i</span><span class="p">),</span> <span class="n">use</span><span class="p">(</span><span class="n">p</span><span class="p">.</span><span class="n">use</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="o">++*</span><span class="n">use</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="c1">// 赋值拷贝
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="n">HasPtr</span><span class="o">&amp;</span> <span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="n">HasPtr</span> <span class="n">p</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="c1">// 析构
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="o">~</span><span class="n">HasPtr</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">private</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">	<span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">*</span> <span class="n">ps</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="kt">int</span> <span class="n">i</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="n">std</span><span class="o">::</span><span class="n">size_t</span><span class="o">*</span> <span class="n">use</span><span class="p">;</span>	<span class="c1">// 用来记录有多少个对象共享*ps的成员
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">};</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kr">inline</span> 
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">swap</span><span class="p">(</span><span class="n">HasPtr</span><span class="o">&amp;</span> <span class="n">lhs</span><span class="p">,</span> <span class="n">HasPtr</span><span class="o">&amp;</span> <span class="n">rhs</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="k">using</span> <span class="n">std</span><span class="o">::</span><span class="n">swap</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="n">swap</span><span class="p">(</span><span class="n">lhs</span><span class="p">.</span><span class="n">ps</span><span class="p">,</span> <span class="n">rhs</span><span class="p">.</span><span class="n">ps</span><span class="p">);</span>	<span class="c1">// 指针交换
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="n">swap</span><span class="p">(</span><span class="n">lhs</span><span class="p">.</span><span class="n">i</span><span class="p">,</span> <span class="n">rhs</span><span class="p">.</span><span class="n">i</span><span class="p">);</span>		<span class="c1">// int 成员交换
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="n">swap</span><span class="p">(</span><span class="n">lhs</span><span class="p">.</span><span class="n">use</span><span class="p">,</span> <span class="n">rhs</span><span class="p">.</span><span class="n">use</span><span class="p">);</span>	<span class="c1">// int 成员交换
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// 注意rhs是按值传递的，意味着HasPtr的拷贝构造函数将右侧运算对象中的string拷贝到rhs
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">HasPtr</span><span class="o">&amp;</span> <span class="n">HasPtr</span><span class="o">::</span><span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="n">HasPtr</span> <span class="n">rhs</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="k">using</span> <span class="n">std</span><span class="o">::</span><span class="n">swap</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// 交换左侧运算对象和局部变量rhs的内容
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="n">swap</span><span class="p">(</span><span class="o">*</span><span class="k">this</span><span class="p">,</span> <span class="n">rhs</span><span class="p">);</span>	<span class="c1">// rhs现在执行本对象曾经使用的内存
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="k">return</span> <span class="o">*</span><span class="k">this</span><span class="p">;</span>		<span class="c1">// rhs被销毁，从而delete了rhs中的指针
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">HasPtr</span><span class="o">::~</span><span class="n">HasPtr</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="k">if</span> <span class="p">(</span><span class="o">--*</span><span class="k">this</span><span class="o">-&gt;</span><span class="n">use</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="k">delete</span> <span class="k">this</span><span class="o">-&gt;</span><span class="n">use</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">		<span class="k">delete</span> <span class="k">this</span><span class="o">-&gt;</span><span class="n">ps</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>这个技术的有趣之处是它自动处理了自赋值情况且天然就是异常安全的。它通过在改变左侧运算对象之前拷贝右侧运算对象保证了自赋值的正确，这与我们在原来的赋值运算符中使用的方法是一致的。它保证异常安全的方法也与原来的赋值运算符实现一样。代码中唯一可能抛出异常的是拷贝构造函数中的new表达式。如果真发生了异常，它也会在我们改变左侧运算对象之前发生。使用拷贝和交换的赋值运算符自动就是异常安全的，且能正确处理自赋值。</p>
+<h3 id="134-拷贝控制示例">13.4 拷贝控制示例</h3>
+<p>作为类需要拷贝控制来进行簿记操作的例子，我们将概述两个类的设计，这两个类可能用于邮件处理应用中。两个类命名为Message和Folder，分别表示电子邮件(或者其他类型的)消息和消息目录。每个Message对象可以出现在多个Folder中。但是，任意给定的Message的内容只有一个副本。这样，如果一条Message的内容被改变，则我们从它所在的任何Folder来浏览此Message时，都会看到改变后的内容。为了记录Message位于哪些Folder中，每个Message都会保存一个它所在Folder的指针的set，同样的，每个Folder都保存一个它包含的Message的指针的set。</p>
+<ul>
+<li>我们的Message类会提供save和remove操作，来向一个给定Folder添加一条Message或是从中删除一条Message。为了创建一个新的Message，我们会指明消息内容，但不会指出Folder。为了将一条Message放到一个特定Folder中，我们必须调用save。</li>
+<li>当我们拷贝一个Message时，副本和原对象将是不同的Message对象，但两个Message都出现在相同的Folder中。因此，拷贝Message的操作包括消息内容和Folder指针set的拷贝。而且，我们必须在每个包含此消息的Folder中都添加一个指向新创建的Message的指针。</li>
+<li>当我们销毁一个Message时，它将不复存在。因此，我们必须从包含此消息的所有Folder中删除指向此Message的指针。</li>
+<li>当我们将一个Message对象赋予另一个Message对象时，左侧Message的内容会被右侧Message的内容所替代。我们还必须更新Folder集合，从原来包含左侧Message的Folder中将它删除，并将它添加到包含右侧Message的Folder中。</li>
+</ul>
+<p>观察这些操作，我们可以看到，析构函数和拷贝赋值运算符都必须从包含一条Message的所有Folder中删除它。类似的，拷贝构造函数和拷贝赋值运算符都要将一个Message添加到给定的一组Folder中。我们将定义两个private的工具函数来完成这些工作。</p>
+<blockquote>
+<p>拷贝赋值运算符通常执行拷贝构造函数和析构函数中也要做的工作。这种情况下，公共的工作应该放在private的工具函数中完成。</p>
+</blockquote>
+<p>Message类：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Folder</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Message</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="k">friend</span> <span class="kt">void</span> <span class="nf">swap</span><span class="p">(</span><span class="n">Message</span><span class="o">&amp;</span><span class="p">,</span> <span class="n">Message</span><span class="o">&amp;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">	<span class="k">friend</span> <span class="k">class</span> <span class="nc">Folder</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">public</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// folders is implicitly initialized to the empty set 
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="k">explicit</span> <span class="n">Message</span><span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">str</span> <span class="o">=</span> <span class="s">&#34;&#34;</span><span class="p">)</span><span class="o">:</span> 
+</span></span><span class="line"><span class="cl">		<span class="n">contents</span><span class="p">(</span><span class="n">str</span><span class="p">)</span> <span class="p">{</span> <span class="p">}</span>  
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">// copy control to manage pointers to this Message
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">Message</span><span class="p">(</span><span class="k">const</span> <span class="n">Message</span><span class="o">&amp;</span><span class="p">);</span>             <span class="c1">// copy constructor
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">Message</span><span class="o">&amp;</span> <span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="k">const</span> <span class="n">Message</span><span class="o">&amp;</span><span class="p">);</span>  <span class="c1">// copy assignment
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="o">~</span><span class="n">Message</span><span class="p">();</span>                          <span class="c1">// destructor
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">Message</span><span class="p">(</span><span class="n">Message</span><span class="o">&amp;&amp;</span><span class="p">);</span>            <span class="c1">// move constructor
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">Message</span><span class="o">&amp;</span> <span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="n">Message</span><span class="o">&amp;&amp;</span><span class="p">);</span> <span class="c1">// move assignment
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// add/remove this Message from the specified Folder&#39;s set of messages
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="kt">void</span> <span class="nf">save</span><span class="p">(</span><span class="n">Folder</span><span class="o">&amp;</span><span class="p">);</span>   
+</span></span><span class="line"><span class="cl">    <span class="kt">void</span> <span class="nf">remove</span><span class="p">(</span><span class="n">Folder</span><span class="o">&amp;</span><span class="p">);</span> 
+</span></span><span class="line"><span class="cl">    <span class="kt">void</span> <span class="nf">debug_print</span><span class="p">();</span> <span class="c1">// print contents and it&#39;s list of Folders, 
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                        <span class="c1">// printing each Folder as well
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">private</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">    <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">contents</span><span class="p">;</span>      <span class="c1">// actual message text
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">std</span><span class="o">::</span><span class="n">set</span><span class="o">&lt;</span><span class="n">Folder</span><span class="o">*&gt;</span> <span class="n">folders</span><span class="p">;</span> <span class="c1">// Folders that have this Message
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// utility functions used by copy constructor, assignment, and destructor
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="c1">// add this Message to the Folders that point to the parameter
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="kt">void</span> <span class="nf">add_to_Folders</span><span class="p">(</span><span class="k">const</span> <span class="n">Message</span><span class="o">&amp;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">	<span class="kt">void</span> <span class="nf">move_Folders</span><span class="p">(</span><span class="n">Message</span><span class="o">*</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// remove this Message from every Folder in folders
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="kt">void</span> <span class="nf">remove_from_Folders</span><span class="p">();</span> 
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">// used by Folder class to add self to this Message&#39;s set of Folder&#39;s
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="kt">void</span> <span class="nf">addFldr</span><span class="p">(</span><span class="n">Folder</span> <span class="o">*</span><span class="n">f</span><span class="p">)</span> <span class="p">{</span> <span class="n">folders</span><span class="p">.</span><span class="n">insert</span><span class="p">(</span><span class="n">f</span><span class="p">);</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">void</span> <span class="nf">remFldr</span><span class="p">(</span><span class="n">Folder</span> <span class="o">*</span><span class="n">f</span><span class="p">)</span> <span class="p">{</span> <span class="n">folders</span><span class="p">.</span><span class="n">erase</span><span class="p">(</span><span class="n">f</span><span class="p">);</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// declaration for swap should be in the same header as Message itself
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kt">void</span> <span class="nf">swap</span><span class="p">(</span><span class="n">Message</span><span class="o">&amp;</span><span class="p">,</span> <span class="n">Message</span><span class="o">&amp;</span><span class="p">);</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Folder类：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Folder</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="k">friend</span> <span class="kt">void</span> <span class="nf">swap</span><span class="p">(</span><span class="n">Message</span><span class="o">&amp;</span><span class="p">,</span> <span class="n">Message</span><span class="o">&amp;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">	<span class="k">friend</span> <span class="k">class</span> <span class="nc">Message</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">public</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">    <span class="o">~</span><span class="n">Folder</span><span class="p">();</span> <span class="c1">// remove self from Messages in msgs
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">Folder</span><span class="p">(</span><span class="k">const</span> <span class="n">Folder</span><span class="o">&amp;</span><span class="p">);</span> <span class="c1">// add new folder to each Message in msgs
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">Folder</span><span class="o">&amp;</span> <span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="k">const</span> <span class="n">Folder</span><span class="o">&amp;</span><span class="p">);</span> <span class="c1">// delete Folder from lhs messages
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                                      <span class="c1">// add Folder to rhs messages
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">Folder</span><span class="p">(</span><span class="n">Folder</span><span class="o">&amp;&amp;</span><span class="p">);</span>   <span class="c1">// move Messages to this Folder 
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">Folder</span><span class="o">&amp;</span> <span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="n">Folder</span><span class="o">&amp;&amp;</span><span class="p">);</span> <span class="c1">// delete Folder from lhs messages
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                                 <span class="c1">// add Folder to rhs messages
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">Folder</span><span class="p">()</span> <span class="o">=</span> <span class="k">default</span><span class="p">;</span> <span class="c1">// defaults ok
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl">    <span class="kt">void</span> <span class="nf">save</span><span class="p">(</span><span class="n">Message</span><span class="o">&amp;</span><span class="p">);</span>   <span class="c1">// add this message to folder
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="kt">void</span> <span class="nf">remove</span><span class="p">(</span><span class="n">Message</span><span class="o">&amp;</span><span class="p">);</span> <span class="c1">// remove this message from this folder
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    
+</span></span><span class="line"><span class="cl">    <span class="kt">void</span> <span class="nf">debug_print</span><span class="p">();</span> <span class="c1">// print contents and it&#39;s list of Folders, 
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">private</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">    <span class="n">std</span><span class="o">::</span><span class="n">set</span><span class="o">&lt;</span><span class="n">Message</span><span class="o">*&gt;</span> <span class="n">msgs</span><span class="p">;</span>  <span class="c1">// messages in this folder
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl">    <span class="kt">void</span> <span class="nf">add_to_Messages</span><span class="p">(</span><span class="k">const</span> <span class="n">Folder</span><span class="o">&amp;</span><span class="p">);</span><span class="c1">// add this Folder to each Message
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="kt">void</span> <span class="nf">remove_from_Msgs</span><span class="p">();</span>     <span class="c1">// remove this Folder from each Message
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="kt">void</span> <span class="nf">addMsg</span><span class="p">(</span><span class="n">Message</span> <span class="o">*</span><span class="n">m</span><span class="p">)</span> <span class="p">{</span> <span class="n">msgs</span><span class="p">.</span><span class="n">insert</span><span class="p">(</span><span class="n">m</span><span class="p">);</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">void</span> <span class="nf">remMsg</span><span class="p">(</span><span class="n">Message</span> <span class="o">*</span><span class="n">m</span><span class="p">)</span> <span class="p">{</span> <span class="n">msgs</span><span class="p">.</span><span class="n">erase</span><span class="p">(</span><span class="n">m</span><span class="p">);</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">	<span class="kt">void</span> <span class="nf">move_Messages</span><span class="p">(</span><span class="n">Folder</span><span class="o">*</span><span class="p">);</span> <span class="c1">// move Message pointers to point to this Folder
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">};</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="135动态内存管理类">13.5　动态内存管理类</h3>
+<h3 id="136对象移动">13.6　对象移动</h3>
 </div><div class="post-footer" id="post-footer">
   <div class="post-info">
     <div class="post-info-line">
       <div class="post-info-mod">
-        <span title="Updated on 2022-12-04 00:00:00">Updated on 2022-12-04&nbsp;</span>
+        <span title="Updated on 2023-09-21 00:00:00">Updated on 2023-09-21&nbsp;</span>
       </div><div class="post-info-license">
           <span><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span>
         </div></div>

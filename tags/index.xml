@@ -4,10 +4,26 @@
     <link>https://cui-jiang-tao.github.io/tags/</link>
     <description>Tags - Tag - Notes</description>
     <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>cjt953899262@gmail.com (cjt)</managingEditor>
-      <webMaster>cjt953899262@gmail.com (cjt)</webMaster><lastBuildDate>Thu, 03 Aug 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://cui-jiang-tao.github.io/tags/" rel="self" type="application/rss+xml" /><item>
+      <webMaster>cjt953899262@gmail.com (cjt)</webMaster><lastBuildDate>Tue, 10 Oct 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://cui-jiang-tao.github.io/tags/" rel="self" type="application/rss+xml" /><item>
+  <title>sql</title>
+  <link>https://cui-jiang-tao.github.io/tags/sql/</link>
+  <pubDate>Tue, 10 Oct 2023 00:00:00 &#43;0000</pubDate>
+  <author>cjt</author>
+  <guid>https://cui-jiang-tao.github.io/tags/sql/</guid>
+  <description><![CDATA[]]></description>
+</item>
+<item>
+  <title>脱壳</title>
+  <link>https://cui-jiang-tao.github.io/tags/%E8%84%B1%E5%A3%B3/</link>
+  <pubDate>Wed, 16 Aug 2023 00:00:00 &#43;0000</pubDate>
+  <author>cjt</author>
+  <guid>https://cui-jiang-tao.github.io/tags/%E8%84%B1%E5%A3%B3/</guid>
+  <description><![CDATA[]]></description>
+</item>
+<item>
   <title>160个CrackMe</title>
   <link>https://cui-jiang-tao.github.io/tags/160%E4%B8%AAcrackme/</link>
-  <pubDate>Thu, 03 Aug 2023 00:00:00 &#43;0000</pubDate>
+  <pubDate>Fri, 04 Aug 2023 00:00:00 &#43;0000</pubDate>
   <author>cjt</author>
   <guid>https://cui-jiang-tao.github.io/tags/160%E4%B8%AAcrackme/</guid>
   <description><![CDATA[]]></description>
@@ -66,22 +82,6 @@
   <pubDate>Sun, 15 Jan 2023 00:00:00 &#43;0000</pubDate>
   <author>cjt</author>
   <guid>https://cui-jiang-tao.github.io/tags/bash/</guid>
-  <description><![CDATA[]]></description>
-</item>
-<item>
-  <title>CMake</title>
-  <link>https://cui-jiang-tao.github.io/tags/cmake/</link>
-  <pubDate>Fri, 30 Dec 2022 00:00:00 &#43;0000</pubDate>
-  <author>cjt</author>
-  <guid>https://cui-jiang-tao.github.io/tags/cmake/</guid>
-  <description><![CDATA[]]></description>
-</item>
-<item>
-  <title>makefile</title>
-  <link>https://cui-jiang-tao.github.io/tags/makefile/</link>
-  <pubDate>Thu, 29 Dec 2022 00:00:00 &#43;0000</pubDate>
-  <author>cjt</author>
-  <guid>https://cui-jiang-tao.github.io/tags/makefile/</guid>
   <description><![CDATA[]]></description>
 </item>
 </channel>

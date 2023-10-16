@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
   <head>
-	<meta name="generator" content="Hugo 0.115.4">
+	<meta name="generator" content="Hugo 0.119.0">
     
       <meta name="theme" content='FixIt v0.2.18'>
     
@@ -97,6 +97,30 @@
     </nav>
   </div>
 </header><main class="container"><div class="page home posts"><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+    <a href="/posts/cmake%E5%85%A5%E9%97%A8/">CMake入门</a>
+  </h1><div class="post-meta"><span class="post-author"><span class="author"><i class="fa-solid fa-user-circle" aria-hidden="true"></i>
+      cjt</span></span>&nbsp;<span class="post-publish" title='2022-12-30 00:00:00'>published on <time datetime="2022-12-30">2022-12-30</time></span>&nbsp;<span class="post-category">included in <a href="/categories/makefile/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> makefile</a></span></div><div class="content">第一部分：基本例程 1. hello-cmake 文件树： 1 2 3 4 5 6 ubuntu@VM-12-11-ubuntu:~/c++/study_cmake/hell-cmake$ tree . ├── CMakeLists.txt └── main.cpp 0 directories, 2 files CMakeLists.txt 1 2 3 cmake_minimum_required(VERSION 2.6) project (hello_cmake) add_executable(${PROJECT_NAME} main.cpp) 1.1 命令作用解析 1 project (hello_cmake) #设置工程名 CMake构建包</div><div class="post-footer">
+    <a href="/posts/cmake%E5%85%A5%E9%97%A8/">Read More</a><div class="post-tags"><i class="fa-solid fa-tags fa-fw me-1" aria-hidden="true"></i><a href='/tags/cmake/' class="post-tag">CMake</a></div></div>
+</article>
+<article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+    <a href="/posts/makefile/">makefile的简单例子</a>
+  </h1><div class="post-meta"><span class="post-author"><span class="author"><i class="fa-solid fa-user-circle" aria-hidden="true"></i>
+      cjt</span></span>&nbsp;<span class="post-publish" title='2022-12-29 00:00:00'>published on <time datetime="2022-12-29">2022-12-29</time></span>&nbsp;<span class="post-category">included in <a href="/categories/makefile/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> makefile</a></span></div><div class="content">示例 树形结构： 1 2 3 4 5 6 7 8 9 ubuntu@VM-12-11-ubuntu:~/c++/makefile$ tree . ├── factorial.cpp ├── functions.h ├── main.cpp ├── Makefile └── printHello.cpp 0 directories, 5 files functions.h 1 2 3 4 5 6 #ifndef FUNCTIONS_H #define FUNCTIONS_H #include &lt;iostream&gt; void printHello(); int factorial(int n); #endif factorial.cpp 1 2 3 4 5 6 7</div><div class="post-footer">
+    <a href="/posts/makefile/">Read More</a><div class="post-tags"><i class="fa-solid fa-tags fa-fw me-1" aria-hidden="true"></i><a href='/tags/makefile/' class="post-tag">makefile</a></div></div>
+</article>
+<article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+    <a href="/posts/muduo%E7%BD%91%E7%BB%9C%E5%BA%93%E7%9A%84%E4%BD%BF%E7%94%A8/">muduo网络库的使用</a>
+  </h1><div class="post-meta"><span class="post-author"><span class="author"><i class="fa-solid fa-user-circle" aria-hidden="true"></i>
+      cjt</span></span>&nbsp;<span class="post-publish" title='2022-12-16 00:00:00'>published on <time datetime="2022-12-16">2022-12-16</time></span>&nbsp;<span class="post-category">included in <a href="/categories/c/c++/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> c/c++</a></span></div><div class="content">1. echo服务的实现 muduo的使用非常简单，不需要从指定的类派生，也不用覆写虚函数，只需要注册几个回调函数去处理&quot;三个半的事件&</div><div class="post-footer">
+    <a href="/posts/muduo%E7%BD%91%E7%BB%9C%E5%BA%93%E7%9A%84%E4%BD%BF%E7%94%A8/">Read More</a><div class="post-tags"><i class="fa-solid fa-tags fa-fw me-1" aria-hidden="true"></i><a href='/tags/muduo/' class="post-tag">muduo</a></div></div>
+</article>
+<article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+    <a href="/posts/linux%E5%85%A5%E9%97%A8%E5%AD%A6%E4%B9%A0/">Linux入门学习</a>
+  </h1><div class="post-meta"><span class="post-author"><span class="author"><i class="fa-solid fa-user-circle" aria-hidden="true"></i>
+      cjt</span></span>&nbsp;<span class="post-publish" title='2022-12-14 00:00:00'>published on <time datetime="2022-12-14">2022-12-14</time></span>&nbsp;<span class="post-category">included in <a href="/categories/linux/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> Linux</a></span></div><div class="content">1. Linux基本操作 1.1 文本登录 文本方式登陆： 输入用户名和密码 /etc/passwd文件对照 /etc/shadow文件对照 启动相应的外壳程序 用</div><div class="post-footer">
+    <a href="/posts/linux%E5%85%A5%E9%97%A8%E5%AD%A6%E4%B9%A0/">Read More</a><div class="post-tags"><i class="fa-solid fa-tags fa-fw me-1" aria-hidden="true"></i><a href='/tags/linux/' class="post-tag">Linux</a></div></div>
+</article>
+<article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
     <a href="/posts/linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">Linux常用命令</a>
   </h1><div class="post-meta"><span class="post-author"><span class="author"><i class="fa-solid fa-user-circle" aria-hidden="true"></i>
       cjt</span></span>&nbsp;<span class="post-publish" title='2022-12-09 00:00:00'>published on <time datetime="2022-12-09">2022-12-09</time></span>&nbsp;<span class="post-category">included in <a href="/categories/linux/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> Linux</a></span></div><div class="content">1. 路径相关 1.1 pwd 显示当前路径 在终端中输入pwd命令，显示当前我们所在的位置： 1 2 ubuntu@VM-12-11-ubuntu:~$ pwd /home/ubuntu 1.2 ls 查看当前目录 1 2 ubuntu@VM-12-11-ubuntu:~$ ls build c++ muduo my-website recipes snap 可以使用如下命令让这</div><div class="post-footer">
@@ -107,30 +131,6 @@
   </h1><div class="post-meta"><span class="post-author"><span class="author"><i class="fa-solid fa-user-circle" aria-hidden="true"></i>
       cjt</span></span>&nbsp;<span class="post-publish" title='2022-12-09 00:00:00'>published on <time datetime="2022-12-09">2022-12-09</time></span>&nbsp;<span class="post-category">included in <a href="/categories/windows-10/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> Windows 10</a></span></div><div class="content">远程桌面 被远程的主机 首先win键 -&gt; 设置 -&gt; 系统 -&gt; 远程桌面，启动远程桌面功能。 再查看本机IP地址：win + r 组合键，输入cmd，回车确定，在cm</div><div class="post-footer">
     <a href="/posts/work/win10%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2/">Read More</a><div class="post-tags"><i class="fa-solid fa-tags fa-fw me-1" aria-hidden="true"></i><a href='/tags/windows-10/' class="post-tag">Windows 10</a></div></div>
-</article>
-<article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-    <a href="/posts/hugo%E6%90%AD%E5%BB%BA/">Hugo的安装和FixIt 主题</a>
-  </h1><div class="post-meta"><span class="post-author"><span class="author"><i class="fa-solid fa-user-circle" aria-hidden="true"></i>
-      cjt</span></span>&nbsp;<span class="post-publish" title='2022-12-08 00:00:00'>published on <time datetime="2022-12-08">2022-12-08</time></span>&nbsp;<span class="post-category">included in <a href="/categories/hugo/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> hugo</a></span></div><div class="content">推荐使用 Hugo extended 版本 由于这个主题的一些特性需要将 SCSS 转换为 CSS, 推荐使用 Hugo extended 版本来获得更好的使用体验。 主题参考 ubuntu 如何安装snap 也就说你的Ubuntu</div><div class="post-footer">
-    <a href="/posts/hugo%E6%90%AD%E5%BB%BA/">Read More</a><div class="post-tags"><i class="fa-solid fa-tags fa-fw me-1" aria-hidden="true"></i><a href='/tags/hugo/' class="post-tag">hugo</a></div></div>
-</article>
-<article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-    <a href="/posts/muduo%E7%BD%91%E7%BB%9C%E5%BA%93%E6%BA%90%E7%A0%81%E5%AD%A6%E4%B9%A0/">muduo网络库源码学习</a>
-  </h1><div class="post-meta"><span class="post-author"><span class="author"><i class="fa-solid fa-user-circle" aria-hidden="true"></i>
-      cjt</span></span>&nbsp;<span class="post-publish" title='2022-12-06 00:00:00'>published on <time datetime="2022-12-06">2022-12-06</time></span>&nbsp;<span class="post-category">included in <a href="/categories/c/c++/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> c/c++</a></span></div><div class="content">源码参考：Muduo 第二部分：Muduo网络库 10. 初探EventLoop 10.1 什么都不做的EventLoop 一个EventLoop就是一个事件循环</div><div class="post-footer">
-    <a href="/posts/muduo%E7%BD%91%E7%BB%9C%E5%BA%93%E6%BA%90%E7%A0%81%E5%AD%A6%E4%B9%A0/">Read More</a><div class="post-tags"><i class="fa-solid fa-tags fa-fw me-1" aria-hidden="true"></i><a href='/tags/muduo/' class="post-tag">muduo</a></div></div>
-</article>
-<article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-    <a href="/posts/c&#43;&#43;_primer_5th/">c&#43;&#43; primer 5th 要点记录</a>
-  </h1><div class="post-meta"><span class="post-author"><span class="author"><i class="fa-solid fa-user-circle" aria-hidden="true"></i>
-      cjt</span></span>&nbsp;<span class="post-publish" title='2022-11-27 00:00:00'>published on <time datetime="2022-11-27">2022-11-27</time></span>&nbsp;<span class="post-category">included in <a href="/categories/c/c++/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> c/c++</a></span></div><div class="content">1. 开始 iostream库包含两个基础类型istream和ostream，分别表示输入流和输出流。一个流就是一个字符序列，是从IO设备读出或写</div><div class="post-footer">
-    <a href="/posts/c&#43;&#43;_primer_5th/">Read More</a><div class="post-tags"><i class="fa-solid fa-tags fa-fw me-1" aria-hidden="true"></i><a href='/tags/c&#43;&#43;-primer/' class="post-tag">c&#43;&#43; primer</a></div></div>
-</article>
-<article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-    <a href="/posts/%E5%A4%A7%E5%B9%B6%E5%8F%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%BC%80%E5%8F%91/">大并发服务器开发</a>
-  </h1><div class="post-meta"><span class="post-author"><span class="author"><i class="fa-solid fa-user-circle" aria-hidden="true"></i>
-      cjt</span></span>&nbsp;<span class="post-publish" title='2022-10-31 00:00:00'>published on <time datetime="2022-10-31">2022-10-31</time></span>&nbsp;<span class="post-category">included in <a href="/categories/c/c++/"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> c/c++</a></span></div><div class="content">前言 服务器设计的目的 高性能 高可用 故障转移(failover) 伸缩性 library和framework： 库中类相对比较独立，我们编写应用的时候</div><div class="post-footer">
-    <a href="/posts/%E5%A4%A7%E5%B9%B6%E5%8F%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%BC%80%E5%8F%91/">Read More</a><div class="post-tags"><i class="fa-solid fa-tags fa-fw me-1" aria-hidden="true"></i><a href='/tags/muduo/' class="post-tag">muduo</a></div></div>
 </article>
 <ul class="pagination"><li class="page-item">
           <span class="page-link">
@@ -157,6 +157,10 @@
         </li><li class="page-item">
           <span class="page-link">
             <a href="/page/8/">8</a>
+          </span>
+        </li><li class="page-item">
+          <span class="page-link">
+            <a href="/page/9/">9</a>
           </span>
         </li></ul></div></main><footer class="footer">
     <div class="footer-container"><div class="footer-line copyright" itemscope itemtype="http://schema.org/CreativeWork"><i class="fa-regular fa-copyright fa-fw" aria-hidden="true"></i>

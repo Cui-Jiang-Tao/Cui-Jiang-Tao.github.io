@@ -1202,9 +1202,9 @@
 </span><span class="lnt">24
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="cp">#include</span><span class="cpf">&lt;stdio.h&gt; </span><span class="cp">
-</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span><span class="cpf">&lt;stdlib.h&gt;  //atexit函数所属头文件</span><span class="cp">
-</span></span></span><span class="line"><span class="cl"><span class="cp"></span>   
+<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="cp">#include&lt;stdio.h&gt; 
+</span></span></span><span class="line"><span class="cl"><span class="cp">#include&lt;stdlib.h&gt;  </span><span class="c1">//atexit函数所属头文件
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>   
 </span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">func1</span><span class="p">()</span> 
 </span></span><span class="line"><span class="cl"><span class="p">{</span> 
 </span></span><span class="line"><span class="cl">    <span class="n">printf</span><span class="p">(</span><span class="s">&#34;The process is done...</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">);</span> 
@@ -1219,8 +1219,8 @@
 </span></span><span class="line"><span class="cl"><span class="p">}</span> 
 </span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> 
 </span></span><span class="line"><span class="cl"><span class="p">{</span> 
-</span></span><span class="line"><span class="cl"><span class="err">　　</span><span class="c1">//其作用是注册某一个函数，当进程执行结束时，会自动调用注册的函数
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="err">　　</span><span class="c1">//注册几次，就执行几次
+</span></span><span class="line"><span class="cl">　　<span class="c1">//其作用是注册某一个函数，当进程执行结束时，会自动调用注册的函数
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>　　<span class="c1">//注册几次，就执行几次
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">atexit</span><span class="p">(</span><span class="n">func1</span><span class="p">);</span> 
 </span></span><span class="line"><span class="cl">    <span class="n">atexit</span><span class="p">(</span><span class="n">func2</span><span class="p">);</span> 
 </span></span><span class="line"><span class="cl">    <span class="n">atexit</span><span class="p">(</span><span class="n">func3</span><span class="p">);</span> 
